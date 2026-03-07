@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>HCF 官網中控台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --theme-base: #02040a; --theme-cyan: #00f0ff; }
+        body { background-color: var(--theme-base); color: #e2e8f0; font-family: 'Noto Sans TC', sans-serif; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        input:focus { outline: none; border-color: var(--theme-cyan); box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-[#0f131a] border border-white/10 rounded-xl p-8 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent"></div>
+        
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-black text-white font-orbitron italic tracking-wider mb-2">HCF CONTROL</h1>
+            <p class="text-xs text-[#00f0ff] tracking-[0.3em] font-mono">SYSTEM ADMINISTRATION</p>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-xs text-gray-400 font-bold mb-2 tracking-widest">ACCESS CODE</label>
+            <div class="relative">
+                <input type="password" id="password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-3 rounded text-center tracking-widest font-mono text-lg transition-all focus:border-[#00f0ff]">
+                <i class="fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+            </div>
+            <p class="text-[10px] text-gray-500 mt-2 text-center">* 預設密碼: hcf2026</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <button onclick="setTheme('default')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/10">
+                <span class="relative z-10 text-sm font-bold text-[#00f0ff] group-hover:text-white transition-colors">DEFAULT (CYAN)</span>
+                <div class="absolute inset-0 bg-[#00f0ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+            
+            <button onclick="setTheme('red')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ff003c] transition-all bg-[#ff003c]/10">
+                <span class="relative z-10 text-sm font-bold text-[#ff003c] group-hover:text-white transition-colors">RED</span>
+                <div class="absolute inset-0 bg-[#ff003c] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+            
+            <button onclick="setTheme('green')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00ff41] transition-all bg-[#00ff41]/10">
+                <span class="relative z-10 text-sm font-bold text-[#00ff41] group-hover:text-white transition-colors">GREEN</span>
+                <div class="absolute inset-0 bg-[#00ff41] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+            
+            <button onclick="setTheme('purple')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#bf00ff] transition-all bg-[#bf00ff]/10">
+                <span class="relative z-10 text-sm font-bold text-[#bf00ff] group-hover:text-white transition-colors">PURPLE</span>
+                <div class="absolute inset-0 bg-[#bf00ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+
+            <button onclick="setTheme('gold')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ffd700] transition-all bg-[#ffd700]/10">
+                <span class="relative z-10 text-sm font-bold text-[#ffd700] group-hover:text-black transition-colors">GOLD</span>
+                <div class="absolute inset-0 bg-[#ffd700] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+            
+            <button onclick="setTheme('white')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-white transition-all bg-white/10">
+                <span class="relative z-10 text-sm font-bold text-white group-hover:text-black transition-colors">WHITE</span>
+                <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            </button>
+        </div>
+
+        <div id="status-box" class="hidden p-3 rounded text-center text-xs font-bold tracking-widest mb-4 transition-all"></div>
+
+        <div class="text-center">
+            <a href="index.html" class="text-xs text-gray-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5">返回首頁</a>
+        </div>
+    </div>
+
+    <script>
+        async function setTheme(theme) {
+            const password = document.getElementById('password').value;
+            const statusBox = document.getElementById('status-box');
+            
+            if (!password) {
+                showStatus('請輸入密碼', 'error');
+                return;
+            }
+
+            showStatus('更新中...', 'loading');
+
+            try {
+                const response = await fetch('/.netlify/functions/set-theme', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ theme, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showStatus('更新成功！全站主題已切換', 'success');
+                } else {
+                    showStatus(data.error || '更新失敗', 'error');
+                }
+            } catch (error) {
+                showStatus('連線錯誤，請稍後再試', 'error');
+            }
+        }
+
+        function showStatus(msg, type) {
+            const box = document.getElementById('status-box');
+            box.classList.remove('hidden', 'bg-red-500/20', 'text-red-500', 'bg-green-500/20', 'text-green-500', 'bg-blue-500/20', 'text-blue-500');
+            
+            if (type === 'error') {
+                box.classList.add('bg-red-500/20', 'text-red-500');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-500/20', 'text-green-500');
+            } else {
+                box.classList.add('bg-blue-500/20', 'text-blue-500');
+            }
+            
+            box.textContent = msg;
+            box.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
