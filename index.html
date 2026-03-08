@@ -111,7 +111,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 自訂終端機視窗的滾動條 */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.2); border-radius: 10px; }
@@ -184,12 +183,11 @@
         .map-container iframe { filter: grayscale(100%) invert(90%) contrast(1.2); transition: filter 0.5s; }
         .map-container:hover iframe { filter: grayscale(0%) invert(0%); }
 
-        /* 智能鯊魚：社群霓虹光暈與抖動旋轉特效 */
         @keyframes social-glow-cycle {
-            0% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); }   /* LINE Green */
-            25% { filter: drop-shadow(0 0 20px rgba(236,72,153,0.9)); } /* IG Pink */
-            50% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); } /* FB Blue */
-            75% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.9)); }  /* YT Red */
+            0% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } 
+            25% { filter: drop-shadow(0 0 20px rgba(236,72,153,0.9)); } 
+            50% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); } 
+            75% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.9)); }  
             100% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); }
         }
         @keyframes shark-wobble {
@@ -234,7 +232,6 @@
     <script>
         (async function() {
             try {
-                // 🌟 Fetch Global Theme
                 const res = await fetch('/.netlify/functions/get-theme');
                 const data = await res.json();
                 if (data.theme && data.theme !== 'default') {
@@ -463,7 +460,7 @@
             
             <div id="ai-chat-history" class="h-36 overflow-y-auto mb-3 space-y-2 text-xs text-gray-200 custom-scrollbar pr-2">
                 <div class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5">
-                    你好！我是 HCF 智能教練🤖<br>有任何疑問都可以直接點擊下方按鈕問我，或是直接領取優惠！
+                    你好！我是 HCF 智能教練🤖<br>有任何疑問都可以直接問我，或是直接領取優惠！
                 </div>
             </div>
             
@@ -472,6 +469,13 @@
                 <button onclick="askShark('新手適合嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">🔰 新手適合嗎？</button>
                 <button onclick="askShark('地點在哪？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">📍 地點在哪？</button>
                 <button onclick="askShark('需要裝備嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">🥊 需要裝備嗎？</button>
+            </div>
+
+            <div class="flex gap-2 mb-3 border-b border-white/10 pb-3">
+                <input type="text" id="ai-user-input" placeholder="輸入你想問的..." class="flex-1 bg-black/80 border border-white/20 rounded px-3 py-1.5 text-xs text-white focus:outline-none focus:border-sci-cyan transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') sendUserMessage()">
+                <button onclick="sendUserMessage()" class="bg-sci-cyan text-black px-3 py-1.5 rounded text-xs font-black shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.4)] hover:bg-cyan-400 transition-colors">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
             </div>
             
             <div class="flex flex-col gap-2">
@@ -1133,7 +1137,7 @@
                         <h4 class="text-white font-bold text-base mb-4 border-l-2 border-sci-cyan pl-3">身體重構，打造易瘦體質</h4>
                         
                         <div class="space-y-4 text-sm text-gray-400 leading-relaxed mb-8">
-                            <p>技術需要強大的身體來支撐。我們的 S&C (Strength & Conditioning) 課程不練死肌肉，而是專注於「功能性」。透過壺鈴、啞鈴與自體重量訓練，我們強化你的關節穩定度、爆發力與基礎代謝。</p>
+                            <p>技術需要強大的身體來支撐。我們的 S&C (Strength & Conditioning) 課程不練死肌肉，而是專注於「功能性」。透過壺鈴、啞 কুল鈴與自體重量訓練，我們強化你的關節穩定度、爆發力與基礎代謝。</p>
                             <p>增加肌肉量是提升「基礎代謝率」的關鍵。我們幫你打造「睡覺也能燃燒熱量」的易瘦體質，讓你的身材曲線緊實有致，穿衣服更有型。同時提升體能續航力，讓你在下班後依然精力充沛，不再容易感到疲累。</p>
                         </div>
                     </div>
@@ -1951,7 +1955,6 @@
     </footer>
 
     <script>
-        // 🌟 新增：一鍵分享給朋友 (Web Share API)
         function shareWebsite(btn) {
             if (navigator.share) {
                 navigator.share({
@@ -2265,26 +2268,66 @@
         }
 
         // ==========================================
-        // 🦈 AI 智能助理大腦 & APP 安裝引擎
+        // 🦈 AI 智能助理大腦 (全新升級版)
         // ==========================================
         let it = 0, co = false; 
         const ais = document.getElementById('ai-system'), zm = document.getElementById('zzz-mark'), ab = document.getElementById('angry-bubble');
         const historyBox = document.getElementById('ai-chat-history');
         
-        function askShark(question) {
-            historyBox.innerHTML += `<div class="bg-sci-cyan/20 text-sci-cyan p-2 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-2 max-w-[80%]">${question}</div>`;
+        async function askShark(question) {
+            const historyBox = document.getElementById('ai-chat-history');
+
+            // 1. 顯示客人的問題 (靠右)
+            historyBox.innerHTML += `
+                <div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">
+                    ${question}
+                </div>`;
             historyBox.scrollTop = historyBox.scrollHeight;
 
-            setTimeout(() => {
-                let answer = "";
-                if(question === '費用怎麼算？') answer = "首次體驗只要 $400！<br>• 團課 10堂 $4,500<br>• 私教 1堂 $2,200<br>點擊上方按鈕可以直接預約喔！";
-                else if(question === '新手適合嗎？') answer = "超級適合！我們 80% 的學員都是零基礎。教練會針對你的體能調整，絕對安全！🥊";
-                else if(question === '地點在哪？') answer = "我們在新竹市北區林森路301號2樓。<br>就在市區，樓下停車很方便！";
-                else if(question === '需要裝備嗎？') answer = "第一次來只要穿運動服、帶水壺毛巾就好！館內有公用拳套可以借用。";
+            // 2. 顯示 AI 思考中的 Loading 狀態 (靠左)
+            const loadingId = 'loading-' + Date.now();
+            historyBox.innerHTML += `
+                <div id="${loadingId}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 鯊魚大腦運算中...
+                </div>`;
+            historyBox.scrollTop = historyBox.scrollHeight;
 
-                historyBox.innerHTML += `<div class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-2 max-w-[85%]">${answer}</div>`;
-                historyBox.scrollTop = historyBox.scrollHeight;
-            }, 500);
+            try {
+                // 3. 打 API 到你的後端
+                const response = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question })
+                });
+                
+                const data = await response.json();
+
+                // 4. 將 Loading 替換成 AI 真實回覆
+                document.getElementById(loadingId).outerHTML = `
+                    <div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">
+                        ${data.reply}
+                    </div>`;
+
+            } catch (error) {
+                // 異常處理
+                document.getElementById(loadingId).outerHTML = `
+                    <div class="bg-red-900/40 text-red-400 p-2.5 rounded-lg rounded-tl-none border border-red-500/50 mt-3 max-w-[85%] text-xs">
+                        ⚠️ 系統干擾，鯊魚連線中斷！請點擊下方 LINE 聯絡真人。
+                    </div>`;
+            }
+            
+            historyBox.scrollTop = historyBox.scrollHeight;
+        }
+
+        // 處理使用者在輸入框打字的函數
+        function sendUserMessage() {
+            const inputField = document.getElementById('ai-user-input');
+            const userText = inputField.value.trim();
+            
+            if (userText !== "") {
+                askShark(userText);
+                inputField.value = ""; // 清空輸入框
+            }
         }
 
         function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
