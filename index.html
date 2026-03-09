@@ -1669,6 +1669,49 @@
             if(currentLang==='en') applyLanguage(); 
             setTimeout(typeWriter, 800); 
         });
-    </script>
-</body>
+    </script>// 10. Form Submission (串接真實信箱發送系統)
+        const leadForm = document.getElementById('lead-form');
+        if(leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // 阻止網頁預設的跳轉行為，維持完美 UX
+                
+                const btn = this.querySelector('button[type="submit"]');
+                const originalBtnHtml = btn.innerHTML;
+                const nameValue = document.getElementById('form-name').value;
+                const phoneValue = document.getElementById('form-phone').value;
+
+                // 1. 按鈕變成轉圈圈狀態
+                btn.innerHTML = '<span class="skew-x-[5deg] block flex items-center justify-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> 資料傳送中...</span>';
+                btn.style.pointerEvents = 'none'; // 防止客人連點
+
+                // 2. 打包資料並透過 API 送到您的信箱
+                fetch("https://formsubmit.co/ajax/hsinchucombat2022@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "標題": "🔥 HCF 官網 - 有新的預約客！",
+                        "客戶稱呼": nameValue,
+                        "聯絡電話": phoneValue,
+                        "_subject": "🔥 HCF 官網新單通知！" // 顯示在您 Email 的主旨
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 3. 傳送成功：隱藏按鈕，顯示成功綠字
+                    btn.style.display = 'none';
+                    document.getElementById('form-success-msg').classList.remove('hidden');
+                    // 可選：清空表單
+                    leadForm.reset();
+                })
+                .catch(error => {
+                    // 傳送失敗的防呆機制
+                    console.log("信箱發送失敗:", error);
+                    btn.innerHTML = '<span class="skew-x-[5deg] block flex items-center justify-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> 系統繁忙，請改用 LINE 聯絡</span>';
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+        }</body>
 </html>
