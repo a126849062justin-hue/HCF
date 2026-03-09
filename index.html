@@ -151,7 +151,28 @@
         details > summary::-webkit-details-marker { display: none; }
     </style>
     <script>
-        (function(){ const saved = localStorage.getItem('hcf_theme'); if(saved) document.documentElement.setAttribute('data-theme', saved); })();
+        (async function() {
+            try {
+                // 1. 先用本地記憶體瞬間上色，避免客人看到畫面閃爍
+                const saved = localStorage.getItem('hcf_theme');
+                if(saved) document.documentElement.setAttribute('data-theme', saved);
+                
+                // 2. 偷偷去 Netlify 伺服器問「最新顏色」
+                const res = await fetch('/.netlify/functions/get-theme');
+                const data = await res.json();
+                
+                // 3. 如果伺服器顏色不一樣，立刻強制切換並更新記憶體！
+                if (data.theme && data.theme !== 'default') {
+                    document.documentElement.setAttribute('data-theme', data.theme);
+                    localStorage.setItem('hcf_theme', data.theme);
+                } else if (data.theme === 'default') {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.removeItem('hcf_theme');
+                }
+            } catch (e) {
+                console.error('基地連線異常，保持目前塗裝', e);
+            }
+        })();
     </script>
 </head>
 <body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
