@@ -2,6 +2,8 @@
   "name": "hcf-ai-system",
   "version": "1.0.0",
   "dependencies": {
-    "@google/generative-ai": "latest"
+    "@google/generative-ai": "^0.21.0",
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^2.8.1"
   }
 }

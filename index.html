@@ -14,8 +14,9 @@
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
     <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
     <meta property="og:image" content="hero1.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:url" content="https://hsinchucombat.netlify.app/">
     <meta property="og:type" content="website">
+    <link rel="canonical" href="https://hsinchucombat.netlify.app/">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
@@ -173,6 +174,27 @@
                 console.error('基地連線異常，保持目前塗裝', e);
             }
         })();
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            page_title: 'HCF新竹格鬥館',
+            page_location: window.location.href
+        });
+    </script>
+
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json" id="schema-localbusiness">
+    </script>
+    <script>
+        fetch('/schema.json').then(r => r.json()).then(s => {
+            document.getElementById('schema-localbusiness').textContent = JSON.stringify(s);
+        }).catch(function(){});
     </script>
 </head>
 <body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
@@ -1321,6 +1343,10 @@
                             <i class="fa-solid fa-phone text-sci-cyan w-4 text-center"></i> 
                             <span>0925-571-225</span>
                         </p>
+                        <a href="mailto:hsinchucombat2022@gmail.com" class="flex items-center gap-3 hover:text-white transition-colors group">
+                            <i class="fa-solid fa-envelope text-sci-cyan w-4 text-center"></i>
+                            <span class="group-hover:text-sci-cyan transition-colors">hsinchucombat2022@gmail.com</span>
+                        </a>
                         <div class="flex items-start gap-3">
                             <i class="fa-solid fa-clock mt-1 text-sci-cyan w-4 text-center"></i> 
                             <span class="text-gray-300">
@@ -1362,6 +1388,8 @@
                 <p>© 2026 HCF. All Rights Reserved.</p>
                 <span class="hidden sm:inline">|</span>
                 <p class="text-sci-cyan/50">SYSTEM READY FOR COMBAT.</p>
+                <span class="hidden sm:inline">|</span>
+                <a href="mailto:hsinchucombat2022@gmail.com" class="text-gray-500 hover:text-sci-cyan transition-colors">hsinchucombat2022@gmail.com</a>
             </div>
         </div>
     </footer>
@@ -1629,42 +1657,62 @@
         }
         setInterval(updateCountdowns, 1000); updateCountdowns();
 
-       // 10. Form Submission (真實串接 Email 收單)
+       // 10. Form Submission (真實串接 Email 收單 + UTM 追蹤 + 資料儲存)
         const leadForm = document.getElementById('lead-form');
         if(leadForm) {
             leadForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // 阻止畫面重新整理
+                e.preventDefault();
                 const btn = this.querySelector('button[type="submit"]');
                 
-                // 抓取客人填寫的資料
                 const userName = document.getElementById('form-name').value;
                 const userPhone = document.getElementById('form-phone').value;
-                
-                // 按鈕變更為載入動畫
+
+                // Get UTM params from analytics module or sessionStorage
+                const utm = (window.HCFAnalytics && window.HCFAnalytics.getUTM) 
+                    ? window.HCFAnalytics.getUTM() 
+                    : {};
+
+                const formPayload = {
+                    name: userName,
+                    phone: userPhone,
+                    utm_source: utm.utm_source || '',
+                    utm_medium: utm.utm_medium || '',
+                    utm_campaign: utm.utm_campaign || '',
+                    referrer: document.referrer || ''
+                };
+
                 btn.innerHTML = '<span class="skew-x-[5deg] block flex items-center justify-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> 正在傳送至基地...</span>';
                 
-                // 呼叫 FormSubmit API 傳送到您的信箱
-                fetch("https://formsubmit.co/ajax/hsinchucombat2022@gmail.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "標題": "🔥 HCF 網站新客預約通知！",
-                        "客戶稱呼": userName,
-                        "聯絡電話": userPhone,
-                        "_subject": "HCF 網站新客預約通知" // Email 的主旨
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 傳送成功：隱藏按鈕，顯示成功綠色文字
-                    btn.style.display = 'none';
-                    document.getElementById('form-success-msg').classList.remove('hidden');
-                })
-                .catch(error => {
-                    // 傳送失敗防呆處理
+                // Fire both: email notification + data save (parallel)
+                const emailPromise = fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(formPayload)
+                }).catch(() => null);
+
+                const savePromise = fetch('/.netlify/functions/save-contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(formPayload)
+                }).catch(() => null);
+
+                Promise.all([emailPromise, savePromise]).then(([emailRes, saveRes]) => {
+                    const emailOk = emailRes && emailRes.ok;
+                    const saveOk = saveRes && saveRes.ok;
+                    if (emailOk || saveOk) {
+                        btn.style.display = 'none';
+                        document.getElementById('form-success-msg').classList.remove('hidden');
+                        if (window.HCFAnalytics) {
+                            window.HCFAnalytics.trackEvent('form_submit_success', {
+                                event_category: 'Conversion',
+                                event_label: 'Lead Form',
+                                value: 400
+                            });
+                        }
+                    } else {
+                        btn.innerHTML = '<span class="skew-x-[5deg] block text-red-500">傳送失敗，請直接聯繫 LINE</span>';
+                    }
+                }).catch(error => {
                     console.log(error);
                     btn.innerHTML = '<span class="skew-x-[5deg] block text-red-500">傳送失敗，請直接聯繫 LINE</span>';
                 });
@@ -1682,10 +1730,22 @@
             const lid = 'loading-' + Date.now();
             hBox.innerHTML += `<div id="${lid}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>`;
             hBox.scrollTop = hBox.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">請點擊下方按鈕或留下您的聯絡方式，我們將為您安排專屬教練！</div>`;
-                hBox.scrollTop = hBox.scrollHeight;
-            }, 1000);
+            if (window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(question, 'floating_shark');
+            try {
+                const res = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question })
+                });
+                const data = await res.json();
+                const reply = data.reply || '請點擊下方按鈕或留下您的聯絡方式，我們將為您安排專屬教練！';
+                const loadingEl = document.getElementById(lid);
+                if (loadingEl) loadingEl.outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${reply}</div>`;
+            } catch(err) {
+                const loadingEl = document.getElementById(lid);
+                if (loadingEl) loadingEl.outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed">請點擊下方「LINE 真人客服」取得最快解答！</div>`;
+            }
+            hBox.scrollTop = hBox.scrollHeight;
         }
         function sendUserMessage() { const input = document.getElementById('ai-user-input'); const val = input.value.trim(); if (val !== "") { askShark(val); input.value = ""; } }
         function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
@@ -1693,8 +1753,8 @@
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
 
-        // Main Terminal (In Section)
-        function sendMainMessage() {
+        // Main Terminal (In Section) - calls actual AI function
+        async function sendMainMessage() {
             const input = document.getElementById('main-user-input');
             const val = input.value.trim(); if(!val) return;
             const win = document.getElementById('main-chat-window');
@@ -1703,10 +1763,22 @@
             const lid = 'main-loading-' + Date.now();
             win.innerHTML += `<div id="${lid}" class="bg-sci-cyan/5 text-gray-400 p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm flex items-center gap-2 mt-4 border border-sci-cyan/20"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 分析中...</div>`;
             win.scrollTop = win.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">根據您的目標「${val}」，我建議您參考我們下方的<b>「課程方案區塊」</b>，並填寫表單領取 $400 專屬體驗憑證！</div>`;
-                win.scrollTop = win.scrollHeight;
-            }, 1200);
+            if (window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(val, 'main_terminal');
+            try {
+                const res = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: val })
+                });
+                const data = await res.json();
+                const reply = data.reply || '建議您填寫下方表單領取 $400 專屬體驗憑證！';
+                const loadingEl = document.getElementById(lid);
+                if (loadingEl) loadingEl.outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${reply}</div>`;
+            } catch(err) {
+                const loadingEl = document.getElementById(lid);
+                if (loadingEl) loadingEl.outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4">根據您的目標，建議您填寫下方表單領取 $400 專屬體驗憑證！<br><a href="https://lin.ee/7lidUv0" target="_blank" class="underline">或點此加入 LINE 諮詢</a></div>`;
+            }
+            win.scrollTop = win.scrollHeight;
         }
 
         // PWA
@@ -1719,5 +1791,8 @@
             setTimeout(typeWriter, 800); 
         });
     </script>
+
+    <!-- Custom Analytics & Event Tracking -->
+    <script src="/analytics.js" defer></script>
 </body>
 </html>
