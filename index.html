@@ -14,7 +14,7 @@
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
     <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
     <meta property="og:image" content="hero1.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:url" content="https://hcf-combat.netlify.app">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -22,11 +22,49 @@
     <meta name="twitter:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。">
     <meta name="twitter:image" content="hero1.jpg">
 
+    <link rel="canonical" href="https://hcf-combat.netlify.app">
     <link rel="manifest" href="manifest.json">
+
+    <!-- LocalBusiness 結構化數據 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "HCF 新竹格鬥館",
+      "description": "新竹評價最高、實戰最強的專業格鬥館！主打正宗泰拳教學，並提供踢拳、散打與重訓私人教練與團體課程。",
+      "url": "https://hcf-combat.netlify.app",
+      "email": "hsinchucombat2022@gmail.com",
+      "telephone": "+886-925-571-225",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "林森路301號2樓",
+        "addressLocality": "新竹市北區",
+        "addressRegion": "新竹市",
+        "postalCode": "300",
+        "addressCountry": "TW"
+      },
+      "priceRange": "$400 - $2500+",
+      "sameAs": [
+        "https://www.instagram.com/hc.combat2022/",
+        "https://m.facebook.com/hsinchucombat/"
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics 4 (請將 G-XXXXXXXXXX 替換為實際的 GA4 測量 ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- 自訂事件追蹤 (含 UTM 解析) -->
+    <script src="analytics.js" defer></script>
     
     <script>
         tailwind.config = {
@@ -1321,6 +1359,10 @@
                             <i class="fa-solid fa-phone text-sci-cyan w-4 text-center"></i> 
                             <span>0925-571-225</span>
                         </p>
+                        <p class="flex items-center gap-3 hover:text-sci-cyan transition-colors">
+                            <i class="fa-solid fa-envelope text-sci-cyan w-4 text-center"></i>
+                            <a href="mailto:hsinchucombat2022@gmail.com" class="hover:text-sci-cyan transition-colors">hsinchucombat2022@gmail.com</a>
+                        </p>
                         <div class="flex items-start gap-3">
                             <i class="fa-solid fa-clock mt-1 text-sci-cyan w-4 text-center"></i> 
                             <span class="text-gray-300">
@@ -1360,6 +1402,8 @@
             
             <div class="text-center border-t border-white/10 pt-6 text-[11px] text-gray-600 font-mono tracking-widest flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 items-center">
                 <p>© 2026 HCF. All Rights Reserved.</p>
+                <span class="hidden sm:inline">|</span>
+                <a href="mailto:hsinchucombat2022@gmail.com" class="text-sci-cyan/50 hover:text-sci-cyan transition-colors">hsinchucombat2022@gmail.com</a>
                 <span class="hidden sm:inline">|</span>
                 <p class="text-sci-cyan/50">SYSTEM READY FOR COMBAT.</p>
             </div>
@@ -1629,63 +1673,93 @@
         }
         setInterval(updateCountdowns, 1000); updateCountdowns();
 
-       // 10. Form Submission (真實串接 Email 收單)
+       // 10. Form Submission (真實串接 Email 收單 + UTM 追蹤)
         const leadForm = document.getElementById('lead-form');
         if(leadForm) {
             leadForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // 阻止畫面重新整理
+                e.preventDefault();
                 const btn = this.querySelector('button[type="submit"]');
                 
-                // 抓取客人填寫的資料
-                const userName = document.getElementById('form-name').value;
-                const userPhone = document.getElementById('form-phone').value;
+                const userName = document.getElementById('form-name').value.trim();
+                const userPhone = document.getElementById('form-phone').value.trim();
                 
-                // 按鈕變更為載入動畫
+                // 取得 UTM 參數（由 analytics.js 解析）
+                const utm = (window.HCFAnalytics && window.HCFAnalytics.getUTM) ? window.HCFAnalytics.getUTM() : {};
+                
                 btn.innerHTML = '<span class="skew-x-[5deg] block flex items-center justify-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> 正在傳送至基地...</span>';
                 
-                // 呼叫 FormSubmit API 傳送到您的信箱
-                fetch("https://formsubmit.co/ajax/hsinchucombat2022@gmail.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "標題": "🔥 HCF 網站新客預約通知！",
-                        "客戶稱呼": userName,
-                        "聯絡電話": userPhone,
-                        "_subject": "HCF 網站新客預約通知" // Email 的主旨
+                const payload = {
+                    name: userName,
+                    phone: userPhone,
+                    utmSource: utm.utmSource || '',
+                    utmMedium: utm.utmMedium || '',
+                    utmCampaign: utm.utmCampaign || ''
+                };
+                
+                // 同時呼叫：發送郵件 + 儲存聯絡資料
+                Promise.allSettled([
+                    fetch('/.netlify/functions/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    }),
+                    fetch('/.netlify/functions/save-contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 傳送成功：隱藏按鈕，顯示成功綠色文字
+                ]).then(() => {
                     btn.style.display = 'none';
                     document.getElementById('form-success-msg').classList.remove('hidden');
-                })
-                .catch(error => {
-                    // 傳送失敗防呆處理
+                    if(window.HCFAnalytics) window.HCFAnalytics.trackFormSubmit('lead-form', true);
+                }).catch(error => {
                     console.log(error);
                     btn.innerHTML = '<span class="skew-x-[5deg] block text-red-500">傳送失敗，請直接聯繫 LINE</span>';
+                    if(window.HCFAnalytics) window.HCFAnalytics.trackFormSubmit('lead-form', false);
                 });
             });
         }
 
         // 11. AI Chat Systems
+        // HTML 跳脫工具函數（XSS 防護）
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         // Floating Shark (Bottom Right)
         let it = 0, co = false; 
         const ais = document.getElementById('ai-system'), zm = document.getElementById('zzz-mark'), ab = document.getElementById('angry-bubble');
         async function askShark(question) {
             const hBox = document.getElementById('ai-chat-history');
-            hBox.innerHTML += `<div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">${question}</div>`;
+            const safeQ = escapeHtml(question);
+            hBox.innerHTML += `<div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">${safeQ}</div>`;
             hBox.scrollTop = hBox.scrollHeight;
             const lid = 'loading-' + Date.now();
             hBox.innerHTML += `<div id="${lid}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>`;
             hBox.scrollTop = hBox.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">請點擊下方按鈕或留下您的聯絡方式，我們將為您安排專屬教練！</div>`;
-                hBox.scrollTop = hBox.scrollHeight;
-            }, 1000);
+            if(window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(question, 'pending');
+            try {
+                const res = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question, source: 'shark-widget' })
+                });
+                const data = await res.json();
+                const reply = data.reply || '請點擊下方 LINE 客服！';
+                const safeR = escapeHtml(reply);
+                if(window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(question, data.source || 'ai');
+                const loadEl = document.getElementById(lid);
+                if(loadEl) loadEl.outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${safeR}</div>`;
+            } catch(err) {
+                const loadEl = document.getElementById(lid);
+                if(loadEl) loadEl.outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed">⚠️ 網路異常！請點 LINE 客服聯繫我們！</div>`;
+            }
+            hBox.scrollTop = hBox.scrollHeight;
         }
         function sendUserMessage() { const input = document.getElementById('ai-user-input'); const val = input.value.trim(); if (val !== "") { askShark(val); input.value = ""; } }
         function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
@@ -1694,19 +1768,34 @@
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
 
         // Main Terminal (In Section)
-        function sendMainMessage() {
+        async function sendMainMessage() {
             const input = document.getElementById('main-user-input');
             const val = input.value.trim(); if(!val) return;
             const win = document.getElementById('main-chat-window');
-            win.innerHTML += `<div class="bg-white/10 text-white border border-white/20 p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] text-sm shadow-md">${val}</div>`;
+            const safeV = escapeHtml(val);
+            win.innerHTML += `<div class="bg-white/10 text-white border border-white/20 p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] text-sm shadow-md">${safeV}</div>`;
             input.value = ''; win.scrollTop = win.scrollHeight;
             const lid = 'main-loading-' + Date.now();
             win.innerHTML += `<div id="${lid}" class="bg-sci-cyan/5 text-gray-400 p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm flex items-center gap-2 mt-4 border border-sci-cyan/20"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 分析中...</div>`;
             win.scrollTop = win.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">根據您的目標「${val}」，我建議您參考我們下方的<b>「課程方案區塊」</b>，並填寫表單領取 $400 專屬體驗憑證！</div>`;
-                win.scrollTop = win.scrollHeight;
-            }, 1200);
+            if(window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(val, 'pending');
+            try {
+                const res = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: val, source: 'main-terminal' })
+                });
+                const data = await res.json();
+                const reply = data.reply || '請填寫下方表單，教練將親自聯繫您！';
+                const safeR = escapeHtml(reply);
+                if(window.HCFAnalytics) window.HCFAnalytics.trackAIQuery(val, data.source || 'ai');
+                const loadEl = document.getElementById(lid);
+                if(loadEl) loadEl.outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${safeR}</div>`;
+            } catch(err) {
+                const loadEl = document.getElementById(lid);
+                if(loadEl) loadEl.outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4">根據您的目標「${safeV}」，請填寫下方表單領取 $400 專屬體驗憑證！</div>`;
+            }
+            win.scrollTop = win.scrollHeight;
         }
 
         // PWA
