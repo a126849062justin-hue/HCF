@@ -149,6 +149,30 @@
             .tech-border { transform: none !important; transition: none !important; }
         }
         details > summary::-webkit-details-marker { display: none; }
+
+        /* Logo Transition Overlay */
+        #logo-transition-overlay { position: fixed; inset: 0; z-index: 9990; background: linear-gradient(135deg, rgba(2,4,10,0.97) 0%, rgba(15,19,26,0.97) 100%); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        #logo-transition-overlay.active { opacity: 1; pointer-events: all; }
+        #logo-transition-overlay.fade-out { opacity: 0; pointer-events: none; }
+        .logo-spin-wrap { position: relative; width: 160px; height: 160px; display: flex; align-items: center; justify-content: center; }
+        .logo-spin-img { width: 100px; height: 100px; object-fit: contain; animation: logoSpin 2s linear infinite; filter: drop-shadow(0 0 20px rgba(var(--theme-cyan-rgb),0.8)); }
+        @keyframes logoSpin { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.08); } 100% { transform: rotate(360deg) scale(1); } }
+        .progress-ring-svg { position: absolute; inset: 0; width: 160px; height: 160px; transform: rotate(-90deg); }
+        .progress-ring-track { fill: none; stroke: rgba(var(--theme-cyan-rgb),0.15); stroke-width: 2; }
+        .progress-ring-fill { fill: none; stroke: var(--theme-cyan); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 439.82; stroke-dashoffset: 439.82; filter: drop-shadow(0 0 4px var(--theme-cyan)); }
+        .logo-loading-text { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: rgba(var(--theme-cyan-rgb),0.7); letter-spacing: 0.4em; text-transform: uppercase; }
+
+        /* FAQ Accordion */
+        .faq-item { background: rgba(5,8,16,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .faq-item:hover, .faq-item[open] { border-color: rgba(var(--theme-cyan-rgb),0.4); box-shadow: 0 0 20px rgba(var(--theme-cyan-rgb),0.08); }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 700; color: #fff; font-size: 0.9rem; user-select: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-chevron { flex-shrink: 0; transition: transform 0.3s ease; color: rgba(var(--theme-cyan-rgb),0.7); }
+        .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+        .faq-answer { padding: 0 24px 20px; color: #94a3b8; font-size: 0.85rem; line-height: 1.8; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; margin: 0 24px; margin-top: 0; }
+
+        /* Coach Mi card — pink/rose accent for female coach */
+        .coach-mi-badge { background: linear-gradient(135deg, rgba(var(--theme-cyan-rgb),0.15), rgba(255,100,150,0.15)); border: 1px solid rgba(var(--theme-cyan-rgb),0.4); }
     </style>
     <script>
         (async function() {
@@ -192,6 +216,18 @@
         <div class="text-gray-500 font-mono text-xs mt-2" id="loader-text">Loading Assets...</div>
     </div>
 
+    <!-- Logo Transition Overlay -->
+    <div id="logo-transition-overlay" role="status" aria-live="polite" aria-label="載入中">
+        <div class="logo-spin-wrap">
+            <svg class="progress-ring-svg" viewBox="0 0 160 160">
+                <circle class="progress-ring-track" cx="80" cy="80" r="70"/>
+                <circle class="progress-ring-fill" id="progress-ring-fill" cx="80" cy="80" r="70"/>
+            </svg>
+            <img src="shark_logo.png" alt="HCF" class="logo-spin-img" onerror="this.src='https://placehold.co/100x100/0f131a/00f0ff?text=HCF'; this.onerror=null;">
+        </div>
+        <p class="logo-loading-text">載入中...</p>
+    </div>
+
     <div class="bg-grain hidden md:block"></div>
     <canvas id="bg-canvas" class="hidden md:block"></canvas>
 
@@ -207,20 +243,20 @@
                 </div>
                 
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-auto">
-                    <a href="#home" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                    <a href="#home" data-scroll-target="#home" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">首頁</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">HOME</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
-                    <a href="#news" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                    <a href="#news" data-scroll-target="#news" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">最新資訊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">NEWS</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
-                    <a href="#philosophy" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                    <a href="#philosophy" data-scroll-target="#philosophy" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">品牌哲學</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PHILOSOPHY</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
                     <div class="relative group py-4">
-                        <a href="#classes" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
+                        <a href="#classes" data-scroll-target="#classes" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
                             <span class="group-hover:hidden">課程介紹</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COURSES</span>
                             <i class="fa-solid fa-angle-down text-[10px]"></i>
                             <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
@@ -234,12 +270,12 @@
                             <a href="#classes" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">肌力體能</a>
                         </div>
                     </div>
-                    <a href="#team" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                    <a href="#team" data-scroll-target="#team" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">教練團隊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COACHES</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
                     <div class="relative group py-4">
-                        <a href="#pricing" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
+                        <a href="#pricing" data-scroll-target="#pricing" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
                             <span class="group-hover:hidden">課程方案</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PRICING</span>
                             <i class="fa-solid fa-angle-down text-[10px]"></i>
                             <span class="absolute top-0 -right-2 w-1.5 h-1.5 rounded-full bg-sci-cyan animate-ping"></span>
@@ -251,8 +287,12 @@
                             <a href="#pricing" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">私人課程</a>
                         </div>
                     </div>
-                    <a href="#faq" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                    <a href="#faq" data-scroll-target="#faq" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">新手問答</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">FAQ</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <a href="#location" data-scroll-target="#location" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">位置</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">LOCATION</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
                     
@@ -351,6 +391,7 @@
                 </div>
             </div>
             <a href="#faq" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">新手問答</a>
+            <a href="#location" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">位置</a>
         </div>
         <div class="mt-8 mb-6 w-full px-2">
             <a href="#pricing" onclick="closeAllDrawers()" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
@@ -1269,6 +1310,50 @@
                             <a href="https://lin.ee/7lidUv0" target="_blank" class="mt-auto block w-full py-2.5 bg-white/5 hover:bg-white text-gray-300 hover:text-black text-center font-bold text-xs tracking-widest transition-colors rounded-sm border border-white/10 hover:border-white">預約特訓 <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></a>
                         </div>
                     </div>
+
+                    <!-- 助教 小米 -->
+                    <div class="group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden reveal hover:border-sci-cyan/50 transition-colors duration-300 flex flex-col shadow-lg break-inside-avoid"
+                         onclick="if(typeof gtag==='function') gtag('event','coach_profile_view',{coach_name:'小米'});">
+                        <div class="absolute top-0 right-0 bg-gradient-to-r from-cyan-500/80 to-pink-400/80 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(var(--theme-cyan-rgb),0.3)]">專長：泰拳 Muay Thai</div>
+                        <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
+                            <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <img src="coach-mi.jpg" loading="lazy" alt="小米助教" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" onerror="this.src='https://placehold.co/600x720/0f131a/00f0ff?text=%E5%B0%8F%E7%B1%B3'; this.onerror=null;">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
+                            <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">ASSISTANT COACH</span></div>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-grow flex flex-col relative z-20">
+                            <h4 class="text-xl font-black text-white tracking-widest mb-1 drop-shadow-md">小米 <span class="text-xs text-gray-400 font-normal tracking-normal">（助教）</span></h4>
+                            <p class="text-gray-300 text-[11px] sm:text-xs font-bold mb-3 leading-relaxed">「我也曾覺得生命沒有意義，直到遇見泰拳。」</p>
+                            <div class="mb-4"><span class="inline-block bg-white/5 border border-white/10 text-gray-400 text-[10px] px-2 py-0.5 rounded font-mono tracking-widest">近身戰高手・重拳重腿</span></div>
+                            <p class="border-l-2 border-sci-cyan pl-3 text-sci-cyan text-[11px] sm:text-xs italic mb-4 leading-relaxed font-bold">「天賦只是輔助，堅持才能成為贏家。」</p>
+                            <details class="mb-5 group/story">
+                                <summary class="flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors cursor-pointer font-bold tracking-widest select-none">
+                                    <i class="fa-solid fa-book-open text-sci-cyan/70 text-[10px]"></i>
+                                    <span class="group-open/story:hidden">展開完整故事</span>
+                                    <span class="hidden group-open/story:inline">收起故事</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] transition-transform group-open/story:rotate-180"></i>
+                                </summary>
+                                <div class="mt-3 text-[11px] sm:text-xs text-gray-400 leading-relaxed space-y-2 border-l border-white/10 pl-3">
+                                    <p>曾經憂鬱症嚴重到需要長期住院。在 27 歲時第一次接觸泰拳，讓我的人生照進了一道光。一開始也覺得這個年紀才打拳只能當作興趣，卻意外成為選手！</p>
+                                    <p>不是最有天份，也會因為求好心切而心態崩潰，但對泰拳的愛讓我更有勇氣和自信面對人生的挑戰。</p>
+                                    <p>比賽中擅長打壓制，重拳重腿。在沒有身高優勢的基礎下也更專注磨練近身戰。</p>
+                                </div>
+                            </details>
+                            <div class="space-y-4 text-[11px] sm:text-xs text-gray-400 mb-6">
+                                <div>
+                                    <strong class="text-white tracking-widest block mb-2">輝煌戰績</strong>
+                                    <ul class="list-none space-y-2">
+                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>第六屆泰威 泰拳交流賽 48kg 女子挑戰租 <strong class="text-sci-cyan">勝</strong></span></li>
+                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>T1 踢拳 50kg 女子挑戰租 <strong class="text-sci-cyan">勝</strong></span></li>
+                                        <li class="flex items-start gap-2 bg-sci-cyan/10 border border-sci-cyan/30 p-2 rounded"><i class="fa-solid fa-crown text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span class="text-gray-200">114 年桃園市長盃泰國拳錦標賽 女子 48kg <strong class="text-sci-cyan font-black">冠軍</strong></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener noreferrer"
+                               onclick="if(typeof gtag==='function') gtag('event','click_booking_cta',{coach_name:'小米',source_section:'team'});"
+                               class="mt-auto block w-full py-2.5 bg-sci-cyan/10 hover:bg-sci-cyan text-sci-cyan hover:text-black text-center font-bold text-xs tracking-widest transition-colors rounded-sm border border-sci-cyan/30 hover:border-sci-cyan shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.1)]">預約小米的課程 <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1297,6 +1382,200 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">BEGINNER'S GUIDE</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">新手常見問答</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">80% 的學員都是從零開始，你的問題我們都有答案</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 reveal">
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:1,question_text:'第一次來要帶什麼'});">
+                        <summary>
+                            <span>❓ 第一次來要帶什麼？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">運動服、毛巾、水壺即可，館內有公用拳套和護具，不需自己準備。第一次來只要輕裝出發，感受訓練氛圍就好！</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:2,question_text:'費用多少'});">
+                        <summary>
+                            <span>💰 費用多少？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <ul class="space-y-1">
+                                <li>• 首次體驗（團體課）：<strong class="text-white">$400</strong></li>
+                                <li>• 月卡：<strong class="text-white">$3,000</strong></li>
+                                <li>• 私人教練：<strong class="text-white">$1,400 / 堂</strong></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:3,question_text:'適合完全新手嗎'});">
+                        <summary>
+                            <span>🙋 適合完全新手嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">完全適合！80% 的學員都是從新手開始的，訓練環境輕鬆無壓力，教練會根據你的程度調整課程強度，不用擔心跟不上。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:4,question_text:'上課時間'});">
+                        <summary>
+                            <span>⏰ 上課時間？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <ul class="space-y-1">
+                                <li>• 平日：<strong class="text-white">18:00 – 21:00</strong></li>
+                                <li>• 週末：<strong class="text-white">09:00 – 18:00</strong></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:5,question_text:'停車方便嗎'});">
+                        <summary>
+                            <span>🚗 停車方便嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">位於新竹市北區林森路 301 號 2 樓，備有停車位，交通便利，開車、騎車都方便。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:6,question_text:'有女性學員嗎'});">
+                        <summary>
+                            <span>👩 有女性學員嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">當然！我們有女性助教小米專門指導，許多女學員在這裡從零開始，甚至成為正式選手。訓練環境安全友善，完全無壓力。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:7,question_text:'女生適合泰拳嗎'});">
+                        <summary>
+                            <span>🥊 女生適合泰拳嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">完全適合！泰拳適合所有性別和年齡。我們的助教小米就是最好的例子——她從 27 歲才開始，最終站上擂台拿下冠軍。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:8,question_text:'需要穿著特定服裝嗎'});">
+                        <summary>
+                            <span>👕 需要穿著特定服裝嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">第一堂穿運動服即可，之後可依個人喜好購買泰拳短裤。重要的是先來體驗，裝備都是其次。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:9,question_text:'課程難度可以自己選擇嗎'});">
+                        <summary>
+                            <span>📊 課程難度可以自己選擇嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">可以！團體課分基礎班和進阶班，私人教練則是一對一、完全依照你的程度量身打造，保證每一堂都有進步。</p>
+                    </details>
+
+                    <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:10,question_text:'有試課嗎'});">
+                        <summary>
+                            <span>🎟️ 有試課嗎？</span>
+                            <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                        </summary>
+                        <p class="faq-answer">有！首堂體驗課只要 <strong class="text-sci-cyan">$400</strong>，直接感受 HCF 的訓練品質。這是你人生中最值得的 $400 投資！</p>
+                    </details>
+                </div>
+
+                <div class="text-center mt-12 reveal">
+                    <p class="text-gray-500 text-sm mb-5">還有其他問題沒看到答案？</p>
+                    <button onclick="toggleChat(); if(typeof gtag==='function') gtag('event','ai_query',{query_source:'faq_section'});"
+                        class="inline-flex items-center gap-3 px-8 py-3.5 bg-sci-cyan/10 hover:bg-sci-cyan text-sci-cyan hover:text-black font-bold text-sm tracking-widest border border-sci-cyan/40 hover:border-sci-cyan rounded transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.15)]">
+                        <i class="fa-solid fa-robot"></i> 詢問 AI 智能鯊魚助手
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="py-20 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">HCF BASE LOCATION</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">找到我們</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">新竹市北區林森路 301 號 2 樓</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
+                    <!-- Map -->
+                    <div class="rounded-xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)] reveal"
+                         onclick="if(typeof gtag==='function') gtag('event','map_interaction',{action:'view_map'});">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d928690.4251394002!2d120.4220139625!3d24.599651997153117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835191bf201e3%3A0x17f53dbdc61c7f2!2z5paw56u55qC8IOmspUhzaW5jaHUgQ29tYmF0fOazsOaLs3zouKLmi7N85pWj5omT!5e0!3m2!1szh-TW!2stw!4v1773152669678!5m2!1szh-TW!2stw"
+                            width="100%"
+                            height="300"
+                            class="sm:!h-[450px]"
+                            style="border:0; display:block;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="HCF 新竹格鬥運動館位置">
+                        </iframe>
+                    </div>
+
+                    <!-- Info card -->
+                    <div class="space-y-5 reveal" style="transition-delay: 100ms;">
+                        <div class="tech-border rounded-xl p-6">
+                            <h3 class="text-lg font-black text-white font-orbitron tracking-widest mb-5 border-b border-white/10 pb-3">基地資訊</h3>
+                            <div class="space-y-4 text-sm text-gray-300 font-mono">
+                                <div class="flex items-start gap-4">
+                                    <span class="text-xl flex-shrink-0">📍</span>
+                                    <div>
+                                        <p class="text-white font-bold mb-0.5">地址</p>
+                                        <p>新竹市北區林森路 301 號 2 樓</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="text-xl flex-shrink-0">⏰</span>
+                                    <div>
+                                        <p class="text-white font-bold mb-0.5">開放時間</p>
+                                        <p>平日 18:00 – 21:00</p>
+                                        <p>週末 09:00 – 18:00</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="text-xl flex-shrink-0">🚌</span>
+                                    <div>
+                                        <p class="text-white font-bold mb-0.5">停車</p>
+                                        <p>停車位充足，開車、騎車均可</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="text-xl flex-shrink-0">📞</span>
+                                    <div>
+                                        <p class="text-white font-bold mb-0.5">電話</p>
+                                        <a href="tel:0925571225" class="hover:text-sci-cyan transition-colors">0925-571-225</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="text-xl flex-shrink-0">📧</span>
+                                    <div>
+                                        <p class="text-white font-bold mb-0.5">Email</p>
+                                        <a href="mailto:hsinchucombat2022@gmail.com" class="hover:text-sci-cyan transition-colors break-all">hsinchucombat2022@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=新竹市北區林森路301號2樓"
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(typeof gtag==='function') gtag('event','map_interaction',{action:'view_directions'});"
+                           class="flex items-center justify-center gap-3 w-full py-4 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-sm tracking-widest rounded transition-all shadow-[0_5px_20px_rgba(var(--theme-cyan-rgb),0.4)] hover:-translate-y-1">
+                            <i class="fa-solid fa-diamond-turn-right text-lg"></i>
+                            在 Google Maps 查看方向
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="bg-[var(--theme-base)] pt-16 pb-32 sm:pb-12 border-t border-white/10 relative z-10">
@@ -1321,6 +1600,10 @@
                             <i class="fa-solid fa-phone text-sci-cyan w-4 text-center"></i> 
                             <span>0925-571-225</span>
                         </p>
+                        <p class="flex items-center gap-3 hover:text-white transition-colors">
+                            <i class="fa-solid fa-envelope text-sci-cyan w-4 text-center"></i>
+                            <a href="mailto:hsinchucombat2022@gmail.com" class="hover:text-sci-cyan transition-colors break-all">hsinchucombat2022@gmail.com</a>
+                        </p>
                         <div class="flex items-start gap-3">
                             <i class="fa-solid fa-clock mt-1 text-sci-cyan w-4 text-center"></i> 
                             <span class="text-gray-300">
@@ -1340,6 +1623,7 @@
                         <a href="#team" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 教練團隊</a>
                         <a href="#pricing" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 課程方案</a>
                         <a href="#faq" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 新手問答</a>
+                        <a href="#location" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 位置</a>
                     </div>
                 </div>
 
@@ -1718,6 +2002,61 @@
             if(currentLang==='en') applyLanguage(); 
             setTimeout(typeWriter, 800); 
         });
+
+        // 12. Logo Transition Animation
+        const logoOverlay = document.getElementById('logo-transition-overlay');
+        const progressRingFill = document.getElementById('progress-ring-fill');
+        const RING_CIRCUMFERENCE = 2 * Math.PI * 70; // r=70
+
+        let logoTransitionTimer = null;
+        let progressAnim = null;
+
+        function showLogoTransition() {
+            if (!logoOverlay) return;
+            clearTimeout(logoTransitionTimer);
+            if (progressAnim) { progressAnim.cancel(); }
+            if (progressRingFill) { progressRingFill.style.strokeDashoffset = RING_CIRCUMFERENCE; }
+            logoOverlay.classList.remove('fade-out');
+            logoOverlay.classList.add('active');
+            // Animate progress ring
+            if (progressRingFill) {
+                progressAnim = progressRingFill.animate(
+                    [{ strokeDashoffset: RING_CIRCUMFERENCE }, { strokeDashoffset: 0 }],
+                    { duration: 800, easing: 'ease-out', fill: 'forwards' }
+                );
+            }
+        }
+
+        function hideLogoTransition() {
+            if (!logoOverlay) return;
+            logoOverlay.classList.add('fade-out');
+            logoTransitionTimer = setTimeout(() => {
+                logoOverlay.classList.remove('active', 'fade-out');
+                if (progressRingFill) progressRingFill.style.strokeDashoffset = RING_CIRCUMFERENCE;
+            }, 600);
+        }
+
+        function scrollToSection(targetId) {
+            const el = document.querySelector(targetId);
+            if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }
+
+        // Attach transition to all desktop nav links with data-scroll-target
+        document.querySelectorAll('[data-scroll-target]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.dataset.scrollTarget;
+                showLogoTransition();
+                if (typeof gtag === 'function') {
+                    gtag('event', 'page_navigation', { target_section: target, timestamp: new Date().toISOString() });
+                }
+                setTimeout(() => {
+                    scrollToSection(target);
+                    setTimeout(hideLogoTransition, 100);
+                }, 800);
+            });
+        });
     </script>
+    <script src="analytics.js" defer></script>
 </body>
 </html>
