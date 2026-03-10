@@ -1823,24 +1823,33 @@
 
         // 折扣碼複製
         function copyCode(code, btn) {
+            const original = btn.innerHTML;
+            const successText = currentLang === 'zh' ? '✓ 已複製' : '✓ COPIED';
             navigator.clipboard.writeText(code).then(() => {
-                const original = btn.innerHTML;
-                btn.innerHTML = currentLang === 'zh' ? '✓ 已複製' : '✓ COPIED';
+                btn.innerHTML = successText;
                 btn.classList.add('bg-sci-cyan', 'text-black');
                 setTimeout(() => {
                     btn.innerHTML = original;
                     btn.classList.remove('bg-sci-cyan', 'text-black');
                 }, 2000);
             }).catch(() => {
-                const el = document.createElement('textarea');
-                el.value = code;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-                const original = btn.innerHTML;
-                btn.innerHTML = '✓ 已複製';
-                setTimeout(() => { btn.innerHTML = original; }, 2000);
+                // Fallback for older browsers
+                try {
+                    const el = document.createElement('textarea');
+                    el.value = code;
+                    el.setAttribute('readonly', '');
+                    el.style.position = 'absolute';
+                    el.style.left = '-9999px';
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                    btn.innerHTML = successText;
+                    setTimeout(() => { btn.innerHTML = original; }, 2000);
+                } catch (e) {
+                    btn.innerHTML = '✗ 複製失敗';
+                    setTimeout(() => { btn.innerHTML = original; }, 2000);
+                }
             });
         }
 
