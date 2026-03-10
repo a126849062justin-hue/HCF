@@ -1343,8 +1343,8 @@
                                 <div>
                                     <strong class="text-white tracking-widest block mb-2">輝煌戰績</strong>
                                     <ul class="list-none space-y-2">
-                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>第六屆泰威 泰拳交流賽 48kg 女子挑戰租 <strong class="text-sci-cyan">勝</strong></span></li>
-                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>T1 踢拳 50kg 女子挑戰租 <strong class="text-sci-cyan">勝</strong></span></li>
+                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>第六屆泰威 泰拳交流賽 48kg 女子挑戰組 <strong class="text-sci-cyan">勝</strong></span></li>
+                                        <li class="flex items-start gap-2 bg-white/5 p-2 rounded"><i class="fa-solid fa-trophy text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span>T1 踢拳 50kg 女子挑戰組 <strong class="text-sci-cyan">勝</strong></span></li>
                                         <li class="flex items-start gap-2 bg-sci-cyan/10 border border-sci-cyan/30 p-2 rounded"><i class="fa-solid fa-crown text-sci-cyan mt-0.5 text-[10px] w-3 text-center flex-shrink-0"></i><span class="text-gray-200">114 年桃園市長盃泰國拳錦標賽 女子 48kg <strong class="text-sci-cyan font-black">冠軍</strong></span></li>
                                     </ul>
                                 </div>
@@ -1464,7 +1464,7 @@
                             <span>👕 需要穿著特定服裝嗎？</span>
                             <i class="fa-solid fa-chevron-down faq-chevron"></i>
                         </summary>
-                        <p class="faq-answer">第一堂穿運動服即可，之後可依個人喜好購買泰拳短裤。重要的是先來體驗，裝備都是其次。</p>
+                        <p class="faq-answer">第一堂穿運動服即可，之後可依個人喜好購買泰拳短褲。重要的是先來體驗，裝備都是其次。</p>
                     </details>
 
                     <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:9,question_text:'課程難度可以自己選擇嗎'});">
@@ -1472,7 +1472,7 @@
                             <span>📊 課程難度可以自己選擇嗎？</span>
                             <i class="fa-solid fa-chevron-down faq-chevron"></i>
                         </summary>
-                        <p class="faq-answer">可以！團體課分基礎班和進阶班，私人教練則是一對一、完全依照你的程度量身打造，保證每一堂都有進步。</p>
+                        <p class="faq-answer">可以！團體課分基礎班和進階班，私人教練則是一對一、完全依照你的程度量身打造，保證每一堂都有進步。</p>
                     </details>
 
                     <details class="faq-item" onclick="if(typeof gtag==='function') gtag('event','faq_expanded',{question_index:10,question_text:'有試課嗎'});">
@@ -2006,7 +2006,8 @@
         // 12. Logo Transition Animation
         const logoOverlay = document.getElementById('logo-transition-overlay');
         const progressRingFill = document.getElementById('progress-ring-fill');
-        const RING_CIRCUMFERENCE = 2 * Math.PI * 70; // r=70
+        const RING_RADIUS = 70; // matches r="70" in the SVG
+        const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
         let logoTransitionTimer = null;
         let progressAnim = null;
@@ -2047,7 +2048,9 @@
                 e.preventDefault();
                 const target = this.dataset.scrollTarget;
                 showLogoTransition();
-                if (typeof gtag === 'function') {
+                if (window.HCFAnalytics) {
+                    window.HCFAnalytics.trackNavigation(target);
+                } else if (typeof gtag === 'function') {
                     gtag('event', 'page_navigation', { target_section: target, timestamp: new Date().toISOString() });
                 }
                 setTimeout(() => {

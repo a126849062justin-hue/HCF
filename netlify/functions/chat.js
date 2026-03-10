@@ -17,6 +17,7 @@ const faqDatabase = [
 ];
 
 function matchFAQ(message) {
+    if (!message) return null;
     const lowerMsg = message.toLowerCase();
     for (const faq of faqDatabase) {
         if (faq.keywords.some(kw => lowerMsg.includes(kw))) {
