@@ -505,41 +505,6 @@
             </div>
         </div>
 
-        <section id="ai-chat" class="py-20 sm:py-28 relative bg-[#02040a] z-10 overflow-hidden border-t border-white/5">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.05),transparent_50%)] pointer-events-none"></div>
-            <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
-                <div class="text-center mb-10">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-[0.3em] font-bold border border-sci-cyan/30 px-3 py-1 rounded bg-sci-cyan/10">SYSTEM.AI_ASSISTANT</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron mt-4 mb-2 glitch-hover lang-text" data-en="AI COMBAT TERMINAL">智能戰術終端</h2>
-                    <p class="text-gray-400 text-sm">不確定從何開始？讓 HCF 智能大腦為您分析最佳訓練路徑。</p>
-                </div>
-
-                <div class="bg-[#0f131a] border border-white/20 rounded-xl shadow-[0_0_40px_rgba(var(--theme-cyan-rgb),0.15)] overflow-hidden tech-border">
-                    <div class="bg-black/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-sci-cyan font-mono text-xs font-bold">
-                            <i class="fa-solid fa-robot animate-pulse"></i> HCF_AI_Core_v3.1
-                        </div>
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                    </div>
-                    
-                    <div id="main-chat-window" class="h-64 sm:h-80 p-6 overflow-y-auto space-y-4 custom-scrollbar bg-black/40">
-                        <div class="bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm">
-                            你好！我是 HCF 智能戰術分析師。請問你想達成什麼目標？（例如：減脂、防身、想打比賽）
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-black/80 border-t border-white/10 flex flex-col sm:flex-row gap-3">
-                        <input type="text" id="main-user-input" placeholder="輸入您的目標或疑問..." class="flex-1 bg-[#050810] border border-white/20 rounded-md px-4 py-3 text-white focus:outline-none focus:border-sci-cyan transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') sendMainMessage()">
-                        <button id="main-send-button" onclick="sendMainMessage()" class="bg-sci-cyan hover:bg-cyan-400 text-black px-8 py-3 rounded-md font-black tracking-widest transition-transform hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
-                            發送分析 <i class="fa-solid fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="news" class="py-20 sm:py-24 relative bg-[var(--theme-base)]">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="flex items-end gap-4 mb-10 border-b border-white/10 pb-4">
@@ -1473,22 +1438,6 @@
         window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
-
-        // Main Terminal (In Section)
-        function sendMainMessage() {
-            const input = document.getElementById('main-user-input');
-            const val = input.value.trim(); if(!val) return;
-            const win = document.getElementById('main-chat-window');
-            win.innerHTML += `<div class="bg-white/10 text-white border border-white/20 p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] text-sm shadow-md">${val}</div>`;
-            input.value = ''; win.scrollTop = win.scrollHeight;
-            const lid = 'main-loading-' + Date.now();
-            win.innerHTML += `<div id="${lid}" class="bg-sci-cyan/5 text-gray-400 p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm flex items-center gap-2 mt-4 border border-sci-cyan/20"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 分析中...</div>`;
-            win.scrollTop = win.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">根據您的目標「${val}」，我建議您參考我們下方的<b>「課程方案區塊」</b>，並填寫表單領取 $400 專屬體驗憑證！</div>`;
-                win.scrollTop = win.scrollHeight;
-            }, 1200);
-        }
 
         // PWA
         let deferredPrompt; const installAppBtn = document.getElementById('install-app-btn');

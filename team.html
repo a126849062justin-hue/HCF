@@ -1066,22 +1066,6 @@
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
 
-        // Main Terminal (In Section)
-        function sendMainMessage() {
-            const input = document.getElementById('main-user-input');
-            const val = input.value.trim(); if(!val) return;
-            const win = document.getElementById('main-chat-window');
-            win.innerHTML += `<div class="bg-white/10 text-white border border-white/20 p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] text-sm shadow-md">${val}</div>`;
-            input.value = ''; win.scrollTop = win.scrollHeight;
-            const lid = 'main-loading-' + Date.now();
-            win.innerHTML += `<div id="${lid}" class="bg-sci-cyan/5 text-gray-400 p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm flex items-center gap-2 mt-4 border border-sci-cyan/20"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 分析中...</div>`;
-            win.scrollTop = win.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">根據您的目標「${val}」，我建議您參考我們下方的<b>「課程方案區塊」</b>，並填寫表單領取 $400 專屬體驗憑證！</div>`;
-                win.scrollTop = win.scrollHeight;
-            }, 1200);
-        }
-
         // PWA
         let deferredPrompt; const installAppBtn = document.getElementById('install-app-btn');
         window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if(installAppBtn) installAppBtn.classList.remove('hidden'); });
