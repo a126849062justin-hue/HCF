@@ -1,28 +1,1353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#02040a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>HCF新竹格鬥館 | 新竹泰拳首選・踢拳・散打・專業重訓</title>
+    <meta name="description" content="HCF新竹格鬥館，新竹評價最高、實戰最強的專業拳館！我們主打正宗泰拳教學，並提供踢拳、散打與重訓（肌力體能）私人教練與團體課程。這輩子，總要為自己贏一次！現在預約體驗只要 $400。">
+    <meta name="keywords" content="HCF新竹格鬥館, 新竹泰拳, 新竹格鬥, 新竹踢拳, 新竹散打, 新竹重訓, 新竹健身房, 泰拳教學, 拳擊">
+    
+    <link rel="icon" type="image/png" href="shark_logo.png">
+    
+    <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
+    <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
+    <meta property="og:image" content="hero1.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
+    <meta name="twitter:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。">
+    <meta name="twitter:image" content="hero1.jpg">
+
+    <link rel="manifest" href="manifest.json">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sci: {
+                            base: 'rgba(var(--theme-base-rgb), <alpha-value>)',
+                            surface: 'rgba(var(--theme-surface-rgb), <alpha-value>)',
+                            cyan: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
+                            gold: 'rgba(var(--theme-gold-rgb), <alpha-value>)',
+                            gray: '#94a3b8',
+                            accent: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        orbitron: ['"Orbitron"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 40s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --theme-base: #02040a; --theme-base-rgb: 2, 4, 10;
+            --theme-surface: #0f131a; --theme-surface-rgb: 15, 19, 26;
+            --theme-cyan: #00f0ff; --theme-cyan-rgb: 0, 240, 255;
+            --theme-gold: #ffd700; --theme-gold-rgb: 255, 215, 0;
+        }
+        [data-theme="red"] { --theme-cyan: #ff003c; --theme-cyan-rgb: 255, 0, 60; }
+        [data-theme="green"] { --theme-cyan: #00ff41; --theme-cyan-rgb: 0, 255, 65; }
+        [data-theme="blue"] { --theme-cyan: #2e51ff; --theme-cyan-rgb: 46, 81, 255; }
+        [data-theme="purple"] { --theme-cyan: #bf00ff; --theme-cyan-rgb: 191, 0, 255; }
+        [data-theme="white"] { --theme-cyan: #ffffff; --theme-cyan-rgb: 255, 255, 255; }
+        [data-theme="gold"] { --theme-cyan: var(--theme-gold); --theme-cyan-rgb: 255, 215, 0; }
+
+        html { background-color: var(--theme-base); }
+        * { -webkit-tap-highlight-color: transparent; }
+
+        @media (min-width: 768px) {
+            body { cursor: none; }
+            a, button, input, select, details, summary, .cursor-pointer { cursor: none !important; }
+        }
+        
+        .custom-cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--theme-cyan); border-radius: 50%; z-index: 10000; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
+        .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid rgba(var(--theme-cyan-rgb), 0.4); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s; display: none; }
+        @media (min-width: 768px) { .custom-cursor-dot, .custom-cursor-ring { display: block; } }
+        body.cursor-hover .custom-cursor-dot { background: var(--theme-cyan); width: 8px; height: 8px; box-shadow: 0 0 10px var(--theme-cyan); }
+        body.cursor-hover .custom-cursor-ring { width: 50px; height: 50px; border-color: rgba(var(--theme-cyan-rgb), 0.8); background: rgba(var(--theme-cyan-rgb),0.05); }
+
+        body { background-color: var(--theme-base); color: #e2e8f0; overflow-x: hidden; line-height: 1.8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.2); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.5); }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--theme-base); border-left: 1px solid rgba(var(--theme-cyan-rgb),0.1); }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.8); }
+
+        #mouse-glow-effect { --mouse-x: 50vw; --mouse-y: 50vh; position: fixed; inset: 0; z-index: 40; pointer-events: none; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.08), transparent 40%); opacity: 0; transition: opacity 0.5s ease; mix-blend-mode: screen; }
+        .bg-grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.03; pointer-events: none; z-index: 9998; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
+
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--theme-base); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.4s ease-out, visibility 0.4s; }
+        .loader-bar { width: 200px; height: 2px; background: #1e293b; margin-top: 20px; position: relative; overflow: hidden; }
+        .loader-progress { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--theme-cyan); box-shadow: 0 0 10px var(--theme-cyan); transition: width 0.1s linear; }
+
+        .tech-border { position: relative; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(15, 19, 26, 0.6); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, border-color 0.5s ease; overflow: hidden; }
+        @media (min-width: 768px) { .tech-border { backdrop-filter: blur(8px); } .tech-border:hover { transform: translateY(-6px); box-shadow: 0 15px 35px -10px rgba(var(--theme-cyan-rgb), 0.2); border-color: rgba(var(--theme-cyan-rgb), 0.4); } }
+        .tech-border::before, .tech-border::after { content: ''; position: absolute; width: 15px; height: 15px; transition: all 0.3s; pointer-events: none; z-index: 10; }
+        .tech-border::before { top: -1px; left: -1px; border-top: 2px solid var(--theme-cyan); border-left: 2px solid var(--theme-cyan); }
+        .tech-border::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--theme-cyan); border-right: 2px solid var(--theme-cyan); }
+        .tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; border-color: var(--theme-cyan); opacity: 0.5; }
+
+        .glow-overlay { position: absolute; inset: -1px; pointer-events: none; z-index: 0; opacity: 0; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.15), transparent 50%); transition: opacity 0.3s ease; }
+        .tech-border:hover .glow-overlay { opacity: 1; }
+
+        .glitch-hover { transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .glitch-hover:hover { animation: glitch-anim-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite; color: var(--theme-cyan); text-shadow: 2px 0 var(--theme-cyan), -2px 0 var(--theme-gold); }
+        @keyframes glitch-anim-text { 0% { transform: translate(0) } 20% { transform: translate(-2px, 1px) } 40% { transform: translate(-1px, -1px) } 60% { transform: translate(2px, 1px) } 80% { transform: translate(1px, -1px) } 100% { transform: translate(0) } }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @keyframes social-glow-cycle { 0% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } 25% { filter: drop-shadow(0 0 20px rgba(236,72,153,0.9)); } 50% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); } 75% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.9)); } 100% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } }
+        @keyframes shark-wobble { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-8deg); } 50% { transform: translateY(-15px) rotate(8deg); } 75% { transform: translateY(-5px) rotate(-5deg); } }
+        @keyframes shark-wobble-fast { 0%, 100% { transform: translateY(0) rotate(0deg) scale(1.15); } 25% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } 50% { transform: translateY(-15px) rotate(20deg) scale(1.15); } 75% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } }
+
+        /* Floating AI */
+        .ai-container { position: fixed; bottom: 120px; right: 20px; z-index: 50; display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
+        .ai-mascot-img { width: 140px; height: 140px; object-fit: contain; cursor: pointer; animation: social-glow-cycle 4s infinite, shark-wobble 3.5s ease-in-out infinite; }
+        .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-fast 0.6s ease-in-out infinite; }
+        .zzz-text { position: absolute; top: -20px; right: 0; color: var(--theme-cyan); font-weight: bold; font-family: 'Orbitron'; font-size: 1.5rem; text-shadow: 0 0 10px var(--theme-cyan); display: none; pointer-events: none; }
+        .angry-bubble { position: absolute; top: -40px; right: 10px; background: var(--theme-cyan); color: black; padding: 5px 15px; border-radius: 10px; font-weight: bold; display: none; white-space: nowrap; pointer-events: none; box-shadow: 0 0 15px rgba(var(--theme-cyan-rgb),0.8); z-index: 51; }
+        .angry-bubble::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-width: 8px 8px 0; border-style: solid; border-color: var(--theme-cyan) transparent transparent transparent; }
+        .ai-chat-box { position: absolute; bottom: 150px; right: 0; width: 320px; background: rgba(5, 8, 16, 0.95); border: 1px solid var(--theme-cyan); padding: 20px; border-radius: 10px 10px 0 10px; display: none; transform-origin: bottom right; z-index: 51; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(var(--theme-cyan-rgb),0.2); }
+        
+        @media (max-width: 768px) {
+            .bg-grain { display: none !important; }
+            #bg-canvas { display: none !important; }
+            .ai-container { bottom: 110px; right: 16px; }
+            .ai-mascot-img { width: 85px; height: 85px; } 
+            .ai-chat-box { bottom: 95px; width: calc(100vw - 32px); right: 0; border-radius: 12px; }
+            #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
+            .tech-border { transform: none !important; transition: none !important; }
+        }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+    <script>
+        (async function() {
+            try {
+                // 1. 先用本地記憶體瞬間上色，避免客人看到畫面閃爍
+                const saved = localStorage.getItem('hcf_theme');
+                if(saved) document.documentElement.setAttribute('data-theme', saved);
+                
+                // 2. 偷偷去 Netlify 伺服器問「最新顏色」
+                const res = await fetch('/.netlify/functions/get-theme');
+                const data = await res.json();
+                
+                // 3. 如果伺服器顏色不一樣，立刻強制切換並更新記憶體！
+                if (data.theme && data.theme !== 'default') {
+                    document.documentElement.setAttribute('data-theme', data.theme);
+                    localStorage.setItem('hcf_theme', data.theme);
+                } else if (data.theme === 'default') {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.removeItem('hcf_theme');
+                }
+            } catch (e) {
+                console.error('基地連線異常，保持目前塗裝', e);
+            }
+        })();
+    </script>
 </head>
-<body>
-    <section id="google-reviews">
-        <a href="https://maps.app.goo.gl/KaA77MSG2JRaxXjA9">在 Google 留下評論</a>
-    </section>
+<body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
 
-    <section id="philosophy" class="hidden py-20 sm:py-24 relative overflow-hidden bg-[#050810] border-t border-white/5">
-        <h2>Philosophy Section</h2>
-        <p>This section contains philosophy details...</p>
-    </section>
+    <div id="custom-toast" class="fixed top-32 left-1/2 transform -translate-x-1/2 bg-sci-cyan text-black px-6 py-3 rounded font-bold tracking-widest z-[200] opacity-0 pointer-events-none transition-opacity duration-300 shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i> <span id="toast-msg">網站連結已複製！</span>
+    </div>
 
-    <section id="schedule" class="hidden py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
-        <h2>Schedule Section</h2>
-        <p>This section contains schedule details...</p>
-    </section>
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+    <div id="mouse-glow-effect" class="hidden md:block"></div>
+    <audio id="bgm-audio" src="bgm.mp3" loop preload="none"></audio>
 
-    <section id="faq" class="hidden py-20 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
-        <h2>FAQ Section</h2>
-        <p>This section contains FAQ details...</p>
-    </section>
+    <div id="preloader">
+        <div class="text-sci-cyan font-orbitron font-bold tracking-[0.3em] mb-2 text-center px-4 animate-pulse">SYSTEM INITIALIZING...</div>
+        <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+        <div class="text-gray-500 font-mono text-xs mt-2" id="loader-text">Loading Assets...</div>
+    </div>
+
+    <div class="bg-grain hidden md:block"></div>
+    <canvas id="bg-canvas" class="hidden md:block"></canvas>
+
+    <nav class="fixed w-full z-[120] bg-transparent transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0" onclick="toggleBrandDrawer()">
+                    <img src="logo.png" onerror="this.src='https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO'; this.onerror=null;" alt="HCF Logo" class="hidden sm:block h-16 w-auto object-contain"> 
+                    <div class="flex flex-col justify-center">
+                        <span class="text-3xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
+                        <span class="hidden sm:block text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-auto">
+                    <a href="#home" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">首頁</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">HOME</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <a href="news.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">最新資訊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">NEWS</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <a href="philosophy.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">品牌哲學</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PHILOSOPHY</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <div class="relative group py-4">
+                        <a href="classes.html" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
+                            <span class="group-hover:hidden">課程介紹</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COURSES</span>
+                            <i class="fa-solid fa-angle-down text-[10px]"></i>
+                            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                        </a>
+                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-40 bg-[#050810]/95 backdrop-blur-md border border-white/10 rounded shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">團體課程</a>
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">私人課程</a>
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">泰拳訓練</a>
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">踢拳訓練</a>
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">散打訓練</a>
+                            <a href="classes.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">肌力體能</a>
+                        </div>
+                    </div>
+                    <a href="team.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">教練團隊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COACHES</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <div class="relative group py-4">
+                        <a href="pricing.html" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
+                            <span class="group-hover:hidden">課程方案</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PRICING</span>
+                            <i class="fa-solid fa-angle-down text-[10px]"></i>
+                            <span class="absolute top-0 -right-2 w-1.5 h-1.5 rounded-full bg-sci-cyan animate-ping"></span>
+                            <span class="absolute top-0 -right-2 w-1.5 h-1.5 rounded-full bg-sci-cyan shadow-[0_0_8px_var(--theme-cyan)]"></span>
+                            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                        </a>
+                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-32 bg-[#050810]/95 backdrop-blur-md border border-white/10 rounded shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
+                            <a href="pricing.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">團體課程</a>
+                            <a href="pricing.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">私人課程</a>
+                            <a href="index.html#schedule" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">課表</a>
+                        </div>
+                    </div>
+                    <a href="faq.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">新手問答</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">FAQ</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    
+                    <div class="flex items-center gap-3 border-l border-white/20 pl-6 ml-2">
+                        <button onclick="toggleLanguage()" class="text-xs font-bold text-gray-400 hover:text-sci-cyan transition-colors tracking-widest border border-white/10 bg-white/5 px-3 py-1.5 rounded-sm hover:border-sci-cyan">
+                            <i class="fa-solid fa-globe mr-1"></i> <span id="lang-label">EN/中</span>
+                        </button>
+                    </div>
+
+                    <a href="pricing.html" class="px-12 py-2.5 bg-sci-cyan text-black font-black text-sm tracking-widest skew-x-[-10deg] hover:bg-cyan-400 transition-colors ml-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
+                        <span class="skew-x-[10deg] inline-block lang-text" data-en="BOOK NOW">啟動預約</span>
+                    </a>
+                </div>
+
+                <div class="lg:hidden flex items-center gap-2">
+                    <button onclick="toggleLanguage()" class="text-white hover:text-sci-cyan text-xs font-bold border border-white/20 bg-black/50 px-2 py-1.5 rounded relative backdrop-blur-sm mr-2">
+                        <span id="mobile-lang-label">EN</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-sci-cyan w-10 h-10 border border-white/20 bg-black/50 rounded flex items-center justify-center relative backdrop-blur-sm" aria-label="Menu">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="drawer-backdrop" class="fixed inset-0 bg-black/80 z-[130] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm" onclick="closeAllDrawers()"></div>
+    
+    <div id="brand-drawer" class="fixed top-0 left-0 w-[85%] sm:w-[400px] h-[100dvh] max-h-screen z-[140] bg-sci-base/95 backdrop-blur-lg border-r border-white/10 transform -translate-x-full transition-transform duration-300 flex flex-col pt-20 px-6 overflow-y-auto overscroll-contain">
+        <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <div class="flex flex-col items-center mt-4 mb-8">
+            <img src="logo.png" onerror="this.src='https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO'; this.onerror=null;" alt="HCF Logo" class="w-32 h-auto object-contain mb-4" loading="lazy">
+            <h2 class="text-2xl font-orbitron font-black text-white italic tracking-tighter mb-2">HCF</h2>
+            <span class="text-[0.6rem] text-sci-cyan tracking-[0.3em] font-orbitron font-bold">COMBAT SYSTEM</span>
+        </div>
+        <div class="space-y-4 text-gray-400 text-xs leading-relaxed font-mono flex-grow">
+            <p class="border-l-2 border-sci-cyan pl-3 lang-text" data-en="// Fighting is not violence, it's a spirit.<br>// Reborn in adversity, witness your strength.">
+                // 致力於推廣格鬥運動不是只有外人眼中的暴力<br>
+                // 而是一種精神<br>
+                // 在逆境中重生 看到你自己有多強大
+            </p>
+            <p class="lang-text" data-en="Life is like an endless boxing match. We've all been knocked down by unfortunate events. But don't be afraid. Stand up. The spirit of HCF is about how to be reborn in adversity and see how truly strong you are.">
+                人生有時候就像一場拳賽 我們都曾被不如意的事情一次次擊倒 但別害怕 站起來 HCF 的精神不僅是格鬥 更是關於如何在逆境中重生 看到你自己有多強大
+            </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 w-full mb-8">
+            <p class="text-sci-cyan text-[10px] font-mono tracking-widest mb-4">HCF CONNECT</p>
+            <div class="flex flex-col gap-4">
+                <a href="https://lin.ee/7lidUv0" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-[#06C755] transition-colors group">
+                    <i class="fa-brands fa-line text-xl w-6 text-center group-hover:scale-110 transition-transform"></i> 
+                    <span class="text-sm tracking-widest font-bold">LINE 官方諮詢</span>
+                </a>
+                <a href="https://www.instagram.com/hc.combat2022/" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-pink-500 transition-colors group">
+                    <i class="fa-brands fa-instagram text-xl w-6 text-center group-hover:scale-110 transition-transform"></i> 
+                    <span class="text-sm tracking-widest font-bold">Instagram</span>
+                </a>
+                <a href="https://m.facebook.com/hsinchucombat/" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
+                    <i class="fa-brands fa-facebook-f text-xl w-6 text-center group-hover:scale-110 transition-transform"></i> 
+                    <span class="text-sm tracking-widest font-bold">Facebook</span>
+                </a>
+                <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-red-500 transition-colors group">
+                    <i class="fa-brands fa-youtube text-xl w-6 text-center group-hover:scale-110 transition-transform"></i> 
+                    <span class="text-sm tracking-widest font-bold">YouTube 實戰</span>
+                </a>
+                <a href="pricing.html" class="flex items-center gap-4 text-gray-300 hover:text-sci-cyan transition-colors group" onclick="closeAllDrawers()">
+                    <i class="fa-solid fa-bolt text-xl w-6 text-center group-hover:scale-110 transition-transform text-sci-cyan"></i> 
+                    <span class="text-sm tracking-widest font-bold text-sci-cyan">立即預約</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="fixed top-0 bottom-0 right-0 w-[85%] max-w-sm h-[100dvh] z-[140] bg-sci-base/95 backdrop-blur-lg border-l border-white/10 transform translate-x-full transition-transform duration-300 flex flex-col pt-20 px-8 overflow-y-auto overscroll-contain">
+        <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <div class="space-y-6 flex-grow mt-6">
+            <a href="#home" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">首頁</a>
+            <a href="news.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">最新資訊</a>
+            <a href="philosophy.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">品牌哲學</a>
+            <div class="border-b border-white/5 pb-3">
+                <a href="classes.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest mb-3">課程介紹</a>
+                <div class="grid grid-cols-2 gap-3 pl-4">
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 團體課程</a>
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 私人課程</a>
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 泰拳訓練</a>
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 踢拳訓練</a>
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 散打訓練</a>
+                    <a href="classes.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 肌力體能</a>
+                </div>
+            </div>
+            <a href="team.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">教練團隊</a>
+            <div class="border-b border-white/5 pb-3">
+                <a href="pricing.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest mb-3">課程方案</a>
+                <div class="grid grid-cols-2 gap-3 pl-4">
+                    <a href="pricing.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 團體課程</a>
+                    <a href="pricing.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 私人課程</a>
+                    <a href="index.html#schedule" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 課表</a>
+                </div>
+            </div>
+            <a href="faq.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">新手問答</a>
+        </div>
+        <div class="mt-8 mb-6 w-full px-2">
+            <a href="pricing.html" onclick="closeAllDrawers()" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
+                <span class="skew-x-[10deg] inline-block lang-text" data-en="BOOK NOW">立即預約</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="ai-system" class="ai-container">
+        <div id="ai-chat-box" class="ai-chat-box shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.3)]">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-3">
+                <span class="text-sci-cyan font-bold font-orbitron flex items-center gap-2 text-sm"><i class="fa-solid fa-robot"></i> HCF智能教練</span>
+                <button onclick="toggleChat()" class="text-gray-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div id="ai-chat-history" class="h-36 overflow-y-auto mb-3 space-y-2 text-xs text-gray-200 custom-scrollbar pr-2">
+                <div class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5">
+                    你好！我是 HCF 智能教練🤖<br>有任何疑問都可以直接問我，或是直接領取優惠！
+                </div>
+            </div>
+            
+            <div id="ai-quick-replies" class="flex flex-wrap gap-1.5 mb-3 border-b border-white/10 pb-3">
+                <button onclick="askShark('費用怎麼算？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">💰 費用怎麼算？</button>
+                <button onclick="askShark('新手適合嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">🔰 新手適合嗎？</button>
+                <button onclick="askShark('地點在哪？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">📍 地點在哪？</button>
+                <button onclick="askShark('需要裝備嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1 rounded text-[11px] hover:bg-sci-cyan hover:text-black transition-colors">🥊 需要裝備嗎？</button>
+            </div>
+
+            <div class="flex gap-2 mb-3 border-b border-white/10 pb-3">
+                <input type="text" id="ai-user-input" placeholder="輸入你想問的..." class="flex-1 bg-black/80 border border-white/20 rounded px-3 py-1.5 text-xs text-white focus:outline-none focus:border-sci-cyan transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') sendUserMessage()">
+                <button onclick="sendUserMessage()" class="bg-sci-cyan text-black px-3 py-1.5 rounded text-xs font-black shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.4)] hover:bg-cyan-400 transition-colors">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <div class="flex flex-col gap-2">
+                <div class="flex gap-2">
+                    <a href="pricing.html" onclick="toggleChat()" class="flex-1 py-2 bg-sci-cyan text-black text-center font-bold text-xs rounded shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.4)] hover:bg-cyan-400 transition-colors">
+                        領取 $400 體驗
+                    </a>
+                    <a href="https://lin.ee/7lidUv0" target="_blank" class="flex-1 py-2 bg-[#06C755] text-white text-center font-bold text-xs rounded shadow-[0_0_10px_rgba(6,199,85,0.4)] hover:bg-[#05b34c] transition-colors">
+                        LINE 真人客服
+                    </a>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="shareWebsite(this)" class="flex-1 py-2 bg-blue-600 text-white text-center font-bold text-xs rounded hover:bg-blue-500 transition-colors">
+                        <i class="fa-solid fa-share-nodes"></i> 分享給朋友
+                    </button>
+                    <button id="install-app-btn" class="hidden flex-1 py-2 bg-purple-600 text-white text-center font-bold text-xs rounded hover:bg-purple-500 transition-colors shadow-[0_0_10px_rgba(147,51,234,0.4)]">
+                        <i class="fa-solid fa-mobile-screen"></i> 安裝 APP
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="zzz-mark" class="zzz-text">Zzz</div>
+        <div id="angry-bubble" class="angry-bubble text-xs">有問題？問我！</div>
+        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" onerror="this.src='https://placehold.co/600x600/0f131a/00f0ff?text=SHARK'; this.onerror=null;">
+    </div>
+
+    <button id="rocket-top" class="fixed bottom-[110px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
+        <i class="fa-solid fa-chevron-up text-lg"></i>
+    </button>
+
+    <main>
+
+        <section id="home" class="relative min-h-[100svh] flex items-end justify-start overflow-hidden pb-12 pt-24 sm:pb-24 sm:pt-32 bg-sci-base">
+            <div class="absolute inset-0 z-0 touch-pan-y" id="carousel">
+                <div class="carousel-inner w-full h-full relative">
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-100 z-10 bg-sci-base active">
+                        <video id="hero-video" src="hero_video.mp4" poster="hero1.jpg" preload="auto" autoplay muted playsinline class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
+                        <img src="hero1.jpg" onerror="this.src='https://images.unsplash.com/photo-1549719386-74dfc97dd4fc?auto=format&fit=crop&q=80&w=2000'; this.onerror=null;" alt="HCF Combat" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" loading="eager" decoding="async">
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
+                        <img src="hero2.jpg" onerror="this.src='https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000'; this.onerror=null;" alt="HCF Combat 2" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" loading="lazy" decoding="async">
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
+                        <video src="hero_video4.mp4" poster="hero1.jpg" muted playsinline preload="metadata" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
+                        <video src="hero_video5.mp4" poster="hero2.jpg" muted playsinline preload="metadata" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
+                        <video src="hero_video6.mp4" poster="hero1.jpg" muted playsinline preload="metadata" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
+                        <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
+                    </div>
+
+                    <button class="carousel-control prev absolute left-0 top-0 h-full w-[15%] md:w-[10%] z-30 flex items-center justify-start pl-4 sm:pl-8 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-auto group outline-none cursor-pointer" id="prev-slide" aria-label="Previous Slide">
+                        <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:text-sci-cyan transition-all transform -translate-x-4 group-hover:translate-x-0 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                            <i class="fa-solid fa-chevron-left text-xl"></i>
+                        </div>
+                    </button>
+                    <button class="carousel-control next absolute right-0 top-0 h-full w-[15%] md:w-[10%] z-30 flex items-center justify-end pr-4 sm:pl-8 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-auto group outline-none cursor-pointer" id="next-slide" aria-label="Next Slide">
+                        <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:text-sci-cyan transition-all transform translate-x-4 group-hover:translate-x-0 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                            <i class="fa-solid fa-chevron-right text-xl"></i>
+                        </div>
+                    </button>
+
+                    <div class="absolute left-1/2 -translate-x-1/2 bottom-[110px] sm:bottom-12 z-20 flex gap-2 items-center bg-black/50 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-3 rounded-full pointer-events-auto border border-white/10 shadow-[0_5px_20px_rgba(0,0,0,0.8)]" id="carousel-indicators">
+                    </div>
+
+                    <div class="absolute right-4 top-[90px] sm:top-auto sm:right-8 sm:bottom-12 z-40 pointer-events-auto">
+                        <button onclick="toggleVideoSound()" class="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 border border-white/20 rounded-full text-white flex items-center justify-center hover:border-sci-cyan transition-colors backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)] group" aria-label="Toggle Video Sound">
+                            <i class="fa-solid fa-volume-xmark text-sm sm:text-base group-hover:text-sci-cyan" id="video-sound-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="z-10 max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16 relative pointer-events-none mb-[100px] sm:mb-[8vh]">
+                <div class="w-full flex flex-col items-start text-left pointer-events-auto">
+                    <button onclick="toggleBGM()" class="inline-flex items-center gap-2 border border-white/10 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-sm mb-6 hover:bg-white/10 transition-colors group cursor-pointer" aria-label="Toggle Audio System">
+                        <span id="system-status-indicator" class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e] group-hover:bg-sci-cyan group-hover:shadow-[0_0_8px_var(--theme-cyan)] transition-colors"></span>
+                        <span id="system-status-text" class="text-gray-300 text-[11px] sm:text-xs font-orbitron tracking-widest lang-text font-bold" data-en="SYSTEM ONLINE // READY TO FIGHT">系統連線 SYSTEM ONLINE</span>
+                    </button>
+                    
+                    <div class="flex flex-col items-start whitespace-nowrap mb-6 w-full overflow-hidden">
+                        <p class="text-3xl sm:text-4xl lg:text-5xl text-white font-black italic tracking-wide border-l-4 border-sci-cyan pl-4 min-h-[40px] w-full lang-text drop-shadow-[0_2px_10px_rgba(0,0,0,1)]" id="typewriter-text"></p>
+                        <p class="text-[11px] sm:text-xs text-gray-300 mt-3 tracking-widest pl-4 w-full drop-shadow-md font-bold">別再猶豫，現在就是改變的最佳時機。</p>
+                    </div>
+
+                    <div class="fixed bottom-0 left-0 w-full z-[100] p-3 sm:p-0 sm:relative sm:z-10 flex flex-row gap-2 sm:gap-4 sm:w-auto sm:mt-6 bg-[#050810] sm:bg-transparent border-t border-white/10 sm:border-none pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-0 items-center justify-center sm:justify-start shadow-[0_-10px_30px_rgba(0,0,0,0.8)] sm:shadow-none">
+                        <a href="pricing.html" class="flex-1 sm:flex-none px-2 sm:px-10 py-4 sm:py-5 bg-sci-cyan text-black font-black text-[14px] sm:text-xl skew-x-[-10deg] text-center flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] hover:bg-cyan-400 transition-colors">
+                            <span class="skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2 lang-text" data-en="START BOOKING"><i class="fa-solid fa-bolt"></i> 啟動預約</span>
+                        </a>
+                        <a href="pricing.html" class="flex-1 sm:flex-none px-2 sm:px-8 py-4 sm:py-5 bg-black/80 backdrop-blur-md border border-white/30 text-white font-black text-[14px] sm:text-xl skew-x-[-10deg] text-center flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                            <span class="skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2 lang-text" data-en="TICKET INFO"><i class="fa-solid fa-ticket"></i> 購票資訊</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-sci-cyan border-y border-cyan-400 py-1.5 relative z-20 overflow-hidden flex items-center shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.5)]">
+            <div class="flex whitespace-nowrap animate-marquee text-black font-black italic text-xs sm:text-sm tracking-widest items-center">
+                <span class="mx-4"><i class="fa-solid fa-fire text-black mr-1"></i> HCF 2.0 優惠開跑</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-crown text-black mr-1"></i> 36堂VIP私教 限量12名 即將滿款</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-coins text-black mr-1"></i> 出席挑戰最高回饋 $1,500</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-bolt text-black mr-1"></i> 立即解鎖無限包月</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-fire text-black mr-1"></i> HCF 2.0 優惠開跑</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-crown text-black mr-1"></i> 36堂VIP私教 限量12名 即將滿款</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-coins text-black mr-1"></i> 出席挑戰最高回饋 $1,500</span><span class="mx-4">|</span>
+                <span class="mx-4"><i class="fa-solid fa-bolt text-black mr-1"></i> 立即解鎖無限包月</span>
+            </div>
+        </div>
+
+        <section id="ai-chat" class="py-20 sm:py-28 relative bg-[#02040a] z-10 overflow-hidden border-t border-white/5">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.05),transparent_50%)] pointer-events-none"></div>
+            <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+                <div class="text-center mb-10">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-[0.3em] font-bold border border-sci-cyan/30 px-3 py-1 rounded bg-sci-cyan/10">SYSTEM.AI_ASSISTANT</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron mt-4 mb-2 glitch-hover lang-text" data-en="AI COMBAT TERMINAL">智能戰術終端</h2>
+                    <p class="text-gray-400 text-sm">不確定從何開始？讓 HCF 智能大腦為您分析最佳訓練路徑。</p>
+                </div>
+
+                <div class="bg-[#0f131a] border border-white/20 rounded-xl shadow-[0_0_40px_rgba(var(--theme-cyan-rgb),0.15)] overflow-hidden tech-border">
+                    <div class="bg-black/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-sci-cyan font-mono text-xs font-bold">
+                            <i class="fa-solid fa-robot animate-pulse"></i> HCF_AI_Core_v3.1
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="main-chat-window" class="h-64 sm:h-80 p-6 overflow-y-auto space-y-4 custom-scrollbar bg-black/40">
+                        <div class="bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm">
+                            你好！我是 HCF 智能戰術分析師。請問你想達成什麼目標？（例如：減脂、防身、想打比賽）
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-black/80 border-t border-white/10 flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="main-user-input" placeholder="輸入您的目標或疑問..." class="flex-1 bg-[#050810] border border-white/20 rounded-md px-4 py-3 text-white focus:outline-none focus:border-sci-cyan transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') sendMainMessage()">
+                        <button id="main-send-button" onclick="sendMainMessage()" class="bg-sci-cyan hover:bg-cyan-400 text-black px-8 py-3 rounded-md font-black tracking-widest transition-transform hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
+                            發送分析 <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="py-20 sm:py-24 relative bg-[var(--theme-base)]">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex items-end gap-4 mb-10 border-b border-white/10 pb-4">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover inline-block" data-en="LATEST INFO">最新資訊</h2>
+                        <span class="text-sci-cyan text-xs tracking-widest font-orbitron block mt-1 font-bold">LATEST INFO</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-7 border border-white/10 bg-[#050810] relative overflow-hidden group reveal flex flex-col justify-center min-h-[85vh] sm:min-h-[600px] p-6 sm:p-10 rounded-xl shadow-2xl">
+                        <div class="absolute inset-0 z-0">
+                            <img src="coach_huang.jpg" class="w-full h-full object-cover filter brightness-50 contrast-125 grayscale-[20%] transition-transform duration-1000 group-hover:scale-105" alt="Background" onerror="this.src='https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=800'; this.onerror=null;">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-[var(--theme-base)]/40 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-[var(--theme-base)]/90 to-transparent hidden md:block"></div>
+                        </div>
+                        
+                        <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left w-full h-full justify-center pt-8 md:pt-0">
+                            <div class="bg-sci-cyan text-black italic font-black px-4 py-1.5 text-[11px] sm:text-xs tracking-widest mb-6 inline-block skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.5)]">
+                                <span class="skew-x-[10deg] inline-block lang-text" data-en="UPCOMING EVENT">即將開戰 UPCOMING EVENT</span>
+                            </div>
+
+                            <h3 class="flex flex-col mb-4 sm:mb-6 drop-shadow-2xl items-center md:items-start">
+                                <span class="text-[13vw] sm:text-7xl md:text-8xl font-black italic text-white leading-none tracking-tighter">REIGNITE</span>
+                                <span class="text-[11vw] sm:text-6xl md:text-7xl font-black italic text-sci-cyan leading-none tracking-tighter">THE BATTLE</span>
+                            </h3>
+                            
+                            <p class="text-lg sm:text-xl font-bold text-white tracking-[0.2em] sm:tracking-[0.3em] mb-10 sm:mb-12 drop-shadow-md lang-text" data-en="KING'S RETURN ‧ 3/21 KAOHSIUNG">王者歸來 ‧ 3/21 高雄開戰</p>
+
+                            <div class="flex items-center justify-between md:justify-start gap-2 sm:gap-4 mb-10 sm:mb-12 w-full md:w-auto">
+                                <div class="flex-1 md:flex-none bg-black/60 backdrop-blur-md border border-white/20 rounded-xl w-full md:w-[90px] aspect-[4/5] md:aspect-auto md:h-[100px] flex flex-col items-center justify-center shadow-lg">
+                                    <span class="text-3xl sm:text-4xl font-black italic text-white" id="days">00</span>
+                                    <span class="text-[9px] sm:text-[10px] text-sci-cyan font-bold mt-1 tracking-widest uppercase">DAYS</span>
+                                </div>
+                                <div class="flex-1 md:flex-none bg-black/60 backdrop-blur-md border border-white/20 rounded-xl w-full md:w-[90px] aspect-[4/5] md:aspect-auto md:h-[100px] flex flex-col items-center justify-center shadow-lg">
+                                    <span class="text-3xl sm:text-4xl font-black italic text-white" id="hours">00</span>
+                                    <span class="text-[9px] sm:text-[10px] text-sci-cyan font-bold mt-1 tracking-widest uppercase">HOURS</span>
+                                </div>
+                                <div class="flex-1 md:flex-none bg-black/60 backdrop-blur-md border border-white/20 rounded-xl w-full md:w-[90px] aspect-[4/5] md:aspect-auto md:h-[100px] flex flex-col items-center justify-center shadow-lg">
+                                    <span class="text-3xl sm:text-4xl font-black italic text-white" id="minutes">00</span>
+                                    <span class="text-[9px] sm:text-[10px] text-sci-cyan font-bold mt-1 tracking-widest uppercase">MINS</span>
+                                </div>
+                                <div class="flex-1 md:flex-none bg-black/60 backdrop-blur-md border border-white/20 rounded-xl w-full md:w-[90px] aspect-[4/5] md:aspect-auto md:h-[100px] flex flex-col items-center justify-center shadow-lg">
+                                    <span class="text-3xl sm:text-4xl font-black italic text-white" id="seconds">00</span>
+                                    <span class="text-[9px] sm:text-[10px] text-sci-cyan font-bold mt-1 tracking-widest uppercase">SECS</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row w-full md:w-auto gap-3 sm:gap-4 mt-auto relative z-20 md:justify-start">
+                                <a href="pricing.html" class="relative overflow-visible w-full md:w-[280px] bg-sci-cyan text-black font-black italic text-lg sm:text-xl py-4 sm:py-5 flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] transition-transform hover:scale-105 rounded-sm">
+                                    <span class="relative z-10 tracking-widest lang-text" data-en="GET VIP TICKETS">搶購 VIP 票</span>
+                                    <img src="shark_logo.png" alt="Shark" class="absolute right-0 sm:-right-4 -bottom-2 sm:-bottom-4 w-28 sm:w-32 opacity-100 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)] pointer-events-none z-30" onerror="this.src='https://placehold.co/200x200/transparent/00f0ff?text=SHARK'; this.onerror=null;">
+                                </a>
+                                <a href="pricing.html" class="w-full md:w-[280px] bg-black/50 border border-white/50 text-white font-bold italic text-lg sm:text-xl py-4 sm:py-5 flex items-center justify-center hover:bg-white hover:text-black transition-colors rounded-sm tracking-widest backdrop-blur-md">
+                                    <span class="lang-text" data-en="VIEW PLANS">查看最新方案</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <div class="relative group reveal">
+                            <div class="absolute -inset-[1px] bg-gradient-to-r from-sci-cyan via-[#111] to-sci-cyan rounded-xl opacity-70 group-hover:opacity-100 blur-[2px] transition-opacity duration-500"></div>
+                            <div class="relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden p-6 shadow-2xl">
+                                <div class="absolute right-0 top-0 text-[80px] font-black text-white/[0.03] -mt-4 -mr-4 pointer-events-none italic">NEW</div>
+                                <h4 class="text-xl font-black text-white mb-5 flex items-center gap-3 border-b border-white/10 pb-3 relative z-10">
+                                    <div class="w-8 h-8 rounded bg-sci-cyan/20 flex items-center justify-center border border-sci-cyan/50"><i class="fa-solid fa-bolt text-sci-cyan text-sm"></i></div>
+                                    <span class="tracking-widest drop-shadow-[0_0_8px_rgba(var(--theme-cyan-rgb),0.5)]">🔥 新生限定補給箱</span>
+                                </h4>
+                                <div class="space-y-3 relative z-10">
+                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-white/5 rounded-lg border-l-4 border-sci-cyan hover:bg-white/10 hover:translate-x-1 transition-all group/item block cursor-pointer">
+                                        <div>
+                                            <span class="text-white font-bold text-sm block mb-0.5">團體課程</span>
+                                            <span class="text-gray-400 text-[11px] font-mono tracking-wider group-hover/item:text-white transition-colors">首次體驗優惠</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-[10px] text-gray-500 line-through mb-0.5 font-mono">原價 $600</div>
+                                            <span class="text-white font-black text-xl italic group-hover/item:text-sci-cyan transition-colors">體驗價 $400</span>
+                                        </div>
+                                    </a>
+                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-gradient-to-r from-sci-cyan/10 to-transparent rounded-lg border-l-4 border-sci-cyan hover:translate-x-1 transition-all group/item block cursor-pointer">
+                                        <div>
+                                            <span class="text-white font-bold text-sm block mb-0.5">私人教練 (1堂)</span>
+                                            <span class="text-sci-cyan text-[11px] tracking-wider group-hover/item:text-cyan-200">專屬菜單，技術精修</span>
+                                        </div>
+                                        <span class="text-sci-cyan font-black text-xl italic drop-shadow-[0_0_5px_rgba(var(--theme-cyan-rgb),0.5)]">體驗價 $1,400</span>
+                                    </a>
+                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-gradient-to-r from-sci-gold/10 to-transparent rounded-lg border-l-4 border-sci-gold hover:translate-x-1 transition-all group/item block cursor-pointer">
+                                        <div>
+                                            <span class="text-white font-bold text-sm block mb-0.5">私人教練 (2堂)</span>
+                                            <span class="text-sci-gold text-[11px] tracking-wider group-hover/item:text-yellow-200">深度體驗，扎實訓練</span>
+                                        </div>
+                                        <span class="text-sci-gold font-black text-xl italic drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]">體驗價 $2,400</span>
+                                    </a>
+                                </div>
+                                <div class="mt-4 pt-3 border-t border-white/5 text-center">
+                                    <span class="text-[10px] text-gray-500">點擊上方項目，立即展開你的格鬥旅程</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reveal p-[2px] bg-gradient-to-b from-sci-cyan to-[#111] rounded-xl shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)]">
+                            <div class="bg-[#050810] p-6 rounded-xl relative overflow-hidden flex flex-col">
+                                <div class="relative z-10 flex-grow">
+                                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 border-b border-white/10 pb-4 gap-2">
+                                        <h4 class="text-xl sm:text-2xl font-black text-white flex items-center gap-3">
+                                            <i class="fa-solid fa-fire text-sci-cyan text-2xl drop-shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.8)]"></i>
+                                            <span class="tracking-widest italic">HCF 2.0 震撼開跑</span>
+                                        </h4>
+                                        <span class="bg-sci-cyan text-black text-[11px] font-black px-3 py-1 uppercase tracking-widest animate-pulse rounded skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)]">限時狂降</span>
+                                    </div>
+
+                                    <div class="mb-8 relative">
+                                        <div class="absolute -left-3 top-0 bottom-0 w-1 bg-white rounded-full"></div>
+                                        <h5 class="text-white text-base font-black mb-3 flex items-center gap-2">
+                                            <span class="bg-sci-cyan text-black px-2 py-0.5 rounded text-[10px] font-black">EVENT 01</span> 
+                                            私教裝甲升級
+                                        </h5>
+                                        
+                                        <div class="grid grid-cols-3 gap-2 mb-4">
+                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
+                                                <div class="text-[11px] mb-1">買 10 堂</div>
+                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">1</span> 個月<br>團課上到飽</div>
+                                            </div>
+                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
+                                                <div class="text-[11px] mb-1">買 20 堂</div>
+                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">2</span> 個月<br>團課上到飽</div>
+                                            </div>
+                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
+                                                <div class="text-[11px] mb-1">買 30 堂</div>
+                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">3</span> 個月<br>團課上到飽</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="relative bg-gradient-to-br from-[#2a1b00] to-black p-5 rounded-lg border border-sci-gold/40 shadow-[0_10px_30px_rgba(255,215,0,0.1)] overflow-hidden">
+                                            <div class="absolute top-0 left-0 w-full h-1.5 bg-[repeating-linear-gradient(45deg,var(--theme-gold),var(--theme-gold)_10px,#000_10px,#000_20px)]"></div>
+                                            <div class="flex justify-between items-center mb-3 relative z-10">
+                                                <div class="text-sci-gold font-black text-base flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]"><i class="fa-solid fa-crown"></i> 傳說級特別加開</div>
+                                                <div class="text-[10px] bg-sci-cyan text-black px-2 py-1 rounded uppercase tracking-wider font-bold shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.8)] border border-cyan-400 animate-pulse">
+                                                    🚨 限量 12 名
+                                                </div>
+                                            </div>
+                                            <div class="flex items-end gap-2 mb-2 relative z-10">
+                                                <div class="text-white font-bold text-sm">一次買定</div>
+                                                <div class="text-sci-gold text-3xl font-black italic leading-none drop-shadow-md">36 <span class="text-sm not-italic font-bold text-gray-300">堂</span></div>
+                                            </div>
+                                            <div class="bg-sci-gold text-black font-black text-sm sm:text-base p-2.5 rounded transform skew-x-[-5deg] inline-block mb-3 shadow-[0_5px_15px_rgba(255,215,0,0.4)] relative z-10">
+                                                <span class="skew-x-[5deg] block">狂送 4 堂私課 ＋ 4 個月團課上到飽！</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative">
+                                        <div class="absolute -left-3 top-0 bottom-0 w-1 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                                        <div class="flex justify-between items-end mb-3">
+                                            <h5 class="text-white text-base font-black flex items-center gap-2">
+                                                <span class="bg-sci-cyan text-black px-2 py-0.5 rounded text-[10px] font-black">EVENT 02</span> 
+                                                鋼鐵出席挑戰賽
+                                            </h5>
+                                            <span class="text-[10px] text-sci-cyan font-bold bg-sci-cyan/10 px-2 py-1 rounded border border-sci-cyan/30">最高每月回饋 $1,500</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 mb-4 bg-white/5 inline-block px-2 py-1 rounded border-l-2 border-gray-500">當月累積上課次數，次月續費 <span class="text-white font-bold">直接折現</span>！</p>
+                                        
+                                        <div class="space-y-2 relative">
+                                            <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-[#222] z-0"></div>
+                                            <div class="bg-[#111] border border-white/5 p-3 rounded-lg flex items-center justify-between relative z-10">
+                                                <div class="flex items-center gap-4">
+                                                    <div class="w-7 h-7 rounded-full bg-[#222] flex items-center justify-center text-white border-2 border-gray-600 text-xs font-black z-10">1</div>
+                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white mx-0.5 font-mono">08</span> 堂</div>
+                                                </div>
+                                                <div class="text-gray-300 font-black text-sm bg-white/10 px-3 py-1 rounded-sm flex items-center gap-1 font-mono">現折 $500</div>
+                                            </div>
+                                            <div class="bg-[#111] border border-white/5 p-3 rounded-lg flex items-center justify-between relative z-10">
+                                                <div class="flex items-center gap-4">
+                                                    <div class="w-7 h-7 rounded-full bg-[#222] flex items-center justify-center text-white border-2 border-gray-600 text-xs font-black z-10">2</div>
+                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white mx-0.5 font-mono">16</span> 堂</div>
+                                                </div>
+                                                <div class="text-gray-300 font-black text-sm bg-white/10 px-3 py-1 rounded-sm flex items-center gap-1 font-mono"><span class="text-[10px] font-normal text-gray-500 mr-1 font-sans">再加碼</span> 現折 $500</div>
+                                            </div>
+                                            <div class="bg-gradient-to-r from-sci-cyan/20 to-[#111] border border-sci-cyan/50 p-3 rounded-lg flex items-center justify-between relative z-10 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.15)]">
+                                                <div class="flex items-center gap-4 relative z-10">
+                                                    <div class="w-7 h-7 rounded-full bg-sci-cyan flex items-center justify-center text-black border-2 border-cyan-300 text-xs font-black shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.8)] z-10">3</div>
+                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white drop-shadow-[0_0_5px_#fff] mx-0.5 font-mono">24</span> 堂</div>
+                                                </div>
+                                                <div class="text-black font-black text-sm bg-sci-cyan px-3 py-1 rounded-sm flex items-center gap-1 shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.6)] font-mono"><span class="text-[10px] font-bold text-black/70 mr-1 font-sans">終極加碼</span> 現折 $500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="py-20 sm:py-24 relative overflow-hidden bg-[#050810] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-16 text-center sm:text-left">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest border border-sci-cyan/30 px-3 py-1.5 bg-sci-cyan/5 rounded-sm inline-block mb-4 font-bold">WHY CHOOSE HCF</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white font-orbitron lang-text glitch-hover block" data-en="CORE PHILOSOPHY">品牌哲學</h2>
+                    <p class="text-sm text-gray-400 mt-6 max-w-2xl leading-relaxed lang-text sm:border-l-2 sm:border-white/20 sm:pl-4 mx-auto sm:mx-0" data-en="Combat is about learning to be reborn in adversity, to see how truly strong you are.">
+                        人生有時候就像一場拳賽，我們都曾被不如意的事情一次次擊倒。格鬥更是關於如何在逆境中學習重生，讓你看到你自己有多強大。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.05">H</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-shield-halved"></i></div></div>
+                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-en="HONOR">榮譽</h3><p class="text-[10px] text-gray-500 font-mono uppercase tracking-[0.2em] mt-1">Code 01</p></div>
+                            </div>
+                            <div class="border-l-2 border-white/50 pl-4 py-1 mb-6 bg-gradient-to-r from-white/5 to-transparent">
+                                <p class="text-sm text-white font-bold tracking-widest lang-text" data-en="Admit failure. No excuses.">承認失敗 / 不找藉口</p>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-en="Symbolizes an unyielding will. Like bedrock in a storm, we turn every strike into grounded power.">
+                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">▼ 倒三角形：穩固根基</strong>
+                                在風暴與挑戰面前，我們如同紮根大地的磐石，將打擊轉化為向下的力量，始終屹立不搖。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-sci-cyan/50 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 100ms;">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sci-cyan to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-sci-cyan/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.08">C</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="w-14 h-14 flex items-center justify-center bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.2)]"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-tooth"></i></div></div>
+                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-en="COURAGE">勇氣</h3><p class="text-[10px] text-sci-cyan font-mono uppercase tracking-[0.2em] mt-1">Code 02</p></div>
+                            </div>
+                            <div class="border-l-2 border-sci-cyan/50 pl-4 py-1 mb-6 bg-gradient-to-r from-sci-cyan/5 to-transparent">
+                                <p class="text-sm text-sci-cyan font-bold tracking-widest lang-text" data-en="Bear consequences. No escape.">承擔後果 / 絕不逃避</p>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-en="The apex predator. We refuse to be passive prey. We are proactive warriors fighting for glory.">
+                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">🦈 泰拳鯊魚：主動出擊</strong>
+                                靈魂深處對勝利的渴望。我們拒絕做被動的獵物，用行動爭取屬於自己的榮耀。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 200ms;">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.1">F</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-anchor"></i></div></div>
+                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-en="FAITH">信念</h3><p class="text-[10px] text-gray-500 font-mono uppercase tracking-[0.2em] mt-1">Code 03</p></div>
+                            </div>
+                            <div class="border-l-2 border-white/50 pl-4 py-1 mb-6 bg-gradient-to-r from-white/5 to-transparent">
+                                <p class="text-sm text-white font-bold tracking-widest lang-text" data-en="Rebuild by hand. Never give up.">親手重建 / 絕不認輸</p>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-en="Our anchor in the stormy sea. The ability to stay stable in adversity, locking onto the goal to win once for yourself.">
+                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">⚓ 海錨：堅定信念</strong>
+                                波濤洶湧的大海中最堅實的依靠。信念如錨，讓我們在失敗後重建，鎖定目標為自己贏一次。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center reveal">
+                    <p class="text-gray-300 text-sm mb-4">無數人已經在這裡證明了自己，現在輪到你了。</p>
+                    <a href="pricing.html" class="inline-flex items-center gap-2 px-8 py-3 border border-sci-cyan text-sci-cyan font-bold tracking-widest hover:bg-sci-cyan hover:text-black transition-colors rounded-sm">
+                        啟動你的改變 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">SYSTEM SCHEDULE</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover mb-10 inline-block border-b-4 border-sci-cyan pb-2" data-en="LATEST SCHEDULE">最新課表</h2>
+                
+                <picture class="block w-full reveal shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)] rounded-xl">
+                    <source media="(max-width: 767px)" srcset="schedule-mobile.png">
+                    <img src="schedule-pc.png" alt="HCF 新竹格鬥最新課表" class="w-full h-auto rounded-xl border border-white/10 hover:border-sci-cyan/50 transition-colors duration-500">
+                </picture>
+                
+                <p class="text-gray-500 mt-6 text-xs font-mono tracking-widest">※ 課表若有異動，以官方 LINE 公告為主。</p>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">BEGINNER'S GUIDE</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover tracking-wider mb-2" data-en="FAQ">新手常見問答</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">第一次來？這裡有你需要的所有答案</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <div class="tech-border rounded-xl p-6 reveal">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">第一次來要帶什麼？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">運動服、毛巾、水壺即可，館內有公用拳套和護具，不需自己準備。首堂體驗課 $400，包含教練指導。</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 50ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">費用多少？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">首次體驗 $400（團體課）・月卡 $3,000・私教 $1,400/堂・3人團課 $5,000/月</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 100ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">適合完全新手嗎？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">完全適合！80% 的學員都是新手開始，無壓力環境，教練會根據你的程度與目標調整課程強度。</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 150ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">上課時間是？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">週一至週五 11:00–22:00・週六週日 11:00–16:00。可彈性選擇時段，私教可預約指定時間。</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 200ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">停車方便嗎？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">位於新竹市北區林森路 301 號 2 樓，附近停車位充足，近竹科園區與新竹車站，交通便利。</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 250ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <p class="text-sci-cyan font-bold text-sm mb-3">有女性學員嗎？</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">有！超過 40% 是女性學員，我們有女性助教（小米）專門指導，安全友善的訓練環境。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 300ms;">
+                    <p class="text-gray-400 text-sm mb-4">還有其他問題？</p>
+                    <button onclick="toggleChat()" class="px-8 py-3 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-sm tracking-widest rounded transition-all shadow-[0_5px_20px_rgba(var(--theme-cyan-rgb),0.4)] hover:-translate-y-1">
+                        🦈 詢問 AI 智能鯊魚助手
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[var(--theme-base)] pt-16 pb-32 sm:pb-12 border-t border-white/10 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-8 mb-12">
+                <div class="md:col-span-4 lg:col-span-5">
+                    <h2 class="text-3xl font-orbitron font-black text-white italic mb-1">HCF <span class="text-xs text-sci-cyan not-italic font-sans ml-2 tracking-widest">新竹格鬥運動館</span></h2>
+                    <div class="w-10 h-1 bg-sci-cyan mb-5 rounded-full"></div>
+                    <div class="space-y-4 text-gray-400 text-sm font-mono leading-relaxed">
+                        <p class="flex items-start gap-3 hover:text-white transition-colors">
+                            <i class="fa-solid fa-location-dot mt-1 text-sci-cyan w-4 text-center"></i> 
+                            <span>新竹市北區林森路301號2樓</span>
+                        </p>
+                        <p class="flex items-center gap-3 hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone text-sci-cyan w-4 text-center"></i> 
+                            <span>0925-571-225</span>
+                        </p>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock mt-1 text-sci-cyan w-4 text-center"></i> 
+                            <span class="text-gray-300">
+                                週一～週五 <span class="text-white font-bold ml-2">11:00 - 22:00</span><br>
+                                週六＆週日 <span class="text-white font-bold ml-2">11:00 - 16:00</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 lg:col-span-3">
+                    <h3 class="text-lg font-bold text-white mb-5 tracking-widest border-l-2 border-sci-cyan pl-3">選單連結</h3>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-400 font-medium">
+                        <a href="news.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 最新消息</a>
+                        <a href="philosophy.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 品牌哲學</a>
+                        <a href="classes.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 課程介紹</a>
+                        <a href="team.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 教練團隊</a>
+                        <a href="pricing.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 課程方案</a>
+                        <a href="faq.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 新手問答</a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 lg:col-span-4 flex flex-col items-start md:items-end text-left md:text-right w-full">
+                    <h3 class="text-lg font-bold text-white mb-5 tracking-widest border-l-2 md:border-l-0 md:border-r-2 border-sci-cyan pl-3 md:pl-0 md:pr-3 w-full md:w-auto">基地互聯</h3>
+                    <div class="flex flex-wrap justify-start md:justify-end gap-3 mb-6">
+                        <a href="pricing.html" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-black hover:bg-sci-cyan hover:border-sci-cyan transition-all shadow-lg" title="線上預約"><i class="fa-solid fa-bolt text-lg"></i></a>
+                        <a href="https://lin.ee/7lidUv0" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#06C755] hover:border-[#06C755] transition-all shadow-lg" title="LINE 官方諮詢"><i class="fa-brands fa-line text-lg"></i></a>
+                        <a href="https://www.instagram.com/hc.combat2022/" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition-all shadow-lg" title="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="https://m.facebook.com/hsinchucombat/" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all shadow-lg" title="Facebook"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                        <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all shadow-lg" title="YouTube 實戰影片"><i class="fa-brands fa-youtube text-lg"></i></a>
+                    </div>
+                    <a href="pricing.html" class="block w-full sm:w-auto px-10 py-4 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-base text-center skew-x-[-10deg] transition-all shadow-[0_10px_20px_rgba(var(--theme-cyan-rgb),0.3)] hover:-translate-y-1">
+                        <span class="skew-x-[10deg] block">立即領取 $400 體驗</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center border-t border-white/10 pt-6 text-[11px] text-gray-600 font-mono tracking-widest flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 items-center">
+                <p>© 2026 HCF. All Rights Reserved.</p>
+                <span class="hidden sm:inline">|</span>
+                <p class="text-sci-cyan/50">SYSTEM READY FOR COMBAT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Safe Preloader (Won't get stuck anymore!)
+        function hidePreloader() {
+            const p = document.getElementById('preloader');
+            if (!p || p.style.display === 'none') return;
+            document.getElementById('loader-progress').style.width = '100%';
+            p.style.opacity = '0';
+            setTimeout(() => { p.style.display = 'none'; }, 400);
+            createCarouselIndicators();
+            updateCarousel();
+        }
+        // Use DOMContentLoaded instead of window.load so it doesn't wait for missing images
+        document.addEventListener('DOMContentLoaded', hidePreloader);
+        // Absolute fallback: kill preloader after 2 seconds no matter what
+        setTimeout(hidePreloader, 2000);
+
+        // 2. Share API & Copy URL
+        function shareWebsite(btn) {
+            if (navigator.share) {
+                navigator.share({ title: 'HCF - 新竹格鬥運動館', text: '新竹最強格鬥運動館！這輩子，總要為自己贏一次！現在預約體驗只要 $400，一起來變強吧🥊', url: window.location.href }).catch(err => console.log('Share failed:', err));
+            } else {
+                const tempInput = document.createElement('input'); tempInput.value = window.location.href; document.body.appendChild(tempInput); tempInput.select(); document.execCommand('copy'); document.body.removeChild(tempInput);
+                const originalText = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 網址已複製！'; btn.classList.remove('bg-blue-600', 'hover:bg-blue-500'); btn.classList.add('bg-green-600', 'hover:bg-green-500');
+                setTimeout(() => { btn.innerHTML = originalText; btn.classList.remove('bg-green-600', 'hover:bg-green-500'); btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); }, 2000);
+            }
+        }
+
+        // 3. Visual Effects (Cursor, Mouse Glow, Canvas)
+        const mouseGlow = document.getElementById('mouse-glow-effect');
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        const parallaxElements = document.querySelectorAll('.parallax-bg');
+        let isTickingGlobal = false; let mouseX = 0, mouseY = 0; let ringX = 0, ringY = 0;
+        
+        if (window.matchMedia("(pointer: fine)").matches) {
+            function animateCursor() {
+                ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
+                if(cursorRing) cursorRing.style.transform = `translate(calc(-50% + ${ringX}px), calc(-50% + ${ringY}px))`;
+                if(cursorDot) cursorDot.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+                requestAnimationFrame(animateCursor);
+            }
+            requestAnimationFrame(animateCursor);
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX; mouseY = e.clientY;
+                if (!isTickingGlobal) {
+                    window.requestAnimationFrame(() => {
+                        mouseGlow.style.opacity = '1';
+                        mouseGlow.style.setProperty('--mouse-x', `${mouseX}px`);
+                        mouseGlow.style.setProperty('--mouse-y', `${mouseY}px`);
+                        isTickingGlobal = false;
+                    });
+                    isTickingGlobal = true;
+                }
+            });
+
+            const interactiveElements = document.querySelectorAll('a, button, input, summary, .cursor-pointer, .tech-border');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+
+            window.addEventListener('mouseleave', () => { mouseGlow.style.opacity = '0'; if(cursorDot) cursorDot.style.opacity = '0'; if(cursorRing) cursorRing.style.opacity = '0'; });
+            window.addEventListener('mouseenter', () => { if(cursorDot) cursorDot.style.opacity = '1'; if(cursorRing) cursorRing.style.opacity = '1'; });
+
+            document.querySelectorAll('.tech-border').forEach(card => {
+                const overlay = document.createElement('div'); overlay.classList.add('glow-overlay'); card.appendChild(overlay);
+                let isTickingCard = false;
+                card.addEventListener('mousemove', e => {
+                    if (!isTickingCard) {
+                        window.requestAnimationFrame(() => {
+                            const rect = card.getBoundingClientRect();
+                            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                            isTickingCard = false;
+                        });
+                        isTickingCard = true;
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const speed = el.getAttribute('data-speed') || 0.1;
+                    const yPos = -(scrolled * speed);
+                    el.style.transform = `translateY(${yPos}px)`;
+                });
+            }, { passive: true });
+
+            const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d');
+            let w, h, pts = [];
+            function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+            class P {
+                constructor() { this.x=Math.random()*w; this.y=Math.random()*h; this.vx=(Math.random()-.5)*0.2; this.vy=(Math.random()-.5)*0.2; this.s=Math.random()*1.5; }
+                update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>w)this.vx*=-1; if(this.y<0||this.y>h)this.vy*=-1; }
+                draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle='rgba(var(--theme-cyan-rgb),0.15)'; ctx.fill(); }
+            }
+            function init() { resize(); pts=[]; for(let i=0;i<30;i++) pts.push(new P()); }
+            function anim() {
+                ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(var(--theme-cyan-rgb),0.03)'; ctx.lineWidth=0.5;
+                for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y; if(dx*dx+dy*dy<10000){ ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke(); } } }
+                pts.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(anim);
+            }
+            window.addEventListener('resize', init); init(); anim();
+        }
+
+        // 4. Mobile Menu & Drawers
+        const mm = document.getElementById('mobile-menu'), bd = document.getElementById('brand-drawer'), db = document.getElementById('drawer-backdrop');
+        function toggleMobileMenu() { if (!bd.classList.contains('-translate-x-full')) bd.classList.add('-translate-x-full'); if (mm.classList.contains('translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); mm.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
+        function toggleBrandDrawer() { if (!mm.classList.contains('translate-x-full')) mm.classList.add('translate-x-full'); if (bd.classList.contains('-translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); bd.classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
+        function closeAllDrawers() { mm.classList.add('translate-x-full'); bd.classList.add('-translate-x-full'); db.classList.add('opacity-0'); setTimeout(()=>db.classList.add('hidden'),300); document.body.style.overflow = ''; }
+
+        // 5. Scroll Reveal & Navbar Shrink
+        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        
+        const rocketBtn = document.getElementById('rocket-top'), nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { nav.classList.add('bg-black/90','backdrop-blur-md','border-b','border-white/10'); nav.classList.remove('py-4'); nav.classList.add('py-2'); } 
+            else { nav.classList.remove('bg-black/90','backdrop-blur-md','border-b','border-white/10','py-2'); nav.classList.add('py-4'); }
+            if (window.scrollY > 500) { rocketBtn.classList.remove('opacity-0','translate-y-20'); } else { rocketBtn.classList.add('opacity-0','translate-y-20'); }
+        }, { passive: true });
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // 6. Language & Theme Toggles
+        let currentLang = localStorage.getItem('hcf_lang') || 'zh';
+        const langTexts = { zh: { typewriter: "這輩子 總要為自己贏一次", label: "EN/中", mobileLabel: "EN" }, en: { typewriter: "Win once for yourself in this life", label: "中/EN", mobileLabel: "中" } };
+        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); applyLanguage(); }
+        function applyLanguage() {
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; } 
+                else { if (!el.dataset.zh) el.dataset.zh = el.innerHTML; el.innerHTML = el.dataset.en; }
+            });
+            const ll = document.getElementById('lang-label'); if(ll) ll.innerText = langTexts[currentLang].label;
+            const ml = document.getElementById('mobile-lang-label'); if(ml) ml.innerText = langTexts[currentLang].mobileLabel;
+            index = 0; const tw = document.getElementById('typewriter-text'); if(tw) tw.innerHTML = "";
+            clearTimeout(typewriterTimeout); typeWriter();
+        }
+        function setTheme(theme) {
+            if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
+            else { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('hcf_theme', theme); }
+            document.getElementById('secret-theme-panel').classList.add('hidden');
+        }
+
+        // 7. Carousel Engine
+        let currentCarouselIndex = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const container = document.getElementById('carousel-indicators');
+        let slideTimer;
+
+        function createCarouselIndicators() {
+            if(container && slides.length > 0) {
+                slides.forEach((_, i) => {
+                    const btn = document.createElement('button');
+                    btn.onclick = () => goToSlide(i);
+                    container.appendChild(btn);
+                });
+            }
+        }
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                if (index === currentCarouselIndex) { slide.classList.remove('opacity-0', 'z-0'); slide.classList.add('opacity-100', 'z-10', 'active'); } 
+                else { slide.classList.remove('opacity-100', 'z-10', 'active'); slide.classList.add('opacity-0', 'z-0'); }
+            });
+            if(container) {
+                Array.from(container.children).forEach((btn, index) => {
+                    btn.className = index === currentCarouselIndex ? 'w-6 h-1 sm:w-8 sm:h-1.5 rounded-full bg-sci-cyan shadow-[0_0_8px_rgba(var(--theme-cyan-rgb),0.8)] transition-all' : 'w-6 h-1 sm:w-8 sm:h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all';
+                });
+            }
+            manageSlideDuration(); 
+        }
+
+        function manageSlideDuration() {
+            clearTimeout(slideTimer);
+            if(slides.length === 0) return;
+            const currentSlide = slides[currentCarouselIndex];
+            const video = currentSlide.querySelector('video');
+            
+            slides.forEach(s => {
+                const v = s.querySelector('video');
+                if (v && v !== video) { v.pause(); v.currentTime = 0; v.removeEventListener('ended', nextSlide); }
+            });
+
+            if (video) {
+                video.currentTime = 0;
+                // catch error if local video file is missing
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => { slideTimer = setTimeout(nextSlide, 5000); });
+                }
+                video.removeEventListener('ended', nextSlide); 
+                video.addEventListener('ended', nextSlide);
+            } else {
+                slideTimer = setTimeout(nextSlide, 6000); 
+            }
+        }
+
+        function nextSlide() { currentCarouselIndex = (currentCarouselIndex + 1) % slides.length; updateCarousel(); }
+        function prevSlide() { currentCarouselIndex = (currentCarouselIndex - 1 + slides.length) % slides.length; updateCarousel(); }
+        function goToSlide(index) { currentCarouselIndex = index; updateCarousel(); }
+        
+        if(document.getElementById('next-slide')) document.getElementById('next-slide').addEventListener('click', nextSlide);
+        if(document.getElementById('prev-slide')) document.getElementById('prev-slide').addEventListener('click', prevSlide);
+
+        // 8. BGM & Typewriter
+        const bgm = document.getElementById('bgm-audio'), biD = document.getElementById('bgm-icon'), sysIndicator = document.getElementById('system-status-indicator'), sysText = document.getElementById('system-status-text');
+        let isMusicPlaying = false;
+        function toggleBGM() {
+            if (isMusicPlaying) { 
+                bgm.pause(); 
+                if(biD) { biD.classList.remove('fa-volume-high'); biD.classList.add('fa-volume-xmark'); }
+                if(sysText) sysText.innerText = 'AUDIO SYSTEM: OFF';
+                if(sysIndicator) { sysIndicator.classList.remove('bg-sci-cyan', 'shadow-[0_0_8px_var(--theme-cyan)]', 'bg-green-500', 'shadow-[0_0_8px_#22c55e]'); sysIndicator.classList.add('bg-red-500', 'shadow-[0_0_8px_#ef4444]'); }
+            } else { 
+                bgm.play().catch(e=>{}); 
+                if(biD) { biD.classList.remove('fa-volume-xmark'); biD.classList.add('fa-volume-high'); } 
+                if(sysText) sysText.innerText = 'AUDIO SYSTEM: ON';
+                if(sysIndicator) { sysIndicator.classList.remove('bg-red-500', 'shadow-[0_0_8px_#ef4444]', 'bg-green-500', 'shadow-[0_0_8px_#22c55e]'); sysIndicator.classList.add('bg-sci-cyan', 'shadow-[0_0_8px_var(--theme-cyan)]'); }
+                const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon');
+                if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } }
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+        function toggleVideoSound() {
+            const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon');
+            if (hv) {
+                hv.muted = !hv.muted;
+                if (hv.muted) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } 
+                else { vi.classList.remove('fa-volume-xmark'); vi.classList.add('fa-volume-high'); if (isMusicPlaying) toggleBGM(); }
+            }
+        }
+        const twe = document.getElementById('typewriter-text'); let index = 0, typewriterTimeout;
+        function typeWriter() { if(!twe) return; const txt = langTexts[currentLang].typewriter; if(index < txt.length){ twe.innerHTML += txt.charAt(index); index++; typewriterTimeout=setTimeout(typeWriter,100); } }
+
+        // 9. Countdown Timers (News Event & FOMO Pricing)
+        function updateCountdowns() {
+            const now = new Date();
+            
+            // Original Event Countdown (March 21)
+            let ey = now.getFullYear(); const eventDate = new Date(ey, 2, 21, 18, 0, 0); if(now>eventDate) ey++;
+            const eDist = new Date(ey, 2, 21, 18, 0, 0).getTime() - now.getTime();
+            if(document.getElementById("days")) {
+                document.getElementById("days").innerText = String(Math.floor(eDist / 86400000)).padStart(2,'0');
+                document.getElementById("hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
+                document.getElementById("minutes").innerText = String(Math.floor((eDist % 3600000) / 60000)).padStart(2,'0');
+                document.getElementById("seconds").innerText = String(Math.floor((eDist % 60000) / 1000)).padStart(2,'0');
+                if(document.getElementById("event-days")) document.getElementById("event-days").innerText = String(Math.floor(eDist / 86400000)).padStart(2,'0');
+                if(document.getElementById("event-hours")) document.getElementById("event-hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
+            }
+
+            // FOMO Pricing Countdown (Tomorrow midnight)
+            const fomoDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 23, 59, 59).getTime();
+            const fDist = fomoDate - now.getTime();
+            if (document.getElementById('fomo-hours') && fDist > 0) {
+                document.getElementById('fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
+                document.getElementById('fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
+                document.getElementById('fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
+            }
+        }
+        setInterval(updateCountdowns, 1000); updateCountdowns();
+
+       // 10. Form Submission (真實串接 Email 收單)
+        const leadForm = document.getElementById('lead-form');
+        if(leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // 阻止畫面重新整理
+                const btn = this.querySelector('button[type="submit"]');
+                
+                // 抓取客人填寫的資料
+                const userName = document.getElementById('form-name').value;
+                const userPhone = document.getElementById('form-phone').value;
+                const userDiscount = (document.getElementById('form-discount').value || '').trim().toUpperCase();
+                
+                // 按鈕變更為載入動畫
+                btn.innerHTML = '<span class="skew-x-[5deg] block flex items-center justify-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> 正在傳送至基地...</span>';
+                
+                // 呼叫 FormSubmit API 傳送到您的信箱
+                fetch("https://formsubmit.co/ajax/hsinchucombat2022@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "標題": "🔥 HCF 網站新客預約通知！",
+                        "客戶稱呼": userName,
+                        "聯絡電話": userPhone,
+                        "折扣碼": userDiscount || '未使用',
+                        "_subject": "HCF 網站新客預約通知" // Email 的主旨
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 傳送成功：隱藏按鈕，顯示成功綠色文字
+                    btn.style.display = 'none';
+                    document.getElementById('form-success-msg').classList.remove('hidden');
+                })
+                .catch(error => {
+                    // 傳送失敗防呆處理
+                    console.log(error);
+                    btn.innerHTML = '<span class="skew-x-[5deg] block text-red-500">傳送失敗，請直接聯繫 LINE</span>';
+                });
+            });
+        }
+
+        // 11a. Discount Code Feature
+        const VALID_DISCOUNT_CODE = 'HCF2026';
+        const discountInput = document.getElementById('form-discount');
+        if (discountInput) {
+            discountInput.addEventListener('input', function() {
+                const badge = document.getElementById('discount-badge');
+                const isValid = this.value.trim().toUpperCase() === VALID_DISCOUNT_CODE;
+                badge.classList.toggle('hidden', !isValid);
+                this.style.borderColor = isValid ? 'rgba(212,175,55,0.6)' : '';
+            });
+        }
+        function copyDiscountCode(btn) {
+            const code = document.getElementById('discount-code-display').textContent.trim();
+            const liveRegion = document.getElementById('copy-live-region');
+            function showCopied() {
+                const icon = document.getElementById('copy-icon');
+                icon.className = 'fa-solid fa-check text-sci-gold text-sm';
+                btn.setAttribute('aria-label', '已複製！');
+                if (liveRegion) liveRegion.textContent = '折扣碼已複製！';
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-copy text-sci-gold/60 group-hover:text-sci-gold transition-colors text-sm';
+                    btn.setAttribute('aria-label', '複製折扣碼');
+                    if (liveRegion) liveRegion.textContent = '';
+                }, 2000);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(showCopied).catch(() => {
+                    document.execCommand('copy'); showCopied();
+                });
+            } else {
+                const el = document.createElement('textarea');
+                el.value = code;
+                el.style.position = 'fixed'; el.style.left = '-9999px';
+                document.body.appendChild(el); el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showCopied();
+            }
+        }
+
+        // 11. AI Chat Systems
+        // Floating Shark (Bottom Right)
+        let it = 0, co = false; 
+        const ais = document.getElementById('ai-system'), zm = document.getElementById('zzz-mark'), ab = document.getElementById('angry-bubble');
+        async function askShark(question) {
+            const hBox = document.getElementById('ai-chat-history');
+            hBox.innerHTML += `<div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">${question}</div>`;
+            hBox.scrollTop = hBox.scrollHeight;
+            const lid = 'loading-' + Date.now();
+            hBox.innerHTML += `<div id="${lid}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>`;
+            hBox.scrollTop = hBox.scrollHeight;
+            setTimeout(() => {
+                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">請點擊下方按鈕或留下您的聯絡方式，我們將為您安排專屬教練！</div>`;
+                hBox.scrollTop = hBox.scrollHeight;
+            }, 1000);
+        }
+        function sendUserMessage() { const input = document.getElementById('ai-user-input'); const val = input.value.trim(); if (val !== "") { askShark(val); input.value = ""; } }
+        function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
+        window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
+        setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
+        function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
+
+        // Main Terminal (In Section)
+        function sendMainMessage() {
+            const input = document.getElementById('main-user-input');
+            const val = input.value.trim(); if(!val) return;
+            const win = document.getElementById('main-chat-window');
+            win.innerHTML += `<div class="bg-white/10 text-white border border-white/20 p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] text-sm shadow-md">${val}</div>`;
+            input.value = ''; win.scrollTop = win.scrollHeight;
+            const lid = 'main-loading-' + Date.now();
+            win.innerHTML += `<div id="${lid}" class="bg-sci-cyan/5 text-gray-400 p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm flex items-center gap-2 mt-4 border border-sci-cyan/20"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 分析中...</div>`;
+            win.scrollTop = win.scrollHeight;
+            setTimeout(() => {
+                document.getElementById(lid).outerHTML = `<div class="bg-sci-cyan/10 border border-sci-cyan/50 text-sci-cyan p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm mt-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">根據您的目標「${val}」，我建議您參考我們下方的<b>「課程方案區塊」</b>，並填寫表單領取 $400 專屬體驗憑證！</div>`;
+                win.scrollTop = win.scrollHeight;
+            }, 1200);
+        }
+
+        // PWA
+        let deferredPrompt; const installAppBtn = document.getElementById('install-app-btn');
+        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if(installAppBtn) installAppBtn.classList.remove('hidden'); });
+        if(installAppBtn) installAppBtn.addEventListener('click', async () => { if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') { installAppBtn.classList.add('hidden'); } deferredPrompt = null; } });
+
+        document.addEventListener('DOMContentLoaded', () => { 
+            if(currentLang==='en') applyLanguage(); 
+            setTimeout(typeWriter, 800); 
+        });
+    </script>
 </body>
 </html>
