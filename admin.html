@@ -14,87 +14,227 @@
         body { background-color: var(--theme-base); color: #e2e8f0; font-family: 'Noto Sans TC', sans-serif; }
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         input:focus { outline: none; border-color: var(--theme-cyan); box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+        .tab-btn.active { border-color: #00f0ff; color: #00f0ff; background: rgba(0,240,255,0.08); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .kpi-card { background: #0f131a; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1rem; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .status-ok { background: #00ff41; box-shadow: 0 0 6px #00ff41; }
+        .status-warn { background: #ffd700; box-shadow: 0 0 6px #ffd700; }
+        .status-err { background: #ff003c; box-shadow: 0 0 6px #ff003c; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen p-4">
 
-    <div class="max-w-md w-full bg-[#0f131a] border border-white/10 rounded-xl p-8 shadow-2xl relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent"></div>
-        
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-black text-white font-orbitron italic tracking-wider mb-2">HCF CONTROL</h1>
-            <p class="text-xs text-[#00f0ff] tracking-[0.3em] font-mono">SYSTEM ADMINISTRATION</p>
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl relative overflow-hidden mb-4">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent"></div>
+            <div class="text-center">
+                <h1 class="text-2xl font-black text-white font-orbitron italic tracking-wider mb-1">HCF CONTROL</h1>
+                <p class="text-xs text-[#00f0ff] tracking-[0.3em] font-mono">SYSTEM ADMINISTRATION</p>
+            </div>
         </div>
 
-        <div class="mb-6">
+        <!-- Password (shared) -->
+        <div class="bg-[#0f131a] border border-white/10 rounded-xl px-6 py-4 mb-4">
             <label class="block text-xs text-gray-400 font-bold mb-2 tracking-widest">ACCESS CODE</label>
             <div class="relative">
-                <input type="password" id="password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-3 rounded text-center tracking-widest font-mono text-lg transition-all focus:border-[#00f0ff]">
+                <input type="password" id="password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-2.5 rounded text-center tracking-widest font-mono transition-all focus:border-[#00f0ff]">
                 <i class="fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
             </div>
-            <p class="text-[10px] text-gray-500 mt-2 text-center">* 預設密碼: hcf2026</p>
+            <p class="text-[10px] text-gray-500 mt-1 text-center">* 預設密碼: hcf2026</p>
         </div>
 
-        <div class="grid grid-cols-2 gap-3 mb-6">
-            <button onclick="setTheme('default')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/10">
-                <span class="relative z-10 text-sm font-bold text-[#00f0ff] group-hover:text-white transition-colors">DEFAULT (CYAN)</span>
-                <div class="absolute inset-0 bg-[#00f0ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-4">
+            <button onclick="switchTab('theme')" id="tab-theme" class="tab-btn active flex-1 py-2 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400">
+                <i class="fa-solid fa-palette mr-1"></i>主題控制
             </button>
-            
-            <button onclick="setTheme('red')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ff003c] transition-all bg-[#ff003c]/10">
-                <span class="relative z-10 text-sm font-bold text-[#ff003c] group-hover:text-white transition-colors">RED</span>
-                <div class="absolute inset-0 bg-[#ff003c] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            <button onclick="switchTab('ai')" id="tab-ai" class="tab-btn flex-1 py-2 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400">
+                <i class="fa-solid fa-robot mr-1"></i>AI 儀表板
             </button>
-            
-            <button onclick="setTheme('green')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00ff41] transition-all bg-[#00ff41]/10">
-                <span class="relative z-10 text-sm font-bold text-[#00ff41] group-hover:text-white transition-colors">GREEN</span>
-                <div class="absolute inset-0 bg-[#00ff41] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </button>
-            
-            <button onclick="setTheme('purple')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#bf00ff] transition-all bg-[#bf00ff]/10">
-                <span class="relative z-10 text-sm font-bold text-[#bf00ff] group-hover:text-white transition-colors">PURPLE</span>
-                <div class="absolute inset-0 bg-[#bf00ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </button>
-
-            <button onclick="setTheme('gold')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ffd700] transition-all bg-[#ffd700]/10">
-                <span class="relative z-10 text-sm font-bold text-[#ffd700] group-hover:text-black transition-colors">GOLD</span>
-                <div class="absolute inset-0 bg-[#ffd700] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </button>
-            
-            <button onclick="setTheme('white')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-white transition-all bg-white/10">
-                <span class="relative z-10 text-sm font-bold text-white group-hover:text-black transition-colors">WHITE</span>
-                <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+            <button onclick="switchTab('export')" id="tab-export" class="tab-btn flex-1 py-2 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400">
+                <i class="fa-solid fa-download mr-1"></i>數據導出
             </button>
         </div>
 
-        <div id="status-box" class="hidden p-3 rounded text-center text-xs font-bold tracking-widest mb-4 transition-all"></div>
+        <!-- Tab: Theme Control -->
+        <div id="panel-theme" class="tab-panel active bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl">
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <button onclick="setTheme('default')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/10">
+                    <span class="relative z-10 text-sm font-bold text-[#00f0ff] group-hover:text-white transition-colors">DEFAULT (CYAN)</span>
+                    <div class="absolute inset-0 bg-[#00f0ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+                <button onclick="setTheme('red')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ff003c] transition-all bg-[#ff003c]/10">
+                    <span class="relative z-10 text-sm font-bold text-[#ff003c] group-hover:text-white transition-colors">RED</span>
+                    <div class="absolute inset-0 bg-[#ff003c] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+                <button onclick="setTheme('green')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#00ff41] transition-all bg-[#00ff41]/10">
+                    <span class="relative z-10 text-sm font-bold text-[#00ff41] group-hover:text-white transition-colors">GREEN</span>
+                    <div class="absolute inset-0 bg-[#00ff41] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+                <button onclick="setTheme('purple')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#bf00ff] transition-all bg-[#bf00ff]/10">
+                    <span class="relative z-10 text-sm font-bold text-[#bf00ff] group-hover:text-white transition-colors">PURPLE</span>
+                    <div class="absolute inset-0 bg-[#bf00ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+                <button onclick="setTheme('gold')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-[#ffd700] transition-all bg-[#ffd700]/10">
+                    <span class="relative z-10 text-sm font-bold text-[#ffd700] group-hover:text-black transition-colors">GOLD</span>
+                    <div class="absolute inset-0 bg-[#ffd700] translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+                <button onclick="setTheme('white')" class="group relative overflow-hidden py-3 rounded border border-white/20 hover:border-white transition-all bg-white/10">
+                    <span class="relative z-10 text-sm font-bold text-white group-hover:text-black transition-colors">WHITE</span>
+                    <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </button>
+            </div>
+            <div id="status-box" class="hidden p-3 rounded text-center text-xs font-bold tracking-widest mb-2 transition-all"></div>
+        </div>
 
-        <div class="text-center">
+        <!-- Tab: AI Dashboard -->
+        <div id="panel-ai" class="tab-panel bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-sm font-bold text-[#00f0ff] font-mono tracking-widest">AI 性能儀表板</h2>
+                <button onclick="loadAIMetrics()" class="text-xs text-gray-400 hover:text-white border border-white/20 rounded px-2 py-1 transition-all">
+                    <i class="fa-solid fa-rotate-right mr-1"></i>刷新
+                </button>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 gap-3 mb-4" id="kpi-grid">
+                <div class="kpi-card">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">CLAUDE</div>
+                    <div class="text-lg font-black text-white" id="kpi-claude-rate">--</div>
+                    <div class="text-[10px] text-gray-400">成功率</div>
+                    <div class="text-xs text-[#00f0ff] mt-1" id="kpi-claude-time">-- ms</div>
+                    <div class="text-[10px] text-gray-400">平均回應時間</div>
+                    <div class="text-xs text-white mt-1" id="kpi-claude-count">--</div>
+                    <div class="text-[10px] text-gray-400">今日對話數</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">GEMINI</div>
+                    <div class="text-lg font-black text-white" id="kpi-gemini-rate">--</div>
+                    <div class="text-[10px] text-gray-400">成功率</div>
+                    <div class="text-xs text-[#00f0ff] mt-1" id="kpi-gemini-time">-- ms</div>
+                    <div class="text-[10px] text-gray-400">平均回應時間</div>
+                    <div class="text-xs text-white mt-1" id="kpi-gemini-count">--</div>
+                    <div class="text-[10px] text-gray-400">今日對話數</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">CONVERSION</div>
+                    <div class="text-lg font-black text-white" id="kpi-conv-rate">--</div>
+                    <div class="text-[10px] text-gray-400">轉換率</div>
+                    <div class="text-xs text-[#00f0ff] mt-1" id="kpi-conv-ai">--</div>
+                    <div class="text-[10px] text-gray-400">AI 互動數</div>
+                    <div class="text-xs text-white mt-1" id="kpi-conv-book">--</div>
+                    <div class="text-[10px] text-gray-400">新預約數</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">MONTHLY COST</div>
+                    <div class="text-lg font-black text-white" id="kpi-cost-total">--</div>
+                    <div class="text-[10px] text-gray-400">總成本 (USD)</div>
+                    <div class="text-xs text-[#00f0ff] mt-1" id="kpi-cost-claude">--</div>
+                    <div class="text-[10px] text-gray-400">Claude 成本</div>
+                    <div class="text-xs text-white mt-1" id="kpi-cost-gemini">--</div>
+                    <div class="text-[10px] text-gray-400">Gemini 成本</div>
+                </div>
+            </div>
+
+            <!-- System Health -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-2">SYSTEM HEALTH</div>
+                <div class="flex flex-col gap-2" id="health-list">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-gray-400">Claude API</span>
+                        <span id="health-claude" class="text-gray-500">--</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-gray-400">Gemini API</span>
+                        <span id="health-gemini" class="text-gray-500">--</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-gray-400">Supabase DB</span>
+                        <span id="health-supabase" class="text-gray-500">--</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-gray-400">系統可用率</span>
+                        <span id="health-avail" class="text-[#00f0ff] font-bold">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Logs -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-2">RECENT CONVERSATIONS</div>
+                <div id="recent-logs" class="flex flex-col gap-2 text-xs">
+                    <div class="text-gray-500">載入中...</div>
+                </div>
+            </div>
+
+            <!-- Top Questions -->
+            <div class="kpi-card">
+                <div class="text-[10px] text-gray-500 font-mono mb-2">TOP QUESTIONS</div>
+                <div id="top-questions" class="flex flex-col gap-1 text-xs">
+                    <div class="text-gray-500">載入中...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Export -->
+        <div id="panel-export" class="tab-panel bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl">
+            <h2 class="text-sm font-bold text-[#00f0ff] font-mono tracking-widest mb-4">數據導出</h2>
+            <div class="flex flex-col gap-3">
+                <button onclick="downloadReport('day')" class="group flex items-center justify-between py-3 px-4 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/5 hover:bg-[#00f0ff]/10">
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-white">日報 (CSV)</div>
+                        <div class="text-[10px] text-gray-400">今日 AI 對話數據</div>
+                    </div>
+                    <i class="fa-solid fa-file-csv text-[#00f0ff]"></i>
+                </button>
+                <button onclick="downloadReport('week')" class="group flex items-center justify-between py-3 px-4 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/5 hover:bg-[#00f0ff]/10">
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-white">週報 (CSV)</div>
+                        <div class="text-[10px] text-gray-400">過去 7 天數據</div>
+                    </div>
+                    <i class="fa-solid fa-file-csv text-[#00f0ff]"></i>
+                </button>
+                <button onclick="downloadReport('month')" class="group flex items-center justify-between py-3 px-4 rounded border border-white/20 hover:border-[#00f0ff] transition-all bg-[#00f0ff]/5 hover:bg-[#00f0ff]/10">
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-white">月報 (CSV)</div>
+                        <div class="text-[10px] text-gray-400">本月完整數據</div>
+                    </div>
+                    <i class="fa-solid fa-file-csv text-[#00f0ff]"></i>
+                </button>
+            </div>
+            <div id="export-status" class="hidden mt-4 p-3 rounded text-center text-xs font-bold"></div>
+        </div>
+
+        <div class="text-center mt-4">
             <a href="index.html" class="text-xs text-gray-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5">返回首頁</a>
         </div>
     </div>
 
     <script>
+        // ── Tab switching ──────────────────────────────────────────────
+        function switchTab(name) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            document.getElementById('panel-' + name).classList.add('active');
+            if (name === 'ai') loadAIMetrics();
+        }
+
+        // ── Theme control (unchanged) ──────────────────────────────────
         async function setTheme(theme) {
             const password = document.getElementById('password').value;
-            const statusBox = document.getElementById('status-box');
-            
-            if (!password) {
-                showStatus('請輸入密碼', 'error');
-                return;
-            }
-
+            if (!password) { showStatus('請輸入密碼', 'error'); return; }
             showStatus('更新中...', 'loading');
-
             try {
                 const response = await fetch('/.netlify/functions/set-theme', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ theme, password })
                 });
-
                 const data = await response.json();
-
                 if (response.ok) {
                     showStatus('更新成功！全站主題已切換', 'success');
                 } else {
@@ -108,17 +248,112 @@
         function showStatus(msg, type) {
             const box = document.getElementById('status-box');
             box.classList.remove('hidden', 'bg-red-500/20', 'text-red-500', 'bg-green-500/20', 'text-green-500', 'bg-blue-500/20', 'text-blue-500');
-            
-            if (type === 'error') {
-                box.classList.add('bg-red-500/20', 'text-red-500');
-            } else if (type === 'success') {
-                box.classList.add('bg-green-500/20', 'text-green-500');
-            } else {
-                box.classList.add('bg-blue-500/20', 'text-blue-500');
-            }
-            
+            if (type === 'error') box.classList.add('bg-red-500/20', 'text-red-500');
+            else if (type === 'success') box.classList.add('bg-green-500/20', 'text-green-500');
+            else box.classList.add('bg-blue-500/20', 'text-blue-500');
             box.textContent = msg;
             box.classList.remove('hidden');
+        }
+
+        // ── AI Dashboard ───────────────────────────────────────────────
+        async function loadAIMetrics() {
+            const password = document.getElementById('password').value;
+            if (!password) { alert('請先輸入密碼'); return; }
+
+            // Load KPI metrics
+            try {
+                const res = await fetch(`/.netlify/functions/admin-ai-metrics?password=${encodeURIComponent(password)}`);
+                if (res.ok) {
+                    const d = await res.json();
+                    document.getElementById('kpi-claude-rate').textContent = d.claude.successRate + '%';
+                    document.getElementById('kpi-claude-time').textContent = d.claude.avgResponseTime + ' ms';
+                    document.getElementById('kpi-claude-count').textContent = d.claude.todayCount;
+                    document.getElementById('kpi-gemini-rate').textContent = d.gemini.successRate + '%';
+                    document.getElementById('kpi-gemini-time').textContent = d.gemini.avgResponseTime + ' ms';
+                    document.getElementById('kpi-gemini-count').textContent = d.gemini.todayCount;
+                    document.getElementById('kpi-conv-rate').textContent = d.conversion.rate + '%';
+                    document.getElementById('kpi-conv-ai').textContent = d.conversion.aiInteractions;
+                    document.getElementById('kpi-conv-book').textContent = d.conversion.newBookings;
+                    document.getElementById('kpi-cost-total').textContent = '$' + d.monthlyCost.total;
+                    document.getElementById('kpi-cost-claude').textContent = '$' + d.monthlyCost.claude;
+                    document.getElementById('kpi-cost-gemini').textContent = '$' + d.monthlyCost.gemini;
+                }
+            } catch (e) { console.warn('metrics error', e); }
+
+            // Load system health
+            try {
+                const res = await fetch(`/.netlify/functions/admin-logs?password=${encodeURIComponent(password)}`);
+                if (res.ok) {
+                    const d = await res.json();
+                    const fmt = (s) => s === 'configured'
+                        ? '<span class="status-dot status-ok mr-1"></span><span class="text-green-400">已配置</span>'
+                        : '<span class="status-dot status-err mr-1"></span><span class="text-red-400">未配置</span>';
+                    document.getElementById('health-claude').innerHTML = fmt(d.claudeStatus);
+                    document.getElementById('health-gemini').innerHTML = fmt(d.geminiStatus);
+                    document.getElementById('health-supabase').innerHTML = fmt(d.supabaseStatus);
+                    document.getElementById('health-avail').textContent = d.availability + '%';
+                }
+            } catch (e) { console.warn('logs error', e); }
+
+            // Load user behavior
+            try {
+                const res = await fetch(`/.netlify/functions/admin-user-behavior?password=${encodeURIComponent(password)}`);
+                if (res.ok) {
+                    const d = await res.json();
+
+                    // Recent logs
+                    const logsEl = document.getElementById('recent-logs');
+                    if (d.recentLogs && d.recentLogs.length) {
+                        logsEl.innerHTML = d.recentLogs.map(l => `
+                            <div class="flex items-start gap-2 py-1 border-b border-white/5">
+                                <span class="font-mono text-[10px] ${l.engine === 'claude' ? 'text-purple-400' : 'text-blue-400'} shrink-0">[${(l.engine || '?').toUpperCase()}]</span>
+                                <span class="text-gray-300 flex-1 truncate">${l.userMessage || '-'}</span>
+                                <span class="text-gray-500 text-[10px] shrink-0">${l.responseTime || 0}ms</span>
+                            </div>`).join('');
+                    } else {
+                        logsEl.innerHTML = '<div class="text-gray-500">暫無數據</div>';
+                    }
+
+                    // Top questions
+                    const qEl = document.getElementById('top-questions');
+                    if (d.topQuestions && d.topQuestions.length) {
+                        qEl.innerHTML = d.topQuestions.slice(0, 5).map((q, i) => `
+                            <div class="flex items-center gap-2 py-1">
+                                <span class="text-[10px] text-gray-500 w-4">${i + 1}.</span>
+                                <span class="text-gray-300 flex-1 truncate">${q.question}</span>
+                                <span class="text-[#00f0ff] font-bold text-[10px]">${q.count}</span>
+                            </div>`).join('');
+                    } else {
+                        qEl.innerHTML = '<div class="text-gray-500">暫無數據</div>';
+                    }
+                }
+            } catch (e) { console.warn('behavior error', e); }
+        }
+
+        // ── Data Export ────────────────────────────────────────────────
+        async function downloadReport(range) {
+            const password = document.getElementById('password').value;
+            if (!password) { alert('請先輸入密碼'); return; }
+            const statusEl = document.getElementById('export-status');
+            statusEl.className = 'mt-4 p-3 rounded text-center text-xs font-bold bg-blue-500/20 text-blue-400';
+            statusEl.textContent = '準備下載...';
+            const url = `/.netlify/functions/admin-export?password=${encodeURIComponent(password)}&range=${range}`;
+            try {
+                const res = await fetch(url);
+                if (!res.ok) { throw new Error('下載失敗'); }
+                const blob = await res.blob();
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                const cd = res.headers.get('Content-Disposition') || '';
+                const match = cd.match(/filename="([^"]+)"/);
+                a.download = match ? match[1] : `HCF_Report_${range}.csv`;
+                a.click();
+                statusEl.className = 'mt-4 p-3 rounded text-center text-xs font-bold bg-green-500/20 text-green-400';
+                statusEl.textContent = '下載成功！';
+            } catch (e) {
+                statusEl.className = 'mt-4 p-3 rounded text-center text-xs font-bold bg-red-500/20 text-red-400';
+                statusEl.textContent = '下載失敗，請確認密碼並重試';
+            }
         }
     </script>
 </body>
