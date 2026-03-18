@@ -919,10 +919,16 @@
             const lid = 'loading-' + Date.now();
             hBox.innerHTML += `<div id="${lid}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>`;
             hBox.scrollTop = hBox.scrollHeight;
-            setTimeout(() => {
-                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">請點擊下方按鈕或留下您的聯絡方式，我們將為您安排專屬教練！</div>`;
-                hBox.scrollTop = hBox.scrollHeight;
-            }, 1000);
+            try {
+                const res = await fetch('/.netlify/functions/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: question }) });
+                const data = await res.json();
+                const reply = data.reply || '⚠️ 請直接點擊下方 LINE 找真人客服！';
+                const engineBadge = data.engine ? `<span class="ml-1 text-[9px] opacity-40">[${data.engine}]</span>` : '';
+                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${reply}${engineBadge}</div>`;
+            } catch (e) {
+                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed">⚠️ 鯊魚教練去打沙包了！請點擊下方 LINE 找真人客服！🥊</div>`;
+            }
+            hBox.scrollTop = hBox.scrollHeight;
         }
         function sendUserMessage() { const input = document.getElementById('ai-user-input'); const val = input.value.trim(); if (val !== "") { askShark(val); input.value = ""; } }
         function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
