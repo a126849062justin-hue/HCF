@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 <head>
+    <!-- Google Analytics 4 - Replace GA_MEASUREMENT_ID with your actual ID -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#02040a">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>HCF 新手問答 | 新竹格鬥館</title>
@@ -14,8 +24,9 @@
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
     <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
     <meta property="og:image" content="hero1.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:url" content="https://hcf-combat.netlify.app/faq.html">
     <meta property="og:type" content="website">
+    <link rel="canonical" href="https://hcf-combat.netlify.app/faq.html">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
@@ -24,6 +35,9 @@
 
     <link rel="manifest" href="manifest.json">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -78,10 +92,6 @@
         html { background-color: var(--theme-base); }
         * { -webkit-tap-highlight-color: transparent; }
 
-        @media (min-width: 768px) {
-            body { cursor: none; }
-            a, button, input, select, details, summary, .cursor-pointer { cursor: none !important; }
-        }
         
         .custom-cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--theme-cyan); border-radius: 50%; z-index: 10000; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
         .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid rgba(var(--theme-cyan-rgb), 0.4); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s; display: none; }
@@ -142,7 +152,7 @@
         @media (max-width: 768px) {
             .bg-grain { display: none !important; }
             #bg-canvas { display: none !important; }
-            .ai-container { bottom: 110px; right: 16px; }
+            .ai-container { bottom: 140px; right: 16px; }
             .ai-mascot-img { width: 85px; height: 85px; } 
             .ai-chat-box { bottom: 95px; width: calc(100vw - 32px); right: 0; border-radius: 12px; }
             #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
@@ -272,7 +282,7 @@
                     <button onclick="toggleLanguage()" class="text-white hover:text-sci-cyan text-xs font-bold border border-white/20 bg-black/50 px-2 py-1.5 rounded relative backdrop-blur-sm mr-2">
                         <span id="mobile-lang-label">EN</span>
                     </button>
-                    <button onclick="toggleMobileMenu()" class="text-white hover:text-sci-cyan w-10 h-10 border border-white/20 bg-black/50 rounded flex items-center justify-center relative backdrop-blur-sm" aria-label="Menu">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-sci-cyan w-10 h-10 border border-white/20 bg-black/50 rounded flex items-center justify-center relative backdrop-blur-sm" aria-label="開啟選單">
                         <i class="fa-solid fa-bars-staggered"></i>
                     </button>
                 </div>
@@ -280,7 +290,7 @@
         </div>
     </nav>
     
-    <div id="drawer-backdrop" class="fixed inset-0 bg-black/80 z-[130] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm" onclick="closeAllDrawers()"></div>
+    <div id="drawer-backdrop" class="fixed inset-0 bg-black/80 z-[130] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm" onclick="closeAllDrawers()" aria-hidden="true"></div>
     
     <div id="brand-drawer" class="fixed top-0 left-0 w-[85%] sm:w-[400px] h-[100dvh] max-h-screen z-[140] bg-sci-base/95 backdrop-blur-lg border-r border-white/10 transform -translate-x-full transition-transform duration-300 flex flex-col pt-20 px-6 overflow-y-auto overscroll-contain">
         <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
@@ -409,10 +419,10 @@
         </div>
         <div id="zzz-mark" class="zzz-text">Zzz</div>
         <div id="angry-bubble" class="angry-bubble text-xs">有問題？問我！</div>
-        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" onerror="this.src='https://placehold.co/600x600/0f131a/00f0ff?text=SHARK'; this.onerror=null;">
+        <img src="shark_logo.png" alt="點擊與AI教練對話" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" onerror="this.src='https://placehold.co/600x600/0f131a/00f0ff?text=SHARK'; this.onerror=null;">
     </div>
 
-    <button id="rocket-top" class="fixed bottom-[110px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
+    <button id="rocket-top" class="fixed bottom-[140px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
         <i class="fa-solid fa-chevron-up text-lg"></i>
     </button>
     <main>
@@ -945,6 +955,32 @@
             if(currentLang==='en') applyLanguage(); 
             setTimeout(typeWriter, 800); 
         });
+        // Mobile Sticky CTA
+        const mobileCta = document.getElementById('mobile-sticky-cta');
+        if (mobileCta) {
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 300) {
+                    mobileCta.classList.remove('translate-y-full');
+                    mobileCta.classList.add('translate-y-0');
+                } else {
+                    mobileCta.classList.add('translate-y-full');
+                    mobileCta.classList.remove('translate-y-0');
+                }
+            }, { passive: true });
+        }
     </script>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="fixed bottom-0 left-0 right-0 z-[100] lg:hidden bg-sci-base/95 backdrop-blur-md border-t border-sci-cyan/30 px-4 py-3 transform translate-y-full transition-transform duration-300" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+        <div class="flex gap-3 max-w-lg mx-auto">
+            <a href="pricing.html" class="flex-1 py-3 bg-sci-cyan text-black text-center font-black text-sm tracking-widest rounded-lg shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)] active:scale-95 transition-transform">
+                <i class="fa-solid fa-bolt mr-1"></i> $400 體驗預約
+            </a>
+            <a href="https://lin.ee/7lidUv0" target="_blank" class="py-3 px-5 bg-[#06C755] text-white text-center font-black text-sm rounded-lg shadow-[0_0_10px_rgba(6,199,85,0.3)] active:scale-95 transition-transform">
+                <i class="fa-brands fa-line text-lg"></i>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
