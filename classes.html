@@ -26,7 +26,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -102,7 +102,7 @@
         ::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.8); }
 
         #mouse-glow-effect { --mouse-x: 50vw; --mouse-y: 50vh; position: fixed; inset: 0; z-index: 40; pointer-events: none; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.08), transparent 40%); opacity: 0; transition: opacity 0.5s ease; mix-blend-mode: screen; }
-        .bg-grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.03; pointer-events: none; z-index: 9998; }
+        .bg-grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 9998; }
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
 
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--theme-base); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.4s ease-out, visibility 0.4s; }
@@ -193,13 +193,13 @@
     </div>
 
     <div class="bg-grain hidden md:block"></div>
-    <canvas id="bg-canvas" class="hidden md:block"></canvas>
+    <canvas id="bg-canvas" class="hidden md:block" aria-hidden="true">您的瀏覽器不支援 Canvas</canvas>
 
     <nav class="fixed w-full z-[120] bg-transparent transition-all duration-300 py-4" id="navbar">
         <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0" onclick="toggleBrandDrawer()">
-                    <img src="shark_logo.png" onerror="this.src='https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO'; this.onerror=null;" alt="HCF Logo" class="hidden sm:block h-16 w-auto object-contain"> 
+                    <img src="shark_logo.png" alt="HCF Logo" class="hidden sm:block h-16 w-auto object-contain" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
                     <div class="flex flex-col justify-center">
                         <span class="text-3xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
                         <span class="hidden sm:block text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
@@ -285,7 +285,7 @@
     <div id="brand-drawer" class="fixed top-0 left-0 w-[85%] sm:w-[400px] h-[100dvh] max-h-screen z-[140] bg-sci-base/95 backdrop-blur-lg border-r border-white/10 transform -translate-x-full transition-transform duration-300 flex flex-col pt-20 px-6 overflow-y-auto overscroll-contain">
         <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
         <div class="flex flex-col items-center mt-4 mb-8">
-            <img src="shark_logo.png" onerror="this.src='https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO'; this.onerror=null;" alt="HCF Logo" class="w-32 h-auto object-contain mb-4" loading="lazy">
+            <img src="shark_logo.png" alt="HCF Logo" class="w-32 h-auto object-contain mb-4" loading="lazy" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO">
             <h2 class="text-2xl font-orbitron font-black text-white italic tracking-tighter mb-2">HCF</h2>
             <span class="text-[0.6rem] text-sci-cyan tracking-[0.3em] font-orbitron font-bold">COMBAT SYSTEM</span>
         </div>
@@ -409,7 +409,7 @@
         </div>
         <div id="zzz-mark" class="zzz-text">Zzz</div>
         <div id="angry-bubble" class="angry-bubble text-xs">有問題？問我！</div>
-        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" onerror="this.src='https://placehold.co/600x600/0f131a/00f0ff?text=SHARK'; this.onerror=null;">
+        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" data-fallback="https://placehold.co/600x600/0f131a/00f0ff?text=SHARK">
     </div>
 
     <button id="rocket-top" class="fixed bottom-[110px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
@@ -706,7 +706,7 @@
                 update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>w)this.vx*=-1; if(this.y<0||this.y>h)this.vy*=-1; }
                 draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle='rgba(var(--theme-cyan-rgb),0.15)'; ctx.fill(); }
             }
-            function init() { resize(); pts=[]; for(let i=0;i<30;i++) pts.push(new P()); }
+            function init() { resize(); pts=[]; const isMobile = window.innerWidth < 768; const isTablet = window.innerWidth < 1024; const particleCount = isMobile ? 0 : (isTablet ? 15 : 40); for(let i=0;i<particleCount;i++) pts.push(new P()); }
             function anim() {
                 ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(var(--theme-cyan-rgb),0.03)'; ctx.lineWidth=0.5;
                 for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y; if(dx*dx+dy*dy<10000){ ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke(); } } }
@@ -985,6 +985,15 @@
         document.addEventListener('DOMContentLoaded', () => { 
             if(currentLang==='en') applyLanguage(); 
             setTimeout(typeWriter, 800); 
+        });
+    
+        // 統一圖片錯誤處理
+        document.querySelectorAll('img[data-fallback]').forEach(function(img) {
+            img.addEventListener('error', function() {
+                if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                    this.src = this.dataset.fallback;
+                }
+            }, { once: true });
         });
     </script>
 </body>
