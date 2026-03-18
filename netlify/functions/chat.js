@@ -1,3 +1,4 @@
+const Anthropic = require("@anthropic-ai/sdk");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const HCF_SYSTEM_PROMPT = `你現在是 HCF 新竹格鬥基地的「智能鯊魚教練兼金牌銷售」。
@@ -17,34 +18,35 @@ const HCF_SYSTEM_PROMPT = `你現在是 HCF 新竹格鬥基地的「智能鯊魚
 
 絕對禁止：不要編造不存在的課程與價格，不要給出囉嗦的長篇大論。`;
 
-// Determine preferred engine based on time-of-day (Taiwan timezone)
-function selectEngine() {
-    const hour = parseInt(new Date().toLocaleString('en-US', { timeZone: 'Asia/Taipei', hour: 'numeric', hour12: false }), 10);
-    // Peak hours 18:00-20:00 Taiwan time -> prefer Gemini (faster)
-    if (hour >= 18 && hour < 20) return "gemini";
-    // Off-peak -> prefer Claude if available
-    if (process.env.ANTHROPIC_API_KEY) return "claude";
-    return "gemini";
-}
-
-async function callGemini(message) {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const prompt = `${HCF_SYSTEM_PROMPT}\n\n使用者的問題：「${message}」`;
-    const result = await model.generateContent(prompt);
-    return result.response.text();
-}
-
-async function callClaude(message) {
-    const Anthropic = require("@anthropic-ai/sdk");
-    const client = new Anthropic.default({ apiKey: process.env.ANTHROPIC_API_KEY });
+async function tryClaudeAPI(message) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+        throw new Error("ANTHROPIC_API_KEY not configured");
+    }
+    console.log("📌 嘗試 Claude API...");
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const response = await client.messages.create({
         model: "claude-3-5-haiku-20241022",
         max_tokens: 256,
         system: HCF_SYSTEM_PROMPT,
         messages: [{ role: "user", content: message }],
     });
-    return response.content[0].text;
+    const reply = response.content[0].text;
+    console.log("✅ Claude 成功！");
+    return { reply, engine: "claude" };
+}
+
+async function tryGeminiAPI(message) {
+    if (!process.env.GEMINI_API_KEY) {
+        throw new Error("GEMINI_API_KEY not configured");
+    }
+    console.log("📌 嘗試 Gemini API...");
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const prompt = `${HCF_SYSTEM_PROMPT}\n\n使用者的問題：「${message}」`;
+    const result = await model.generateContent(prompt);
+    const reply = result.response.text();
+    console.log("✅ Gemini 成功！");
+    return { reply, engine: "gemini" };
 }
 
 async function logToSupabase(engine, message, responseTime, success) {
@@ -74,49 +76,39 @@ exports.handler = async (event) => {
             return { statusCode: 400, headers, body: JSON.stringify({ reply: "請輸入問題！" }) };
         }
 
-        const preferred = selectEngine();
-        const fallback = preferred === "claude" ? "gemini" : "claude";
         const startTime = Date.now();
-        let reply = null;
-        let usedEngine = preferred;
 
-        // Try preferred engine
+        // Try Claude first (higher quality)
         try {
-            if (preferred === "claude") {
-                reply = await callClaude(message);
-            } else {
-                if (!process.env.GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY");
-                reply = await callGemini(message);
-            }
-        } catch (primaryError) {
-            console.error(`Primary engine (${preferred}) failed:`, primaryError.message);
-            // Failover to the other engine
-            usedEngine = fallback;
-            if (fallback === "gemini" && process.env.GEMINI_API_KEY) {
-                reply = await callGemini(message);
-            } else if (fallback === "claude" && process.env.ANTHROPIC_API_KEY) {
-                reply = await callClaude(message);
-            } else {
-                throw primaryError;
-            }
+            const result = await tryClaudeAPI(message);
+            const responseTime = Date.now() - startTime;
+            await logToSupabase(result.engine, message, responseTime, true);
+            return { statusCode: 200, headers, body: JSON.stringify(result) };
+        } catch (claudeError) {
+            console.error("❌ Claude 失敗，轉移到 Gemini:", claudeError.message);
         }
 
-        const responseTime = Date.now() - startTime;
-        await logToSupabase(usedEngine, message, responseTime, true);
-
-        return {
-            statusCode: 200,
-            headers,
-            body: JSON.stringify({ reply, engine: usedEngine }),
-        };
+        // Fallback to Gemini
+        try {
+            const result = await tryGeminiAPI(message);
+            const responseTime = Date.now() - startTime;
+            await logToSupabase(result.engine, message, responseTime, true);
+            return { statusCode: 200, headers, body: JSON.stringify(result) };
+        } catch (geminiError) {
+            console.error("❌ Gemini 也失敗了:", geminiError.message);
+            throw geminiError;
+        }
 
     } catch (error) {
-        console.error("AI 錯誤日誌:", error);
+        console.error("🔴 AI 錯誤日誌:", error);
         await logToSupabase("error", "", 0, false);
         return {
             statusCode: 500,
             headers,
-            body: JSON.stringify({ reply: "⚠️ 鯊魚教練去打沙包了！請直接點擊下方 LINE 找真人客服！🥊" }),
+            body: JSON.stringify({
+                reply: "⚠️ 鯊魚教練現在無法回應。請直接點擊下方 LINE 找真人客服！🥊",
+                engine: "error",
+            }),
         };
     }
 };
