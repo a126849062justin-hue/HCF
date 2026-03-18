@@ -1288,7 +1288,7 @@
 
         // 6. Language & Theme Toggles
         let currentLang = localStorage.getItem('hcf_lang') || 'zh';
-        langTexts = { zh: { typewriter: "HCF 新竹格鬥", label: "EN/中", mobileLabel: "EN" }, en: { typewriter: "Win once for yourself in this life", label: "中/EN", mobileLabel: "中" } };
+        langTexts = { zh: { typewriter: "HCF 新 竹 格 鬥", label: "EN/中", mobileLabel: "EN" }, en: { typewriter: "Win once for yourself in this life", label: "中/EN", mobileLabel: "中" } };
         function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); applyLanguage(); }
         function applyLanguage() {
             document.querySelectorAll('.lang-text').forEach(el => {
