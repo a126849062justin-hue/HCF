@@ -2,12 +2,16 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="robots" content="noindex, nofollow">
     <title>HCF 官網中控台</title>
+    <!-- TODO: Replace with built CSS: run `npm run build:css` then use <link rel="stylesheet" href="styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --theme-base: #02040a; --theme-cyan: #00f0ff; }
@@ -43,7 +47,7 @@
                 <input type="password" id="password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-2.5 rounded text-center tracking-widest font-mono transition-all focus:border-[#00f0ff]">
                 <i class="fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
             </div>
-            <p class="text-[10px] text-gray-500 mt-1 text-center">* 預設密碼: hcf2026</p>
+            <p class="text-[10px] text-gray-500 mt-1 text-center">* 請向管理員索取密碼</p>
         </div>
 
         <!-- Tabs -->
