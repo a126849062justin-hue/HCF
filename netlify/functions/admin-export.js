@@ -12,7 +12,7 @@ exports.handler = async (event) => {
         };
     }
 
-    if (event.httpMethod !== "GET") return { statusCode: 405, body: "Unauthorized" };
+    if (event.httpMethod !== "GET") return { statusCode: 405, body: "Method Not Allowed" };
 
     const params = new URLSearchParams(event.rawQuery || "");
     const authHeader = event.headers.authorization || event.headers.Authorization || '';

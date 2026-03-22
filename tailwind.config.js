@@ -4,6 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // sci colors reference CSS custom properties (--theme-*-rgb) defined
+        // via inline <style> in each HTML page (set dynamically by the theme system)
         sci: {
           base: 'rgba(var(--theme-base-rgb), <alpha-value>)',
           surface: 'rgba(var(--theme-surface-rgb), <alpha-value>)',
