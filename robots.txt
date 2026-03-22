@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Sitemap: https://hcf-hsinchu.netlify.app/sitemap.xml

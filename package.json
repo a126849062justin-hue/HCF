@@ -1,9 +1,16 @@
 {
   "name": "hcf-ai-system",
   "version": "1.0.0",
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./styles.css --minify",
+    "watch:css": "tailwindcss -i ./input.css -o ./styles.css --watch"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",
     "@google/generative-ai": "^0.21.0",
     "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
   }
 }

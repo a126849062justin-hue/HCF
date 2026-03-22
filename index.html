@@ -2,7 +2,7 @@
 <html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#02040a">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>HCF新竹格鬥館 | 新竹泰拳首選・踢拳・散打・專業重訓</title>
@@ -13,24 +13,28 @@
     
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
     <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
-    <meta property="og:image" content="hero1.jpg">
-    <meta property="og:url" content="https://hcf-hsinchu.netlify.app">
+    <meta property="og:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
+    <meta property="og:url" content="https://hcf-hsinchu.netlify.app/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
     <meta name="twitter:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。">
-    <meta name="twitter:image" content="hero1.jpg">
+    <meta name="twitter:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
 
     <link rel="manifest" href="manifest.json">
+    <link rel="canonical" href="https://hcf-hsinchu.netlify.app/">
 
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="hero1.jpg">
+    <!-- TODO: Replace with built CSS: run `npm run build:css` then use <link rel="stylesheet" href="styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
@@ -83,7 +87,7 @@
         html { background-color: var(--theme-base); }
         * { -webkit-tap-highlight-color: transparent; }
 
-        @media (min-width: 768px) {
+        @media (hover: hover) and (pointer: fine) {
             body { cursor: none; }
             a, button, input, select, details, summary, .cursor-pointer { cursor: none !important; }
         }
@@ -210,6 +214,11 @@
         }
 
         details > summary::-webkit-details-marker { display: none; }
+    
+        :focus-visible {
+            outline: 2px solid #00f0ff;
+            outline-offset: 2px;
+        }
     </style>
     <script>
         (async function() {
@@ -235,8 +244,25 @@
             }
         })();
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "HCF新竹格鬥館",
+  "description": "新竹最強格鬥館！主打正宗泰拳、踢拳、散打、專業重訓",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "新竹市",
+    "addressRegion": "新竹",
+    "addressCountry": "TW"
+  },
+  "url": "https://hcf-hsinchu.netlify.app",
+  "image": "https://hcf-hsinchu.netlify.app/hero1.jpg"
+}
+    </script>
 </head>
 <body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-400 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:text-lg">跳至主要內容</a>
 
     <div id="custom-toast" class="fixed top-32 left-1/2 transform -translate-x-1/2 bg-sci-cyan text-black px-6 py-3 rounded font-bold tracking-widest z-[200] opacity-0 pointer-events-none transition-opacity duration-300 shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] flex items-center gap-2">
         <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span id="toast-msg">網站連結已複製！</span>
@@ -491,7 +517,7 @@
         <i class="fa-solid fa-chevron-up text-lg" aria-hidden="true"></i>
     </button>
 
-    <main>
+    <main id="main-content">
 
         <section id="home" class="relative min-h-[100svh] flex items-end justify-start overflow-hidden pb-12 pt-24 sm:pb-24 sm:pt-32 bg-sci-base">
             <div class="absolute inset-0 z-0 touch-pan-y" id="carousel">
@@ -517,7 +543,7 @@
                         <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
                     </div>
                     <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
-                        <video src="hero_video6.mp4" poster="hero1.jpg" muted playsinline preload="none" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
+                        <video src="hero_video.mp4" poster="hero1.jpg" muted playsinline preload="none" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110"></video>
                         <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
                     </div>
 

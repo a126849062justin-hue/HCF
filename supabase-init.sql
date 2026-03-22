@@ -60,6 +60,9 @@ CREATE INDEX IF NOT EXISTS idx_bookings_created_at ON bookings (created_at DESC)
 CREATE INDEX IF NOT EXISTS idx_system_logs_created_at ON system_logs (created_at DESC);
 
 -- Row Level Security (RLS) - disable for server-side access with service key
+-- ⚠️ WARNING: RLS is disabled for server-side access with service_role key ONLY
+-- In production, consider enabling RLS with proper policies
+-- Make sure to NEVER expose your service_role key to the client
 ALTER TABLE ai_interactions DISABLE ROW LEVEL SECURITY;
 ALTER TABLE page_views DISABLE ROW LEVEL SECURITY;
 ALTER TABLE bookings DISABLE ROW LEVEL SECURITY;

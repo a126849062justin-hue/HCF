@@ -13,7 +13,7 @@ export default async (req: Request, context: Context) => {
 
         // Simple password check. In a real application, use a robust authentication system.
         // For this demo, we use a simple hardcoded password.
-        if (password !== 'hcf2026') {
+        if (password !== Netlify.env.get('ADMIN_PASSWORD')) {
              return new Response(JSON.stringify({ error: '密碼錯誤 (Invalid password)' }), { 
                  status: 401,
                  headers: { 'Content-Type': 'application/json' }

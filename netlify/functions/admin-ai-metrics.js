@@ -1,12 +1,29 @@
 // Admin AI Metrics - returns KPI data for Claude & Gemini
 exports.handler = async (event) => {
+    if (event.httpMethod === "OPTIONS") {
+        return {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization"
+            },
+            body: ""
+        };
+    }
+
     if (event.httpMethod !== "GET") return { statusCode: 405, body: "Method Not Allowed" };
 
     const headers = { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" };
 
-    // Require password via query param
+    // Require password via Authorization header or query param
+    const authHeader = event.headers.authorization || event.headers.Authorization || '';
+    const bearerToken = authHeader.replace('Bearer ', '');
     const params = new URLSearchParams(event.rawQuery || "");
-    if (params.get("password") !== "hcf2026") {
+    const queryPassword = params.get("password");
+    const password = bearerToken || queryPassword;
+
+    if (password !== process.env.ADMIN_PASSWORD) {
         return { statusCode: 401, headers, body: JSON.stringify({ error: "Unauthorized" }) };
     }
 
