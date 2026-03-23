@@ -126,7 +126,25 @@
         // 6. Language & Theme Toggles
         let currentLang = localStorage.getItem('hcf_lang') || 'zh';
         langTexts = { zh: { label: "EN/中", mobileLabel: "EN" }, en: { label: "中/EN", mobileLabel: "中" } };
-        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); applyLanguage(); }
+        let i18nCache = {};
+        async function loadLanguage(lang) {
+            if (i18nCache[lang]) return i18nCache[lang];
+            try {
+                const res = await fetch(`/i18n/${lang}.json`);
+                if (res.ok) { i18nCache[lang] = await res.json(); }
+            } catch(e) { console.warn('i18n load failed:', e); }
+            return i18nCache[lang] || {};
+        }
+        function getNestedValue(obj, key) {
+            return key.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
+        }
+        function applyI18nData(data) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const val = getNestedValue(data, el.dataset.i18n);
+                if (val !== undefined) el.innerHTML = val;
+            });
+        }
+        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); loadLanguage(currentLang).then(applyI18nData); applyLanguage(); }
         function applyLanguage() {
             document.querySelectorAll('.lang-text').forEach(el => {
                 if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; } 
@@ -135,6 +153,7 @@
             const ll = document.getElementById('lang-label'); if(ll) ll.innerText = langTexts[currentLang].label;
             const ml = document.getElementById('mobile-lang-label'); if(ml) ml.innerText = langTexts[currentLang].mobileLabel;
         }
+        loadLanguage(currentLang).then(data => { if (currentLang !== 'zh') applyI18nData(data); });
         function setTheme(theme) {
             document.documentElement.classList.add('theme-transitioning');
             if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
