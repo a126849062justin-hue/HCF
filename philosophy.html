@@ -554,7 +554,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg">
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg stagger-item">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.05">H</div>
                         <div class="relative z-10">
@@ -572,7 +572,7 @@
                         </div>
                     </div>
 
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-sci-cyan/50 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-sci-cyan/50 transition-colors duration-500 reveal shadow-lg stagger-item" style="transition-delay: 100ms;">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sci-cyan to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-sci-cyan/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.08">C</div>
                         <div class="relative z-10">
@@ -590,7 +590,7 @@
                         </div>
                     </div>
 
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg stagger-item" style="transition-delay: 200ms;">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.1">F</div>
                         <div class="relative z-10">
@@ -1074,6 +1074,16 @@
                 }
             }, { once: true });
         });
+        // === Stagger 交錯進場動畫 ===
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.stagger-item').forEach(el => staggerObserver.observe(el));
     </script>
 </body>
 </html>
