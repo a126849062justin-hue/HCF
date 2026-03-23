@@ -130,9 +130,7 @@
                         <span class="text-xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
                         <span class="block text-[0.5rem] sm:text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
                     </div>
-                    <div id="logo-hint-tooltip" class="absolute left-0 top-full mt-1 z-50 lg:hidden">
-                        <div class="bg-sci-cyan text-black text-[10px] font-bold px-3 py-1.5 rounded font-orbitron shadow-[0_0_15px_rgba(0,240,255,0.8)] whitespace-nowrap">🏢 品牌介紹</div>
-                    </div>
+
                 </div>
                 
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-auto">
@@ -851,24 +849,6 @@
         }
         const twe = document.getElementById('typewriter-text'); let index = 0, typewriterTimeout;
 
-        // Shark logo mobile hint
-        (function() {
-            if (localStorage.getItem('hcf_menu_hint_seen')) return;
-            var logo = document.getElementById('nav-shark-logo');
-            var tip = document.getElementById('logo-hint-tooltip');
-            if (logo) logo.classList.add('shark-pulse');
-            if (tip) tip.classList.add('hint-active');
-            setTimeout(function() {
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) tip.classList.remove('hint-active');
-            }, 4500);
-            var btn = document.getElementById('logo-btn');
-            if (btn) btn.addEventListener('click', function() {
-                localStorage.setItem('hcf_menu_hint_seen', '1');
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) { tip.classList.remove('hint-active'); tip.style.display = 'none'; }
-            }, { once: true });
-        })();
         function typeWriter() { if(!twe) return; const txt = langTexts[currentLang].typewriter; if(index < txt.length){ twe.innerHTML += txt.charAt(index); index++; typewriterTimeout=setTimeout(typeWriter,100); } }
 
         // 9. Countdown Timers (News Event & FOMO Pricing)
