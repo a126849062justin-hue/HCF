@@ -38,17 +38,27 @@
                 <h1 class="text-2xl font-black text-white font-orbitron italic tracking-wider mb-1">HCF CONTROL</h1>
                 <p class="text-xs text-[#00f0ff] tracking-[0.3em] font-mono">SYSTEM ADMINISTRATION</p>
             </div>
+            <button id="logout-btn" onclick="logout()" style="display:none" class="absolute top-4 right-4 text-xs text-gray-500 hover:text-red-400 transition-colors font-mono tracking-widest">
+                <i class="fa-solid fa-right-from-bracket mr-1"></i>LOGOUT
+            </button>
         </div>
 
-        <!-- Password (shared) -->
-        <div class="bg-[#0f131a] border border-white/10 rounded-xl px-6 py-4 mb-4">
-            <label class="block text-xs text-gray-400 font-bold mb-2 tracking-widest">ACCESS CODE</label>
-            <div class="relative">
-                <input type="password" id="password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-2.5 rounded text-center tracking-widest font-mono transition-all focus:border-[#00f0ff]">
+        <!-- Login Screen (shown when not authenticated) -->
+        <div id="login-screen" class="bg-[#0f131a] border border-white/10 rounded-xl px-6 py-6 mb-4">
+            <p class="text-xs text-gray-400 font-bold mb-4 tracking-widest text-center">ACCESS CODE</p>
+            <div class="relative mb-3">
+                <input type="password" id="login-password" placeholder="請輸入管理密碼" class="w-full bg-[#050810] border border-white/20 text-white px-4 py-2.5 rounded text-center tracking-widest font-mono transition-all focus:border-[#00f0ff]" onkeypress="if(event.key==='Enter') login()">
                 <i class="fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
             </div>
-            <p class="text-[10px] text-gray-500 mt-1 text-center">* 請向管理員索取密碼</p>
+            <button onclick="login()" class="w-full py-2.5 bg-[#00f0ff]/10 border border-[#00f0ff]/40 hover:bg-[#00f0ff]/20 text-[#00f0ff] font-bold text-sm rounded tracking-widest transition-all">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i>LOGIN
+            </button>
+            <div id="login-error" class="hidden mt-3 p-2 rounded bg-red-500/20 text-red-400 text-xs text-center font-bold"></div>
+            <p class="text-[10px] text-gray-500 mt-3 text-center">* 請向管理員索取密碼</p>
         </div>
+
+        <!-- Admin Panel (hidden until authenticated) -->
+        <div id="admin-panel" style="display:none">
 
         <!-- Tabs -->
         <div class="flex gap-2 mb-4">
@@ -215,9 +225,57 @@
         <div class="text-center mt-4">
             <a href="index.html" class="text-xs text-gray-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5">返回首頁</a>
         </div>
+
+        </div><!-- end #admin-panel -->
     </div>
 
     <script>
+        // ── Session Auth ───────────────────────────────────────────────
+        function getSessionPassword() {
+            const raw = sessionStorage.getItem('hcf_admin_session');
+            if (!raw) return null;
+            try {
+                const { token, expiresAt, password } = JSON.parse(raw);
+                if (!token || !expiresAt || Date.now() > expiresAt) { sessionStorage.removeItem('hcf_admin_session'); return null; }
+                return password;
+            } catch { sessionStorage.removeItem('hcf_admin_session'); return null; }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+            document.getElementById('logout-btn').style.display = 'block';
+        }
+
+        async function login() {
+            const pw = document.getElementById('login-password').value;
+            if (!pw) return;
+            const errEl = document.getElementById('login-error');
+            errEl.classList.add('hidden');
+            try {
+                const res = await fetch('/.netlify/functions/admin-auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: pw })
+                });
+                const data = await res.json();
+                if (!res.ok) { errEl.textContent = data.error || '密碼錯誤'; errEl.classList.remove('hidden'); return; }
+                sessionStorage.setItem('hcf_admin_session', JSON.stringify({ token: data.token, expiresAt: data.expiresAt, password: pw }));
+                showAdminPanel();
+            } catch (e) { errEl.textContent = '連線錯誤，請稍後再試'; errEl.classList.remove('hidden'); }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('hcf_admin_session');
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'block';
+            document.getElementById('login-password').value = '';
+        }
+
+        // Check session on page load
+        (function() { if (getSessionPassword()) showAdminPanel(); })();
+
         // ── Tab switching ──────────────────────────────────────────────
         function switchTab(name) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -229,8 +287,8 @@
 
         // ── Theme control (unchanged) ──────────────────────────────────
         async function setTheme(theme) {
-            const password = document.getElementById('password').value;
-            if (!password) { showStatus('請輸入密碼', 'error'); return; }
+            const password = getSessionPassword();
+            if (!password) { showStatus('會話已過期，請重新登入', 'error'); return; }
             showStatus('更新中...', 'loading');
             try {
                 const response = await fetch('/.netlify/functions/set-theme', {
@@ -261,8 +319,8 @@
 
         // ── AI Dashboard ───────────────────────────────────────────────
         async function loadAIMetrics() {
-            const password = document.getElementById('password').value;
-            if (!password) { alert('請先輸入密碼'); return; }
+            const password = getSessionPassword();
+            if (!password) { alert('會話已過期，請重新登入'); return; }
 
             // Load KPI metrics
             try {
@@ -336,8 +394,8 @@
 
         // ── Data Export ────────────────────────────────────────────────
         async function downloadReport(range) {
-            const password = document.getElementById('password').value;
-            if (!password) { alert('請先輸入密碼'); return; }
+            const password = getSessionPassword();
+            if (!password) { alert('會話已過期，請重新登入'); return; }
             const statusEl = document.getElementById('export-status');
             statusEl.className = 'mt-4 p-3 rounded text-center text-xs font-bold bg-blue-500/20 text-blue-400';
             statusEl.textContent = '準備下載...';
