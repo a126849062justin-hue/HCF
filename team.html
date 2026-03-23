@@ -356,6 +356,8 @@
         <i class="fa-solid fa-chevron-up text-lg"></i>
     </button>
     <main id="main-content">
+    <!-- Full-screen confirm flash overlay -->
+    <div id="fs-confirm-flash-overlay" aria-hidden="true"></div>
 
         <!-- ══════════════════════════════════════════════
              SELECT YOUR FIGHTER — Immersive Hero Section
@@ -374,14 +376,15 @@
 
             <!-- Title -->
             <div class="relative z-10 text-center pt-24 sm:pt-28 pb-2 px-4">
-                <span class="text-sci-cyan font-mono text-[10px] sm:text-xs tracking-[0.5em] block mb-3 font-bold">HCF ELITE ROSTER</span>
+                <span class="text-sci-cyan font-mono text-[10px] sm:text-xs tracking-[0.5em] block mb-3 font-bold">HCF ELITE ROSTER // <span lang="zh-Hant">菁英教練陣容</span></span>
                 <h1 class="fs-glitch-title font-orbitron font-black text-white text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.12em] leading-tight"
                     data-text="SELECT YOUR FIGHTER"
                     aria-label="SELECT YOUR FIGHTER">
                     SELECT YOUR FIGHTER
                 </h1>
-                <p class="text-gray-500 text-xs font-mono mt-3 tracking-[0.3em]">選擇你的格鬥導師 · 開始你的格鬥旅程</p>
-                <p class="text-gray-600 text-[10px] font-mono mt-1 tracking-widest hidden sm:block">← → 鍵盤切換 · 觸控滑動</p>
+                <div class="fs-neon-divider" aria-hidden="true"></div>
+                <p class="text-gray-500 text-xs font-mono mt-2 tracking-[0.3em]" lang="zh-Hant">選擇你的格鬥導師 · 開始你的格鬥旅程</p>
+                <p class="text-gray-600 text-[10px] font-mono mt-1 tracking-widest hidden sm:block">← → <span lang="zh-Hant">鍵盤切換</span> · <span lang="zh-Hant">觸控滑動</span> · Enter <span lang="zh-Hant">確認選角</span></p>
             </div>
 
             <!-- Main 3-panel display -->
@@ -394,6 +397,7 @@
                         <div class="fs-fighter-name fs-typewriter-cursor" id="fs-name" aria-live="polite"></div>
                         <div class="fs-label-tag mt-2" id="fs-title-label" style="margin-top:0.5rem"></div>
                         <span class="fs-fighter-nickname" id="fs-nickname" style="display:none"></span>
+                        <span class="fs-specialty-tag" id="fs-specialty" style="display:none"><i class="fa-solid fa-bolt" style="font-size:0.55rem"></i> <span id="fs-specialty-text"></span></span>
                     </div>
                     <div class="fs-fighter-quote" id="fs-quote" aria-live="polite"></div>
                     <div class="fs-fighter-record" id="fs-record" style="display:none" aria-label="生涯戰績"></div>
@@ -402,6 +406,8 @@
                 <!-- Center: Fighter Image -->
                 <div class="fs-center-col">
                     <div class="fs-fighter-display" id="fs-fighter-display">
+                        <div class="fs-splatter fs-splatter-tl" aria-hidden="true"></div>
+                        <div class="fs-splatter fs-splatter-br" aria-hidden="true"></div>
                         <div class="fs-placeholder" id="fs-placeholder" aria-hidden="true">
                             <i class="fa-solid fa-user-ninja fs-placeholder-icon"></i>
                             <span>選擇你的教練</span>
@@ -1082,13 +1088,12 @@
             // ── Center image ──────────────────────────────
             var display = document.getElementById('fs-fighter-display');
             if (display) {
-                // VS flash
-                var flash = document.createElement('div');
-                flash.className = 'fs-vs-flash';
-                flash.setAttribute('aria-hidden', 'true');
-                flash.textContent = 'VS';
-                display.appendChild(flash);
-                setTimeout(function() { if (flash.parentNode) flash.parentNode.removeChild(flash); }, 350);
+                // Neon scan-wipe instead of VS flash for SF6 feel
+                var scanWipe = document.createElement('div');
+                scanWipe.className = 'fs-scan-wipe-el';
+                scanWipe.setAttribute('aria-hidden', 'true');
+                display.appendChild(scanWipe);
+                setTimeout(function() { if (scanWipe.parentNode) scanWipe.parentNode.removeChild(scanWipe); }, 500);
 
                 // Replace content with new image
                 var img = document.createElement('img');
@@ -1107,22 +1112,25 @@
                 grad.style.cssText = 'height:40%;background:linear-gradient(to top,#0a0a0a,transparent);';
                 grad.setAttribute('aria-hidden', 'true');
 
-                // Clear placeholder + previous img, keep flash briefly
+                // Clear placeholder + previous img, keep scan-wipe briefly
                 display.querySelectorAll('img, .fs-placeholder, .fs-grad-overlay').forEach(function(el) { el.remove(); });
                 grad.classList.add('fs-grad-overlay');
                 display.appendChild(img);
                 display.appendChild(grad);
+                display.classList.add('fs-has-fighter');
 
                 setTimeout(function() { img.classList.remove('fs-entering'); }, 500);
             }
 
             // ── Left panel: name typewriter ───────────────
             clearTimeout(fsTWTimer);
-            var nameEl  = document.getElementById('fs-name');
-            var titleEl = document.getElementById('fs-title-label');
-            var nickEl  = document.getElementById('fs-nickname');
-            var quoteEl = document.getElementById('fs-quote');
-            var recEl   = document.getElementById('fs-record');
+            var nameEl      = document.getElementById('fs-name');
+            var titleEl     = document.getElementById('fs-title-label');
+            var nickEl      = document.getElementById('fs-nickname');
+            var specialtyEl = document.getElementById('fs-specialty');
+            var specialtyTxtEl = document.getElementById('fs-specialty-text');
+            var quoteEl     = document.getElementById('fs-quote');
+            var recEl       = document.getElementById('fs-record');
 
             if (nameEl)  { nameEl.textContent = ''; nameEl.classList.add('fs-typewriter-cursor'); }
             if (titleEl) { titleEl.textContent = fighter.title || ''; }
@@ -1132,6 +1140,14 @@
                     nickEl.style.display = '';
                 } else {
                     nickEl.style.display = 'none';
+                }
+            }
+            if (specialtyEl && specialtyTxtEl) {
+                if (fighter.specialty) {
+                    specialtyTxtEl.textContent = fighter.specialty;
+                    specialtyEl.style.display = '';
+                } else {
+                    specialtyEl.style.display = 'none';
                 }
             }
             if (quoteEl) { quoteEl.textContent = ''; }
@@ -1216,14 +1232,24 @@
         window.fsConfirmFighter = function() {
             if (fsSelected < 0) return;
             var fighter = fsData[fsSelected];
+            // Full-screen confirm flash
+            var flashOverlay = document.getElementById('fs-confirm-flash-overlay');
+            if (flashOverlay) {
+                flashOverlay.classList.remove('fs-flashing');
+                void flashOverlay.offsetWidth; // reflow
+                flashOverlay.classList.add('fs-flashing');
+                setTimeout(function() { flashOverlay.classList.remove('fs-flashing'); }, 750);
+            }
             var target  = document.getElementById(fighter.cardId);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Highlight flash
-                target.classList.remove('fs-card-highlight');
-                target.offsetWidth; // reflow to restart animation
-                target.classList.add('fs-card-highlight');
-                setTimeout(function() { target.classList.remove('fs-card-highlight'); }, 2000);
+                setTimeout(function() {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Highlight flash
+                    target.classList.remove('fs-card-highlight');
+                    target.offsetWidth; // reflow to restart animation
+                    target.classList.add('fs-card-highlight');
+                    setTimeout(function() { target.classList.remove('fs-card-highlight'); }, 2000);
+                }, 200);
             }
         };
 
@@ -1242,6 +1268,9 @@
             } else if (e.key === 'ArrowLeft') {
                 e.preventDefault();
                 fsSelectFighter(fsSelected < 0 ? 0 : Math.max(fsSelected - 1, 0));
+            } else if (e.key === 'Enter' && fsSelected >= 0) {
+                e.preventDefault();
+                window.fsConfirmFighter();
             }
         });
 
