@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hcf-v2.0';
+const CACHE_NAME = 'hcf-v2.1';
 const SHELL_ASSETS = [
   '/',
   '/index.html',
