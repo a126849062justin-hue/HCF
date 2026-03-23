@@ -313,6 +313,20 @@
         }
         .pwa-mode #main-content > section:first-child { padding-top: env(safe-area-inset-top, 20px); }
         @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        /* === Shark Logo Mobile Pulse Hint === */
+        @keyframes shark-glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 4px rgba(0,240,255,0.3)); }
+            50% { filter: drop-shadow(0 0 14px rgba(0,240,255,1)) drop-shadow(0 0 28px rgba(0,240,255,0.6)); }
+        }
+        @keyframes hint-fade-inout {
+            0% { opacity: 0; transform: translateY(-4px); }
+            15% { opacity: 1; transform: translateY(0); }
+            75% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-4px); }
+        }
+        #nav-shark-logo.shark-pulse { animation: shark-glow-pulse 1.5s ease-in-out infinite; }
+        #logo-hint-tooltip { display: none; pointer-events: none; }
+        #logo-hint-tooltip.hint-active { display: block; animation: hint-fade-inout 4.5s ease-in-out forwards; }
     </style>
     <script>
         (async function() {
@@ -363,11 +377,14 @@
     <nav class="fixed w-full z-[120] bg-transparent transition-all duration-300 py-4" id="navbar">
         <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
             <div class="flex items-center justify-between h-16 sm:h-20">
-                <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0" onclick="toggleBrandDrawer()">
-                    <img src="shark_logo.png" alt="HCF Logo" class="h-8 sm:h-16 w-auto object-contain" width="400" height="400" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
+                <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0 relative" onclick="handleLogoClick()" id="logo-btn">
+                    <img src="shark_logo.png" alt="HCF Logo" id="nav-shark-logo" class="h-8 sm:h-16 w-auto object-contain" width="400" height="400" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
                     <div class="flex flex-col justify-center">
                         <span class="text-3xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
-                        <span class="hidden sm:block text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
+                        <span class="block text-[0.5rem] sm:text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
+                    </div>
+                    <div id="logo-hint-tooltip" class="absolute left-0 top-full mt-1 z-50 lg:hidden">
+                        <div class="bg-sci-cyan text-black text-[10px] font-bold px-3 py-1.5 rounded font-orbitron shadow-[0_0_15px_rgba(0,240,255,0.8)] whitespace-nowrap">📋 點我看選單</div>
                     </div>
                 </div>
                 
@@ -431,12 +448,6 @@
                     <a href="pricing.html" class="px-12 py-2.5 bg-sci-cyan text-black font-black text-sm tracking-widest skew-x-[-10deg] hover:bg-cyan-400 transition-colors ml-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
                         <span class="skew-x-[10deg] inline-block lang-text" data-en="BOOK NOW">啟動預約</span>
                     </a>
-                </div>
-
-                <div class="lg:hidden flex items-center gap-2">
-                    <button onclick="toggleMobileMenu()" class="text-white hover:text-sci-cyan w-12 h-12 border border-white/20 bg-black/50 rounded flex items-center justify-center relative backdrop-blur-sm overflow-hidden" aria-label="Menu">
-                        <img src="shark_logo.png" alt="Menu" class="w-9 h-9 object-contain">
-                    </button>
                 </div>
             </div>
         </div>
@@ -520,6 +531,12 @@
             <a href="pricing.html" onclick="closeAllDrawers()" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
                 <span class="skew-x-[10deg] inline-block lang-text" data-en="BOOK NOW">立即預約</span>
             </a>
+        </div>
+        <div class="border-t border-white/10 pt-4 mt-2 mb-4 px-2">
+            <button onclick="toggleVideoSound()" class="flex items-center gap-4 text-gray-300 hover:text-sci-cyan transition-colors w-full text-left group">
+                <i id="menu-video-sound-icon" class="fa-solid fa-volume-xmark text-xl w-6 text-center group-hover:scale-110 transition-transform"></i>
+                <span class="text-sm tracking-widest font-bold">影片聲音</span>
+            </button>
         </div>
         <div class="flex gap-3 px-2 mb-6">
             <button onclick="toggleLanguage()" class="flex-1 flex items-center justify-center gap-2 border border-sci-cyan/30 text-sci-cyan font-orbitron font-bold text-xs py-3 rounded hover:bg-sci-cyan/10 transition-colors backdrop-blur-sm">
@@ -959,6 +976,7 @@
         const mm = document.getElementById('mobile-menu'), bd = document.getElementById('brand-drawer'), db = document.getElementById('drawer-backdrop');
         function toggleMobileMenu() { if (!bd.classList.contains('-translate-x-full')) bd.classList.add('-translate-x-full'); if (mm.classList.contains('translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); mm.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
         function toggleBrandDrawer() { if (!mm.classList.contains('translate-x-full')) mm.classList.add('translate-x-full'); if (bd.classList.contains('-translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); bd.classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
+        function handleLogoClick() { if (window.innerWidth < 1024) { toggleMobileMenu(); } else { toggleBrandDrawer(); } }
         function closeAllDrawers() { mm.classList.add('translate-x-full'); bd.classList.add('-translate-x-full'); db.classList.add('opacity-0'); setTimeout(()=>db.classList.add('hidden'),300); document.body.style.overflow = ''; }
 
         // 5. Scroll Reveal & Navbar Shrink
@@ -1055,33 +1073,54 @@
         if(document.getElementById('prev-slide')) document.getElementById('prev-slide').addEventListener('click', prevSlide);
 
         // 8. BGM & Typewriter
-        const bgm = document.getElementById('bgm-audio'), biD = document.getElementById('bgm-icon'), sysIndicator = document.getElementById('system-status-indicator'), sysText = document.getElementById('system-status-text');
+        const bgm = document.getElementById('bgm-audio'), biD = document.getElementById('bgm-icon');
         let isMusicPlaying = false;
         function toggleBGM() {
             if (isMusicPlaying) { 
                 bgm.pause(); 
                 if(biD) { biD.classList.remove('fa-volume-high'); biD.classList.add('fa-volume-xmark'); }
-                if(sysText) sysText.innerText = 'AUDIO SYSTEM: OFF';
-                if(sysIndicator) { sysIndicator.classList.remove('bg-sci-cyan', 'shadow-[0_0_8px_var(--theme-cyan)]', 'bg-green-500', 'shadow-[0_0_8px_#22c55e]'); sysIndicator.classList.add('bg-red-500', 'shadow-[0_0_8px_#ef4444]'); }
             } else { 
                 bgm.play().catch(e=>{}); 
                 if(biD) { biD.classList.remove('fa-volume-xmark'); biD.classList.add('fa-volume-high'); } 
-                if(sysText) sysText.innerText = 'AUDIO SYSTEM: ON';
-                if(sysIndicator) { sysIndicator.classList.remove('bg-red-500', 'shadow-[0_0_8px_#ef4444]', 'bg-green-500', 'shadow-[0_0_8px_#22c55e]'); sysIndicator.classList.add('bg-sci-cyan', 'shadow-[0_0_8px_var(--theme-cyan)]'); }
-                const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon');
-                if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } }
+                const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon');
+                if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); } }
             }
             isMusicPlaying = !isMusicPlaying;
         }
         function toggleVideoSound() {
-            const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon');
+            const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon');
             if (hv) {
                 hv.muted = !hv.muted;
-                if (hv.muted) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } 
-                else { vi.classList.remove('fa-volume-xmark'); vi.classList.add('fa-volume-high'); if (isMusicPlaying) toggleBGM(); }
+                if (hv.muted) {
+                    if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); }
+                    if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); }
+                } else {
+                    if(vi) { vi.classList.remove('fa-volume-xmark'); vi.classList.add('fa-volume-high'); }
+                    if(mvi) { mvi.classList.remove('fa-volume-xmark'); mvi.classList.add('fa-volume-high'); }
+                    if (isMusicPlaying) toggleBGM();
+                }
             }
         }
         const twe = document.getElementById('typewriter-text'); let index = 0, typewriterTimeout;
+
+        // Shark logo mobile hint
+        (function() {
+            if (localStorage.getItem('hcf_menu_hint_seen')) return;
+            var logo = document.getElementById('nav-shark-logo');
+            var tip = document.getElementById('logo-hint-tooltip');
+            if (logo) logo.classList.add('shark-pulse');
+            if (tip) tip.classList.add('hint-active');
+            setTimeout(function() {
+                if (logo) logo.classList.remove('shark-pulse');
+                if (tip) tip.classList.remove('hint-active');
+            }, 4500);
+            var btn = document.getElementById('logo-btn');
+            if (btn) btn.addEventListener('click', function() {
+                localStorage.setItem('hcf_menu_hint_seen', '1');
+                if (logo) logo.classList.remove('shark-pulse');
+                if (tip) { tip.classList.remove('hint-active'); tip.style.display = 'none'; }
+            }, { once: true });
+        })();
         function typeWriter() { if(!twe) return; const txt = langTexts[currentLang].typewriter; if(index < txt.length){ twe.innerHTML += txt.charAt(index); index++; typewriterTimeout=setTimeout(typeWriter,100); } }
 
         // 9. Countdown Timers (News Event & FOMO Pricing)
