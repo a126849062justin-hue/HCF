@@ -152,6 +152,7 @@
         .ai-container { position: fixed; bottom: 120px; right: 20px; z-index: 50; display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
         .ai-mascot-img { width: 140px; height: 140px; object-fit: contain; cursor: pointer; animation: social-glow-cycle 4s infinite, shark-wobble 3.5s ease-in-out infinite; }
         .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-fast 0.6s ease-in-out infinite; }
+        .mascot-menu-hint { position: absolute; bottom: 0; right: 0; background: var(--theme-cyan); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(var(--theme-cyan-rgb),0.8); pointer-events: none; }
         .zzz-text { position: absolute; top: -20px; right: 0; color: var(--theme-cyan); font-weight: bold; font-family: 'Orbitron'; font-size: 1.5rem; text-shadow: 0 0 10px var(--theme-cyan); display: none; pointer-events: none; }
         .angry-bubble { position: absolute; top: -40px; right: 10px; background: var(--theme-cyan); color: black; padding: 5px 15px; border-radius: 10px; font-weight: bold; display: none; white-space: nowrap; pointer-events: none; box-shadow: 0 0 15px rgba(var(--theme-cyan-rgb),0.8); z-index: 51; }
         .angry-bubble::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-width: 8px 8px 0; border-style: solid; border-color: var(--theme-cyan) transparent transparent transparent; }
@@ -380,13 +381,13 @@
         <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0 relative" onclick="handleLogoClick()" id="logo-btn">
-                    <img src="shark_logo.png" alt="HCF Logo" id="nav-shark-logo" class="h-8 sm:h-16 w-auto object-contain" width="400" height="400" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
+                    <img src="shark_logo.png" alt="HCF Logo" id="nav-shark-logo" class="h-10 sm:h-16 w-auto object-contain" width="400" height="400" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
                     <div class="flex flex-col justify-center">
-                        <span class="text-3xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
+                        <span class="text-xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
                         <span class="block text-[0.5rem] sm:text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
                     </div>
                     <div id="logo-hint-tooltip" class="absolute left-0 top-full mt-1 z-50 lg:hidden">
-                        <div class="bg-sci-cyan text-black text-[10px] font-bold px-3 py-1.5 rounded font-orbitron shadow-[0_0_15px_rgba(0,240,255,0.8)] whitespace-nowrap">📋 點我看選單</div>
+                        <div class="bg-sci-cyan text-black text-[10px] font-bold px-3 py-1.5 rounded font-orbitron shadow-[0_0_15px_rgba(0,240,255,0.8)] whitespace-nowrap">🏢 品牌介紹</div>
                     </div>
                 </div>
                 
@@ -600,7 +601,8 @@
         </div>
         <div id="zzz-mark" class="zzz-text">Zzz</div>
         <div id="angry-bubble" class="angry-bubble text-xs">有問題？問我！</div>
-        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" onclick="toggleChat()" loading="lazy" data-fallback="https://placehold.co/600x600/0f131a/00f0ff?text=SHARK">
+        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" id="ai-mascot-btn" loading="lazy" data-fallback="https://placehold.co/600x600/0f131a/00f0ff?text=SHARK">
+        <div id="mascot-menu-hint" class="mascot-menu-hint lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="black"><rect x="3" y="6" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="16" width="18" height="2"/></svg></div>
     </div>
 
     <button id="rocket-top" class="fixed bottom-[110px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
@@ -968,7 +970,7 @@
         const mm = document.getElementById('mobile-menu'), bd = document.getElementById('brand-drawer'), db = document.getElementById('drawer-backdrop');
         function toggleMobileMenu() { if (!bd.classList.contains('-translate-x-full')) bd.classList.add('-translate-x-full'); if (mm.classList.contains('translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); mm.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
         function toggleBrandDrawer() { if (!mm.classList.contains('translate-x-full')) mm.classList.add('translate-x-full'); if (bd.classList.contains('-translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); bd.classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
-        function handleLogoClick() { if (window.innerWidth < 1024) { toggleMobileMenu(); } else { toggleBrandDrawer(); } }
+        function handleLogoClick() { toggleBrandDrawer(); }
         function closeAllDrawers() { mm.classList.add('translate-x-full'); bd.classList.add('-translate-x-full'); db.classList.add('opacity-0'); setTimeout(()=>db.classList.add('hidden'),300); document.body.style.overflow = ''; }
 
         // 5. Scroll Reveal & Navbar Shrink
@@ -1169,6 +1171,36 @@
         window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
+        // Mascot Button: Mobile tap = open menu, long-press = open AI chat; Desktop = open AI chat
+        (function() {
+            var btn = document.getElementById("ai-mascot-btn");
+            if (!btn) return;
+            var longPressTimer = null;
+            var isLongPress = false;
+            var hasTouched = false;
+            btn.addEventListener("touchstart", function() {
+                hasTouched = true;
+                isLongPress = false;
+                longPressTimer = setTimeout(function() {
+                    isLongPress = true;
+                    toggleChat();
+                }, 600);
+            }, { passive: true });
+            btn.addEventListener("touchend", function(e) {
+                clearTimeout(longPressTimer);
+                e.preventDefault();
+                if (!isLongPress) {
+                    toggleMobileMenu();
+                }
+            });
+            btn.addEventListener("touchcancel", function() {
+                clearTimeout(longPressTimer);
+            }, { passive: true });
+            btn.addEventListener("click", function() {
+                if (!hasTouched) { toggleChat(); }
+                setTimeout(function() { hasTouched = false; }, 300);
+            });
+        })();
 
         // ═══ APP 模式偵測 ═══
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches
