@@ -144,7 +144,7 @@
                 if (val !== undefined) el.innerHTML = val;
             });
         }
-        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); loadLanguage(currentLang).then(applyI18nData); applyLanguage(); }
+        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); loadLanguage(currentLang).then(applyI18nData).catch(e => console.warn('i18n apply failed:', e)); applyLanguage(); }
         function applyLanguage() {
             document.querySelectorAll('.lang-text').forEach(el => {
                 if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; } 
@@ -153,7 +153,7 @@
             const ll = document.getElementById('lang-label'); if(ll) ll.innerText = langTexts[currentLang].label;
             const ml = document.getElementById('mobile-lang-label'); if(ml) ml.innerText = langTexts[currentLang].mobileLabel;
         }
-        loadLanguage(currentLang).then(data => { if (currentLang !== 'zh') applyI18nData(data); });
+        loadLanguage(currentLang).then(data => { if (currentLang !== 'zh') applyI18nData(data); }).catch(e => console.warn('i18n init failed:', e));
         function setTheme(theme) {
             document.documentElement.classList.add('theme-transitioning');
             if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
