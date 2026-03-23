@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#02040a">
+    <meta name="theme-color" content="#010208">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>HCF 最新資訊 | 新竹格鬥館</title>
     <meta name="description" content="HCF新竹格鬥館最新資訊：精彩活動、特別優惠、即將到來的格鬥賽事與限時優惠方案。">
@@ -71,10 +71,17 @@
 
     <style>
         :root {
-            --theme-base: #02040a; --theme-base-rgb: 2, 4, 10;
-            --theme-surface: #0f131a; --theme-surface-rgb: 15, 19, 26;
-            --theme-cyan: #00f0ff; --theme-cyan-rgb: 0, 240, 255;
-            --theme-gold: #ffd700; --theme-gold-rgb: 255, 215, 0;
+            --theme-base: #010208;        --theme-base-rgb: 1, 2, 8;
+            --theme-surface: #080d16;     --theme-surface-rgb: 8, 13, 22;
+            --theme-surface-2: #0e1520;   --theme-surface-2-rgb: 14, 21, 32;
+            --theme-cyan: #00d4ff;        --theme-cyan-rgb: 0, 212, 255;
+            --theme-gold: #e8b830;        --theme-gold-rgb: 232, 184, 48;
+            --theme-red: #ff2d55;         --theme-red-rgb: 255, 45, 85;
+            --theme-silver: #c0c8d8;      --theme-silver-rgb: 192, 200, 216;
+            --theme-purple: #7b2fff;      --theme-purple-rgb: 123, 47, 255;
+            --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #7b2fff 100%);
+            --gradient-gold:  linear-gradient(135deg, #e8b830 0%, #ff8c00 100%);
+            --gradient-danger: linear-gradient(135deg, #ff2d55 0%, #ff6b00 100%);
         }
         [data-theme="red"] { --theme-cyan: #ff003c; --theme-cyan-rgb: 255, 0, 60; }
         [data-theme="green"] { --theme-cyan: #00ff41; --theme-cyan-rgb: 0, 255, 65; }
@@ -162,6 +169,111 @@
             outline: 2px solid #00f0ff;
             outline-offset: 2px;
         }
+
+        /* === Stagger Reveal Animation === */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .stagger-item.visible { opacity: 1; transform: translateY(0); }
+        .stagger-item:nth-child(1) { transition-delay: 0ms; }
+        .stagger-item:nth-child(2) { transition-delay: 80ms; }
+        .stagger-item:nth-child(3) { transition-delay: 160ms; }
+        .stagger-item:nth-child(4) { transition-delay: 240ms; }
+        .stagger-item:nth-child(5) { transition-delay: 320ms; }
+        .stagger-item:nth-child(6) { transition-delay: 400ms; }
+
+        /* === Noise Texture Overlay === */
+        .noise-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 128px 128px;
+        }
+
+        /* === Section Divider === */
+        .sci-divider {
+            position: relative;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            pointer-events: none;
+            user-select: none;
+        }
+        .sci-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: calc(50% - 20px);
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,212,255,0.4));
+        }
+        .sci-divider::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: calc(50% - 20px);
+            height: 1px;
+            background: linear-gradient(to left, transparent, rgba(0,212,255,0.4));
+        }
+        .sci-divider-diamond {
+            position: relative;
+            z-index: 1;
+            width: 10px;
+            height: 10px;
+            border: 1px solid rgba(0,212,255,0.5);
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(0,212,255,0.3);
+            flex-shrink: 0;
+        }
+
+        /* === Skill Bar === */
+        .skill-fill {
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* === Magnetic Button === */
+        .magnetic-btn {
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* === Rotating Badge === */
+        @keyframes rotate-badge {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .rotate-badge { animation: rotate-badge 20s linear infinite; }
+
+        /* === Pulse border for featured pricing card === */
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4), 0 0 30px rgba(0,212,255,0.15); }
+            50% { box-shadow: 0 0 0 6px rgba(0,212,255,0), 0 0 50px rgba(0,212,255,0.25); }
+        }
+        .pulse-border { animation: pulse-border 2.5s ease-in-out infinite; }
+
+        /* === Horizontal scroll track === */
+        .hscroll-track {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+            user-select: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .hscroll-track:active { cursor: grabbing; }
+        .hscroll-track::-webkit-scrollbar { display: none; }
     </style>
     <script>
         (async function() {
@@ -683,7 +795,7 @@
             </div>
             
             <div class="text-center border-t border-white/10 pt-6 text-[11px] text-gray-600 font-mono tracking-widest flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 items-center">
-                <p>© 2026 HCF. All Rights Reserved.</p>
+                <p>© 2026 HCF. All Rights Reserved.<span class="hidden sm:inline text-sci-cyan/30 mx-2">|</span><span class="hidden sm:inline font-orbitron text-[10px]" style="color: rgba(123,47,255,0.5);">POWERED BY HCF COMBAT SYSTEM</span></p>
                 <span class="hidden sm:inline">|</span>
                 <p class="text-sci-cyan/50">SYSTEM READY FOR COMBAT.</p>
             </div>
