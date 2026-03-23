@@ -901,3 +901,175 @@
         .fs-card-highlight {
             animation: fs-card-highlight 1.8s ease-out both;
         }
+
+        /* ══════════════════════════════════════════════════════
+           SF6-Style Enhancement — Phase 2 (appended)
+           ══════════════════════════════════════════════════════ */
+
+        /* Animated background smoke — purple/blue SF6 atmosphere */
+        @keyframes fs-smoke-drift {
+            0%   { opacity: 0.04; transform: scale(1)   translateX(0)   translateY(0); }
+            33%  { opacity: 0.07; transform: scale(1.05) translateX(-1%) translateY(1%); }
+            66%  { opacity: 0.05; transform: scale(1.03) translateX(1%)  translateY(-1%); }
+            100% { opacity: 0.04; transform: scale(1)   translateX(0)   translateY(0); }
+        }
+        @keyframes fs-smoke-drift-alt {
+            0%   { opacity: 0.03; transform: scale(1)    translateX(0)   translateY(0); }
+            50%  { opacity: 0.06; transform: scale(1.06) translateX(2%)  translateY(-2%); }
+            100% { opacity: 0.03; transform: scale(1)    translateX(0)   translateY(0); }
+        }
+        .fs-bg-glow {
+            background:
+                radial-gradient(ellipse 70% 50% at 30% 60%, rgba(123, 47, 255, 0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 45% at 70% 40%, rgba(var(--theme-cyan-rgb), 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 55% at 50% 80%, rgba(var(--theme-cyan-rgb), 0.04) 0%, transparent 70%);
+            animation: fs-smoke-drift 9s ease-in-out infinite;
+        }
+        .fs-bg-glow::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 65% 35%, rgba(123, 47, 255, 0.07) 0%, transparent 60%);
+            animation: fs-smoke-drift-alt 12s ease-in-out infinite 3s;
+        }
+
+        /* Neon pulse border for active thumbnail */
+        @keyframes fs-neon-pulse {
+            0%, 100% { box-shadow: 0 0 8px  rgba(var(--theme-cyan-rgb), 0.6), 0 0 18px rgba(var(--theme-cyan-rgb), 0.2); }
+            50%       { box-shadow: 0 0 18px rgba(var(--theme-cyan-rgb), 0.95), 0 0 36px rgba(var(--theme-cyan-rgb), 0.45), 0 0 60px rgba(var(--theme-cyan-rgb), 0.15); }
+        }
+        .fs-fighter-thumb.fs-active {
+            animation: fs-neon-pulse 1.8s ease-in-out infinite;
+            border-color: var(--theme-cyan);
+            border-width: 2px;
+        }
+
+        /* Triangle indicator below active thumbnail */
+        .fs-fighter-thumb.fs-active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 8px solid var(--theme-cyan);
+            filter: drop-shadow(0 0 4px rgba(var(--theme-cyan-rgb), 0.8));
+            z-index: 10;
+        }
+
+        /* Neon scan-wipe line that sweeps across center display on fighter switch */
+        @keyframes fs-scan-wipe {
+            from { transform: translateX(-100%); opacity: 0.9; }
+            to   { transform: translateX(100%);  opacity: 0; }
+        }
+        .fs-scan-wipe-el {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 15;
+        }
+        .fs-scan-wipe-el::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 0;
+            width: 60%;
+            background: linear-gradient(to right, transparent, rgba(var(--theme-cyan-rgb), 0.35), transparent);
+            animation: fs-scan-wipe 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        /* Full-screen confirm flash */
+        @keyframes fs-confirm-flash-anim {
+            0%   { opacity: 0; }
+            15%  { opacity: 0.55; }
+            35%  { opacity: 0.2; }
+            55%  { opacity: 0.45; }
+            100% { opacity: 0; }
+        }
+        #fs-confirm-flash-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(var(--theme-cyan-rgb), 0.25), rgba(123, 47, 255, 0.25));
+            opacity: 0;
+        }
+        #fs-confirm-flash-overlay.fs-flashing {
+            animation: fs-confirm-flash-anim 0.7s ease-out forwards;
+        }
+
+        /* Neon divider separator under title */
+        @keyframes fs-divider-pulse {
+            0%, 100% { opacity: 0.6; box-shadow: 0 0 6px rgba(var(--theme-cyan-rgb), 0.5); }
+            50%       { opacity: 1;   box-shadow: 0 0 14px rgba(var(--theme-cyan-rgb), 0.9), 0 0 28px rgba(var(--theme-cyan-rgb), 0.3); }
+        }
+        .fs-neon-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--theme-cyan), rgba(123, 47, 255, 0.8), transparent);
+            margin: 0.75rem auto;
+            width: min(480px, 80%);
+            animation: fs-divider-pulse 2.4s ease-in-out infinite;
+        }
+
+        /* Ink splatter decorations in center stage */
+        .fs-splatter {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .fs-splatter-tl {
+            top: -8px; left: -8px;
+            width: 90px; height: 90px;
+            background: radial-gradient(ellipse at 30% 30%, rgba(var(--theme-cyan-rgb), 0.15) 0%, transparent 65%);
+            clip-path: polygon(0 0, 40% 0, 60% 20%, 45% 45%, 20% 55%, 0 40%);
+        }
+        .fs-splatter-br {
+            bottom: -8px; right: -8px;
+            width: 90px; height: 90px;
+            background: radial-gradient(ellipse at 70% 70%, rgba(123, 47, 255, 0.15) 0%, transparent 65%);
+            clip-path: polygon(60% 100%, 100% 60%, 100% 100%);
+        }
+        .fs-fighter-display:hover .fs-splatter,
+        .fs-fighter-display.fs-has-fighter .fs-splatter {
+            opacity: 1;
+        }
+
+        /* Specialty tag in left panel */
+        .fs-specialty-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.58rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.18em;
+            color: rgba(var(--theme-cyan-rgb), 0.7);
+            border: 1px solid rgba(var(--theme-cyan-rgb), 0.25);
+            background: rgba(var(--theme-cyan-rgb), 0.06);
+            padding: 0.25rem 0.65rem;
+            border-radius: 2px;
+            margin-top: 0.4rem;
+            text-transform: uppercase;
+        }
+
+        /* Fix: allow triangle indicator to extend below thumbnail.
+           Images are sized exactly with object-fit:cover so no overflow occurs. */
+        .fs-fighter-thumb {
+            overflow: visible;
+        }
+        /* Ensure thumb-row has space for the triangle indicator */
+        .fs-thumb-row {
+            padding-bottom: 1.8rem;
+        }
+        /* Hover scale without conflicting with neon-pulse animation */
+        .fs-fighter-thumb:hover:not(.fs-active) {
+            transform: translateY(-5px) scale(1.06);
+        }
+        .fs-fighter-thumb.fs-active {
+            transform: translateY(-6px) scale(1.1);
+        }
