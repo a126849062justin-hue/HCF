@@ -591,3 +591,46 @@ if ('serviceWorker' in navigator) {
           .catch(err => console.warn('[SW] Failed:', err));
       });
     }
+
+// === Page View Tracking (Anonymous) ===
+(function() {
+    // Don't track admin pages
+    if (window.location.pathname.includes('admin')) return;
+
+    const deviceType = window.innerWidth < 480 ? 'mobile' : (window.innerWidth <= 1024 ? 'tablet' : 'desktop');
+
+    // Generate or retrieve anonymous session ID
+    let userId = sessionStorage.getItem('hcf_session_id');
+    if (!userId) {
+        userId = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 11);
+        sessionStorage.setItem('hcf_session_id', userId);
+    }
+
+    // Send page view after a short delay to not block rendering
+    setTimeout(() => {
+        fetch('/.netlify/functions/track-pageview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: userId,
+                deviceType: deviceType,
+                pageUrl: window.location.pathname,
+                referrer: document.referrer || 'direct'
+            })
+        }).catch(() => {}); // silently fail
+    }, 2000);
+
+    // Track session duration on page unload
+    const startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const duration = Math.round((Date.now() - startTime) / 1000);
+        navigator.sendBeacon('/.netlify/functions/track-pageview', new Blob([JSON.stringify({
+            userId: userId,
+            deviceType: deviceType,
+            pageUrl: window.location.pathname,
+            referrer: document.referrer || 'direct',
+            sessionDuration: duration,
+            isUpdate: true
+        })], { type: 'application/json' }));
+    });
+})();
