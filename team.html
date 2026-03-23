@@ -12,14 +12,14 @@
     <link rel="icon" type="image/png" href="shark_logo.png">
     
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
+    <meta property="og:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，實戰最強專業拳館。">
     <meta property="og:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
     <meta property="og:url" content="https://hcf-hsinchu.netlify.app/team.html">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta name="twitter:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。">
+    <meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！">
     <meta name="twitter:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
 
     <link rel="manifest" href="manifest.json">
@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- TODO: Replace with built CSS: run `npm run build:css` then use <link rel="stylesheet" href="styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TODO: Replace Tailwind CDN with built CSS: npx tailwindcss -i ./input.css -o ./output.css --minify -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
@@ -72,263 +73,8 @@
         }
     </script>
 
-    <style>
-        :root {
-            --theme-base: #010208;        --theme-base-rgb: 1, 2, 8;
-            --theme-surface: #080d16;     --theme-surface-rgb: 8, 13, 22;
-            --theme-surface-2: #0e1520;   --theme-surface-2-rgb: 14, 21, 32;
-            --theme-cyan: #00d4ff;        --theme-cyan-rgb: 0, 212, 255;
-            --theme-gold: #e8b830;        --theme-gold-rgb: 232, 184, 48;
-            --theme-red: #ff2d55;         --theme-red-rgb: 255, 45, 85;
-            --theme-silver: #c0c8d8;      --theme-silver-rgb: 192, 200, 216;
-            --theme-purple: #7b2fff;      --theme-purple-rgb: 123, 47, 255;
-            --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #7b2fff 100%);
-            --gradient-gold:  linear-gradient(135deg, #e8b830 0%, #ff8c00 100%);
-            --gradient-danger: linear-gradient(135deg, #ff2d55 0%, #ff6b00 100%);
-        }
-        [data-theme="red"] { --theme-cyan: #ff003c; --theme-cyan-rgb: 255, 0, 60; }
-        [data-theme="green"] { --theme-cyan: #00ff41; --theme-cyan-rgb: 0, 255, 65; }
-        [data-theme="blue"] { --theme-cyan: #2e51ff; --theme-cyan-rgb: 46, 81, 255; }
-        [data-theme="purple"] { --theme-cyan: #bf00ff; --theme-cyan-rgb: 191, 0, 255; }
-        [data-theme="white"] { --theme-cyan: #ffffff; --theme-cyan-rgb: 255, 255, 255; }
-        [data-theme="gold"] { --theme-cyan: var(--theme-gold); --theme-cyan-rgb: 255, 215, 0; }
-
-        html { background-color: var(--theme-base); }
-        * { -webkit-tap-highlight-color: transparent; }
-
-        @media (hover: hover) and (pointer: fine) {
-            body { cursor: none; }
-            a, button, input, select, details, summary, .cursor-pointer { cursor: none !important; }
-        }
-        
-        .custom-cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--theme-cyan); border-radius: 50%; z-index: 10000; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
-        .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid rgba(var(--theme-cyan-rgb), 0.4); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s; display: none; }
-        @media (min-width: 768px) { .custom-cursor-dot, .custom-cursor-ring { display: block; } }
-        body.cursor-hover .custom-cursor-dot { background: var(--theme-cyan); width: 8px; height: 8px; box-shadow: 0 0 10px var(--theme-cyan); }
-        body.cursor-hover .custom-cursor-ring { width: 50px; height: 50px; border-color: rgba(var(--theme-cyan-rgb), 0.8); background: rgba(var(--theme-cyan-rgb),0.05); }
-
-        body { background-color: var(--theme-base); color: #e2e8f0; overflow-x: hidden; line-height: 1.8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.2); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.5); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--theme-base); border-left: 1px solid rgba(var(--theme-cyan-rgb),0.1); }
-        ::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.8); }
-
-        #mouse-glow-effect { --mouse-x: 50vw; --mouse-y: 50vh; position: fixed; inset: 0; z-index: 40; pointer-events: none; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.08), transparent 40%); opacity: 0; transition: opacity 0.5s ease; mix-blend-mode: screen; }
-        .bg-grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 9998; }
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
-
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--theme-base); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.4s ease-out, visibility 0.4s; }
-        .loader-bar { width: 200px; height: 2px; background: #1e293b; margin-top: 20px; position: relative; overflow: hidden; }
-        .loader-progress { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--theme-cyan); box-shadow: 0 0 10px var(--theme-cyan); transition: width 0.1s linear; }
-
-        .tech-border { position: relative; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(15, 19, 26, 0.6); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, border-color 0.5s ease; overflow: hidden; }
-        @media (min-width: 768px) { .tech-border { backdrop-filter: blur(8px); } .tech-border:hover { transform: translateY(-6px); box-shadow: 0 15px 35px -10px rgba(var(--theme-cyan-rgb), 0.2); border-color: rgba(var(--theme-cyan-rgb), 0.4); } }
-        .tech-border::before, .tech-border::after { content: ''; position: absolute; width: 15px; height: 15px; transition: all 0.3s; pointer-events: none; z-index: 10; }
-        .tech-border::before { top: -1px; left: -1px; border-top: 2px solid var(--theme-cyan); border-left: 2px solid var(--theme-cyan); }
-        .tech-border::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--theme-cyan); border-right: 2px solid var(--theme-cyan); }
-        .tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; border-color: var(--theme-cyan); opacity: 0.5; }
-
-        .glow-overlay { position: absolute; inset: -1px; pointer-events: none; z-index: 0; opacity: 0; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.15), transparent 50%); transition: opacity 0.3s ease; }
-        .tech-border:hover .glow-overlay { opacity: 1; }
-
-        .glitch-hover { transition: color 0.3s ease, text-shadow 0.3s ease; }
-        .glitch-hover:hover { animation: glitch-anim-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite; color: var(--theme-cyan); text-shadow: 2px 0 var(--theme-cyan), -2px 0 var(--theme-gold); }
-        @keyframes glitch-anim-text { 0% { transform: translate(0) } 20% { transform: translate(-2px, 1px) } 40% { transform: translate(-1px, -1px) } 60% { transform: translate(2px, 1px) } 80% { transform: translate(1px, -1px) } 100% { transform: translate(0) } }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @keyframes social-glow-cycle { 0% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } 25% { filter: drop-shadow(0 0 20px rgba(236,72,153,0.9)); } 50% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); } 75% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.9)); } 100% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } }
-        @keyframes shark-wobble { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-8deg); } 50% { transform: translateY(-15px) rotate(8deg); } 75% { transform: translateY(-5px) rotate(-5deg); } }
-        @keyframes shark-wobble-fast { 0%, 100% { transform: translateY(0) rotate(0deg) scale(1.15); } 25% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } 50% { transform: translateY(-15px) rotate(20deg) scale(1.15); } 75% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } }
-
-        /* Floating AI */
-        .ai-container { position: fixed; bottom: 120px; right: 20px; z-index: 50; display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
-        .ai-mascot-img { width: 140px; height: 140px; object-fit: contain; cursor: pointer; animation: social-glow-cycle 4s infinite, shark-wobble 3.5s ease-in-out infinite; }
-        .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-fast 0.6s ease-in-out infinite; }
-        .mascot-menu-hint { position: absolute; bottom: 0; right: 0; background: var(--theme-cyan); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(var(--theme-cyan-rgb),0.8); pointer-events: none; }
-        .zzz-text { position: absolute; top: -20px; right: 0; color: var(--theme-cyan); font-weight: bold; font-family: 'Orbitron'; font-size: 1.5rem; text-shadow: 0 0 10px var(--theme-cyan); display: none; pointer-events: none; }
-        .angry-bubble { position: absolute; top: -40px; right: 10px; background: var(--theme-cyan); color: black; padding: 5px 15px; border-radius: 10px; font-weight: bold; display: none; white-space: nowrap; pointer-events: none; box-shadow: 0 0 15px rgba(var(--theme-cyan-rgb),0.8); z-index: 51; }
-        .angry-bubble::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-width: 8px 8px 0; border-style: solid; border-color: var(--theme-cyan) transparent transparent transparent; }
-        .ai-chat-box { position: absolute; bottom: 150px; right: 0; width: 320px; background: rgba(5, 8, 16, 0.95); border: 1px solid var(--theme-cyan); padding: 20px; border-radius: 10px 10px 0 10px; display: none; transform-origin: bottom right; z-index: 51; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(var(--theme-cyan-rgb),0.2); }
-        
-        @media (max-width: 768px) {
-            .bg-grain { display: none !important; }
-            #bg-canvas { display: none !important; }
-            .ai-container { bottom: 110px; right: 16px; }
-            .ai-mascot-img { width: 85px; height: 85px; } 
-            .ai-chat-box { bottom: 95px; width: calc(100vw - 32px); right: 0; border-radius: 12px; }
-            #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
-            .tech-border { transform: none !important; transition: none !important; }
-        }
-        details > summary::-webkit-details-marker { display: none; }
-    
-        :focus-visible {
-            outline: 2px solid #00f0ff;
-            outline-offset: 2px;
-        }
-
-        /* === Stagger Reveal Animation === */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .stagger-item.visible { opacity: 1; transform: translateY(0); }
-        .stagger-item:nth-child(1) { transition-delay: 0ms; }
-        .stagger-item:nth-child(2) { transition-delay: 80ms; }
-        .stagger-item:nth-child(3) { transition-delay: 160ms; }
-        .stagger-item:nth-child(4) { transition-delay: 240ms; }
-        .stagger-item:nth-child(5) { transition-delay: 320ms; }
-        .stagger-item:nth-child(6) { transition-delay: 400ms; }
-
-        /* === Noise Texture Overlay === */
-        .noise-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 128px 128px;
-        }
-
-        /* === Section Divider === */
-        .sci-divider {
-            position: relative;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            pointer-events: none;
-            user-select: none;
-        }
-        .sci-divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: calc(50% - 20px);
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,212,255,0.4));
-        }
-        .sci-divider::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: calc(50% - 20px);
-            height: 1px;
-            background: linear-gradient(to left, transparent, rgba(0,212,255,0.4));
-        }
-        .sci-divider-diamond {
-            position: relative;
-            z-index: 1;
-            width: 10px;
-            height: 10px;
-            border: 1px solid rgba(0,212,255,0.5);
-            transform: rotate(45deg);
-            box-shadow: 0 0 8px rgba(0,212,255,0.3);
-            flex-shrink: 0;
-        }
-
-        /* === Skill Bar === */
-        .skill-fill {
-            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* === Magnetic Button === */
-        .magnetic-btn {
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* === Rotating Badge === */
-        @keyframes rotate-badge {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .rotate-badge { animation: rotate-badge 20s linear infinite; }
-
-        /* === Pulse border for featured pricing card === */
-        @keyframes pulse-border {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4), 0 0 30px rgba(0,212,255,0.15); }
-            50% { box-shadow: 0 0 0 6px rgba(0,212,255,0), 0 0 50px rgba(0,212,255,0.25); }
-        }
-        .pulse-border { animation: pulse-border 2.5s ease-in-out infinite; }
-
-        /* === Horizontal scroll track === */
-        .hscroll-track {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            cursor: grab;
-            user-select: none;
-            -webkit-overflow-scrolling: touch;
-        }
-        .hscroll-track:active { cursor: grabbing; }
-        .hscroll-track::-webkit-scrollbar { display: none; }
-        /* ═══ PWA APP 模式 ═══ */
-        #app-tab-bar {
-          position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-          display: none; align-items: stretch;
-          background: rgba(3,3,3,0.97); backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(0,240,255,0.15);
-          padding-bottom: env(safe-area-inset-bottom);
-          height: calc(60px + env(safe-area-inset-bottom));
-        }
-        .pwa-mode #app-tab-bar { display: flex; }
-        #app-tab-bar a {
-          flex: 1; display: flex; flex-direction: column;
-          align-items: center; justify-content: center; gap: 3px;
-          text-decoration: none; color: #666;
-          font-size: 9px; font-weight: 700; letter-spacing: 1px;
-          transition: color 0.2s; -webkit-tap-highlight-color: transparent;
-        }
-        #app-tab-bar a i { font-size: 18px; }
-        #app-tab-bar a.active { color: #00f0ff; }
-        #app-tab-bar a.active i { filter: drop-shadow(0 0 8px rgba(0,240,255,0.6)); }
-        #app-tab-bar .tab-cta {
-          flex: 1.2; background: linear-gradient(135deg, #00f0ff, #0080ff);
-          color: black !important; border-radius: 16px 16px 0 0;
-          margin-top: -12px; font-weight: 900;
-          box-shadow: 0 -4px 20px rgba(0,240,255,0.3);
-        }
-        #app-tab-bar .tab-cta i { font-size: 20px; }
-        .pwa-mode #mobile-cta-bar { display: none !important; }
-        .pwa-mode main, .pwa-mode footer { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
-        .pwa-mode #navbar, .pwa-mode nav:first-of-type { display: none !important; }
-        #pwa-status-bar {
-          height: env(safe-area-inset-top); background: #030303;
-          position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
-        }
-        .pwa-mode #main-content > section:first-child { padding-top: env(safe-area-inset-top, 20px); }
-        @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        /* === Shark Logo Mobile Pulse Hint === */
-        @keyframes shark-glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 4px rgba(0,240,255,0.3)); }
-            50% { filter: drop-shadow(0 0 14px rgba(0,240,255,1)) drop-shadow(0 0 28px rgba(0,240,255,0.6)); }
-        }
-        @keyframes hint-fade-inout {
-            0% { opacity: 0; transform: translateY(-4px); }
-            15% { opacity: 1; transform: translateY(0); }
-            75% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-4px); }
-        }
-        #nav-shark-logo.shark-pulse { animation: shark-glow-pulse 1.5s ease-in-out infinite; }
-        #logo-hint-tooltip { display: none; pointer-events: none; }
-        #logo-hint-tooltip.hint-active { display: block; animation: hint-fade-inout 4.5s ease-in-out forwards; }
-    </style>
+    <!-- Shared styles from main.css for better caching and maintainability -->
+    <link rel="stylesheet" href="main.css">
     <script>
         (async function() {
             try {
@@ -623,7 +369,10 @@
                         <div class="absolute top-0 right-0 bg-sci-cyan text-black px-4 py-1.5 font-black text-[11px] sm:text-xs tracking-widest z-20 rounded-bl-xl shadow-[-5px_5px_15px_rgba(var(--theme-cyan-rgb),0.4)] flex items-center gap-1"><i class="fa-solid fa-crosshairs"></i> 專長：MMA/泰拳/散打</div>
                         <div class="relative h-[320px] sm:h-[380px] overflow-hidden flex-shrink-0 border-b border-yellow-400/20">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-yellow-400 shadow-[0_0_15px_rgba(255,215,0,1)] transform -translate-y-full group-hover:translate-y-[600px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach_huang.webp" type="image/webp">
                             <img src="coach_huang.jpg" loading="lazy" alt="黃謙和總教練" class="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=800">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent z-10"></div>
                             <div class="absolute bottom-4 left-4 z-20"><span class="text-[10px] text-black font-bold font-mono tracking-widest bg-sci-cyan px-2 py-1 rounded-sm shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.5)] flex items-center gap-1"><i class="fa-solid fa-crown"></i> HEAD COACH</span></div>
                         </div>
@@ -718,7 +467,10 @@
                         <div class="absolute top-0 right-0 bg-white/90 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(255,255,255,0.3)]">專長：踢拳 Kickboxing</div>
                         <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach_allen.webp" type="image/webp">
                             <img src="coach_allen.jpg" loading="lazy" alt="Allen" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-fallback="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=600">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
                             <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">KICKBOXING COACH</span></div>
                         </div>
@@ -797,7 +549,10 @@
                         <div class="absolute top-0 right-0 bg-white/90 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(255,255,255,0.3)]">專長：散打 / 詠春</div>
                         <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach_zhengyu.webp" type="image/webp">
                             <img src="coach_zhengyu.jpg" loading="lazy" alt="鄭豫" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-fallback="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
                             <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">SANDA COACH</span></div>
                         </div>
@@ -846,7 +601,10 @@
                         <div class="absolute top-0 right-0 bg-white/90 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(255,255,255,0.3)]">專長：泰拳 Muay Thai</div>
                         <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach_kao.webp" type="image/webp">
                             <img src="coach_kao.jpg" loading="lazy" alt="高大可" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-fallback="https://images.unsplash.com/photo-1583416750470-965b2707b355?auto=format&fit=crop&q=80&w=600">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
                             <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">MUAY THAI COACH</span></div>
                         </div>
@@ -925,7 +683,10 @@
                         <div class="absolute top-0 right-0 bg-white/90 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(255,255,255,0.3)]">專長：自由搏擊 / 踢拳</div>
                         <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach_hu.webp" type="image/webp">
                             <img src="coach_hu.jpg" loading="lazy" alt="胡脩誠" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-fallback="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=600">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
                             <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">ASSISTANT COACH</span></div>
                         </div>
@@ -975,7 +736,10 @@
                         <div class="absolute top-0 right-0 bg-white/90 text-black px-3 py-1 font-black text-[10px] sm:text-[11px] tracking-widest z-20 rounded-bl-lg shadow-[-2px_2px_10px_rgba(255,255,255,0.3)]">專長：泰拳 Muay Thai</div>
                         <div class="relative h-64 sm:h-72 overflow-hidden flex-shrink-0 border-b border-white/10">
                             <div class="absolute top-0 left-0 w-full h-[2px] bg-sci-cyan shadow-[0_0_15px_var(--theme-cyan)] transform -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[1.5s] ease-in-out z-20 opacity-0 group-hover:opacity-100"></div>
+                            <picture>
+                            <source srcset="coach-mi.webp" type="image/webp">
                             <img src="coach-mi.jpg" loading="lazy" alt="小米" class="w-full h-full object-cover object-top filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=600">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent z-10"></div>
                             <div class="absolute bottom-3 left-4 z-20"><span class="text-[9px] text-gray-300 font-bold font-mono tracking-widest border border-gray-500 bg-black/50 px-2 py-0.5 rounded-sm">ASSISTANT COACH</span></div>
                         </div>

@@ -2,8 +2,8 @@
   "name": "hcf-ai-system",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "tailwindcss -i ./input.css -o ./styles.css --minify",
-    "watch:css": "tailwindcss -i ./input.css -o ./styles.css --watch"
+    "build:css": "npx tailwindcss -i ./input.css -o ./output.css --minify",
+    "watch:css": "npx tailwindcss -i ./input.css -o ./output.css --watch"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",

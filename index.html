@@ -6,20 +6,20 @@
     <meta name="theme-color" content="#010208">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>HCF新竹格鬥館 | 新竹泰拳首選・踢拳・散打・專業重訓</title>
-    <meta name="description" content="HCF新竹格鬥館，新竹評價最高、實戰最強的專業拳館！我們主打正宗泰拳教學，並提供踢拳、散打與重訓（肌力體能）私人教練與團體課程。這輩子，總要為自己贏一次！現在預約體驗只要 $400。">
+    <meta name="description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
     <meta name="keywords" content="HCF新竹格鬥館, 新竹泰拳, 新竹格鬥, 新竹踢拳, 新竹散打, 新竹重訓, 新竹健身房, 泰拳教學, 拳擊">
     
     <link rel="icon" type="image/png" href="shark_logo.png">
     
     <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta property="og:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。現在預約體驗只要 $400，啟動你的鋼鐵裝甲！">
+    <meta property="og:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，實戰最強專業拳館。">
     <meta property="og:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
     <meta property="og:url" content="https://hcf-hsinchu.netlify.app/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta name="twitter:description" content="新竹最強格鬥館！主打正宗泰拳，全面涵蓋踢拳、散打、專業重訓。">
+    <meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！">
     <meta name="twitter:image" content="https://hcf-hsinchu.netlify.app/hero1.jpg">
 
     <link rel="manifest" href="manifest.json">
@@ -73,326 +73,9 @@
         }
     </script>
 
-    <style>
-        :root {
-            --theme-base: #010208;        --theme-base-rgb: 1, 2, 8;
-            --theme-surface: #080d16;     --theme-surface-rgb: 8, 13, 22;
-            --theme-surface-2: #0e1520;   --theme-surface-2-rgb: 14, 21, 32;
-            --theme-cyan: #00d4ff;        --theme-cyan-rgb: 0, 212, 255;
-            --theme-gold: #e8b830;        --theme-gold-rgb: 232, 184, 48;
-            --theme-red: #ff2d55;         --theme-red-rgb: 255, 45, 85;
-            --theme-silver: #c0c8d8;      --theme-silver-rgb: 192, 200, 216;
-            --theme-purple: #7b2fff;      --theme-purple-rgb: 123, 47, 255;
-            --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #7b2fff 100%);
-            --gradient-gold:  linear-gradient(135deg, #e8b830 0%, #ff8c00 100%);
-            --gradient-danger: linear-gradient(135deg, #ff2d55 0%, #ff6b00 100%);
-        }
-        [data-theme="red"] { --theme-cyan: #ff003c; --theme-cyan-rgb: 255, 0, 60; }
-        [data-theme="green"] { --theme-cyan: #00ff41; --theme-cyan-rgb: 0, 255, 65; }
-        [data-theme="blue"] { --theme-cyan: #2e51ff; --theme-cyan-rgb: 46, 81, 255; }
-        [data-theme="purple"] { --theme-cyan: #bf00ff; --theme-cyan-rgb: 191, 0, 255; }
-        [data-theme="white"] { --theme-cyan: #ffffff; --theme-cyan-rgb: 255, 255, 255; }
-        [data-theme="gold"] { --theme-cyan: var(--theme-gold); --theme-cyan-rgb: 255, 215, 0; }
-
-        html { background-color: var(--theme-base); }
-        * { -webkit-tap-highlight-color: transparent; }
-
-        @media (hover: hover) and (pointer: fine) {
-            body { cursor: none; }
-            a, button, input, select, details, summary, .cursor-pointer { cursor: none !important; }
-        }
-        
-        .custom-cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--theme-cyan); border-radius: 50%; z-index: 10000; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
-        .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid rgba(var(--theme-cyan-rgb), 0.4); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s; display: none; }
-        @media (min-width: 768px) { .custom-cursor-dot, .custom-cursor-ring { display: block; } }
-        body.cursor-hover .custom-cursor-dot { background: var(--theme-cyan); width: 8px; height: 8px; box-shadow: 0 0 10px var(--theme-cyan); }
-        body.cursor-hover .custom-cursor-ring { width: 50px; height: 50px; border-color: rgba(var(--theme-cyan-rgb), 0.8); background: rgba(var(--theme-cyan-rgb),0.05); }
-
-        body { background-color: var(--theme-base); color: #e2e8f0; overflow-x: hidden; line-height: 1.8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.2); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.5); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--theme-base); border-left: 1px solid rgba(var(--theme-cyan-rgb),0.1); }
-        ::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--theme-cyan-rgb), 0.8); }
-
-        #mouse-glow-effect { --mouse-x: 50vw; --mouse-y: 50vh; position: fixed; inset: 0; z-index: 40; pointer-events: none; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.08), transparent 40%); opacity: 0; transition: opacity 0.5s ease; mix-blend-mode: screen; }
-        .bg-grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 9998; }
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
-
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--theme-base); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.4s ease-out, visibility 0.4s; }
-        .loader-bar { width: 200px; height: 2px; background: #1e293b; margin-top: 20px; position: relative; overflow: hidden; }
-        .loader-progress { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--theme-cyan); box-shadow: 0 0 10px var(--theme-cyan); transition: width 0.1s linear; }
-
-        .tech-border { position: relative; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(15, 19, 26, 0.6); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, border-color 0.5s ease; overflow: hidden; }
-        @media (min-width: 768px) { .tech-border { backdrop-filter: blur(8px); } .tech-border:hover { transform: translateY(-6px); box-shadow: 0 15px 35px -10px rgba(var(--theme-cyan-rgb), 0.2); border-color: rgba(var(--theme-cyan-rgb), 0.4); } }
-        .tech-border::before, .tech-border::after { content: ''; position: absolute; width: 15px; height: 15px; transition: all 0.3s; pointer-events: none; z-index: 10; }
-        .tech-border::before { top: -1px; left: -1px; border-top: 2px solid var(--theme-cyan); border-left: 2px solid var(--theme-cyan); }
-        .tech-border::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--theme-cyan); border-right: 2px solid var(--theme-cyan); }
-        .tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; border-color: var(--theme-cyan); opacity: 0.5; }
-
-        .glow-overlay { position: absolute; inset: -1px; pointer-events: none; z-index: 0; opacity: 0; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(var(--theme-cyan-rgb), 0.15), transparent 50%); transition: opacity 0.3s ease; }
-        .tech-border:hover .glow-overlay { opacity: 1; }
-
-        .glitch-hover { transition: color 0.3s ease, text-shadow 0.3s ease; }
-        .glitch-hover:hover { animation: glitch-anim-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite; color: var(--theme-cyan); text-shadow: 2px 0 var(--theme-cyan), -2px 0 var(--theme-gold); }
-        @keyframes glitch-anim-text { 0% { transform: translate(0) } 20% { transform: translate(-2px, 1px) } 40% { transform: translate(-1px, -1px) } 60% { transform: translate(2px, 1px) } 80% { transform: translate(1px, -1px) } 100% { transform: translate(0) } }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @keyframes social-glow-cycle { 0% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } 25% { filter: drop-shadow(0 0 20px rgba(236,72,153,0.9)); } 50% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); } 75% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.9)); } 100% { filter: drop-shadow(0 0 20px rgba(6,199,85,0.9)); } }
-        @keyframes shark-wobble { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-8deg); } 50% { transform: translateY(-15px) rotate(8deg); } 75% { transform: translateY(-5px) rotate(-5deg); } }
-        @keyframes shark-wobble-fast { 0%, 100% { transform: translateY(0) rotate(0deg) scale(1.15); } 25% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } 50% { transform: translateY(-15px) rotate(20deg) scale(1.15); } 75% { transform: translateY(-5px) rotate(-15deg) scale(1.15); } }
-
-        /* Floating AI */
-        .ai-container { position: fixed; bottom: 120px; right: 20px; z-index: 50; display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
-        .ai-mascot-img { width: 140px; height: 140px; object-fit: contain; cursor: pointer; animation: social-glow-cycle 4s infinite, shark-wobble 3.5s ease-in-out infinite; }
-        .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-fast 0.6s ease-in-out infinite; }
-        .mascot-menu-hint { position: absolute; bottom: 0; right: 0; background: var(--theme-cyan); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(var(--theme-cyan-rgb),0.8); pointer-events: none; }
-        .zzz-text { position: absolute; top: -20px; right: 0; color: var(--theme-cyan); font-weight: bold; font-family: 'Orbitron'; font-size: 1.5rem; text-shadow: 0 0 10px var(--theme-cyan); display: none; pointer-events: none; }
-        .angry-bubble { position: absolute; top: -40px; right: 10px; background: var(--theme-cyan); color: black; padding: 5px 15px; border-radius: 10px; font-weight: bold; display: none; white-space: nowrap; pointer-events: none; box-shadow: 0 0 15px rgba(var(--theme-cyan-rgb),0.8); z-index: 51; }
-        .angry-bubble::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-width: 8px 8px 0; border-style: solid; border-color: var(--theme-cyan) transparent transparent transparent; }
-        .ai-chat-box { position: absolute; bottom: 150px; right: 0; width: 320px; background: rgba(5, 8, 16, 0.95); border: 1px solid var(--theme-cyan); padding: 20px; border-radius: 10px 10px 0 10px; display: none; transform-origin: bottom right; z-index: 51; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(var(--theme-cyan-rgb),0.2); }
-        
-        @media (max-width: 768px) {
-            .bg-grain { display: none !important; }
-            #bg-canvas { display: none !important; }
-            .ai-container { bottom: 80px; right: 12px; }
-            .ai-mascot-img { width: 65px; height: 65px; }
-            .ai-chat-box { bottom: 75px; width: calc(100vw - 32px); right: -4px; border-radius: 16px 16px 0 16px; }
-            #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
-            .tech-border { transform: none !important; transition: none !important; }
-        }
-
-        /* === Mobile (< 480px) Optimizations === */
-        @keyframes shark-wobble-mobile {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        @media (max-width: 480px) {
-            .custom-cursor-dot, .custom-cursor-ring { display: none !important; }
-            #mouse-glow-effect { display: none !important; }
-            .parallax-bg { position: static !important; transform: none !important; }
-            .ai-mascot-img { animation: social-glow-cycle 4s infinite, shark-wobble-mobile 2s ease-in-out infinite; width: 80px; height: 80px; }
-            .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-mobile 0.6s ease-in-out infinite; }
-            .ai-chat-box { max-height: 60vh; overflow-y: auto; }
-        }
-
-        /* === Tablet (481px – 1024px) Optimizations === */
-        @media (min-width: 481px) and (max-width: 1024px) {
-            body {
-                padding-left: max(0px, env(safe-area-inset-left));
-                padding-right: max(0px, env(safe-area-inset-right));
-            }
-            .tech-border:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(var(--theme-cyan-rgb), 0.1); }
-        }
-
-        /* === Desktop (> 1024px) Optimizations === */
-        @media (min-width: 1025px) and (pointer: fine) {
-            .custom-cursor-dot { will-change: transform; width: 8px; height: 8px; box-shadow: 0 0 10px var(--theme-cyan); filter: drop-shadow(0 0 3px var(--theme-cyan)); }
-            .custom-cursor-ring { will-change: transform; box-shadow: inset 0 0 10px rgba(var(--theme-cyan-rgb), 0.2); }
-            body.cursor-hover .custom-cursor-ring { width: 60px; height: 60px; border-width: 2px; border-color: rgba(var(--theme-cyan-rgb), 0.9); box-shadow: 0 0 20px rgba(var(--theme-cyan-rgb), 0.5); }
-            body.cursor-hover .custom-cursor-dot { width: 12px; height: 12px; box-shadow: 0 0 15px var(--theme-cyan); }
-        }
-        @keyframes float-anim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        @media (min-width: 1025px) {
-            #mouse-glow-effect { will-change: background; }
-            #bg-canvas { will-change: transform; }
-            .float-animation { animation: float-anim 6s ease-in-out infinite; will-change: transform; }
-        }
-
-        /* === Accessibility: Reduced Motion === */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        /* === Accessibility: Reduced Data === */
-        @media (prefers-reduced-data: reduce) {
-            video { display: none !important; }
-            .bg-grain { display: none !important; }
-            #bg-canvas { display: none !important; }
-            .social-glow-cycle { animation: none !important; }
-        }
-
-        details > summary::-webkit-details-marker { display: none; }
-    
-        :focus-visible {
-            outline: 2px solid #00f0ff;
-            outline-offset: 2px;
-        }
-
-        /* === Stagger Reveal Animation === */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .stagger-item.visible { opacity: 1; transform: translateY(0); }
-        .stagger-item:nth-child(1) { transition-delay: 0ms; }
-        .stagger-item:nth-child(2) { transition-delay: 80ms; }
-        .stagger-item:nth-child(3) { transition-delay: 160ms; }
-        .stagger-item:nth-child(4) { transition-delay: 240ms; }
-        .stagger-item:nth-child(5) { transition-delay: 320ms; }
-        .stagger-item:nth-child(6) { transition-delay: 400ms; }
-
-        /* === Noise Texture Overlay === */
-        .noise-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 128px 128px;
-        }
-
-        /* === Hero Fade-In === */
-        @keyframes hero-fade-in {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-fade-in { animation: hero-fade-in 1s ease-out both; }
-
-        /* === Section Divider === */
-        .sci-divider {
-            position: relative;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            pointer-events: none;
-            user-select: none;
-        }
-        .sci-divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: calc(50% - 20px);
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,212,255,0.4));
-        }
-        .sci-divider::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: calc(50% - 20px);
-            height: 1px;
-            background: linear-gradient(to left, transparent, rgba(0,212,255,0.4));
-        }
-        .sci-divider-diamond {
-            position: relative;
-            z-index: 1;
-            width: 10px;
-            height: 10px;
-            border: 1px solid rgba(0,212,255,0.5);
-            transform: rotate(45deg);
-            box-shadow: 0 0 8px rgba(0,212,255,0.3);
-            flex-shrink: 0;
-        }
-
-        /* === Skill Bar === */
-        .skill-fill {
-            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* === Magnetic Button === */
-        .magnetic-btn {
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* === Rotating Badge === */
-        @keyframes rotate-badge {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .rotate-badge { animation: rotate-badge 20s linear infinite; }
-
-        /* === Pulse border for featured pricing card === */
-        @keyframes pulse-border {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4), 0 0 30px rgba(0,212,255,0.15); }
-            50% { box-shadow: 0 0 0 6px rgba(0,212,255,0), 0 0 50px rgba(0,212,255,0.25); }
-        }
-        .pulse-border { animation: pulse-border 2.5s ease-in-out infinite; }
-
-        /* === Horizontal scroll track === */
-        .hscroll-track {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            cursor: grab;
-            user-select: none;
-            -webkit-overflow-scrolling: touch;
-        }
-        .hscroll-track:active { cursor: grabbing; }
-        .hscroll-track::-webkit-scrollbar { display: none; }
-        /* ═══ PWA APP 模式 ═══ */
-        #app-tab-bar {
-          position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-          display: none; align-items: stretch;
-          background: rgba(3,3,3,0.97); backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(0,240,255,0.15);
-          padding-bottom: env(safe-area-inset-bottom);
-          height: calc(60px + env(safe-area-inset-bottom));
-        }
-        .pwa-mode #app-tab-bar { display: flex; }
-        #app-tab-bar a {
-          flex: 1; display: flex; flex-direction: column;
-          align-items: center; justify-content: center; gap: 3px;
-          text-decoration: none; color: #666;
-          font-size: 9px; font-weight: 700; letter-spacing: 1px;
-          transition: color 0.2s; -webkit-tap-highlight-color: transparent;
-        }
-        #app-tab-bar a i { font-size: 18px; }
-        #app-tab-bar a.active { color: #00f0ff; }
-        #app-tab-bar a.active i { filter: drop-shadow(0 0 8px rgba(0,240,255,0.6)); }
-        #app-tab-bar .tab-cta {
-          flex: 1.2; background: linear-gradient(135deg, #00f0ff, #0080ff);
-          color: black !important; border-radius: 16px 16px 0 0;
-          margin-top: -12px; font-weight: 900;
-          box-shadow: 0 -4px 20px rgba(0,240,255,0.3);
-        }
-        #app-tab-bar .tab-cta i { font-size: 20px; }
-        .pwa-mode #mobile-cta-bar { display: none !important; }
-        .pwa-mode main, .pwa-mode footer { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
-        .pwa-mode #navbar, .pwa-mode nav:first-of-type { display: none !important; }
-        #pwa-status-bar {
-          height: env(safe-area-inset-top); background: #030303;
-          position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
-        }
-        .pwa-mode #main-content > section:first-child { padding-top: env(safe-area-inset-top, 20px); }
-        @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        /* === Shark Logo Mobile Pulse Hint === */
-        @keyframes shark-glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 4px rgba(0,240,255,0.3)); }
-            50% { filter: drop-shadow(0 0 14px rgba(0,240,255,1)) drop-shadow(0 0 28px rgba(0,240,255,0.6)); }
-        }
-        @keyframes hint-fade-inout {
-            0% { opacity: 0; transform: translateY(-4px); }
-            15% { opacity: 1; transform: translateY(0); }
-            75% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-4px); }
-        }
-        #nav-shark-logo.shark-pulse { animation: shark-glow-pulse 1.5s ease-in-out infinite; }
-        #logo-hint-tooltip { display: none; pointer-events: none; }
-        #logo-hint-tooltip.hint-active { display: block; animation: hint-fade-inout 4.5s ease-in-out forwards; }
-    </style>
+    <!-- Shared styles extracted to main.css for better caching and maintainability -->
+    <link rel="stylesheet" href="main.css">
+    <!-- TODO: Replace Tailwind CDN with built CSS: npx tailwindcss -i ./input.css -o ./output.css --minify -->
     <script>
         (async function() {
             try {
@@ -716,11 +399,17 @@
                         <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
                     </div>
                     <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
-                        <img src="hero1.jpg" alt="HCF Combat" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" width="1920" height="1080" loading="eager" decoding="async" data-fallback="https://images.unsplash.com/photo-1549719386-74dfc97dd4fc?auto=format&fit=crop&q=80&w=2000">
+                        <picture>
+                          <source srcset="hero1.webp" type="image/webp">
+                          <img src="hero1.jpg" alt="HCF Combat" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" width="1920" height="1080" loading="eager" decoding="async" data-fallback="https://images.unsplash.com/photo-1549719386-74dfc97dd4fc?auto=format&fit=crop&q=80&w=2000">
+                        </picture>
                         <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
                     </div>
                     <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
-                        <img src="hero2.jpg" alt="HCF Combat 2" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" width="1920" height="1080" loading="lazy" decoding="async" data-fallback="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000">
+                        <picture>
+                          <source srcset="hero2.webp" type="image/webp">
+                          <img src="hero2.jpg" alt="HCF Combat 2" class="w-full h-full object-cover filter brightness-[0.7] contrast-125 saturate-110" width="1920" height="1080" loading="lazy" decoding="async" data-fallback="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000">
+                        </picture>
                         <div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>
                     </div>
                     <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 bg-sci-base">
@@ -778,13 +467,12 @@
                 <div class="w-full flex flex-col items-start text-left pointer-events-auto">
                     
                     <div class="flex flex-col items-start mb-6 w-full hero-fade-in">
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white font-black italic tracking-wide border-l-4 border-sci-cyan pl-4 w-full drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-pre-line">這輩子，<br>為自己贏一次。</h1>
-                        <p class="text-[11px] sm:text-xs text-gray-300 mt-3 tracking-widest pl-4 w-full drop-shadow-md font-bold">新竹最強泰拳格鬥館</p>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white font-black italic tracking-wide border-l-4 border-sci-cyan pl-4 w-full drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-pre-line">新竹泰拳首選 踢拳 散打 專業重訓</h1>
                     </div>
 
                     <div id="mobile-cta-bar" class="fixed bottom-0 left-0 w-full z-[100] p-3 sm:p-0 sm:relative sm:z-[30] flex flex-row gap-2 sm:gap-4 sm:w-auto sm:mt-6 bg-[#050810] sm:bg-transparent border-t border-white/10 sm:border-none pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-0 items-center justify-center sm:justify-start shadow-[0_-10px_30px_rgba(0,0,0,0.8)] sm:shadow-none">
-                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" onclick="if('vibrate' in navigator) navigator.vibrate(10)" class="flex-1 sm:flex-none px-2 sm:px-10 py-4 sm:py-5 bg-sci-cyan text-black font-black text-[14px] sm:text-xl sm:skew-x-[-10deg] text-center flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] hover:bg-cyan-400 transition-colors rounded-lg sm:rounded-none magnetic-btn">
-                            <span class="sm:skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-bolt" aria-hidden="true"></i> $400 體驗預約</span>
+                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" onclick="if('vibrate' in navigator) navigator.vibrate(10)" class="flex-1 sm:flex-none px-2 sm:px-10 py-4 sm:py-5 bg-sci-cyan text-black font-black text-[14px] sm:text-xl sm:skew-x-[-10deg] text-center flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] hover:bg-cyan-400 transition-colors rounded-lg sm:rounded-none magnetic-btn cta-pulse">
+                            <span class="sm:skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 給自己一次變強的機會</span>
                         </a>
                     </div>
                 </div>
@@ -816,7 +504,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div class="lg:col-span-7 border border-white/10 bg-[#050810] relative overflow-hidden group reveal flex flex-col justify-center min-h-[85vh] sm:min-h-[600px] p-6 sm:p-10 rounded-xl shadow-2xl">
                         <div class="absolute inset-0 z-0">
-                            <img src="coach_huang.jpg" class="w-full h-full object-cover filter brightness-50 contrast-125 grayscale-[20%] transition-transform duration-1000 group-hover:scale-105" alt="Background" width="800" height="800" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=800">
+                            <picture>
+                                <source srcset="coach_huang.webp" type="image/webp">
+                                <img src="coach_huang.jpg" class="w-full h-full object-cover filter brightness-50 contrast-125 grayscale-[20%] transition-transform duration-1000 group-hover:scale-105" alt="Background" width="800" height="800" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=800">
+                            </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-[var(--theme-base)]/40 to-transparent"></div>
                             <div class="absolute inset-0 bg-gradient-to-r from-[var(--theme-base)]/90 to-transparent hidden md:block"></div>
                         </div>
@@ -1083,7 +774,9 @@
                 <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover mb-10 inline-block border-b-4 border-sci-cyan pb-2" data-en="LATEST SCHEDULE">最新課表</h2>
                 
                 <picture class="block w-full reveal shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)] rounded-xl">
+                    <source media="(max-width: 767px)" srcset="schedule-mobile.webp" type="image/webp">
                     <source media="(max-width: 767px)" srcset="schedule-mobile.png">
+                    <source srcset="schedule-pc.webp" type="image/webp">
                     <img src="schedule-pc.png" alt="HCF 新竹格鬥最新課表" class="w-full h-auto rounded-xl border border-white/10 hover:border-sci-cyan/50 transition-colors duration-500" width="1200" height="800">
                 </picture>
                 
@@ -1185,19 +878,28 @@
                     <div class="flex-grow w-full">
                         <div class="grid grid-cols-3 gap-3 mb-6">
                             <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="aspect-square bg-[#050810] border border-white/10 rounded-xl overflow-hidden relative group hover:border-pink-500/50 transition-colors">
+                                <picture>
+                                <source srcset="coach_huang.webp" type="image/webp">
                                 <img src="coach_huang.jpg" alt="HCF Instagram" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 opacity-60 group-hover:opacity-100" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=400">
+                            </picture>
                                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
                                     <i class="fa-brands fa-instagram text-white text-2xl"></i>
                                 </div>
                             </a>
                             <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="aspect-square bg-[#050810] border border-white/10 rounded-xl overflow-hidden relative group hover:border-pink-500/50 transition-colors">
+                                <picture>
+                                <source srcset="coach_allen.webp" type="image/webp">
                                 <img src="coach_allen.jpg" alt="HCF Instagram" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 opacity-60 group-hover:opacity-100" data-fallback="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=400">
+                            </picture>
                                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
                                     <i class="fa-brands fa-instagram text-white text-2xl"></i>
                                 </div>
                             </a>
                             <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="aspect-square bg-[#050810] border border-white/10 rounded-xl overflow-hidden relative group hover:border-pink-500/50 transition-colors">
+                                <picture>
+                                <source srcset="coach_kao.webp" type="image/webp">
                                 <img src="coach_kao.jpg" alt="HCF Instagram" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 opacity-60 group-hover:opacity-100" data-fallback="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&q=80&w=400">
+                            </picture>
                                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
                                     <i class="fa-brands fa-instagram text-white text-2xl"></i>
                                 </div>
@@ -1374,589 +1076,7 @@
         </div>
     </footer>
 
-    <script>
-        // 1. Safe Preloader (Won't get stuck anymore!)
-        function hidePreloader() {
-            const p = document.getElementById('preloader');
-            if (!p || p.style.display === 'none') return;
-            document.getElementById('loader-progress').style.width = '100%';
-            p.style.opacity = '0';
-            setTimeout(() => { p.style.display = 'none'; }, 400);
-            createCarouselIndicators();
-            updateCarousel();
-        }
-        // Use DOMContentLoaded instead of window.load so it doesn't wait for missing images
-        document.addEventListener('DOMContentLoaded', hidePreloader);
-        // Absolute fallback: kill preloader after 2 seconds no matter what
-        setTimeout(hidePreloader, 2000);
-
-        // 2. Share API & Copy URL
-        function shareWebsite(btn) {
-            if (navigator.share) {
-                navigator.share({ title: 'HCF - 新竹格鬥運動館', text: '新竹最強格鬥運動館！這輩子，總要為自己贏一次！現在預約體驗只要 $400，一起來變強吧🥊', url: window.location.href }).catch(err => console.log('Share failed:', err));
-            } else {
-                const tempInput = document.createElement('input'); tempInput.value = window.location.href; document.body.appendChild(tempInput); tempInput.select(); document.execCommand('copy'); document.body.removeChild(tempInput);
-                const originalText = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 網址已複製！'; btn.classList.remove('bg-blue-600', 'hover:bg-blue-500'); btn.classList.add('bg-green-600', 'hover:bg-green-500');
-                setTimeout(() => { btn.innerHTML = originalText; btn.classList.remove('bg-green-600', 'hover:bg-green-500'); btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); }, 2000);
-            }
-        }
-
-        // 3. Visual Effects (Cursor, Mouse Glow, Canvas)
-        const mouseGlow = document.getElementById('mouse-glow-effect');
-        const cursorDot = document.getElementById('cursor-dot');
-        const cursorRing = document.getElementById('cursor-ring');
-        const parallaxElements = document.querySelectorAll('.parallax-bg');
-        let isTickingGlobal = false; let mouseX = 0, mouseY = 0; let ringX = 0, ringY = 0;
-        
-        if (window.matchMedia("(pointer: fine)").matches) {
-            function animateCursor() {
-                ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
-                if(cursorRing) cursorRing.style.transform = `translate(calc(-50% + ${ringX}px), calc(-50% + ${ringY}px))`;
-                if(cursorDot) cursorDot.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
-                requestAnimationFrame(animateCursor);
-            }
-            requestAnimationFrame(animateCursor);
-
-            window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX; mouseY = e.clientY;
-                if (!isTickingGlobal) {
-                    window.requestAnimationFrame(() => {
-                        mouseGlow.style.opacity = '1';
-                        mouseGlow.style.setProperty('--mouse-x', `${mouseX}px`);
-                        mouseGlow.style.setProperty('--mouse-y', `${mouseY}px`);
-                        isTickingGlobal = false;
-                    });
-                    isTickingGlobal = true;
-                }
-            });
-
-            const interactiveElements = document.querySelectorAll('a, button, input, summary, .cursor-pointer, .tech-border');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-            });
-
-            window.addEventListener('mouseleave', () => { mouseGlow.style.opacity = '0'; if(cursorDot) cursorDot.style.opacity = '0'; if(cursorRing) cursorRing.style.opacity = '0'; });
-            window.addEventListener('mouseenter', () => { if(cursorDot) cursorDot.style.opacity = '1'; if(cursorRing) cursorRing.style.opacity = '1'; });
-
-            document.querySelectorAll('.tech-border').forEach(card => {
-                const overlay = document.createElement('div'); overlay.classList.add('glow-overlay'); card.appendChild(overlay);
-                let isTickingCard = false;
-                card.addEventListener('mousemove', e => {
-                    if (!isTickingCard) {
-                        window.requestAnimationFrame(() => {
-                            const rect = card.getBoundingClientRect();
-                            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-                            isTickingCard = false;
-                        });
-                        isTickingCard = true;
-                    }
-                });
-            });
-
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                parallaxElements.forEach(el => {
-                    const speed = el.getAttribute('data-speed') || 0.1;
-                    const yPos = -(scrolled * speed);
-                    el.style.transform = `translateY(${yPos}px)`;
-                });
-            }, { passive: true });
-
-            const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d');
-            let w, h, pts = [];
-            function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
-            class P {
-                constructor() { this.x=Math.random()*w; this.y=Math.random()*h; this.vx=(Math.random()-.5)*0.2; this.vy=(Math.random()-.5)*0.2; this.s=Math.random()*1.5; }
-                update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>w)this.vx*=-1; if(this.y<0||this.y>h)this.vy*=-1; }
-                draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle='rgba(var(--theme-cyan-rgb),0.15)'; ctx.fill(); }
-            }
-            function init() { resize(); pts=[]; const isMobile = window.innerWidth < 768; const isTablet = window.innerWidth < 1024; const particleCount = isMobile ? 0 : (isTablet ? 15 : 40); for(let i=0;i<particleCount;i++) pts.push(new P()); }
-            function anim() {
-                ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(var(--theme-cyan-rgb),0.03)'; ctx.lineWidth=0.5;
-                for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y; if(dx*dx+dy*dy<10000){ ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke(); } } }
-                pts.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(anim);
-            }
-            window.addEventListener('resize', init); init(); anim();
-        }
-
-        // 4. Mobile Menu & Drawers
-        const mm = document.getElementById('mobile-menu'), bd = document.getElementById('brand-drawer'), db = document.getElementById('drawer-backdrop');
-        function toggleMobileMenu() { if (!bd.classList.contains('-translate-x-full')) bd.classList.add('-translate-x-full'); if (mm.classList.contains('translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); mm.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
-        function toggleBrandDrawer() { if (!mm.classList.contains('translate-x-full')) mm.classList.add('translate-x-full'); if (bd.classList.contains('-translate-x-full')) { db.classList.remove('hidden'); setTimeout(()=>db.classList.remove('opacity-0'),10); bd.classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden'; } else { closeAllDrawers(); } }
-        function handleLogoClick() { toggleBrandDrawer(); }
-        function closeAllDrawers() { mm.classList.add('translate-x-full'); bd.classList.add('-translate-x-full'); db.classList.add('opacity-0'); setTimeout(()=>db.classList.add('hidden'),300); document.body.style.overflow = ''; }
-
-        // 5. Scroll Reveal & Navbar Shrink
-        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        
-        const rocketBtn = document.getElementById('rocket-top'), nav = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) { nav.classList.add('bg-black/90','backdrop-blur-md','border-b','border-white/10'); nav.classList.remove('py-4'); nav.classList.add('py-2'); } 
-            else { nav.classList.remove('bg-black/90','backdrop-blur-md','border-b','border-white/10','py-2'); nav.classList.add('py-4'); }
-            if (window.scrollY > 500) { rocketBtn.classList.remove('opacity-0','translate-y-20'); } else { rocketBtn.classList.add('opacity-0','translate-y-20'); }
-        }, { passive: true });
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-        // 6. Language & Theme Toggles
-        let currentLang = localStorage.getItem('hcf_lang') || 'zh';
-        langTexts = { zh: { label: "EN/中", mobileLabel: "EN" }, en: { label: "中/EN", mobileLabel: "中" } };
-        function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); applyLanguage(); }
-        function applyLanguage() {
-            document.querySelectorAll('.lang-text').forEach(el => {
-                if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; } 
-                else { if (!el.dataset.zh) el.dataset.zh = el.innerHTML; el.innerHTML = el.dataset.en; }
-            });
-            const ll = document.getElementById('lang-label'); if(ll) ll.innerText = langTexts[currentLang].label;
-            const ml = document.getElementById('mobile-lang-label'); if(ml) ml.innerText = langTexts[currentLang].mobileLabel;
-        }
-        function setTheme(theme) {
-            if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
-            else { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('hcf_theme', theme); }
-            document.getElementById('secret-theme-panel').classList.add('hidden');
-        }
-
-        // 7. Carousel Engine
-        let currentCarouselIndex = 0;
-        const slides = document.querySelectorAll('.carousel-item');
-        const container = document.getElementById('carousel-indicators');
-        let slideTimer;
-
-        function createCarouselIndicators() {
-            if(container && slides.length > 0) {
-                slides.forEach((_, i) => {
-                    const btn = document.createElement('button');
-                    btn.onclick = () => goToSlide(i);
-                    container.appendChild(btn);
-                });
-            }
-        }
-
-        function updateCarousel() {
-            slides.forEach((slide, index) => {
-                if (index === currentCarouselIndex) { slide.classList.remove('opacity-0', 'z-0'); slide.classList.add('opacity-100', 'z-10', 'active'); } 
-                else { slide.classList.remove('opacity-100', 'z-10', 'active'); slide.classList.add('opacity-0', 'z-0'); }
-            });
-            if(container) {
-                Array.from(container.children).forEach((btn, index) => {
-                    btn.className = index === currentCarouselIndex ? 'w-6 h-1 sm:w-8 sm:h-1.5 rounded-full bg-sci-cyan shadow-[0_0_8px_rgba(var(--theme-cyan-rgb),0.8)] transition-all' : 'w-6 h-1 sm:w-8 sm:h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all';
-                });
-            }
-            manageSlideDuration(); 
-        }
-
-        function manageSlideDuration() {
-            clearTimeout(slideTimer);
-            if(slides.length === 0) return;
-            const currentSlide = slides[currentCarouselIndex];
-            const video = currentSlide.querySelector('video');
-            
-            slides.forEach(s => {
-                const v = s.querySelector('video');
-                if (v && v !== video) { v.pause(); v.currentTime = 0; v.removeEventListener('ended', nextSlide); }
-            });
-
-            if (video) {
-                video.currentTime = 0;
-                // catch error if local video file is missing
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(e => { slideTimer = setTimeout(nextSlide, 5000); });
-                }
-                video.removeEventListener('ended', nextSlide); 
-                video.addEventListener('ended', nextSlide);
-            } else {
-                slideTimer = setTimeout(nextSlide, 6000); 
-            }
-        }
-
-        function nextSlide() { currentCarouselIndex = (currentCarouselIndex + 1) % slides.length; updateCarousel(); }
-        function prevSlide() { currentCarouselIndex = (currentCarouselIndex - 1 + slides.length) % slides.length; updateCarousel(); }
-        function goToSlide(index) { currentCarouselIndex = index; updateCarousel(); }
-        
-        if(document.getElementById('next-slide')) document.getElementById('next-slide').addEventListener('click', nextSlide);
-        if(document.getElementById('prev-slide')) document.getElementById('prev-slide').addEventListener('click', prevSlide);
-
-        // 8. BGM
-        const bgm = document.getElementById('bgm-audio'), biD = document.getElementById('bgm-icon');
-        let isMusicPlaying = false;
-        function toggleBGM() {
-            if (isMusicPlaying) { 
-                bgm.pause(); 
-                if(biD) { biD.classList.remove('fa-volume-high'); biD.classList.add('fa-volume-xmark'); }
-            } else { 
-                bgm.play().catch(e=>{}); 
-                if(biD) { biD.classList.remove('fa-volume-xmark'); biD.classList.add('fa-volume-high'); } 
-                const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon');
-                if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); } const svi = document.getElementById('shark-video-sound-icon'); if(svi) { svi.classList.remove('fa-volume-high'); svi.classList.add('fa-volume-xmark'); } }
-            }
-            isMusicPlaying = !isMusicPlaying;
-        }
-        function toggleVideoSound() {
-            const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon'), svi = document.getElementById('shark-video-sound-icon');
-            if (hv) {
-                hv.muted = !hv.muted;
-                if (hv.muted) {
-                    if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); }
-                    if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); }
-                    if(svi) { svi.classList.remove('fa-volume-high'); svi.classList.add('fa-volume-xmark'); }
-                } else {
-                    if(vi) { vi.classList.remove('fa-volume-xmark'); vi.classList.add('fa-volume-high'); }
-                    if(mvi) { mvi.classList.remove('fa-volume-xmark'); mvi.classList.add('fa-volume-high'); }
-                    if(svi) { svi.classList.remove('fa-volume-xmark'); svi.classList.add('fa-volume-high'); }
-                    if (isMusicPlaying) toggleBGM();
-                }
-            }
-        }
-        // 9. Countdown Timers
-        (function() {
-            if (localStorage.getItem('hcf_menu_hint_seen')) return;
-            var logo = document.getElementById('nav-shark-logo');
-            var tip = document.getElementById('logo-hint-tooltip');
-            if (logo) logo.classList.add('shark-pulse');
-            if (tip) tip.classList.add('hint-active');
-            setTimeout(function() {
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) tip.classList.remove('hint-active');
-            }, 4500);
-            var btn = document.getElementById('logo-btn');
-            if (btn) btn.addEventListener('click', function() {
-                localStorage.setItem('hcf_menu_hint_seen', '1');
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) { tip.classList.remove('hint-active'); tip.style.display = 'none'; }
-            }, { once: true });
-        })();
-
-        // 9. Countdown Timers (News Event & FOMO Pricing)
-        function updateCountdowns() {
-            const now = new Date();
-            
-            // Original Event Countdown (March 21)
-            let ey = now.getFullYear(); const eventDate = new Date(ey, 2, 21, 18, 0, 0); if(now>eventDate) ey++;
-            const eDist = new Date(ey, 2, 21, 18, 0, 0).getTime() - now.getTime();
-            if(document.getElementById("days")) {
-                document.getElementById("days").innerText = String(Math.floor(eDist / 86400000)).padStart(2,'0');
-                document.getElementById("hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
-                document.getElementById("minutes").innerText = String(Math.floor((eDist % 3600000) / 60000)).padStart(2,'0');
-                document.getElementById("seconds").innerText = String(Math.floor((eDist % 60000) / 1000)).padStart(2,'0');
-                if(document.getElementById("event-days")) document.getElementById("event-days").innerText = String(Math.floor(eDist / 86400000)).padStart(2,'0');
-                if(document.getElementById("event-hours")) document.getElementById("event-hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
-            }
-
-            // FOMO Pricing Countdown (Tomorrow midnight)
-            const fomoDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 23, 59, 59).getTime();
-            const fDist = fomoDate - now.getTime();
-            if (document.getElementById('fomo-hours') && fDist > 0) {
-                document.getElementById('fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
-                document.getElementById('fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
-                document.getElementById('fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
-            }
-        }
-        setInterval(updateCountdowns, 1000); updateCountdowns();
-
-        // 11. AI Chat Systems
-        // Floating Shark (Bottom Right)
-        let it = 0, co = false; 
-        const ais = document.getElementById('ai-system'), zm = document.getElementById('zzz-mark'), ab = document.getElementById('angry-bubble');
-        async function askShark(question) {
-            const hBox = document.getElementById('ai-chat-history');
-            hBox.innerHTML += `<div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">${question}</div>`;
-            hBox.scrollTop = hBox.scrollHeight;
-            const lid = 'loading-' + Date.now();
-            hBox.innerHTML += `<div id="${lid}" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>`;
-            hBox.scrollTop = hBox.scrollHeight;
-            try {
-                const res = await fetch('/.netlify/functions/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: question }) });
-                const data = await res.json();
-                const reply = data.reply || '⚠️ 請直接點擊下方 LINE 找真人客服！';
-                const engineBadge = data.engine ? `<span class="ml-1 text-[9px] opacity-40">[${data.engine}]</span>` : '';
-                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">${reply}${engineBadge}</div>`;
-            } catch (e) {
-                document.getElementById(lid).outerHTML = `<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed">⚠️ 鯊魚教練去打沙包了！請點擊下方 LINE 找真人客服！🥊</div>`;
-            }
-            hBox.scrollTop = hBox.scrollHeight;
-        }
-        function sendUserMessage() { const input = document.getElementById('ai-user-input'); const val = input.value.trim(); if (val !== "") { askShark(val); input.value = ""; } }
-        function resetIt() { if(co)return; it=0; ais.classList.remove('ai-sleeping','ai-angry'); zm.style.display='none'; ab.style.display='none'; }
-        window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
-        setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
-        function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
-        // Mascot Button: Mobile tap = open menu, long-press = open AI chat; Desktop = open AI chat
-        (function() {
-            var btn = document.getElementById("ai-mascot-btn");
-            if (!btn) return;
-            var longPressTimer = null;
-            var isLongPress = false;
-            var hasTouched = false;
-            btn.addEventListener("touchstart", function() {
-                hasTouched = true;
-                isLongPress = false;
-                longPressTimer = setTimeout(function() {
-                    isLongPress = true;
-                    toggleChat();
-                }, 600);
-            }, { passive: true });
-            btn.addEventListener("touchend", function(e) {
-                clearTimeout(longPressTimer);
-                e.preventDefault();
-                if (!isLongPress) {
-                    toggleMobileMenu();
-                }
-            });
-            btn.addEventListener("touchcancel", function() {
-                clearTimeout(longPressTimer);
-            }, { passive: true });
-            btn.addEventListener("click", function() {
-                if (!hasTouched) { toggleChat(); }
-                setTimeout(function() { hasTouched = false; }, 300);
-            });
-        })();
-
-        // ═══ APP 模式偵測 ═══
-        const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-          || window.navigator.standalone === true
-          || document.referrer.includes('android-app://');
-
-        if (isStandalone) {
-          document.documentElement.classList.add('pwa-mode');
-
-          const navbar = document.querySelector('nav');
-          if (navbar) navbar.style.display = 'none';
-
-          const tabBar = document.createElement('nav');
-          tabBar.id = 'app-tab-bar';
-          tabBar.innerHTML = `
-            <a href="/index.html" class="${location.pathname === '/index.html' || location.pathname === '/' ? 'active' : ''}">
-              <i class="fa-solid fa-house"></i><span>首頁</span>
-            </a>
-            <a href="/classes.html" class="${location.pathname.includes('classes') ? 'active' : ''}">
-              <i class="fa-solid fa-dumbbell"></i><span>課程</span>
-            </a>
-            <a href="/pricing.html" class="tab-cta">
-              <i class="fa-solid fa-bolt"></i><span>預約體驗</span>
-            </a>
-            <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
-              <i class="fa-solid fa-users"></i><span>教練</span>
-            </a>
-            <a href="/index.html#schedule" class="">
-              <i class="fa-solid fa-calendar"></i><span>課表</span>
-            </a>
-          `;
-          document.body.appendChild(tabBar);
-
-          const statusBar = document.createElement('div');
-          statusBar.id = 'pwa-status-bar';
-          document.body.prepend(statusBar);
-
-          const installBtn = document.getElementById('install-app-btn');
-          if (installBtn) installBtn.style.display = 'none';
-
-          const rocket = document.getElementById('rocket-top');
-          if (rocket) rocket.style.display = 'none';
-        }
-
-        // ═══ PWA 安裝引導（取代舊的小按鈕） ═══
-        let deferredPrompt;
-        const installAppBtn = document.getElementById('install-app-btn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-          e.preventDefault();
-          deferredPrompt = e;
-          if (installAppBtn) installAppBtn.classList.remove('hidden');
-
-          if (!isStandalone && !localStorage.getItem('hcf-install-dismissed')) {
-            setTimeout(() => {
-              const banner = document.createElement('div');
-              banner.id = 'install-banner';
-              banner.innerHTML = `
-                <img src="shark_logo.png" alt="HCF" style="width:48px;height:48px;border-radius:12px;">
-                <div style="flex:1;">
-                  <div style="color:white;font-size:14px;font-weight:900;letter-spacing:2px;">安裝 HCF APP</div>
-                  <div style="color:#888;font-size:11px;margin-top:2px;">加到主畫面，秒開體驗</div>
-                </div>
-                <button id="banner-install-btn" style="padding:10px 20px;background:#00f0ff;color:black;font-weight:900;font-size:12px;letter-spacing:2px;border:none;border-radius:8px;cursor:pointer;">安裝</button>
-                <button id="banner-close-btn" style="background:none;border:none;color:#666;font-size:18px;cursor:pointer;padding:8px;">✕</button>
-              `;
-              banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(3,3,3,0.97);backdrop-filter:blur(20px);border-top:2px solid rgba(0,240,255,0.3);padding:16px 20px calc(16px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;animation:slideUpBanner 0.5s ease-out;box-shadow:0 -10px 40px rgba(0,0,0,0.8);';
-              document.body.appendChild(banner);
-
-              document.getElementById('banner-install-btn').addEventListener('click', async () => {
-                if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; }
-                banner.remove();
-              });
-              document.getElementById('banner-close-btn').addEventListener('click', () => {
-                localStorage.setItem('hcf-install-dismissed', 'true');
-                banner.remove();
-              });
-            }, 5000);
-          }
-        });
-
-        if (installAppBtn) {
-          installAppBtn.addEventListener('click', async () => {
-            if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') { installAppBtn.classList.add('hidden'); } deferredPrompt = null; }
-          });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            if(currentLang==='en') applyLanguage(); 
-        });
-
-        // === Multi-Device Optimizations ===
-
-        // A. Device Capability Detection
-        const deviceCapabilities = {
-            isLowMemory: navigator.deviceMemory !== undefined && navigator.deviceMemory < 4,
-            isSlowConnection: navigator.connection ? (navigator.connection.saveData || ['slow-2g','2g','3g'].includes(navigator.connection.effectiveType)) : false,
-            isTouchDevice: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0),
-            isMobile: window.innerWidth < 480,
-            isTablet: window.innerWidth >= 481 && window.innerWidth <= 1024,
-        };
-
-        if (deviceCapabilities.isLowMemory || deviceCapabilities.isSlowConnection) {
-            document.documentElement.classList.add('low-power-mode');
-            document.querySelectorAll('.parallax-bg').forEach(el => { el.style.position = 'static'; el.style.transform = 'none'; });
-        }
-
-        // B. Lazy Video Loading via IntersectionObserver
-        if ('IntersectionObserver' in window) {
-            const lazyVideos = document.querySelectorAll('video[data-lazy-src]');
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const video = entry.target;
-                        if (!video.src && video.dataset.lazySrc) {
-                            video.src = video.dataset.lazySrc;
-                            video.load();
-                        }
-                        videoObserver.unobserve(video);
-                    }
-                });
-            }, { rootMargin: '200px' });
-            lazyVideos.forEach(video => videoObserver.observe(video));
-        }
-
-        // C. Mobile: Scroll-based CTA bar visibility
-        (function() {
-            const ctaBar = document.getElementById('mobile-cta-bar');
-            if (!ctaBar || window.innerWidth >= 640) return;
-            let lastScrollPos = 0;
-            window.addEventListener('scroll', () => {
-                const currentScrollPos = window.scrollY;
-                ctaBar.style.opacity = currentScrollPos > lastScrollPos && currentScrollPos > 100 ? '0.4' : '1';
-                lastScrollPos = currentScrollPos;
-            }, { passive: true });
-        })();
-
-        // D. iOS: Prevent auto-zoom on input focus (ensure 16px min font)
-        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            document.querySelectorAll('input, textarea, select').forEach(el => {
-                if (parseFloat(window.getComputedStyle(el).fontSize) < 16) {
-                    el.style.fontSize = '16px';
-                }
-            });
-        }
-
-        // E. Touch: Close chat box when tapping outside (mobile mis-tap prevention)
-        (function() {
-            const chatBox = document.getElementById('ai-chat-box');
-            const mascotImg = document.querySelector('.ai-mascot-img');
-            if (!chatBox || !mascotImg) return;
-            document.addEventListener('touchend', (e) => {
-                if (chatBox.style.display !== 'none' && chatBox.style.display !== '' &&
-                    !chatBox.contains(e.target) && !mascotImg.contains(e.target)) {
-                    toggleChat();
-                }
-            }, { passive: true });
-        })();
-
-        // F. Tablet: Touch feedback on cards and buttons
-        if (deviceCapabilities.isTouchDevice && !deviceCapabilities.isMobile) {
-            document.querySelectorAll('.tech-border, button').forEach(el => {
-                el.addEventListener('touchstart', () => { el.style.transform = 'scale(0.98)'; }, { passive: true });
-                el.addEventListener('touchend', () => { el.style.transform = ''; }, { passive: true });
-            });
-        }
-
-        // G. Desktop: Smooth scroll for anchor links
-        if (window.innerWidth > 1024) {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    const target = document.querySelector(href);
-                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-                });
-            });
-            // Staggered reveal animation delays
-            document.querySelectorAll('.reveal').forEach((el, i) => {
-                el.style.transitionDelay = (i * 60) + 'ms';
-            });
-        }
-    
-        // 統一圖片錯誤處理
-        document.querySelectorAll('img[data-fallback]').forEach(function(img) {
-            img.addEventListener('error', function() {
-                if (this.dataset.fallback && this.src !== this.dataset.fallback) {
-                    this.src = this.dataset.fallback;
-                }
-            }, { once: true });
-        });
-        // === 數字計數器動畫 ===
-        function animateCounter(el) {
-            const target = parseInt(el.getAttribute('data-count'));
-            if (isNaN(target)) return;
-            const suffix = el.getAttribute('data-suffix') || '';
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) { current = target; clearInterval(timer); }
-                el.textContent = Math.floor(current).toLocaleString() + suffix;
-            }, 16);
-        }
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.dataset.animated) {
-                    entry.target.dataset.animated = 'true';
-                    animateCounter(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-
-        // === Stagger 交錯進場動畫 ===
-        const staggerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    staggerObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.stagger-item').forEach(el => staggerObserver.observe(el));
-
-        // === 磁吸按鈕效果（桌面版） ===
-        if (window.matchMedia('(pointer: fine)').matches) {
-            document.querySelectorAll('.magnetic-btn').forEach(btn => {
-                btn.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    this.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
-                });
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-                    this.style.transform = 'translate(0px, 0px)';
-                });
-                btn.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.1s linear';
-                });
-            });
-        }
+    <script src="main.js"></script>
         </script>
         <script>
     if ('serviceWorker' in navigator) {
