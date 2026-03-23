@@ -302,21 +302,6 @@
         }
         .pwa-mode #main-content > section:first-child { padding-top: env(safe-area-inset-top, 20px); }
         @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        /* === Shark Logo Mobile Pulse Hint === */
-        @keyframes shark-glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 4px rgba(0,240,255,0.3)); }
-            50% { filter: drop-shadow(0 0 14px rgba(0,240,255,1)) drop-shadow(0 0 28px rgba(0,240,255,0.6)); }
-        }
-        @keyframes hint-fade-inout {
-            0% { opacity: 0; transform: translateY(-4px); }
-            15% { opacity: 1; transform: translateY(0); }
-            75% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-4px); }
-        }
-        #nav-shark-logo.shark-pulse { animation: shark-glow-pulse 1.5s ease-in-out infinite; }
-        #logo-hint-tooltip { display: none; pointer-events: none; }
-        #logo-hint-tooltip.hint-active { display: block; animation: hint-fade-inout 4.5s ease-in-out forwards; }
-
         /* === CTA Pulse Glow Animation === */
         @keyframes pulse-glow {
           0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.5); }

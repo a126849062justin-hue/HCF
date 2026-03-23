@@ -233,25 +233,6 @@
                 }
             }
         }
-        // 9. Countdown Timers
-        (function() {
-            if (localStorage.getItem('hcf_menu_hint_seen')) return;
-            var logo = document.getElementById('nav-shark-logo');
-            var tip = document.getElementById('logo-hint-tooltip');
-            if (logo) logo.classList.add('shark-pulse');
-            if (tip) tip.classList.add('hint-active');
-            setTimeout(function() {
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) tip.classList.remove('hint-active');
-            }, 4500);
-            var btn = document.getElementById('logo-btn');
-            if (btn) btn.addEventListener('click', function() {
-                localStorage.setItem('hcf_menu_hint_seen', '1');
-                if (logo) logo.classList.remove('shark-pulse');
-                if (tip) { tip.classList.remove('hint-active'); tip.style.display = 'none'; }
-            }, { once: true });
-        })();
-
         // 9. Countdown Timers (News Event & FOMO Pricing)
         function updateCountdowns() {
             const now = new Date();
