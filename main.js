@@ -1,10 +1,13 @@
 // 1. Safe Preloader (Won't get stuck anymore!)
-        function hidePreloader() {
+        let _preloaderDone = false;
+        async function hidePreloader() {
             const p = document.getElementById('preloader');
-            if (!p || p.style.display === 'none') return;
+            if (!p || p.style.display === 'none' || _preloaderDone) return;
+            _preloaderDone = true;
             document.getElementById('loader-progress').style.width = '100%';
             p.style.opacity = '0';
             setTimeout(() => { p.style.display = 'none'; }, 400);
+            await buildCarouselFromConfig();
             createCarouselIndicators();
             updateCarousel();
         }
@@ -163,8 +166,61 @@
         }
 
         // 7. Carousel Engine
+        async function buildCarouselFromConfig() {
+            const inner = document.querySelector('.carousel-inner');
+            if (!inner) return;
+            const v = '20260323';
+            let config;
+            try {
+                const resp = await fetch('carousel-config.json');
+                if (!resp.ok) throw new Error(`Failed to fetch carousel config: ${resp.status}`);
+                config = await resp.json();
+            } catch (e) {
+                config = { slides: [{ type: 'image', src: 'hero1.jpg', alt: 'HCF Combat' }] };
+            }
+            const gradient = '<div class="absolute inset-x-0 bottom-0 h-3/5 sm:h-2/5 bg-gradient-to-t from-sci-base via-sci-base/90 to-transparent pointer-events-none"></div>';
+            const fragment = document.createDocumentFragment();
+            config.slides.forEach((slide, i) => {
+                const isFirst = i === 0;
+                const div = document.createElement('div');
+                div.className = 'carousel-item absolute inset-0 transition-opacity duration-1000 ' + (isFirst ? 'opacity-100 z-10 active' : 'opacity-0 z-0') + ' bg-sci-base';
+                if (slide.type === 'video') {
+                    const video = document.createElement('video');
+                    if (isFirst) video.id = 'hero-video';
+                    video.src = slide.src + '?v=' + v;
+                    if (slide.poster) video.poster = slide.poster;
+                    video.muted = true;
+                    video.setAttribute('playsinline', '');
+                    video.setAttribute('decoding', 'async');
+                    if (isFirst) {
+                        video.setAttribute('preload', 'auto');
+                        video.setAttribute('autoplay', '');
+                    } else {
+                        video.setAttribute('preload', 'none');
+                    }
+                    video.className = 'w-full h-full object-cover filter brightness-[0.85] contrast-110 saturate-105';
+                    div.appendChild(video);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = slide.src + '?v=' + v;
+                    img.alt = slide.alt || '';
+                    img.width = 1920;
+                    img.height = 1080;
+                    img.setAttribute('loading', isFirst ? 'eager' : 'lazy');
+                    img.setAttribute('decoding', 'async');
+                    if (slide.fallback) img.dataset.fallback = slide.fallback;
+                    img.className = 'w-full h-full object-cover filter brightness-[0.85] contrast-110 saturate-105';
+                    div.appendChild(img);
+                }
+                div.insertAdjacentHTML('beforeend', gradient);
+                fragment.appendChild(div);
+            });
+            inner.insertBefore(fragment, inner.firstChild);
+            slides = document.querySelectorAll('.carousel-item');
+        }
+
         let currentCarouselIndex = 0;
-        const slides = document.querySelectorAll('.carousel-item');
+        let slides = [];
         const container = document.getElementById('carousel-indicators');
         let slideTimer;
 
