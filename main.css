@@ -578,6 +578,18 @@
             position: relative;
             z-index: 3;
         }
+        /* 平板直向 768px+：三欄佈局，中間圖稍小 */
+        @media (min-width: 768px) {
+            .fs-main-display {
+                grid-template-columns: 1fr 340px 1fr;
+                gap: 1.5rem;
+                align-items: start;
+                padding: 0 1.5rem;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+        }
+        /* 桌面 1024px+：三欄佈局，中間圖更大 */
         @media (min-width: 1024px) {
             .fs-main-display {
                 grid-template-columns: 1fr 460px 1fr;
@@ -591,7 +603,7 @@
         .fs-left-panel  { order: 2; }
         .fs-center-col  { order: 1; }
         .fs-right-panel { order: 3; }
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
             .fs-left-panel  { order: 1; text-align: right; }
             .fs-center-col  { order: 2; }
             .fs-right-panel { order: 3; }
@@ -607,6 +619,9 @@
             border: 1px solid rgba(var(--theme-cyan-rgb), 0.25);
             background: rgba(0, 0, 0, 0.6);
             overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .fs-fighter-display { max-width: 340px; height: 440px; }
         }
         @media (min-width: 1024px) {
             .fs-fighter-display { max-width: 460px; height: 560px; }
