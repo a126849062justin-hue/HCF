@@ -185,6 +185,8 @@
                 const div = document.createElement('div');
                 div.className = 'carousel-item absolute inset-0 transition-opacity duration-1000 ' + (isFirst ? 'opacity-100 z-10 active' : 'opacity-0 z-0') + ' bg-sci-base';
                 if (slide.type === 'video') {
+                    const isMobileDevice = window.innerWidth < 768;
+                    const isSlowConn = navigator.connection ? (navigator.connection.saveData || ['slow-2g','2g','3g'].includes(navigator.connection.effectiveType)) : false;
                     const video = document.createElement('video');
                     if (isFirst) video.id = 'hero-video';
                     video.src = slide.src + '?v=' + v;
@@ -193,8 +195,12 @@
                     video.setAttribute('playsinline', '');
                     video.setAttribute('decoding', 'async');
                     if (isFirst) {
-                        video.setAttribute('preload', 'auto');
-                        video.setAttribute('autoplay', '');
+                        if (isMobileDevice || isSlowConn) {
+                            video.setAttribute('preload', 'none');
+                        } else {
+                            video.setAttribute('preload', 'metadata');
+                            video.setAttribute('autoplay', '');
+                        }
                     } else {
                         video.setAttribute('preload', 'none');
                     }
