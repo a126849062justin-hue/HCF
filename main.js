@@ -7,14 +7,16 @@
             document.getElementById('loader-progress').style.width = '100%';
             p.style.opacity = '0';
             setTimeout(() => { p.style.display = 'none'; }, 400);
-            await buildCarouselFromConfig();
-            createCarouselIndicators();
-            updateCarousel();
+            // Don't await - let carousel build in background while page is already visible
+            buildCarouselFromConfig().then(() => {
+                createCarouselIndicators();
+                updateCarousel();
+            });
         }
         // Use DOMContentLoaded instead of window.load so it doesn't wait for missing images
         document.addEventListener('DOMContentLoaded', hidePreloader);
-        // Absolute fallback: kill preloader after 2 seconds no matter what
-        setTimeout(hidePreloader, 2000);
+        // Absolute fallback: kill preloader after 300ms max
+        setTimeout(hidePreloader, 300);
 
         // 2. Share API & Copy URL
         function shareWebsite(btn) {
@@ -316,7 +318,28 @@
                 }
             }
         }
-        // 9. Countdown Timers (News Event & FOMO Pricing)
+        // 9. Auto-play BGM on first user interaction
+        (function() {
+            let bgmAutoStarted = false;
+            function autoStartBGM() {
+                if (bgmAutoStarted || isMusicPlaying) return;
+                bgmAutoStarted = true;
+                const bgmAudio = document.getElementById('bgm-audio');
+                if (bgmAudio) {
+                    bgmAudio.play().then(() => {
+                        isMusicPlaying = true;
+                        const icon = document.getElementById('bgm-icon');
+                        if (icon) { icon.classList.remove('fa-volume-xmark'); icon.classList.add('fa-volume-high'); }
+                        const sharkIcon = document.getElementById('shark-bgm-icon');
+                        if (sharkIcon) { sharkIcon.classList.remove('fa-volume-xmark'); sharkIcon.classList.add('fa-volume-high'); }
+                    }).catch(() => {});
+                }
+            }
+            document.addEventListener('touchstart', autoStartBGM, { once: true, passive: true });
+            document.addEventListener('click', autoStartBGM, { once: true });
+            document.addEventListener('mousemove', autoStartBGM, { once: true, passive: true });
+        })();
+        // 10. Countdown Timers (News Event & FOMO Pricing)
         function updateCountdowns() {
             const now = new Date();
             
