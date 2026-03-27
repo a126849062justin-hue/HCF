@@ -83,6 +83,290 @@
         .opening-hero {
             background: #050505;
         }
+
+        /* ══════════════════════════════════════════════
+           3D TEAM CAROUSEL STYLES
+           ══════════════════════════════════════════════ */
+        #team-carousel-section {
+            user-select: none;
+        }
+        .carousel-scene {
+            width: 100%;
+            height: 480px;
+            perspective: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+        }
+        .carousel-scene:active { cursor: grabbing; }
+        @media (max-width: 767px) {
+            .carousel-scene { height: 380px; perspective: 800px; }
+        }
+        .carousel-ring {
+            position: relative;
+            width: 180px;
+            height: 260px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .carousel-ring.dragging {
+            transition: none;
+        }
+        .carousel-card {
+            position: absolute;
+            inset: 0;
+            width: 180px;
+            height: 260px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(5,5,5,0.85);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            backface-visibility: hidden;
+            filter: brightness(0.55) saturate(0.6);
+        }
+        @media (max-width: 767px) {
+            .carousel-ring { width: 140px; height: 210px; }
+            .carousel-card { width: 140px; height: 210px; }
+        }
+        .carousel-card.tc-active {
+            border-color: rgba(var(--theme-cyan-rgb), 0.7);
+            box-shadow: 0 0 30px rgba(var(--theme-cyan-rgb), 0.35), 0 0 60px rgba(var(--theme-cyan-rgb), 0.15), inset 0 0 0 1px rgba(var(--theme-cyan-rgb), 0.3);
+            filter: brightness(1) saturate(1);
+        }
+        .carousel-card:hover {
+            border-color: rgba(var(--theme-cyan-rgb), 0.5);
+            box-shadow: 0 0 25px rgba(var(--theme-cyan-rgb), 0.2), inset 0 0 0 1px rgba(var(--theme-cyan-rgb), 0.15);
+            filter: brightness(0.85) saturate(0.85);
+        }
+        .carousel-card.tc-active:hover {
+            filter: brightness(1.05) saturate(1.1);
+        }
+        .carousel-card-img {
+            width: 100%;
+            height: 68%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+        .carousel-card-body {
+            padding: 10px 12px 8px;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.6), rgba(5,5,5,0.98));
+        }
+        .carousel-card-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            margin-bottom: 3px;
+        }
+        .carousel-card-role {
+            font-size: 0.6rem;
+            color: rgba(var(--theme-cyan-rgb), 0.8);
+            letter-spacing: 0.08em;
+            line-height: 1.3;
+        }
+        .carousel-card-nickname {
+            font-size: 0.58rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* HUD corner on active card */
+        .carousel-card.tc-active::before,
+        .carousel-card.tc-active::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .carousel-card.tc-active::before {
+            top: 4px; left: 4px;
+            border-top: 2px solid var(--theme-cyan);
+            border-left: 2px solid var(--theme-cyan);
+        }
+        .carousel-card.tc-active::after {
+            bottom: 4px; right: 4px;
+            border-bottom: 2px solid var(--theme-cyan);
+            border-right: 2px solid var(--theme-cyan);
+        }
+        /* Navigation arrows */
+        .tc-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(5,5,5,0.7);
+            border: 1px solid rgba(var(--theme-cyan-rgb), 0.3);
+            color: rgba(var(--theme-cyan-rgb), 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+        .tc-nav-btn:hover {
+            background: rgba(var(--theme-cyan-rgb), 0.15);
+            border-color: rgba(var(--theme-cyan-rgb), 0.7);
+            box-shadow: 0 0 12px rgba(var(--theme-cyan-rgb), 0.3);
+        }
+        .tc-nav-prev { left: 4px; }
+        .tc-nav-next { right: 4px; }
+        @media (min-width: 640px) {
+            .tc-nav-prev { left: 20px; }
+            .tc-nav-next { right: 20px; }
+        }
+        /* Dot indicators */
+        .tc-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .tc-dot.tc-dot-active {
+            background: var(--theme-cyan);
+            box-shadow: 0 0 8px rgba(var(--theme-cyan-rgb), 0.7);
+            width: 20px;
+            border-radius: 3px;
+        }
+
+        /* ── COACH MODAL ── */
+        #tc-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #tc-modal-overlay.tc-modal-open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        #tc-modal-box {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            background: #0a0a0a;
+            border: 1px solid rgba(var(--theme-cyan-rgb), 0.25);
+            border-radius: 16px;
+            box-shadow: 0 0 60px rgba(var(--theme-cyan-rgb), 0.15), 0 30px 80px rgba(0,0,0,0.8);
+            overflow-y: auto;
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #tc-modal-box::-webkit-scrollbar { width: 4px; }
+        #tc-modal-box::-webkit-scrollbar-thumb { background: rgba(var(--theme-cyan-rgb), 0.3); border-radius: 4px; }
+        #tc-modal-overlay.tc-modal-open #tc-modal-box {
+            transform: scale(1) translateY(0);
+        }
+        .tc-modal-header {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+        @media (max-width: 480px) { .tc-modal-header { height: 180px; } }
+        .tc-modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .tc-modal-header-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 30%, #0a0a0a 100%);
+        }
+        .tc-modal-header-hud-tl,
+        .tc-modal-header-hud-br {
+            position: absolute;
+            width: 20px; height: 20px;
+            pointer-events: none;
+        }
+        .tc-modal-header-hud-tl {
+            top: 12px; left: 12px;
+            border-top: 2px solid var(--theme-cyan);
+            border-left: 2px solid var(--theme-cyan);
+        }
+        .tc-modal-header-hud-br {
+            bottom: 12px; right: 12px;
+            border-bottom: 2px solid var(--theme-cyan);
+            border-right: 2px solid var(--theme-cyan);
+        }
+        .tc-modal-close {
+            position: absolute;
+            top: 12px; right: 12px;
+            z-index: 10;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .tc-modal-close:hover {
+            background: rgba(255,0,0,0.3);
+            border-color: rgba(255,0,0,0.5);
+        }
+        .tc-modal-body {
+            padding: 20px 24px 28px;
+        }
+        .tc-modal-skill-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .tc-modal-skill-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--theme-cyan), rgba(var(--theme-cyan-rgb), 0.6));
+            border-radius: 2px;
+            transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .tc-record-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+        }
+        .tc-fs-neon-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(var(--theme-cyan-rgb), 0.5), transparent);
+            margin: 12px 0;
+        }
     </style>
     <script>
         (async function() {
@@ -379,6 +663,102 @@
             <p class="text-gray-500 text-xs tracking-[0.4em] mt-10 animate-pulse">▼ SCROLL TO UNLOCK ▼</p>
         </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════
+         3D TEAM CAROUSEL
+         ══════════════════════════════════════════════ -->
+    <section id="team-carousel-section" class="relative py-20 overflow-hidden" style="background:#050505;">
+        <!-- Background grid -->
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image:linear-gradient(rgba(var(--theme-cyan-rgb),0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--theme-cyan-rgb),0.025) 1px,transparent 1px);background-size:60px 60px;"></div>
+        <!-- Glow -->
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(var(--theme-cyan-rgb),0.05) 0%,transparent 70%);"></div>
+
+        <!-- Section Title -->
+        <div class="relative z-10 text-center mb-10 px-4">
+            <p class="font-orbitron text-[0.6rem] tracking-[0.5em] text-sci-cyan mb-3 opacity-70">HCF ELITE ROSTER</p>
+            <h2 class="font-orbitron font-black text-white" style="font-size:clamp(1.6rem,5vw,3rem);">TEAM <span class="text-sci-cyan">CAROUSEL</span></h2>
+            <div class="fs-neon-divider" style="max-width:200px;margin:12px auto;"></div>
+            <p class="text-gray-500 text-xs tracking-[0.3em] font-mono">拖曳或點擊，探索菁英教練陣容</p>
+        </div>
+
+        <!-- 3D Carousel Container -->
+        <div class="relative z-10" id="tc-wrapper">
+            <!-- Prev / Next buttons -->
+            <button class="tc-nav-btn tc-nav-prev" id="tc-prev" aria-label="上一位教練">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="tc-nav-btn tc-nav-next" id="tc-next" aria-label="下一位教練">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Scene + Ring -->
+            <div class="carousel-scene" id="tc-scene" role="listbox" aria-label="教練輪播">
+                <div class="carousel-ring" id="tc-ring"></div>
+            </div>
+
+            <!-- Dot indicators -->
+            <div class="flex items-center justify-center gap-2 mt-6" id="tc-dots" aria-hidden="true"></div>
+
+            <!-- Hint -->
+            <p class="text-center text-gray-600 text-[0.6rem] tracking-widest font-mono mt-4">← DRAG / SWIPE / KEYS →</p>
+        </div>
+    </section>
+
+    <!-- Coach Modal -->
+    <div id="tc-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tc-modal-name" tabindex="-1">
+        <div id="tc-modal-box">
+            <!-- Header image -->
+            <div class="tc-modal-header">
+                <img id="tc-modal-img" src="" alt="" loading="lazy">
+                <div class="tc-modal-header-overlay"></div>
+                <div class="tc-modal-header-hud-tl" aria-hidden="true"></div>
+                <div class="tc-modal-header-hud-br" aria-hidden="true"></div>
+                <button class="tc-modal-close" id="tc-modal-close-btn" aria-label="關閉">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="tc-modal-body">
+                <!-- Name + role -->
+                <div class="flex items-start justify-between gap-4 flex-wrap mb-3">
+                    <div>
+                        <div class="font-orbitron font-black text-white text-xl leading-tight mb-1" id="tc-modal-name"></div>
+                        <div class="text-xs text-sci-cyan tracking-widest font-mono mb-1" id="tc-modal-role"></div>
+                        <div class="text-xs text-gray-500 italic" id="tc-modal-nickname"></div>
+                    </div>
+                    <div id="tc-modal-record-wrap"></div>
+                </div>
+                <!-- Specialty tag -->
+                <div class="mb-3" id="tc-modal-specialty-wrap"></div>
+                <!-- Quote -->
+                <blockquote class="border-l-2 pl-3 text-gray-400 text-xs italic leading-relaxed mb-4" style="border-color:var(--theme-cyan);" id="tc-modal-quote"></blockquote>
+                <div class="tc-fs-neon-divider"></div>
+                <!-- Bio -->
+                <p class="text-gray-300 text-sm leading-relaxed mb-4" id="tc-modal-bio"></p>
+                <!-- Skills -->
+                <div class="mb-4" id="tc-modal-skills-wrap">
+                    <p class="font-orbitron text-[0.6rem] tracking-[0.4em] text-gray-500 mb-3">SKILL STATS</p>
+                    <div id="tc-modal-skills"></div>
+                </div>
+                <!-- Achievements -->
+                <div class="mb-5" id="tc-modal-achievements-wrap">
+                    <p class="font-orbitron text-[0.6rem] tracking-[0.4em] text-gray-500 mb-3">ACHIEVEMENTS</p>
+                    <div id="tc-modal-achievements"></div>
+                </div>
+                <!-- CTA buttons -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="pricing.html" class="flex-1 text-center py-3 rounded-lg font-orbitron font-bold text-xs tracking-widest transition-all"
+                       style="background:var(--theme-cyan);color:#000;">
+                        ▶ 開始訓練
+                    </a>
+                    <button id="tc-modal-view-detail" class="flex-1 py-3 rounded-lg font-orbitron font-bold text-xs tracking-widest border transition-all"
+                            style="border-color:rgba(var(--theme-cyan-rgb),0.4);color:var(--theme-cyan);">
+                        查看詳細戰力分析
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ══════════════════════════════════════════════
          FIGHTER SELECT — COACH ROSTER
@@ -934,6 +1314,418 @@
             });
             if ('vibrate' in navigator) navigator.vibrate(10);
         }
+    </script>
+    <!-- 3D Team Carousel JS -->
+    <script>
+    (function() {
+        'use strict';
+
+        /* ── Shared coach data (duplicated here so carousel has access before Fighter Select IIFE runs) ── */
+        var tcCoaches = [
+            {
+                name: '黃謙和', role: 'HEAD COACH / 總教練',
+                specialty: '泰拳 / Muay Thai', specialtyIcon: 'fa-fire-flame-curved',
+                nickname: '「格鬥鋼鐵人」',
+                quote: '「我的教學沒有空話，只有 42 場勝利累積出的真理。」',
+                bio: '這副身體經歷過無數次擂台的重擊與考驗，依然屹立不搖。精通泰拳、踢拳、散打、MMA，擁有從台灣一路打進泰國、韓國、越南職業賽的資歷。',
+                record: { w: 42, l: 12 }, img: 'coach_huang.jpg',
+                skills: [{ name: '泰拳技術', val: 95 }, { name: '踢拳格鬥', val: 88 }, { name: '散打實戰', val: 82 }, { name: '體能訓練', val: 78 }],
+                achievements: ['WBC 冠軍級別膝肘破壞力', '全國冠軍等級接腿摔技', 'MAX FC 越南站冠軍', 'WOTD 雙料優勝']
+            },
+            {
+                name: 'Allen', role: 'KICKBOXING / 踢拳',
+                specialty: '踢拳 / Kickboxing', specialtyIcon: 'fa-bolt',
+                nickname: '「竹科戰神」',
+                quote: '「寫程式講求邏輯，格鬥也是。讓我幫你 Debug 你的發力結構。」',
+                bio: '具備竹科工程師與散打社社長雙重身份。將「Debug」的精準思維帶入教學，格鬥不是蠻力，而是物理學與人體工學的極致展現。',
+                record: null, img: 'coach_allen.jpg',
+                skills: [{ name: '踢拳技術', val: 90 }, { name: '發力邏輯', val: 88 }, { name: '防守架構', val: 82 }, { name: '體能體適', val: 75 }],
+                achievements: ['動作精密拆解 · Debug 教學法', '戰術邏輯思維建立', '零基礎高速建立肌肉記憶']
+            },
+            {
+                name: '鄭豫', role: 'SANDA / 散打',
+                specialty: '散打 / Sanda', specialtyIcon: 'fa-shield-halved',
+                nickname: '「重型坦克」',
+                quote: '「我不拘泥於門派。我教的，是能保護自己、真正學以致用的全方位攻防。」',
+                bio: '擁有布農族天生的爆發力與超乎常人的紀律。極少數能將「詠春拳」近身短打完美融合「散打」遠距離重擊的實戰派。',
+                record: null, img: 'coach_zhengyu.jpg',
+                skills: [{ name: '散打技術', val: 92 }, { name: '詠春短打', val: 85 }, { name: '接腿摔技', val: 90 }, { name: '綜合實戰', val: 85 }],
+                achievements: ['世界南少林詠春大賽 85kg 冠軍', 'T1 踢拳之王', '80kg+ 絕對霸主']
+            },
+            {
+                name: '高大可', role: 'MUAY THAI / 泰拳',
+                specialty: '泰拳 / Muay Thai', specialtyIcon: 'fa-fire-flame-curved',
+                nickname: '「逆襲狂人」',
+                quote: '「秩序源於能敲斷霸凌者鼻樑的實力。」',
+                bio: '一年內從 104 公斤的上班族蛻變成 74 公斤並站上擂台奪勝的傳說。他證明了「只要開始，永遠不嫌晚」。',
+                record: null, img: 'coach_kao.jpg',
+                skills: [{ name: '泰拳技術', val: 85 }, { name: '體能蛻變', val: 95 }, { name: '拳擊精度', val: 80 }, { name: '心理建設', val: 90 }],
+                achievements: ['一年內狂減 30KG (104→74)', '立青泰拳精英挑戰賽優勝', '享受合法揍人的快感']
+            },
+            {
+                name: '胡脩誠', role: 'ASST. COACH / 散打',
+                specialty: '散打 / Sanda', specialtyIcon: 'fa-shield-halved',
+                nickname: '「臨火無懼」',
+                quote: '「想學會怎麼破壞，先學會怎麼保護。」',
+                bio: '擂台下是守護生命的打火英雄，擂台上是對手眼中的夢魘。兼具重砲力量與輕量級速度，擁有無數次實戰打磨出的「黃金比例」戰士身材。',
+                record: null, img: 'coach_hu.jpg',
+                skills: [{ name: '散打格鬥', val: 88 }, { name: '搏擊速度', val: 90 }, { name: '體能體格', val: 92 }, { name: '鐵籠搏擊', val: 85 }],
+                achievements: ['WOTD-09 鐵籠搏擊優勝', 'Rise Nova 冠軍', 'T1 積分賽常勝軍']
+            },
+            {
+                name: '小米', role: 'ASST. COACH / 女子格鬥',
+                specialty: '肌力體能 / S&C', specialtyIcon: 'fa-dumbbell',
+                nickname: '「重生女鬥士」',
+                quote: '「天賦只是輔助，堅持才能成為贏家。擂台，是我對抗深淵的唯一解藥。」',
+                bio: '27歲才踏入擂台克服重度憂鬱症，化繭成蝶。不靠身高優勢，專注磨練極具壓迫感的近身重拳重腿。',
+                record: null, img: 'coach_mi.jpg',
+                skills: [{ name: '泰拳技術', val: 82 }, { name: '肌力體能', val: 90 }, { name: '心理韌性', val: 95 }, { name: '女子格鬥', val: 88 }],
+                achievements: ['114桃園市長盃泰國拳 48kg 冠軍', 'T1踢拳 50kg 挑戰組 勝出', '第六屆泰威 交流賽 勝出']
+            }
+        ];
+
+        var N = tcCoaches.length;
+        var angleStep = 360 / N;
+        var targetAngle = 0;
+        var autoplayTimer = null;
+        var isPaused = false;
+        var isDragging = false;
+        var dragStartX = 0;
+        var dragStartAngle = 0;
+        var modalCoachIdx = -1;
+
+        /* ── Tuning constants ── */
+        var AUTOPLAY_INTERVAL_MS = 3000;
+        var DRAG_SENSITIVITY = 0.4;
+        var MOBILE_BREAKPOINT_PX = 768;
+        var RADIUS_MOBILE = 240;
+        var RADIUS_DESKTOP = 340;
+        var SKILL_ANIM_DELAY_MS = 120;
+        var FIGHTER_SELECT_DELAY_MS = 600;
+
+        /* ── DOM refs ── */
+        var ring = document.getElementById('tc-ring');
+        var scene = document.getElementById('tc-scene');
+        var dotsContainer = document.getElementById('tc-dots');
+        var modalOverlay = document.getElementById('tc-modal-overlay');
+        var modalBox = document.getElementById('tc-modal-box');
+
+        if (!ring || !scene) return; // guard
+
+        /* ── Compute radius based on viewport ── */
+        function getRadius() {
+            return window.innerWidth < MOBILE_BREAKPOINT_PX ? RADIUS_MOBILE : RADIUS_DESKTOP;
+        }
+
+        /* ── Build cards ── */
+        function buildCards() {
+            ring.innerHTML = '';
+            var r = getRadius();
+            tcCoaches.forEach(function(coach, i) {
+                var card = document.createElement('div');
+                card.className = 'carousel-card' + (i === 0 ? ' tc-active' : '');
+                card.setAttribute('role', 'option');
+                card.setAttribute('aria-label', coach.name + ' ' + coach.role);
+                card.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                card.setAttribute('tabindex', i === 0 ? '0' : '-1');
+                card.dataset.idx = i;
+
+                var cardAngle = i * angleStep;
+                card.style.transform = 'rotateY(' + cardAngle + 'deg) translateZ(' + r + 'px)';
+
+                var img = document.createElement('img');
+                img.src = coach.img;
+                img.alt = coach.name;
+                img.loading = 'lazy';
+                img.className = 'carousel-card-img';
+
+                var body = document.createElement('div');
+                body.className = 'carousel-card-body';
+
+                var nameEl = document.createElement('div');
+                nameEl.className = 'carousel-card-name';
+                nameEl.textContent = coach.name;
+
+                var roleEl = document.createElement('div');
+                roleEl.className = 'carousel-card-role';
+                roleEl.textContent = coach.role;
+
+                var nickEl = document.createElement('div');
+                nickEl.className = 'carousel-card-nickname';
+                nickEl.textContent = coach.nickname || '';
+
+                body.appendChild(nameEl);
+                body.appendChild(roleEl);
+                if (coach.nickname) body.appendChild(nickEl);
+                card.appendChild(img);
+                card.appendChild(body);
+
+                card.addEventListener('click', function() { openModal(i); });
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); }
+                });
+
+                ring.appendChild(card);
+            });
+        }
+
+        /* ── Build dot indicators ── */
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            tcCoaches.forEach(function(_, i) {
+                var dot = document.createElement('button');
+                dot.className = 'tc-dot' + (i === 0 ? ' tc-dot-active' : '');
+                dot.setAttribute('aria-label', '切換到教練 ' + (i + 1));
+                dot.addEventListener('click', function() { goToIdx(i); });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        /* ── Get active index from current angle ── */
+        function getActiveIdx() {
+            // normalize angle to 0-360
+            var a = ((-targetAngle % 360) + 360) % 360;
+            var idx = Math.round(a / angleStep) % N;
+            return (idx + N) % N;
+        }
+
+        /* ── Apply rotation to ring ── */
+        function applyRotation(animate) {
+            if (animate) ring.classList.remove('dragging');
+            else ring.classList.add('dragging');
+            ring.style.transform = 'rotateY(' + targetAngle + 'deg)';
+            updateActiveState();
+        }
+
+        /* ── Update card/dot active states ── */
+        function updateActiveState() {
+            var idx = getActiveIdx();
+            var cards = ring.querySelectorAll('.carousel-card');
+            var dots = dotsContainer.querySelectorAll('.tc-dot');
+            cards.forEach(function(card, i) {
+                var isActive = (i === idx);
+                card.classList.toggle('tc-active', isActive);
+                card.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                card.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+            dots.forEach(function(dot, i) {
+                dot.classList.toggle('tc-dot-active', i === idx);
+            });
+        }
+
+        /* ── Navigate to a specific coach index ── */
+        function goToIdx(idx, skipSnap) {
+            // Find shortest rotation path
+            var current = getActiveIdx();
+            var diff = idx - current;
+            // Wrap diff to [-N/2, N/2]
+            if (diff > N / 2) diff -= N;
+            if (diff < -N / 2) diff += N;
+            targetAngle -= diff * angleStep;
+            applyRotation(true);
+        }
+
+        function goNext() {
+            targetAngle -= angleStep;
+            applyRotation(true);
+        }
+        function goPrev() {
+            targetAngle += angleStep;
+            applyRotation(true);
+        }
+
+        /* ── Snap to nearest card ── */
+        function snapToNearest() {
+            var a = ((-targetAngle % 360) + 360) % 360;
+            var idx = Math.round(a / angleStep) % N;
+            targetAngle = -(idx * angleStep) + Math.round(targetAngle / 360) * 360;
+            applyRotation(true);
+        }
+
+        /* ── Autoplay ── */
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayTimer = setInterval(function() {
+                if (!isPaused) goNext();
+            }, AUTOPLAY_INTERVAL_MS);
+        }
+        function stopAutoplay() {
+            if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+        }
+
+        /* ── Resize: rebuild radius ── */
+        function onResize() {
+            var r = getRadius();
+            ring.querySelectorAll('.carousel-card').forEach(function(card, i) {
+                var cardAngle = i * angleStep;
+                card.style.transform = 'rotateY(' + cardAngle + 'deg) translateZ(' + r + 'px)';
+            });
+        }
+
+        /* ── Drag / Swipe ── */
+        function onDragStart(x) {
+            isDragging = true;
+            dragStartX = x;
+            dragStartAngle = targetAngle;
+            isPaused = true;
+            ring.classList.add('dragging');
+        }
+        function onDragMove(x) {
+            if (!isDragging) return;
+            var delta = x - dragStartX;
+            targetAngle = dragStartAngle + delta * DRAG_SENSITIVITY;
+            ring.style.transform = 'rotateY(' + targetAngle + 'deg)';
+            updateActiveState();
+        }
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            ring.classList.remove('dragging');
+            snapToNearest();
+            isPaused = false;
+        }
+
+        /* Mouse events */
+        scene.addEventListener('mousedown', function(e) { onDragStart(e.clientX); });
+        window.addEventListener('mousemove', function(e) { if (isDragging) onDragMove(e.clientX); });
+        window.addEventListener('mouseup', function() { onDragEnd(); });
+
+        /* Touch events */
+        scene.addEventListener('touchstart', function(e) {
+            if (e.touches && e.touches.length > 0) onDragStart(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchmove', function(e) {
+            if (isDragging && e.touches && e.touches.length > 0) onDragMove(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchend', function() { onDragEnd(); });
+
+        /* Pause on hover */
+        scene.addEventListener('mouseenter', function() { isPaused = true; });
+        scene.addEventListener('mouseleave', function() { if (!isDragging) isPaused = false; });
+
+        /* Keyboard navigation */
+        document.addEventListener('keydown', function(e) {
+            if (modalOverlay.classList.contains('tc-modal-open')) {
+                if (e.key === 'Escape') closeModal();
+                return;
+            }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+            if (e.key === 'ArrowLeft')  { e.preventDefault(); goPrev(); }
+        });
+
+        /* Nav buttons */
+        document.getElementById('tc-prev').addEventListener('click', goPrev);
+        document.getElementById('tc-next').addEventListener('click', goNext);
+
+        /* ══════════════════════════════════════════════
+           MODAL
+           ══════════════════════════════════════════════ */
+        function openModal(idx) {
+            modalCoachIdx = idx;
+            var c = tcCoaches[idx];
+
+            document.getElementById('tc-modal-img').src = c.img;
+            document.getElementById('tc-modal-img').alt = c.name;
+            document.getElementById('tc-modal-name').textContent = c.name;
+            document.getElementById('tc-modal-role').textContent = c.role;
+            document.getElementById('tc-modal-nickname').textContent = c.nickname || '';
+            document.getElementById('tc-modal-quote').textContent = c.quote || '';
+            document.getElementById('tc-modal-bio').textContent = c.bio || '';
+
+            /* Specialty tag */
+            var specWrap = document.getElementById('tc-modal-specialty-wrap');
+            specWrap.innerHTML = c.specialty
+                ? '<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono border" style="border-color:rgba(var(--theme-cyan-rgb),0.35);color:var(--theme-cyan);background:rgba(var(--theme-cyan-rgb),0.07);">' +
+                  '<i class="fa-solid ' + (c.specialtyIcon || 'fa-star') + '"></i>' + c.specialty + '</span>'
+                : '';
+
+            /* Record badge */
+            var recWrap = document.getElementById('tc-modal-record-wrap');
+            if (c.record) {
+                recWrap.innerHTML = '<div class="tc-record-badge" style="background:rgba(var(--theme-cyan-rgb),0.1);border:1px solid rgba(var(--theme-cyan-rgb),0.3);">' +
+                    '<span style="color:var(--theme-cyan);">W</span><span class="text-white font-black">' + c.record.w + '</span>' +
+                    '<span class="text-gray-600">|</span>' +
+                    '<span style="color:#ff4d6d;">L</span><span class="text-white font-black">' + c.record.l + '</span>' +
+                    '</div>';
+            } else {
+                recWrap.innerHTML = '';
+            }
+
+            /* Skills */
+            var skillsEl = document.getElementById('tc-modal-skills');
+            if (c.skills && c.skills.length) {
+                skillsEl.innerHTML = c.skills.map(function(s) {
+                    return '<div class="mb-3">' +
+                        '<div class="flex justify-between text-xs mb-1"><span class="text-gray-400">' + s.name + '</span><span class="font-orbitron text-[0.6rem]" style="color:var(--theme-cyan);">' + s.val + '</span></div>' +
+                        '<div class="tc-modal-skill-bar"><div class="tc-modal-skill-fill" data-val="' + s.val + '"></div></div>' +
+                        '</div>';
+                }).join('');
+                document.getElementById('tc-modal-skills-wrap').style.display = '';
+            } else {
+                document.getElementById('tc-modal-skills-wrap').style.display = 'none';
+            }
+
+            /* Achievements */
+            var achEl = document.getElementById('tc-modal-achievements');
+            if (c.achievements && c.achievements.length) {
+                achEl.innerHTML = c.achievements.map(function(a) {
+                    return '<div class="flex items-start gap-2 mb-2 text-sm text-gray-300">' +
+                        '<span style="color:var(--theme-cyan);flex-shrink:0;margin-top:2px;">▶</span><span>' + a + '</span></div>';
+                }).join('');
+                document.getElementById('tc-modal-achievements-wrap').style.display = '';
+            } else {
+                document.getElementById('tc-modal-achievements-wrap').style.display = 'none';
+            }
+
+            /* Show modal */
+            modalOverlay.classList.add('tc-modal-open');
+            modalOverlay.focus();
+            stopAutoplay();
+
+            /* Animate skill bars after a short delay */
+            setTimeout(function() {
+                modalBox.querySelectorAll('.tc-modal-skill-fill').forEach(function(fill) {
+                    fill.style.width = fill.dataset.val + '%';
+                });
+            }, SKILL_ANIM_DELAY_MS);
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('tc-modal-open');
+            modalCoachIdx = -1;
+            startAutoplay();
+        }
+
+        /* Close button */
+        document.getElementById('tc-modal-close-btn').addEventListener('click', closeModal);
+
+        /* Close on overlay click */
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        /* "View detail" button → scroll to Fighter Select and select coach */
+        document.getElementById('tc-modal-view-detail').addEventListener('click', function() {
+            var idx = modalCoachIdx;
+            closeModal();
+            var fsSection = document.getElementById('coaches');
+            if (fsSection) {
+                fsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            /* Trigger Fighter Select to select the corresponding coach after scroll */
+            setTimeout(function() {
+                var thumbs = document.querySelectorAll('.fs-fighter-thumb');
+                if (thumbs[idx]) thumbs[idx].click();
+            }, FIGHTER_SELECT_DELAY_MS);
+        });
+
+        /* ── Init ── */
+        buildCards();
+        buildDots();
+        applyRotation(false);
+        startAutoplay();
+        window.addEventListener('resize', onResize);
+    })();
     </script>
     <!-- Fighter Select JS -->
     <script>
