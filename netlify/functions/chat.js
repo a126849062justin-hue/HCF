@@ -1,5 +1,13 @@
 const Anthropic = require("@anthropic-ai/sdk");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+let GoogleGenerativeAI = null;
+async function getGoogleGenerativeAI() {
+    if (GoogleGenerativeAI) return GoogleGenerativeAI;
+    const mod = await import("@google/generative-ai");
+    GoogleGenerativeAI = mod.GoogleGenerativeAI || mod.default;
+    return GoogleGenerativeAI;
+}
+
 const { HCF_SYSTEM_PROMPT } = require("./shared-config");
 
 async function tryClaudeAPI(message) {
@@ -24,6 +32,7 @@ async function tryGeminiAPI(message) {
         throw new Error("GEMINI_API_KEY not configured");
     }
     console.log("📌 嘗試 Gemini API...");
+    const GoogleGenerativeAI = await getGoogleGenerativeAI();
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const prompt = `${HCF_SYSTEM_PROMPT}\n\n使用者的問題：「${message}」`;
