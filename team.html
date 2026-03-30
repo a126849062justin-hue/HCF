@@ -913,6 +913,139 @@
             width: 44px; height: 44px;
             min-width: 44px; min-height: 44px;
         }
+
+        /* ── P1-6: Fighter photo breathing animation ── */
+        @keyframes fighterBreathe {
+            0%, 100% { transform: scale(1); }
+            50%      { transform: scale(1.015); }
+        }
+        .fs-fighter-img {
+            animation: fighterBreathe 4s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fs-fighter-img { animation: none !important; }
+        }
+
+        /* ── P1-4: Override fs-entering for Phase 2 (scale + opacity) ── */
+        @keyframes fs-enter-scale {
+            from { opacity: 0; transform: scale(1.05); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .fs-fighter-img.fs-entering {
+            animation: fs-enter-scale 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-delay: 0.15s;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fs-fighter-img.fs-entering { animation: none !important; }
+        }
+
+        /* ── P1-4: Phase 3 — left panel text fade-in ── */
+        @keyframes fsPanelFadeIn {
+            from { opacity: 0; transform: translateX(-8px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .fs-panel-entering {
+            animation: fsPanelFadeIn 0.2s ease 0.4s both;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fs-panel-entering { animation: none !important; }
+        }
+
+        /* ── P1-5: FOMO viewer count flicker ── */
+        @keyframes fomoFlicker {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.65; }
+        }
+        .fs-fomo-count-line {
+            font-size: 0.72rem;
+            color: var(--theme-cyan);
+            letter-spacing: 0.04em;
+            margin-top: 8px;
+            text-align: center;
+            animation: fomoFlicker 2.5s ease-in-out infinite;
+        }
+        .fs-fomo-count-line strong {
+            color: var(--theme-gold, #ffd700);
+        }
+
+        /* ── P1-7: FOMO countdown in CTA area ── */
+        .fs-fomo-countdown {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.62rem;
+            color: rgba(var(--theme-gold-rgb, 255, 200, 0), 0.85);
+            text-align: center;
+            margin-top: 5px;
+            letter-spacing: 0.12em;
+        }
+        .fs-fomo-countdown span {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* ── P0-3: Mobile Sticky CTA Bar ── */
+        #fs-sticky-cta {
+            display: none;
+        }
+        @media (max-width: 767px) {
+            #fs-sticky-cta {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 90;
+                background: rgba(5, 5, 10, 0.97);
+                border-top: 1px solid rgba(var(--theme-cyan-rgb), 0.35);
+                padding: 10px 16px;
+                padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+                align-items: center;
+                gap: 12px;
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.7);
+            }
+        }
+        /* In PWA mode, push above the tab bar */
+        .pwa-mode #fs-sticky-cta {
+            bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+        }
+        .fs-sticky-cta-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .fs-sticky-cta-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .fs-sticky-cta-specialty {
+            font-size: 0.62rem;
+            color: rgba(var(--theme-cyan-rgb), 0.85);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .fs-sticky-cta-btn {
+            flex-shrink: 0;
+            display: inline-block;
+            padding: 10px 18px;
+            background: var(--theme-cyan);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            white-space: nowrap;
+            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+            box-shadow: 0 0 12px rgba(var(--theme-cyan-rgb), 0.5);
+        }
     </style>
     <script>
         (async function() {
@@ -1340,11 +1473,17 @@
         <div id="fs-confirm-flash-overlay" aria-hidden="true"></div>
 
         <!-- Section Title -->
-        <div class="relative z-10 text-center pt-16 pb-6 px-4">
+        <div class="relative z-10 text-center pt-16 pb-4 px-4">
             <p class="font-orbitron text-[0.6rem] tracking-[0.5em] text-sci-cyan mb-3 opacity-70">HCF ELITE ROSTER</p>
             <h2 class="font-orbitron font-black text-white fs-glitch-title" data-text="COACHING STAFF" style="font-size:clamp(1.6rem,5vw,3rem);">COACHING STAFF</h2>
             <div class="fs-neon-divider"></div>
             <p class="text-gray-500 text-xs tracking-[0.3em] font-mono">選擇你的格鬥指揮官</p>
+        </div>
+
+        <!-- Thumbnail Selector Strip (moved here: between title and main display) -->
+        <div class="fs-coach-indicator" id="fs-coach-indicator" aria-live="polite">COACH 01 / 06</div>
+        <div class="fs-thumb-wrap">
+            <div class="fs-thumb-row" role="listbox" aria-label="選擇教練" id="fs-thumb-row"></div>
         </div>
 
         <!-- Three-column layout (stacked on mobile) -->
@@ -1396,18 +1535,15 @@
                 <!-- Confirm CTA -->
                 <div class="fs-confirm-area">
                     <a href="pricing.html" class="fs-confirm-btn" id="fs-confirm-btn">
-                        <span class="fs-confirm-btn-inner">▶ 開始訓練 — $400 體驗</span>
+                        <span class="fs-confirm-btn-inner">▶ 跟 <span id="fs-confirm-name">黃謙和</span> 訓練 — $400 首堂體驗</span>
                     </a>
                     <div class="fs-discount-preview">首次體驗課程 · 新竹林森路</div>
+                    <p class="fs-fomo-count-line" id="fs-fomo-line">⚡ 本週已有 <strong id="fs-fomo-count">--</strong> 人查詢 <span id="fs-fomo-coach-name">黃謙和</span> 的課程</p>
+                    <p class="fs-fomo-countdown">⏱ 優惠倒計時 <span id="fs-fomo-hours">--</span>:<span id="fs-fomo-mins">--</span>:<span id="fs-fomo-secs">--</span></p>
                 </div>
             </div>
         </div>
 
-        <!-- Thumbnail Selector Strip -->
-        <div class="fs-coach-indicator" id="fs-coach-indicator" aria-live="polite">COACH 01 / 06</div>
-        <div class="fs-thumb-wrap">
-            <div class="fs-thumb-row" role="listbox" aria-label="選擇教練" id="fs-thumb-row"></div>
-        </div>
     </section>
 
     <!-- Section Transition Band -->
@@ -1439,6 +1575,15 @@
     </section>
 
     </main>
+
+    <!-- P0-3: Mobile Sticky CTA Bar (mobile-only, fixed bottom) -->
+    <div id="fs-sticky-cta" aria-label="快速預約">
+        <div class="fs-sticky-cta-info">
+            <div class="fs-sticky-cta-name" id="fs-sticky-name">黃謙和</div>
+            <div class="fs-sticky-cta-specialty" id="fs-sticky-specialty">泰拳 / Muay Thai</div>
+        </div>
+        <a href="pricing.html" class="fs-sticky-cta-btn">▶ $400 立即預約</a>
+    </div>
 
     <!-- System Status Bar -->
     <div class="system-status-bar" aria-hidden="true">
@@ -1708,6 +1853,12 @@
                 document.getElementById('fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
                 document.getElementById('fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
                 document.getElementById('fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
+            }
+            // Fighter Select FOMO countdown (P1-7)
+            if (document.getElementById('fs-fomo-hours') && fDist > 0) {
+                document.getElementById('fs-fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
+                document.getElementById('fs-fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
+                document.getElementById('fs-fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
             }
         }
         setInterval(updateCountdowns, 1000); updateCountdowns();
@@ -2446,6 +2597,7 @@
         ];
 
         var activeIdx = 0;
+        var fsSkillsInitialized = false;
 
         function buildThumbs() {
             var row = document.getElementById('fs-thumb-row');
@@ -2526,19 +2678,24 @@
             if (roleEl) roleEl.textContent = c.role;
 
             var nameEl = document.getElementById('fs-name');
-            if (nameEl) { nameEl.classList.remove('fs-typewriter-cursor'); nameEl.textContent = c.name; void nameEl.offsetWidth; nameEl.classList.add('fs-typewriter-cursor'); }
+            if (nameEl) {
+                nameEl.classList.remove('fs-typewriter-cursor', 'fs-panel-entering');
+                nameEl.textContent = c.name;
+                void nameEl.offsetWidth;
+                nameEl.classList.add('fs-typewriter-cursor', 'fs-panel-entering');
+            }
 
             var nickEl = document.getElementById('fs-nickname');
-            if (nickEl) nickEl.textContent = c.nickname;
+            if (nickEl) { nickEl.classList.remove('fs-panel-entering'); void nickEl.offsetWidth; nickEl.textContent = c.nickname; nickEl.classList.add('fs-panel-entering'); }
 
             var spEl = document.getElementById('fs-specialty');
-            if (spEl) spEl.innerHTML = '<i class="fa-solid ' + c.specialtyIcon + ' mr-1"></i> ' + c.specialty;
+            if (spEl) { spEl.classList.remove('fs-panel-entering'); void spEl.offsetWidth; spEl.innerHTML = '<i class="fa-solid ' + c.specialtyIcon + ' mr-1"></i> ' + c.specialty; spEl.classList.add('fs-panel-entering'); }
 
             var quoteEl = document.getElementById('fs-quote');
-            if (quoteEl) quoteEl.textContent = c.quote;
+            if (quoteEl) { quoteEl.classList.remove('fs-panel-entering'); void quoteEl.offsetWidth; quoteEl.textContent = c.quote; quoteEl.classList.add('fs-panel-entering'); }
 
             var bioEl = document.getElementById('fs-bio');
-            if (bioEl) bioEl.textContent = c.bio;
+            if (bioEl) { bioEl.classList.remove('fs-panel-entering'); void bioEl.offsetWidth; bioEl.textContent = c.bio; bioEl.classList.add('fs-panel-entering'); }
 
             var recEl = document.getElementById('fs-record');
             if (recEl) {
@@ -2558,6 +2715,23 @@
                     return '<div class="flex items-start gap-2"><span class="text-sci-cyan mt-0.5 flex-shrink-0">▶</span><span>' + a + '</span></div>';
                 }).join('');
             }
+
+            // P0-2: Update CTA button name
+            var confirmNameEl = document.getElementById('fs-confirm-name');
+            if (confirmNameEl) confirmNameEl.textContent = c.name;
+
+            // P1-5: Update FOMO viewer count (random 8-25)
+            var fomoCount = Math.floor(Math.random() * 18) + 8;
+            var fomoCountEl = document.getElementById('fs-fomo-count');
+            if (fomoCountEl) fomoCountEl.textContent = fomoCount;
+            var fomoCoachNameEl = document.getElementById('fs-fomo-coach-name');
+            if (fomoCoachNameEl) fomoCoachNameEl.textContent = c.name;
+
+            // P0-3: Update mobile sticky CTA bar
+            var stickyNameEl = document.getElementById('fs-sticky-name');
+            if (stickyNameEl) stickyNameEl.textContent = c.name;
+            var stickySpecEl = document.getElementById('fs-sticky-specialty');
+            if (stickySpecEl) stickySpecEl.textContent = c.specialty;
         }
 
         function renderSkills(skills) {
@@ -2570,12 +2744,16 @@
                     '<div class="fs-skill-track"><div class="fs-skill-fill" data-width="' + s.val + '" style="background:' + color + ';width:0%;"></div></div>' +
                     '</div>';
             }).join('');
-            // Animate bars after a short delay
+            // P1-4 Phase 3: sequential bar fill — 400ms delay for coach-switch, 80ms for initial reveal
+            var delay = fsSkillsInitialized ? 400 : 80;
+            fsSkillsInitialized = true;
             setTimeout(function() {
-                container.querySelectorAll('.fs-skill-fill').forEach(function(fill) {
-                    fill.style.width = fill.dataset.width + '%';
+                container.querySelectorAll('.fs-skill-fill').forEach(function(fill, i) {
+                    setTimeout(function() {
+                        fill.style.width = fill.dataset.width + '%';
+                    }, i * 80);
                 });
-            }, 80);
+            }, delay);
         }
 
         // Scroll-based skill bar reveal for initial state
@@ -2599,6 +2777,11 @@
                 return '<div class="flex items-start gap-2"><span class="text-sci-cyan mt-0.5 flex-shrink-0">▶</span><span>' + a + '</span></div>';
             }).join('');
         }
+
+        // P1-5: Initialize FOMO count for first coach
+        var initFomoCount = Math.floor(Math.random() * 18) + 8;
+        var initFomoCountEl = document.getElementById('fs-fomo-count');
+        if (initFomoCountEl) initFomoCountEl.textContent = initFomoCount;
 
         buildThumbs();
     })();
