@@ -129,8 +129,8 @@
             filter: brightness(0.55) saturate(0.6);
         }
         @media (max-width: 767px) {
-            .carousel-ring { width: 160px; height: 230px; }
-            .carousel-card { width: 160px; height: 230px; }
+            .carousel-ring { width: 180px; height: 260px; }
+            .carousel-card { width: 180px; height: 260px; }
         }
         .carousel-card.tc-active {
             border-color: rgba(var(--theme-cyan-rgb), 0.7);
@@ -153,7 +153,7 @@
             display: block;
         }
         .carousel-card-body {
-            padding: 10px 12px 8px;
+            padding: 12px 14px 10px;
             background: linear-gradient(to bottom, rgba(5,5,5,0.6), rgba(5,5,5,0.98));
         }
         .carousel-card-name {
@@ -172,7 +172,7 @@
             line-height: 1.3;
         }
         .carousel-card-nickname {
-            font-size: 0.58rem;
+            font-size: 0.65rem;
             color: rgba(255,255,255,0.4);
             margin-top: 3px;
             white-space: nowrap;
@@ -423,6 +423,15 @@
             10%  { opacity: 1; }
             90%  { opacity: 1; }
             100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @media (max-width: 767px) {
+            .opening-hero::before {
+                background-image:
+                    radial-gradient(1px 1px at 10% 20%, rgba(var(--theme-cyan-rgb),0.6) 0%, transparent 100%),
+                    radial-gradient(1px 1px at 50% 60%, rgba(var(--theme-cyan-rgb),0.4) 0%, transparent 100%),
+                    radial-gradient(1px 1px at 85% 40%, rgba(var(--theme-cyan-rgb),0.5) 0%, transparent 100%);
+                animation-duration: 12s;
+            }
         }
 
         /* ── Opening Hero: Glitch text effect ── */
@@ -1071,6 +1080,57 @@
             }
         })();
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsTeam",
+  "name": "HCF 新竹格鬥館教練團隊",
+  "url": "https://hcf-hsinchu.netlify.app/team.html",
+  "memberOf": {
+    "@type": "SportsOrganization",
+    "name": "HCF 新竹格鬥館",
+    "url": "https://hcf-hsinchu.netlify.app"
+  },
+  "member": [
+    {
+      "@type": "Person",
+      "name": "黃謙和",
+      "jobTitle": "總教練",
+      "knowsAbout": ["泰拳", "踢拳", "散打"]
+    },
+    {
+      "@type": "Person",
+      "name": "Allen",
+      "jobTitle": "教練",
+      "knowsAbout": ["泰拳", "踢拳"]
+    },
+    {
+      "@type": "Person",
+      "name": "鄭豫",
+      "jobTitle": "教練",
+      "knowsAbout": ["散打", "踢拳"]
+    },
+    {
+      "@type": "Person",
+      "name": "高大可",
+      "jobTitle": "教練",
+      "knowsAbout": ["泰拳", "散打"]
+    },
+    {
+      "@type": "Person",
+      "name": "胡脩誠",
+      "jobTitle": "教練",
+      "knowsAbout": ["泰拳", "踢拳"]
+    },
+    {
+      "@type": "Person",
+      "name": "小米",
+      "jobTitle": "教練",
+      "knowsAbout": ["泰拳"]
+    }
+  ]
+}
+</script>
 </head>
 <body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-400 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:text-lg">跳至主要內容</a>
@@ -2407,10 +2467,13 @@
             /* Skills — step animation */
             var skillsEl = document.getElementById('tc-modal-skills');
             if (c.skills && c.skills.length) {
-                skillsEl.innerHTML = c.skills.map(function(s) {
+                skillsEl.innerHTML = c.skills.map(function(s, idx) {
                     return '<div class="mb-3">' +
-                        '<div class="flex justify-between text-xs mb-1"><span class="text-gray-400">' + s.name + '</span><span class="font-orbitron text-[0.6rem]" style="color:var(--theme-cyan);">' + s.val + '</span></div>' +
-                        '<div class="tc-modal-skill-bar"><div class="tc-modal-skill-fill" data-val="' + s.val + '"></div></div>' +
+                        '<div class="flex justify-between text-xs mb-1"><span class="text-gray-400">' + s.name + '</span></div>' +
+                        '<div class="flex items-center gap-2">' +
+                        '<div class="tc-modal-skill-bar flex-1"><div class="tc-modal-skill-fill" data-val="' + s.val + '" data-idx="' + idx + '"></div></div>' +
+                        '<span class="text-xs text-sci-cyan font-orbitron tc-modal-skill-value" id="tc-skill-val-' + idx + '" style="min-width:2.5em;text-align:right;">0%</span>' +
+                        '</div>' +
                         '</div>';
                 }).join('');
                 document.getElementById('tc-modal-skills-wrap').style.display = '';
@@ -2450,6 +2513,8 @@
                 fills.forEach(function(fill, i) {
                     setTimeout(function() {
                         fill.style.width = fill.dataset.val + '%';
+                        var valSpan = document.getElementById('tc-skill-val-' + fill.dataset.idx);
+                        if (valSpan) valSpan.textContent = fill.dataset.val + '%';
                     }, i * 150);
                 });
             }, SKILL_ANIM_DELAY_MS);

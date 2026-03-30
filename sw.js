@@ -1,4 +1,6 @@
-const CACHE_NAME = 'hcf-v2.1';
+const CACHE_NAME = 'hcf-v3.0';
+const DYNAMIC_CACHE = 'hcf-dynamic-v3.0';
+const MAX_DYNAMIC_ITEMS = 50;
 const SHELL_ASSETS = [
   '/',
   '/index.html',
@@ -10,6 +12,8 @@ const SHELL_ASSETS = [
   '/philosophy.html',
   '/offline.html',
   '/manifest.json',
+  '/main.css',
+  '/main.js',
   '/shark_logo.png',
   '/hero1.jpg',
   '/schedule-mobile.png',
@@ -19,8 +23,17 @@ const SHELL_ASSETS = [
   '/coach_zhengyu.jpg',
   '/coach_kao.jpg',
   '/coach_hu.jpg',
-  '/coach-mi.jpg',
+  '/coach_mi.jpg',
 ];
+
+// Trim dynamic cache to MAX_DYNAMIC_ITEMS (LRU)
+async function trimCache(cacheName, maxItems) {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length > maxItems) {
+    await Promise.all(keys.slice(0, keys.length - maxItems).map((key) => cache.delete(key)));
+  }
+}
 
 // Install: pre-cache shell assets
 self.addEventListener('install', (event) => {
@@ -30,14 +43,21 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up old caches
+// Activate: clean up old caches and notify clients
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+        keys
+          .filter((key) => key !== CACHE_NAME && key !== DYNAMIC_CACHE)
+          .map((key) => caches.delete(key))
       )
     ).then(() => self.clients.claim())
+      .then(() =>
+        self.clients.matchAll().then((clients) =>
+          clients.forEach((c) => c.postMessage({ type: 'SW_UPDATED' }))
+        )
+      )
   );
 });
 
@@ -49,12 +69,28 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (request.method !== 'GET') return;
 
-  // Skip external CDN requests (different origin)
-  if (url.origin !== self.location.origin) return;
-
   // Network Only: Netlify Functions / API
-  if (url.pathname.startsWith('/.netlify/')) {
+  if (url.origin === self.location.origin && url.pathname.startsWith('/.netlify/')) {
     event.respondWith(fetch(request));
+    return;
+  }
+
+  // Stale-While-Revalidate: external CDN resources (Tailwind, Font Awesome, Google Fonts, etc.)
+  if (url.origin !== self.location.origin) {
+    event.respondWith(
+      caches.open(DYNAMIC_CACHE).then((cache) =>
+        cache.match(request).then((cached) => {
+          const fetchPromise = fetch(request)
+            .then((response) => {
+              cache.put(request, response.clone());
+              trimCache(DYNAMIC_CACHE, MAX_DYNAMIC_ITEMS);
+              return response;
+            })
+            .catch(() => cached);
+          return cached || fetchPromise;
+        })
+      )
+    );
     return;
   }
 
@@ -80,7 +116,10 @@ self.addEventListener('fetch', (event) => {
       if (cached) return cached;
       return fetch(request).then((response) => {
         const clone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+        caches.open(DYNAMIC_CACHE).then((cache) => {
+          cache.put(request, clone);
+          trimCache(DYNAMIC_CACHE, MAX_DYNAMIC_ITEMS);
+        });
         return response;
       });
     })
