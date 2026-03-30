@@ -850,9 +850,9 @@
         function updateCountdowns() {
             const now = new Date();
             
-            // Original Event Countdown (March 21)
-            let ey = now.getFullYear(); const eventDate = new Date(ey, 2, 21, 18, 0, 0); if(now>eventDate) ey++;
-            const eDist = new Date(ey, 2, 21, 18, 0, 0).getTime() - now.getTime();
+            // Event Countdown (April 26 - SuperD Muay Thai)
+            let ey = now.getFullYear(); const eventDate = new Date(ey, 3, 26, 10, 0, 0); if(now>eventDate) ey++;
+            const eDist = new Date(ey, 3, 26, 10, 0, 0).getTime() - now.getTime();
             if(document.getElementById("days")) {
                 document.getElementById("days").innerText = String(Math.floor(eDist / 86400000)).padStart(2,'0');
                 document.getElementById("hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
