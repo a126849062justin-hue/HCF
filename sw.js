@@ -1,5 +1,5 @@
-const CACHE_NAME = 'hcf-v3.0';
-const DYNAMIC_CACHE = 'hcf-dynamic-v3.0';
+const CACHE_NAME = 'hcf-v4.0';
+const DYNAMIC_CACHE = 'hcf-dynamic-v4.0';
 const MAX_DYNAMIC_ITEMS = 50;
 const SHELL_ASSETS = [
   '/',
@@ -14,6 +14,8 @@ const SHELL_ASSETS = [
   '/manifest.json',
   '/main.css',
   '/main.js',
+  '/philosophy-cinematic.css',
+  '/philosophy-cinematic.js',
   '/shark_logo.png',
   '/hero1.jpg',
   '/schedule-mobile.png',
@@ -24,6 +26,10 @@ const SHELL_ASSETS = [
   '/coach_kao.jpg',
   '/coach_hu.jpg',
   '/coach_mi.jpg',
+  '/assets/triangle.png',
+  '/assets/anchor.png',
+  '/assets/shark.png',
+  '/assets/final-logo.png',
 ];
 
 // Trim dynamic cache to MAX_DYNAMIC_ITEMS (LRU)

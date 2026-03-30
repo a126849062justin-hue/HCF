@@ -75,6 +75,7 @@
 
     <!-- Shared styles extracted to main.css for better caching and maintainability -->
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="philosophy-cinematic.css" />
     <!-- TODO: Replace Tailwind CDN with built CSS: npx tailwindcss -i ./input.css -o ./output.css --minify -->
     <script>
         (async function() {
@@ -660,97 +661,78 @@
         </section>
 
         <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-        <section id="philosophy" class="py-20 sm:py-24 relative overflow-hidden bg-[#050810] border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-16 text-center sm:text-left">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest border border-sci-cyan/30 px-3 py-1.5 bg-sci-cyan/5 rounded-sm inline-block mb-4 font-bold">WHY CHOOSE HCF</span>
-                    <h2 class="text-3xl sm:text-5xl font-black text-white font-orbitron lang-text glitch-hover block" data-i18n="sections.philosophy_title" data-en="CORE PHILOSOPHY">品牌哲學</h2>
-                    <p class="text-sm text-gray-400 mt-6 max-w-2xl leading-relaxed lang-text sm:border-l-2 sm:border-white/20 sm:pl-4 mx-auto sm:mx-0" data-i18n="sections.philosophy_subtitle" data-en="Combat is about learning to be reborn in adversity, to see how truly strong you are.">
-                        人生有時候就像一場拳賽，我們都曾被不如意的事情一次次擊倒。格鬥更是關於如何在逆境中學習重生，讓你看到你自己有多強大。
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.05">H</div>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-5 mb-8">
-                                <div class="w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-shield-halved"></i></div></div>
-                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-i18n="sections.honor" data-en="HONOR">榮譽</h3><p class="text-[10px] text-gray-500 font-mono uppercase tracking-[0.2em] mt-1">Code 01</p></div>
-                            </div>
-                            <div class="border-l-2 border-white/50 pl-4 py-1 mb-6 bg-gradient-to-r from-white/5 to-transparent">
-                                <p class="text-sm text-white font-bold tracking-widest lang-text" data-i18n="sections.honor_tagline" data-en="Admit failure. No excuses.">承認失敗 / 不找藉口</p>
-                            </div>
-                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-i18n="sections.honor_desc" data-en="Symbolizes an unyielding will. Like bedrock in a storm, we turn every strike into grounded power.">
-                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">▼ 倒三角形：穩固根基</strong>
-                                在風暴與挑戰面前，我們如同紮根大地的磐石，將打擊轉化為向下的力量，始終屹立不搖。
-                            </p>
-                            <div class="mt-6 flex justify-center">
-                                <img src="assets/triangle.png" alt="榮譽倒三角"
-                                     class="w-40 sm:w-48 h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.3)]"
-                                     data-i18n-alt="sections.honor_img_alt"
-                                     loading="lazy" width="400" height="400">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-sci-cyan/50 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 100ms;">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sci-cyan to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-sci-cyan/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.08">C</div>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-5 mb-8">
-                                <div class="w-14 h-14 flex items-center justify-center bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.2)]"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-tooth"></i></div></div>
-                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-i18n="sections.courage" data-en="COURAGE">勇氣</h3><p class="text-[10px] text-sci-cyan font-mono uppercase tracking-[0.2em] mt-1">Code 02</p></div>
-                            </div>
-                            <div class="border-l-2 border-sci-cyan/50 pl-4 py-1 mb-6 bg-gradient-to-r from-sci-cyan/5 to-transparent">
-                                <p class="text-sm text-sci-cyan font-bold tracking-widest lang-text" data-i18n="sections.courage_tagline" data-en="Bear consequences. No escape.">承擔後果 / 絕不逃避</p>
-                            </div>
-                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-i18n="sections.courage_desc" data-en="The apex predator. We refuse to be passive prey. We are proactive warriors fighting for glory.">
-                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">🦈 泰拳鯊魚：主動出擊</strong>
-                                靈魂深處對勝利的渴望。我們拒絕做被動的獵物，用行動爭取屬於自己的榮耀。
-                            </p>
-                            <div class="mt-6 flex justify-center">
-                                <img src="assets/shark.png" alt="勇氣泰拳鯊魚"
-                                     class="w-40 sm:w-48 h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 drop-shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.15)] group-hover:drop-shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.4)]"
-                                     data-i18n-alt="sections.courage_img_alt"
-                                     loading="lazy" width="400" height="400">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 overflow-hidden hover:border-white/30 transition-colors duration-500 reveal shadow-lg" style="transition-delay: 200ms;">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        <div class="absolute -right-4 -bottom-8 text-[220px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-500 font-orbitron leading-none select-none pointer-events-none parallax-bg" data-speed="0.1">F</div>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-5 mb-8">
-                                <div class="w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white text-2xl transform rotate-45 group-hover:rotate-0 transition-transform duration-500"><div class="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"><i class="fa-solid fa-anchor"></i></div></div>
-                                <div><h3 class="text-2xl sm:text-3xl font-black text-white tracking-widest lang-text" data-i18n="sections.faith" data-en="FAITH">信念</h3><p class="text-[10px] text-gray-500 font-mono uppercase tracking-[0.2em] mt-1">Code 03</p></div>
-                            </div>
-                            <div class="border-l-2 border-white/50 pl-4 py-1 mb-6 bg-gradient-to-r from-white/5 to-transparent">
-                                <p class="text-sm text-white font-bold tracking-widest lang-text" data-i18n="sections.faith_tagline" data-en="Rebuild by hand. Never give up.">親手重建 / 絕不認輸</p>
-                            </div>
-                            <p class="text-sm text-gray-400 leading-relaxed lang-text" data-i18n="sections.faith_desc" data-en="Our anchor in the stormy sea. The ability to stay stable in adversity, locking onto the goal to win once for yourself.">
-                                <strong class="text-gray-200 block mb-2 font-black tracking-widest">⚓ 海錨：堅定信念</strong>
-                                波濤洶湧的大海中最堅實的依靠。信念如錨，讓我們在失敗後重建，鎖定目標為自己贏一次。
-                            </p>
-                            <div class="mt-6 flex justify-center">
-                                <img src="assets/anchor.png" alt="信念海錨"
-                                     class="w-40 sm:w-48 h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.3)]"
-                                     data-i18n-alt="sections.faith_img_alt"
-                                     loading="lazy" width="400" height="400">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center reveal">
-                    <p class="text-gray-300 text-sm mb-4">無數人已經在這裡證明了自己，現在輪到你了。</p>
-                    <a href="pricing.html" class="inline-flex items-center gap-2 px-8 py-3 border border-sci-cyan text-sci-cyan font-bold tracking-widest hover:bg-sci-cyan hover:text-black transition-colors rounded-sm">
-                        啟動你的改變 <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+        <section class="hcf-philosophy-cinematic" id="philosophy-cinematic">
+          <div class="hcf-philosophy-shell">
+            <div class="hcf-philosophy-head">
+              <span class="hcf-kicker">WHY CHOOSE HCF</span>
+              <h2>品牌哲學</h2>
+              <p>
+                人生有時候就像一場拳賽，我們都曾被不如意的事情一次次擊倒。
+                HCF 相信真正的強大，不只是出拳，而是在逆境中重新站起來。
+              </p>
             </div>
+
+            <div class="hcf-fusion-stage">
+              <div class="hcf-fusion-sticky">
+                <div class="hcf-fusion-intro">
+                  <span class="hcf-mini">HCF PHILOSOPHY SYSTEM</span>
+                  <h3>榮譽、勇氣、信念，最終凝聚成 HCF 的靈魂圖騰</h3>
+                  <p>
+                    倒三角象徵根基，鯊魚代表主動出擊，海錨意味在逆境中穩住自己。
+                    當三者融合，形成的不只是 LOGO，而是一種格鬥者的精神結構。
+                  </p>
+                </div>
+
+                <div class="hcf-fusion-canvas">
+                  <div class="hcf-energy-grid"></div>
+                  <div class="hcf-energy-ring hcf-energy-ring--1"></div>
+                  <div class="hcf-energy-ring hcf-energy-ring--2"></div>
+
+                  <article class="hcf-piece hcf-piece--triangle">
+                    <div class="hcf-piece__label">
+                      <span>CODE 01</span>
+                      <h4>榮譽</h4>
+                      <p>承認失敗 / 不找藉口</p>
+                    </div>
+                    <img src="assets/triangle.png" alt="榮譽倒三角" loading="lazy" />
+                  </article>
+
+                  <article class="hcf-piece hcf-piece--anchor">
+                    <div class="hcf-piece__label">
+                      <span>CODE 03</span>
+                      <h4>信念</h4>
+                      <p>親手重建 / 絕不認輸</p>
+                    </div>
+                    <img src="assets/anchor.png" alt="信念海錨" loading="lazy" />
+                  </article>
+
+                  <article class="hcf-piece hcf-piece--shark">
+                    <div class="hcf-piece__label">
+                      <span>CODE 02</span>
+                      <h4>勇氣</h4>
+                      <p>承擔後果 / 絕不逃避</p>
+                    </div>
+                    <img src="assets/shark.png" alt="勇氣鯊魚" loading="lazy" />
+                  </article>
+
+                  <div class="hcf-impact-flash"></div>
+                  <div class="hcf-final-logo-wrap">
+                    <div class="hcf-final-burst"></div>
+                    <img src="assets/final-logo.png" alt="HCF 最終 LOGO" class="hcf-final-logo" loading="lazy" />
+                    <div class="hcf-final-copy">
+                      <span>HONOR × COURAGE × FAITH</span>
+                      <h3>HCF COMBAT SYSTEM</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="hcf-fusion-footer">
+                  <p>無數人已經在這裡證明了自己，現在輪到你了。</p>
+                  <a href="pricing.html" class="hcf-fusion-cta">啟動你的改變</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
@@ -1146,5 +1128,8 @@
         }
     })();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="philosophy-cinematic.js"></script>
 </body>
 </html>
