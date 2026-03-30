@@ -1,15 +1,18 @@
 {
+  "id": "/",
   "name": "HCF 新竹格鬥",
   "short_name": "HCF格鬥",
   "start_url": "/index.html?source=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "background_color": "#030303",
-  "theme_color": "#00f0ff",
+  "background_color": "#010208",
+  "theme_color": "#00d4ff",
   "description": "新竹最強格鬥館！主打正宗泰拳、踢拳、散打、專業重訓",
   "lang": "zh-TW",
   "categories": ["sports", "fitness", "health"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "shark_logo.png",
@@ -21,10 +24,22 @@
       "src": "shark_logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "shark_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
+    {
+      "name": "🔥 立即預約體驗",
+      "short_name": "預約",
+      "url": "/pricing.html?source=shortcut&cta=trial",
+      "icons": [{ "src": "shark_logo.png", "sizes": "96x96" }]
+    },
     {
       "name": "課程方案",
       "short_name": "方案",
