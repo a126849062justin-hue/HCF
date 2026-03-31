@@ -1,22 +1,49 @@
-// 1. Safe Preloader (Won't get stuck anymore!)
-        let _preloaderDone = false;
-        async function hidePreloader() {
+// 1. Cinematic Intro Preloader
+        const _reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const INTRO_MIN_MS = _reducedMotion ? 120 : 650;
+        const INTRO_MAX_MS = 1200;
+        let _introStartTime = Date.now();
+        let _introDone = false;
+
+        function finishIntro() {
+            if (_introDone) return;
+            _introDone = true;
+            // Remove skip listeners
+            ['pointerdown','touchstart','wheel','keydown'].forEach(ev =>
+                document.removeEventListener(ev, _onUserInteract, { capture: true })
+            );
             const p = document.getElementById('preloader');
-            if (!p || p.style.display === 'none' || _preloaderDone) return;
-            _preloaderDone = true;
-            document.getElementById('loader-progress').style.width = '100%';
-            p.style.opacity = '0';
-            setTimeout(() => { p.style.display = 'none'; }, 400);
-            // Don't await - let carousel build in background while page is already visible
+            if (p) {
+                const prog = document.getElementById('loader-progress');
+                if (prog) prog.style.width = '100%';
+                p.classList.add('preloader-out');
+                const delay = _reducedMotion ? 150 : 500;
+                setTimeout(() => { p.style.display = 'none'; }, delay);
+            }
             buildCarouselFromConfig().then(() => {
                 createCarouselIndicators();
                 updateCarousel();
             });
         }
-        // Use DOMContentLoaded instead of window.load so it doesn't wait for missing images
+
+        function hidePreloader() {
+            const elapsed = Date.now() - _introStartTime;
+            const remaining = INTRO_MIN_MS - elapsed;
+            if (remaining > 0) {
+                setTimeout(finishIntro, remaining);
+            } else {
+                finishIntro();
+            }
+        }
+
+        function _onUserInteract() { finishIntro(); }
+        ['pointerdown','touchstart','wheel','keydown'].forEach(ev =>
+            document.addEventListener(ev, _onUserInteract, { once: false, capture: true, passive: true })
+        );
+        window.__skipIntro = finishIntro;
+
         document.addEventListener('DOMContentLoaded', hidePreloader);
-        // Absolute fallback: kill preloader after 300ms max
-        setTimeout(hidePreloader, 300);
+        setTimeout(finishIntro, INTRO_MAX_MS);
 
         // 2. Share API & Copy URL
         function shareWebsite(btn) {

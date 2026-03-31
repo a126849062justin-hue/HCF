@@ -142,10 +142,14 @@
         <source src="bgm.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="preloader">
-        <div class="text-sci-cyan font-orbitron font-bold tracking-[0.3em] mb-2 text-center px-4 animate-pulse">🦈 格鬥系統啟動中...</div>
-        <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-        <div class="text-gray-500 font-mono text-xs mt-2" id="loader-text">載入資源中...</div>
+    <div id="preloader" role="status" aria-label="Loading HCF Combat System">
+        <button class="preloader-skip" onclick="window.__skipIntro?.()" aria-label="Skip intro">SKIP</button>
+        <div class="preloader-center">
+            <div class="preloader-kicker">HCF COMBAT SYSTEM</div>
+            <div class="preloader-logo">HCF</div>
+            <div class="preloader-sub">INITIALIZING</div>
+            <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+        </div>
     </div>
 
     <div class="bg-grain hidden md:block"></div>
