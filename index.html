@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="hero1.jpg?v=20260323">
     <!-- TODO: Replace with built CSS: run `npm run build:css` then use <link rel="stylesheet" href="styles.css"> -->
+    <!-- PERFORMANCE WARNING: Tailwind CDN must be replaced with built CSS before production -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
@@ -129,12 +130,14 @@
     <div class="custom-cursor-dot" id="cursor-dot"></div>
     <div class="custom-cursor-ring" id="cursor-ring"></div>
     <div id="mouse-glow-effect" class="hidden md:block"></div>
-    <audio id="bgm-audio" src="bgm.mp3" loop preload="none"></audio>
+    <audio id="bgm-audio" loop preload="none">
+        <source src="bgm.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="preloader">
-        <div class="text-sci-cyan font-orbitron font-bold tracking-[0.3em] mb-2 text-center px-4 animate-pulse">SYSTEM INITIALIZING...</div>
+        <div class="text-sci-cyan font-orbitron font-bold tracking-[0.3em] mb-2 text-center px-4 animate-pulse">🦈 格鬥系統啟動中...</div>
         <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-        <div class="text-gray-500 font-mono text-xs mt-2" id="loader-text">Loading Assets...</div>
+        <div class="text-gray-500 font-mono text-xs mt-2" id="loader-text">載入資源中...</div>
     </div>
 
     <div class="bg-grain hidden md:block"></div>
