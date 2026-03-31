@@ -1,264 +1,201 @@
 (function () {
   'use strict';
 
-  const stage = document.querySelector('.hcf-fusion-stage');
-  if (!stage) return;
+  const section = document.querySelector('.hcf-philosophy-cinematic');
+  if (!section) return;
 
-  // C3: Use live matchMedia instead of one-time isMobile check so orientation changes work
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ── Prefers-reduced-motion: show final state immediately ── */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    section.querySelectorAll('.hcf-card').forEach(function (c) {
+      c.style.opacity = '1';
+      c.style.transform = 'none';
+    });
+    var ml = section.querySelector('.hcf-merge-logo');
+    if (ml) { ml.style.opacity = '1'; ml.style.transform = 'none'; }
+    return;
+  }
 
-  // M4: Detect low-power devices to skip heavy blur animations
-  const isLowPower = typeof navigator.deviceMemory !== 'undefined' && navigator.deviceMemory < 4;
+  /* ── Low-power device detection ── */
+  var isLowPower = typeof navigator.deviceMemory !== 'undefined' && navigator.deviceMemory < 2;
 
-  /* Desktop: GSAP ScrollTrigger */
-  // C3: Always register gsap.matchMedia so it can self-manage on orientation change
+  /* ═══════════════════════════════════════════════════════════════
+     MOBILE init — CSS scroll-snap + IntersectionObserver
+     ═══════════════════════════════════════════════════════════════ */
+  function initMobile() {
+    var outer      = section.querySelector('.hcf-hscroll-outer');
+    var dots       = section.querySelectorAll('.hcf-dot');
+    var mergeStage = section.querySelector('.hcf-merge-stage');
+    var mergeLogo  = section.querySelector('.hcf-merge-logo');
+    var panels     = section.querySelectorAll('.hcf-card, .hcf-merge-stage');
+
+    /* Dot indicator synced to scroll position */
+    if (outer && dots.length && panels.length) {
+      function onScroll() {
+        var outerLeft  = outer.getBoundingClientRect().left;
+        var outerCenterX = outerLeft + outer.clientWidth / 2;
+        var closestIdx = 0;
+        var minDist = Infinity;
+        panels.forEach(function (panel, i) {
+          var r = panel.getBoundingClientRect();
+          var panelCenter = r.left + r.width / 2;
+          var dist = Math.abs(panelCenter - outerCenterX);
+          if (dist < minDist) { minDist = dist; closestIdx = i; }
+        });
+        dots.forEach(function (d, i) {
+          d.classList.toggle('hcf-dot--active', i === closestIdx);
+        });
+      }
+      outer.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    /* Reveal merge logo when merge stage scrolls into view */
+    if (mergeStage && mergeLogo) {
+      var mergeObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          mergeLogo.classList.add('hcf-merge-logo--visible');
+          mergeObs.disconnect();
+        }
+      }, { threshold: 0.35 });
+      mergeObs.observe(mergeStage);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     DESKTOP init — GSAP ScrollTrigger horizontal scroll + merge anim
+     ═══════════════════════════════════════════════════════════════ */
+  function initDesktop() {
+    var outer      = section.querySelector('.hcf-hscroll-outer');
+    var track      = section.querySelector('.hcf-hscroll-track');
+    var cards      = gsap.utils.toArray('.hcf-card', section);
+    var pieces     = gsap.utils.toArray('.hcf-merge-piece', section);
+    var flash      = section.querySelector('.hcf-impact-flash');
+    var mergeLogo  = section.querySelector('.hcf-merge-logo');
+
+    if (!outer || !track || !cards.length) return;
+
+    /* 3 cards + 1 merge panel = 4 panels total
+       Extra 0.9 "panels" of scroll for merge animation while track is stationary */
+    var numCards    = cards.length;        // 3
+    var numPanels   = numCards + 1;        // 4 (3 cards + merge stage)
+    var MERGE_PAD   = 0.9;                 // extra scroll room for merge anim
+
+    var getTrackDist = function () { return (numPanels - 1) * window.innerWidth; }; // 3 × vw
+    var getTotalScroll = function () { return ((numPanels - 1) + MERGE_PAD) * window.innerWidth; }; // 3.9 × vw
+
+    /* Initial states — mark elements for GPU compositing */
+    gsap.set(cards, { xPercent: 60, opacity: 0, scale: 0.96 });
+    gsap.set(cards[0], { xPercent: 0, opacity: 1, scale: 1 });   // first card starts visible
+    gsap.set(pieces, { opacity: 0 });
+    gsap.set(mergeLogo, { opacity: 0, scale: 0.72, transformOrigin: 'center center' });
+    if (flash) gsap.set(flash, { opacity: 0 });
+
+    /* ── Main timeline ── */
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: outer,
+        start: 'top top',
+        end: function () { return '+=' + getTotalScroll(); },
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
+      }
+    });
+
+    /* 1. Horizontal track movement (ease:none = linear with scroll)
+          Duration = numPanels - 1 = 3, so 1 time unit ≈ 1 panel of scroll */
+    tl.to(track, {
+      x: function () { return -getTrackDist(); },
+      ease: 'none',
+      duration: numPanels - 1,
+    }, 0);
+
+    /* 2. Card entrance / exit animations */
+    for (var i = 1; i < cards.length; i++) {
+      /* Slide card in from the right as it comes into view */
+      tl.to(cards[i], {
+        xPercent: 0, opacity: 1, scale: 1,
+        duration: 0.55, ease: 'power3.out',
+      }, i - 0.40);
+
+      /* Previous card shrinks/dims slightly */
+      tl.to(cards[i - 1], {
+        scale: 0.90, opacity: 0.32,
+        duration: 0.45, ease: 'power2.inOut',
+      }, i - 0.12);
+    }
+
+    /* 3. Merge stage animations (start after last card exits, during MERGE_PAD window)
+          merge start time in timeline: numPanels - 1 = 3 (track is done moving)
+          but we begin a bit before track stops so it overlaps nicely */
+    var ms = (numPanels - 1) - 0.25;  // = 2.75 (slightly before last card fully visible)
+
+    /* 3a. Pieces fly in from spread positions */
+    var pieceOrigins = [
+      { x: -220, y: -140, rotation: -28, scale: 0.5 },   // triangle: top-left
+      { x:  220, y: -140, rotation:  28, scale: 0.5 },   // shark:    top-right
+      { x:    0, y:  180, rotation:   0, scale: 0.5 },   // anchor:   bottom-center
+    ];
+
+    pieces.forEach(function (piece, i) {
+      var o = pieceOrigins[i] || { x: 0, y: 0, rotation: 0, scale: 0.5 };
+      tl.fromTo(piece,
+        { opacity: 0, x: o.x, y: o.y, rotation: o.rotation, scale: o.scale },
+        { opacity: 1, x: 0,   y: 0,   rotation: 0,          scale: 1,
+          duration: 0.32, ease: 'power3.out' },
+        ms + 0.05 + i * 0.07
+      );
+    });
+
+    /* 3b. Pieces converge to center (scale to nothing) */
+    tl.to(pieces, {
+      x: 0, y: 0, scale: 0.08, opacity: 0,
+      duration: 0.24, ease: 'power4.in', stagger: 0.025,
+    }, ms + 0.55);
+
+    /* 3c. Flash burst */
+    if (flash && !isLowPower) {
+      tl.fromTo(flash,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.07, ease: 'none' },
+        ms + 0.79
+      );
+      tl.to(flash, { opacity: 0, duration: 0.22 }, ms + 0.86);
+    }
+
+    /* 3d. Logo reveal */
+    tl.to(mergeLogo, {
+      opacity: 1, scale: 1,
+      duration: 0.45, ease: 'power3.out',
+    }, ms + 0.82);
+
+    /* Cleanup when matchMedia context is destroyed */
+    return function () {
+      tl.kill();
+    };
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     Bootstrap — use gsap.matchMedia for correct orientation cleanup
+     ═══════════════════════════════════════════════════════════════ */
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 769px)', () => {
-      // H2: Shortened scroll end from +=2200 to +=1500
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.hcf-fusion-stage',
-          start: 'top top',
-          end: '+=1500',
-          scrub: 1,
-          pin: '.hcf-fusion-sticky',
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          fastScrollEnd: true
-        }
-      });
+    var mm = gsap.matchMedia();
 
-      // M4: Skip heavy blur on low-power devices
-      const blurIn  = isLowPower ? 'none' : 'blur(10px)';
-      const blurMid = isLowPower ? 'none' : 'blur(3px)';
-      const blurOut = isLowPower ? 'none' : 'blur(0px)';
-      const blurSharkMid = isLowPower ? 'none' : 'blur(2px)';
-
-      gsap.set('.hcf-piece--triangle', { xPercent: 0, yPercent: 0, scale: 0.72, opacity: 0.08, filter: blurIn });
-      gsap.set('.hcf-piece--anchor', { xPercent: 0, yPercent: 0, y: -320, scale: 0.92, opacity: 0, filter: blurMid });
-      gsap.set('.hcf-piece--shark', { x: -520, y: 60, rotation: -12, scale: 1.12, opacity: 0, filter: blurIn });
-      gsap.set('.hcf-piece__label', { opacity: 0, y: 20 });
-      gsap.set('.hcf-energy-ring--1', { scale: 0.85, opacity: 0.2 });
-      gsap.set('.hcf-energy-ring--2', { scale: 1.15, opacity: 0.08 });
-      gsap.set('.hcf-final-logo-wrap', { opacity: 0, scale: 0.84 });
-      gsap.set('.hcf-final-burst', { opacity: 0, scale: 0.2 });
-      gsap.set('.hcf-impact-flash', { opacity: 0, scale: 0.2 });
-
-      // L5: Mark elements as animating so CSS can add will-change
-      document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap').forEach(el => el.classList.add('animating'));
-
-      tl.to('.hcf-piece--triangle', { opacity: 1, scale: 1, filter: blurOut, duration: 0.9, ease: 'power2.out' })
-        .to('.hcf-piece--triangle .hcf-piece__label', { opacity: 1, y: 0, duration: 0.35 }, '<0.1')
-        .to('.hcf-energy-ring--1', { scale: 1, opacity: 0.34, duration: 0.8, ease: 'power2.out' }, '<')
-        .to('.hcf-piece--anchor', { opacity: 1, y: -40, filter: blurOut, duration: 0.9, ease: 'power3.out' }, '+=0.15')
-        .to('.hcf-piece--anchor .hcf-piece__label', { opacity: 1, y: 0, duration: 0.35 }, '<0.05')
-        .to('.hcf-piece--anchor', { y: 0, duration: 0.55, ease: 'bounce.out' })
-        .to('.hcf-energy-ring--2', { opacity: 0.28, scale: 1, duration: 0.8, ease: 'power2.out' }, '<')
-        .to('.hcf-piece--shark', { x: -60, y: 10, rotation: -5, opacity: 1, filter: blurSharkMid, duration: 0.85, ease: 'power4.out' }, '+=0.15')
-        .to('.hcf-piece--shark .hcf-piece__label', { opacity: 1, y: 0, duration: 0.3 }, '<0.1')
-        .to('.hcf-piece--shark', { x: 0, y: 0, rotation: 0, scale: 1, filter: blurOut, duration: 0.42, ease: 'power2.out' })
-        .to('.hcf-piece--shark', { x: '+=6', duration: 0.05, repeat: 3, yoyo: true, ease: 'none' })
-        .to('.hcf-impact-flash', { opacity: 1, scale: 3.6, duration: 0.22, ease: 'power2.out' })
-        .to('.hcf-impact-flash', { opacity: 0, duration: 0.2 })
-        .to('.hcf-piece--triangle', { scale: 0.98, opacity: 0.68, duration: 0.55, ease: 'power2.inOut' }, '-=0.05')
-        .to('.hcf-piece--anchor', { scale: 0.96, opacity: 0.74, duration: 0.55, ease: 'power2.inOut' }, '<')
-        .to('.hcf-piece--shark', { scale: 0.95, opacity: 0.78, duration: 0.55, ease: 'power2.inOut' }, '<')
-        .to('.hcf-piece__label', { opacity: 0, duration: 0.22 }, '<')
-        .to('.hcf-final-burst', { opacity: 1, scale: 4.8, duration: 0.3, ease: 'power3.out' })
-        .to('.hcf-final-logo-wrap', { opacity: 1, scale: 1, duration: 0.42, ease: 'power3.out' }, '<0.05')
-        .to('.hcf-piece--triangle', { opacity: 0, scale: 1.05, duration: 0.28 }, '<')
-        .to('.hcf-piece--anchor', { opacity: 0, y: 20, duration: 0.28 }, '<')
-        .to('.hcf-piece--shark', { opacity: 0, x: 30, duration: 0.28 }, '<')
-        .to('.hcf-final-logo-wrap', { y: -8, repeat: 1, yoyo: true, duration: 0.7, ease: 'sine.inOut' });
-
-      // L5: Cleanup animating class when matchMedia context is removed
-      return () => {
-        document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap').forEach(el => el.classList.remove('animating'));
-      };
+    mm.add('(min-width: 769px)', function () {
+      return initDesktop();
     });
-  }
 
-  /* Mobile immersive experience */
-  // C3: Use live matchMedia check instead of isMobile variable
-  if (!mobileQuery.matches || prefersReducedMotion) return;
-
-  // Full-screen intro overlay
-  const section = document.querySelector('.hcf-philosophy-cinematic');
-  if (section) {
-    let introShown = false;
-    const introObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !introShown) {
-        introShown = true;
-
-        // Skip if already seen in this session
-        if (sessionStorage.getItem('hcf-intro-seen')) { introObserver.disconnect(); return; }
-
-        const overlay = document.createElement('div');
-        overlay.id = 'hcf-mobile-intro';
-        // C1: pointer-events:none so underlying page remains interactive
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#03070e;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;transition:opacity 0.8s ease;pointer-events:none;';
-        overlay.innerHTML = '<img src="assets/final-logo.png" alt="HCF" style="width:60vw;max-width:300px;animation:hcfIntroLogoIn 1.5s cubic-bezier(.16,1,.3,1) both;" /><p style="color:var(--hcf-cyan);margin-top:20px;font-size:12px;letter-spacing:0.2em;animation:hcfIntroLogoIn 1.5s cubic-bezier(.16,1,.3,1) 0.3s both;">HONOR × COURAGE × FAITH</p>';
-
-        const style = document.createElement('style');
-        style.textContent = '@keyframes hcfIntroLogoIn { 0% { opacity:0; transform:scale(0.7) translateY(30px); filter:blur(12px); } 100% { opacity:1; transform:scale(1) translateY(0); filter:blur(0); } }';
-        document.head.appendChild(style);
-        document.body.appendChild(overlay);
-
-        const dismissOverlay = () => {
-          overlay.style.opacity = '0';
-          // C1: Ensure overflow is restored immediately on dismiss
-          document.body.style.overflow = '';
-          setTimeout(() => { if (overlay.parentNode) overlay.remove(); }, 800);
-          sessionStorage.setItem('hcf-intro-seen', '1');
-        };
-
-        // C1: Both click and touchstart can dismiss the overlay
-        overlay.addEventListener('click', dismissOverlay, { once: true });
-        overlay.addEventListener('touchstart', dismissOverlay, { once: true, passive: true });
-
-        // C1: Shorten display duration from 1500ms to 800ms
-        const INTRO_DISPLAY_DURATION = 800;
-        setTimeout(dismissOverlay, INTRO_DISPLAY_DURATION);
-
-        introObserver.disconnect();
-      }
-    // H4: Lower threshold from 0.6 to 0.25
-    }, { threshold: 0.25 });
-    introObserver.observe(section);
-  }
-
-  // Scroll reveal
-  const pieces = document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap');
-
-  // M5: Skip reveal animation if pieces were already revealed this session
-  const alreadyRevealed = sessionStorage.getItem('hcf-pieces-revealed');
-  pieces.forEach((el, i) => {
-    if (alreadyRevealed) {
-      el.style.opacity = '1';
-      el.style.transform = '';
-      el.style.filter = '';
-    } else {
-      el.style.opacity = '0';
-      el.style.setProperty('--scroll-offset', '60px');
-      el.style.filter = 'blur(8px)';
-      el.style.transition = 'opacity 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, transform 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, filter 0.8s ease ' + (i * 0.12) + 's';
+    mm.add('(max-width: 768px)', function () {
+      initMobile();
+    });
+  } else {
+    /* Fallback without GSAP — mobile scroll-snap still works via CSS */
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      initMobile();
     }
-  });
-
-  if (!alreadyRevealed) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.setProperty('--scroll-offset', '0px');
-          entry.target.style.filter = 'blur(0px)';
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
-    pieces.forEach(el => revealObserver.observe(el));
-
-    // M5: Mark pieces as revealed for this session after first reveal
-    sessionStorage.setItem('hcf-pieces-revealed', 'true');
   }
 
-  // H6 + C2: Lightweight parallax using CSS custom property to avoid transform conflict with gyro
-  const parallaxItems = [
-    { selector: '.hcf-piece--triangle', speed: 0.03 },
-    { selector: '.hcf-piece--anchor',   speed: 0.06 },
-    { selector: '.hcf-piece--shark',    speed: 0.09 },
-  ];
-  const pItems = parallaxItems.map(p => ({
-    el: document.querySelector(p.selector), speed: p.speed
-  })).filter(p => p.el);
-
-  let pTicking = false;
-  if (pItems.length) {
-    window.addEventListener('scroll', () => {
-      if (!pTicking) {
-        requestAnimationFrame(() => {
-          pItems.forEach(({ el, speed }) => {
-            const rect = el.getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed;
-            // H6: Use CSS custom property so gyro transform can also apply without conflict
-            el.style.setProperty('--scroll-offset', offset + 'px');
-          });
-          pTicking = false;
-        });
-        pTicking = true;
-      }
-    }, { passive: true });
-  }
-
-  // Gyroscope tilt
-  const canvas = document.querySelector('.hcf-fusion-canvas');
-  if (canvas) {
-    const gyroLayers = [
-      { el: canvas.querySelector('.hcf-energy-ring--1'), depth: 0.3 },
-      { el: canvas.querySelector('.hcf-energy-ring--2'), depth: 0.5 },
-      { el: canvas.querySelector('.hcf-piece--triangle'), depth: 0.8 },
-      { el: canvas.querySelector('.hcf-piece--anchor'),   depth: 1.2 },
-      { el: canvas.querySelector('.hcf-piece--shark'),    depth: 1.0 },
-      { el: canvas.querySelector('.hcf-final-logo-wrap'), depth: 1.5 },
-    ].filter(l => l.el);
-
-    let gyroEnabled = false;
-
-    // C2: Gyro uses CSS custom properties so scroll parallax (--scroll-offset) is not overwritten
-    function handleOrientation(e) {
-      if (!gyroEnabled) return;
-      const gamma = Math.max(-25, Math.min(25, e.gamma || 0));
-      const beta  = Math.max(-25, Math.min(25, (e.beta || 0) - 45));
-      gyroLayers.forEach(({ el, depth }) => {
-        const x = gamma * depth * 0.6;
-        const y = beta  * depth * 0.4;
-        el.style.setProperty('--gyro-x', x + 'px');
-        el.style.setProperty('--gyro-y', y + 'px');
-        el.style.transition = 'transform 0.15s ease-out';
-      });
-    }
-
-    // H3: hint is clickable/tappable to activate gyro; pointer-events removed from CSS
-    const hint = document.createElement('div');
-    hint.className = 'hcf-gyro-hint';
-    hint.dataset.zh = '👆 點擊啟動體感互動';
-    hint.dataset.en = '👆 Tap to enable motion control';
-    hint.textContent = '👆 點擊啟動體感互動';
-    canvas.appendChild(hint);
-
-    const activateGyro = async () => {
-      if (gyroEnabled) return;
-      try {
-        if (typeof DeviceOrientationEvent !== 'undefined'
-            && typeof DeviceOrientationEvent.requestPermission === 'function') {
-          const perm = await DeviceOrientationEvent.requestPermission();
-          if (perm === 'granted') { gyroEnabled = true; window.addEventListener('deviceorientation', handleOrientation); }
-        } else {
-          gyroEnabled = true;
-          window.addEventListener('deviceorientation', handleOrientation);
-        }
-      } catch (err) { /* silent degradation */ }
-      if (gyroEnabled) { hint.style.display = 'none'; }
-    };
-
-    // H3: Both canvas click and hint click/touchstart activate gyro
-    canvas.addEventListener('click', activateGyro, { once: true });
-    hint.addEventListener('click', activateGyro, { once: true });
-    hint.addEventListener('touchstart', activateGyro, { once: true, passive: true });
-
-    // H1: Remove gyro listener when canvas is off-screen, re-attach when visible
-    const gyroVisibilityObserver = new IntersectionObserver((entries) => {
-      if (!gyroEnabled) return;
-      if (entries[0].isIntersecting) {
-        window.addEventListener('deviceorientation', handleOrientation);
-      } else {
-        window.removeEventListener('deviceorientation', handleOrientation);
-      }
-    }, { threshold: 0 });
-    gyroVisibilityObserver.observe(canvas);
-  }
 })();

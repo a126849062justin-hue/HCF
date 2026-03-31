@@ -1,54 +1,54 @@
-/* L2: CSS variables scoped to component instead of :root to avoid global conflicts */
+/* ═══════════════════════════════════════════════════════════════
+   HCF Philosophy Cinematic — Horizontal Scroll Card System
+   3 Cards (HONOR / COURAGE / FAITH) → LOGO Merge
+   Desktop: GSAP ScrollTrigger pin + horizontal track
+   Mobile:  CSS scroll-snap (overflow-x: auto)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Component-scoped variables — connected to global theme system ── */
 .hcf-philosophy-cinematic {
-  --hcf-bg: #03070e;
-  --hcf-panel: rgba(5, 14, 27, 0.72);
-  --hcf-border: rgba(96, 201, 255, 0.16);
-  --hcf-cyan: #68dcff;
-  --hcf-cyan-strong: #8ce8ff;
-  --hcf-text: #eef7ff;
+  --hcf-cyan:      var(--theme-cyan, #68dcff);
+  --hcf-cyan-rgb:  var(--theme-cyan-rgb, 104, 220, 255);
+  --hcf-bg:        #02060c;
+  --hcf-panel:     rgba(5, 14, 27, 0.72);
+  --hcf-border:    rgba(var(--hcf-cyan-rgb), 0.2);
+  --hcf-text:      #eef7ff;
   --hcf-text-soft: rgba(220, 236, 255, 0.82);
-  --hcf-red: #8e0b14;
+  --hcf-glow:      rgba(var(--hcf-cyan-rgb), 0.14);
 }
 
+/* ── Section wrapper ── */
 .hcf-philosophy-cinematic {
   position: relative;
-  overflow: hidden;
   color: var(--hcf-text);
   background:
-    radial-gradient(circle at 50% 18%, rgba(0, 190, 255, 0.12), transparent 24%),
-    radial-gradient(circle at 50% 65%, rgba(0, 110, 255, 0.08), transparent 32%),
-    linear-gradient(180deg, #02060c 0%, #07111d 48%, #02060c 100%);
-  padding: 120px 0 90px;
+    radial-gradient(circle at 50% 0%, rgba(var(--hcf-cyan-rgb), 0.08), transparent 40%),
+    linear-gradient(180deg, #02060c 0%, #07111d 50%, #02060c 100%);
 }
 
+/* Subtle grid overlay */
 .hcf-philosophy-cinematic::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 184, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 184, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(var(--hcf-cyan-rgb), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--hcf-cyan-rgb), 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.42;
   pointer-events: none;
+  z-index: 0;
 }
 
-.hcf-philosophy-shell {
-  width: min(1320px, calc(100% - 48px));
-  margin: 0 auto;
+/* ── Section header (scrolls into view before pin triggers) ── */
+.hcf-philosophy-head {
   position: relative;
   z-index: 2;
+  padding: 80px 24px 48px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.hcf-philosophy-head {
-  max-width: 820px;
-  margin-bottom: 44px;
-}
-
-.hcf-kicker,
-.hcf-mini,
-.hcf-piece__label span,
-.hcf-final-copy span {
+.hcf-kicker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,303 +56,446 @@
   text-transform: uppercase;
   font-size: 12px;
   color: var(--hcf-cyan);
-}
-
-.hcf-kicker {
-  padding: 11px 16px;
-  border: 1px solid rgba(110, 224, 255, 0.28);
+  padding: 10px 16px;
+  border: 1px solid rgba(var(--hcf-cyan-rgb), 0.28);
   background: rgba(0, 35, 72, 0.2);
-  box-shadow: inset 0 0 18px rgba(0, 180, 255, 0.08), 0 0 30px rgba(0, 0, 0, 0.24);
+  box-shadow: inset 0 0 18px rgba(var(--hcf-cyan-rgb), 0.06), 0 0 30px rgba(0, 0, 0, 0.24);
   margin-bottom: 20px;
 }
 
 .hcf-philosophy-head h2 {
-  margin: 0 0 18px;
-  font-size: clamp(44px, 6vw, 82px);
+  margin: 0 0 16px;
+  font-size: clamp(40px, 5vw, 72px);
   line-height: 0.95;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
   font-weight: 900;
 }
 
-.hcf-philosophy-head p,
-.hcf-fusion-intro p,
-.hcf-fusion-footer p {
+.hcf-philosophy-head > p {
   margin: 0;
   font-size: 18px;
-  line-height: 1.95;
+  line-height: 1.9;
   color: var(--hcf-text-soft);
+  max-width: 620px;
 }
 
-.hcf-fusion-stage { min-height: 330vh; position: relative; }
+/* ── Horizontal scroll viewport (pinned by GSAP on desktop) ── */
+.hcf-hscroll-outer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
 
-.hcf-fusion-sticky {
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
+/* ── Horizontal track (desktop: translated by GSAP; mobile: native flex) ── */
+.hcf-hscroll-track {
+  display: flex;
+  height: 100%;
+  /* 4 full-viewport panels: 3 cards + 1 merge stage */
+  width: calc(4 * 100vw);
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARD STYLES
+   ══════════════════════════════════════════════════════ */
+
+.hcf-card {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 5vw, 80px);
+  padding: 48px clamp(40px, 8vw, 120px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Glassmorphism card panel (pseudo-element so it doesn't affect children) */
+.hcf-card::after {
+  content: "";
+  position: absolute;
+  inset: 8% 8%;
+  border-radius: 24px;
+  border: 1px solid var(--hcf-border);
+  background: linear-gradient(135deg, rgba(5, 16, 36, 0.78), rgba(2, 8, 18, 0.90));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 60px rgba(var(--hcf-cyan-rgb), 0.06),
+    0 40px 80px rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+/* All card children must sit above the pseudo glass panel */
+.hcf-card__icon,
+.hcf-card__body {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card icon (left side) ── */
+.hcf-card__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hcf-card__icon img {
+  width: clamp(140px, 20vw, 280px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  animation: hcf-icon-breathe 3.5s ease-in-out infinite;
+  will-change: filter;
+}
+
+@keyframes hcf-icon-breathe {
+  0%, 100% { filter: drop-shadow(0 0 24px rgba(var(--hcf-cyan-rgb), 0.20)); }
+  50%       { filter: drop-shadow(0 0 52px rgba(var(--hcf-cyan-rgb), 0.52)); }
+}
+
+/* Halo ring around icon */
+.hcf-card__icon::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--hcf-cyan-rgb), 0.14);
+  animation: hcf-ring-spin 10s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+
+@keyframes hcf-ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Card text body (right side) ── */
+.hcf-card__body {
+  flex: 1;
+  max-width: 420px;
+}
+
+.hcf-card__code {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--hcf-cyan);
+  padding: 6px 12px;
+  border: 1px solid rgba(var(--hcf-cyan-rgb), 0.3);
+  margin-bottom: 16px;
+}
+
+.hcf-card__en {
+  margin: 0 0 4px;
+  font-size: clamp(13px, 1.4vw, 18px);
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  color: var(--hcf-cyan);
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.hcf-card__zh {
+  margin: 0 0 20px;
+  font-size: clamp(52px, 7.5vw, 100px);
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.hcf-card__desc {
+  margin: 0;
+  font-size: clamp(15px, 1.6vw, 20px);
+  line-height: 1.85;
+  color: var(--hcf-text-soft);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════
+   MERGE STAGE
+   ══════════════════════════════════════════════════════ */
+
+.hcf-merge-stage {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Floating pieces (positioned by JS / CSS) */
+.hcf-merge-piece {
+  position: absolute;
+  width: clamp(90px, 13vw, 200px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Initial spread positions — JS will animate these to center */
+.hcf-merge-piece--triangle { top: 14%; left: 18%; }
+.hcf-merge-piece--shark    { top: 10%; right: 18%; }
+.hcf-merge-piece--anchor   { bottom: 18%; left: 50%; transform: translateX(-50%); }
+
+/* Impact flash (full-screen radial burst) */
+.hcf-impact-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(var(--hcf-cyan-rgb), 0.35) 28%,
+    transparent 68%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+  will-change: opacity;
+}
+
+/* Final logo + CTA panel */
+.hcf-merge-logo {
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 24px 0 30px;
-}
-
-.hcf-fusion-intro {
+  align-items: center;
   text-align: center;
-  max-width: 820px;
-  margin: 0 auto 28px;
+  opacity: 0;
+  transform: scale(0.72);
+  will-change: transform, opacity;
 }
 
-.hcf-fusion-intro h3 {
-  margin: 14px 0 14px;
-  font-size: clamp(28px, 3vw, 48px);
-  line-height: 1.08;
-  font-weight: 900;
+.hcf-merge-logo img {
+  width: clamp(180px, 26vw, 400px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 40px rgba(var(--hcf-cyan-rgb), 0.40));
 }
 
-.hcf-fusion-canvas {
-  position: relative;
-  height: min(74vh, 860px);
-  /* M1: Cap min-height relative to viewport so it doesn't overflow on small laptops */
-  min-height: min(620px, 80vh);
-  border: 1px solid var(--hcf-border);
-  background:
-    linear-gradient(180deg, rgba(0, 10, 20, 0.45), rgba(0, 8, 18, 0.82)),
-    radial-gradient(circle at center, rgba(0, 200, 255, 0.1), transparent 56%);
-  overflow: hidden;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
-    inset 0 0 90px rgba(0, 130, 255, 0.08),
-    0 35px 90px rgba(0, 0, 0, 0.34);
+.hcf-merge-tagline {
+  margin-top: 18px;
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--hcf-cyan);
+  opacity: 0.88;
 }
 
-.hcf-energy-grid,
-.hcf-energy-ring,
-.hcf-impact-flash,
-.hcf-final-burst { position: absolute; pointer-events: none; }
-
-.hcf-energy-grid {
-  inset: 0;
-  background:
-    linear-gradient(rgba(0, 184, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 184, 255, 0.03) 1px, transparent 1px);
-  background-size: 56px 56px;
-  opacity: 0.75;
+.hcf-merge-subtitle {
+  margin: 12px 0 28px;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.75;
+  color: var(--hcf-text-soft);
+  max-width: 380px;
 }
 
-.hcf-energy-ring {
-  left: 50%; top: 50%; border-radius: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(104, 220, 255, 0.2);
-  box-shadow: 0 0 50px rgba(0, 194, 255, 0.08), inset 0 0 30px rgba(0, 194, 255, 0.04);
-}
-.hcf-energy-ring--1 { width: min(44vw, 560px); aspect-ratio: 1; }
-.hcf-energy-ring--2 { width: min(58vw, 720px); aspect-ratio: 1; opacity: 0.5; }
-
-.hcf-piece {
-  position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  /* L5: will-change applied only when .animating class is present (set by JS) */
-}
-.hcf-piece.animating {
-  will-change: transform, opacity, filter;
-}
-.hcf-piece img {
-  display: block; width: 100%; height: auto; object-fit: contain;
-  filter: drop-shadow(0 0 28px rgba(0, 186, 255, 0.14));
-}
-
-.hcf-piece__label {
-  position: absolute; left: 50%; transform: translateX(-50%);
-  text-align: center; min-width: 230px; padding: 14px 18px;
-  background: linear-gradient(180deg, rgba(4, 14, 28, 0.82), rgba(2, 8, 15, 0.94));
-  border: 1px solid rgba(102, 200, 255, 0.14);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(8px);
-}
-.hcf-piece__label h4 {
-  margin: 8px 0 8px; font-size: clamp(26px, 2.4vw, 40px);
-  line-height: 1; font-weight: 900;
-}
-.hcf-piece__label p { margin: 0; font-size: 15px; color: rgba(232, 241, 255, 0.88); font-weight: 700; }
-
-.hcf-piece--triangle { width: min(34vw, 480px); z-index: 1; }
-/* M2: Use calc-based positioning relative to piece height instead of hardcoded px values */
-.hcf-piece--triangle .hcf-piece__label { bottom: calc(100% + 16px); top: auto; }
-.hcf-piece--anchor { width: min(24vw, 320px); z-index: 3; }
-.hcf-piece--anchor .hcf-piece__label { bottom: calc(100% + 16px); top: auto; }
-.hcf-piece--shark { width: min(34vw, 470px); z-index: 4; }
-.hcf-piece--shark .hcf-piece__label { top: calc(100% + 16px); bottom: auto; }
-
-.hcf-impact-flash {
-  inset: 50%; width: 18%; aspect-ratio: 1; transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(128, 226, 255, 0.45) 25%, rgba(0,0,0,0) 70%);
-  opacity: 0; filter: blur(12px); z-index: 7;
-}
-
-.hcf-final-logo-wrap {
-  position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%, -50%) scale(0.85);
-  width: min(42vw, 540px); aspect-ratio: 1;
-  opacity: 0; z-index: 8; pointer-events: none;
-}
-
-.hcf-final-burst {
-  inset: 50%; width: 22%; aspect-ratio: 1; transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.98) 0%, rgba(105, 222, 255, 0.4) 28%, rgba(0,0,0,0) 74%);
-  opacity: 0; filter: blur(18px);
-}
-
-.hcf-final-logo {
-  width: 100%; height: 100%; object-fit: contain;
-  filter: drop-shadow(0 0 25px rgba(0, 193, 255, 0.18)) drop-shadow(0 0 70px rgba(0, 110, 255, 0.12));
-}
-
-.hcf-final-copy {
-  position: absolute; left: 50%; bottom: -34px; transform: translateX(-50%);
-  width: max-content; text-align: center;
-}
-.hcf-final-copy h3 {
-  margin: 8px 0 0; font-size: clamp(24px, 2vw, 34px);
-  font-weight: 900; letter-spacing: 0.08em;
-}
-
-.hcf-fusion-footer { margin-top: 28px; text-align: center; }
-
+/* ── CTA Button ── */
 .hcf-fusion-cta {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 230px; min-height: 58px; margin-top: 16px; padding: 0 32px;
-  text-decoration: none; color: var(--hcf-cyan-strong); font-weight: 900;
-  letter-spacing: 0.06em;
-  border: 1px solid rgba(111, 225, 255, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 56px;
+  padding: 0 36px;
+  text-decoration: none;
+  color: var(--hcf-cyan);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(var(--hcf-cyan-rgb), 0.52);
   background: rgba(0, 26, 58, 0.35);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 0 30px rgba(0, 183, 255, 0.12);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  box-shadow: 0 0 28px rgba(var(--hcf-cyan-rgb), 0.10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
 .hcf-fusion-cta:hover {
-  transform: translateY(-2px); color: #fff;
-  border-color: rgba(134, 232, 255, 0.85);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 38px rgba(0, 183, 255, 0.24);
+  transform: translateY(-3px);
+  color: #fff;
+  border-color: rgba(var(--hcf-cyan-rgb), 0.88);
+  box-shadow: 0 0 50px rgba(var(--hcf-cyan-rgb), 0.28);
 }
-/* M6: Active state feedback for touch/click */
+
 .hcf-fusion-cta:active {
   transform: scale(0.97);
-  opacity: 0.85;
-  transition: transform 0.1s, opacity 0.1s;
+  transition-duration: 0.1s;
 }
 
-/* Gyro hint for mobile */
-.hcf-gyro-hint {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  color: rgba(104,220,255,0.6); font-size: 11px; letter-spacing: 0.12em;
-  /* H3: pointer-events enabled so hint itself can activate gyro on tap */
-  z-index: 20; cursor: pointer;
-  animation: hcfHintPulse 2.5s ease-in-out infinite;
-}
-@keyframes hcfHintPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+/* ── Mobile scroll-position dots ── */
+.hcf-dots {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0 32px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Tablet ≤1024px */
-@media (max-width: 1024px) {
-  .hcf-fusion-canvas { min-height: 580px; }
-  .hcf-piece--triangle { width: 430px; }
-  .hcf-piece--anchor { width: 270px; }
-  .hcf-piece--shark { width: 430px; }
+.hcf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(var(--hcf-cyan-rgb), 0.25);
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-/* Mobile ≤768px */
+.hcf-dot--active {
+  background: var(--hcf-cyan);
+  transform: scale(1.4);
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE  (≤768px) — CSS scroll-snap, no GSAP pin
+   ══════════════════════════════════════════════════════ */
+
 @media (max-width: 768px) {
-  .hcf-philosophy-cinematic { padding: 84px 0 64px; }
-  .hcf-philosophy-shell { width: calc(100% - 24px); }
-
-  .hcf-philosophy-head p,
-  .hcf-fusion-intro p,
-  .hcf-fusion-footer p { font-size: 15px; line-height: 1.82; }
-
-  .hcf-fusion-stage { min-height: auto; }
-  .hcf-fusion-sticky { position: relative; min-height: auto; padding: 0; }
-
-  .hcf-fusion-canvas {
-    min-height: auto; height: auto; padding: 24px 14px 64px;
-    /* M3: Prevent energy rings from causing horizontal overflow */
-    overflow: hidden;
+  .hcf-philosophy-head {
+    padding: 56px 20px 28px;
   }
 
-  /* M3: Cap energy ring width so animation doesn't overflow on mobile */
-  .hcf-energy-ring--1,
-  .hcf-energy-ring--2 { width: min(90vw, 340px); max-width: none; }
-
-  .hcf-piece,
-  .hcf-final-logo-wrap {
-    position: relative; left: auto; top: auto;
-    width: 100%; margin: 0 auto 24px;
-  }
-  /* H6: Mobile parallax uses --scroll-offset custom property so gyro can also apply --gyro-x/y.
-     Note: desktop centering (translate(-50%,-50%)) is intentionally dropped here because
-     mobile sets position:relative, so centering is handled by margin:0 auto instead. */
-  .hcf-piece { max-width: min(320px, 85vw); transform: translate(var(--gyro-x, 0px), calc(var(--gyro-y, 0px) + var(--scroll-offset, 0px))); }
-
-  /* M2: Ensure label positioning is fully reset in mobile — override higher-specificity desktop rules */
-  .hcf-piece--triangle .hcf-piece__label,
-  .hcf-piece--anchor .hcf-piece__label,
-  .hcf-piece--shark .hcf-piece__label {
-    top: auto !important;
-    bottom: auto !important;
+  .hcf-philosophy-head h2 {
+    font-size: clamp(36px, 10vw, 56px);
   }
 
-  .hcf-piece__label {
-    position: relative; left: auto; top: auto; bottom: auto;
-    transform: none; margin: 0 auto 14px;
-    min-width: 0; width: 100%; box-sizing: border-box;
+  .hcf-philosophy-head > p {
+    font-size: 15px;
   }
 
-  .hcf-final-logo-wrap { max-width: 340px; aspect-ratio: auto; margin-bottom: 0; }
-  .hcf-final-logo { width: 100%; height: auto; }
-
-  .hcf-final-copy {
-    position: relative; left: auto; bottom: auto;
-    transform: none; width: 100%; margin-top: 12px;
+  /* Make outer the horizontal scroll container */
+  .hcf-hscroll-outer {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
-  @keyframes hcf-ring-pulse {
-    0%, 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(1); }
-    50%      { opacity: 0.45; transform: translate(-50%, -50%) scale(1.08); }
-  }
-  @keyframes hcf-glow-breathe {
-    0%, 100% { filter: drop-shadow(0 0 20px rgba(0,186,255,0.1)); }
-    50%      { filter: drop-shadow(0 0 40px rgba(0,186,255,0.3)); }
-  }
-  @keyframes hcf-float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-8px); }
+  .hcf-hscroll-outer::-webkit-scrollbar { display: none; }
+
+  /* Track stretches to fit all cards naturally */
+  .hcf-hscroll-track {
+    width: max-content;
+    height: auto;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 6vw;
   }
 
-  .hcf-energy-ring--1 { animation: hcf-ring-pulse 3s ease-in-out infinite; }
-  .hcf-energy-ring--2 { animation: hcf-ring-pulse 4s ease-in-out infinite 0.5s; }
-  .hcf-piece img { animation: hcf-glow-breathe 3.5s ease-in-out infinite; }
-  .hcf-final-logo { animation: hcf-float 4s ease-in-out infinite; }
+  /* Mobile cards */
+  .hcf-card {
+    width: 88vw;
+    min-height: 62vh;
+    height: auto;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 24px;
+    margin: 0 3vw;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
 
-  .hcf-piece__label::after {
-    content: ''; position: absolute;
-    bottom: 0; left: 10%; right: 10%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--hcf-cyan), transparent);
-    animation: hcf-ring-pulse 3s ease-in-out infinite;
+  .hcf-card::after {
+    inset: 0;
+    border-radius: 16px;
+  }
+
+  .hcf-card__icon img {
+    width: clamp(100px, 38vw, 180px);
+  }
+
+  .hcf-card__zh {
+    font-size: clamp(44px, 12vw, 68px);
+    margin-bottom: 14px;
+  }
+
+  .hcf-card__desc {
+    font-size: 15px;
+  }
+
+  /* Mobile merge stage */
+  .hcf-merge-stage {
+    width: 88vw;
+    min-height: 62vh;
+    height: auto;
+    margin: 0 3vw;
+    padding: 48px 24px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  /* Hide pieces and flash on mobile — logo revealed via CSS animation */
+  .hcf-merge-piece,
+  .hcf-impact-flash { display: none; }
+
+  /* Mobile logo: hidden by default, revealed by IntersectionObserver */
+  .hcf-merge-logo {
+    opacity: 0;
+    transform: scale(0.84) translateY(20px);
+    transition: opacity 0.9s cubic-bezier(.16, 1, .3, 1), transform 0.9s cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .hcf-merge-logo.hcf-merge-logo--visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .hcf-merge-logo img {
+    width: min(240px, 68vw);
+  }
+
+  .hcf-merge-subtitle {
+    font-size: 14px;
+  }
+
+  /* Show dot indicators on mobile */
+  .hcf-dots { display: flex; }
+
+  /* Breathing animation adapted for mobile */
+  @keyframes hcf-icon-breathe {
+    0%, 100% { filter: drop-shadow(0 0 18px rgba(var(--hcf-cyan-rgb), 0.2)); }
+    50%       { filter: drop-shadow(0 0 36px rgba(var(--hcf-cyan-rgb), 0.48)); }
   }
 }
 
-/* C4: PWA APP mode — offset content above bottom tab bar (60px + safe area) */
-.pwa-mode .hcf-fusion-footer {
-  padding-bottom: calc(70px + env(safe-area-inset-bottom));
-}
+/* ── PWA mode: offset for bottom tab bar ── */
 .pwa-mode .hcf-philosophy-cinematic {
-  padding-top: calc(24px + env(safe-area-inset-top));
   padding-bottom: calc(70px + env(safe-area-inset-bottom));
 }
 
+/* ── Reduced motion: skip all animations, show final state ── */
 @media (prefers-reduced-motion: reduce) {
-  .hcf-energy-ring--1, .hcf-energy-ring--2,
-  .hcf-piece img, .hcf-final-logo,
-  .hcf-piece__label::after, .hcf-gyro-hint { animation: none !important; }
+  .hcf-card__icon img,
+  .hcf-card__icon::before { animation: none !important; }
+
+  .hcf-merge-logo {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hcf-merge-piece,
+  .hcf-impact-flash { display: none !important; }
+
+  .hcf-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
