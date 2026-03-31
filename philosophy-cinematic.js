@@ -73,6 +73,10 @@
     const introObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !introShown) {
         introShown = true;
+
+        // Skip if already seen in this session
+        if (sessionStorage.getItem('hcf-intro-seen')) { introObserver.disconnect(); return; }
+
         const overlay = document.createElement('div');
         overlay.id = 'hcf-mobile-intro';
         overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#03070e;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;transition:opacity 0.8s ease;pointer-events:all;';
@@ -84,15 +88,22 @@
         document.body.appendChild(overlay);
         document.body.style.overflow = 'hidden';
 
-        setTimeout(() => {
+        const dismissOverlay = () => {
           overlay.style.opacity = '0';
           document.body.style.overflow = '';
           setTimeout(() => overlay.remove(), 800);
-        }, 2800);
+          sessionStorage.setItem('hcf-intro-seen', '1');
+        };
+
+        // Allow click to skip
+        overlay.addEventListener('click', dismissOverlay, { once: true });
+
+        const INTRO_DISPLAY_DURATION = 1500;
+        setTimeout(dismissOverlay, INTRO_DISPLAY_DURATION);
 
         introObserver.disconnect();
       }
-    }, { threshold: 0.3 });
+    }, { threshold: 0.6 });
     introObserver.observe(section);
   }
 
@@ -172,6 +183,8 @@
 
     const hint = document.createElement('div');
     hint.className = 'hcf-gyro-hint';
+    hint.dataset.zh = '👆 點擊啟動體感互動';
+    hint.dataset.en = '👆 Tap to enable motion control';
     hint.textContent = '👆 點擊啟動體感互動';
     canvas.appendChild(hint);
 

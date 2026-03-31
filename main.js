@@ -37,16 +37,21 @@
         let isTickingGlobal = false; let mouseX = 0, mouseY = 0; let ringX = 0, ringY = 0;
         
         if (window.matchMedia("(pointer: fine)").matches) {
+            let cursorAnimRunning = false;
+            let cursorIdleTimer;
             function animateCursor() {
+                if (!cursorAnimRunning) return;
                 ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
                 if(cursorRing) cursorRing.style.transform = `translate(calc(-50% + ${ringX}px), calc(-50% + ${ringY}px))`;
                 if(cursorDot) cursorDot.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
                 requestAnimationFrame(animateCursor);
             }
-            requestAnimationFrame(animateCursor);
 
             window.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX; mouseY = e.clientY;
+                if (!cursorAnimRunning) { cursorAnimRunning = true; requestAnimationFrame(animateCursor); }
+                clearTimeout(cursorIdleTimer);
+                cursorIdleTimer = setTimeout(() => { cursorAnimRunning = false; }, 500);
                 if (!isTickingGlobal) {
                     window.requestAnimationFrame(() => {
                         mouseGlow.style.opacity = '1';
@@ -101,11 +106,17 @@
                 draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle='rgba(var(--theme-cyan-rgb),0.15)'; ctx.fill(); }
             }
             function init() { resize(); pts=[]; const isMobile = window.innerWidth < 768; const isTablet = window.innerWidth < 1024; const particleCount = isMobile ? 0 : (isTablet ? 15 : 40); for(let i=0;i<particleCount;i++) pts.push(new P()); }
+            let animRunning = true;
             function anim() {
+                if (!animRunning) return;
                 ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(var(--theme-cyan-rgb),0.03)'; ctx.lineWidth=0.5;
                 for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y; if(dx*dx+dy*dy<10000){ ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke(); } } }
                 pts.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(anim);
             }
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) { animRunning = false; }
+                else { animRunning = true; requestAnimationFrame(anim); }
+            });
             window.addEventListener('resize', init); init(); anim();
         }
 
@@ -152,8 +163,12 @@
         function toggleLanguage() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; localStorage.setItem('hcf_lang', currentLang); loadLanguage(currentLang).then(applyI18nData).catch(e => console.warn('i18n apply failed:', e)); applyLanguage(); }
         function applyLanguage() {
             document.querySelectorAll('.lang-text').forEach(el => {
-                if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; } 
-                else { if (!el.dataset.zh) el.dataset.zh = el.innerHTML; el.innerHTML = el.dataset.en; }
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    if (currentLang === 'zh') { if (el.dataset.zh) el.innerHTML = el.dataset.zh; }
+                    else { if (!el.dataset.zh) el.dataset.zh = el.innerHTML; el.innerHTML = el.dataset.en; }
+                    el.style.opacity = '1';
+                }, 150);
             });
             const ll = document.getElementById('lang-label'); if(ll) ll.innerText = langTexts[currentLang].label;
             const ml = document.getElementById('mobile-lang-label'); if(ml) ml.innerText = langTexts[currentLang].mobileLabel;
@@ -287,20 +302,50 @@
         if(document.getElementById('next-slide')) document.getElementById('next-slide').addEventListener('click', nextSlide);
         if(document.getElementById('prev-slide')) document.getElementById('prev-slide').addEventListener('click', prevSlide);
 
+        // Touch swipe support for mobile carousel
+        (function() {
+            const carouselEl = document.querySelector('.carousel-inner');
+            if (!carouselEl) return;
+            const MIN_SWIPE_DISTANCE = 50;
+            const MAX_VERTICAL_DRIFT = 100;
+            let touchStartX = 0, touchStartY = 0, touchEndX = 0;
+            carouselEl.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+            carouselEl.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diffX = touchStartX - touchEndX;
+                const diffY = Math.abs(e.changedTouches[0].screenY - touchStartY);
+                if (Math.abs(diffX) > MIN_SWIPE_DISTANCE && diffY < MAX_VERTICAL_DRIFT) {
+                    if (diffX > 0) nextSlide();
+                    else prevSlide();
+                }
+            }, { passive: true });
+        })();
+
         // 8. BGM
         const bgm = document.getElementById('bgm-audio'), biD = document.getElementById('bgm-icon');
         let isMusicPlaying = false;
         function toggleBGM() {
-            if (isMusicPlaying) { 
-                bgm.pause(); 
+            if (isMusicPlaying) {
+                bgm.pause();
+                isMusicPlaying = false;
                 if(biD) { biD.classList.remove('fa-volume-high'); biD.classList.add('fa-volume-xmark'); }
-            } else { 
-                bgm.play().catch(e=>{}); 
-                if(biD) { biD.classList.remove('fa-volume-xmark'); biD.classList.add('fa-volume-high'); } 
-                const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon');
-                if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); } const svi = document.getElementById('shark-video-sound-icon'); if(svi) { svi.classList.remove('fa-volume-high'); svi.classList.add('fa-volume-xmark'); } }
+            } else {
+                bgm.play().then(() => {
+                    isMusicPlaying = true;
+                    if(biD) { biD.classList.remove('fa-volume-xmark'); biD.classList.add('fa-volume-high'); }
+                    const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon');
+                    if(hv && !hv.muted) { hv.muted = true; if(vi) { vi.classList.remove('fa-volume-high'); vi.classList.add('fa-volume-xmark'); } if(mvi) { mvi.classList.remove('fa-volume-high'); mvi.classList.add('fa-volume-xmark'); } const svi = document.getElementById('shark-video-sound-icon'); if(svi) { svi.classList.remove('fa-volume-high'); svi.classList.add('fa-volume-xmark'); }
+                        const toast = document.getElementById('custom-toast'); const toastMsg = document.getElementById('toast-msg');
+                        if (toast && toastMsg) { toastMsg.textContent = '🔇 影片已靜音，背景音樂播放中'; toast.style.opacity = '1'; toast.style.pointerEvents = 'auto'; setTimeout(() => { toast.style.opacity = '0'; toast.style.pointerEvents = 'none'; }, 2000); }
+                    }
+                }).catch(() => {
+                    isMusicPlaying = false;
+                    if(biD) { biD.classList.remove('fa-volume-high'); biD.classList.add('fa-volume-xmark'); }
+                });
             }
-            isMusicPlaying = !isMusicPlaying;
         }
         function toggleVideoSound() {
             const hv = document.getElementById('hero-video'), vi = document.getElementById('video-sound-icon'), mvi = document.getElementById('menu-video-sound-icon'), svi = document.getElementById('shark-video-sound-icon');
@@ -332,7 +377,10 @@
                         if (icon) { icon.classList.remove('fa-volume-xmark'); icon.classList.add('fa-volume-high'); }
                         const sharkIcon = document.getElementById('shark-bgm-icon');
                         if (sharkIcon) { sharkIcon.classList.remove('fa-volume-xmark'); sharkIcon.classList.add('fa-volume-high'); }
-                    }).catch(() => {});
+                    }).catch(() => {
+                        isMusicPlaying = false;
+                        bgmAutoStarted = false;
+                    });
                 }
             }
             document.addEventListener('touchstart', autoStartBGM, { once: true, passive: true });

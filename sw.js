@@ -1,35 +1,16 @@
 const CACHE_NAME = 'hcf-v4.0';
 const DYNAMIC_CACHE = 'hcf-dynamic-v4.0';
 const MAX_DYNAMIC_ITEMS = 50;
-const SHELL_ASSETS = [
-  '/',
-  '/index.html',
-  '/classes.html',
-  '/pricing.html',
-  '/team.html',
-  '/news.html',
-  '/faq.html',
-  '/philosophy.html',
-  '/offline.html',
-  '/manifest.json',
-  '/main.css',
-  '/main.js',
-  '/philosophy-cinematic.css',
-  '/philosophy-cinematic.js',
-  '/shark_logo.png',
-  '/hero1.jpg',
-  '/schedule-mobile.png',
-  '/schedule-pc.png',
-  '/coach_huang.jpg',
-  '/coach_allen.jpg',
-  '/coach_zhengyu.jpg',
-  '/coach_kao.jpg',
-  '/coach_hu.jpg',
-  '/coach_mi.jpg',
-  '/assets/triangle.png',
-  '/assets/anchor.png',
-  '/assets/shark.png',
-  '/assets/final-logo.png',
+
+const CRITICAL_ASSETS = [
+  '/', '/index.html', '/offline.html', '/main.css', '/main.js', '/shark_logo.png', '/manifest.json'
+];
+const OPTIONAL_ASSETS = [
+  '/classes.html', '/pricing.html', '/team.html', '/news.html', '/faq.html', '/philosophy.html',
+  '/philosophy-cinematic.css', '/philosophy-cinematic.js',
+  '/hero1.jpg', '/schedule-mobile.png', '/schedule-pc.png',
+  '/coach_huang.jpg', '/coach_allen.jpg', '/coach_zhengyu.jpg', '/coach_kao.jpg', '/coach_hu.jpg', '/coach_mi.jpg',
+  '/assets/triangle.png', '/assets/anchor.png', '/assets/shark.png', '/assets/final-logo.png',
 ];
 
 // Trim dynamic cache to MAX_DYNAMIC_ITEMS (LRU)
@@ -45,7 +26,12 @@ async function trimCache(cacheName, maxItems) {
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_ASSETS))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await cache.addAll(CRITICAL_ASSETS);
+      for (const url of OPTIONAL_ASSETS) {
+        try { await cache.add(url); } catch (e) { console.warn('Optional cache skip:', url); }
+      }
+    })
   );
 });
 
@@ -75,9 +61,14 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (request.method !== 'GET') return;
 
-  // Network Only: Netlify Functions / API
+  // Network Only with offline fallback: Netlify Functions / API
   if (url.origin === self.location.origin && url.pathname.startsWith('/.netlify/')) {
-    event.respondWith(fetch(request));
+    event.respondWith(
+      fetch(request).catch(() => new Response(
+        JSON.stringify({ error: '⚡ 目前離線，請連上網路後再試' }),
+        { status: 503, headers: { 'Content-Type': 'application/json' } }
+      ))
+    );
     return;
   }
 
