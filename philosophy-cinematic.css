@@ -1,4 +1,5 @@
-:root {
+/* L2: CSS variables scoped to component instead of :root to avoid global conflicts */
+.hcf-philosophy-cinematic {
   --hcf-bg: #03070e;
   --hcf-panel: rgba(5, 14, 27, 0.72);
   --hcf-border: rgba(96, 201, 255, 0.16);
@@ -110,7 +111,8 @@
 .hcf-fusion-canvas {
   position: relative;
   height: min(74vh, 860px);
-  min-height: 620px;
+  /* M1: Cap min-height relative to viewport so it doesn't overflow on small laptops */
+  min-height: min(620px, 80vh);
   border: 1px solid var(--hcf-border);
   background:
     linear-gradient(180deg, rgba(0, 10, 20, 0.45), rgba(0, 8, 18, 0.82)),
@@ -148,6 +150,9 @@
 .hcf-piece {
   position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
+  /* L5: will-change applied only when .animating class is present (set by JS) */
+}
+.hcf-piece.animating {
   will-change: transform, opacity, filter;
 }
 .hcf-piece img {
@@ -170,11 +175,12 @@
 .hcf-piece__label p { margin: 0; font-size: 15px; color: rgba(232, 241, 255, 0.88); font-weight: 700; }
 
 .hcf-piece--triangle { width: min(34vw, 480px); z-index: 1; }
-.hcf-piece--triangle .hcf-piece__label { top: -118px; }
+/* M2: Use calc-based positioning relative to piece height instead of hardcoded px values */
+.hcf-piece--triangle .hcf-piece__label { bottom: calc(100% + 16px); top: auto; }
 .hcf-piece--anchor { width: min(24vw, 320px); z-index: 3; }
-.hcf-piece--anchor .hcf-piece__label { top: -124px; }
+.hcf-piece--anchor .hcf-piece__label { bottom: calc(100% + 16px); top: auto; }
 .hcf-piece--shark { width: min(34vw, 470px); z-index: 4; }
-.hcf-piece--shark .hcf-piece__label { bottom: -128px; }
+.hcf-piece--shark .hcf-piece__label { top: calc(100% + 16px); bottom: auto; }
 
 .hcf-impact-flash {
   inset: 50%; width: 18%; aspect-ratio: 1; transform: translate(-50%, -50%);
@@ -228,12 +234,19 @@
   border-color: rgba(134, 232, 255, 0.85);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 38px rgba(0, 183, 255, 0.24);
 }
+/* M6: Active state feedback for touch/click */
+.hcf-fusion-cta:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+  transition: transform 0.1s, opacity 0.1s;
+}
 
 /* Gyro hint for mobile */
 .hcf-gyro-hint {
   position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
   color: rgba(104,220,255,0.6); font-size: 11px; letter-spacing: 0.12em;
-  z-index: 20; pointer-events: none;
+  /* H3: pointer-events enabled so hint itself can activate gyro on tap */
+  z-index: 20; cursor: pointer;
   animation: hcfHintPulse 2.5s ease-in-out infinite;
 }
 @keyframes hcfHintPulse {
@@ -263,17 +276,31 @@
 
   .hcf-fusion-canvas {
     min-height: auto; height: auto; padding: 24px 14px 64px;
+    /* M3: Prevent energy rings from causing horizontal overflow */
+    overflow: hidden;
   }
 
+  /* M3: Cap energy ring width so animation doesn't overflow on mobile */
   .hcf-energy-ring--1,
-  .hcf-energy-ring--2 { width: 90vw; max-width: none; }
+  .hcf-energy-ring--2 { width: min(90vw, 340px); max-width: none; }
 
   .hcf-piece,
   .hcf-final-logo-wrap {
     position: relative; left: auto; top: auto;
     width: 100%; margin: 0 auto 24px;
   }
-  .hcf-piece { max-width: 320px; }
+  /* H6: Mobile parallax uses --scroll-offset custom property so gyro can also apply --gyro-x/y.
+     Note: desktop centering (translate(-50%,-50%)) is intentionally dropped here because
+     mobile sets position:relative, so centering is handled by margin:0 auto instead. */
+  .hcf-piece { max-width: min(320px, 85vw); transform: translate(var(--gyro-x, 0px), calc(var(--gyro-y, 0px) + var(--scroll-offset, 0px))); }
+
+  /* M2: Ensure label positioning is fully reset in mobile — override higher-specificity desktop rules */
+  .hcf-piece--triangle .hcf-piece__label,
+  .hcf-piece--anchor .hcf-piece__label,
+  .hcf-piece--shark .hcf-piece__label {
+    top: auto !important;
+    bottom: auto !important;
+  }
 
   .hcf-piece__label {
     position: relative; left: auto; top: auto; bottom: auto;
@@ -313,6 +340,15 @@
     background: linear-gradient(90deg, transparent, var(--hcf-cyan), transparent);
     animation: hcf-ring-pulse 3s ease-in-out infinite;
   }
+}
+
+/* C4: PWA APP mode — offset content above bottom tab bar (60px + safe area) */
+.pwa-mode .hcf-fusion-footer {
+  padding-bottom: calc(70px + env(safe-area-inset-bottom));
+}
+.pwa-mode .hcf-philosophy-cinematic {
+  padding-top: calc(24px + env(safe-area-inset-top));
+  padding-bottom: calc(70px + env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {

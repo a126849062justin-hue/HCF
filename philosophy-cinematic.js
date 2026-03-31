@@ -4,20 +4,26 @@
   const stage = document.querySelector('.hcf-fusion-stage');
   if (!stage) return;
 
-  const isMobile = window.innerWidth <= 768;
+  // C3: Use live matchMedia instead of one-time isMobile check so orientation changes work
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // M4: Detect low-power devices to skip heavy blur animations
+  const isLowPower = typeof navigator.deviceMemory !== 'undefined' && navigator.deviceMemory < 4;
+
   /* Desktop: GSAP ScrollTrigger */
-  if (!isMobile && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  // C3: Always register gsap.matchMedia so it can self-manage on orientation change
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
     const mm = gsap.matchMedia();
     mm.add('(min-width: 769px)', () => {
+      // H2: Shortened scroll end from +=2200 to +=1500
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.hcf-fusion-stage',
           start: 'top top',
-          end: '+=2200',
+          end: '+=1500',
           scrub: 1,
           pin: '.hcf-fusion-sticky',
           anticipatePin: 1,
@@ -26,9 +32,15 @@
         }
       });
 
-      gsap.set('.hcf-piece--triangle', { xPercent: 0, yPercent: 0, scale: 0.72, opacity: 0.08, filter: 'blur(10px)' });
-      gsap.set('.hcf-piece--anchor', { xPercent: 0, yPercent: 0, y: -320, scale: 0.92, opacity: 0, filter: 'blur(3px)' });
-      gsap.set('.hcf-piece--shark', { x: -520, y: 60, rotation: -12, scale: 1.12, opacity: 0, filter: 'blur(10px)' });
+      // M4: Skip heavy blur on low-power devices
+      const blurIn  = isLowPower ? 'none' : 'blur(10px)';
+      const blurMid = isLowPower ? 'none' : 'blur(3px)';
+      const blurOut = isLowPower ? 'none' : 'blur(0px)';
+      const blurSharkMid = isLowPower ? 'none' : 'blur(2px)';
+
+      gsap.set('.hcf-piece--triangle', { xPercent: 0, yPercent: 0, scale: 0.72, opacity: 0.08, filter: blurIn });
+      gsap.set('.hcf-piece--anchor', { xPercent: 0, yPercent: 0, y: -320, scale: 0.92, opacity: 0, filter: blurMid });
+      gsap.set('.hcf-piece--shark', { x: -520, y: 60, rotation: -12, scale: 1.12, opacity: 0, filter: blurIn });
       gsap.set('.hcf-piece__label', { opacity: 0, y: 20 });
       gsap.set('.hcf-energy-ring--1', { scale: 0.85, opacity: 0.2 });
       gsap.set('.hcf-energy-ring--2', { scale: 1.15, opacity: 0.08 });
@@ -36,16 +48,19 @@
       gsap.set('.hcf-final-burst', { opacity: 0, scale: 0.2 });
       gsap.set('.hcf-impact-flash', { opacity: 0, scale: 0.2 });
 
-      tl.to('.hcf-piece--triangle', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out' })
+      // L5: Mark elements as animating so CSS can add will-change
+      document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap').forEach(el => el.classList.add('animating'));
+
+      tl.to('.hcf-piece--triangle', { opacity: 1, scale: 1, filter: blurOut, duration: 0.9, ease: 'power2.out' })
         .to('.hcf-piece--triangle .hcf-piece__label', { opacity: 1, y: 0, duration: 0.35 }, '<0.1')
         .to('.hcf-energy-ring--1', { scale: 1, opacity: 0.34, duration: 0.8, ease: 'power2.out' }, '<')
-        .to('.hcf-piece--anchor', { opacity: 1, y: -40, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' }, '+=0.15')
+        .to('.hcf-piece--anchor', { opacity: 1, y: -40, filter: blurOut, duration: 0.9, ease: 'power3.out' }, '+=0.15')
         .to('.hcf-piece--anchor .hcf-piece__label', { opacity: 1, y: 0, duration: 0.35 }, '<0.05')
         .to('.hcf-piece--anchor', { y: 0, duration: 0.55, ease: 'bounce.out' })
         .to('.hcf-energy-ring--2', { opacity: 0.28, scale: 1, duration: 0.8, ease: 'power2.out' }, '<')
-        .to('.hcf-piece--shark', { x: -60, y: 10, rotation: -5, opacity: 1, filter: 'blur(2px)', duration: 0.85, ease: 'power4.out' }, '+=0.15')
+        .to('.hcf-piece--shark', { x: -60, y: 10, rotation: -5, opacity: 1, filter: blurSharkMid, duration: 0.85, ease: 'power4.out' }, '+=0.15')
         .to('.hcf-piece--shark .hcf-piece__label', { opacity: 1, y: 0, duration: 0.3 }, '<0.1')
-        .to('.hcf-piece--shark', { x: 0, y: 0, rotation: 0, scale: 1, filter: 'blur(0px)', duration: 0.42, ease: 'power2.out' })
+        .to('.hcf-piece--shark', { x: 0, y: 0, rotation: 0, scale: 1, filter: blurOut, duration: 0.42, ease: 'power2.out' })
         .to('.hcf-piece--shark', { x: '+=6', duration: 0.05, repeat: 3, yoyo: true, ease: 'none' })
         .to('.hcf-impact-flash', { opacity: 1, scale: 3.6, duration: 0.22, ease: 'power2.out' })
         .to('.hcf-impact-flash', { opacity: 0, duration: 0.2 })
@@ -59,14 +74,19 @@
         .to('.hcf-piece--anchor', { opacity: 0, y: 20, duration: 0.28 }, '<')
         .to('.hcf-piece--shark', { opacity: 0, x: 30, duration: 0.28 }, '<')
         .to('.hcf-final-logo-wrap', { y: -8, repeat: 1, yoyo: true, duration: 0.7, ease: 'sine.inOut' });
+
+      // L5: Cleanup animating class when matchMedia context is removed
+      return () => {
+        document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap').forEach(el => el.classList.remove('animating'));
+      };
     });
-    return;
   }
 
   /* Mobile immersive experience */
-  if (!isMobile || prefersReducedMotion) return;
+  // C3: Use live matchMedia check instead of isMobile variable
+  if (!mobileQuery.matches || prefersReducedMotion) return;
 
-  // Full-screen intro
+  // Full-screen intro overlay
   const section = document.querySelector('.hcf-philosophy-cinematic');
   if (section) {
     let introShown = false;
@@ -79,56 +99,74 @@
 
         const overlay = document.createElement('div');
         overlay.id = 'hcf-mobile-intro';
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#03070e;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;transition:opacity 0.8s ease;pointer-events:all;';
+        // C1: pointer-events:none so underlying page remains interactive
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#03070e;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;transition:opacity 0.8s ease;pointer-events:none;';
         overlay.innerHTML = '<img src="assets/final-logo.png" alt="HCF" style="width:60vw;max-width:300px;animation:hcfIntroLogoIn 1.5s cubic-bezier(.16,1,.3,1) both;" /><p style="color:var(--hcf-cyan);margin-top:20px;font-size:12px;letter-spacing:0.2em;animation:hcfIntroLogoIn 1.5s cubic-bezier(.16,1,.3,1) 0.3s both;">HONOR × COURAGE × FAITH</p>';
 
         const style = document.createElement('style');
         style.textContent = '@keyframes hcfIntroLogoIn { 0% { opacity:0; transform:scale(0.7) translateY(30px); filter:blur(12px); } 100% { opacity:1; transform:scale(1) translateY(0); filter:blur(0); } }';
         document.head.appendChild(style);
         document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
 
         const dismissOverlay = () => {
           overlay.style.opacity = '0';
+          // C1: Ensure overflow is restored immediately on dismiss
           document.body.style.overflow = '';
-          setTimeout(() => overlay.remove(), 800);
+          setTimeout(() => { if (overlay.parentNode) overlay.remove(); }, 800);
           sessionStorage.setItem('hcf-intro-seen', '1');
         };
 
-        // Allow click to skip
+        // C1: Both click and touchstart can dismiss the overlay
         overlay.addEventListener('click', dismissOverlay, { once: true });
+        overlay.addEventListener('touchstart', dismissOverlay, { once: true, passive: true });
 
-        const INTRO_DISPLAY_DURATION = 1500;
+        // C1: Shorten display duration from 1500ms to 800ms
+        const INTRO_DISPLAY_DURATION = 800;
         setTimeout(dismissOverlay, INTRO_DISPLAY_DURATION);
 
         introObserver.disconnect();
       }
-    }, { threshold: 0.6 });
+    // H4: Lower threshold from 0.6 to 0.25
+    }, { threshold: 0.25 });
     introObserver.observe(section);
   }
 
   // Scroll reveal
   const pieces = document.querySelectorAll('.hcf-piece, .hcf-final-logo-wrap');
+
+  // M5: Skip reveal animation if pieces were already revealed this session
+  const alreadyRevealed = sessionStorage.getItem('hcf-pieces-revealed');
   pieces.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(60px)';
-    el.style.filter = 'blur(8px)';
-    el.style.transition = 'opacity 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, transform 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, filter 0.8s ease ' + (i * 0.12) + 's';
+    if (alreadyRevealed) {
+      el.style.opacity = '1';
+      el.style.transform = '';
+      el.style.filter = '';
+    } else {
+      el.style.opacity = '0';
+      el.style.setProperty('--scroll-offset', '60px');
+      el.style.filter = 'blur(8px)';
+      el.style.transition = 'opacity 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, transform 0.8s cubic-bezier(.16,1,.3,1) ' + (i * 0.12) + 's, filter 0.8s ease ' + (i * 0.12) + 's';
+    }
   });
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.style.filter = 'blur(0px)';
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
-  pieces.forEach(el => revealObserver.observe(el));
+  if (!alreadyRevealed) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.setProperty('--scroll-offset', '0px');
+          entry.target.style.filter = 'blur(0px)';
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+    pieces.forEach(el => revealObserver.observe(el));
 
-  // Lightweight parallax
+    // M5: Mark pieces as revealed for this session after first reveal
+    sessionStorage.setItem('hcf-pieces-revealed', 'true');
+  }
+
+  // H6 + C2: Lightweight parallax using CSS custom property to avoid transform conflict with gyro
   const parallaxItems = [
     { selector: '.hcf-piece--triangle', speed: 0.03 },
     { selector: '.hcf-piece--anchor',   speed: 0.06 },
@@ -146,7 +184,8 @@
           pItems.forEach(({ el, speed }) => {
             const rect = el.getBoundingClientRect();
             const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed;
-            el.style.transform = 'translateY(' + offset + 'px)';
+            // H6: Use CSS custom property so gyro transform can also apply without conflict
+            el.style.setProperty('--scroll-offset', offset + 'px');
           });
           pTicking = false;
         });
@@ -169,6 +208,7 @@
 
     let gyroEnabled = false;
 
+    // C2: Gyro uses CSS custom properties so scroll parallax (--scroll-offset) is not overwritten
     function handleOrientation(e) {
       if (!gyroEnabled) return;
       const gamma = Math.max(-25, Math.min(25, e.gamma || 0));
@@ -176,11 +216,13 @@
       gyroLayers.forEach(({ el, depth }) => {
         const x = gamma * depth * 0.6;
         const y = beta  * depth * 0.4;
-        el.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+        el.style.setProperty('--gyro-x', x + 'px');
+        el.style.setProperty('--gyro-y', y + 'px');
         el.style.transition = 'transform 0.15s ease-out';
       });
     }
 
+    // H3: hint is clickable/tappable to activate gyro; pointer-events removed from CSS
     const hint = document.createElement('div');
     hint.className = 'hcf-gyro-hint';
     hint.dataset.zh = '👆 點擊啟動體感互動';
@@ -188,7 +230,7 @@
     hint.textContent = '👆 點擊啟動體感互動';
     canvas.appendChild(hint);
 
-    canvas.addEventListener('click', async () => {
+    const activateGyro = async () => {
       if (gyroEnabled) return;
       try {
         if (typeof DeviceOrientationEvent !== 'undefined'
@@ -201,6 +243,22 @@
         }
       } catch (err) { /* silent degradation */ }
       if (gyroEnabled) { hint.style.display = 'none'; }
-    }, { once: true });
+    };
+
+    // H3: Both canvas click and hint click/touchstart activate gyro
+    canvas.addEventListener('click', activateGyro, { once: true });
+    hint.addEventListener('click', activateGyro, { once: true });
+    hint.addEventListener('touchstart', activateGyro, { once: true, passive: true });
+
+    // H1: Remove gyro listener when canvas is off-screen, re-attach when visible
+    const gyroVisibilityObserver = new IntersectionObserver((entries) => {
+      if (!gyroEnabled) return;
+      if (entries[0].isIntersecting) {
+        window.addEventListener('deviceorientation', handleOrientation);
+      } else {
+        window.removeEventListener('deviceorientation', handleOrientation);
+      }
+    }, { threshold: 0 });
+    gyroVisibilityObserver.observe(canvas);
   }
 })();
