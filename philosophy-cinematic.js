@@ -83,10 +83,10 @@
     var getTotalScroll = function () { return ((numPanels - 1) + MERGE_PAD) * window.innerWidth; }; // + extra room for merge anim
 
     /* Initial states — mark elements for GPU compositing */
-    gsap.set(cards, { xPercent: 60, opacity: 0, scale: 0.96 });
+    gsap.set(cards, { xPercent: 100, opacity: 0, scale: 0.96 });
     gsap.set(cards[0], { xPercent: 0, opacity: 1, scale: 1 });   // first card starts visible
     gsap.set(pieces, { opacity: 0 });
-    gsap.set(mergeLogo, { opacity: 0, scale: 0.72, transformOrigin: 'center center' });
+    gsap.set(mergeLogo, { opacity: 0, scale: 0.6, transformOrigin: 'center center' });
     if (flash) gsap.set(flash, { opacity: 0 });
 
     /* ── Main timeline ── */
@@ -121,7 +121,7 @@
 
       /* Previous card shrinks/dims slightly */
       tl.to(cards[i - 1], {
-        scale: 0.90, opacity: 0.32,
+        scale: 0.92, opacity: 0.4,
         duration: 0.45, ease: 'power2.inOut',
       }, i - 0.12);
     }
