@@ -16,7 +16,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['"Noto Sans TC"', 'sans-serif'],
+        sans: ['Inter', '"Noto Sans TC"', 'sans-serif'],
+        heading: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
         orbitron: ['"Orbitron"', 'sans-serif'],
       },
       animation: {
