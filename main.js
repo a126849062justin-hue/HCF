@@ -23,9 +23,14 @@
             if (navigator.share) {
                 navigator.share({ title: 'HCF - 新竹格鬥運動館', text: '新竹最強格鬥運動館！這輩子，總要為自己贏一次！現在預約體驗只要 $400，一起來變強吧🥊', url: window.location.href }).catch(err => console.log('Share failed:', err));
             } else {
-                const tempInput = document.createElement('input'); tempInput.value = window.location.href; document.body.appendChild(tempInput); tempInput.select(); document.execCommand('copy'); document.body.removeChild(tempInput);
-                const originalText = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 網址已複製！'; btn.classList.remove('bg-blue-600', 'hover:bg-blue-500'); btn.classList.add('bg-green-600', 'hover:bg-green-500');
-                setTimeout(() => { btn.innerHTML = originalText; btn.classList.remove('bg-green-600', 'hover:bg-green-500'); btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); }, 2000);
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    const originalText = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 網址已複製！'; btn.classList.remove('bg-blue-600', 'hover:bg-blue-500'); btn.classList.add('bg-green-600', 'hover:bg-green-500');
+                    setTimeout(() => { btn.innerHTML = originalText; btn.classList.remove('bg-green-600', 'hover:bg-green-500'); btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); }, 2000);
+                }).catch(() => {
+                    const tempInput = document.createElement('input'); tempInput.value = window.location.href; document.body.appendChild(tempInput); tempInput.select(); document.execCommand('copy'); document.body.removeChild(tempInput);
+                    const originalText = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 網址已複製！'; btn.classList.remove('bg-blue-600', 'hover:bg-blue-500'); btn.classList.add('bg-green-600', 'hover:bg-green-500');
+                    setTimeout(() => { btn.innerHTML = originalText; btn.classList.remove('bg-green-600', 'hover:bg-green-500'); btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); }, 2000);
+                });
             }
         }
 
@@ -98,18 +103,20 @@
             }, { passive: true });
 
             const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d');
+            let cachedCyanRgb = '';
+            function updateCachedColors() { cachedCyanRgb = getComputedStyle(document.documentElement).getPropertyValue('--theme-cyan-rgb').trim(); }
             let w, h, pts = [];
             function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
             class P {
                 constructor() { this.x=Math.random()*w; this.y=Math.random()*h; this.vx=(Math.random()-.5)*0.2; this.vy=(Math.random()-.5)*0.2; this.s=Math.random()*1.5; }
                 update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>w)this.vx*=-1; if(this.y<0||this.y>h)this.vy*=-1; }
-                draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle='rgba(var(--theme-cyan-rgb),0.15)'; ctx.fill(); }
+                draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fillStyle=`rgba(${cachedCyanRgb},0.15)`; ctx.fill(); }
             }
-            function init() { resize(); pts=[]; const isMobile = window.innerWidth < 768; const isTablet = window.innerWidth < 1024; const particleCount = isMobile ? 0 : (isTablet ? 15 : 40); for(let i=0;i<particleCount;i++) pts.push(new P()); }
+            function init() { resize(); updateCachedColors(); pts=[]; const isMobile = window.innerWidth < 768; const isTablet = window.innerWidth < 1024; const particleCount = isMobile ? 0 : (isTablet ? 15 : 40); for(let i=0;i<particleCount;i++) pts.push(new P()); }
             let animRunning = true;
             function anim() {
                 if (!animRunning) return;
-                ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(var(--theme-cyan-rgb),0.03)'; ctx.lineWidth=0.5;
+                ctx.clearRect(0,0,w,h); ctx.strokeStyle=`rgba(${cachedCyanRgb},0.03)`; ctx.lineWidth=0.5;
                 for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y; if(dx*dx+dy*dy<10000){ ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke(); } } }
                 pts.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(anim);
             }
@@ -180,6 +187,7 @@
             else { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('hcf_theme', theme); }
             document.getElementById('secret-theme-panel').classList.add('hidden');
             setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 400);
+            updateCachedColors();
         }
 
         // 7. Carousel Engine
@@ -385,7 +393,6 @@
             }
             document.addEventListener('touchstart', autoStartBGM, { once: true, passive: true });
             document.addEventListener('click', autoStartBGM, { once: true });
-            document.addEventListener('mousemove', autoStartBGM, { once: true, passive: true });
         })();
         // 10. Countdown Timers (News Event & FOMO Pricing)
         function updateCountdowns() {
@@ -403,13 +410,18 @@
                 if(document.getElementById("event-hours")) document.getElementById("event-hours").innerText = String(Math.floor((eDist % 86400000) / 3600000)).padStart(2,'0');
             }
 
-            // FOMO Pricing Countdown (Tomorrow midnight)
-            const fomoDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 23, 59, 59).getTime();
+            // FOMO Pricing Countdown (Fixed promotional deadline - update this date for each campaign)
+            const fomoDate = new Date('2026-04-30T23:59:59+08:00').getTime();
             const fDist = fomoDate - now.getTime();
-            if (document.getElementById('fomo-hours') && fDist > 0) {
-                document.getElementById('fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
-                document.getElementById('fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
-                document.getElementById('fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
+            if (document.getElementById('fomo-hours')) {
+                if (fDist > 0) {
+                    document.getElementById('fomo-hours').innerText = String(Math.floor((fDist % 86400000) / 3600000)).padStart(2,'0');
+                    document.getElementById('fomo-mins').innerText = String(Math.floor((fDist % 3600000) / 60000)).padStart(2,'0');
+                    document.getElementById('fomo-secs').innerText = String(Math.floor((fDist % 60000) / 1000)).padStart(2,'0');
+                } else {
+                    const fomoEl = document.getElementById('fomo-hours').closest('[id]') || document.getElementById('fomo-hours').parentElement;
+                    if (fomoEl) fomoEl.textContent = '🔥 優惠已結束';
+                }
             }
         }
         setInterval(updateCountdowns, 1000); updateCountdowns();

@@ -117,7 +117,7 @@
         
         .custom-cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--theme-cyan); border-radius: 50%; z-index: 10000; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
         .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid rgba(var(--theme-cyan-rgb), 0.4); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s; display: none; }
-        @media (min-width: 768px) { .custom-cursor-dot, .custom-cursor-ring { display: block; } }
+        @media (hover: hover) and (pointer: fine) and (min-width: 768px) { .custom-cursor-dot, .custom-cursor-ring { display: block; } }
         body.cursor-hover .custom-cursor-dot { background: var(--theme-cyan); width: 8px; height: 8px; box-shadow: 0 0 10px var(--theme-cyan); }
         body.cursor-hover .custom-cursor-ring { width: 50px; height: 50px; border-color: rgba(var(--theme-cyan-rgb), 0.8); background: rgba(var(--theme-cyan-rgb),0.05); }
 
