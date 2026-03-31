@@ -39,7 +39,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -56,7 +56,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        sans: ['Inter', '"Noto Sans TC"', 'sans-serif'],
+                        heading: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
                         orbitron: ['"Orbitron"', 'sans-serif'],
                     },
                     animation: {
@@ -155,7 +156,7 @@
     <div class="bg-grain hidden md:block"></div>
     <canvas id="bg-canvas" class="hidden md:block" aria-hidden="true">您的瀏覽器不支援 Canvas</canvas>
 
-    <nav class="fixed w-full z-[120] bg-transparent transition-all duration-300 py-4" id="navbar">
+    <nav class="fixed w-full z-[120] glass-panel transition-all duration-300 py-4" id="navbar">
         <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0 relative" onclick="handleLogoClick()" id="logo-btn">
@@ -458,11 +459,12 @@
                     <div class="flex flex-col items-start mb-6 w-full">
                         <h1 class="text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5.5rem] leading-[1.15] text-white font-black italic tracking-wide border-l-[5px] sm:border-l-4 lg:border-l-[6px] border-sci-cyan pl-4 sm:pl-5 lg:pl-6 w-full drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-pre-line lang-text hero-title-glow hero-title-enter hero-border-pulse" data-i18n="hero.title" data-en="HCF HSINCHU COMBAT">HCF新竹格鬥館</h1>
                         <p class="text-[0.9rem] sm:text-[1.15rem] lg:text-[1.5rem] xl:text-[1.75rem] 2xl:text-[2rem] font-bold tracking-[0.2em] sm:tracking-[0.25em] lg:tracking-[0.3em] pl-4 sm:pl-5 lg:pl-6 mt-2 sm:mt-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] lang-text hero-subtitle-shimmer hero-subtitle-enter" data-i18n="hero.subtitle" data-en="Muay Thai ・ Kickboxing ・ Sanda ・ Strength Training">新竹泰拳首選 ・ 踢拳 ・ 散打 ・ 專業重訓</p>
+                        <p class="text-[1.1rem] sm:text-[1.35rem] lg:text-[1.7rem] xl:text-[2rem] font-black tracking-widest pl-4 sm:pl-5 lg:pl-6 mt-4 sm:mt-5 text-sci-cyan drop-shadow-[0_0_12px_rgba(var(--theme-cyan-rgb),0.5)] hero-subtitle-enter font-heading">這輩子，總要為自己贏一次。</p>
                     </div>
 
                     <div id="mobile-cta-bar" class="fixed bottom-0 left-0 w-full z-[100] p-3 sm:p-0 sm:relative sm:z-[30] flex flex-row gap-2 sm:gap-4 sm:w-auto sm:mt-6 bg-[#050810] sm:bg-transparent border-t border-white/10 sm:border-none pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-0 items-center justify-center sm:justify-start shadow-[0_-10px_30px_rgba(0,0,0,0.8)] sm:shadow-none">
                         <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" onclick="if('vibrate' in navigator) navigator.vibrate(10)" class="flex-1 sm:flex-none px-2 sm:px-10 py-4 sm:py-5 bg-sci-cyan text-black font-black text-[14px] sm:text-xl sm:skew-x-[-10deg] text-center flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] hover:bg-cyan-400 transition-colors rounded-lg sm:rounded-none magnetic-btn cta-pulse">
-                            <span class="sm:skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 給自己一次變強的機會</span>
+                            <span class="sm:skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 喚醒力量 / 預約體驗</span>
                         </a>
                     </div>
                 </div>

@@ -1,4 +1,15 @@
-:root {
+/* === Premium Google Fonts === */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;700;900&display=swap');
+
+        /* === Glassmorphism Utility === */
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(10, 15, 25, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        :root {
             --theme-base: #010208;        --theme-base-rgb: 1, 2, 8;
             --theme-surface: #080d16;     --theme-surface-rgb: 8, 13, 22;
             --theme-surface-2: #0e1520;   --theme-surface-2-rgb: 14, 21, 32;
@@ -10,6 +21,9 @@
             --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #7b2fff 100%);
             --gradient-gold:  linear-gradient(135deg, #e8b830 0%, #ff8c00 100%);
             --gradient-danger: linear-gradient(135deg, #ff2d55 0%, #ff6b00 100%);
+            --color-cyber-cyan: #00D4FF;
+            --color-blood-red: #FF2D55;
+            --color-glory-gold: #E8B830;
         }
         /* === Red: Deep crimson dark bg + neon red accent + orange secondary === */
         [data-theme="red"] {
@@ -473,6 +487,34 @@
         }
         .pwa-mode #main-content > section:first-child { padding-top: env(safe-area-inset-top, 20px); }
         @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        /* === PWA Standalone Mode — App-like Experience === */
+        @media (display-mode: standalone) {
+          body {
+            overscroll-behavior-y: none;
+            user-select: none;
+            -webkit-user-select: none;
+          }
+          .app-bottom-nav {
+            display: flex;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+          }
+        }
+        /* === App Bottom Navigation Bar === */
+        .app-bottom-nav {
+          display: none;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 9999;
+          align-items: stretch;
+          background: rgba(3, 3, 3, 0.97);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(var(--theme-cyan-rgb), 0.15);
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+          height: calc(60px + env(safe-area-inset-bottom, 0px));
+        }
         /* === CTA Pulse Glow Animation === */
         @keyframes pulse-glow {
           0%, 100% { box-shadow: 0 0 20px rgba(var(--theme-cyan-rgb), 0.5); }
