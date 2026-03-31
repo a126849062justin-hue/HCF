@@ -372,6 +372,9 @@
             }
         }
         // 9. Auto-play BGM on first user interaction
+        // [DISABLED] 已停用自動播放 BGM — 用戶觸碰螢幕不再自動播放音樂
+        // BGM 仍可通過手動點擊 toggleBGM() 按鈕來播放
+        /*
         (function() {
             let bgmAutoStarted = false;
             function autoStartBGM() {
@@ -394,6 +397,7 @@
             document.addEventListener('touchstart', autoStartBGM, { once: true, passive: true });
             document.addEventListener('click', autoStartBGM, { once: true });
         })();
+        */
         // 10. Countdown Timers (News Event & FOMO Pricing)
         function updateCountdowns() {
             const now = new Date();
