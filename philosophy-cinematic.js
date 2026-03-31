@@ -15,8 +15,8 @@
     return;
   }
 
-  /* ── Low-power device detection ── */
-  var isLowPower = typeof navigator.deviceMemory !== 'undefined' && navigator.deviceMemory < 2;
+  /* ── Low-power device detection (< 4 GB RAM = skip heavy flash effect) ── */
+  var isLowPower = typeof navigator.deviceMemory !== 'undefined' && navigator.deviceMemory < 4;
 
   /* ═══════════════════════════════════════════════════════════════
      MOBILE init — CSS scroll-snap + IntersectionObserver
@@ -74,13 +74,13 @@
     if (!outer || !track || !cards.length) return;
 
     /* 3 cards + 1 merge panel = 4 panels total
-       Extra 0.9 "panels" of scroll for merge animation while track is stationary */
+       Extra MERGE_PAD scroll allows merge animation while track is stationary */
     var numCards    = cards.length;        // 3
     var numPanels   = numCards + 1;        // 4 (3 cards + merge stage)
     var MERGE_PAD   = 0.9;                 // extra scroll room for merge anim
 
-    var getTrackDist = function () { return (numPanels - 1) * window.innerWidth; }; // 3 × vw
-    var getTotalScroll = function () { return ((numPanels - 1) + MERGE_PAD) * window.innerWidth; }; // 3.9 × vw
+    var getTrackDist = function () { return (numPanels - 1) * window.innerWidth; }; // numCards panels of horizontal movement
+    var getTotalScroll = function () { return ((numPanels - 1) + MERGE_PAD) * window.innerWidth; }; // + extra room for merge anim
 
     /* Initial states — mark elements for GPU compositing */
     gsap.set(cards, { xPercent: 60, opacity: 0, scale: 0.96 });

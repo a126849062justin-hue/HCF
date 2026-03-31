@@ -5,7 +5,9 @@
    Mobile:  CSS scroll-snap (overflow-x: auto)
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Component-scoped variables — connected to global theme system ── */
+/* ── Component-scoped variables — connected to global theme system ──
+   IMPORTANT: --hcf-cyan-rgb fallback (104,220,255) must match
+   --hcf-cyan fallback (#68dcff). Update both together if needed. */
 .hcf-philosophy-cinematic {
   --hcf-cyan:      var(--theme-cyan, #68dcff);
   --hcf-cyan-rgb:  var(--theme-cyan-rgb, 104, 220, 255);
@@ -482,20 +484,20 @@
 
 /* ── Reduced motion: skip all animations, show final state ── */
 @media (prefers-reduced-motion: reduce) {
-  .hcf-card__icon img,
-  .hcf-card__icon::before { animation: none !important; }
+  .hcf-card__icon img { animation-name: none; }
+  .hcf-card__icon::before { animation-name: none; }
+
+  .hcf-card {
+    opacity: 1;
+    transform: none;
+  }
 
   .hcf-merge-logo {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .hcf-merge-piece,
-  .hcf-impact-flash { display: none !important; }
-
-  .hcf-card {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .hcf-impact-flash { display: none; }
 }
