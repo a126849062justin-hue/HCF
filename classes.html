@@ -438,7 +438,14 @@
                     display:flex;
                     flex-direction:column;
                     justify-content:flex-end;
-                    scroll-margin-top:100px; /* 修復錨點被navbar遮住 */
+                    scroll-margin-top:100px;
+                }
+                /* 直式影片專用：卡片加高，完整保留畫面不裁切 */
+                .course-card.portrait{
+                    min-height:640px;
+                }
+                @media(min-width:768px){
+                    .course-card.portrait{ min-height:720px; }
                 }
                 .course-card:hover{
                     border-color:rgba(var(--theme-cyan-rgb),0.5);
@@ -454,7 +461,17 @@
                 .course-card__bg img{
                     width:100%;height:100%;
                     object-fit:cover;
+                    object-position:center top;
                     transition:transform 0.7s ease, opacity 0.4s ease;
+                }
+                /* 直式影片：contain模式，保留完整畫面，兩側補深色 */
+                .course-card.portrait .course-card__bg{
+                    background:#020608;
+                }
+                .course-card.portrait .course-card__bg video,
+                .course-card.portrait .course-card__bg img{
+                    object-fit:contain;
+                    object-position:center center;
                 }
                 .course-card:hover .course-card__bg video,
                 .course-card:hover .course-card__bg img{
@@ -662,7 +679,7 @@
                     </div>
 
                     <!-- 02 踢拳 Kickboxing -->
-                    <div id="kickboxing" class="course-card reveal" style="transition-delay:100ms">
+                    <div id="kickboxing" class="course-card portrait reveal" style="transition-delay:100ms">
                         <div class="course-card__bg">
                             <video autoplay muted loop playsinline preload="none"
                                    poster="course_kickboxing.jpg"
@@ -740,7 +757,7 @@
                     </div>
 
                     <!-- 04 肌力體能 S&C -->
-                    <div id="strength" class="course-card reveal" style="transition-delay:300ms">
+                    <div id="strength" class="course-card portrait reveal" style="transition-delay:300ms">
                         <div class="course-card__bg">
                             <video autoplay muted loop playsinline preload="none"
                                    poster="course_sc.jpg"
