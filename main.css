@@ -1,5 +1,17 @@
-/* === Premium Google Fonts === */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;700;900&display=swap');
+        /* === Z-Index Scale ===
+         * --z-bg:        -1    (canvas background)
+         * --z-content:    1    (normal content)
+         * --z-carousel:  30    (carousel controls)
+         * --z-glow:      40    (mouse glow effect)
+         * --z-ai:        50    (AI mascot)
+         * --z-cta:      100    (mobile CTA bar)
+         * --z-navbar:   120    (navigation bar)
+         * --z-backdrop: 130    (drawer backdrop)
+         * --z-drawer:   140    (mobile drawers)
+         * --z-toast:    200    (toast notifications)
+         * --z-banner:   210    (notification banners — was 9999)
+         * --z-preloader:9999   (preloader — temporary, removed after load)
+         */
 
         /* === Glassmorphism Utility === */
         .glass-panel {
@@ -276,6 +288,9 @@
             .ai-chat-box { bottom: 75px; width: calc(100vw - 32px); right: -4px; border-radius: 16px 16px 0 16px; }
             #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
             .tech-border { transform: none !important; transition: none !important; }
+            /* Mobile carousel arrows: always visible on touch devices */
+            .carousel-control { opacity: 0.6 !important; }
+            .carousel-control div { width: 36px; height: 36px; transform: none !important; }
         }
 
         /* === Mobile (< 480px) Optimizations === */

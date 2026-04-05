@@ -28,57 +28,18 @@
     <link rel="apple-touch-icon" href="shark_logo.png">
     <link rel="canonical" href="https://www.hsinchucombat.com/">
 
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="hero1.jpg?v=20260323">
-    <!-- TODO: Replace with built CSS: run `npm run build:css` then use <link rel="stylesheet" href="styles.css"> -->
-    <!-- PERFORMANCE WARNING: Tailwind CDN must be replaced with built CSS before production -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sci: {
-                            base: 'rgba(var(--theme-base-rgb), <alpha-value>)',
-                            surface: 'rgba(var(--theme-surface-rgb), <alpha-value>)',
-                            cyan: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
-                            gold: 'rgba(var(--theme-gold-rgb), <alpha-value>)',
-                            gray: '#94a3b8',
-                            accent: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', '"Noto Sans TC"', 'sans-serif'],
-                        heading: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
-                        orbitron: ['"Orbitron"', 'sans-serif'],
-                    },
-                    animation: {
-                        'marquee': 'marquee 40s linear infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(100%)' },
-                            '100%': { transform: 'translateX(-100%)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
-    <!-- Shared styles extracted to main.css for better caching and maintainability -->
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="philosophy-cinematic.css" />
-    <!-- TODO: Replace Tailwind CDN with built CSS: npx tailwindcss -i ./input.css -o ./output.css --minify -->
     <script>
         (async function() {
             try {
@@ -103,7 +64,6 @@
             }
         })();
     </script>
-    <!-- TODO: Update streetAddress and telephone with actual business information before deployment -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -112,22 +72,35 @@
   "description": "新竹最強格鬥館！主打正宗泰拳、踢拳、散打、專業重訓",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "請填入實際地址",
-    "addressLocality": "新竹市",
+    "streetAddress": "林森路301號2樓",
+    "addressLocality": "新竹市北區",
     "addressRegion": "新竹",
     "postalCode": "300",
     "addressCountry": "TW"
   },
-  "telephone": "+886-請填入電話",
+  "telephone": "+886-925-571-225",
   "url": "https://www.hsinchucombat.com",
   "image": "https://www.hsinchucombat.com/hero1.jpg",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "11:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "16:00"
+    }
+  ],
   "sameAs": [
-    "https://www.instagram.com/hsinchucombat/"
+    "https://www.instagram.com/hc.combat2022/",
+    "https://m.facebook.com/hsinchucombat/"
   ]
 }
     </script>
-    <!-- TODO: Replace YOUR_GOOGLE_VERIFICATION_CODE with actual Google Search Console verification code -->
-    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
 </head>
 <body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-400 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:text-lg">跳至主要內容</a>
@@ -511,7 +484,7 @@
                                 <span class="text-[8vw] sm:text-4xl md:text-5xl font-black italic text-sci-cyan leading-none tracking-tighter">BULLETIN</span>
                             </h3>
                             
-                            <p class="text-lg sm:text-xl font-bold text-white tracking-[0.2em] sm:tracking-[0.3em] mb-6 drop-shadow-md lang-text" data-i18n="sections.event_subtitle" data-en="APRIL 2025 EVENTS OVERVIEW">2025 年 4 月活動總覽</p>
+                            <p class="text-lg sm:text-xl font-bold text-white tracking-[0.2em] sm:tracking-[0.3em] mb-6 drop-shadow-md lang-text" data-i18n="sections.event_subtitle" data-en="APRIL 2026 EVENTS OVERVIEW">2026 年 4 月活動總覽</p>
 
                             <div class="w-full space-y-4 mb-6 text-left text-sm sm:text-base max-h-[50vh] overflow-y-auto pr-2">
                               <div class="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-4">
