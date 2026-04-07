@@ -52,12 +52,27 @@ CREATE TABLE IF NOT EXISTS system_logs (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- 5. User Events (使用者行為事件追蹤：CTA點擊、捲動深度、互動事件)
+CREATE TABLE IF NOT EXISTS user_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID,
+    category TEXT NOT NULL,               -- 'cta_click', 'scroll', 'engagement', 'navigation', 'conversion'
+    event_name TEXT NOT NULL,             -- e.g. 'fitbook_booking', '75', 'ai_chat_open'
+    page_url TEXT,
+    device_type TEXT DEFAULT 'desktop',   -- 'mobile', 'tablet', 'desktop'
+    metadata JSONB DEFAULT '{}',          -- extra data (label, value, etc.)
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_ai_interactions_engine ON ai_interactions (engine);
 CREATE INDEX IF NOT EXISTS idx_ai_interactions_created_at ON ai_interactions (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_ai_interactions_success ON ai_interactions (success);
 CREATE INDEX IF NOT EXISTS idx_bookings_created_at ON bookings (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_system_logs_created_at ON system_logs (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_user_events_created_at ON user_events (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_user_events_category ON user_events (category);
+CREATE INDEX IF NOT EXISTS idx_user_events_event_name ON user_events (event_name);
 
 -- Row Level Security (RLS) - disable for server-side access with service key
 -- ⚠️ WARNING: RLS is disabled for server-side access with service_role key ONLY
@@ -67,3 +82,4 @@ ALTER TABLE ai_interactions DISABLE ROW LEVEL SECURITY;
 ALTER TABLE page_views DISABLE ROW LEVEL SECURITY;
 ALTER TABLE bookings DISABLE ROW LEVEL SECURITY;
 ALTER TABLE system_logs DISABLE ROW LEVEL SECURITY;
+ALTER TABLE user_events DISABLE ROW LEVEL SECURITY;

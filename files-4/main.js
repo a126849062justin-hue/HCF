@@ -810,3 +810,118 @@ if ('serviceWorker' in navigator) {
         })], { type: 'application/json' }));
     });
 })();
+
+// === Event Tracking System (CTA clicks, scroll depth, engagement) ===
+(function() {
+    if (window.location.pathname.includes('admin')) return;
+
+    const deviceType = window.innerWidth < 480 ? 'mobile' : (window.innerWidth <= 1024 ? 'tablet' : 'desktop');
+    const userId = sessionStorage.getItem('hcf_session_id') || 'anonymous';
+
+    function trackEvent(category, eventName, metadata) {
+        const payload = {
+            userId,
+            category,
+            eventName,
+            pageUrl: window.location.pathname,
+            deviceType,
+            metadata: metadata || {}
+        };
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+        if (navigator.sendBeacon) {
+            navigator.sendBeacon('/.netlify/functions/track-event', blob);
+        } else {
+            fetch('/.netlify/functions/track-event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        }
+    }
+
+    window.hcfTrack = trackEvent;
+
+    // CTA Click Tracking
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href], button[onclick]');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        const text = (link.textContent || '').trim().slice(0, 50);
+
+        if (href.includes('fit-book.com')) {
+            trackEvent('cta_click', 'fitbook_booking', { label: text, href });
+            trackEvent('conversion', 'booking_start', { label: text });
+        } else if (href.includes('lin.ee') || href.includes('line.me')) {
+            trackEvent('cta_click', 'line_consult', { label: text });
+            trackEvent('conversion', 'line_add', { label: text });
+        } else if (href.includes('instagram.com')) {
+            trackEvent('cta_click', 'ig_follow', { label: text });
+        } else if (href.includes('facebook.com')) {
+            trackEvent('cta_click', 'fb_follow', { label: text });
+        } else if (href.includes('youtube.com')) {
+            trackEvent('cta_click', 'youtube_visit', { label: text });
+        } else if (href.includes('pricing.html')) {
+            trackEvent('cta_click', 'pricing_view', { label: text });
+        } else if (href.includes('team.html')) {
+            trackEvent('cta_click', 'coach_profile', { label: text });
+        } else if (href.includes('classes.html')) {
+            trackEvent('cta_click', 'class_detail', { label: text });
+        } else if (href.includes('#schedule')) {
+            trackEvent('cta_click', 'schedule_view', { label: text });
+        } else if (href.startsWith('tel:')) {
+            trackEvent('cta_click', 'phone_call', { label: text, phone: href });
+        }
+    }, { passive: true });
+
+    // Scroll Depth Tracking
+    const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+    let scrollTicking = false;
+
+    function checkScrollDepth() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollHeight <= 0) return;
+        const pct = Math.round((window.scrollY / scrollHeight) * 100);
+        [25, 50, 75, 100].forEach(milestone => {
+            if (pct >= milestone && !scrollMilestones[milestone]) {
+                scrollMilestones[milestone] = true;
+                trackEvent('scroll', String(milestone), { page: window.location.pathname });
+            }
+        });
+        scrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(checkScrollDepth); }
+    }, { passive: true });
+
+    // Video play tracking
+    document.addEventListener('play', (e) => {
+        if (e.target.tagName === 'VIDEO') {
+            trackEvent('engagement', 'video_play', { video: (e.target.currentSrc || '').split('/').pop() });
+        }
+    }, true);
+
+    // AI Chat tracking
+    const origAskShark = window.askShark;
+    if (typeof origAskShark === 'function') {
+        window.askShark = function() {
+            trackEvent('engagement', 'ai_chat_send', {});
+            return origAskShark.apply(this, arguments);
+        };
+    }
+
+    const chatToggle = document.getElementById('ai-mascot');
+    if (chatToggle) {
+        chatToggle.addEventListener('click', () => {
+            trackEvent('engagement', 'ai_chat_open', {});
+        }, { passive: true });
+    }
+
+    // FAQ expand tracking
+    document.addEventListener('click', (e) => {
+        const faqItem = e.target.closest('[data-faq], .faq-question, details summary');
+        if (faqItem) {
+            trackEvent('engagement', 'faq_expand', { question: (faqItem.textContent || '').trim().slice(0, 80) });
+        }
+    }, { passive: true });
+})();
