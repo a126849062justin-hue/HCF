@@ -580,7 +580,7 @@
                 <button id="banner-install-btn" style="padding:10px 20px;background:#00f0ff;color:black;font-weight:900;font-size:12px;letter-spacing:2px;border:none;border-radius:8px;cursor:pointer;">安裝</button>
                 <button id="banner-close-btn" style="background:none;border:none;color:#666;font-size:18px;cursor:pointer;padding:8px;">✕</button>
               `;
-              banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(3,3,3,0.97);backdrop-filter:blur(20px);border-top:2px solid rgba(0,240,255,0.3);padding:16px 20px calc(16px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;animation:slideUpBanner 0.5s ease-out;box-shadow:0 -10px 40px rgba(0,0,0,0.8);';
+              banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:210;background:rgba(3,3,3,0.97);backdrop-filter:blur(20px);border-top:2px solid rgba(0,240,255,0.3);padding:16px 20px calc(16px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;animation:slideUpBanner 0.5s ease-out;box-shadow:0 -10px 40px rgba(0,0,0,0.8);';
               document.body.appendChild(banner);
 
               document.getElementById('banner-install-btn').addEventListener('click', async () => {
