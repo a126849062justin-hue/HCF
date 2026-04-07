@@ -8,26 +8,16 @@ async function tryGeminiAPI(message) {
     throw new Error("GEMINI_API_KEY not configured");
   }
 
-  console.log("\uD83D\uDCCD \u5617\u8A66 Gemini REST API...");
-
   const url = `${GEMINI_ENDPOINT}?key=${process.env.GEMINI_API_KEY}`;
 
   const resp = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      contents: [
-        {
-          role: "user",
-          parts: [
-            {
-              text: `${HCF_SYSTEM_PROMPT}\n\n\u7528\u6236: ${message}`,
-            },
-          ],
-        },
-      ],
+      contents: [{
+        role: "user",
+        parts: [{ text: `${HCF_SYSTEM_PROMPT}\n\n用戶: ${message}` }],
+      }],
     }),
   });
 
@@ -37,17 +27,15 @@ async function tryGeminiAPI(message) {
   }
 
   const data = await resp.json();
-  const reply =
-    data?.candidates?.[0]?.content?.parts
-      ?.map((p) => p.text || "")
-      .join("") || "";
+  const reply = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
 
-  if (!reply) {
-    throw new Error("Gemini API returned empty reply");
-  }
+  if (!reply) throw new Error("Gemini API returned empty reply");
 
-  console.log("\u2705 Gemini \u6210\u529F！");
-  return reply;
+  // Estimate tokens (Gemini doesn't always return exact counts)
+  const inputTokens = data?.usageMetadata?.promptTokenCount || Math.ceil(message.length / 3);
+  const outputTokens = data?.usageMetadata?.candidatesTokenCount || Math.ceil(reply.length / 3);
+
+  return { reply, inputTokens, outputTokens };
 }
 
 function jsonResponse(statusCode, payload) {
@@ -62,7 +50,6 @@ function jsonResponse(statusCode, payload) {
 }
 
 exports.handler = async function handler(event) {
-  // CORS preflight
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
@@ -90,11 +77,55 @@ exports.handler = async function handler(event) {
     return jsonResponse(400, { error: "Message is required" });
   }
 
+  const startTime = Date.now();
+
   try {
-    const reply = await tryGeminiAPI(message);
-    return jsonResponse(200, { reply });
+    const { reply, inputTokens, outputTokens } = await tryGeminiAPI(message);
+    const responseTime = Date.now() - startTime;
+
+    // Log to Supabase if configured
+    if (process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
+      try {
+        const { createClient } = require("@supabase/supabase-js");
+        const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+        await supabase.from("ai_interactions").insert({
+          engine: "gemini",
+          user_message: message,
+          ai_response: reply,
+          response_time: responseTime,
+          tokens_input: inputTokens,
+          tokens_output: outputTokens,
+          success: true,
+        });
+      } catch (dbErr) {
+        console.error("Supabase log error:", dbErr.message);
+      }
+    }
+
+    return jsonResponse(200, { reply, engine: "gemini", responseTime });
   } catch (error) {
+    const responseTime = Date.now() - startTime;
     console.error("Chat function error", error);
+
+    // Log failure to Supabase
+    if (process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
+      try {
+        const { createClient } = require("@supabase/supabase-js");
+        const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+        await supabase.from("ai_interactions").insert({
+          engine: "gemini",
+          user_message: message,
+          ai_response: error.message,
+          response_time: responseTime,
+          tokens_input: 0,
+          tokens_output: 0,
+          success: false,
+        });
+      } catch (dbErr) {
+        console.error("Supabase failure log error:", dbErr.message);
+      }
+    }
+
     return jsonResponse(500, { error: "鯊魚教練現在無法回應" });
   }
 };

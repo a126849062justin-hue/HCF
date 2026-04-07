@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="shark_logo.png">
     <title>HCF 官網中控台</title>
     <link rel="stylesheet" href="output.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
@@ -85,6 +86,9 @@
                 </button>
                 <button onclick="switchTab('links')" id="tab-links" class="tab-btn py-2 px-3 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400 whitespace-nowrap">
                     <i class="fa-solid fa-link mr-1"></i>快速連結
+                </button>
+                <button onclick="switchTab('events')" id="tab-events" class="tab-btn py-2 px-3 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400 whitespace-nowrap">
+                    <i class="fa-solid fa-bullseye mr-1"></i>事件追蹤
                 </button>
                 <button onclick="switchTab('export')" id="tab-export" class="tab-btn py-2 px-3 text-xs font-bold border border-white/20 rounded-lg transition-all text-gray-400 whitespace-nowrap">
                     <i class="fa-solid fa-download mr-1"></i>數據導出
@@ -470,6 +474,110 @@
             </div>
         </div>
 
+        <!-- Tab: Event Tracking -->
+        <div id="panel-events" class="tab-panel bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-sm font-bold text-[#00f0ff] font-mono tracking-widest">事件追蹤</h2>
+                <button onclick="loadEventMetrics()" class="text-xs text-gray-400 hover:text-white border border-white/20 rounded px-2 py-1 transition-all">
+                    <i class="fa-solid fa-rotate-right mr-1"></i>刷新
+                </button>
+            </div>
+
+            <!-- Today Summary -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                <div class="kpi-card text-center">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">CTA 點擊</div>
+                    <div class="text-xl font-black text-white" id="evt-cta">--</div>
+                </div>
+                <div class="kpi-card text-center">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">互動事件</div>
+                    <div class="text-xl font-black text-white" id="evt-engagement">--</div>
+                </div>
+                <div class="kpi-card text-center">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">轉換事件</div>
+                    <div class="text-xl font-black text-[#00f0ff]" id="evt-conversion">--</div>
+                </div>
+                <div class="kpi-card text-center">
+                    <div class="text-[10px] text-gray-500 font-mono mb-1">今日總計</div>
+                    <div class="text-xl font-black text-white" id="evt-total">--</div>
+                </div>
+            </div>
+
+            <!-- Conversion Funnel -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-3">轉換漏斗 (過去 7 天)</div>
+                <div class="flex flex-col gap-2" id="funnel-chart">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-400 w-20 shrink-0">頁面瀏覽</span>
+                        <div class="flex-1 h-5 bg-white/10 rounded overflow-hidden"><div class="h-full bg-[#00f0ff]/60 rounded transition-all duration-700" id="funnel-pv" style="width:100%"></div></div>
+                        <span class="text-xs text-[#00f0ff] font-bold w-12 text-right" id="funnel-pv-n">--</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-400 w-20 shrink-0">CTA 點擊</span>
+                        <div class="flex-1 h-5 bg-white/10 rounded overflow-hidden"><div class="h-full bg-[#00f0ff]/50 rounded transition-all duration-700" id="funnel-cta" style="width:0%"></div></div>
+                        <span class="text-xs text-[#00f0ff] font-bold w-12 text-right" id="funnel-cta-n">--</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-400 w-20 shrink-0">開始預約</span>
+                        <div class="flex-1 h-5 bg-white/10 rounded overflow-hidden"><div class="h-full bg-green-400/60 rounded transition-all duration-700" id="funnel-start" style="width:0%"></div></div>
+                        <span class="text-xs text-green-400 font-bold w-12 text-right" id="funnel-start-n">--</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-400 w-20 shrink-0">完成預約</span>
+                        <div class="flex-1 h-5 bg-white/10 rounded overflow-hidden"><div class="h-full bg-green-500/60 rounded transition-all duration-700" id="funnel-done" style="width:0%"></div></div>
+                        <span class="text-xs text-green-400 font-bold w-12 text-right" id="funnel-done-n">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top CTAs -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-2">今日 CTA 點擊排行</div>
+                <div id="top-ctas" class="flex flex-col gap-1 text-xs">
+                    <div class="text-gray-500">載入中...</div>
+                </div>
+            </div>
+
+            <!-- Scroll Depth -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-3">今日捲動深度分佈</div>
+                <div class="flex gap-3">
+                    <div class="flex-1 text-center">
+                        <div class="text-lg font-black text-white" id="scroll-25">--</div>
+                        <div class="text-[10px] text-gray-500">25%</div>
+                    </div>
+                    <div class="flex-1 text-center">
+                        <div class="text-lg font-black text-white" id="scroll-50">--</div>
+                        <div class="text-[10px] text-gray-500">50%</div>
+                    </div>
+                    <div class="flex-1 text-center">
+                        <div class="text-lg font-black text-[#00f0ff]" id="scroll-75">--</div>
+                        <div class="text-[10px] text-gray-500">75%</div>
+                    </div>
+                    <div class="flex-1 text-center">
+                        <div class="text-lg font-black text-green-400" id="scroll-100">--</div>
+                        <div class="text-[10px] text-gray-500">100%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hourly Trend -->
+            <div class="kpi-card mb-4">
+                <div class="text-[10px] text-gray-500 font-mono mb-3">24 小時事件趨勢</div>
+                <div class="bar-chart" id="hourly-chart" style="height:60px;">
+                    <div class="text-gray-500 text-xs">載入中...</div>
+                </div>
+            </div>
+
+            <!-- Recent Events Log -->
+            <div class="kpi-card">
+                <div class="text-[10px] text-gray-500 font-mono mb-2">最新事件 (LIVE)</div>
+                <div id="recent-events" class="flex flex-col gap-1 text-xs max-h-48 overflow-y-auto" style="scrollbar-width:thin;">
+                    <div class="text-gray-500">載入中...</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Tab: Export -->
         <div id="panel-export" class="tab-panel bg-[#0f131a] border border-white/10 rounded-xl p-6 shadow-2xl">
             <h2 class="text-sm font-bold text-[#00f0ff] font-mono tracking-widest mb-4">數據導出</h2>
@@ -562,6 +670,7 @@
             document.getElementById('panel-' + name).classList.add('active');
             if (name === 'ai') loadAIMetrics();
             if (name === 'traffic') loadTrafficStats();
+            if (name === 'events') loadEventMetrics();
         }
 
         // ── Traffic Stats ──────────────────────────────────────────────
@@ -752,6 +861,123 @@
                     }
                 }
             } catch (e) { console.warn('behavior error', e); }
+        }
+
+        // ── Event Metrics ──────────────────────────────────────────────
+        async function loadEventMetrics() {
+            const password = getSessionPassword();
+            if (!password) return;
+
+            try {
+                const res = await fetch(`/.netlify/functions/admin-events?password=${encodeURIComponent(password)}`);
+                if (!res.ok) return;
+                const d = await res.json();
+
+                // Summary KPIs
+                document.getElementById('evt-cta').textContent = d.todaySummary.cta_click;
+                document.getElementById('evt-engagement').textContent = d.todaySummary.engagement;
+                document.getElementById('evt-conversion').textContent = d.todaySummary.conversion;
+                document.getElementById('evt-total').textContent = d.todaySummary.total;
+
+                // Conversion funnel
+                const f = d.conversionFunnel;
+                const maxF = Math.max(f.pageViews, 1);
+                document.getElementById('funnel-pv-n').textContent = f.pageViews;
+                document.getElementById('funnel-cta-n').textContent = f.ctaClicks;
+                document.getElementById('funnel-start-n').textContent = f.bookingStarts;
+                document.getElementById('funnel-done-n').textContent = f.bookingCompletes;
+                setTimeout(() => {
+                    document.getElementById('funnel-pv').style.width = '100%';
+                    document.getElementById('funnel-cta').style.width = Math.round(f.ctaClicks / maxF * 100) + '%';
+                    document.getElementById('funnel-start').style.width = Math.round(f.bookingStarts / maxF * 100) + '%';
+                    document.getElementById('funnel-done').style.width = Math.round(f.bookingCompletes / maxF * 100) + '%';
+                }, 50);
+
+                // Top CTAs
+                const ctaEl = document.getElementById('top-ctas');
+                if (d.topCTAs && d.topCTAs.length) {
+                    const maxC = Math.max(...d.topCTAs.map(x => x.count), 1);
+                    const ctaLabels = {
+                        'fitbook_booking': '🥊 FitBook 預約',
+                        'line_consult': '💬 LINE 諮詢',
+                        'ig_follow': '📸 IG 追蹤',
+                        'fb_follow': '👍 FB 追蹤',
+                        'youtube_visit': '🎬 YouTube',
+                        'pricing_view': '💰 方案頁',
+                        'coach_profile': '🏆 教練頁',
+                        'class_detail': '📋 課程頁',
+                        'schedule_view': '📅 課表',
+                        'phone_call': '📞 來電',
+                        'pwa_install': '📱 APP安裝',
+                    };
+                    ctaEl.innerHTML = d.topCTAs.map((c, i) => `
+                        <div class="flex items-center gap-2 py-1">
+                            <span class="text-[10px] text-gray-500 w-4 shrink-0">${i+1}.</span>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-gray-300 truncate">${ctaLabels[c.name] || c.name}</div>
+                                <div class="h-1 bg-white/10 rounded-full mt-0.5 overflow-hidden">
+                                    <div class="h-full bg-[#00f0ff]/60 rounded-full" style="width:${Math.round(c.count/maxC*100)}%"></div>
+                                </div>
+                            </div>
+                            <span class="text-[#00f0ff] font-bold text-[10px] shrink-0">${c.count}</span>
+                        </div>`).join('');
+                } else {
+                    ctaEl.innerHTML = '<div class="text-gray-500">暫無數據</div>';
+                }
+
+                // Scroll depth
+                document.getElementById('scroll-25').textContent = d.scrollDepth['25'] || 0;
+                document.getElementById('scroll-50').textContent = d.scrollDepth['50'] || 0;
+                document.getElementById('scroll-75').textContent = d.scrollDepth['75'] || 0;
+                document.getElementById('scroll-100').textContent = d.scrollDepth['100'] || 0;
+
+                // Hourly trend
+                const hEl = document.getElementById('hourly-chart');
+                if (d.hourlyTrend && d.hourlyTrend.length) {
+                    const maxH = Math.max(...d.hourlyTrend.map(x => x.count), 1);
+                    hEl.innerHTML = d.hourlyTrend.map(item => {
+                        const pct = Math.round((item.count / maxH) * 100);
+                        return `<div class="bar-col">
+                            <div class="bar-val">${item.count || ''}</div>
+                            <div class="bar-fill" style="height:${pct}%"></div>
+                            <div class="bar-label">${item.hour}</div>
+                        </div>`;
+                    }).join('');
+                }
+
+                // Recent events
+                const evtEl = document.getElementById('recent-events');
+                if (d.recentEvents && d.recentEvents.length) {
+                    const catColors = {
+                        cta_click: 'text-cyan-400',
+                        scroll: 'text-blue-400',
+                        engagement: 'text-purple-400',
+                        conversion: 'text-green-400',
+                        navigation: 'text-gray-400',
+                    };
+                    const catIcons = {
+                        cta_click: 'fa-bullseye',
+                        scroll: 'fa-arrows-up-down',
+                        engagement: 'fa-hand-pointer',
+                        conversion: 'fa-check-circle',
+                        navigation: 'fa-route',
+                    };
+                    evtEl.innerHTML = d.recentEvents.map(e => {
+                        const color = catColors[e.category] || 'text-gray-400';
+                        const icon = catIcons[e.category] || 'fa-circle';
+                        const time = new Date(e.createdAt).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        return `<div class="flex items-center gap-2 py-1 border-b border-white/5">
+                            <i class="fa-solid ${icon} ${color} text-[10px] w-3 shrink-0"></i>
+                            <span class="font-mono text-[10px] ${color} shrink-0">${e.category}</span>
+                            <span class="text-gray-300 flex-1 truncate">${e.eventName}</span>
+                            <span class="text-[10px] text-gray-500 shrink-0">${e.deviceType}</span>
+                            <span class="text-[10px] text-gray-600 shrink-0 font-mono">${time}</span>
+                        </div>`;
+                    }).join('');
+                } else {
+                    evtEl.innerHTML = '<div class="text-gray-500">暫無事件</div>';
+                }
+            } catch (e) { console.warn('event metrics error', e); }
         }
 
         // ── Data Export ────────────────────────────────────────────────

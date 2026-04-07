@@ -286,7 +286,7 @@
             .ai-container { bottom: 80px; right: 12px; }
             .ai-mascot-img { width: 65px; height: 65px; }
             .ai-chat-box { bottom: 75px; width: calc(100vw - 32px); right: -4px; border-radius: 16px 16px 0 16px; }
-            #mobile-menu, #brand-drawer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1.5rem)); }
+            #mobile-menu, #brand-drawer { padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
             .tech-border { transform: none !important; transition: none !important; }
             /* Mobile carousel arrows: always visible on touch devices */
             .carousel-control { opacity: 0.6 !important; }
