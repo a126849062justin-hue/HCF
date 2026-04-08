@@ -535,7 +535,7 @@
             <a href="/classes.html" class="${location.pathname.includes('classes') ? 'active' : ''}">
               <i class="fa-solid fa-dumbbell"></i><span>課程</span>
             </a>
-            <a href="/pricing.html" class="tab-cta">
+            <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="tab-cta">
               <i class="fa-solid fa-bolt"></i><span>預約體驗</span>
             </a>
             <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
