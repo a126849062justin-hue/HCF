@@ -978,14 +978,17 @@ window.filterLocal = function(cat) {
     btns.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
 
     const cards = document.querySelectorAll('.local-card');
-    cards.forEach((card, i) => {
+    let matchIdx = 0;
+    cards.forEach((card) => {
         const match = cat === 'all' || card.dataset.category === cat;
         if (match) {
             card.style.display = '';
+            const delay = matchIdx * 60;
+            matchIdx++;
             setTimeout(() => {
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
-            }, i * 60);
+            }, delay);
         } else {
             card.style.opacity = '0';
             card.style.transform = 'translateY(16px)';
