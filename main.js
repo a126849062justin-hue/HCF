@@ -535,8 +535,8 @@
             <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
               <i class="fa-solid fa-users"></i><span>教練</span>
             </a>
-            <a href="/index.html#schedule" class="">
-              <i class="fa-solid fa-calendar"></i><span>課表</span>
+            <a href="/index.html#local-picks" class="">
+              <i class="fa-solid fa-store"></i><span>在地推薦</span>
             </a>
           `;
           document.body.appendChild(tabBar);
