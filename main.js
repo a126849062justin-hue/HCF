@@ -484,34 +484,13 @@
         window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
-        // Mascot Button: Mobile tap = open menu, long-press = open AI chat; Desktop = open AI chat
+        // Mascot Button: click = open/close AI chat (all devices)
         (function() {
             var btn = document.getElementById("ai-mascot-btn");
             if (!btn) return;
-            var longPressTimer = null;
-            var isLongPress = false;
-            var hasTouched = false;
-            btn.addEventListener("touchstart", function() {
-                hasTouched = true;
-                isLongPress = false;
-                longPressTimer = setTimeout(function() {
-                    isLongPress = true;
-                    toggleChat();
-                }, 600);
-            }, { passive: true });
-            btn.addEventListener("touchend", function(e) {
-                clearTimeout(longPressTimer);
+            btn.addEventListener("click", function(e) {
                 e.preventDefault();
-                if (!isLongPress) {
-                    toggleMobileMenu();
-                }
-            });
-            btn.addEventListener("touchcancel", function() {
-                clearTimeout(longPressTimer);
-            }, { passive: true });
-            btn.addEventListener("click", function() {
-                if (!hasTouched) { toggleChat(); }
-                setTimeout(function() { hasTouched = false; }, 300);
+                toggleChat();
             });
         })();
 
@@ -528,8 +507,8 @@
         if (enableAppMode) {
           document.documentElement.classList.add('pwa-mode');
 
-          const navbar = document.querySelector('nav');
-          if (navbar) navbar.style.display = 'none';
+          // Keep navbar visible in mobile APP mode (logo + hamburger button remain visible)
+          // The desktop nav links are already hidden on mobile via 'hidden lg:flex'
 
           // 隱藏底部 CTA Bar（由 Tab Bar 的預約體驗按鈕取代）
           const ctaBarEl = document.getElementById('mobile-cta-bar');

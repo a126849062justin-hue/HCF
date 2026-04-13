@@ -96,6 +96,10 @@
 
                 </div>
                 
+                <button onclick="toggleMobileMenu()" class="lg:hidden flex items-center justify-center w-10 h-10 text-gray-200 hover:text-sci-cyan transition-colors" aria-label="開啟選單">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-auto">
                     <a href="index.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">首頁</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">HOME</span>
@@ -144,6 +148,11 @@
                     </div>
                     <a href="faq.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">新手問答</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">FAQ</span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </a>
+                    <a href="index.html#local-picks" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
+                        <span class="group-hover:hidden">在地推薦</span>
+                        <span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">LOCAL</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
                     
@@ -234,6 +243,7 @@
                 </div>
             </div>
             <a href="faq.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">新手問答</a>
+            <a href="index.html#local-picks" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">在地推薦</a>
         </div>
         <div class="mt-8 mb-6 w-full px-2">
             <a href="pricing.html" onclick="closeAllDrawers()" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
@@ -879,7 +889,7 @@
           document.documentElement.classList.add('pwa-mode');
 
           const navbar = document.querySelector('nav');
-          if (navbar) navbar.style.display = 'none';
+          // Keep navbar visible in mobile APP mode (logo + hamburger button remain visible)
 
           const tabBar = document.createElement('nav');
           tabBar.id = 'app-tab-bar';
