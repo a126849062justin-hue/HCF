@@ -283,7 +283,7 @@
         @media (max-width: 768px) {
             .bg-grain { display: none !important; }
             #bg-canvas { display: none !important; }
-            .ai-container { bottom: 80px; right: 12px; }
+            .ai-container { bottom: calc(80px + 70px); right: 12px; }
             .ai-mascot-img { width: 65px; height: 65px; }
             .ai-chat-box { bottom: 75px; width: calc(100vw - 32px); right: -4px; border-radius: 16px 16px 0 16px; }
             #mobile-menu, #brand-drawer { padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
@@ -291,6 +291,11 @@
             /* Mobile carousel arrows: always visible on touch devices */
             .carousel-control { opacity: 0.6 !important; }
             .carousel-control div { width: 36px; height: 36px; transform: none !important; }
+            /* ── 手機端統一 APP 模式 UI ── */
+            #app-tab-bar { display: flex; }
+            #navbar { display: none !important; }
+            #mobile-cta-bar { display: none !important; }
+            main, footer { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
         }
 
         /* === Mobile (< 480px) Optimizations === */
@@ -1240,3 +1245,32 @@
         .fs-fighter-thumb.fs-active {
             transform: translateY(-6px) scale(1.1);
         }
+
+        /* ═══ 在地商家推薦 Local Picks ═══ */
+        .local-filter-btn {
+            background: rgba(255,255,255,0.05);
+            color: #999;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .local-filter-btn:hover,
+        .local-filter-btn.active {
+            background: var(--theme-cyan);
+            color: #000;
+            border-color: var(--theme-cyan);
+            box-shadow: 0 0 16px rgba(var(--theme-cyan-rgb),0.5);
+        }
+        .local-card {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .local-card-img { overflow: hidden; border-radius: 12px 12px 0 0; }
+        .local-card-img img { transition: transform 0.4s ease; }
+        .local-card:hover .local-card-img img { transform: scale(1.06); }

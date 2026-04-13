@@ -520,11 +520,26 @@
           || window.navigator.standalone === true
           || document.referrer.includes('android-app://');
 
-        if (isStandalone) {
+        // 手機端（≤768px 或 Mobile UA）統一啟用 APP UI
+        const isMobileDevice = window.innerWidth <= 768
+          || /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent);
+        const enableAppMode = isStandalone || isMobileDevice;
+
+        if (enableAppMode) {
           document.documentElement.classList.add('pwa-mode');
 
           const navbar = document.querySelector('nav');
           if (navbar) navbar.style.display = 'none';
+
+          // 隱藏底部 CTA Bar（由 Tab Bar 的預約體驗按鈕取代）
+          const ctaBarEl = document.getElementById('mobile-cta-bar');
+          if (ctaBarEl) ctaBarEl.style.display = 'none';
+
+          // 調整 AI 鯊魚位置，避開 Tab Bar（增加 70px）
+          const aiContainer = document.querySelector('.ai-container');
+          if (aiContainer && window.innerWidth <= 1024) {
+            aiContainer.style.bottom = 'calc(80px + 70px)';
+          }
 
           const tabBar = document.createElement('nav');
           tabBar.id = 'app-tab-bar';
@@ -956,3 +971,25 @@ if ('serviceWorker' in navigator) {
         }
     }, { passive: true });
 })();
+
+// ═══ 在地商家推薦篩選 ═══
+window.filterLocal = function(cat) {
+    const btns = document.querySelectorAll('.local-filter-btn');
+    btns.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+
+    const cards = document.querySelectorAll('.local-card');
+    cards.forEach((card, i) => {
+        const match = cat === 'all' || card.dataset.category === cat;
+        if (match) {
+            card.style.display = '';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, i * 60);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(16px)';
+            setTimeout(() => { card.style.display = 'none'; }, 400);
+        }
+    });
+};

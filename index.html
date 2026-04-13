@@ -1148,6 +1148,158 @@
 
 
 <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
+        <!-- LOCAL PICKS 新竹在地商家推薦 -->
+        <section id="local-picks" class="py-20 sm:py-28 bg-[#030509] relative z-10 overflow-hidden">
+            <!-- 背景裝飾光暈 -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);filter:blur(60px);"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(232,184,48,0.06) 0%,transparent 70%);filter:blur(60px);"></div>
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <!-- 區塊標題 -->
+                <div class="text-center mb-10 reveal">
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">LOCAL PICKS</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">新竹在地推薦</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">練完格鬥後的補給站——HCF 嚴選新竹在地好店，都是我們教練和學員真心推薦的</p>
+                </div>
+
+                <!-- 分類篩選按鈕 -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
+                    <button class="local-filter-btn active" data-cat="all" onclick="filterLocal('all')">全部推薦</button>
+                    <button class="local-filter-btn" data-cat="food" onclick="filterLocal('food')">🍜 美食</button>
+                    <button class="local-filter-btn" data-cat="cafe" onclick="filterLocal('cafe')">☕ 咖啡</button>
+                    <button class="local-filter-btn" data-cat="recovery" onclick="filterLocal('recovery')">💆 恢復放鬆</button>
+                    <button class="local-filter-btn" data-cat="sport" onclick="filterLocal('sport')">🏋️ 運動周邊</button>
+                    <button class="local-filter-btn" data-cat="lifestyle" onclick="filterLocal('lifestyle')">🛍️ 生活好物</button>
+                </div>
+
+                <!-- 商家卡片網格 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="local-picks-grid">
+
+                    <!-- 卡片 1：美食 -->
+                    <article class="local-card tech-border rounded-2xl overflow-hidden reveal" data-category="food">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="local-card-img relative">
+                                <img src="https://placehold.co/600x360/0a0e18/00d4ff?text=美食推薦" alt="竹北雞腿便當" loading="lazy" class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(var(--theme-cyan-rgb),0.15);border:1px solid rgba(var(--theme-cyan-rgb),0.4);color:var(--theme-cyan);">🍜 美食</span>
+                                <span class="absolute top-3 right-3 flex items-center gap-1 text-xs font-black px-2 py-1 rounded-full" style="background:rgba(3,3,3,0.85);border:1px solid rgba(var(--theme-gold-rgb),0.4);color:var(--theme-gold);">
+                                    <img src="shark_logo.png" alt="HCF" class="w-4 h-4 rounded-full object-cover">HCF 推薦
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-white font-black text-lg leading-tight mb-1">健身廚房 FIT KITCHEN</h3>
+                                <p class="text-gray-500 text-xs mb-2 tracking-wider">HIGH-PROTEIN · HSINCHU EAST DIST.</p>
+                                <div class="flex items-center gap-1 mb-3">
+                                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                    <span class="text-white font-bold text-sm ml-1">5.0</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">新竹東區最懂格鬥仔的健康便當店。高蛋白、低碳水選項豐富，主廚本人也是 HCF 學員！</p>
+                                <blockquote class="border-l-2 pl-3 mb-4 italic text-sm text-gray-400" style="border-color:var(--theme-cyan);">「訓練完衝過去，每次都剛好有位子，老闆超好！」<span class="not-italic text-gray-500 block text-xs mt-1">— 黃謙和 教練</span></blockquote>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">高蛋白</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">步行 3 分鐘</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">學員優惠</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(var(--theme-cyan-rgb),0.1);border:1px solid rgba(var(--theme-cyan-rgb),0.3);color:var(--theme-cyan);">
+                                        <i class="fa-solid fa-map-location-dot"></i>Google 地圖
+                                    </a>
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#aaa;">
+                                        <i class="fa-brands fa-instagram"></i>IG
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 卡片 2：咖啡 -->
+                    <article class="local-card tech-border rounded-2xl overflow-hidden reveal" data-category="cafe" style="transition-delay:80ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="local-card-img relative">
+                                <img src="https://placehold.co/600x360/0a0e18/e8b830?text=咖啡推薦" alt="特色咖啡館" loading="lazy" class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(232,184,48,0.15);border:1px solid rgba(232,184,48,0.4);color:var(--theme-gold);">☕ 咖啡</span>
+                                <span class="absolute top-3 right-3 flex items-center gap-1 text-xs font-black px-2 py-1 rounded-full" style="background:rgba(3,3,3,0.85);border:1px solid rgba(var(--theme-gold-rgb),0.4);color:var(--theme-gold);">
+                                    <img src="shark_logo.png" alt="HCF" class="w-4 h-4 rounded-full object-cover">HCF 推薦
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-white font-black text-lg leading-tight mb-1">戰前充電 BEFORE FIGHT CAFÉ</h3>
+                                <p class="text-gray-500 text-xs mb-2 tracking-wider">SPECIALTY COFFEE · NORTH DIST.</p>
+                                <div class="flex items-center gap-1 mb-3">
+                                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                    <span class="text-white font-bold text-sm ml-1">5.0</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">訓練前的能量站！SOE 精品豆、低糖選項、環境不吵鬧，很多教練課前來這備戰。</p>
+                                <blockquote class="border-l-2 pl-3 mb-4 italic text-sm text-gray-400" style="border-color:var(--theme-gold);">「每次上課前我都會來一杯，狀態直接 max！」<span class="not-italic text-gray-500 block text-xs mt-1">— Allen 教練</span></blockquote>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">精品豆</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">低糖選項</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">步行 5 分鐘</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(var(--theme-cyan-rgb),0.1);border:1px solid rgba(var(--theme-cyan-rgb),0.3);color:var(--theme-cyan);">
+                                        <i class="fa-solid fa-map-location-dot"></i>Google 地圖
+                                    </a>
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#aaa;">
+                                        <i class="fa-brands fa-instagram"></i>IG
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 卡片 3：恢復放鬆 -->
+                    <article class="local-card tech-border rounded-2xl overflow-hidden reveal" data-category="recovery" style="transition-delay:160ms;">
+                        <div class="glow-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="local-card-img relative">
+                                <img src="https://placehold.co/600x360/0a0e18/bf00ff?text=恢復放鬆" alt="恢復放鬆推薦" loading="lazy" class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(191,0,255,0.12);border:1px solid rgba(191,0,255,0.35);color:#d36aff;">💆 恢復放鬆</span>
+                                <span class="absolute top-3 right-3 flex items-center gap-1 text-xs font-black px-2 py-1 rounded-full" style="background:rgba(3,3,3,0.85);border:1px solid rgba(var(--theme-gold-rgb),0.4);color:var(--theme-gold);">
+                                    <img src="shark_logo.png" alt="HCF" class="w-4 h-4 rounded-full object-cover">HCF 推薦
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-white font-black text-lg leading-tight mb-1">恢復工作室 RECOVERY LAB</h3>
+                                <p class="text-gray-500 text-xs mb-2 tracking-wider">SPORTS MASSAGE · EAST DIST.</p>
+                                <div class="flex items-center gap-1 mb-3">
+                                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                    <span class="text-white font-bold text-sm ml-1">5.0</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">專為運動員設計的放鬆按摩。筋膜槍、冷熱交替、深層組織按摩，訓練完隔天狀態完全不同！</p>
+                                <blockquote class="border-l-2 pl-3 mb-4 italic text-sm text-gray-400" style="border-color:#d36aff;">「比賽前必來一次，讓肌肉完全鬆開，出拳更有爆發力。」<span class="not-italic text-gray-500 block text-xs mt-1">— 鄭豫 教練</span></blockquote>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">運動專業</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">學員 9 折</span>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">需預約</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(var(--theme-cyan-rgb),0.1);border:1px solid rgba(var(--theme-cyan-rgb),0.3);color:var(--theme-cyan);">
+                                        <i class="fa-solid fa-map-location-dot"></i>Google 地圖
+                                    </a>
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-bold tracking-wider transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#aaa;">
+                                        <i class="fa-brands fa-instagram"></i>IG
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- 異業聯盟 CTA -->
+                <div class="text-center mt-12 reveal">
+                    <p class="text-gray-500 text-sm mb-4">你也是新竹在地好店？</p>
+                    <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-black tracking-widest text-sm transition-all hover:scale-105" style="background:var(--gradient-cyber);color:#000;box-shadow:0 0 30px rgba(var(--theme-cyan-rgb),0.25);">
+                        <i class="fa-brands fa-line text-xl"></i>LINE 聯繫合作
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+<div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
         <section id="faq" class="py-20 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
             <div class="max-w-6xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-12 reveal">
