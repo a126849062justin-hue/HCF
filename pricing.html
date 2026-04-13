@@ -870,7 +870,12 @@
           || window.navigator.standalone === true
           || document.referrer.includes('android-app://');
 
-        if (isStandalone) {
+        // 手機端（≤768px 或 Mobile UA）統一啟用 APP UI
+        const isMobileDevice = window.innerWidth <= 768
+          || /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent);
+        const enableAppMode = isStandalone || isMobileDevice;
+
+        if (enableAppMode) {
           document.documentElement.classList.add('pwa-mode');
 
           const navbar = document.querySelector('nav');
@@ -900,6 +905,16 @@
           const statusBar = document.createElement('div');
           statusBar.id = 'pwa-status-bar';
           document.body.prepend(statusBar);
+
+          // 隱藏底部 CTA Bar（由 Tab Bar 的預約體驗按鈕取代）
+          const ctaBarEl = document.getElementById('mobile-cta-bar');
+          if (ctaBarEl) ctaBarEl.style.display = 'none';
+
+          // 調整 AI 鯊魚位置，避開 Tab Bar（增加 70px）
+          const aiContainer = document.querySelector('.ai-container');
+          if (aiContainer && window.innerWidth <= 1024) {
+            aiContainer.style.bottom = 'calc(80px + 70px)';
+          }
 
           const installBtn = document.getElementById('install-app-btn');
           if (installBtn) installBtn.style.display = 'none';
