@@ -1,5 +1,5 @@
-const CACHE_NAME = 'hcf-v4.0';
-const DYNAMIC_CACHE = 'hcf-dynamic-v4.0';
+const CACHE_NAME = 'hcf-v4.1';
+const DYNAMIC_CACHE = 'hcf-dynamic-v4.1';
 const MAX_DYNAMIC_ITEMS = 50;
 
 const CRITICAL_ASSETS = [
@@ -8,7 +8,7 @@ const CRITICAL_ASSETS = [
 const OPTIONAL_ASSETS = [
   '/classes.html', '/pricing.html', '/team.html', '/news.html', '/faq.html', '/philosophy.html',
   '/philosophy-cinematic.css', '/philosophy-cinematic.js',
-  '/hero1.jpg', '/schedule-mobile.png', '/schedule-pc.png',
+  '/hero1.jpg', '/schedule.png', '/schedule-mobile.png', '/schedule-pc.png',
   '/coach_huang.jpg', '/coach_allen.jpg', '/coach_zhengyu.jpg', '/coach_kao.jpg', '/coach_hu.jpg', '/coach_mi.jpg',
   '/assets/triangle.png', '/assets/anchor.png', '/assets/shark.png', '/assets/final-logo.png',
 ];
