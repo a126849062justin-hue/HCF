@@ -1065,6 +1065,263 @@
 
 
         <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             精選內容區塊 (移植自 news.html)
+             ══════════════════════════════════════════════════════════ -->
+        <section id="featured-content" class="py-16 sm:py-24 relative bg-[var(--theme-base)]">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+                <!-- ═══ 精選課程（橫向滑動） ═══ -->
+                <div class="mb-20" id="featured-courses">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                            <div>
+                                <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">SIGNATURE CLASSES</p>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">精選課程</h3>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex gap-2">
+                            <button type="button" class="hscroll-btn w-10 h-10 rounded-full border border-white/15 text-gray-200 hover:text-sci-cyan hover:border-sci-cyan/50 transition-colors" data-track="featured-track" data-dir="-1" aria-label="向左滑動精選課程"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button type="button" class="hscroll-btn w-10 h-10 rounded-full border border-white/15 text-gray-200 hover:text-sci-cyan hover:border-sci-cyan/50 transition-colors" data-track="featured-track" data-dir="1" aria-label="向右滑動精選課程"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 text-gray-500 text-xs font-mono tracking-widest">
+                        <i class="fa-solid fa-arrow-right text-sci-cyan text-[10px]"></i>
+                        <span>向右探索更多課程 / Swipe to explore</span>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--theme-base)] to-transparent z-10 pointer-events-none rounded-r-xl"></div>
+                        <div id="featured-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;" aria-label="精選課程橫向滑動列表">
+                            <a href="classes.html#muay-thai" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                                <div class="relative h-44 overflow-hidden">
+                                    <img src="course_muaythai.jpg" alt="泰拳訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&q=80&w=600">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">新手 / 技術</span>
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">泰拳訓練</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-4">從節奏、距離到攻防轉換，建立完整八肢技術系統。</p>
+                                    <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                                </div>
+                            </a>
+                            <a href="classes.html#kickboxing" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                                <div class="relative h-44 overflow-hidden">
+                                    <img src="course_kickboxing.jpg" alt="踢拳訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=600">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">燃脂 / 體能</span>
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">踢拳訓練</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-4">拳腿整合高密度輸出，讓心肺與爆發力同步升級。</p>
+                                    <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                                </div>
+                            </a>
+                            <a href="classes.html#sanda" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                                <div class="relative h-44 overflow-hidden">
+                                    <img src="course_sanda.jpg" alt="散打訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=600">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">實戰 / 對抗</span>
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">散打訓練</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-4">踢打摔整合訓練，強化攻防判斷與壓力下決策。</p>
+                                    <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                                </div>
+                            </a>
+                            <a href="classes.html#strength" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                                <div class="relative h-44 overflow-hidden">
+                                    <img src="course_sc.jpg" alt="肌力體能" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">基礎 / 強化</span>
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">肌力體能</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-4">建立格鬥專項體能底盤，提升穩定性、耐力與輸出能力。</p>
+                                    <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ 左右滑動探索 ═══ -->
+                <div class="mb-20" id="explore-swipe">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                            <div>
+                                <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">SWIPE TO EXPLORE</p>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">左右滑動探索</h3>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex gap-2">
+                            <button type="button" class="hscroll-btn w-10 h-10 rounded-full border border-white/15 text-gray-200 hover:text-sci-cyan hover:border-sci-cyan/50 transition-colors" data-track="explore-track" data-dir="-1" aria-label="向左滑動探索"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button type="button" class="hscroll-btn w-10 h-10 rounded-full border border-white/15 text-gray-200 hover:text-sci-cyan hover:border-sci-cyan/50 transition-colors" data-track="explore-track" data-dir="1" aria-label="向右滑動探索"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 text-gray-500 text-xs font-mono tracking-widest">
+                        <i class="fa-solid fa-hand-pointer text-sci-cyan text-xs"></i>
+                        <span>左右滑動探索 → Swipe to explore</span>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--theme-base)] to-transparent z-10 pointer-events-none rounded-r-xl"></div>
+                        <div id="explore-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;" aria-label="訓練方向橫向滑動列表">
+                            <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-seedling text-sci-cyan text-xl"></i></div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">BEGINNERS</div>
+                                <h4 class="text-white font-black text-xl mb-3">新手入門</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">從體能、節奏、基本動作開始，快速建立安全且有成就感的訓練習慣。</p>
+                                <a href="classes.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">開始探索 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                            </div>
+                            <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-crosshairs text-sci-cyan text-xl"></i></div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">TECHNICAL</div>
+                                <h4 class="text-white font-black text-xl mb-3">技術精修</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">針對動作修正、節奏控制與組合拆解，讓每次出拳更有效率。</p>
+                                <a href="classes.html#private" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">查看課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                            </div>
+                            <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-fire-flame-curved text-sci-cyan text-xl"></i></div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">CARDIO</div>
+                                <h4 class="text-white font-black text-xl mb-3">燃脂爆發</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">高心率拳腳節奏訓練，提升代謝與全身輸出，訓練後超有感。</p>
+                                <a href="classes.html#kickboxing" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">開始探索 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                            </div>
+                            <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-gold/15 flex items-center justify-center border border-sci-gold/30 mb-5"><i class="fa-solid fa-shield-halved text-sci-gold text-xl"></i></div>
+                                <div class="text-sci-gold text-[10px] font-bold tracking-widest font-orbitron mb-2">ADVANCED</div>
+                                <h4 class="text-white font-black text-xl mb-3">實戰進階</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">透過距離感、對抗節奏與壓力反應訓練，打造更沉穩的實戰能力。</p>
+                                <a href="classes.html#sanda" class="inline-flex items-center gap-2 text-sci-gold text-xs font-bold tracking-wider">選這條路 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                            </div>
+                            <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-mountain text-sci-cyan text-xl"></i></div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">GROWTH</div>
+                                <h4 class="text-white font-black text-xl mb-3">自我突破</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">從每次挫折累積反彈力，讓格鬥訓練成為你穩定變強的日常。</p>
+                                <a href="pricing.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">開始探索 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="explore-dots" class="flex justify-center gap-2 mt-4" aria-hidden="true">
+                        <div class="w-6 h-1 rounded-full bg-sci-cyan shadow-[0_0_6px_rgba(var(--theme-cyan-rgb),0.8)]"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                    </div>
+                </div>
+
+                <!-- ═══ 最新動態 ═══ -->
+                <div class="mb-20" id="latest-updates">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">LATEST UPDATES</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">最新動態</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/30 transition-all duration-300">
+                            <div class="w-10 h-10 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-4"><i class="fa-solid fa-bullhorn text-sci-cyan"></i></div>
+                            <h4 class="text-white font-black text-lg mb-2">場館公告</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">課表與最新營運安排，請以官網課表頁與現場公告為主，確保你每次都能銜接訓練。</p>
+                            <a href="#schedule" class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">查看課表 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                        </div>
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/30 transition-all duration-300">
+                            <div class="w-10 h-10 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-4"><i class="fa-solid fa-medal text-sci-cyan"></i></div>
+                            <h4 class="text-white font-black text-lg mb-2">賽事 / 活動消息</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">關注教練與選手的最新出戰動態、活動紀錄與備戰日常，掌握第一線進展。</p>
+                            <a href="team.html" class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">查看團隊 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                        </div>
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/30 transition-all duration-300">
+                            <div class="w-10 h-10 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-4"><i class="fa-solid fa-share-nodes text-sci-cyan"></i></div>
+                            <h4 class="text-white font-black text-lg mb-2">社群更新</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">追蹤 IG / LINE / Facebook，隨時接收課程、教練、賽事與場館更新。</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-1">IG <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                                <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-1">LINE <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                                <a href="https://www.facebook.com/hsinchucombat/" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-1">Facebook <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ 選擇你的戰線加入 ═══ -->
+                <div class="mb-4" id="choose-battle">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">CHOOSE YOUR PATH</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">選擇你的戰線加入</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">🥊</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">ROOKIE</div>
+                                    <h4 class="text-white font-black text-xl mb-2">我是完全新手</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">從暖身、步伐與防禦開始，建立穩定且安全的格鬥基礎。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="pricing.html" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">前往體驗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">🔥</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">BURN + BUILD</div>
+                                    <h4 class="text-white font-black text-xl mb-2">我想減脂變強</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">高效率拳腳節奏與肌耐力訓練，幫你在出汗中重建狀態。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="classes.html#kickboxing" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">加入訓練</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">⚡</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">SKILL UP</div>
+                                    <h4 class="text-white font-black text-xl mb-2">我想精修技術</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">由教練拆解動作細節、補足弱點，建立更高階的技術品質。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="classes.html#private" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">查看課程</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-gold/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">🏆</div>
+                                    <div class="text-sci-gold text-[10px] font-bold tracking-widest font-orbitron mb-2">COMBAT READY</div>
+                                    <h4 class="text-white font-black text-xl mb-2">我想挑戰實戰</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">從對抗節奏到出賽準備，系統化打造你的戰鬥能力。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="classes.html#sanda" class="block text-center py-2.5 px-4 bg-sci-gold/10 border border-sci-gold/30 text-sci-gold text-xs font-black tracking-widest hover:bg-sci-gold hover:text-black transition-all rounded-lg">查看課程</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
         <section id="schedule" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
             <div class="max-w-6xl mx-auto px-6 text-center">
                 <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">SYSTEM SCHEDULE</span>
@@ -1630,6 +1887,64 @@
             hBox.scrollTop=hBox.scrollHeight;
         };
     });
+    </script>
+
+    <script>
+    // Horizontal scroll tracks — drag + arrow buttons + dots sync
+    (function() {
+        function initTrack(trackId, dotsId) {
+            var track = document.getElementById(trackId);
+            if (!track) return;
+            track.style.msOverflowStyle = 'none';
+            track.style.touchAction = 'pan-x';
+            var dots = dotsId ? document.querySelectorAll('#' + dotsId + ' > div') : [];
+            function updateDots() {
+                if (!dots.length) return;
+                var cards = track.querySelectorAll('[style*="scroll-snap-align"]');
+                if (!cards.length) return;
+                var cardWidth = cards[0].offsetWidth + 16;
+                var activeIndex = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / cardWidth)));
+                dots.forEach(function(dot, i) {
+                    if (i === activeIndex) {
+                        dot.style.background = 'var(--theme-cyan, #00f0ff)';
+                        dot.style.boxShadow = '0 0 6px rgba(0,240,255,0.8)';
+                    } else {
+                        dot.style.background = 'rgba(255,255,255,0.2)';
+                        dot.style.boxShadow = 'none';
+                    }
+                });
+            }
+            track.addEventListener('scroll', updateDots, { passive: true });
+            updateDots();
+            var isDown = false, startX = 0, scrollStart = 0;
+            track.addEventListener('mousedown', function(e) {
+                isDown = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollStart = track.scrollLeft;
+                track.style.userSelect = 'none';
+            });
+            track.addEventListener('mouseleave', function() { isDown = false; track.style.userSelect = ''; });
+            track.addEventListener('mouseup', function() { isDown = false; track.style.userSelect = ''; });
+            track.addEventListener('mousemove', function(e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - track.offsetLeft;
+                track.scrollLeft = scrollStart - ((x - startX) * 1.5);
+            });
+        }
+        document.querySelectorAll('.hscroll-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var track = document.getElementById(btn.dataset.track);
+                if (!track) return;
+                var card = track.querySelector('[style*="scroll-snap-align"]');
+                var step = card ? (card.offsetWidth + 16) : 320;
+                var dir = Number(btn.dataset.dir || '1');
+                track.scrollBy({ left: step * dir, behavior: 'smooth' });
+            });
+        });
+        initTrack('featured-track');
+        initTrack('explore-track', 'explore-dots');
+    })();
     </script>
 </body>
 </html>
