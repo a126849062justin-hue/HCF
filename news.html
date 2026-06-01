@@ -332,206 +332,406 @@
 
         <section id="news" class="pt-32 sm:pt-36 pb-20 sm:pb-24 relative bg-[var(--theme-base)]">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="flex items-end gap-4 mb-10 border-b border-white/10 pb-4">
+
+                <!-- ═══ PAGE HEADER ═══ -->
+                <div class="flex items-end gap-4 mb-14 border-b border-white/10 pb-4">
                     <div>
                         <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover inline-block" data-i18n="sections.latest_info" data-en="LATEST INFO">最新資訊</h2>
                         <span class="text-sci-cyan text-xs tracking-widest font-orbitron block mt-1 font-bold">LATEST INFO</span>
                     </div>
                 </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div class="lg:col-span-7 border border-white/10 bg-[#050810] relative overflow-hidden group reveal flex flex-col justify-center min-h-[60vh] sm:min-h-[500px] p-6 sm:p-10 rounded-xl shadow-2xl">
-                        <div class="absolute inset-0 z-0">
-                            <img src="coach_huang.jpg" class="w-full h-full object-cover filter brightness-50 contrast-125 grayscale-[20%] transition-transform duration-1000 group-hover:scale-105" alt="Background" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=800">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-[var(--theme-base)]/40 to-transparent"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-[var(--theme-base)]/90 to-transparent hidden md:block"></div>
+
+                <!-- ═══ BLOCK 1: 新生限定補給箱 ═══ -->
+                <div class="mb-20" id="new-member-offer">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">NEWCOMER EXCLUSIVE</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">新生限定補給箱</h3>
                         </div>
-                        
-                        <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left w-full h-full justify-center pt-8 md:pt-0">
-                            <div class="bg-sci-cyan text-black italic font-black px-4 py-1.5 text-[11px] sm:text-xs tracking-widest mb-6 inline-block skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.5)]">
-                                <span class="skew-x-[10deg] inline-block lang-text" data-i18n="sections.upcoming_event" data-en="MONTHLY BULLETIN">每月公告 MONTHLY BULLETIN</span>
+                    </div>
+                    <div class="relative group reveal">
+                        <div class="absolute -inset-[1px] bg-gradient-to-r from-sci-cyan via-[#111] to-sci-cyan rounded-xl opacity-70 group-hover:opacity-100 blur-[2px] transition-opacity duration-500"></div>
+                        <div class="relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden p-6 sm:p-8 shadow-2xl">
+                            <div class="absolute right-0 top-0 text-[100px] font-black text-white/[0.03] -mt-4 -mr-4 pointer-events-none italic">NEW</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
+                                <a href="pricing.html" class="flex flex-col sm:items-center sm:text-center p-5 bg-white/5 rounded-xl border-t-2 border-sci-cyan hover:bg-white/10 hover:translate-y-[-2px] transition-all group/item cursor-pointer">
+                                    <div class="w-10 h-10 rounded-full bg-sci-cyan/20 flex items-center justify-center border border-sci-cyan/50 mb-3">
+                                        <i class="fa-solid fa-people-group text-sci-cyan text-base"></i>
+                                    </div>
+                                    <span class="text-white font-bold text-sm mb-1">團體課程</span>
+                                    <span class="text-gray-400 text-[11px] font-mono tracking-wider mb-3 group-hover/item:text-white transition-colors">首次體驗優惠</span>
+                                    <span class="text-sci-cyan font-black text-2xl italic group-hover/item:text-white transition-colors mt-auto">$400</span>
+                                </a>
+                                <a href="pricing.html" class="flex flex-col sm:items-center sm:text-center p-5 bg-gradient-to-b from-sci-cyan/10 to-transparent rounded-xl border-t-2 border-sci-cyan hover:translate-y-[-2px] transition-all group/item cursor-pointer">
+                                    <div class="w-10 h-10 rounded-full bg-sci-cyan/20 flex items-center justify-center border border-sci-cyan/50 mb-3">
+                                        <i class="fa-solid fa-user text-sci-cyan text-base"></i>
+                                    </div>
+                                    <span class="text-white font-bold text-sm mb-1">私人教練 (1堂)</span>
+                                    <span class="text-sci-cyan text-[11px] tracking-wider mb-3 group-hover/item:text-cyan-200">專屬菜單，技術精修</span>
+                                    <span class="text-sci-cyan font-black text-2xl italic drop-shadow-[0_0_5px_rgba(var(--theme-cyan-rgb),0.5)] mt-auto">$1,400</span>
+                                </a>
+                                <a href="pricing.html" class="flex flex-col sm:items-center sm:text-center p-5 bg-gradient-to-b from-sci-gold/10 to-transparent rounded-xl border-t-2 border-sci-gold hover:translate-y-[-2px] transition-all group/item cursor-pointer">
+                                    <div class="w-10 h-10 rounded-full bg-sci-gold/20 flex items-center justify-center border border-sci-gold/50 mb-3">
+                                        <i class="fa-solid fa-users text-sci-gold text-base"></i>
+                                    </div>
+                                    <span class="text-white font-bold text-sm mb-1">私人教練 (2堂)</span>
+                                    <span class="text-sci-gold text-[11px] tracking-wider mb-3 group-hover/item:text-yellow-200">深度體驗，扎實訓練</span>
+                                    <span class="text-sci-gold font-black text-2xl italic drop-shadow-[0_0_5px_rgba(255,215,0,0.5)] mt-auto">$2,400</span>
+                                </a>
                             </div>
-
-                            <h3 class="flex flex-col mb-4 sm:mb-6 drop-shadow-2xl items-center md:items-start">
-                                <span class="text-[8vw] sm:text-5xl md:text-6xl font-black italic text-white leading-none tracking-tighter">APRIL</span>
-                                <span class="text-[8vw] sm:text-4xl md:text-5xl font-black italic text-sci-cyan leading-none tracking-tighter">BULLETIN</span>
-                            </h3>
-                            
-                            <p class="text-lg sm:text-xl font-bold text-white tracking-[0.1em] sm:tracking-[0.2em] mb-6 drop-shadow-md lang-text" data-i18n="sections.event_subtitle" data-en="APRIL 2025 EVENTS OVERVIEW">2025 年 4 月活動總覽</p>
-
-                            <div class="w-full space-y-3 sm:space-y-4 mb-6 text-left text-sm lg:max-h-[55vh] lg:overflow-y-auto pr-2" role="region" aria-label="4月活動公告" tabindex="0">
-                              <div class="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-3 sm:p-4">
-                                <div class="text-sci-cyan font-black text-xs tracking-widest mb-2 flex items-center gap-1.5">
-                                  <span>📌</span><span>戰鬥思維・拳創研習營</span>
-                                </div>
-                                <div class="space-y-1.5 text-sm">
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>人員：黃謙和 總教練</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>時間：4/11 (六) 15:00-17:00</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>地點：高雄拳創 (高雄市新興區六合一路100-1號5樓)</span></p>
-                                </div>
-                                <p class="text-gray-400 text-xs mt-2 pl-5">重點：42 勝仗實戰精華與戰鬥思維傳承</p>
-                              </div>
-                              <div class="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-3 sm:p-4">
-                                <div class="text-sci-cyan font-black text-xs tracking-widest mb-2 flex items-center gap-1.5">
-                                  <span>📌</span><span>國家 C 級裁判講習會</span>
-                                </div>
-                                <div class="space-y-1.5 text-sm">
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>參訓代表：教練 Allen、鄭豫、高大可</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>時間：4/10 (五) - 4/12 (日)</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>地點：臺北榕城散打搏擊示範武館 / 新北新莊國民運動中心</span></p>
-                                </div>
-                                <p class="text-gray-400 text-xs mt-2 pl-5">⚠️ 請於 4/1 前完成線上報名｜報名費 4500 元</p>
-                                <p class="text-gray-400 text-xs pl-5">📎 報到繳交：良民證正本 + 最高學歷畢業證書影本</p>
-                                <a href="https://forms.gle/kUZW4ZX8xEe1Wfuy7" target="_blank" rel="noopener" class="inline-block mt-2 ml-5 text-sci-cyan text-xs font-bold hover:underline">🔗 線上報名 →</a>
-                              </div>
-                              <div class="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-3 sm:p-4">
-                                <div class="text-sci-cyan font-black text-xs tracking-widest mb-2 flex items-center gap-1.5">
-                                  <span>📌</span><span>高雄 SuperD 泰拳賽</span>
-                                </div>
-                                <div class="space-y-1.5 text-sm">
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>出戰選手：高大可、林義山</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>4/25 (六) 15:00-17:00 開放過磅</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>4/26 (日) 08:30 報到過磅 / 10:00 賽事開打</span></p>
-                                  <p class="text-gray-300 flex items-start gap-2"><span class="text-sci-cyan/60 flex-shrink-0">▪️</span><span>地點：高雄市新興區六合二路37號3樓 (SuperD 賽場)</span></p>
-                                </div>
-                              </div>
+                            <div class="mt-6 pt-4 border-t border-white/5 text-center">
+                                <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener" class="inline-block px-8 py-3 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-sm skew-x-[-10deg] transition-all shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.3)] hover:-translate-y-0.5">
+                                    <span class="skew-x-[10deg] block tracking-widest">立即預約體驗</span>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="lg:col-span-5 flex flex-col gap-6">
-                        <div class="relative group reveal">
-                            <div class="absolute -inset-[1px] bg-gradient-to-r from-sci-cyan via-[#111] to-sci-cyan rounded-xl opacity-70 group-hover:opacity-100 blur-[2px] transition-opacity duration-500"></div>
-                            <div class="relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden p-6 shadow-2xl">
-                                <div class="absolute right-0 top-0 text-[80px] font-black text-white/[0.03] -mt-4 -mr-4 pointer-events-none italic">NEW</div>
-                                <h4 class="text-xl font-black text-white mb-5 flex items-center gap-3 border-b border-white/10 pb-3 relative z-10">
-                                    <div class="w-8 h-8 rounded bg-sci-cyan/20 flex items-center justify-center border border-sci-cyan/50"><i class="fa-solid fa-bolt text-sci-cyan text-sm"></i></div>
-                                    <span class="tracking-widest drop-shadow-[0_0_8px_rgba(var(--theme-cyan-rgb),0.5)]">🔥 新生限定補給箱</span>
-                                </h4>
-                                <div class="space-y-3 relative z-10">
-                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-white/5 rounded-lg border-l-4 border-sci-cyan hover:bg-white/10 hover:translate-x-1 transition-all group/item block cursor-pointer">
-                                        <div>
-                                            <span class="text-white font-bold text-sm block mb-0.5">團體課程</span>
-                                            <span class="text-gray-400 text-[11px] font-mono tracking-wider group-hover/item:text-white transition-colors">首次體驗優惠</span>
-                                        </div>
-                                        <div class="text-right">
-                                            <div class="text-[10px] text-gray-500 line-through mb-0.5 font-mono">原價 $600</div>
-                                            <span class="text-white font-black text-xl italic group-hover/item:text-sci-cyan transition-colors">體驗價 $400</span>
-                                        </div>
-                                    </a>
-                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-gradient-to-r from-sci-cyan/10 to-transparent rounded-lg border-l-4 border-sci-cyan hover:translate-x-1 transition-all group/item block cursor-pointer">
-                                        <div>
-                                            <span class="text-white font-bold text-sm block mb-0.5">私人教練 (1堂)</span>
-                                            <span class="text-sci-cyan text-[11px] tracking-wider group-hover/item:text-cyan-200">專屬菜單，技術精修</span>
-                                        </div>
-                                        <span class="text-sci-cyan font-black text-xl italic drop-shadow-[0_0_5px_rgba(var(--theme-cyan-rgb),0.5)]">體驗價 $1,400</span>
-                                    </a>
-                                    <a href="pricing.html" class="flex justify-between items-center p-3.5 bg-gradient-to-r from-sci-gold/10 to-transparent rounded-lg border-l-4 border-sci-gold hover:translate-x-1 transition-all group/item block cursor-pointer">
-                                        <div>
-                                            <span class="text-white font-bold text-sm block mb-0.5">私人教練 (2堂)</span>
-                                            <span class="text-sci-gold text-[11px] tracking-wider group-hover/item:text-yellow-200">深度體驗，扎實訓練</span>
-                                        </div>
-                                        <span class="text-sci-gold font-black text-xl italic drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]">體驗價 $2,400</span>
-                                    </a>
+                <!-- ═══ BLOCK 2: 精選課程 ═══ -->
+                <div class="mb-20" id="featured-courses">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">SIGNATURE CLASSES</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">精選課程</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <!-- 泰拳 -->
+                        <a href="classes.html#muay-thai" class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(var(--theme-cyan-rgb),0.15)]">
+                            <div class="relative h-44 overflow-hidden">
+                                <img src="course_muaythai.jpg" alt="泰拳" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&q=80&w=600">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">泰拳</span>
                                 </div>
-                                <div class="mt-4 pt-3 border-t border-white/5 text-center">
-                                    <span class="text-[10px] text-gray-500">點擊上方項目，立即展開你的格鬥旅程</span>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">MUAY THAI</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">八肢武器全方位格鬥術，融合拳、肘、膝、踢的實戰技術體系。</p>
+                                <p class="text-sci-cyan text-[11px] font-bold tracking-wider">適合：初學入門・實戰進化</p>
+                            </div>
+                        </a>
+                        <!-- 踢拳 -->
+                        <a href="classes.html#kickboxing" class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(var(--theme-cyan-rgb),0.15)]">
+                            <div class="relative h-44 overflow-hidden">
+                                <img src="course_kickboxing.jpg" alt="踢拳" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=600">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">踢拳</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">KICKBOXING</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">拳擊與腿擊的完美融合，強化全身協調與爆發力。</p>
+                                <p class="text-sci-cyan text-[11px] font-bold tracking-wider">適合：燃脂塑形・提升體能</p>
+                            </div>
+                        </a>
+                        <!-- 散打 -->
+                        <a href="classes.html#sanda" class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(var(--theme-cyan-rgb),0.15)]">
+                            <div class="relative h-44 overflow-hidden">
+                                <img src="course_sanda.jpg" alt="散打" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=600">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">散打</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">SANDA</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">中國式搏擊結合踢打摔，訓練立體攻防與臨場判斷力。</p>
+                                <p class="text-sci-cyan text-[11px] font-bold tracking-wider">適合：實戰對抗・比賽備戰</p>
+                            </div>
+                        </a>
+                        <!-- 肌力體能 -->
+                        <a href="classes.html#strength" class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(var(--theme-cyan-rgb),0.15)]">
+                            <div class="relative h-44 overflow-hidden">
+                                <img src="course_sc.jpg" alt="肌力體能" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">肌力體能</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-white font-black text-lg mb-2 font-orbitron tracking-wide">STRENGTH &amp; CONDITIONING</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">格鬥專項體能訓練，打造爆發力、耐力與抗打擊基礎。</p>
+                                <p class="text-sci-cyan text-[11px] font-bold tracking-wider">適合：體能強化・全面進化</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <a href="classes.html" class="inline-flex items-center gap-2 text-sci-cyan text-sm font-bold tracking-widest hover:gap-4 transition-all">
+                            查看所有課程 <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ═══ BLOCK 3: 左右滑動探索 ═══ -->
+                <div class="mb-20" id="explore-swipe">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                            <div>
+                                <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">SWIPE TO EXPLORE</p>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">左右滑動探索</h3>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex items-center gap-2 text-gray-500 text-xs font-mono tracking-widest animate-pulse">
+                            <i class="fa-solid fa-arrow-left text-sci-cyan/50 text-[10px]"></i>
+                            <span>SWIPE</span>
+                            <i class="fa-solid fa-arrow-right text-sci-cyan text-[10px]"></i>
+                        </div>
+                    </div>
+
+                    <!-- Swipe hint for mobile -->
+                    <div class="flex sm:hidden items-center gap-2 mb-4 text-gray-500 text-xs font-mono tracking-widest">
+                        <i class="fa-solid fa-hand-pointer text-sci-cyan text-xs"></i>
+                        <span>左右滑動探索 / Swipe to explore</span>
+                        <i class="fa-solid fa-arrow-right text-sci-cyan text-xs animate-bounce"></i>
+                    </div>
+
+                    <!-- Horizontal scroll container -->
+                    <div class="relative">
+                        <!-- Right gradient fade hint -->
+                        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--theme-base)] to-transparent z-10 pointer-events-none rounded-r-xl"></div>
+                        <div id="explore-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;">
+
+                            <!-- Card 1: 新手入門 -->
+                            <div class="flex-shrink-0 w-72 sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300 group" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5 group-hover:bg-sci-cyan/25 transition-colors">
+                                    <i class="fa-solid fa-seedling text-sci-cyan text-xl"></i>
+                                </div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">BEGINNERS</div>
+                                <h4 class="text-white font-black text-xl mb-3">新手入門</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">零基礎也能開始，教練帶你找到屬於你的格鬥節奏。</p>
+                                <a href="classes.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider hover:gap-3 transition-all">
+                                    了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Card 2: 想減脂 -->
+                            <div class="flex-shrink-0 w-72 sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300 group" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5 group-hover:bg-sci-cyan/25 transition-colors">
+                                    <i class="fa-solid fa-fire-flame-curved text-sci-cyan text-xl"></i>
+                                </div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">FAT BURN</div>
+                                <h4 class="text-white font-black text-xl mb-3">想減脂</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">格鬥訓練燃燒效率極高，讓你在出汗中享受成就感。</p>
+                                <a href="pricing.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider hover:gap-3 transition-all">
+                                    查看方案 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Card 3: 想提升技術 -->
+                            <div class="flex-shrink-0 w-72 sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300 group" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5 group-hover:bg-sci-cyan/25 transition-colors">
+                                    <i class="fa-solid fa-graduation-cap text-sci-cyan text-xl"></i>
+                                </div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">SKILL UP</div>
+                                <h4 class="text-white font-black text-xl mb-3">想提升技術</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">私人教練量身打造訓練菜單，精修你的技術細節與動作模式。</p>
+                                <a href="team.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider hover:gap-3 transition-all">
+                                    認識教練 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Card 4: 想實戰對抗 -->
+                            <div class="flex-shrink-0 w-72 sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300 group" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5 group-hover:bg-sci-cyan/25 transition-colors">
+                                    <i class="fa-solid fa-shield-halved text-sci-cyan text-xl"></i>
+                                </div>
+                                <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">SPARRING</div>
+                                <h4 class="text-white font-black text-xl mb-3">想實戰對抗</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">在安全環境中體驗真實對抗，訓練臨場反應與攻防直覺。</p>
+                                <a href="classes.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider hover:gap-3 transition-all">
+                                    了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Card 5: 想參加比賽 -->
+                            <div class="flex-shrink-0 w-72 sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300 group" style="scroll-snap-align:start;">
+                                <div class="w-12 h-12 rounded-full bg-sci-gold/15 flex items-center justify-center border border-sci-gold/30 mb-5 group-hover:bg-sci-gold/25 transition-colors">
+                                    <i class="fa-solid fa-trophy text-sci-gold text-xl"></i>
+                                </div>
+                                <div class="text-sci-gold text-[10px] font-bold tracking-widest font-orbitron mb-2">COMPETITION</div>
+                                <h4 class="text-white font-black text-xl mb-3">想參加比賽</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-5">系統性備戰課程，從體能到技術，完整準備你的首次出賽。</p>
+                                <a href="index.html#schedule" class="inline-flex items-center gap-2 text-sci-gold text-xs font-bold tracking-wider hover:gap-3 transition-all">
+                                    查看課表 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Scroll indicator dots -->
+                    <div id="explore-dots" class="flex justify-center gap-2 mt-4">
+                        <div class="w-6 h-1 rounded-full bg-sci-cyan shadow-[0_0_6px_rgba(var(--theme-cyan-rgb),0.8)]"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                        <div class="w-6 h-1 rounded-full bg-white/20"></div>
+                    </div>
+                </div>
+
+                <!-- ═══ BLOCK 4: 最新動態 ═══ -->
+                <div class="mb-20" id="latest-updates">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">LATEST UPDATES</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">最新動態</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <!-- 場館公告 -->
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/30 transition-all duration-300 group">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-8 h-8 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 flex-shrink-0">
+                                    <i class="fa-solid fa-bullhorn text-sci-cyan text-xs"></i>
+                                </div>
+                                <span class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron">GYM NOTICE</span>
+                            </div>
+                            <h4 class="text-white font-black text-base mb-2">場館公告</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">本月課表已更新，多堂精選課程開放報名，歡迎加入 LINE 官方帳號取得最新消息。</p>
+                            <div class="mt-4 pt-3 border-t border-white/5">
+                                <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold hover:underline flex items-center gap-1">
+                                    加入 LINE 諮詢 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 教練動態 -->
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/30 transition-all duration-300 group">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-8 h-8 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 flex-shrink-0">
+                                    <i class="fa-solid fa-person-chalkboard text-sci-cyan text-xs"></i>
+                                </div>
+                                <span class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron">COACH UPDATE</span>
+                            </div>
+                            <h4 class="text-white font-black text-base mb-2">教練動態</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">教練群最新訓練重點已釋出，泰拳技術課程新增高強度強化模組，歡迎詢問詳情。</p>
+                            <div class="mt-4 pt-3 border-t border-white/5">
+                                <a href="team.html" class="text-sci-cyan text-xs font-bold hover:underline flex items-center gap-1">
+                                    認識教練團隊 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 賽事消息 -->
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/30 transition-all duration-300 group">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-8 h-8 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 flex-shrink-0">
+                                    <i class="fa-solid fa-medal text-sci-cyan text-xs"></i>
+                                </div>
+                                <span class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron">COMPETITION</span>
+                            </div>
+                            <h4 class="text-white font-black text-base mb-2">賽事消息</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">賽事備戰進行中，HCF 選手持續征戰全台各大賽場，為新竹爭取榮耀。</p>
+                            <div class="mt-4 pt-3 border-t border-white/5">
+                                <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold hover:underline flex items-center gap-1">
+                                    追蹤 Instagram <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 新手體驗 -->
+                        <div class="reveal bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/30 transition-all duration-300 group">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-8 h-8 rounded bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 flex-shrink-0">
+                                    <i class="fa-solid fa-calendar-check text-sci-cyan text-xs"></i>
+                                </div>
+                                <span class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron">TRIAL OPEN</span>
+                            </div>
+                            <h4 class="text-white font-black text-base mb-2">新手體驗</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">新手體驗課持續開放預約，隨時可以開始你的格鬥旅程，名額有限，立即預約。</p>
+                            <div class="mt-4 pt-3 border-t border-white/5">
+                                <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener" class="text-sci-cyan text-xs font-bold hover:underline flex items-center gap-1">
+                                    立即預約 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ BLOCK 5: 選擇你的戰線加入 ═══ -->
+                <div class="mb-4" id="choose-battle">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1 h-8 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
+                        <div>
+                            <p class="text-sci-cyan text-xs tracking-widest font-orbitron font-bold">CHOOSE YOUR PATH</p>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-orbitron">選擇你的戰線加入</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <!-- 新手入門戰線 -->
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">🥊</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">BEGINNER PATH</div>
+                                    <h4 class="text-white font-black text-xl mb-2">新手入門戰線</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">從零開始，教練帶你建立正確的格鬥基礎與身體素質。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="classes.html" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">
+                                        查看課程
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="reveal p-[2px] bg-gradient-to-b from-sci-cyan to-[#111] rounded-xl shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)]">
-                            <div class="bg-[#050810] p-6 rounded-xl relative overflow-hidden flex flex-col">
-                                <div class="relative z-10 flex-grow">
-                                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 border-b border-white/10 pb-4 gap-2">
-                                        <h4 class="text-xl sm:text-2xl font-black text-white flex items-center gap-3">
-                                            <i class="fa-solid fa-fire text-sci-cyan text-2xl drop-shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.8)]"></i>
-                                            <span class="tracking-widest italic">HCF 2.0 震撼開跑</span>
-                                        </h4>
-                                        <span class="bg-sci-cyan text-black text-[11px] font-black px-3 py-1 uppercase tracking-widest animate-pulse rounded skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)]">限時狂降</span>
-                                    </div>
-
-                                    <div class="mb-8 relative">
-                                        <div class="absolute -left-3 top-0 bottom-0 w-1 bg-white rounded-full"></div>
-                                        <h5 class="text-white text-base font-black mb-3 flex items-center gap-2">
-                                            <span class="bg-sci-cyan text-black px-2 py-0.5 rounded text-[10px] font-black">EVENT 01</span> 
-                                            私教裝甲升級
-                                        </h5>
-                                        
-                                        <div class="grid grid-cols-3 gap-2 mb-4">
-                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
-                                                <div class="text-[11px] mb-1">買 10 堂</div>
-                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">1</span> 個月<br>團課上到飽</div>
-                                            </div>
-                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
-                                                <div class="text-[11px] mb-1">買 20 堂</div>
-                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">2</span> 個月<br>團課上到飽</div>
-                                            </div>
-                                            <div class="bg-[#111] border border-white/10 rounded-lg p-2 sm:p-3 text-center text-gray-300">
-                                                <div class="text-[11px] mb-1">買 30 堂</div>
-                                                <div class="text-white text-[11px] sm:text-xs font-bold leading-tight">送 <span class="text-lg font-black italic mx-0.5">3</span> 個月<br>團課上到飽</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="relative bg-gradient-to-br from-[#2a1b00] to-black p-5 rounded-lg border border-sci-gold/40 shadow-[0_10px_30px_rgba(255,215,0,0.1)] overflow-hidden">
-                                            <div class="absolute top-0 left-0 w-full h-1.5 bg-[repeating-linear-gradient(45deg,var(--theme-gold),var(--theme-gold)_10px,#000_10px,#000_20px)]"></div>
-                                            <div class="flex justify-between items-center mb-3 relative z-10">
-                                                <div class="text-sci-gold font-black text-base flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]"><i class="fa-solid fa-crown"></i> 傳說級特別加開</div>
-                                                <div class="text-[10px] bg-sci-cyan text-black px-2 py-1 rounded uppercase tracking-wider font-bold shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.8)] border border-cyan-400 animate-pulse">
-                                                    🚨 限量 12 名
-                                                </div>
-                                            </div>
-                                            <div class="flex items-end gap-2 mb-2 relative z-10">
-                                                <div class="text-white font-bold text-sm">一次買定</div>
-                                                <div class="text-sci-gold text-3xl font-black italic leading-none drop-shadow-md">36 <span class="text-sm not-italic font-bold text-gray-300">堂</span></div>
-                                            </div>
-                                            <div class="bg-sci-gold text-black font-black text-sm sm:text-base p-2.5 rounded transform skew-x-[-5deg] inline-block mb-3 shadow-[0_5px_15px_rgba(255,215,0,0.4)] relative z-10">
-                                                <span class="skew-x-[5deg] block">狂送 4 堂私課 ＋ 4 個月團課上到飽！</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="relative">
-                                        <div class="absolute -left-3 top-0 bottom-0 w-1 bg-sci-cyan rounded-full shadow-[0_0_10px_var(--theme-cyan)]"></div>
-                                        <div class="flex justify-between items-end mb-3">
-                                            <h5 class="text-white text-base font-black flex items-center gap-2">
-                                                <span class="bg-sci-cyan text-black px-2 py-0.5 rounded text-[10px] font-black">EVENT 02</span> 
-                                                鋼鐵出席挑戰賽
-                                            </h5>
-                                            <span class="text-[10px] text-sci-cyan font-bold bg-sci-cyan/10 px-2 py-1 rounded border border-sci-cyan/30">最高每月回饋 $1,500</span>
-                                        </div>
-                                        <p class="text-[11px] text-gray-400 mb-4 bg-white/5 inline-block px-2 py-1 rounded border-l-2 border-gray-500">當月累積上課次數，次月續費 <span class="text-white font-bold">直接折現</span>！</p>
-                                        
-                                        <div class="space-y-2 relative">
-                                            <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-[#222] z-0"></div>
-                                            <div class="bg-[#111] border border-white/5 p-3 rounded-lg flex items-center justify-between relative z-10">
-                                                <div class="flex items-center gap-4">
-                                                    <div class="w-7 h-7 rounded-full bg-[#222] flex items-center justify-center text-white border-2 border-gray-600 text-xs font-black z-10">1</div>
-                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white mx-0.5 font-mono">08</span> 堂</div>
-                                                </div>
-                                                <div class="text-gray-300 font-black text-sm bg-white/10 px-3 py-1 rounded-sm flex items-center gap-1 font-mono">現折 $500</div>
-                                            </div>
-                                            <div class="bg-[#111] border border-white/5 p-3 rounded-lg flex items-center justify-between relative z-10">
-                                                <div class="flex items-center gap-4">
-                                                    <div class="w-7 h-7 rounded-full bg-[#222] flex items-center justify-center text-white border-2 border-gray-600 text-xs font-black z-10">2</div>
-                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white mx-0.5 font-mono">16</span> 堂</div>
-                                                </div>
-                                                <div class="text-gray-300 font-black text-sm bg-white/10 px-3 py-1 rounded-sm flex items-center gap-1 font-mono"><span class="text-[10px] font-normal text-gray-500 mr-1 font-sans">再加碼</span> 現折 $500</div>
-                                            </div>
-                                            <div class="bg-gradient-to-r from-sci-cyan/20 to-[#111] border border-sci-cyan/50 p-3 rounded-lg flex items-center justify-between relative z-10 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.15)]">
-                                                <div class="flex items-center gap-4 relative z-10">
-                                                    <div class="w-7 h-7 rounded-full bg-sci-cyan flex items-center justify-center text-black border-2 border-cyan-300 text-xs font-black shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.8)] z-10">3</div>
-                                                    <div class="text-white font-bold text-sm">累積 <span class="text-lg italic text-white drop-shadow-[0_0_5px_#fff] mx-0.5 font-mono">24</span> 堂</div>
-                                                </div>
-                                                <div class="text-black font-black text-sm bg-sci-cyan px-3 py-1 rounded-sm flex items-center gap-1 shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.6)] font-mono"><span class="text-[10px] font-bold text-black/70 mr-1 font-sans">終極加碼</span> 現折 $500</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <!-- 燃脂雕塑戰線 -->
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">��</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">FAT BURN PATH</div>
+                                    <h4 class="text-white font-black text-xl mb-2">燃脂雕塑戰線</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">格鬥式訓練燃燒效率高，在汗水中完成體態重塑。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="pricing.html" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">
+                                        立即體驗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 技術精修戰線 -->
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">⚡</div>
+                                    <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">SKILL PATH</div>
+                                    <h4 class="text-white font-black text-xl mb-2">技術精修戰線</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">私人教練一對一，深度拆解動作模式，讓技術真正進步。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="team.html" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">
+                                        認識教練
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 實戰進化戰線 -->
+                        <div class="reveal group relative bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sci-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="p-6 relative z-10 flex flex-col h-full">
+                                <div class="mb-5">
+                                    <div class="text-3xl mb-3">🏆</div>
+                                    <div class="text-sci-gold text-[10px] font-bold tracking-widest font-orbitron mb-2">COMBAT PATH</div>
+                                    <h4 class="text-white font-black text-xl mb-2">實戰進化戰線</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">系統備戰課程，從體能到策略，全面準備你的出賽舞台。</p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="index.html#schedule" class="block text-center py-2.5 px-4 bg-sci-gold/10 border border-sci-gold/30 text-sci-gold text-xs font-black tracking-widest hover:bg-sci-gold hover:text-black transition-all rounded-lg">
+                                        查看課表
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -864,6 +1064,53 @@
             }
         }
         setInterval(updateCountdowns, 1000); updateCountdowns();
+
+        // 10. Explore Track: Horizontal scroll with mouse drag + dot indicator
+        (function() {
+            var track = document.getElementById('explore-track');
+            if (!track) return;
+
+            // Hide scrollbar cross-browser
+            track.style.msOverflowStyle = 'none';
+            track.addEventListener('scroll', function() {
+                var dots = document.querySelectorAll('#explore-dots > div');
+                if (!dots.length) return;
+                var cards = track.querySelectorAll('[style*="scroll-snap-align"]');
+                if (!cards.length) return;
+                var scrollLeft = track.scrollLeft;
+                var cardWidth = cards[0].offsetWidth + 16; // gap-4 = 16px
+                var activeIndex = Math.round(scrollLeft / cardWidth);
+                dots.forEach(function(dot, i) {
+                    if (i === activeIndex) {
+                        dot.style.width = '24px';
+                        dot.style.background = 'var(--theme-cyan, #00f0ff)';
+                        dot.style.boxShadow = '0 0 6px rgba(0,240,255,0.8)';
+                    } else {
+                        dot.style.width = '24px';
+                        dot.style.background = 'rgba(255,255,255,0.2)';
+                        dot.style.boxShadow = 'none';
+                    }
+                });
+            }, { passive: true });
+
+            // Mouse drag scroll
+            var isDown = false, startX = 0, scrollStart = 0;
+            track.addEventListener('mousedown', function(e) {
+                isDown = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollStart = track.scrollLeft;
+                track.style.userSelect = 'none';
+            });
+            track.addEventListener('mouseleave', function() { isDown = false; });
+            track.addEventListener('mouseup', function() { isDown = false; track.style.userSelect = ''; });
+            track.addEventListener('mousemove', function(e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - track.offsetLeft;
+                var walk = (x - startX) * 1.5;
+                track.scrollLeft = scrollStart - walk;
+            });
+        })();
 
         // 11. AI Chat Systems
         // Floating Shark (Bottom Right)
