@@ -11,15 +11,15 @@
     
     <link rel="icon" type="image/png" href="shark_logo.png">
     
-    <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta property="og:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，實戰最強專業拳館。">
+    <meta property="og:title" content="HCF 最新動態 | 新竹格鬥館">
+    <meta property="og:description" content="掌握 HCF 精選課程、訓練方向、場館公告與社群更新，快速找到適合你的訓練戰線。">
     <meta property="og:image" content="https://www.hsinchucombat.com/hero1.jpg">
     <meta property="og:url" content="https://www.hsinchucombat.com/news.html">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！">
+    <meta name="twitter:title" content="HCF 最新動態 | 新竹格鬥館">
+    <meta name="twitter:description" content="掌握 HCF 精選課程、訓練方向、場館公告與社群更新，快速找到適合你的訓練戰線。">
     <meta name="twitter:image" content="https://www.hsinchucombat.com/hero1.jpg">
 
     <link rel="manifest" href="manifest.json">
@@ -954,6 +954,7 @@
                 if (!track) return;
 
                 track.style.msOverflowStyle = 'none';
+                track.style.touchAction = 'pan-x';
 
                 var dots = dotsId ? document.querySelectorAll('#' + dotsId + ' > div') : [];
                 function updateDots() {
@@ -1121,6 +1122,11 @@
 
           const rocket = document.getElementById('rocket-top');
           if (rocket) rocket.style.display = 'none';
+
+          const newsSection = document.getElementById('news');
+          if (newsSection) {
+            newsSection.style.paddingBottom = 'calc(6.5rem + env(safe-area-inset-bottom))';
+          }
         }
 
         // ═══ PWA 安裝引導（取代舊的小按鈕） ═══
