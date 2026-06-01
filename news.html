@@ -415,8 +415,8 @@
                     </div>
                     <div class="relative">
                         <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--theme-base)] to-transparent z-10 pointer-events-none rounded-r-xl"></div>
-                        <div id="featured-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;">
-                            <a href="classes.html#muay-thai" class="flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                        <div id="featured-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;" aria-label="精選課程橫向滑動列表">
+                            <a href="classes.html#muay-thai" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
                                 <div class="relative h-44 overflow-hidden">
                                     <img src="course_muaythai.jpg" alt="泰拳訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-fallback="https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&q=80&w=600">
                                     <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
@@ -428,9 +428,9 @@
                                     <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
                                 </div>
                             </a>
-                            <a href="classes.html#kickboxing" class="flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                            <a href="classes.html#kickboxing" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
                                 <div class="relative h-44 overflow-hidden">
-                                    <img src="course_kickboxing.jpg" alt="踢拳訓練" class="w-full h-full object-cover filter brightness-50 contrast-125" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=600">
+                                    <img src="course_kickboxing.jpg" alt="踢拳訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1599552375240-5a707106041a?auto=format&fit=crop&q=80&w=600">
                                     <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
                                     <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">燃脂 / 體能</span>
                                 </div>
@@ -440,9 +440,9 @@
                                     <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
                                 </div>
                             </a>
-                            <a href="classes.html#sanda" class="flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                            <a href="classes.html#sanda" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
                                 <div class="relative h-44 overflow-hidden">
-                                    <img src="course_sanda.jpg" alt="散打訓練" class="w-full h-full object-cover filter brightness-50 contrast-125" data-fallback="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=600">
+                                    <img src="course_sanda.jpg" alt="散打訓練" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=600">
                                     <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
                                     <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">實戰 / 對抗</span>
                                 </div>
@@ -452,9 +452,9 @@
                                     <span class="text-sci-cyan text-xs font-bold tracking-wider inline-flex items-center gap-2">了解課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
                                 </div>
                             </a>
-                            <a href="classes.html#strength" class="flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
+                            <a href="classes.html#strength" class="group flex-shrink-0 w-[84vw] sm:w-[360px] bg-[#050810] border border-white/10 rounded-xl overflow-hidden hover:border-sci-cyan/40 transition-all duration-300 hover:-translate-y-1" style="scroll-snap-align:start;">
                                 <div class="relative h-44 overflow-hidden">
-                                    <img src="course_sc.jpg" alt="肌力體能" class="w-full h-full object-cover filter brightness-50 contrast-125" data-fallback="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600">
+                                    <img src="course_sc.jpg" alt="肌力體能" class="w-full h-full object-cover filter brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105" data-fallback="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600">
                                     <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent"></div>
                                     <span class="absolute top-3 left-3 bg-sci-cyan text-black text-[10px] font-black px-2 py-1 skew-x-[-8deg] tracking-widest">基礎 / 強化</span>
                                 </div>
@@ -491,7 +491,7 @@
 
                     <div class="relative">
                         <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--theme-base)] to-transparent z-10 pointer-events-none rounded-r-xl"></div>
-                        <div id="explore-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;">
+                        <div id="explore-track" class="hscroll-track flex gap-4 overflow-x-auto pb-4 pr-4 cursor-grab active:cursor-grabbing select-none" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;" aria-label="訓練方向橫向滑動列表">
                             <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
                                 <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-seedling text-sci-cyan text-xl"></i></div>
                                 <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">BEGINNERS</div>
@@ -504,7 +504,7 @@
                                 <div class="text-sci-cyan text-[10px] font-bold tracking-widest font-orbitron mb-2">TECHNICAL</div>
                                 <h4 class="text-white font-black text-xl mb-3">技術精修</h4>
                                 <p class="text-gray-400 text-sm leading-relaxed mb-5">針對動作修正、節奏控制與組合拆解，讓每次出拳更有效率。</p>
-                                <a href="team.html" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">選這條路 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                                <a href="classes.html#private" class="inline-flex items-center gap-2 text-sci-cyan text-xs font-bold tracking-wider">查看課程 <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
                             </div>
                             <div class="flex-shrink-0 w-[84vw] sm:w-80 bg-[#050810] border border-white/10 rounded-xl p-6 hover:border-sci-cyan/50 transition-all duration-300" style="scroll-snap-align:start;">
                                 <div class="w-12 h-12 rounded-full bg-sci-cyan/15 flex items-center justify-center border border-sci-cyan/30 mb-5"><i class="fa-solid fa-fire-flame-curved text-sci-cyan text-xl"></i></div>
@@ -621,7 +621,7 @@
                                     <p class="text-gray-400 text-sm leading-relaxed">由教練拆解動作細節、補足弱點，建立更高階的技術品質。</p>
                                 </div>
                                 <div class="mt-auto">
-                                    <a href="team.html" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">查看教練</a>
+                                    <a href="classes.html#private" class="block text-center py-2.5 px-4 bg-sci-cyan/10 border border-sci-cyan/30 text-sci-cyan text-xs font-black tracking-widest hover:bg-sci-cyan hover:text-black transition-all rounded-lg">查看課程</a>
                                 </div>
                             </div>
                         </div>
