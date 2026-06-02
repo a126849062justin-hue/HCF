@@ -4,33 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // sci colors reference CSS custom properties (--theme-*-rgb) defined
-        // via inline <style> in each HTML page (set dynamically by the theme system)
-        sci: {
-          base: 'rgba(var(--theme-base-rgb), <alpha-value>)',
-          surface: 'rgba(var(--theme-surface-rgb), <alpha-value>)',
-          cyan: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
-          gold: 'rgba(var(--theme-gold-rgb), <alpha-value>)',
-          gray: '#94a3b8',
-          accent: 'rgba(var(--theme-cyan-rgb), <alpha-value>)',
-        }
+        'brand-red': '#E63946',
+        'brand-bg': '#08080B',
+        'brand-panel': '#121217',
+        'brand-text': '#F5F1EA',
+        'brand-muted': '#B8B3AD',
       },
       fontFamily: {
-        sans: ['Inter', '"Noto Sans TC"', 'sans-serif'],
-        heading: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
-        orbitron: ['"Orbitron"', 'sans-serif'],
+        sans: ['"Noto Sans TC"', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'serif'],
       },
-      animation: {
-        'marquee': 'marquee 40s linear infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      boxShadow: {
+        glow: '0 0 35px rgba(230,57,70,0.26)',
       },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(-100%)' },
-        },
-      },
-    }
+    },
   },
   plugins: [],
-}
+};
