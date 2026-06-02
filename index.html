@@ -196,8 +196,7 @@
                             <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                         </a>
                         <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-32 bg-[#050810]/95 backdrop-blur-md border border-white/10 rounded shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
-                            <a href="pricing.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">團體課程</a>
-                            <a href="pricing.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">私人課程</a>
+                            <a href="pricing.html" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">新生限定方案</a>
                             <a href="index.html#schedule" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">課表</a>
                         </div>
                     </div>
@@ -282,8 +281,7 @@
             <div class="border-b border-white/5 pb-3">
                 <a href="pricing.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest mb-3">課程方案</a>
                 <div class="grid grid-cols-2 gap-3 pl-4">
-                    <a href="pricing.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 團體課程</a>
-                    <a href="pricing.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 私人課程</a>
+                    <a href="pricing.html" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 新生限定方案</a>
                     <a href="index.html#schedule" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 課表</a>
                 </div>
             </div>
@@ -915,137 +913,100 @@
         <section id="schedule" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-8">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">SYSTEM SCHEDULE</span>
+                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">INTERACTIVE SCHEDULE SYSTEM</span>
                     <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover mb-4 inline-block border-b-4 border-sci-cyan pb-2" data-i18n="sections.schedule" data-en="LATEST SCHEDULE">最新課表</h2>
-                    <p class="text-gray-500 text-xs font-mono tracking-wider">專業技擊系統 | 團體課表 2026 EDITION</p>
-                </div>
-
-                <!-- Legend -->
-                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-6 text-[10px] sm:text-xs font-bold tracking-widest">
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-red-500"></span> MUAY THAI</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-orange-500"></span> SANDA</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-purple-500"></span> KICKBOXING</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-emerald-500"></span> S&C / CARDIO</span>
+                    <p class="text-gray-500 text-xs font-mono tracking-wider">點擊課程直接預約 | 互動課表 2026 EDITION</p>
                 </div>
 
                 <style>
-                    .sched-table { width: 100%; border-collapse: separate; border-spacing: 4px; }
-                    .sched-table th { font-size: 11px; font-weight: 900; letter-spacing: 2px; color: #888; padding: 8px 4px; text-align: center; font-family: 'Orbitron', monospace; }
-                    .sched-table .time-col { text-align: left; min-width: 64px; padding-right: 8px; }
-                    .sched-table .time-main { font-size: 16px; font-weight: 900; color: white; font-family: 'Orbitron', monospace; letter-spacing: 1px; }
-                    .sched-table .time-sub { font-size: 10px; color: #555; font-family: monospace; }
-                    .sched-cell { background: #0a0e18; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 6px; text-align: center; vertical-align: top; min-height: 60px; transition: border-color 0.2s; }
-                    .sched-cell:hover { border-color: rgba(var(--theme-cyan-rgb), 0.3); }
-                    .sched-cell.empty { background: transparent; border-color: transparent; }
-                    .sched-lv { display: inline-block; font-size: 9px; font-weight: 900; letter-spacing: 1px; padding: 2px 8px; border-radius: 3px; margin-bottom: 4px; }
-                    .lv-mt { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-                    .lv-sd { background: rgba(249,115,22,0.2); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
-                    .lv-kb { background: rgba(168,85,247,0.2); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
-                    .lv-sc { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
-                    .sched-name { font-size: 12px; font-weight: 900; color: white; letter-spacing: 1px; line-height: 1.3; }
-                    .sched-sub { font-size: 9px; color: #666; letter-spacing: 1px; font-family: monospace; text-transform: uppercase; margin-top: 2px; }
-                    .sched-gray { font-style: italic; color: #444; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
-                    @media (max-width: 640px) {
-                        .sched-table { border-spacing: 2px; }
-                        .sched-table th { font-size: 9px; padding: 6px 2px; letter-spacing: 1px; }
-                        .sched-table .time-main { font-size: 12px; }
-                        .sched-cell { padding: 6px 3px; border-radius: 6px; }
-                        .sched-lv { font-size: 7px; padding: 1px 5px; }
-                        .sched-name { font-size: 10px; }
-                        .sched-sub { font-size: 7px; }
-                        .sched-gray { font-size: 9px; }
+                    /* ══ HCF Interactive Schedule 2026 ══ */
+                    /* Filter pills */
+                    .sched-filter { display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:900; letter-spacing:2px; padding:7px 14px; border-radius:99px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); color:#999; cursor:pointer; transition:all .25s; font-family:'Orbitron',monospace; -webkit-tap-highlight-color:transparent; }
+                    .sched-filter:hover { border-color:rgba(var(--theme-cyan-rgb),0.5); color:#fff; }
+                    .sched-filter.active { background:var(--theme-cyan); color:#000; border-color:var(--theme-cyan); box-shadow:0 0 15px rgba(var(--theme-cyan-rgb),0.4); }
+                    .sched-filter .sdot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+                    .sched-filter.active .sdot { outline:1.5px solid rgba(0,0,0,0.4); }
+                    .sdot-mt { background:#ef4444; } .sdot-sd { background:#f97316; } .sdot-kb { background:#a855f7; } .sdot-sc { background:#10b981; }
+                    /* Day tabs */
+                    .sched-days { display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+                    .sched-days::-webkit-scrollbar { display:none; }
+                    @media (min-width:768px){ .sched-days { justify-content:center; } }
+                    .sched-daytab { flex:0 0 auto; min-width:64px; padding:8px 10px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:#0a0e18; cursor:pointer; text-align:center; transition:all .25s; -webkit-tap-highlight-color:transparent; }
+                    .sched-daytab .dt-en { display:block; font-size:10px; font-weight:900; letter-spacing:2px; color:#777; font-family:'Orbitron',monospace; }
+                    .sched-daytab .dt-zh { display:block; font-size:12px; font-weight:700; color:#ccc; margin-top:2px; }
+                    .sched-daytab .dt-today { display:inline-block; font-size:8px; font-weight:900; color:#000; background:var(--theme-cyan); border-radius:3px; padding:1px 5px; margin-top:3px; letter-spacing:1px; }
+                    .sched-daytab:hover { border-color:rgba(var(--theme-cyan-rgb),0.4); }
+                    .sched-daytab.active { border-color:var(--theme-cyan); background:rgba(var(--theme-cyan-rgb),0.1); box-shadow:0 0 15px rgba(var(--theme-cyan-rgb),0.2); }
+                    .sched-daytab.active .dt-en, .sched-daytab.active .dt-zh { color:#fff; }
+                    /* Week grid (desktop) */
+                    .sched-table { width:100%; border-collapse:separate; border-spacing:4px; }
+                    .sched-table th { font-size:11px; font-weight:900; letter-spacing:2px; color:#888; padding:8px 4px; text-align:center; font-family:'Orbitron',monospace; border-radius:8px; transition:all .25s; }
+                    .sched-table th .th-zh { display:block; font-size:9px; color:#555; font-weight:400; letter-spacing:1px; }
+                    .sched-table th.today-col { color:#000; background:var(--theme-cyan); box-shadow:0 0 18px rgba(var(--theme-cyan-rgb),0.45); }
+                    .sched-table th.today-col .th-zh { color:rgba(0,0,0,0.6); }
+                    .sched-table th.hl-col { outline:1.5px solid var(--theme-cyan); outline-offset:-1.5px; color:#fff; }
+                    .sched-table .time-col { text-align:left; min-width:64px; padding-right:8px; }
+                    .sched-table .time-main { font-size:15px; font-weight:900; color:#fff; font-family:'Orbitron',monospace; letter-spacing:1px; }
+                    .sched-table .time-sub { font-size:10px; color:#555; font-family:monospace; }
+                    .sched-cell { background:#0a0e18; border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:0; text-align:center; vertical-align:top; transition:all .25s; position:relative; }
+                    .sched-cell > a, .sched-cell > div { display:block; padding:10px 6px; border-radius:8px; text-decoration:none; }
+                    .sched-cell.has-class:hover { border-color:var(--theme-cyan); transform:translateY(-2px); box-shadow:0 6px 18px rgba(var(--theme-cyan-rgb),0.18); }
+                    .sched-cell.today-cell { background:#0c1322; border-color:rgba(var(--theme-cyan-rgb),0.25); }
+                    .sched-cell.dimmed { opacity:0.18; filter:grayscale(1); pointer-events:none; }
+                    .sched-cell.empty-cell { background:transparent; border-style:dashed; border-color:rgba(255,255,255,0.05); }
+                    .sched-cell.empty-cell:hover { border-color:rgba(var(--theme-cyan-rgb),0.35); }
+                    .sched-cell.empty-cell a { color:#3a4150; font-size:10px; font-weight:700; letter-spacing:1px; }
+                    .sched-cell.empty-cell:hover a { color:var(--theme-cyan); }
+                    /* Class chips & labels */
+                    .sched-lv { display:inline-block; font-size:9px; font-weight:900; letter-spacing:1px; padding:2px 8px; border-radius:3px; margin-bottom:4px; }
+                    .lv-mt { background:rgba(239,68,68,0.2); color:#f87171; border:1px solid rgba(239,68,68,0.3); }
+                    .lv-sd { background:rgba(249,115,22,0.2); color:#fb923c; border:1px solid rgba(249,115,22,0.3); }
+                    .lv-kb { background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.3); }
+                    .lv-sc { background:rgba(16,185,129,0.2); color:#34d399; border:1px solid rgba(16,185,129,0.3); }
+                    .sched-name { font-size:12px; font-weight:900; color:#fff; letter-spacing:1px; line-height:1.3; }
+                    .sched-sub { font-size:9px; color:#666; letter-spacing:1px; font-family:monospace; text-transform:uppercase; margin-top:2px; }
+                    /* LIVE / NEXT badges */
+                    .badge-live, .badge-next { position:absolute; top:-7px; right:-4px; font-size:8px; font-weight:900; letter-spacing:1px; padding:2px 6px; border-radius:4px; font-family:'Orbitron',monospace; z-index:2; }
+                    .badge-live { background:#dc2626; color:#fff; box-shadow:0 0 10px rgba(220,38,38,0.7); animation:schedPulse 1.2s ease-in-out infinite; }
+                    .badge-next { background:var(--theme-cyan); color:#000; box-shadow:0 0 10px rgba(var(--theme-cyan-rgb),0.6); }
+                    @keyframes schedPulse { 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:0.6; transform:scale(0.94);} }
+                    /* Mobile day cards */
+                    .sched-card { display:flex; align-items:center; gap:14px; background:#0a0e18; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; position:relative; text-decoration:none; transition:all .25s; -webkit-tap-highlight-color:transparent; }
+                    .sched-card:active { transform:scale(0.98); }
+                    .sched-card:hover { border-color:var(--theme-cyan); box-shadow:0 5px 20px rgba(var(--theme-cyan-rgb),0.15); }
+                    .sched-card.dimmed { opacity:0.25; filter:grayscale(1); pointer-events:none; }
+                    .sched-card .sc-time { min-width:58px; text-align:center; }
+                    .sched-card .sc-time-main { font-size:16px; font-weight:900; color:#fff; font-family:'Orbitron',monospace; }
+                    .sched-card .sc-time-sub { font-size:9px; color:#555; font-family:monospace; }
+                    .sched-card .sc-bar { width:3px; align-self:stretch; border-radius:3px; }
+                    .bar-mt{background:#ef4444;} .bar-sd{background:#f97316;} .bar-kb{background:#a855f7;} .bar-sc{background:#10b981;}
+                    .sched-card .sc-info { flex:1; }
+                    .sched-card .sc-cta { color:var(--theme-cyan); font-size:11px; font-weight:900; letter-spacing:1px; white-space:nowrap; display:flex; align-items:center; gap:4px; }
+                    .sched-empty-day { text-align:center; padding:32px 16px; color:#555; font-size:12px; border:1px dashed rgba(255,255,255,0.1); border-radius:12px; }
+                    .sched-fade { animation:schedFadeIn .35s ease; }
+                    @keyframes schedFadeIn { from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
+                    @media (max-width:640px){
+                        .sched-filter { font-size:9px; padding:6px 11px; letter-spacing:1px; }
                     }
                 </style>
 
-                <!-- Weekday Schedule Table -->
-                <div class="overflow-x-auto reveal rounded-xl border border-white/10 bg-[#050810] p-3 sm:p-5 shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.1)]">
-                    <table class="sched-table">
-                        <thead>
-                            <tr>
-                                <th class="time-col">TIME</th>
-                                <th>MON<br><span style="font-size:9px;color:#555;font-weight:400">週一</span></th>
-                                <th>TUE<br><span style="font-size:9px;color:#555;font-weight:400">週二</span></th>
-                                <th>WED<br><span style="font-size:9px;color:#555;font-weight:400">週三</span></th>
-                                <th>THU<br><span style="font-size:9px;color:#555;font-weight:400">週四</span></th>
-                                <th>FRI<br><span style="font-size:9px;color:#555;font-weight:400">週五</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 11:00 -->
-                            <tr>
-                                <td class="time-col"><div class="time-main">11:00</div><div class="time-sub">12:10</div></td>
-                                <td class="sched-cell"><span class="sched-gray">RENTAL</span></td>
-                                <td class="sched-cell"><span class="sched-gray">RENTAL</span></td>
-                                <td class="sched-cell"><span class="sched-lv lv-sc">LV.1</span><div class="sched-name">肌力體能</div><div class="sched-sub">S&C</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-sd">LV.1</span><div class="sched-name">散打摔法</div><div class="sched-sub">TAKEDOWNS</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-sc">LV.1</span><div class="sched-name">肌力體能</div><div class="sched-sub">S&C</div></td>
-                            </tr>
-                            <!-- 13:00 -->
-                            <tr>
-                                <td class="time-col"><div class="time-main">13:00</div><div class="time-sub">16:00</div></td>
-                                <td class="sched-cell"><span class="sched-gray">PRIVATE</span></td>
-                                <td class="sched-cell"><span class="sched-gray">PRIVATE</span></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">泰拳燃脂</div><div class="sched-sub">15:00 START</div></td>
-                                <td class="sched-cell"><span class="sched-gray">PRIVATE</span></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">泰拳燃脂</div><div class="sched-sub">15:00 START</div></td>
-                            </tr>
-                            <!-- 19:20 -->
-                            <tr>
-                                <td class="time-col"><div class="time-main">19:20</div><div class="time-sub">20:30</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-kb">LV.1</span><div class="sched-name">拳腿CLINCH</div><div class="sched-sub">LINKAGE</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">拳腿連擊</div><div class="sched-sub">COMBOS</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">肘膝連擊</div><div class="sched-sub">ELBOWS</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-sc">LV.1</span><div class="sched-name">泰式燃脂</div><div class="sched-sub">CARDIO</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">近身打擊</div><div class="sched-sub">INSIDE</div></td>
-                            </tr>
-                            <!-- 20:40 -->
-                            <tr>
-                                <td class="time-col"><div class="time-main">20:40</div><div class="time-sub">21:50</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-kb">LV.2</span><div class="sched-name">拳腿CLINCH</div><div class="sched-sub">SPARRING</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.2</span><div class="sched-name">遠距離阻擊</div><div class="sched-sub">RANGE DRILL</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.2</span><div class="sched-name">實戰技術</div><div class="sched-sub">TECH SPAR</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-mt">LV.1</span><div class="sched-name">新手泰拳</div><div class="sched-sub">BEGINNER</div></td>
-                                <td class="sched-cell"><span class="sched-lv lv-kb">LV.2</span><div class="sched-name">近身對打</div><div class="sched-sub">POCKET</div></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- 課程類型互動篩選器 -->
+                <div id="sched-filters" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-5" role="group" aria-label="課程類型篩選">
+                    <button type="button" class="sched-filter active" data-type="all" aria-pressed="true">ALL 全部</button>
+                    <button type="button" class="sched-filter" data-type="mt" aria-pressed="false"><span class="sdot sdot-mt"></span> MUAY THAI</button>
+                    <button type="button" class="sched-filter" data-type="sd" aria-pressed="false"><span class="sdot sdot-sd"></span> SANDA</button>
+                    <button type="button" class="sched-filter" data-type="kb" aria-pressed="false"><span class="sdot sdot-kb"></span> KICKBOXING</button>
+                    <button type="button" class="sched-filter" data-type="sc" aria-pressed="false"><span class="sdot sdot-sc"></span> S&amp;C</button>
                 </div>
 
-                <!-- Weekend -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 reveal">
-                    <div class="bg-[#050810] border border-white/10 rounded-xl p-5">
-                        <div class="text-xs font-black text-white tracking-widest mb-1 font-orbitron">WEEKEND OPS // 週末特訓</div>
-                        <div class="text-[10px] text-gray-500 font-mono tracking-wider mb-4">SAT 週六</div>
-                        <div class="flex flex-col gap-2">
-                            <div class="flex items-center gap-3">
-                                <span class="sched-lv lv-mt" style="margin:0">LV.1</span>
-                                <span class="text-white font-bold text-xs">11:00</span>
-                                <span class="text-gray-300 text-xs">泰拳防守反擊</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="sched-lv lv-kb" style="margin:0">LV.1</span>
-                                <span class="text-white font-bold text-xs">12:20</span>
-                                <span class="text-gray-300 text-xs">基礎 CLINCH</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-[#050810] border border-white/10 rounded-xl p-5">
-                        <div class="text-xs font-black text-white tracking-widest mb-1 font-orbitron opacity-0 sm:opacity-100">WEEKEND OPS</div>
-                        <div class="text-[10px] text-gray-500 font-mono tracking-wider mb-4">SUN 週日</div>
-                        <div class="flex flex-col gap-2">
-                            <div class="flex items-center gap-3">
-                                <span class="sched-lv lv-sd" style="margin:0">LV.1</span>
-                                <span class="text-white font-bold text-xs">11:00</span>
-                                <span class="text-gray-300 text-xs">散打遠踢近摔</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="sched-lv lv-sd" style="margin:0">LV.1</span>
-                                <span class="text-white font-bold text-xs">12:20</span>
-                                <span class="text-gray-300 text-xs">散打拳腿運用</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- 星期切換頁籤 -->
+                <div id="sched-days" class="sched-days mb-5" role="tablist" aria-label="選擇星期"></div>
+
+                <!-- 桌面版：整週互動課表 -->
+                <div id="sched-week" class="hidden md:block reveal rounded-xl border border-white/10 bg-[#050810] p-3 sm:p-5 shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.1)] overflow-x-auto"></div>
+
+                <!-- 行動版：單日課程卡片 -->
+                <div id="sched-day" class="md:hidden reveal"></div>
 
                 <!-- Fighter Squad -->
                 <div class="mt-4 reveal bg-[#050810] border border-red-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -1053,7 +1014,7 @@
                         <span class="text-lg sm:text-xl font-black text-white font-orbitron italic tracking-wider">FIGHTER SQUAD</span>
                         <span class="text-[9px] font-black text-red-400 bg-red-500/20 border border-red-500/40 px-2 py-0.5 rounded tracking-widest">INVITATION ONLY</span>
                     </div>
-                    <span class="text-white font-bold text-sm font-mono tracking-widest">14:00 - 16:00</span>
+                    <span class="text-white font-bold text-sm font-mono tracking-widest">SAT 14:00 - 16:00</span>
                 </div>
 
                 <!-- Rules & Membership -->
@@ -1074,16 +1035,206 @@
                             <span class="w-1.5 h-3 bg-red-500 rounded-sm"></span> MEMBERSHIP // 招募獎勵
                         </div>
                         <ul class="text-[11px] text-gray-400 space-y-1.5 leading-relaxed">
-                            <li>+ 包月無限方案 <span class="text-white font-bold">$5,500</span> (天天練最划算)</li>
                             <li>+ 推薦獎勵：舊生帶新生體驗當天購課</li>
                             <li>+ <span class="text-white font-bold">10%</span> 回饋金：舊生拿獎勵金，新生獲 <span class="text-white font-bold">$500</span></li>
                             <li>+ 新生體驗：教練/學員引薦當天體驗免收費</li>
+                            <li>+ 私教時段：課表空堂皆可預約，<a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener noreferrer" class="text-sci-cyan hover:underline">LINE 私訊</a> 彈性安排</li>
                         </ul>
                     </div>
                 </div>
 
-                <p class="text-gray-500 mt-6 text-xs font-mono tracking-widest text-center">※ 課表若有異動，以官方 LINE 公告為主。</p>
+                <p class="text-gray-500 mt-6 text-xs font-mono tracking-widest text-center">※ 課表若有異動，以官方 LINE 公告為主。點擊任一課程可直接前往預約。</p>
             </div>
+
+            <script>
+            (function () {
+                'use strict';
+                /* ══ HCF Interactive Schedule 2026 ══ */
+                var BOOK_URL = 'https://www.fit-book.com.tw/hsinchucombat/plan/588';
+                var LINE_URL = 'https://lin.ee/7lidUv0';
+                var DAYS_ZH = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
+                var DAYS_EN = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var DAY_ORDER = [1, 2, 3, 4, 5, 6, 0]; /* 顯示順序：週一→週日 */
+                var TIME_SLOTS = [
+                    { s: '11:00', e: '12:10' },
+                    { s: '12:20', e: '13:30' },
+                    { s: '15:00', e: '16:10' },
+                    { s: '19:20', e: '20:30' },
+                    { s: '20:40', e: '21:50' }
+                ];
+                /* d: 0=週日 ~ 6=週六（同 JS getDay）/ t: mt 泰拳, sd 散打, kb 踢拳, sc 肌力體能 */
+                var CLASSES = [
+                    { d: 3, s: '11:00', e: '12:10', t: 'sc', lv: 1, n: '肌力體能', en: 'S&C' },
+                    { d: 4, s: '11:00', e: '12:10', t: 'sd', lv: 1, n: '散打摔法', en: 'TAKEDOWNS' },
+                    { d: 5, s: '11:00', e: '12:10', t: 'sc', lv: 1, n: '肌力體能', en: 'S&C' },
+                    { d: 3, s: '15:00', e: '16:10', t: 'mt', lv: 1, n: '泰拳燃脂', en: 'FAT BURN' },
+                    { d: 5, s: '15:00', e: '16:10', t: 'mt', lv: 1, n: '泰拳燃脂', en: 'FAT BURN' },
+                    { d: 1, s: '19:20', e: '20:30', t: 'kb', lv: 1, n: '拳腿 CLINCH', en: 'LINKAGE' },
+                    { d: 2, s: '19:20', e: '20:30', t: 'mt', lv: 1, n: '拳腿連擊', en: 'COMBOS' },
+                    { d: 3, s: '19:20', e: '20:30', t: 'mt', lv: 1, n: '肘膝連擊', en: 'ELBOWS' },
+                    { d: 4, s: '19:20', e: '20:30', t: 'sc', lv: 1, n: '泰式燃脂', en: 'CARDIO' },
+                    { d: 5, s: '19:20', e: '20:30', t: 'mt', lv: 1, n: '近身打擊', en: 'INSIDE' },
+                    { d: 1, s: '20:40', e: '21:50', t: 'kb', lv: 2, n: '拳腿 CLINCH', en: 'SPARRING' },
+                    { d: 2, s: '20:40', e: '21:50', t: 'mt', lv: 2, n: '遠距離阻擊', en: 'RANGE DRILL' },
+                    { d: 3, s: '20:40', e: '21:50', t: 'mt', lv: 2, n: '實戰技術', en: 'TECH SPAR' },
+                    { d: 4, s: '20:40', e: '21:50', t: 'mt', lv: 1, n: '新手泰拳', en: 'BEGINNER' },
+                    { d: 5, s: '20:40', e: '21:50', t: 'kb', lv: 2, n: '近身對打', en: 'POCKET' },
+                    { d: 6, s: '11:00', e: '12:10', t: 'mt', lv: 1, n: '泰拳防守反擊', en: 'COUNTER' },
+                    { d: 6, s: '12:20', e: '13:30', t: 'kb', lv: 1, n: '基礎 CLINCH', en: 'BASIC CLINCH' },
+                    { d: 0, s: '11:00', e: '12:10', t: 'sd', lv: 1, n: '散打遠踢近摔', en: 'KICK & THROW' },
+                    { d: 0, s: '12:20', e: '13:30', t: 'sd', lv: 1, n: '散打拳腿運用', en: 'STRIKE FLOW' }
+                ];
+
+                var elDays = document.getElementById('sched-days');
+                var elWeek = document.getElementById('sched-week');
+                var elDay = document.getElementById('sched-day');
+                var elFilters = document.getElementById('sched-filters');
+                if (!elDays || !elWeek || !elDay || !elFilters) return;
+
+                var today = new Date().getDay();
+                var state = { day: today, filter: 'all' };
+
+                function toMin(t) { var p = t.split(':'); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
+
+                /* 即時狀態：LIVE（進行中）/ NEXT（今日下一堂） */
+                function liveStatus() {
+                    var now = new Date();
+                    var nowMin = now.getHours() * 60 + now.getMinutes();
+                    var live = null, next = null, nextStart = Infinity;
+                    CLASSES.forEach(function (c) {
+                        if (c.d !== today) return;
+                        var s = toMin(c.s), e = toMin(c.e);
+                        if (nowMin >= s && nowMin <= e) live = c;
+                        else if (s > nowMin && s < nextStart) { nextStart = s; next = c; }
+                    });
+                    return { live: live, next: next };
+                }
+                function badgeFor(c, st) {
+                    if (st.live === c) return '<span class="badge-live">● LIVE</span>';
+                    if (st.next === c) return '<span class="badge-next">NEXT</span>';
+                    return '';
+                }
+                function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+                /* ── 星期頁籤 ── */
+                function renderDays() {
+                    var html = '';
+                    DAY_ORDER.forEach(function (d) {
+                        var isToday = d === today;
+                        var active = d === state.day;
+                        html += '<button type="button" role="tab" aria-selected="' + active + '" class="sched-daytab' + (active ? ' active' : '') + '" data-day="' + d + '">'
+                            + '<span class="dt-en">' + DAYS_EN[d] + '</span>'
+                            + '<span class="dt-zh">' + DAYS_ZH[d] + '</span>'
+                            + (isToday ? '<span class="dt-today">今日</span>' : '')
+                            + '</button>';
+                    });
+                    elDays.innerHTML = html;
+                }
+
+                /* ── 桌面版整週課表 ── */
+                function renderWeek() {
+                    var st = liveStatus();
+                    var html = '<table class="sched-table"><thead><tr><th class="time-col">TIME</th>';
+                    DAY_ORDER.forEach(function (d) {
+                        var cls = d === today ? ' class="today-col"' : (d === state.day ? ' class="hl-col"' : '');
+                        html += '<th' + cls + ' data-day="' + d + '">' + DAYS_EN[d] + '<span class="th-zh">' + DAYS_ZH[d] + (d === today ? '・今日' : '') + '</span></th>';
+                    });
+                    html += '</tr></thead><tbody>';
+                    TIME_SLOTS.forEach(function (slot) {
+                        html += '<tr><td class="time-col"><div class="time-main">' + slot.s + '</div><div class="time-sub">' + slot.e + '</div></td>';
+                        DAY_ORDER.forEach(function (d) {
+                            var c = null;
+                            for (var i = 0; i < CLASSES.length; i++) {
+                                if (CLASSES[i].d === d && CLASSES[i].s === slot.s) { c = CLASSES[i]; break; }
+                            }
+                            var todayCls = d === today ? ' today-cell' : '';
+                            if (c) {
+                                var dim = state.filter !== 'all' && c.t !== state.filter ? ' dimmed' : '';
+                                html += '<td class="sched-cell has-class' + todayCls + dim + '">'
+                                    + badgeFor(c, st)
+                                    + '<a href="' + BOOK_URL + '" target="_blank" rel="noopener noreferrer" aria-label="預約 ' + esc(c.n) + '">'
+                                    + '<span class="sched-lv lv-' + c.t + '">LV.' + c.lv + '</span>'
+                                    + '<div class="sched-name">' + esc(c.n) + '</div>'
+                                    + '<div class="sched-sub">' + esc(c.en) + '</div>'
+                                    + '</a></td>';
+                            } else {
+                                var dimE = state.filter !== 'all' ? ' dimmed' : '';
+                                html += '<td class="sched-cell empty-cell' + todayCls + dimE + '">'
+                                    + '<a href="' + LINE_URL + '" target="_blank" rel="noopener noreferrer" aria-label="預約私教時段">私教可約 +</a></td>';
+                            }
+                        });
+                        html += '</tr>';
+                    });
+                    html += '</tbody></table>';
+                    elWeek.innerHTML = html;
+                }
+
+                /* ── 行動版單日卡片 ── */
+                function renderDay() {
+                    var st = liveStatus();
+                    var list = CLASSES.filter(function (c) { return c.d === state.day; })
+                        .sort(function (a, b) { return toMin(a.s) - toMin(b.s); });
+                    var html = '<div class="sched-fade space-y-3">';
+                    var visible = 0;
+                    list.forEach(function (c) {
+                        var dim = state.filter !== 'all' && c.t !== state.filter;
+                        if (!dim) visible++;
+                        html += '<a href="' + BOOK_URL + '" target="_blank" rel="noopener noreferrer" class="sched-card' + (dim ? ' dimmed' : '') + '">'
+                            + badgeFor(c, st)
+                            + '<span class="sc-bar bar-' + c.t + '"></span>'
+                            + '<span class="sc-time"><span class="sc-time-main">' + c.s + '</span><br><span class="sc-time-sub">' + c.e + '</span></span>'
+                            + '<span class="sc-info">'
+                            + '<span class="sched-lv lv-' + c.t + '">LV.' + c.lv + '</span>'
+                            + '<span class="sched-name" style="display:block">' + esc(c.n) + '</span>'
+                            + '<span class="sched-sub" style="display:block">' + esc(c.en) + '</span>'
+                            + '</span>'
+                            + '<span class="sc-cta">預約 <i class="fa-solid fa-angle-right"></i></span>'
+                            + '</a>';
+                    });
+                    if (list.length === 0 || visible === 0) {
+                        html += '<div class="sched-empty-day">' + DAYS_ZH[state.day] + ' 沒有符合條件的團體課<br><span style="color:#888">所有空堂皆可預約私人教練課</span></div>';
+                    }
+                    /* 私教時段轉化卡片 */
+                    html += '<a href="' + LINE_URL + '" target="_blank" rel="noopener noreferrer" class="sched-card" style="border-style:dashed">'
+                        + '<span class="sc-bar" style="background:#333"></span>'
+                        + '<span class="sc-time"><span class="sc-time-main" style="color:#888">空堂</span></span>'
+                        + '<span class="sc-info">'
+                        + '<span class="sched-name" style="display:block;color:#ccc">私人教練課・彈性預約</span>'
+                        + '<span class="sched-sub" style="display:block">PRIVATE TRAINING</span>'
+                        + '</span>'
+                        + '<span class="sc-cta" style="color:#06C755"><i class="fa-brands fa-line"></i> 諮詢</span>'
+                        + '</a>';
+                    html += '</div>';
+                    elDay.innerHTML = html;
+                }
+
+                function renderAll() { renderDays(); renderWeek(); renderDay(); }
+
+                /* ── 事件代理 ── */
+                elDays.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.sched-daytab');
+                    if (!btn) return;
+                    state.day = parseInt(btn.getAttribute('data-day'), 10);
+                    renderAll();
+                });
+                elFilters.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.sched-filter');
+                    if (!btn) return;
+                    state.filter = btn.getAttribute('data-type');
+                    elFilters.querySelectorAll('.sched-filter').forEach(function (b) {
+                        var on = b === btn;
+                        b.classList.toggle('active', on);
+                        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                    });
+                    renderWeek();
+                    renderDay();
+                });
+
+                renderAll();
+                /* 每分鐘更新 LIVE / NEXT 即時狀態 */
+                setInterval(function () { renderWeek(); renderDay(); }, 60000);
+            })();
+            </script>
         </section>
 
         <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
@@ -1185,7 +1336,7 @@
                         <div class="glow-overlay"></div>
                         <div class="relative z-10">
                             <p class="text-sci-cyan font-bold text-sm mb-3">費用多少？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">首次體驗 $400（團體課）・月卡 $3,000・私教 $1,400/堂・3人團課 $5,000/月</p>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">新生限定：團體課體驗 $400・私教體驗 $1,400/堂。完整課程方案歡迎 <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener noreferrer" class="text-sci-cyan hover:underline">LINE 諮詢</a>，依你的目標量身規劃。</p>
                         </div>
                     </div>
 
@@ -1470,7 +1621,7 @@
 
     <script>
     // HCF AI Shark — Full Knowledge Base
-    var HCF_KB={"營業時間|幾點|開門|打烊|休息":"📍 營業時間：\n週一～週五 11:00-22:00\n週六＆週日 11:00-16:00","地址|在哪|位置|怎麼去|交通":"📍 新竹市北區林森路301號2樓\n搜尋「HCF新竹格鬥館」Google Maps 就能找到！","電話|聯絡|打電話":"📞 0925-571-225\n或直接加我們 LINE：https://lin.ee/7lidUv0","停車|車位":"🅿️ 附近有林森路沿線路邊停車格，也可停在巨城附近停車場步行過來（約5分鐘）","費用|價錢|多少錢|收費|價格|怎麼算":"💰 新生限定方案：\n• 團體課體驗：$400\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n📋 完整課程價格請參考官網「課程方案」頁面！","體驗|試上|第一次|體驗課":"🥊 首次體驗只要 $400！70分鐘完整課程，裝備免費借用。\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","月費|月卡|包月|無限":"📅 團體課無限月卡：$5,500/月","私教|私人|一對一|1對1":"👊 私教課程（60分鐘）：\n• 體驗1堂 $1,400 / 2堂 $2,400\n• 10堂 $18,000（90天）\n• 20堂 $34,000（120天）\n• 30堂 $48,000（180天）","團體|團課|group":"👥 團體課程（70分鐘）：\n• 體驗價 $400\n• 單堂 $600\n• 10堂 $4,500（60天）\n• 30堂 $10,500（150天）\n• 月卡無限 $5,500","打靶|靶課":"🥊 打靶課（40分鐘）：單堂 $1,000 / 10堂 $9,000","1對2|一對二|雙人":"👫 1對2（60分鐘）：體驗 $2,400（2人）/ 10堂 $23,000 / 20堂 $44,000","優惠|活動|折扣|促銷|送":"🔥 新生限定方案（首次來館專屬）：\n• 團體課體驗：$400（原價$600）\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","入會費|年費|綁約":"✅ 不收入會費、年費、不強制綁約。課程方案自由選擇。","泰拳|muay thai":"🥊 泰拳 — 八肢的藝術。雙拳雙腿雙膝雙肘全方位打擊，單堂消耗600-800大卡！WBC冠軍級教練親自指導。","踢拳|kickboxing":"🦵 踢拳 — 快節奏攻防，精準刺激臀腿肌群，修長線條首選！","散打|sanda":"🤼 散打 — 踢打摔全方位格鬥，打造鋼鐵核心！","重訓|肌力|體能|s&c":"💪 肌力體能 S&C — 功能性訓練，打造易瘦體質！","課表|時間表|上課時間":"📅 尖峰19:20-21:50每天有課 / 離峰11:00-16:00（週三四五六日）/ 私教可彈性約時間","教練|老師|誰教":"👊 教練團隊：黃謙和（總教練42勝）、Allen（竹科戰神）、鄭豫（功夫熊貓）、高大可（一年減30kg）、胡脩誠（鐵血戰神）","黃謙和|館長|總教練":"🏆 黃謙和：42勝12敗・WBC冠軍・MAXFC越南冠軍・MPF07大勝泰國教練・格鬥鋼鐵人","新手|沒基礎|零基礎|不會|初學":"🔰 80%學員零基礎開始！教練根據你的程度調整強度，第一堂只要$400，穿運動服來就好。","胖|瘦|體型":"💪 不分體型！高大可教練就是104kg→74kg的最佳證明！","女生|女性|女孩":"👩 非常歡迎！有女性助教專門指導，新手課不對打，環境安全友善。練拳讓線條更修長緊實！","年紀|歲|老|年長":"👴 6歲到60歲都有學員！建議從私教開始，教練監控安全。","受傷|危險|安全|怕痛|對打":"🛡️ 比籃球受傷率還低！初學者打沙袋和手靶，不需要跟人對打。","減肥|瘦|減重|燃脂":"🔥 一小時600-800大卡！公認最高效燃脂運動。高大可教練一年104→74kg！","壓力|紓壓|上班":"💆 打完沙包腦袋雜訊全消！「拖著身體來，跳著舞步回家」","裝備|拳套|準備|穿什麼":"🥊 穿運動服就好！赤腳訓練，館內拳套免費借用。帶毛巾和水壺即可。","淋浴|洗澡":"🚿 有淋浴間和更衣室！","預約|報名|怎麼約":"📱 預約方式：\n1. 線上：https://www.fit-book.com.tw/hsinchucombat/plan/588\n2. LINE：https://lin.ee/7lidUv0\n3. 電話：0925-571-225","比賽|選手|擂台":"🏆 有完整選手培訓系統！週六14:00有選手班。多位學員已在各大賽事奪牌！","hcf|品牌|名字|意思":"🔥 HCF = Honor(榮譽)・Courage(勇氣)・Faith(信念)\n「這輩子，總要為自己贏一次。」","歌|bgm|音樂|自己贏一次":"🎵「為自己贏一次」是HCF主題曲，也是MPF07開場樂！","mpf|圖姆|thum|大勝":"🏆 2026/3/21 MPF07 黃謙和復出首戰大勝泰國教練圖姆（202戰152勝）！全場唯一台灣人勝出！","生理期|月經":"🩺 可以上課！適度運動舒緩經痛，請告知教練調整強度。","舊傷|膝蓋|腰痛":"🏥 請告知教練！可設計避開患部的復健式訓練。","手腳不協調":"😆 90%的人剛開始都這樣！幾堂課後你會驚訝自己的進步！","哈囉|你好|嗨|hi|hello":"👋 你好！我是 HCF 智能鯊魚教練🦈\n有什麼想問的？費用、課程、教練、預約，什麼都可以問！"};
+    var HCF_KB={"營業時間|幾點|開門|打烊|休息":"📍 營業時間：\n週一～週五 11:00-22:00\n週六＆週日 11:00-16:00","地址|在哪|位置|怎麼去|交通":"📍 新竹市北區林森路301號2樓\n搜尋「HCF新竹格鬥館」Google Maps 就能找到！","電話|聯絡|打電話":"📞 0925-571-225\n或直接加我們 LINE：https://lin.ee/7lidUv0","停車|車位":"🅿️ 附近有林森路沿線路邊停車格，也可停在巨城附近停車場步行過來（約5分鐘）","費用|價錢|多少錢|收費|價格|怎麼算":"💰 新生限定方案：\n• 團體課體驗：$400\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n📋 完整方案由教練依你的目標規劃，歡迎 LINE 諮詢：https://lin.ee/7lidUv0","體驗|試上|第一次|體驗課":"🥊 首次體驗只要 $400！70分鐘完整課程，裝備免費借用。\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","月費|月卡|包月|無限":"📅 團體課月卡與包月方案，歡迎 LINE 諮詢：https://lin.ee/7lidUv0","私教|私人|一對一|1對1":"👊 私教課程（60分鐘）：\n• 體驗1堂 $1,400 / 2堂 $2,400\n\n完整方案由教練依目標規劃，歡迎 LINE 諮詢：https://lin.ee/7lidUv0","團體|團課|group":"👥 團體課程（70分鐘）：\n• 新生體驗價 $400\n\n完整方案由教練依目標規劃，歡迎 LINE 諮詢：https://lin.ee/7lidUv0","打靶|靶課":"🥊 私人打靶課（40分鐘）：歡迎 LINE 諮詢方案：https://lin.ee/7lidUv0","1對2|一對二|雙人":"👫 1對2 雙人包班（60分鐘）：體驗 $2,400（2人，每人 $1,200）\n\n完整方案歡迎 LINE 諮詢：https://lin.ee/7lidUv0","優惠|活動|折扣|促銷|送":"🔥 新生限定方案（首次來館專屬）：\n• 團體課體驗：$400（原價$600）\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","入會費|年費|綁約":"✅ 不收入會費、年費、不強制綁約。課程方案自由選擇。","泰拳|muay thai":"🥊 泰拳 — 八肢的藝術。雙拳雙腿雙膝雙肘全方位打擊，單堂消耗600-800大卡！WBC冠軍級教練親自指導。","踢拳|kickboxing":"🦵 踢拳 — 快節奏攻防，精準刺激臀腿肌群，修長線條首選！","散打|sanda":"🤼 散打 — 踢打摔全方位格鬥，打造鋼鐵核心！","重訓|肌力|體能|s&c":"💪 肌力體能 S&C — 功能性訓練，打造易瘦體質！","課表|時間表|上課時間":"📅 尖峰19:20-21:50每天有課 / 離峰11:00-16:00（週三四五六日）/ 私教可彈性約時間","教練|老師|誰教":"👊 教練團隊：黃謙和（總教練42勝）、Allen（竹科戰神）、鄭豫（功夫熊貓）、高大可（一年減30kg）、胡脩誠（鐵血戰神）","黃謙和|館長|總教練":"🏆 黃謙和：42勝12敗・WBC冠軍・MAXFC越南冠軍・MPF07大勝泰國教練・格鬥鋼鐵人","新手|沒基礎|零基礎|不會|初學":"🔰 80%學員零基礎開始！教練根據你的程度調整強度，第一堂只要$400，穿運動服來就好。","胖|瘦|體型":"💪 不分體型！高大可教練就是104kg→74kg的最佳證明！","女生|女性|女孩":"👩 非常歡迎！有女性助教專門指導，新手課不對打，環境安全友善。練拳讓線條更修長緊實！","年紀|歲|老|年長":"👴 6歲到60歲都有學員！建議從私教開始，教練監控安全。","受傷|危險|安全|怕痛|對打":"🛡️ 比籃球受傷率還低！初學者打沙袋和手靶，不需要跟人對打。","減肥|瘦|減重|燃脂":"🔥 一小時600-800大卡！公認最高效燃脂運動。高大可教練一年104→74kg！","壓力|紓壓|上班":"💆 打完沙包腦袋雜訊全消！「拖著身體來，跳著舞步回家」","裝備|拳套|準備|穿什麼":"🥊 穿運動服就好！赤腳訓練，館內拳套免費借用。帶毛巾和水壺即可。","淋浴|洗澡":"🚿 有淋浴間和更衣室！","預約|報名|怎麼約":"📱 預約方式：\n1. 線上：https://www.fit-book.com.tw/hsinchucombat/plan/588\n2. LINE：https://lin.ee/7lidUv0\n3. 電話：0925-571-225","比賽|選手|擂台":"🏆 有完整選手培訓系統！週六14:00有選手班。多位學員已在各大賽事奪牌！","hcf|品牌|名字|意思":"🔥 HCF = Honor(榮譽)・Courage(勇氣)・Faith(信念)\n「這輩子，總要為自己贏一次。」","歌|bgm|音樂|自己贏一次":"🎵「為自己贏一次」是HCF主題曲，也是MPF07開場樂！","mpf|圖姆|thum|大勝":"🏆 2026/3/21 MPF07 黃謙和復出首戰大勝泰國教練圖姆（202戰152勝）！全場唯一台灣人勝出！","生理期|月經":"🩺 可以上課！適度運動舒緩經痛，請告知教練調整強度。","舊傷|膝蓋|腰痛":"🏥 請告知教練！可設計避開患部的復健式訓練。","手腳不協調":"😆 90%的人剛開始都這樣！幾堂課後你會驚訝自己的進步！","哈囉|你好|嗨|hi|hello":"👋 你好！我是 HCF 智能鯊魚教練🦈\n有什麼想問的？費用、課程、教練、預約，什麼都可以問！"};
     function localSharkReply(q){q=q.toLowerCase();for(var p in HCF_KB){var ks=p.split('|');for(var i=0;i<ks.length;i++){if(q.indexOf(ks[i].toLowerCase())!==-1)return HCF_KB[p]}}return null}
     // Override askShark after main.js loads
     window.addEventListener('DOMContentLoaded', function(){
