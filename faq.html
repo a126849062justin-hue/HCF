@@ -95,7 +95,7 @@
                     </div>
 
                 </div>
-                
+
                 <button onclick="toggleMobileMenu()" class="lg:hidden flex items-center justify-center w-10 h-10 text-gray-200 hover:text-sci-cyan transition-colors" aria-label="開啟選單">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
@@ -148,11 +148,6 @@
                     </div>
                     <a href="faq.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
                         <span class="group-hover:hidden">新手問答</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">FAQ</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="index.html#local-picks" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">在地推薦</span>
-                        <span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">LOCAL</span>
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                     </a>
                     
@@ -243,7 +238,6 @@
                 </div>
             </div>
             <a href="faq.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">新手問答</a>
-            <a href="index.html#local-picks" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">在地推薦</a>
         </div>
         <div class="mt-8 mb-6 w-full px-2">
             <a href="pricing.html" onclick="closeAllDrawers()" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
@@ -335,7 +329,10 @@
                 <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">SYSTEM SCHEDULE</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover mb-10 inline-block border-b-4 border-sci-cyan pb-2" data-i18n="sections.schedule" data-en="LATEST SCHEDULE">最新課表</h2>
                 
-                <img src="schedule.png" alt="HCF 新竹格鬥最新課表 2026 EDITION" loading="lazy" decoding="async" class="block w-full h-auto rounded-xl border border-white/10 hover:border-sci-cyan/50 transition-colors duration-500 reveal shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)] mx-auto max-w-5xl">
+                <picture class="block w-full reveal shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.15)] rounded-xl">
+                    <source media="(max-width: 767px)" srcset="schedule-mobile.png">
+                    <img src="schedule-pc.png" alt="HCF 新竹格鬥最新課表" class="w-full h-auto rounded-xl border border-white/10 hover:border-sci-cyan/50 transition-colors duration-500">
+                </picture>
                 
                 <p class="text-gray-500 mt-6 text-xs font-mono tracking-widest">※ 課表若有異動，以官方 LINE 公告為主。</p>
             </div>
@@ -802,34 +799,30 @@
           || window.navigator.standalone === true
           || document.referrer.includes('android-app://');
 
-        // 手機端（≤768px 或 Mobile UA）統一啟用 APP UI
-        const isMobileDevice = window.innerWidth <= 768
-          || /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent);
-        const enableAppMode = isStandalone || isMobileDevice;
-
-        if (enableAppMode) {
+        if (isStandalone) {
           document.documentElement.classList.add('pwa-mode');
 
           const navbar = document.querySelector('nav');
-          // Keep navbar visible in mobile APP mode (logo + hamburger button remain visible)
+          if (navbar) navbar.style.display = 'none';
 
           const tabBar = document.createElement('nav');
           tabBar.id = 'app-tab-bar';
+          const p = location.pathname;
           tabBar.innerHTML = `
-            <a href="/index.html" class="${location.pathname === '/index.html' || location.pathname === '/' ? 'active' : ''}">
+            <a href="/index.html" class="${p === '/index.html' || p === '/' ? 'active' : ''}">
               <i class="fa-solid fa-house"></i><span>首頁</span>
             </a>
-            <a href="/classes.html" class="${location.pathname.includes('classes') ? 'active' : ''}">
+            <a href="/classes.html" class="${p.includes('classes') ? 'active' : ''}">
               <i class="fa-solid fa-dumbbell"></i><span>課程</span>
             </a>
             <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="tab-cta">
               <i class="fa-solid fa-bolt"></i><span>預約體驗</span>
             </a>
-            <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
+            <a href="/team.html" class="${p.includes('team') ? 'active' : ''}">
               <i class="fa-solid fa-users"></i><span>教練</span>
             </a>
-            <a href="/index.html#schedule" class="">
-              <i class="fa-solid fa-calendar"></i><span>課表</span>
+            <a href="/news.html" class="${p.includes('news') || p.includes('faq') || p.includes('pricing') || p.includes('philosophy') ? 'active' : ''}">
+              <i class="fa-solid fa-newspaper"></i><span>更多</span>
             </a>
           `;
           document.body.appendChild(tabBar);
@@ -837,16 +830,6 @@
           const statusBar = document.createElement('div');
           statusBar.id = 'pwa-status-bar';
           document.body.prepend(statusBar);
-
-          // 隱藏底部 CTA Bar（由 Tab Bar 的預約體驗按鈕取代）
-          const ctaBarEl = document.getElementById('mobile-cta-bar');
-          if (ctaBarEl) ctaBarEl.style.display = 'none';
-
-          // 調整 AI 鯊魚位置，避開 Tab Bar（增加 70px）
-          const aiContainer = document.querySelector('.ai-container');
-          if (aiContainer && window.innerWidth <= 1024) {
-            aiContainer.style.bottom = 'calc(80px + 70px)';
-          }
 
           const installBtn = document.getElementById('install-app-btn');
           if (installBtn) installBtn.style.display = 'none';

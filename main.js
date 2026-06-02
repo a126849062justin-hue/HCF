@@ -212,7 +212,8 @@
             document.documentElement.classList.add('theme-transitioning');
             if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
             else { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('hcf_theme', theme); }
-            document.getElementById('secret-theme-panel').classList.add('hidden');
+            const stp = document.getElementById('secret-theme-panel');
+            if (stp) stp.classList.add('hidden');
             setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 400);
             updateCachedColors();
         }
@@ -484,13 +485,34 @@
         window.addEventListener('touchstart', resetIt, { passive: true }); window.addEventListener('scroll', resetIt, { passive: true });
         setInterval(() => { if(co)return; it++; if(it===5){ ais.classList.add('ai-sleeping'); zm.style.display='block'; } if(it===10){ ais.classList.remove('ai-sleeping'); zm.style.display='none'; ais.classList.add('ai-angry'); ab.style.display='block'; } }, 1000);
         function toggleChat() { co = !co; const cb = document.getElementById('ai-chat-box'); if(co){ cb.style.display='block'; resetIt(); } else { cb.style.display='none'; resetIt(); } }
-        // Mascot Button: click = open/close AI chat (all devices)
+        // Mascot Button: Mobile tap = open menu, long-press = open AI chat; Desktop = open AI chat
         (function() {
             var btn = document.getElementById("ai-mascot-btn");
             if (!btn) return;
-            btn.addEventListener("click", function(e) {
+            var longPressTimer = null;
+            var isLongPress = false;
+            var hasTouched = false;
+            btn.addEventListener("touchstart", function() {
+                hasTouched = true;
+                isLongPress = false;
+                longPressTimer = setTimeout(function() {
+                    isLongPress = true;
+                    toggleChat();
+                }, 600);
+            }, { passive: true });
+            btn.addEventListener("touchend", function(e) {
+                clearTimeout(longPressTimer);
                 e.preventDefault();
-                toggleChat();
+                if (!isLongPress) {
+                    toggleMobileMenu();
+                }
+            });
+            btn.addEventListener("touchcancel", function() {
+                clearTimeout(longPressTimer);
+            }, { passive: true });
+            btn.addEventListener("click", function() {
+                if (!hasTouched) { toggleChat(); }
+                setTimeout(function() { hasTouched = false; }, 300);
             });
         })();
 
@@ -499,44 +521,30 @@
           || window.navigator.standalone === true
           || document.referrer.includes('android-app://');
 
-        // 手機端（≤768px 或 Mobile UA）統一啟用 APP UI
-        const isMobileDevice = window.innerWidth <= 768
-          || /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent);
-        const enableAppMode = isStandalone || isMobileDevice;
-
-        if (enableAppMode) {
+        if (isStandalone) {
           document.documentElement.classList.add('pwa-mode');
 
-          // Keep navbar visible in mobile APP mode (logo + hamburger button remain visible)
-          // The desktop nav links are already hidden on mobile via 'hidden lg:flex'
-
-          // 隱藏底部 CTA Bar（由 Tab Bar 的預約體驗按鈕取代）
-          const ctaBarEl = document.getElementById('mobile-cta-bar');
-          if (ctaBarEl) ctaBarEl.style.display = 'none';
-
-          // 調整 AI 鯊魚位置，避開 Tab Bar（增加 70px）
-          const aiContainer = document.querySelector('.ai-container');
-          if (aiContainer && window.innerWidth <= 1024) {
-            aiContainer.style.bottom = 'calc(80px + 70px)';
-          }
+          const navbar = document.querySelector('nav');
+          if (navbar) navbar.style.display = 'none';
 
           const tabBar = document.createElement('nav');
           tabBar.id = 'app-tab-bar';
+          const p = location.pathname;
           tabBar.innerHTML = `
-            <a href="/index.html" class="${location.pathname === '/index.html' || location.pathname === '/' ? 'active' : ''}">
+            <a href="/index.html" class="${p === '/index.html' || p === '/' ? 'active' : ''}">
               <i class="fa-solid fa-house"></i><span>首頁</span>
             </a>
-            <a href="/classes.html" class="${location.pathname.includes('classes') ? 'active' : ''}">
+            <a href="/classes.html" class="${p.includes('classes') ? 'active' : ''}">
               <i class="fa-solid fa-dumbbell"></i><span>課程</span>
             </a>
             <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="tab-cta">
               <i class="fa-solid fa-bolt"></i><span>預約體驗</span>
             </a>
-            <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
+            <a href="/team.html" class="${p.includes('team') ? 'active' : ''}">
               <i class="fa-solid fa-users"></i><span>教練</span>
             </a>
-            <a href="/index.html#local-picks" class="">
-              <i class="fa-solid fa-store"></i><span>在地推薦</span>
+            <a href="/news.html" class="${p.includes('news') || p.includes('faq') || p.includes('pricing') || p.includes('philosophy') ? 'active' : ''}">
+              <i class="fa-solid fa-newspaper"></i><span>更多</span>
             </a>
           `;
           document.body.appendChild(tabBar);
@@ -950,28 +958,3 @@ if ('serviceWorker' in navigator) {
         }
     }, { passive: true });
 })();
-
-// ═══ 在地商家推薦篩選 ═══
-window.filterLocal = function(cat) {
-    const btns = document.querySelectorAll('.local-filter-btn');
-    btns.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-
-    const cards = document.querySelectorAll('.local-card');
-    let matchIdx = 0;
-    cards.forEach((card) => {
-        const match = cat === 'all' || card.dataset.category === cat;
-        if (match) {
-            card.style.display = '';
-            const delay = matchIdx * 60;
-            matchIdx++;
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, delay);
-        } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(16px)';
-            setTimeout(() => { card.style.display = 'none'; }, 400);
-        }
-    });
-};
