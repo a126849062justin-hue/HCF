@@ -1,14 +1,14 @@
-const CACHE_NAME = 'hcf-v4.2';
-const DYNAMIC_CACHE = 'hcf-dynamic-v4.2';
+const CACHE_NAME = 'hcf-v4.3';
+const DYNAMIC_CACHE = 'hcf-dynamic-v4.3';
 const MAX_DYNAMIC_ITEMS = 50;
 
 const CRITICAL_ASSETS = [
-  '/', '/index.html', '/offline.html', '/main.css', '/main.js', '/shark_logo.png', '/manifest.json'
+  '/', '/index.html', '/offline.html', '/main.css', '/main.js', '/schedule.js', '/shark_logo.png', '/manifest.json'
 ];
 const OPTIONAL_ASSETS = [
   '/classes.html', '/pricing.html', '/team.html', '/news.html', '/faq.html', '/philosophy.html',
   '/philosophy-cinematic.css', '/philosophy-cinematic.js',
-  '/hero1.jpg', '/schedule.png', '/schedule-mobile.png', '/schedule-pc.png',
+  '/hero1.jpg',
   '/coach_huang.jpg', '/coach_allen.jpg', '/coach_zhengyu.jpg', '/coach_kao.jpg', '/coach_hu.jpg', '/coach_mi.jpg',
   '/assets/triangle.png', '/assets/anchor.png', '/assets/shark.png', '/assets/final-logo.png',
 ];
