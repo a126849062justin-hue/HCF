@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.hsinchucombat.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://www.hsinchucombat.com/classes.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/muaythai.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/kickboxing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/sanda.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/strength.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/group-class.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/private-class.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.hsinchucombat.com/pricing.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.hsinchucombat.com/team.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.hsinchucombat.com/news.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.hsinchucombat.com/philosophy.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/coaches.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.hsinchucombat.com/faq.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/philosophy.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.hsinchucombat.com/news.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>
