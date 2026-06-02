@@ -819,21 +819,22 @@
 
           const tabBar = document.createElement('nav');
           tabBar.id = 'app-tab-bar';
+          const p = location.pathname;
           tabBar.innerHTML = `
-            <a href="/index.html" class="${location.pathname === '/index.html' || location.pathname === '/' ? 'active' : ''}">
+            <a href="/index.html" class="${p === '/index.html' || p === '/' ? 'active' : ''}">
               <i class="fa-solid fa-house"></i><span>首頁</span>
             </a>
-            <a href="/classes.html" class="${location.pathname.includes('classes') ? 'active' : ''}">
+            <a href="/classes.html" class="${p.includes('classes') ? 'active' : ''}">
               <i class="fa-solid fa-dumbbell"></i><span>課程</span>
             </a>
             <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="tab-cta">
               <i class="fa-solid fa-bolt"></i><span>預約體驗</span>
             </a>
-            <a href="/team.html" class="${location.pathname.includes('team') ? 'active' : ''}">
+            <a href="/team.html" class="${p.includes('team') ? 'active' : ''}">
               <i class="fa-solid fa-users"></i><span>教練</span>
             </a>
-            <a href="/index.html#schedule" class="">
-              <i class="fa-solid fa-calendar"></i><span>課表</span>
+            <a href="/news.html" class="${p.includes('news') || p.includes('faq') || p.includes('pricing') || p.includes('philosophy') ? 'active' : ''}">
+              <i class="fa-solid fa-newspaper"></i><span>更多</span>
             </a>
           `;
           document.body.appendChild(tabBar);
