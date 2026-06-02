@@ -212,7 +212,8 @@
             document.documentElement.classList.add('theme-transitioning');
             if(theme === 'default') { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('hcf_theme'); } 
             else { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('hcf_theme', theme); }
-            document.getElementById('secret-theme-panel').classList.add('hidden');
+            const stp = document.getElementById('secret-theme-panel');
+            if (stp) stp.classList.add('hidden');
             setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 400);
             updateCachedColors();
         }
