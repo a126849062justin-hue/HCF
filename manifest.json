@@ -68,8 +68,8 @@
       "label": "HCF 新竹格鬥首頁"
     },
     {
-      "src": "schedule-mobile.png",
-      "sizes": "750x1334",
+      "src": "schedule.png",
+      "sizes": "1206x1361",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "最新課表"
