@@ -2057,28 +2057,6 @@
             });
         }, { threshold: 0.3 });
         document.querySelectorAll('.skill-bar-container').forEach(el => skillBarObserver.observe(el));
-
-        function copyCode(code, btn) {
-            const icon = btn.querySelector('i');
-            function showSuccess() {
-                icon.className = 'fa-solid fa-check text-sci-gold';
-                setTimeout(() => { icon.className = 'fa-regular fa-copy text-sci-gold'; }, 2000);
-            }
-            function showError() {
-                icon.className = 'fa-solid fa-xmark text-red-400';
-                setTimeout(() => { icon.className = 'fa-regular fa-copy text-sci-gold'; }, 2000);
-            }
-            navigator.clipboard.writeText(code).then(showSuccess).catch(() => {
-                try {
-                    const ta = document.createElement('textarea');
-                    ta.value = code; document.body.appendChild(ta);
-                    ta.select(); document.execCommand('copy');
-                    document.body.removeChild(ta);
-                    showSuccess();
-                } catch (e) { showError(); }
-            });
-            if ('vibrate' in navigator) navigator.vibrate(10);
-        }
     </script>
     <!-- 3D Team Carousel JS -->
     <script>
