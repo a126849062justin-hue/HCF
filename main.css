@@ -274,7 +274,8 @@
         .ai-container { position: fixed; bottom: 120px; right: 20px; z-index: 50; display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
         .ai-mascot-img { width: 140px; height: 140px; object-fit: contain; cursor: pointer; animation: social-glow-cycle 4s infinite, shark-wobble 3.5s ease-in-out infinite; }
         .ai-mascot-img:hover { animation: social-glow-cycle 1s infinite, shark-wobble-fast 0.6s ease-in-out infinite; }
-        .mascot-menu-hint { position: absolute; bottom: 0; right: 0; background: var(--theme-cyan); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(var(--theme-cyan-rgb),0.8); pointer-events: none; }
+        .mascot-menu-hint { position: absolute; bottom: 0; right: 0; background: var(--theme-cyan); border-radius: 50%; width: 22px; height: 22px; display: none !important; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(var(--theme-cyan-rgb),0.8); pointer-events: none; }
+        #mascot-menu-hint { display: none !important; }
         .zzz-text { position: absolute; top: -20px; right: 0; color: var(--theme-cyan); font-weight: bold; font-family: 'Orbitron'; font-size: 1.5rem; text-shadow: 0 0 10px var(--theme-cyan); display: none; pointer-events: none; }
         .angry-bubble { position: absolute; top: -40px; right: 10px; background: var(--theme-cyan); color: black; padding: 5px 15px; border-radius: 10px; font-weight: bold; display: none; white-space: nowrap; pointer-events: none; box-shadow: 0 0 15px rgba(var(--theme-cyan-rgb),0.8); z-index: 51; }
         .angry-bubble::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-width: 8px 8px 0; border-style: solid; border-color: var(--theme-cyan) transparent transparent transparent; }
@@ -283,7 +284,7 @@
         @media (max-width: 768px) {
             .bg-grain { display: none !important; }
             #bg-canvas { display: none !important; }
-            .ai-container { bottom: 80px; right: 12px; }
+            .ai-container { bottom: calc(80px + 70px); right: 12px; }
             .ai-mascot-img { width: 65px; height: 65px; }
             .ai-chat-box { bottom: 75px; width: calc(100vw - 32px); right: -4px; border-radius: 16px 16px 0 16px; }
             #mobile-menu, #brand-drawer { padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
@@ -291,6 +292,11 @@
             /* Mobile carousel arrows: always visible on touch devices */
             .carousel-control { opacity: 0.6 !important; }
             .carousel-control div { width: 36px; height: 36px; transform: none !important; }
+            /* ── 手機端統一 APP 模式 UI ── */
+            #app-tab-bar { display: flex; }
+            #navbar { display: none !important; }
+            #mobile-cta-bar { display: none !important; }
+            main, footer { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
         }
 
         /* === Mobile (< 480px) Optimizations === */
@@ -1220,3 +1226,32 @@
         .fs-fighter-thumb.fs-active {
             transform: translateY(-6px) scale(1.1);
         }
+
+        /* ═══ 在地商家推薦 Local Picks ═══ */
+        .local-filter-btn {
+            background: rgba(255,255,255,0.05);
+            color: #999;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .local-filter-btn:hover,
+        .local-filter-btn.active {
+            background: var(--theme-cyan);
+            color: #000;
+            border-color: var(--theme-cyan);
+            box-shadow: 0 0 16px rgba(var(--theme-cyan-rgb),0.5);
+        }
+        .local-card {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .local-card-img { overflow: hidden; border-radius: 12px 12px 0 0; }
+        .local-card-img img { transition: transform 0.4s ease; }
+        .local-card:hover .local-card-img img { transform: scale(1.06); }
