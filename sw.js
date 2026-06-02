@@ -1,5 +1,5 @@
-const CACHE_NAME = 'hcf-v4.1';
-const DYNAMIC_CACHE = 'hcf-dynamic-v4.1';
+const CACHE_NAME = 'hcf-v4.2';
+const DYNAMIC_CACHE = 'hcf-dynamic-v4.2';
 const MAX_DYNAMIC_ITEMS = 50;
 
 const CRITICAL_ASSETS = [
