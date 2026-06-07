@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>課程方案 呈現提案｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新竹格鬥課程總覽：五大目標選課、團體課程與私人課程介紹、2026 正式課表與全課程內容，$400 首堂體驗。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hcf.css">
+<style>
+/* ===== 五大目標 點選分頁 ===== */
+.goals{padding:56px 0 64px;background:#fff}
+.gl-head{text-align:center;margin-bottom:26px}
+.gl-head .k{font-family:var(--en);letter-spacing:.3em;font-size:.66rem;color:var(--red,#C81015);font-weight:600}
+.gl-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,3.8vw,2.3rem);margin-top:8px}
+.gl-head .sub{margin-top:10px;color:var(--ink2,#4A4A4A);font-weight:700;font-size:.92rem}
+.gtabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px;position:sticky;top:var(--navh,64px);z-index:90;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:12px 8px;border-bottom:1px solid var(--line,#E5E5E5)}
+.gtab{border:1.5px solid var(--line,#E5E5E5);background:#fff;cursor:pointer;font-family:var(--sans);font-weight:900;
+  font-size:.95rem;padding:12px 20px;display:flex;align-items:baseline;gap:9px;transition:.22s}
+.gtab .no{font-family:var(--en);font-weight:600;font-size:.66rem;letter-spacing:.14em;color:var(--ink3,#8A8A8A)}
+.gtab:hover{border-color:var(--red,#C81015)}
+.gtab.on{background:var(--red,#C81015);border-color:var(--red,#C81015);color:#fff;box-shadow:0 10px 24px rgba(200,16,21,.3)}
+.gtab.on .no{color:rgba(255,255,255,.75)}
+.gpanel{display:none}
+.gpanel.on{display:grid;grid-template-columns:220px 1fr;gap:20px;animation:gfade .45s ease}
+@keyframes gfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.gl-rail h3{font-family:var(--serif);font-weight:900;font-size:1.6rem}
+.gl-rail .stat{margin-top:12px;background:var(--red,#C81015);color:#fff;padding:14px;font-family:var(--en);font-weight:700;font-size:1.6rem;line-height:1.1;display:inline-block;min-width:160px;box-shadow:0 10px 24px rgba(200,16,21,.25)}
+.gl-rail .stat small{display:block;font-family:var(--sans);font-weight:700;font-size:.68rem;margin-top:5px;opacity:.92}
+.gl-duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gcard{padding:18px 20px}
+.gcard .tag{font-weight:900;font-size:.86rem;display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.gcard .tag .en{font-family:var(--en);font-weight:600;font-size:.6rem;letter-spacing:.24em}
+.gcard ul{list-style:none;display:grid;gap:7px}
+.gcard li{position:relative;padding-left:16px;font-size:.88rem;line-height:1.75}
+.gcard li::before{content:"▸";position:absolute;left:0;color:var(--red,#C81015)}
+.gcard.g{background:var(--surface,#F7F7F7);border-top:4px solid var(--red,#C81015)}
+.gcard.g .tag .en{color:var(--ink3,#8A8A8A)}
+.gcard.p{background:var(--carbon,#111);color:#fff;border-top:4px solid var(--red,#C81015)}
+.gcard.p .tag .en{color:var(--red,#C81015)}
+.gcard.p li{color:#ddd}
+.gl-rec{grid-column:1/-1;display:flex;gap:9px;align-items:center;flex-wrap:wrap;background:var(--surface,#F7F7F7);padding:13px 16px;margin-top:2px}
+.gl-rec .t{font-weight:900;font-size:.84rem;margin-right:4px}
+.cchip{text-decoration:none;font-weight:700;font-size:.82rem;padding:6px 13px;color:#fff;transition:.2s}
+.cchip:hover{transform:translateY(-2px)}
+.cchip.g{background:#2E9E44}.cchip.y{background:#E6A817;color:#111}.cchip.r{background:var(--red,#C81015)}.cchip.n{background:#4A4A4A}
+/* ===== 團課私教 在幹嘛 ===== */
+.what{display:grid;grid-template-columns:1fr 1fr}
+.what .col{padding:64px clamp(20px,4.5vw,60px) 70px}
+.what .col.g{background:var(--surface,#F7F7F7)}
+.what .col.p{background:#0B0B0C;color:#fff}
+.what .k{font-family:var(--en);letter-spacing:.3em;font-size:.64rem;color:var(--red,#C81015);font-weight:600}
+.what h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,3.2vw,2.1rem);margin:8px 0 4px}
+.what .one{font-weight:900;font-size:1.04rem;margin-bottom:14px}
+.what .col.p .one{color:#fff}
+.what p.desc{line-height:2;color:var(--ink2,#4A4A4A);font-size:.95rem;margin-bottom:18px}
+.what .col.p p.desc{color:#cfcfcf}
+.what ul{list-style:none;display:grid;gap:9px;margin-bottom:22px}
+.what li{position:relative;padding-left:18px;font-size:.9rem;line-height:1.8}
+.what li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;background:var(--red,#C81015)}
+.what .col.p li{color:#ddd}
+.what .ph-shot{height:170px;margin-bottom:18px}
+.what .cta{display:inline-block;text-decoration:none;font-weight:900;padding:13px 26px;transition:.25s}
+.what .col.g .cta{background:var(--red,#C81015);color:#fff;box-shadow:0 10px 24px rgba(200,16,21,.25)}
+.what .col.p .cta{background:var(--red,#C81015);color:#fff;box-shadow:0 0 30px rgba(200,16,21,.4)}
+.what .cta:hover{background:var(--redD,#9B0B0F);transform:translateY(-2px)}
+.ph-shot{position:relative;background:repeating-linear-gradient(45deg,#ECECEC 0 12px,#F5F5F5 12px 24px);border:2px dashed #C9C9C9;
+  display:grid;place-items:center;color:#8A8A8A;text-align:center;font-size:.8rem;line-height:1.7;padding:14px}
+.ph-shot b{display:block;font-size:1.3rem}
+.what .col.p .ph-shot{background:repeating-linear-gradient(45deg,#161618 0 12px,#1d1d20 12px 24px);border-color:#3a3a3e;color:#9a9a9a}
+/* ===== 課表 ===== */
+.sched{padding:70px 0 60px;background:#fff}
+.sc-head{margin-bottom:8px}
+.sc-head .k{font-family:var(--en);letter-spacing:.3em;font-size:.66rem;color:var(--red,#C81015);font-weight:600}
+.sc-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,3.8vw,2.3rem);margin-top:8px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}
+.legend span{font-weight:700;font-size:.78rem;padding:5px 12px;color:#fff}
+.legend .g{background:#2E9E44}.legend .y{background:#E6A817;color:#111}.legend .r{background:var(--red,#C81015)}.legend .n{background:#4A4A4A}
+.gridwrap{overflow-x:auto}
+.scgrid{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:10px;min-width:920px}
+.day .dh{background:var(--carbon,#111);color:#fff;font-weight:900;text-align:center;padding:9px 4px;font-size:.9rem}
+.slot{margin-top:8px;padding:9px 10px;color:#fff}
+.slot small{display:block;font-family:var(--en);font-size:.62rem;letter-spacing:.08em;opacity:.85}
+.slot b{font-size:.84rem;line-height:1.4;display:block;margin-top:2px}
+.slot.g{background:#2E9E44}.slot.y{background:#E6A817;color:#111}.slot.r{background:var(--red,#C81015)}.slot.n{background:#4A4A4A}
+.sc-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.sc-notes .n{background:var(--surface,#F7F7F7);border-left:5px solid var(--red,#C81015);padding:15px 16px}
+.sc-notes b{display:block;font-size:.92rem}
+.sc-notes p{margin-top:5px;font-size:.8rem;color:var(--ink2,#4A4A4A);line-height:1.75}
+/* ===== 課程內容詳細 ===== */
+.clist{padding:64px 0 80px;background:var(--surface,#F7F7F7)}
+.cl-head{margin-bottom:28px}
+.cl-head .k{font-family:var(--en);letter-spacing:.3em;font-size:.66rem;color:var(--red,#C81015);font-weight:600}
+.cl-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,3.8vw,2.3rem);margin-top:8px}
+.csys{margin-bottom:34px}
+.csh{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink,#111);padding-bottom:10px;margin-bottom:16px}
+.csh b{font-family:var(--serif);font-weight:900;font-size:1.25rem}
+.csh .en{font-family:var(--en);letter-spacing:.22em;font-size:.66rem;color:var(--red,#C81015);font-weight:600}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.crs{background:#fff;box-shadow:0 8px 22px rgba(17,17,17,.06);display:flex;gap:14px;padding:16px 18px;align-items:flex-start}
+.crs .lv{flex:0 0 auto;font-weight:700;font-size:.66rem;letter-spacing:.1em;color:#fff;padding:5px 10px;margin-top:2px}
+.crs .lv.g{background:#2E9E44}.crs .lv.y{background:#E6A817;color:#111}.crs .lv.r{background:var(--red,#C81015)}
+.crs h4{font-family:var(--serif);font-weight:900;font-size:1.05rem}
+.crs p{margin-top:5px;color:var(--ink2,#4A4A4A);font-size:.85rem;line-height:1.8}
+.crs .fit{margin-top:7px;font-size:.78rem;color:var(--ink3,#8A8A8A)}
+.crs .fit b{color:var(--red,#C81015)}
+/* CTA */
+.endcta{background:var(--carbon,#111);color:#fff;text-align:center;padding:56px 20px}
+.endcta h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.3rem,3vw,1.8rem)}
+.endcta p{margin-top:10px;color:#bdbdbd;font-size:.92rem}
+.endcta .btns{margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.endcta a{text-decoration:none;font-weight:900;padding:14px 28px;transition:.25s}
+.endcta .b1{background:var(--red,#C81015);color:#fff;box-shadow:0 0 30px rgba(200,16,21,.4)}
+.endcta .b1:hover{background:var(--redD,#9B0B0F)}
+.endcta .b2{border:2px solid #fff;color:#fff}
+.endcta .b2:hover{background:#fff;color:#111}
+@media(max-width:880px){
+  .gpanel.on{grid-template-columns:1fr}
+  .gl-rail{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .gl-rail .stat{margin-top:0}
+  .gl-duo{grid-template-columns:1fr}
+  .what{grid-template-columns:1fr}
+  .sc-notes{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr}
+  .gtab{font-size:.84rem;padding:10px 13px}
+}
+
+/* ----- 敬請期待遮罩 ----- */
+.soon{position:relative;overflow:hidden}
+.soon::after{content:"敬請期待";position:absolute;inset:0;background:rgba(17,17,17,.84);backdrop-filter:blur(2px);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif,'Noto Serif TC',serif);font-weight:900;font-size:1.02rem;letter-spacing:.3em;text-indent:.3em;z-index:5}
+.soon a,.soon *{pointer-events:none}
+.sched-soon{position:relative}
+.sched-soon .veil{position:absolute;inset:0;background:rgba(17,17,17,.84);backdrop-filter:blur(2px);z-index:6;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:#fff;text-align:center;padding:24px}
+.sched-soon .veil b{font-family:var(--serif,'Noto Serif TC',serif);font-weight:900;font-size:clamp(1.7rem,4.4vw,2.5rem);letter-spacing:.34em;text-indent:.34em}
+.sched-soon .veil span{color:#ddd;font-size:.95rem;line-height:1.8;max-width:420px}
+.sched-soon .veil a{background:#C81015;color:#fff;font-weight:900;letter-spacing:.06em;padding:13px 28px;transition:.25s}
+.sched-soon .veil a:hover{background:#fff;color:#C81015}
+.cchip.soonc{background:#3a3a3e!important;color:#aaa!important;border-color:#3a3a3e!important;pointer-events:none;position:relative;padding-right:66px!important}
+.cchip.soonc::after{content:"敬請期待";position:absolute;right:7px;top:50%;transform:translateY(-50%);background:rgba(200,16,21,.92);color:#fff;font-size:.6rem;font-weight:700;padding:2px 6px;letter-spacing:.08em}
+
+.what .m-shot{height:230px;margin-bottom:18px;overflow:hidden;box-shadow:0 14px 34px rgba(17,17,17,.2)}
+.what .m-shot img,.what .m-shot video{width:100%;height:100%;object-fit:cover;display:block}
+.what .m-shot img{object-position:center 34%}
+@media(max-width:880px){.what .m-shot{height:190px}}
+</style>
+
+<link rel="canonical" href="https://www.hsinchucombat.com/plans-proposal.html">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="課程方案 呈現提案｜HCF 新竹格鬥">
+<meta property="og:description" content="HCF 新竹格鬥課程總覽：五大目標選課、團體課程與私人課程介紹、2026 正式課表與全課程內容，$400 首堂體驗。">
+<meta property="og:url" content="https://www.hsinchucombat.com/plans-proposal.html">
+<meta property="og:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="課程方案 呈現提案｜HCF 新竹格鬥">
+<meta name="twitter:description" content="HCF 新竹格鬥課程總覽：五大目標選課、團體課程與私人課程介紹、2026 正式課表與全課程內容，$400 首堂體驗。">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/plans-proposal.html", "url": "https://www.hsinchucombat.com/plans-proposal.html", "name": "課程方案 呈現提案｜HCF 新竹格鬥", "description": "HCF 新竹格鬥課程總覽：五大目標選課、團體課程與私人課程介紹、2026 正式課表與全課程內容，$400 首堂體驗。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "課程方案提案", "item": "https://www.hsinchucombat.com/plans-proposal.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
+</head>
+<body data-page="plans">
+<header class="nav" id="nav"></header>
+
+<section class="phero">
+  <div class="phero-ghost">PLANS</div>
+  <div class="phero-in">
+    <div class="kicker">COURSE GUIDE / 課程總覽</div>
+    <h1>選你的目標<br>課表自己<i>對號入座</i></h1>
+    <p>五大目標、兩種上法、一張課表——你的路線在這頁找得到。</p>
+  </div>
+</section>
+
+<div class="seamA">
+  <div class="wedge"></div>
+  <div class="ribbon"><div class="ribbon-track"></div></div></div>
+
+<!-- ============ 五大目標 點選 ============ -->
+<section class="goals" id="goals">
+  <div class="wrap">
+    <div class="gl-head">
+      <div class="k">PICK YOUR GOAL — 點你的目標</div>
+      <h2>五大目標 怎麼練最快</h2>
+      <p class="sub">泰拳技術｜燃脂減重｜體能提升｜實戰能力｜選手培訓</p>
+    </div>
+    <div class="gtabs"><button class="gtab on" data-g="01"><span class="no en">01</span>泰拳技術</button><button class="gtab" data-g="02"><span class="no en">02</span>燃脂減重</button><button class="gtab" data-g="03"><span class="no en">03</span>體能提升</button><button class="gtab" data-g="04"><span class="no en">04</span>實戰能力</button><button class="gtab" data-g="05"><span class="no en">05</span>選手培訓</button></div>
+    <div class="gpanel on" data-g="01"><div class="gl-rail"><h3>泰拳技術</h3><div class="stat">八肢<small>拳 肘 膝 腿 8 個攻擊點</small></div></div><div class="gl-duo"><div class="gcard g"><div class="tag">團課優點 <span class="en">GROUP</span></div><ul><li>站架 步法 組合拳 一階一階帶</li><li>LV 綠黃紅分級課表 照程度上不怕跟不上</li><li>同學一起練 動作有參照 有節奏</li></ul></div><div class="gcard p"><div class="tag">私教優點 <span class="en">PRIVATE</span></div><ul><li>手把手矯正 從第一堂就把動作做對</li><li>「動作一旦練錯 之後要花三倍時間改」</li><li>依你的身形與習慣 客製你的打法</li></ul></div></div><div class="gl-rec"><span class="t">這個目標的課</span><a href="#schedule" class="cchip g">新手泰拳</a><a href="#schedule" class="cchip soonc g">新手踢拳</a><a href="#schedule" class="cchip soonc y">拳法系統</a><a href="#schedule" class="cchip soonc y">踢擊系統</a><a href="#schedule" class="cchip soonc y">肘擊系統</a><a href="#schedule" class="cchip soonc y">泰拳纏抱</a></div></div><div class="gpanel" data-g="02"><div class="gl-rail"><h3>燃脂減重</h3><div class="stat">600–800<small>大卡 一堂泰拳約消耗</small></div></div><div class="gl-duo"><div class="gcard g"><div class="tag">團課優點 <span class="en">GROUP</span></div><ul><li>高強度打擊＋間歇 燃脂效率拉滿</li><li>跟大家一起流汗 比一個人更不容易放棄</li><li>先做出「看得到的第一個變化」</li></ul></div><div class="gcard p"><div class="tag">私教優點 <span class="en">PRIVATE</span></div><ul><li>體能體脂評估＋客製飲食方向</li><li>核心與腰腹精準雕塑 練在重點上</li><li>完整週期 練到敢拍前後對比照</li></ul></div></div><div class="gl-rec"><span class="t">這個目標的課</span><a href="#schedule" class="cchip g">泰拳燃脂</a><a href="#schedule" class="cchip soonc g">泰拳有氧舞蹈</a><a href="#schedule" class="cchip g">肌力體能</a></div></div><div class="gpanel" data-g="03"><div class="gl-rail"><h3>體能提升</h3><div class="stat">全身<small>壺鈴 戰繩 心肺 核心</small></div></div><div class="gl-duo"><div class="gcard g"><div class="tag">團課優點 <span class="en">GROUP</span></div><ul><li>壺鈴 戰繩 自體重量 一堂練全身</li><li>心肺 爆發 核心同步升級</li><li>強度照等級走 練得喘但跟得上</li></ul></div><div class="gcard p"><div class="tag">私教優點 <span class="en">PRIVATE</span></div><ul><li>先找出你的弱點 對症下菜單</li><li>週期化拉強度 進步有節奏不撞牆</li><li>階段性成果回饋 看得見自己變強</li></ul></div></div><div class="gl-rec"><span class="t">這個目標的課</span><a href="#schedule" class="cchip g">肌力體能</a><a href="#schedule" class="cchip g">泰拳燃脂</a></div></div><div class="gpanel" data-g="04"><div class="gl-rail"><h3>實戰能力</h3><div class="stat">LV3<small>綠 → 黃 → 紅 練到實戰課</small></div></div><div class="gl-duo"><div class="gcard g"><div class="tag">團課優點 <span class="en">GROUP</span></div><ul><li>組合技 防守反擊 攻防轉換</li><li>從入門綠一路升上紅色實戰課</li><li>同學對練 累積真實臨場感</li></ul></div><div class="gcard p"><div class="tag">私教優點 <span class="en">PRIVATE</span></div><ul><li>教練餵招 即時修正每一個反應</li><li>「比你在團課練半年還扎實」</li><li>從基本功一路帶到能對練</li></ul></div></div><div class="gl-rec"><span class="t">這個目標的課</span><a href="#schedule" class="cchip soonc r">技術對打</a><a href="#schedule" class="cchip soonc r">自由對打夜</a></div></div><div class="gpanel" data-g="05"><div class="gl-rail"><h3>選手培訓</h3><div class="stat">42 勝<small>總教練親自帶 職業賽冠軍底子</small></div></div><div class="gl-duo"><div class="gcard g"><div class="tag">團課優點 <span class="en">GROUP</span></div><ul><li>實戰課程是養成水庫 天天有得練</li><li>同儕環境 模擬賽場強度與壓力</li></ul></div><div class="gcard p"><div class="tag">私教優點 <span class="en">PRIVATE</span></div><ul><li>旗艦備賽路線 總教練一對一親自帶</li><li>拳腿膝肘＋體能＋實戰一條龍</li><li>限量名額 給最認真的人</li></ul></div></div><div class="gl-rec"><span class="t">這個目標的課</span><a href="#schedule" class="cchip soonc r">冠軍實戰</a><a href="#schedule" class="cchip r">Fighter Squad</a></div></div>
+  </div>
+</section>
+
+<!-- ============ 團課私教在幹嘛 ============ -->
+<section class="what" id="what">
+  <div class="col g">
+    <div class="k">GROUP CLASS</div>
+    <h2>團體課程</h2>
+    <div class="one">跟大家一起練 把運動變成習慣</div>
+    <p class="desc">照課表來就好——LV 綠黃紅分級，零基礎從綠色開始，一階一階往上。教練帶整堂的節奏，同學就是你的隊友：一起流汗、一起進步，比一個人練更不容易放棄。</p>
+    <ul>
+      <li>低門檻入門 零基礎可上</li>
+      <li>LV1 綠 → LV2 黃 → LV3 紅 程度到了自然升級</li>
+      <li>晚間與週末核心時段保證開課</li>
+      <li>燃脂 體能 技術 實戰 課表上全都有</li>
+    </ul>
+    <div class="m-shot"><img src="goal_group.jpg" alt="HCF 團體課全員擂台合照" loading="lazy" decoding="async"></div>
+    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">先來一堂 $400 體驗</a>
+  </div>
+  <div class="col p">
+    <div class="k">PRIVATE 1-ON-1</div>
+    <h2>私人課程</h2>
+    <div class="one">教練 100% 盯你一個人 幫你客製菜單</div>
+    <p class="desc">團課大家一起練 教練顧不到你的細節——私教是一對一手把手：先評估你的目標與弱點，客製專屬菜單，每一個動作即時修正。想最快看到成效，這是唯一解；想上擂台，總教練親自帶你走備賽路線。</p>
+    <ul>
+      <li>一對一評估 依目標客製訓練菜單</li>
+      <li>手把手矯正 從第一堂就把動作做對</li>
+      <li>階段性成果回饋 看得見自己的進步</li>
+      <li>備賽路線由 42 勝總教練親自指導</li>
+    </ul>
+    <div class="m-shot"><video src="video_private_1.mp4" poster="video_private_1.jpg" autoplay muted loop playsinline preload="metadata" aria-label="私人課一對一指導實況影片"></video></div>
+    <a class="cta" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 預約一對一評估</a>
+  </div>
+</section>
+
+<!-- ============ 2026 正式課表 ============ -->
+<section class="sched" id="schedule">
+  <div class="wrap">
+    <div class="sc-head">
+      <div class="k">WEEKLY SCHEDULE — 2026 規劃中</div>
+      <h2>2026 新版課表</h2>
+    </div>
+    <div class="sched-soon"><div class="legend">
+      <span class="g">LV1 綠 入門</span><span class="y">LV2 黃 進階</span><span class="r">LV3 紅 實戰／選手</span><span class="n">預約／期班</span>
+    </div>
+    <div class="gridwrap"><div class="scgrid"><div class="day"><div class="dh">星期一</div><div class="slot g"><small>11:00–12:00</small><b>有氧舞蹈</b></div><div class="slot g"><small>19:00–20:00</small><b>新手泰拳</b></div><div class="slot y"><small>20:00–21:00</small><b>拳法系統</b></div><div class="slot r"><small>21:00–22:00</small><b>技術對打</b></div></div><div class="day"><div class="dh">星期二</div><div class="slot g"><small>11:00–12:00</small><b>肌力體能</b></div><div class="slot g"><small>19:00–20:00</small><b>新手踢拳</b></div><div class="slot y"><small>20:00–21:00</small><b>踢擊系統</b></div><div class="slot r"><small>21:00–22:00</small><b>技術對打</b></div></div><div class="day"><div class="dh">星期三</div><div class="slot g"><small>10:00–11:00</small><b>樂齡體能 6人</b></div><div class="slot g"><small>11:00–12:00</small><b>肌力體能</b></div><div class="slot n"><small>15:00 起</small><b>私教／打靶預約</b></div><div class="slot g"><small>19:00–20:00</small><b>新手泰拳</b></div><div class="slot y"><small>20:00–21:00</small><b>肘擊系統</b></div><div class="slot r"><small>21:00–22:00</small><b>冠軍實戰</b></div></div><div class="day"><div class="dh">星期四</div><div class="slot g"><small>11:00–12:00</small><b>有氧舞蹈</b></div><div class="slot g"><small>19:00–20:00</small><b>新手泰拳</b></div><div class="slot g"><small>20:00–21:00</small><b>泰拳燃脂</b></div><div class="slot r"><small>21:00–22:00</small><b>技術對打</b></div></div><div class="day"><div class="dh">星期五</div><div class="slot g"><small>11:00–12:00</small><b>肌力體能</b></div><div class="slot g"><small>19:00–20:00</small><b>新手泰拳</b></div><div class="slot y"><small>20:00–21:00</small><b>泰拳纏抱</b></div><div class="slot r"><small>21:00–22:00</small><b>自由對打夜</b></div></div><div class="day"><div class="dh">星期六</div><div class="slot g"><small>11:00–12:00</small><b>新手泰拳</b></div><div class="slot g"><small>12:10–13:00</small><b>泰拳燃脂</b></div><div class="slot n"><small>13:00–14:00</small><b>小鯊魚兒童營</b></div><div class="slot r"><small>14:00–16:00</small><b>Fighter Squad</b></div></div><div class="day"><div class="dh">星期日</div><div class="slot g"><small>11:00–12:00</small><b>泰拳燃脂</b></div><div class="slot g"><small>12:10–13:00</small><b>肌力體能</b></div></div></div></div>
+    <div class="sc-notes">
+      <div class="n"><b>核心時段 保證開課</b><p>晚間 19:00–22:00 與週末上午固定開課 不受最低人數限制</p></div>
+      <div class="n"><b>離峰時段 預約成班</b><p>平日日間課採預約制 課前 2 小時結算 未達 3 人改約或併班 權益順延或折抵不損失</p></div>
+      <div class="n"><b>期班制課程</b><p>有氧舞蹈 樂齡體能 兒童課程與防身研習營採期班報名 期班生保證開課 會員可預約剩餘名額</p></div>
+    </div><div class="veil"><b>敬請期待</b><span>2026 新版課表整備中，目前開課時段與課程以「最新課表」為準。</span><a href="schedule.html">查看目前最新課表</a></div></div>
+  </div>
+</section>
+
+<!-- ============ 課程內容詳細 ============ -->
+<section class="clist" id="courses">
+  <div class="wrap">
+    <div class="cl-head">
+      <div class="k">ALL COURSES — 課程內容</div>
+      <h2>每一堂課在練什麼</h2>
+    </div>
+    <div class="csys"><div class="csh"><b>泰拳主系統</b><span class="en">HCF MUAY THAI</span></div><div class="cgrid"><div class="crs"><div class="lv g en">LV1</div><div class="cb"><h4>新手泰拳</h4><p>零基礎入門｜燃脂｜體能建立</p><div class="fit">適合 <b>完全零基礎的人 第一堂從這裡開始</b></div></div></div><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>新手踢拳</h4><p>拳腿基礎｜協調性｜反應訓練</p><div class="fit">適合 <b>想練拳腿協調與反應的人</b></div></div></div><div class="crs"><div class="lv g en">LV1</div><div class="cb"><h4>泰拳燃脂</h4><p>高燃脂｜高流汗｜壓力釋放</p><div class="fit">適合 <b>想痛快流汗 釋放壓力的人</b></div></div></div><div class="crs soon"><div class="lv y en">LV2</div><div class="cb"><h4>拳法系統</h4><p>重拳爆發｜組合拳訓練</p><div class="fit">適合 <b>有基礎後想深化拳上功夫</b></div></div></div><div class="crs soon"><div class="lv y en">LV2</div><div class="cb"><h4>踢擊系統</h4><p>拳腿組合｜距離控制｜進階踢技</p><div class="fit">適合 <b>想把踢技與距離感練到位</b></div></div></div><div class="crs soon"><div class="lv y en">LV2</div><div class="cb"><h4>肘擊系統</h4><p>近距離破壞力訓練</p><div class="fit">適合 <b>想補上近身武器的人</b></div></div></div><div class="crs soon"><div class="lv y en">LV2</div><div class="cb"><h4>膝擊系統</h4><p>核心力量｜纏抱膝技</p><div class="fit">適合 <b>想強化核心與膝技的人</b></div></div></div><div class="crs soon"><div class="lv y en">LV2</div><div class="cb"><h4>泰拳纏抱</h4><p>泰拳核心技術｜控制能力</p><div class="fit">適合 <b>想掌握纏抱控制的人</b></div></div></div></div></div><div class="csys"><div class="csh"><b>體能系統</b><span class="en">HCF CONDITIONING</span></div><div class="cgrid"><div class="crs"><div class="lv g en">LV1</div><div class="cb"><h4>肌力體能</h4><p>壺鈴 藥球 戰繩 TRX 全身性訓練 肌力 爆發 心肺一次練到</p><div class="fit">適合 <b>想增肌變強 提升運動表現的人</b></div></div></div><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>泰拳有氧舞蹈</h4><p>拳腿動作編進音樂律動 零基礎 零對抗 不挨打 女性友善 期班制</p><div class="fit">適合 <b>怕「格鬥很可怕」的人 姐妹揪團</b></div></div></div><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>樂齡體能</h4><p>六人小班 平衡 協調 反應與姿勢控制 教練全程貼身看顧 期班制</p><div class="fit">適合 <b>55+ 長輩 想陪爸媽運動的家庭</b></div></div></div></div></div><div class="csys"><div class="csh"><b>實戰系統</b><span class="en">HCF FIGHT TEAM</span></div><div class="cgrid"><div class="crs soon"><div class="lv r en">LV3</div><div class="cb"><h4>技術對打</h4><p>教練控制與護具保護下的條件式實戰演練 需教練評估</p><div class="fit">適合 <b>有技術基礎 想開始對打的人</b></div></div></div><div class="crs soon"><div class="lv r en">LV3</div><div class="cb"><h4>自由對打夜</h4><p>自由配對 自由節奏 檢驗技術與累積實戰經驗 需教練同意</p><div class="fit">適合 <b>已固定對打 想多累積經驗的人</b></div></div></div><div class="crs soon"><div class="lv r en">LV3</div><div class="cb"><h4>冠軍實戰</h4><p>總教練黃謙和親自帶領 戰術 節奏 臨場心理逐一指導</p><div class="fit">適合 <b>以比賽為目標的學員</b></div></div></div><div class="crs"><div class="lv r en">LV3</div><div class="cb"><h4>Fighter Squad</h4><p>HCF 選手培訓系統 技術 體能 實戰與賽前準備 教練選訓制</p><div class="fit">適合 <b>立志成為選手的人</b></div></div></div></div></div><div class="csys"><div class="csh"><b>專案 親子 樂齡</b><span class="en">HCF SPECIAL</span></div><div class="cgrid"><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>防身研習營</h4><p>期班制｜情境模擬｜實用自衛｜女性友善</p><div class="fit">適合 <b>想學會保護自己的人</b></div></div></div><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>兒童課程</h4><p>期班制｜體適能｜協調｜專注力（含特殊兒童）</p><div class="fit">適合 <b>想讓孩子變穩的家長</b></div></div></div><div class="crs soon"><div class="lv g en">LV1</div><div class="cb"><h4>小鯊魚兒童格鬥營</h4><p>7–12 歲｜紀律｜體能｜保護自己</p><div class="fit">適合 <b>想給孩子紀律與自信</b></div></div></div></div></div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="endcta">
+  <h3>找到你的目標了嗎</h3>
+  <p>方案內容與當期優惠 由教練依你的目標當面推薦 加 LINE 聊最快</p>
+  <div class="btns">
+    <a class="b1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">先來一堂 $400 體驗</a>
+    <a class="b2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
+  </div>
+</section>
+
+<div class="seamC"><div class="wedge dot"></div></div>
+<section class="finale" id="finale"></section>
+
+<script src="hcf.js"></script>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.gtab'),panels=document.querySelectorAll('.gpanel');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.toggle('on',x===t)});
+      panels.forEach(function(p){p.classList.toggle('on',p.dataset.g===t.dataset.g)});
+    });
+  });
+  var g=new URLSearchParams(location.search).get('g');
+  if(g){var t=document.querySelector('.gtab[data-g="'+g+'"]');
+    if(t){t.click();setTimeout(function(){var el=document.getElementById('goals');if(el)el.scrollIntoView();},80);}}
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+</body>
+</html>

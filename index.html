@@ -1,1464 +1,949 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#010208">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HCF新竹格鬥館 | 新竹泰拳首選・踢拳・散打・專業重訓</title>
-    <meta name="description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
-    <meta name="keywords" content="HCF新竹格鬥館, 新竹泰拳, 新竹格鬥, 新竹踢拳, 新竹散打, 新竹重訓, 新竹健身房, 泰拳教學, 拳擊">
-    
-    <link rel="icon" type="image/png" href="shark_logo.png">
-    
-    <meta property="og:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta property="og:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，實戰最強專業拳館。">
-    <meta property="og:image" content="https://www.hsinchucombat.com/hero1.jpg">
-    <meta property="og:url" content="https://www.hsinchucombat.com/">
-    <meta property="og:type" content="website">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HCF新竹格鬥館 | 新竹泰拳首選・專業踢拳・散打・重訓">
-    <meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！">
-    <meta name="twitter:image" content="https://www.hsinchucombat.com/hero1.jpg">
-
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="HCF格鬥">
-    <link rel="apple-touch-icon" href="shark_logo.png">
-    <link rel="canonical" href="https://www.hsinchucombat.com/">
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="hero1.jpg?v=20260323">
-    <link rel="stylesheet" href="output.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="main.css">
-    <script>
-        (async function() {
-            try {
-                // 1. 先用本地記憶體瞬間上色，避免客人看到畫面閃爍
-                const saved = localStorage.getItem('hcf_theme');
-                if(saved) document.documentElement.setAttribute('data-theme', saved);
-                
-                // 2. 偷偷去 Netlify 伺服器問「最新顏色」
-                const res = await fetch('/.netlify/functions/get-theme');
-                const data = await res.json();
-                
-                // 3. 如果伺服器顏色不一樣，立刻強制切換並更新記憶體！
-                if (data.theme && data.theme !== 'default') {
-                    document.documentElement.setAttribute('data-theme', data.theme);
-                    localStorage.setItem('hcf_theme', data.theme);
-                } else if (data.theme === 'default') {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.removeItem('hcf_theme');
-                }
-            } catch (e) {
-                console.error('基地連線異常，保持目前塗裝', e);
-            }
-        })();
-    </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SportsActivityLocation",
-  "name": "HCF新竹格鬥館",
-  "description": "新竹最強格鬥館！主打正宗泰拳、踢拳、散打、專業重訓",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "林森路301號2樓",
-    "addressLocality": "新竹市北區",
-    "addressRegion": "新竹",
-    "postalCode": "300",
-    "addressCountry": "TW"
-  },
-  "telephone": "+886-925-571-225",
-  "url": "https://www.hsinchucombat.com",
-  "image": "https://www.hsinchucombat.com/hero1.jpg",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "11:00",
-      "closes": "22:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday","Sunday"],
-      "opens": "11:00",
-      "closes": "16:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/hc.combat2022/",
-    "https://m.facebook.com/hsinchucombat/"
-  ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>HCF新竹格鬥館 新竹泰拳首選・踢拳・散打・專業重訓</title>
+<meta name="description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;--surface:#F7F7F7;--ink:#111111;--ink2:#4A4A4A;--ink3:#8A8A8A;
+  --line:#E5E5E5;--red:#C81015;--redD:#9B0B0F;--carbon:#111111;
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;
+  --maxw:1160px;
 }
-    </script>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.75;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+::selection{background:var(--red);color:#fff}
 
-        <style>
-        #navbar, #navbar.bg-black\/90, nav.glass-panel {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            border: none !important;
-            border-bottom: none !important;
-            box-shadow: none !important;
-        }
-        </style>
+/* ================= NAV ================= */
+.nav{position:fixed;inset:0 0 auto 0;z-index:200;transition:background .35s,box-shadow .35s}
+.nav-in{max-width:var(--maxw);margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:38px}
+.nav-logo b{font-family:var(--en);font-weight:700;letter-spacing:.14em;font-size:1.05rem;color:#fff;transition:color .35s}
+.nav-logo b i{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{position:relative;font-weight:700;font-size:.93rem;letter-spacing:.05em;color:#fff;padding:4px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--red);color:#fff!important;padding:8px 18px;font-weight:700}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--redD)}
+.nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.nav.sc .nav-links a,.nav.sc .nav-logo b{color:var(--ink)}
+.nav.sc .nav-links a:hover{color:var(--red)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px}
+.nav-burger span{display:block;width:24px;height:2px;background:#fff;margin:5px auto;transition:.3s}
+.nav.sc .nav-burger span{background:var(--ink)}
+.mnav{display:none;flex-direction:column;background:#fff;border-bottom:1px solid var(--line)}
+.mnav a{padding:14px 24px;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
+.mnav a.cta{background:var(--red);color:#fff;text-align:center}
+@media(max-width:920px){.nav-links{display:none}.nav-burger{display:block}.mnav.open{display:flex}}
+
+/* ================= HERO ================= */
+.hero{position:relative;height:100svh;min-height:560px;background:var(--carbon);overflow:hidden;color:#fff}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s}
+.hero-slide.on{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 45%,rgba(10,10,10,.75) 100%)}
+.hero-body{position:relative;z-index:3;height:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18vh}
+.hero-kicker{font-family:var(--en);letter-spacing:.4em;font-size:.78rem;color:#fff;opacity:0;animation:up .9s .3s forwards}
+.hero-kicker i{color:var(--red);font-style:normal}
+.hero-h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.6rem,8.5vw,5.6rem);line-height:1.1;letter-spacing:.04em;margin-top:14px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.hero-h1 i{font-style:normal;color:var(--red);-webkit-text-stroke:1px rgba(255,255,255,.25)}
+.hero-sub{margin-top:16px;font-size:clamp(.98rem,2.4vw,1.15rem);color:#e8e8e8;font-weight:500;letter-spacing:.06em;opacity:0;animation:up 1s .75s forwards}
+.hero-acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;opacity:0;animation:up 1s .95s forwards}
+.hb1{background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:15px 30px;transition:.25s;box-shadow:0 10px 30px rgba(200,16,21,.45)}
+.hb1:hover{background:#fff;color:var(--red)}
+.hb2{border:1.5px solid rgba(255,255,255,.8);color:#fff;font-weight:700;padding:15px 26px;transition:.25s}
+.hb2:hover{background:#fff;color:var(--carbon)}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-dots{position:absolute;z-index:4;left:24px;bottom:9vh;display:flex;gap:8px}
+.hero-dots button{width:30px;height:4px;border:0;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s}
+.hero-dots button.on{background:var(--red);box-shadow:0 0 10px rgba(200,16,21,.7)}
+.hero-scroll{position:absolute;z-index:4;right:26px;bottom:8vh;writing-mode:vertical-rl;font-family:var(--en);font-size:.66rem;letter-spacing:.34em;color:#fff;opacity:.75;display:flex;align-items:center;gap:10px}
+.hero-scroll::after{content:"";width:1px;height:54px;background:linear-gradient(#fff,transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ====== 縫合 A：黑→白 斜切 + 紅色滾動帶 ====== */
+.seamA{position:relative;background:#fff;z-index:5;overflow:hidden}
+.seamA .wedge{height:110px;background:var(--carbon);clip-path:polygon(0 -2%,100% -2%,100% 16%,0 100%);margin-top:-2px}
+.ribbon{position:absolute;left:-4%;right:-4%;top:6px;transform:rotate(-2.4deg);background:var(--red);overflow:hidden;padding:9px 0;box-shadow:0 12px 30px rgba(200,16,21,.3);z-index:6}
+.ribbon-track{display:inline-flex;white-space:nowrap;animation:rib 26s linear infinite}
+.ribbon-track span{font-family:var(--en);font-weight:600;font-size:.86rem;letter-spacing:.42em;color:#fff;padding-right:.42em}
+@keyframes rib{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ================= 第一幕 ================= */
+.act1{background:#fff;padding:30px 0 60px;position:relative;overflow:hidden}
+.kicker{font-family:var(--en);letter-spacing:.36em;font-size:.72rem;color:var(--red);font-weight:600}
+.h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,5.5vw,3rem);letter-spacing:.04em;line-height:1.25;margin-top:10px}
+.h2 i{font-style:normal;color:var(--red)}
+.lead{color:var(--ink2);max-width:620px;margin-top:14px;font-size:1.05rem}
+.float-track-clip{margin-top:44px;overflow:hidden;padding:18px 0 30px}
+.float-track{display:flex;gap:26px;width:max-content;animation:fl 42s linear infinite}
+.float-track:hover{animation-play-state:paused}
+@keyframes fl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.fcard{flex:0 0 350px;background:#fff;box-shadow:0 18px 44px rgba(17,17,17,.13);transition:transform .35s}
+.fcard:nth-child(odd){transform:translateY(12px) rotate(-1.1deg)}
+.fcard:nth-child(even){transform:translateY(-6px) rotate(1deg)}
+.fcard:hover{transform:translateY(-10px) rotate(0)}
+.fcard .ph{height:240px;overflow:hidden}
+.fcard .ph img{width:100%;height:100%;object-fit:cover}
+.fcard .bd{padding:14px 16px 16px;border-top:3px solid var(--red)}
+.fcard .bd b{font-family:var(--serif);font-weight:900;font-size:1.35rem}
+.fcard .bd span{display:block;font-family:var(--en);font-size:.64rem;letter-spacing:.26em;color:var(--ink3);margin-top:3px}
+
+/* ================= 第二幕：捲動入黑場 ================= */
+.act2{position:relative;background:#fff;padding:120px 0 110px;overflow:hidden}
+.a2-bg{position:absolute;inset:0;background:var(--carbon);clip-path:polygon(0 7%,100% 0,100% 100%,0 100%);opacity:var(--p,0);transition:opacity .15s linear}
+.a2-ghost{position:absolute;z-index:1;right:-2%;top:10%;font-family:var(--en);font-weight:700;font-size:clamp(5rem,16vw,12rem);line-height:1;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.12);white-space:nowrap;opacity:var(--p,0)}
+.a2-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr .95fr;gap:34px;align-items:center;opacity:var(--p,0);transform:translateY(calc((1 - var(--p,0)) * 40px))}
+.a2-in .kicker{color:#F09595}
+.a2-in .h2{color:#fff}
+.a2-in p{color:#cfcfcf;margin-top:16px;max-width:520px}
+.a2-rec{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap}
+.a2-rec .num{font-family:var(--en);font-weight:700;font-size:3rem;line-height:1;color:#fff}
+.a2-rec .num em{font-style:normal;font-family:var(--sans);font-size:1rem;font-weight:700;margin-left:4px}
+.a2-rec .lbl{font-family:var(--en);font-size:.64rem;letter-spacing:.24em;color:#9a9a9a;margin-top:6px}
+.a2-rec .w .num i{font-style:normal;color:var(--red)}
+.a2-btn{display:inline-block;margin-top:30px;background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:14px 28px;transition:.25s}
+.a2-btn:hover{background:#fff;color:var(--red)}
+.a2-vis{position:relative;min-height:430px}
+.a2-vis .cut{position:absolute;bottom:-110px;right:-8%;width:124%;max-width:none;filter:drop-shadow(-16px 20px 32px rgba(0,0,0,.55))}
+.a2-vis .tag{position:absolute;z-index:3;left:0;bottom:-70px;background:#fff;color:var(--red);padding:9px 15px;font-weight:900;letter-spacing:.05em;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+@media(max-width:880px){
+  .a2-in{grid-template-columns:1fr}
+  .a2-vis{min-height:300px}
+  .a2-vis .cut{bottom:-90px;right:auto;left:50%;transform:translateX(-50%);width:120%}
+  .a2-vis .tag{bottom:-66px}
+}
+
+/* ================= 第三幕：釘住向右畫廊 ================= */
+.gsec{position:relative;background:var(--carbon);height:320vh}
+.gpin{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.gpin::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px}
+.ghead{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto 26px;padding:0 24px;width:100%}
+.ghead .kicker{color:#F09595}
+.ghead .h2{color:#fff}
+.gstrip{position:relative;z-index:2;display:flex;gap:22px;align-items:center;will-change:transform;width:max-content;padding:0 24px}
+.gph{flex:0 0 auto;height:50svh;max-height:480px;border:2px solid #fff;box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.gph img,.gph video{height:100%;width:auto;object-fit:cover}
+.gph.sm{height:46svh;max-height:440px;border-color:rgba(255,255,255,.5)}
+.gquote{flex:0 0 300px;background:var(--red);color:#fff;padding:30px 26px;box-shadow:0 22px 50px rgba(200,16,21,.4)}
+.gquote .st{letter-spacing:.3em;font-size:.9rem}
+.gquote b{display:block;font-family:var(--serif);font-weight:900;font-size:1.5rem;line-height:1.5;margin-top:10px}
+.gquote span{display:block;font-family:var(--en);font-size:.64rem;letter-spacing:.26em;margin-top:14px;opacity:.85}
+.ghint{position:relative;z-index:2;max-width:var(--maxw);margin:30px auto 0;padding:0 24px;width:100%;display:flex;align-items:center;gap:12px;color:#9a9a9a;font-family:var(--en);font-size:.68rem;letter-spacing:.3em}
+.ghint::after{content:"";flex:0 0 70px;height:1px;background:var(--red);animation:hint 1.6s ease-in-out infinite}
+@keyframes hint{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+@media(max-width:880px){
+  .gsec{height:auto;padding:80px 0}
+  .gpin{position:static;height:auto;display:block;padding:0 0 10px}
+  .ghead{margin-bottom:22px}
+  .gclip{overflow:hidden}
+  .gstrip{animation:gright 40s linear infinite;padding:6px 0}
+  .gph{height:38svh;max-height:340px}
+  .gph.sm{height:35svh;max-height:310px}
+  .gstory{height:38svh;max-height:340px}
+  .ghint{margin-top:24px}
+}
+@keyframes gright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* 影音：賽事實錄 */
+.film{background:var(--carbon);padding:10px 0 100px;position:relative}
+.film::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
+.film .wrap{position:relative;z-index:2}
+.film .h2{color:#fff}
+.film .kicker{color:#F09595}
+.film-frame{position:relative;aspect-ratio:16/9;margin-top:30px;border:2px solid #fff;box-shadow:0 26px 60px rgba(0,0,0,.55);background:#000}
+.film-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.film-cap{margin-top:26px;color:#cfcfcf;font-size:.96rem}
+.film-cap .hl{display:inline-block;background:var(--red);color:#fff;font-weight:900;padding:3px 12px;margin-right:10px;letter-spacing:.04em}
+.film-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.film-grid .film-frame{margin-top:0}
+@media(max-width:880px){.film-grid{grid-template-columns:1fr}}
+.film-more{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--en);letter-spacing:.26em;font-size:.8rem;font-weight:600;color:#fff;border-bottom:2px solid var(--red);padding-bottom:6px;transition:.25s}
+.film-more:hover{color:var(--red)}
+
+/* 位置地圖 */
+.loc{margin-top:90px}
+.loc-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;margin-top:28px;align-items:stretch}
+.loc-map{position:relative;min-height:380px;border:2px solid var(--ink);box-shadow:0 22px 50px rgba(17,17,17,.16);background:var(--surface)}
+.loc-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.04)}
+.loc-info{background:var(--carbon);color:#fff;padding:30px 28px;display:flex;flex-direction:column;gap:4px}
+.loc-info h4{font-family:var(--serif);font-weight:900;font-size:1.4rem}
+.loc-info .addr{color:#cfcfcf;margin-top:10px}
+.loc-info a.row{display:flex;align-items:center;gap:10px;color:#e6e6e6;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.loc-info a.row:hover{color:var(--red)}
+.loc-info a.row b{font-family:var(--en);letter-spacing:.18em;font-size:.72rem;color:#9a9a9a;flex:0 0 86px}
+.loc-nav{margin-top:auto;background:var(--red);color:#fff;text-align:center;font-weight:900;letter-spacing:.06em;padding:14px;transition:.25s}
+.loc-nav:hover{background:var(--redD)}
+@media(max-width:880px){.loc-grid{grid-template-columns:1fr}.loc-map{min-height:300px}}
+
+/* 社群列 */
+.social-row{margin-top:80px;text-align:center}
+.social-row .links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+.social-row .links a{font-family:var(--en);letter-spacing:.22em;font-size:.8rem;font-weight:600;color:var(--ink);border:1.5px solid var(--ink);padding:12px 24px;transition:.25s}
+.social-row .links a:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ====== 縫合 B：黑→白 ====== */
+.seamB{background:#fff}
+.seamB .wedge{height:100px;background:var(--carbon);clip-path:polygon(0 -2%,100% -2%,100% 30%,0 100%);margin-top:-2px}
+
+/* ================= 第四幕 ================= */
+.act4{background:#fff;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px;padding:40px 0 80px}
+.a4-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start;margin-top:10px}
+.a4-grid p{color:var(--ink2);margin-top:16px;font-size:1.03rem}
+.a4-grid p b{color:var(--ink)}
+.cnt-row{display:flex;gap:38px;margin-top:34px;flex-wrap:wrap}
+.cnt .num{font-family:var(--en);font-weight:700;font-size:2.9rem;line-height:1;color:var(--ink)}
+.cnt .num i{font-style:normal;color:var(--red)}
+.cnt .lbl{font-size:.84rem;color:var(--ink3);margin-top:6px;letter-spacing:.06em}
+.offer{border:2px solid var(--red);background:#fff;padding:30px 28px;box-shadow:0 20px 50px rgba(200,16,21,.13);position:relative}
+.offer .flag{position:absolute;top:-16px;left:24px;background:var(--red);color:#fff;font-weight:900;letter-spacing:.1em;padding:5px 16px;font-size:.86rem}
+.offer h3{font-family:var(--serif);font-weight:900;font-size:1.7rem;line-height:1.35}
+.offer h3 i{font-style:normal;color:var(--red)}
+.offer p{color:var(--ink2);margin-top:10px;font-size:.97rem}
+.cd{display:flex;gap:10px;margin-top:18px}
+.cd div{background:var(--carbon);color:#fff;padding:10px 0;width:64px;text-align:center}
+.cd b{font-family:var(--en);font-weight:700;font-size:1.5rem;line-height:1;display:block}
+.cd span{font-size:.62rem;letter-spacing:.16em;color:#9a9a9a}
+.offer .obtn{display:block;margin-top:22px;background:var(--red);color:#fff;text-align:center;font-weight:900;letter-spacing:.06em;padding:15px;transition:.25s}
+.offer .obtn:hover{background:var(--redD)}
+.offer .onote{text-align:center;font-size:.8rem;color:var(--ink3);margin-top:10px}
+@media(max-width:880px){.a4-grid{grid-template-columns:1fr;gap:40px}}
+
+/* 評論漂流 */
+.rev{margin-top:80px}
+.rev-clip{overflow:hidden;margin-top:24px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rev-track{display:flex;gap:18px;width:max-content;animation:fl 50s linear infinite}
+.rev-track:hover{animation-play-state:paused}
+.rev-track img{height:240px;width:auto;box-shadow:0 12px 30px rgba(17,17,17,.12);transform:rotate(-.6deg)}
+.rev-track img:nth-child(even){transform:rotate(.8deg) translateY(6px)}
+
+/* FAQ */
+.faq{margin-top:80px;max-width:760px}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 4px;font-weight:900;font-size:1.06rem}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font-family:var(--en);font-size:1.5rem;color:var(--red);transition:transform .3s;line-height:1}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .ans{padding:0 4px 20px;color:var(--ink2);max-width:640px}
+.ig-line{margin-top:70px;text-align:center}
+.ig-line a{display:inline-flex;align-items:center;gap:10px;font-family:var(--en);letter-spacing:.3em;font-size:.86rem;font-weight:600;color:var(--ink);border-bottom:2px solid var(--red);padding-bottom:6px;transition:.25s}
+.ig-line a:hover{color:var(--red)}
+
+/* ================= 終幕 ================= */
+.seamC{background:var(--carbon)}
+.seamC .wedge{height:100px;background:#fff;clip-path:polygon(0 -2%,100% -2%,100% 14%,0 100%);margin-top:-2px;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px}
+.finale{background:var(--carbon);color:#fff;text-align:center;padding:70px 24px 50px;position:relative;overflow:hidden}
+.finale::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
+.fin-in{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.fin-k{font-family:var(--en);letter-spacing:.4em;font-size:.7rem;color:#F09595}
+.fin-q{font-family:var(--serif);font-weight:900;font-size:clamp(1.7rem,6vw,3rem);line-height:1.5;margin-top:20px;min-height:2.6em}
+.fin-q i{font-style:normal;color:var(--red)}
+.fin-q .caret{display:inline-block;width:3px;height:1em;background:var(--red);vertical-align:-0.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.fin-mv{margin:34px auto 0;max-width:720px}
+.fin-mv .lbl{font-family:var(--en);letter-spacing:.32em;font-size:.66rem;color:#F09595;margin-bottom:12px}
+.fin-mv .frame{position:relative;aspect-ratio:16/9;border:2px solid #fff;box-shadow:0 26px 60px rgba(0,0,0,.55);background:#000}
+.fin-mv .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fin-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.fin-foot{position:relative;z-index:2;max-width:var(--maxw);margin:70px auto 0;padding:34px 24px 0;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:26px;text-align:left}
+.fin-foot h5{font-family:var(--serif);font-weight:900;font-size:1.05rem;margin-bottom:12px;position:relative;padding-left:13px}
+.fin-foot h5::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:5px;background:var(--red)}
+.fin-foot p,.fin-foot a{display:block;color:#b9b9b9;font-size:.92rem;margin-bottom:7px}
+.fin-foot a:hover{color:#fff}
+.fin-copy{position:relative;z-index:2;margin-top:36px;color:#7a7a7a;font-size:.78rem;letter-spacing:.05em}
+@media(max-width:680px){.fin-foot{grid-template-columns:1fr}}
+
+/* ================= 浮動層 ================= */
+.shark{position:fixed;z-index:300;right:18px;bottom:22px;width:58px;height:58px;border-radius:50%;border:2px solid var(--red);background:#fff;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.25);transition:transform .25s;padding:0}
+.shark:hover{transform:scale(1.08)}
+.shark img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.chatbox{position:fixed;z-index:300;right:18px;bottom:92px;width:min(330px,calc(100vw - 36px));background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden;border-top:4px solid var(--red)}
+.chatbox.open{display:flex}
+.cb-h{background:var(--carbon);color:#fff;padding:12px 16px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.cb-h button{background:none;border:0;color:#fff;font-size:1.1rem;cursor:pointer}
+.cb-log{padding:14px;height:240px;overflow-y:auto;font-size:.9rem;display:flex;flex-direction:column;gap:10px}
+.cb-log .m{max-width:85%;padding:9px 13px;line-height:1.6}
+.cb-log .ai{background:var(--surface);align-self:flex-start}
+.cb-log .me{background:var(--red);color:#fff;align-self:flex-end}
+.cb-in{display:flex;border-top:1px solid var(--line)}
+.cb-in input{flex:1;border:0;padding:13px 14px;font-family:var(--sans);font-size:.92rem;outline:none}
+.cb-in button{border:0;background:var(--red);color:#fff;padding:0 18px;font-weight:900;cursor:pointer}
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1.4fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
+.mcta a{display:flex;align-items:center;justify-content:center;padding:15px 8px;font-weight:900;letter-spacing:.04em;font-size:.96rem}
+.mcta .m1{background:var(--red);color:#fff}
+.mcta .m2{background:var(--carbon);color:#fff}
+@media(max-width:880px){.mcta{display:grid}body{padding-bottom:54px}.shark{bottom:72px}.chatbox{bottom:142px}}
+.totop{position:fixed;z-index:260;left:18px;bottom:22px;width:44px;height:44px;border:1.5px solid var(--ink);background:rgba(255,255,255,.9);color:var(--ink);font-family:var(--en);cursor:pointer;opacity:0;pointer-events:none;transition:.3s}
+.totop.on{opacity:1;pointer-events:auto}
+.totop:hover{background:var(--red);border-color:var(--red);color:#fff}
+@media(max-width:880px){.totop{bottom:72px}}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01s!important;transition-duration:.01s!important}
+}
+
+/* ----- 五大目標（雜誌式不對稱）----- */
+.g5{background:#fff;padding:90px 24px 96px;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px;overflow:hidden}
+.g5-in{max-width:var(--maxw);margin:0 auto}
+.g5-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.g5-lead{color:var(--ink2);line-height:1.9;text-align:right}
+.g5-mosaic{margin-top:36px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:128px;gap:16px}
+.g5c{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 32px rgba(17,17,17,.08);overflow:hidden;transition:transform .28s,box-shadow .28s}
+.g5c .ghost{position:absolute;top:-14px;right:2px;font-family:var(--en);font-weight:700;font-size:5.6rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(200,16,21,.22);pointer-events:none;transition:.3s}
+.g5c b{font-family:var(--serif);font-weight:900;font-size:1.45rem;line-height:1.25;position:relative}
+.g5c .d{color:var(--ink2);font-size:.85rem;margin-top:7px;line-height:1.6;position:relative}
+.g5c i{font-style:normal;font-weight:900;font-size:.8rem;color:var(--red);margin-top:14px;position:relative;transition:transform .25s}
+.g5c:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(200,16,21,.18)}
+.g5c:hover i{transform:translateX(6px)}
+.g5c:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.5)}
+.g5c.big{grid-column:span 2;grid-row:span 2;background:var(--carbon);border:0;color:#fff}
+.g5c.big .d{color:#cfcfcf}
+.g5c.big b{font-size:clamp(1.8rem,2.6vw,2.4rem)}
+.g5c.big .ghost{font-size:9rem;-webkit-text-stroke-color:rgba(255,255,255,.16)}
+.g5c.big:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.7)}
+.g5c.tilt{grid-column:span 2;grid-row:span 1;transform:rotate(-1.2deg)}
+.g5c.tilt:hover{transform:rotate(0) translateY(-6px)}
+.g5c.red{grid-column:span 2;grid-row:span 1;background:var(--red);border:0;color:#fff}
+.g5c.red .d{color:#ffd9da}
+.g5c.red i{color:#fff}
+.g5c.red .ghost{-webkit-text-stroke-color:rgba(255,255,255,.3)}
+.g5c.wide{grid-column:span 3;grid-row:span 1;flex-direction:row;align-items:flex-end;gap:18px}
+.g5c.wide b{font-size:1.6rem}
+.g5c.wide .d{margin:0 0 4px}
+.g5c.wide i{margin:0 0 4px auto;white-space:nowrap}
+.g5c.dark{grid-column:span 3;grid-row:span 1;background:var(--carbon);border:0;color:#fff;flex-direction:row;align-items:flex-end;gap:18px}
+.g5c.dark .d{color:#cfcfcf;margin:0 0 4px}
+.g5c.dark i{margin:0 0 4px auto;white-space:nowrap}
+.g5c.dark .tag{position:absolute;top:14px;left:20px;background:var(--red);color:#fff;font-size:.66rem;font-weight:900;letter-spacing:.18em;padding:3px 10px}
+.g5c.dark .ghost{-webkit-text-stroke-color:rgba(255,255,255,.16)}
+@media(max-width:980px){
+  .g5-mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  .g5c{min-height:150px}
+  .g5c.big{grid-column:span 2;grid-row:span 1;min-height:210px}
+  .g5c.wide,.g5c.dark{grid-column:span 2;flex-direction:column;align-items:flex-start}
+  .g5c.wide i,.g5c.dark i{margin:14px 0 0}
+  .g5-lead{text-align:left}
+}
+@media(max-width:560px){.g5{padding:64px 20px}.g5-mosaic{grid-template-columns:1fr}.g5c.tilt{transform:none}}
+
+.cb-chips{display:flex;gap:6px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line,#E5E5E5);background:#fff}.cb-chips button{border:1.5px solid var(--red,#C81015);color:var(--red,#C81015);background:#fff;font-family:inherit;font-weight:700;font-size:.76rem;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.2s}.cb-chips button:hover{background:var(--red,#C81015);color:#fff}
+
+/* ----- 蛻變故事磚 ----- */
+.gstory{position:relative;display:block;height:50svh;max-height:480px;aspect-ratio:3/4;overflow:hidden;background:#000;flex:0 0 auto;border:2px solid #fff;box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.gstory img{height:100%;width:100%;object-fit:cover;opacity:.62;transition:transform .6s,opacity .4s}
+.gstory:hover img{transform:scale(1.05);opacity:.45}
+.gstory .gs-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;background:linear-gradient(180deg,transparent 35%,rgba(11,11,12,.88))}
+.gstory em{font-style:normal;font-family:var(--en);letter-spacing:.3em;font-size:.62rem;color:#F09595}
+.gstory b{font-family:var(--serif);font-weight:900;font-size:1.25rem;line-height:1.5;margin-top:8px}
+.gstory i{font-style:normal;font-weight:900;font-size:.8rem;color:var(--red);background:#fff;align-self:flex-start;padding:6px 12px;margin-top:14px}
+
+/* ---------- AI 轉化元件 ---------- */
+.cb-acts{display:flex;gap:6px;flex-wrap:wrap}
+.cb-acts a,.cb-acts .cb-leadbtn{background:var(--red,#C81015);color:#fff!important;font-weight:700;font-size:.78rem;padding:7px 12px;border:0;border-radius:999px;cursor:pointer;text-decoration:none;font-family:inherit;line-height:1.4}
+.cb-acts a:nth-child(2){background:#06C755}
+.cb-acts .cb-leadbtn{background:#111}
+.cb-acts .cb-leadbtn:disabled{opacity:.5;cursor:default}
+.cb-leadform{display:flex;flex-direction:column;gap:6px}
+.cb-leadform input{border:1.5px solid var(--line,#E5E5E5);padding:9px 10px;font-size:.86rem;font-family:inherit}
+.cb-leadform .cb-leadsend{background:var(--red,#C81015);color:#fff;border:0;font-weight:900;padding:10px;cursor:pointer;font-family:inherit}
+
+/* ----- 蛻變故事橫幅 ----- */
+.sband{position:relative;display:block;overflow:hidden;background:#0B0B0C;min-height:240px}
+.sband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.34;transition:opacity .4s,transform .8s}
+.sband:hover img{opacity:.46;transform:scale(1.03)}
+.sband .sb-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:54px 24px;display:flex;align-items:center;justify-content:space-between;gap:26px;color:#fff;flex-wrap:wrap}
+.sband em{font-style:normal;font-family:var(--en);letter-spacing:.32em;font-size:.66rem;color:#F09595}
+.sband b{display:block;font-family:var(--serif);font-weight:900;font-size:clamp(1.25rem,3vw,1.8rem);line-height:1.6;margin-top:10px}
+.sband b i{font-style:normal;color:var(--red)}
+.sband span{display:block;color:#cfcfcf;font-size:.92rem;margin-top:8px}
+.sband u{text-decoration:none;background:var(--red);color:#fff;font-weight:900;padding:14px 26px;white-space:nowrap;box-shadow:0 10px 28px rgba(200,16,21,.45);transition:.25s}
+.sband:hover u{background:#fff;color:var(--red)}
+
+/* ----- 會員逆襲（act2 變體）----- */
+.actk .a2-ghost{right:auto;left:-1%}
+.a2-vis.vk{min-height:480px}
+.cutk{bottom:-110px!important;right:auto!important;left:-16%;width:102%!important;filter:none!important;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 96%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 96%,transparent 100%);
+  mask-composite:intersect}
+.actk .a2-vis .tag{left:auto;right:0;bottom:-84px}
+@media(max-width:880px){
+  .a2-vis.vk{min-height:330px;order:2}
+  .cutk{left:50%!important;transform:translateX(-50%);width:128%!important;bottom:-96px!important}
+  .actk .a2-vis.vk{min-height:0;margin-top:18px}
+  .actk .cutk{position:relative!important;bottom:auto!important;left:auto!important;transform:none!important;width:100%!important;display:block;margin:0 auto}
+  .actk .a2-vis .tag{right:auto;left:50%;transform:translateX(-50%);bottom:10px;white-space:nowrap}
+}
+</style>
+<link rel="canonical" href="https://www.hsinchucombat.com/">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="HCF新竹格鬥館 新竹泰拳首選・踢拳・散打・專業重訓">
+<meta property="og:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
+<meta property="og:url" content="https://www.hsinchucombat.com/">
+<meta property="og:image" content="https://www.hsinchucombat.com/hero1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HCF新竹格鬥館 新竹泰拳首選・踢拳・散打・專業重訓">
+<meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/hero1.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsActivityLocation", "name": "HCF 新竹格鬥", "alternateName": "HCF Combat Hsinchu", "description": "新竹泰拳、散打、踢拳、肌力體能格鬥訓練館，職業選手教練授課，$400 首堂體驗。", "url": "https://www.hsinchucombat.com", "telephone": "+886-925-571-225", "address": {"@type": "PostalAddress", "streetAddress": "北區林森路301號2樓", "addressLocality": "新竹市", "addressCountry": "TW"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "11:00", "closes": "22:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "11:00", "closes": "16:00"}], "sameAs": ["https://www.instagram.com/hc.combat2022/", "https://m.facebook.com/hsinchucombat/", "https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN", "https://lin.ee/7lidUv0"]}</script>
+<style>.ndd{position:relative}.ndd>a i{font-style:normal;font-size:.68em;margin-left:4px;opacity:.8}.ndd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}.ndd-m{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;min-width:158px;padding:8px 0;box-shadow:0 18px 44px rgba(17,17,17,.18);border-top:3px solid var(--red,#C81015);opacity:0;visibility:hidden;transition:.22s;z-index:210}.ndd:hover .ndd-m,.ndd:focus-within .ndd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.ndd-m a{display:block;padding:11px 18px;color:var(--ink,#111)!important;font-size:.9rem;font-weight:700}.ndd-m a::after{display:none}.ndd-m a:hover{background:var(--surface,#F7F7F7);color:var(--red,#C81015)!important}.msub-t{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 24px;font-weight:700;color:var(--ink,#111);border:0;border-top:1px solid var(--line,#E5E5E5);background:#fff;font-family:var(--sans,sans-serif);font-size:1rem;cursor:pointer;text-align:left}.msub-t i{font-style:normal;color:var(--red,#C81015);font-weight:900;transition:transform .2s}.msub-t.open i{transform:rotate(45deg)}.msub{display:none;flex-direction:column;background:var(--surface,#F7F7F7)}.msub.open{display:flex}.msub a{padding-left:42px!important;font-size:.95rem}</style>
 </head>
-<body class="font-sans antialiased selection:bg-sci-cyan selection:text-black">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-400 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:text-lg">跳至主要內容</a>
+<body>
 
-    <div id="custom-toast" class="fixed top-32 left-1/2 transform -translate-x-1/2 bg-sci-cyan text-black px-6 py-3 rounded font-bold tracking-widest z-[200] opacity-0 pointer-events-none transition-opacity duration-300 shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] flex items-center gap-2">
-        <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span id="toast-msg">網站連結已複製！</span>
-    </div>
-
-    <div class="custom-cursor-dot" id="cursor-dot"></div>
-    <div class="custom-cursor-ring" id="cursor-ring"></div>
-    <div id="mouse-glow-effect" class="hidden md:block"></div>
-    <audio id="bgm-audio" loop preload="none">
-        <source src="bgm.mp3" type="audio/mpeg">
-    </audio>
-
-    <div id="preloader" role="status" aria-label="Loading HCF Combat System">
-        <button class="preloader-skip" onclick="window.__skipIntro?.()" aria-label="Skip intro">SKIP</button>
-        <div class="preloader-center">
-            <div class="preloader-kicker">HCF COMBAT SYSTEM</div>
-            <div class="preloader-logo">HCF</div>
-            <div class="preloader-sub">INITIALIZING</div>
-            <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-        </div>
-    </div>
-
-    <div class="bg-grain hidden md:block"></div>
-    <canvas id="bg-canvas" class="hidden md:block" aria-hidden="true">您的瀏覽器不支援 Canvas</canvas>
-
-    <nav class="fixed w-full z-[120] transition-all duration-300 py-4" id="navbar" style="background:transparent;border:none;">
-        <div class="max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-                <div class="flex items-center gap-3 sm:gap-4 cursor-pointer flex-shrink-0 relative" onclick="handleLogoClick()" id="logo-btn">
-                    <img src="shark_logo.png" alt="HCF Logo" id="nav-shark-logo" class="h-10 sm:h-16 w-auto object-contain" width="400" height="400" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO"> 
-                    <div class="flex flex-col justify-center">
-                        <span class="text-xl sm:text-2xl font-orbitron font-black text-white tracking-widest leading-none drop-shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.6)] sm:drop-shadow-md italic">HCF</span>
-                        <span class="block text-[0.5rem] sm:text-[0.65rem] text-sci-cyan tracking-[0.4em] font-orbitron font-bold drop-shadow-md mt-1">COMBAT SYSTEM</span>
-                    </div>
-
-                </div>
-
-                <button onclick="toggleMobileMenu()" class="lg:hidden flex items-center justify-center w-10 h-10 text-gray-200 hover:text-sci-cyan transition-colors" aria-label="開啟選單">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-
-                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-auto">
-                    <a href="#home" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">首頁</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">HOME</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="news.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">最新資訊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">NEWS</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="philosophy.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">品牌哲學</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PHILOSOPHY</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <div class="relative group py-4">
-                        <a href="classes.html" class="relative text-base font-bold text-gray-200 group-hover:text-sci-cyan transition-colors tracking-widest flex items-center gap-1 pb-1">
-                            <span class="group-hover:hidden">課程介紹</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COURSES</span>
-                            <i class="fa-solid fa-angle-down text-[10px]" aria-hidden="true"></i>
-                            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                        </a>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-40 bg-[#050810]/95 backdrop-blur-md border border-white/10 rounded shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
-                            <a href="classes.html#group" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">團體課程</a>
-                            <a href="classes.html#private" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">私人課程</a>
-                            <a href="classes.html#muay-thai" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">泰拳訓練</a>
-                            <a href="classes.html#kickboxing" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">踢拳訓練</a>
-                            <a href="classes.html#sanda" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">散打訓練</a>
-                            <a href="classes.html#strength" class="px-4 py-2 text-xs text-gray-300 hover:text-sci-cyan hover:bg-white/5 transition-colors">肌力體能</a>
-                        </div>
-                    </div>
-                    <a href="team.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">教練團隊</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">COACHES</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="pricing.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">課程方案</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">PRICING</span>
-                        <span class="absolute top-0 -right-2 w-1.5 h-1.5 rounded-full bg-sci-cyan animate-ping"></span>
-                        <span class="absolute top-0 -right-2 w-1.5 h-1.5 rounded-full bg-sci-cyan shadow-[0_0_8px_var(--theme-cyan)]"></span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="index.html#schedule" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">課表</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">SCHEDULE</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    <a href="faq.html" class="relative group text-base font-bold text-gray-200 hover:text-sci-cyan transition-colors tracking-widest pb-1">
-                        <span class="group-hover:hidden">新手問答</span><span class="hidden group-hover:inline font-orbitron uppercase text-[15px]">FAQ</span>
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-sci-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                    </a>
-                    
-
-                    <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="px-12 py-2.5 bg-sci-cyan text-black font-black text-sm tracking-widest skew-x-[-10deg] hover:bg-cyan-400 transition-colors ml-4 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
-                        <span class="skew-x-[10deg] inline-block lang-text" data-i18n="cta.book_now" data-en="BOOK NOW">啟動預約</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="#top"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>
+    <nav class="nav-links">
+      <a href="#top">首頁</a>
+      <a href="news.html">最新資訊</a>
+      <a href="philosophy.html">品牌哲學</a>
+      <div class="ndd"><a href="courses.html" data-p="courses">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>
+      <a href="schedule.html">最新課表</a>
+      <a href="team.html">教練團隊</a>
+      <a href="pricing.html">課程方案</a>
+      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>
     </nav>
-    
-    <div id="drawer-backdrop" class="fixed inset-0 bg-black/80 z-[130] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm" onclick="closeAllDrawers()"></div>
-    
-    <div id="brand-drawer" class="fixed top-0 left-0 w-[85%] sm:w-[400px] h-[100dvh] max-h-screen z-[140] bg-sci-base/95 backdrop-blur-lg border-r border-white/10 transform -translate-x-full transition-transform duration-300 flex flex-col pt-20 px-6 overflow-y-auto overscroll-contain">
-        <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
-        <div class="flex flex-col items-center mt-4 mb-8">
-            <img src="shark_logo.png" alt="HCF Logo" class="w-32 h-auto object-contain mb-4" width="400" height="400" loading="lazy" data-fallback="https://placehold.co/400x150/02040a/00f0ff?text=HCF+LOGO">
-            <h2 class="text-2xl font-orbitron font-black text-white italic tracking-tighter mb-2">HCF</h2>
-            <span class="text-[0.6rem] text-sci-cyan tracking-[0.3em] font-orbitron font-bold">COMBAT SYSTEM</span>
-        </div>
-        <div class="space-y-4 text-gray-400 text-xs leading-relaxed font-mono flex-grow">
-            <p class="border-l-2 border-sci-cyan pl-3 lang-text" data-i18n="brand.tagline" data-en="// Fighting is not violence, it's a spirit.<br>// Reborn in adversity, witness your strength.">
-                // 致力於推廣格鬥運動不是只有外人眼中的暴力<br>
-                // 而是一種精神<br>
-                // 在逆境中重生 看到你自己有多強大
-            </p>
-            <p class="lang-text" data-i18n="brand.philosophy" data-en="Life is like an endless boxing match. We've all been knocked down by unfortunate events. But don't be afraid. Stand up. The spirit of HCF is about how to be reborn in adversity and see how truly strong you are.">
-                人生有時候就像一場拳賽 我們都曾被不如意的事情一次次擊倒 但別害怕 站起來 HCF 的精神不僅是格鬥 更是關於如何在逆境中重生 看到你自己有多強大
-            </p>
-        </div>
-        <div class="mt-8 pt-6 border-t border-white/10 w-full mb-8">
-            <p class="text-sci-cyan text-[10px] font-mono tracking-widest mb-4">HCF CONNECT</p>
-            <div class="flex flex-col gap-4">
-                <a href="https://lin.ee/7lidUv0" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-[#06C755] transition-colors group">
-                    <i class="fa-brands fa-line text-xl w-6 text-center group-hover:scale-110 transition-transform" aria-hidden="true"></i> 
-                    <span class="text-sm tracking-widest font-bold">LINE 官方諮詢</span>
-                </a>
-                <a href="https://www.instagram.com/hc.combat2022/" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-pink-500 transition-colors group">
-                    <i class="fa-brands fa-instagram text-xl w-6 text-center group-hover:scale-110 transition-transform" aria-hidden="true"></i> 
-                    <span class="text-sm tracking-widest font-bold">Instagram</span>
-                </a>
-                <a href="https://m.facebook.com/hsinchucombat/" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
-                    <i class="fa-brands fa-facebook-f text-xl w-6 text-center group-hover:scale-110 transition-transform" aria-hidden="true"></i> 
-                    <span class="text-sm tracking-widest font-bold">Facebook</span>
-                </a>
-                <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-red-500 transition-colors group">
-                    <i class="fa-brands fa-youtube text-xl w-6 text-center group-hover:scale-110 transition-transform" aria-hidden="true"></i> 
-                    <span class="text-sm tracking-widest font-bold">YouTube 實戰</span>
-                </a>
-                <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-300 hover:text-sci-cyan transition-colors group">
-                    <i class="fa-solid fa-bolt text-xl w-6 text-center group-hover:scale-110 transition-transform text-sci-cyan" aria-hidden="true"></i> 
-                    <span class="text-sm tracking-widest font-bold text-sci-cyan">立即預約</span>
-                </a>
-            </div>
-        </div>
+    <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mnav" id="mnav">
+    <a href="#top">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>
+    <button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a>
+    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+  </nav>
+</header>
+
+<!-- 序幕 HERO -->
+<section class="hero" id="top">
+  <div class="hero-slide on"><img src="hero1.jpg" alt="HCF 訓練實況"></div>
+  <div class="hero-slide"><img src="hero2.jpg" alt="HCF 擂台"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-body">
+    <div class="hero-kicker">HSINCHU COMBAT FITNESS <i>/</i> HONOR · COURAGE · FAITH</div>
+    <h1 class="hero-h1">踏上擂台<br>成為更強的<i>自己</i></h1>
+    <p class="hero-sub">泰拳 × 散打 × 踢拳 × 肌力體能　—　新竹格鬥訓練基地</p>
+    <div class="hero-acts">
+      <a class="hb1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">$400 首堂體驗</a>
+      <a class="hb2" href="#act2">認識總教練</a>
     </div>
+  </div>
+  <div class="hero-dots" id="dots"></div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
 
-    <div id="mobile-menu" class="fixed top-0 bottom-0 right-0 w-[85%] max-w-sm h-[100dvh] z-[140] bg-sci-base/95 backdrop-blur-lg border-l border-white/10 transform translate-x-full transition-transform duration-300 flex flex-col pt-20 px-8 overflow-y-auto overscroll-contain">
-        <button onclick="closeAllDrawers()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 text-2xl"><i class="fa-solid fa-xmark"></i></button>
-        <div class="space-y-6 flex-grow mt-6">
-            <a href="#home" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">首頁</a>
-            <a href="news.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">最新資訊</a>
-            <a href="philosophy.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">品牌哲學</a>
-            <div class="border-b border-white/5 pb-3">
-                <a href="classes.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest mb-3">課程介紹</a>
-                <div class="grid grid-cols-2 gap-3 pl-4">
-                    <a href="classes.html#group" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 團體課程</a>
-                    <a href="classes.html#private" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 私人課程</a>
-                    <a href="classes.html#muay-thai" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 泰拳訓練</a>
-                    <a href="classes.html#kickboxing" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 踢拳訓練</a>
-                    <a href="classes.html#sanda" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 散打訓練</a>
-                    <a href="classes.html#strength" onclick="closeAllDrawers()" class="text-sm text-gray-400 hover:text-sci-cyan">• 肌力體能</a>
-                </div>
-            </div>
-            <a href="team.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">教練團隊</a>
-            <a href="pricing.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">課程方案</a>
-            <a href="index.html#schedule" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">課表</a>
-            <a href="faq.html" onclick="closeAllDrawers()" class="block text-xl font-black font-orbitron text-white hover:text-sci-cyan tracking-widest border-b border-white/5 pb-3">新手問答</a>
-        </div>
-        <div class="flex gap-4 justify-center mt-6 pt-6 border-t border-white/10">
-            <a href="https://lin.ee/7lidUv0" target="_blank" class="w-12 h-12 bg-[#06C755] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(6,199,85,0.4)]" aria-label="LINE">
-                <i class="fa-brands fa-line text-white text-xl" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.instagram.com/hc.combat2022/" target="_blank" class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(236,72,153,0.4)]" aria-label="Instagram">
-                <i class="fa-brands fa-instagram text-white text-xl" aria-hidden="true"></i>
-            </a>
-            <a href="https://m.facebook.com/hsinchucombat/" target="_blank" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.4)]" aria-label="Facebook">
-                <i class="fa-brands fa-facebook-f text-white text-xl" aria-hidden="true"></i>
-            </a>
-            <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.4)]" aria-label="YouTube">
-                <i class="fa-brands fa-youtube text-white text-xl" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="mt-8 mb-6 w-full px-2">
-            <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="block w-full py-4 text-center bg-sci-cyan text-black font-black text-lg skew-x-[-10deg] shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.4)]">
-                <span class="skew-x-[10deg] inline-block lang-text" data-i18n="cta.book_now" data-en="BOOK NOW">立即預約</span>
-            </a>
-        </div>
-        <div class="border-t border-white/10 pt-4 mt-2 mb-4 px-2">
-            <button onclick="toggleVideoSound()" class="flex items-center gap-4 text-gray-300 hover:text-sci-cyan transition-colors w-full text-left group">
-                <i id="menu-video-sound-icon" class="fa-solid fa-volume-xmark text-xl w-6 text-center group-hover:scale-110 transition-transform"></i>
-                <span class="text-sm tracking-widest font-bold">影片聲音</span>
-            </button>
-        </div>
-        <div class="flex gap-3 px-2 mb-6">
-            <button onclick="toggleBGM()" class="flex-1 flex items-center justify-center gap-2 border border-sci-cyan/30 text-sci-cyan font-orbitron font-bold text-xs py-3 rounded hover:bg-sci-cyan/10 transition-colors backdrop-blur-sm">
-                <i class="fa-solid fa-music" aria-hidden="true"></i>
-                <span>BGM</span>
-            </button>
-        </div>
-    </div>
-
-    <div id="ai-system" class="ai-container">
-        <div id="ai-chat-box" class="ai-chat-box shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.3)]">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-3">
-                <span class="text-sci-cyan font-bold font-orbitron flex items-center gap-2 text-sm"><i class="fa-solid fa-robot" aria-hidden="true"></i> HCF智能教練</span>
-                <button onclick="toggleChat()" class="text-gray-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div id="ai-chat-history" class="h-36 overflow-y-auto mb-3 space-y-2 text-xs text-gray-200 custom-scrollbar pr-2">
-                <div class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5">
-                    你好！我是 HCF 智能教練🤖<br>有任何疑問都可以直接問我，或是直接領取優惠！
-                </div>
-            </div>
-            
-            <div id="ai-quick-replies" class="flex flex-wrap gap-1.5 mb-3 border-b border-white/10 pb-3">
-                <button onclick="askShark('費用怎麼算？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">💰 費用</button>
-                <button onclick="askShark('新手適合嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">🔰 新手</button>
-                <button onclick="askShark('體驗課怎麼預約？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">📱 預約</button>
-                <button onclick="askShark('有什麼優惠？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">🔥 優惠</button>
-                <button onclick="askShark('教練團隊介紹')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">👊 教練</button>
-                <button onclick="askShark('女生可以學嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">👩 女性</button>
-                <button onclick="askShark('會不會受傷？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">🛡️ 安全</button>
-                <button onclick="askShark('減肥有效嗎？')" class="bg-sci-cyan/10 text-sci-cyan border border-sci-cyan/30 px-2 py-1.5 rounded text-[10px] hover:bg-sci-cyan hover:text-black transition-colors">🔥 減脂</button>
-            </div>
-
-            <div class="flex gap-2 mb-3 border-b border-white/10 pb-3">
-                <input type="text" id="ai-user-input" placeholder="輸入你想問的..." class="flex-1 bg-black/80 border border-white/20 rounded px-3 py-1.5 text-xs text-white focus:outline-none focus:border-sci-cyan transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') sendUserMessage()">
-                <button onclick="sendUserMessage()" class="bg-sci-cyan text-black px-3 py-1.5 rounded text-xs font-black shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.4)] hover:bg-cyan-400 transition-colors">
-                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-                </button>
-            </div>
-            
-            <div class="flex flex-col gap-2">
-                <div class="flex gap-2">
-                    <a href="pricing.html" onclick="toggleChat()" class="flex-1 py-2 bg-sci-cyan text-black text-center font-bold text-xs rounded shadow-[0_0_10px_rgba(var(--theme-cyan-rgb),0.4)] hover:bg-cyan-400 transition-colors">
-                        領取 $400 體驗
-                    </a>
-                    <a href="https://lin.ee/7lidUv0" target="_blank" class="flex-1 py-2 bg-[#06C755] text-white text-center font-bold text-xs rounded shadow-[0_0_10px_rgba(6,199,85,0.4)] hover:bg-[#05b34c] transition-colors">
-                        LINE 真人客服
-                    </a>
-                </div>
-                <div class="flex gap-2">
-                    <button onclick="shareWebsite(this)" class="flex-1 py-2 bg-blue-600 text-white text-center font-bold text-xs rounded hover:bg-blue-500 transition-colors">
-                        <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> 分享給朋友
-                    </button>
-                    <button id="install-app-btn" class="hidden flex-1 py-2 bg-purple-600 text-white text-center font-bold text-xs rounded hover:bg-purple-500 transition-colors shadow-[0_0_10px_rgba(147,51,234,0.4)]">
-                        <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> 安裝 APP
-                    </button>
-                </div>
-                <div class="flex gap-2 sm:hidden">
-                    <button onclick="toggleVideoSound()" class="flex-1 py-2 bg-white/10 border border-white/20 text-white text-center font-bold text-xs rounded hover:bg-white/20 hover:border-sci-cyan hover:text-sci-cyan transition-colors">
-                        <i class="fa-solid fa-volume-xmark" id="shark-video-sound-icon" aria-hidden="true"></i> 影片聲音
-                    </button>
-                </div>
-                <div class="flex gap-2">
-                    <button onclick="toggleBGM()" class="flex-1 py-2 bg-white/10 border border-white/20 text-white text-center font-bold text-xs rounded hover:bg-white/20 hover:border-sci-cyan hover:text-sci-cyan transition-colors">
-                        <i class="fa-solid fa-music" id="shark-bgm-icon" aria-hidden="true"></i> BGM 音樂
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="zzz-mark" class="zzz-text">Zzz</div>
-        <div id="angry-bubble" class="angry-bubble text-xs">有問題？問我！</div>
-        <img src="shark_logo.png" alt="AI Mascot" class="ai-mascot-img" id="ai-mascot-btn" loading="lazy" data-fallback="https://placehold.co/600x600/0f131a/00f0ff?text=SHARK">
-        <div id="mascot-menu-hint" class="mascot-menu-hint lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="black"><rect x="3" y="6" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="16" width="18" height="2"/></svg></div>
-    </div>
-
-    <button id="rocket-top" class="fixed bottom-[110px] left-4 sm:left-auto sm:bottom-10 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/80 border border-sci-cyan text-sci-cyan flex items-center justify-center opacity-0 translate-y-20 transition-all duration-300 shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.3)] backdrop-blur-md hover:bg-sci-cyan hover:text-black" onclick="scrollToTop()" aria-label="Scroll to Top">
-        <i class="fa-solid fa-chevron-up text-lg" aria-hidden="true"></i>
-    </button>
-
-    <main id="main-content">
-
-        <section id="home" class="relative min-h-[100svh] flex items-end justify-start overflow-hidden pb-12 pt-24 sm:pb-24 sm:pt-32 bg-sci-base">
-            <div class="absolute inset-0 z-0 touch-pan-y" id="carousel">
-                <div class="carousel-inner w-full h-full relative">
-                    <!-- Static hero background -->
-                    <div class="carousel-item absolute inset-0 opacity-100 z-10 active bg-sci-base">
-                        <img src="IMG_5202.JPG" alt="HCF Combat" class="w-full h-full object-cover" style="object-position:center 25%;">
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-transparent to-black/30"></div>
-                    </div>
-                    <button class="carousel-control prev absolute left-0 top-0 h-full w-[15%] md:w-[10%] z-30 flex items-center justify-start pl-4 sm:pl-8 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-auto group outline-none cursor-pointer" id="prev-slide" aria-label="Previous Slide">
-                        <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:text-sci-cyan transition-all transform -translate-x-4 group-hover:translate-x-0 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                            <i class="fa-solid fa-chevron-left text-xl" aria-hidden="true"></i>
-                        </div>
-                    </button>
-                    <button class="carousel-control next absolute right-0 top-0 h-full w-[15%] md:w-[10%] z-30 flex items-center justify-end pr-4 sm:pl-8 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-auto group outline-none cursor-pointer" id="next-slide" aria-label="Next Slide">
-                        <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:text-sci-cyan transition-all transform translate-x-4 group-hover:translate-x-0 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                            <i class="fa-solid fa-chevron-right text-xl" aria-hidden="true"></i>
-                        </div>
-                    </button>
-
-                    <div class="absolute left-1/2 -translate-x-1/2 bottom-[110px] sm:bottom-12 z-20 flex gap-3 items-center bg-black/50 backdrop-blur-md px-5 py-3 rounded-full pointer-events-auto border border-white/10 shadow-[0_5px_20px_rgba(0,0,0,0.8)]" id="carousel-indicators">
-                    </div>
-
-                    <div class="absolute right-4 top-[90px] sm:top-auto sm:right-8 sm:bottom-12 z-40 pointer-events-auto hidden sm:block">
-                        <button onclick="toggleVideoSound()" class="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 border border-white/20 rounded-full text-white flex items-center justify-center hover:border-sci-cyan transition-colors backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)] group" aria-label="Toggle Video Sound">
-                            <i class="fa-solid fa-volume-xmark text-sm sm:text-base group-hover:text-sci-cyan" id="video-sound-icon" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <!-- 旋轉品牌印章 -->
-                    <div class="absolute right-6 bottom-36 sm:bottom-20 z-30 hidden lg:block pointer-events-none" aria-hidden="true">
-                      <div class="relative w-20 h-20">
-                        <svg viewBox="0 0 100 100" class="w-full h-full rotate-badge opacity-60">
-                          <defs>
-                            <path id="badge-circle" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
-                          </defs>
-                          <text fill="rgba(0,212,255,0.8)" font-size="9" font-family="Orbitron" letter-spacing="3">
-                            <textPath href="#badge-circle">HCF COMBAT SYSTEM • SINCE 2022 •</textPath>
-                          </text>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                          <img src="shark_logo.png" alt="" class="w-9 h-9 object-contain opacity-70">
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="z-10 max-w-[1800px] w-full mx-auto px-4 sm:px-8 lg:px-16 relative pointer-events-none mb-[100px] sm:mb-[8vh]">
-                <div class="w-full flex flex-col items-start text-left pointer-events-auto">
-                    
-                    <div class="flex flex-col items-start mb-6 w-full">
-                        <h1 class="text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5.5rem] leading-[1.15] text-white font-black italic tracking-wide border-l-[5px] sm:border-l-4 lg:border-l-[6px] border-sci-cyan pl-4 sm:pl-5 lg:pl-6 w-full drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-pre-line lang-text hero-title-glow hero-title-enter hero-border-pulse" data-i18n="hero.title" data-en="HCF HSINCHU COMBAT">HCF新竹格鬥館</h1>
-                        <p class="text-[0.9rem] sm:text-[1.15rem] lg:text-[1.5rem] xl:text-[1.75rem] 2xl:text-[2rem] font-bold tracking-[0.2em] sm:tracking-[0.25em] lg:tracking-[0.3em] pl-4 sm:pl-5 lg:pl-6 mt-2 sm:mt-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] lang-text hero-subtitle-shimmer hero-subtitle-enter" data-i18n="hero.subtitle" data-en="Muay Thai ・ Kickboxing ・ Sanda ・ Strength Training">新竹泰拳首選 ・ 踢拳 ・ 散打 ・ 專業重訓</p>
-
-                    </div>
-
-                    <div id="mobile-cta-bar" class="fixed bottom-0 left-0 w-full z-[100] p-3 sm:p-0 sm:relative sm:z-[30] flex flex-row gap-2 sm:gap-4 sm:w-auto sm:mt-6 bg-[#050810] sm:bg-transparent border-t border-white/10 sm:border-none pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-0 items-center justify-center sm:justify-start shadow-[0_-10px_30px_rgba(0,0,0,0.8)] sm:shadow-none">
-                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" onclick="if('vibrate' in navigator) navigator.vibrate(10)" class="flex-1 sm:flex-none px-2 sm:px-10 py-4 sm:py-5 bg-sci-cyan text-black font-black text-[14px] sm:text-xl sm:skew-x-[-10deg] text-center flex items-center justify-center shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.5)] hover:bg-cyan-400 transition-colors rounded-lg sm:rounded-none magnetic-btn cta-pulse">
-                            <span class="sm:skew-x-[10deg] inline-flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 喚醒力量 / 預約體驗</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════
-             VS BATTLE — Immersive Scroll Experience
-             ═══════════════════════════════════════════ -->
-        <style>
-        .vs-sec{position:relative;height:500vh}
-        .vs-pin{position:relative;width:100%;height:100vh;overflow:hidden;background:var(--theme-base)}
-        .vs-pin::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-        .vs-bgn{position:absolute;z-index:1;font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(6rem,20vw,18rem);line-height:.82;letter-spacing:-.04em;color:rgba(255,255,255,.025);pointer-events:none;user-select:none;opacity:0}
-        .vs-bgn--l{top:50%;left:2%;transform:translateY(-50%) translateX(-50%)}
-        .vs-bgn--r{top:50%;right:2%;transform:translateY(-50%) translateX(50%);text-align:right}
-        .vs-ev{position:absolute;top:0;left:0;right:0;z-index:12;padding:16px 24px;opacity:0;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,rgba(0,0,0,.85),transparent)}
-        .vs-ev span{font-family:'Orbitron';font-size:clamp(8px,.8vw,10px);letter-spacing:.3em;color:rgba(255,255,255,.3);font-weight:700}
-        .vs-ev .vd{width:3px;height:3px;border-radius:50%;background:rgba(var(--theme-cyan-rgb),.4)}
-
-        /* ── DESKTOP Fighters: 95vh height, contain, bottom-aligned ── */
-        .vs-f{position:absolute;z-index:5;opacity:0;pointer-events:none;bottom:0;height:95vh}
-        .vs-f img{height:100%;width:auto;object-fit:contain;image-rendering:auto}
-        .vs-f--l{left:0;transform:translateX(-110%)}
-        .vs-f--l img{object-position:left bottom;filter:contrast(1.15) brightness(1.05) drop-shadow(0 0 60px rgba(var(--theme-cyan-rgb),.25)) drop-shadow(10px 0 30px rgba(var(--theme-cyan-rgb),.15))}
-        .vs-f--r{right:0;transform:translateX(110%)}
-        .vs-f--r img{object-position:right bottom;filter:contrast(1.15) brightness(1.05) drop-shadow(0 0 60px rgba(var(--theme-red-rgb,255,45,85),.25)) drop-shadow(-10px 0 30px rgba(var(--theme-red-rgb,255,45,85),.15))}
-        .vs-f--l::after{content:"";position:absolute;bottom:0;left:5%;width:90%;height:25px;background:radial-gradient(ellipse,rgba(var(--theme-cyan-rgb),.25),transparent 70%);filter:blur(15px)}
-        .vs-f--r::after{content:"";position:absolute;bottom:0;left:5%;width:90%;height:25px;background:radial-gradient(ellipse,rgba(var(--theme-red-rgb,255,45,85),.25),transparent 70%);filter:blur(15px)}
-
-        /* ── Info panels — LARGE ── */
-        .vs-nfo{position:absolute;z-index:8;opacity:0}
-        .vs-nfo--l{bottom:clamp(36px,7vh,90px);left:clamp(20px,4vw,60px);text-align:left;transform:translateX(-25px)}
-        .vs-nfo--r{bottom:clamp(36px,7vh,90px);right:clamp(20px,4vw,60px);text-align:right;transform:translateX(25px)}
-        .vs-nfo__tag{font-family:'Orbitron';font-size:clamp(8px,.7vw,10px);font-weight:700;letter-spacing:.35em;display:block;margin-bottom:6px}
-        .vs-nfo--l .vs-nfo__tag{color:rgba(var(--theme-cyan-rgb),.5)}
-        .vs-nfo--r .vs-nfo__tag{color:rgba(var(--theme-red-rgb,255,45,85),.5)}
-        .vs-nfo__name{font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);line-height:.88;letter-spacing:.03em;margin-bottom:4px}
-        .vs-nfo--l .vs-nfo__name{color:#fff;text-shadow:0 2px 30px rgba(var(--theme-cyan-rgb),.25)}
-        .vs-nfo--r .vs-nfo__name{color:#fff;text-shadow:0 2px 30px rgba(var(--theme-red-rgb,255,45,85),.25)}
-        .vs-nfo__en{font-family:'Orbitron';font-size:clamp(10px,1.1vw,14px);font-weight:700;letter-spacing:.25em;margin-bottom:16px;display:block}
-        .vs-nfo--l .vs-nfo__en{color:var(--theme-cyan)}
-        .vs-nfo--r .vs-nfo__en{color:var(--theme-red,#ff2d55)}
-        .vs-nfo__st{display:flex;gap:6px;flex-wrap:wrap}
-        .vs-nfo--r .vs-nfo__st{justify-content:flex-end}
-        .vs-pl{padding:6px 14px;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06);font-size:clamp(10px,1vw,13px);display:flex;align-items:center;gap:6px;opacity:0;transform:translateY(10px)}
-        .vs-pl b{font-family:'Orbitron';font-weight:900;font-size:1.1em}
-        .vs-nfo--l .vs-pl b{color:var(--theme-cyan)}
-        .vs-nfo--r .vs-pl b{color:var(--theme-red,#ff2d55)}
-        .vs-pl span{color:rgba(255,255,255,.35)}
-
-        /* Energy / VS / Clash / Flash / Stamp */
-        .vs-eline{position:absolute;top:-5%;left:50%;z-index:7;width:4px;height:110%;transform:translateX(-50%) skewX(-6deg);opacity:0}
-        .vs-eline i{display:block;width:100%;height:100%;background:linear-gradient(180deg,transparent 5%,rgba(var(--theme-cyan-rgb),.35) 20%,rgba(255,255,255,.85) 50%,rgba(var(--theme-red-rgb,255,45,85),.35) 80%,transparent 95%);box-shadow:0 0 25px rgba(var(--theme-cyan-rgb),.4)}
-        .vs-badge{position:absolute;top:50%;left:50%;z-index:10;transform:translate(-50%,-50%) scale(0);opacity:0}
-        .vs-badge__c{width:clamp(90px,12vw,150px);height:clamp(90px,12vw,150px);border-radius:50%;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:2px solid rgba(var(--theme-cyan-rgb),.25);display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(var(--theme-cyan-rgb),.15);position:relative}
-        .vs-badge__c::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(var(--theme-cyan-rgb),.08);border-radius:50%;animation:vs-spin 20s linear infinite}
-        @keyframes vs-spin{to{transform:rotate(360deg)}}
-        .vs-badge__t{font-family:'Orbitron';font-weight:900;font-size:clamp(2rem,3vw,3rem);background:linear-gradient(135deg,var(--theme-cyan),#fff,var(--theme-red,#ff2d55));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .vs-clash{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;opacity:0}
-        .vs-clash img{height:80vh;width:auto;max-width:95vw;object-fit:contain;filter:contrast(1.2) brightness(1.1) drop-shadow(0 0 60px rgba(var(--theme-cyan-rgb),.2))}
-        .vs-flash{position:absolute;inset:0;z-index:20;pointer-events:none;opacity:0;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(var(--theme-cyan-rgb),.2) 40%,transparent 70%)}
-        .vs-stamp{position:absolute;top:50%;left:50%;z-index:22;transform:translate(-50%,-50%) rotate(-15deg) scale(3);opacity:0;pointer-events:none}
-        .vs-stamp b{display:block;padding:14px 40px;border:5px solid var(--theme-cyan);font-family:'Orbitron';font-weight:900;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:.3em;color:var(--theme-cyan);text-shadow:0 0 25px rgba(var(--theme-cyan-rgb),.7);box-shadow:0 0 45px rgba(var(--theme-cyan-rgb),.35);background:rgba(0,0,0,.65);backdrop-filter:blur(10px)}
-
-        /* ── Victory: fullscreen huang ── */
-        .vs-vic{position:absolute;inset:0;z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;opacity:0;background:radial-gradient(ellipse 60% 55% at 50% 38%,rgba(var(--theme-cyan-rgb),.06),transparent 70%),var(--theme-base)}
-        .vs-vic__ph{position:absolute;inset:0;z-index:0;display:flex;align-items:flex-end;justify-content:center;opacity:0;transform:scale(.9)}
-        .vs-vic__ph img{height:100vh;width:auto;max-width:none;object-fit:contain;object-position:center bottom;filter:contrast(1.12) drop-shadow(0 0 80px rgba(var(--theme-cyan-rgb),.3))}
-        .vs-vic__ph::before{content:"";position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,var(--theme-base));z-index:1;pointer-events:none}
-        .vs-vic__txt{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;padding-bottom:clamp(40px,8vh,100px)}
-        .vs-vic__badge{font-family:'Orbitron';font-size:clamp(8px,.8vw,10px);letter-spacing:.45em;color:rgba(var(--theme-cyan-rgb),.5);margin-bottom:12px;opacity:0;transform:translateY(8px)}
-        .vs-vic__title{font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(4rem,11vw,9rem);line-height:.85;margin-bottom:6px;opacity:0;transform:translateY(16px)}
-        .vs-vic__title em{font-style:normal;color:var(--theme-cyan);text-shadow:0 0 60px rgba(var(--theme-cyan-rgb),.5)}
-        .vs-vic__sub{font-size:clamp(12px,1.3vw,17px);line-height:2;color:rgba(255,255,255,.55);max-width:500px;margin:14px auto 24px;letter-spacing:.03em;opacity:0;transform:translateY(8px)}
-        .vs-vic__sub strong{color:#fff}.vs-vic__sub b{color:var(--theme-cyan);font-weight:900}
-        .vs-vic__cta{display:inline-flex;align-items:center;gap:8px;padding:16px 44px;background:var(--theme-cyan);color:#000;font-weight:900;font-size:clamp(13px,1.3vw,16px);letter-spacing:.1em;text-decoration:none;transform:skewX(-10deg);box-shadow:0 0 40px rgba(var(--theme-cyan-rgb),.4);transition:all .3s;opacity:0}
-        .vs-vic__cta:hover{transform:skewX(-10deg) translateY(-4px);box-shadow:0 10px 50px rgba(var(--theme-cyan-rgb),.6)}
-        .vs-vic__cta span{transform:skewX(10deg);display:inline-flex;align-items:center;gap:8px}
-
-        /* ══ MOBILE: each fighter covers half screen ══ */
-        @media(max-width:768px){
-          .vs-f{top:0;bottom:0;height:auto !important;width:50%;overflow:hidden}
-          .vs-f img{width:100% !important;height:100% !important;object-fit:cover !important}
-          .vs-f--l{left:0}
-          .vs-f--l img{object-position:29% 45% !important}
-          .vs-f--r{right:0}
-          .vs-f--r img{object-position:88% 45% !important}
-          .vs-f--l::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to right,transparent 40%,var(--theme-base));pointer-events:none}
-          .vs-f--r::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to left,transparent 40%,var(--theme-base));pointer-events:none}
-          .vs-f::after{bottom:0;left:0;right:0;width:100%;height:18%;background:linear-gradient(transparent,var(--theme-base));filter:none;border-radius:0}
-          .vs-bgn{font-size:clamp(3.5rem,14vw,6rem)}
-          .vs-nfo--l{bottom:clamp(20px,4vh,40px);left:10px}
-          .vs-nfo--r{bottom:clamp(20px,4vh,40px);right:10px}
-          .vs-nfo__name{font-size:clamp(2rem,8vw,3rem)}
-          .vs-nfo__en{font-size:9px;letter-spacing:.15em;margin-bottom:8px}
-          .vs-nfo__tag{font-size:7px;letter-spacing:.2em}
-          .vs-nfo__st{gap:3px}
-          .vs-pl{padding:4px 7px;font-size:9px}
-          .vs-badge__c{width:65px;height:65px}
-          .vs-badge__t{font-size:1.5rem}
-          .vs-clash img{height:55vh;max-width:95vw}
-          .vs-vic__ph img{height:90vh;max-width:none}
-          .vs-vic__title{font-size:clamp(3rem,13vw,5rem)}
-          .vs-vic__sub{font-size:11px;max-width:90vw;padding:0 12px}
-          .vs-vic__cta{padding:12px 28px;font-size:12px}
-          .vs-vic__txt{padding-bottom:clamp(24px,5vh,50px)}
-          .vs-stamp b{font-size:clamp(1.2rem,5vw,2rem);padding:8px 20px;border-width:3px;letter-spacing:.2em}
-          .vs-ev{padding:10px 12px;gap:6px}
-          .vs-ev span{font-size:7px;letter-spacing:.15em}
-        }
-        </style>
-
-        <section class="vs-sec" id="vs-battle">
-        <div class="vs-pin" id="vs-pin">
-          <div class="vs-bgn vs-bgn--l" id="vbl">黃謙和</div>
-          <div class="vs-bgn vs-bgn--r" id="vbr">圖姆</div>
-          <div class="vs-ev" id="vev"><span>PROFESSIONAL MUAY THAI</span><div class="vd"></div><span>MPF07</span><div class="vd"></div><span>KAOHSIUNG</span><div class="vd"></div><span>2026.03.21</span></div>
-          <div class="vs-f vs-f--l" id="vfl"><img src="huang_cutout.png" alt="黃謙和"></div>
-          <div class="vs-f vs-f--r" id="vfr"><img src="thum_cutout.png" alt="圖姆"></div>
-          <div class="vs-nfo vs-nfo--l" id="vnl">
-            <span class="vs-nfo__tag">HCF HEAD COACH ・ TAIWAN 🇹🇼</span>
-            <div class="vs-nfo__name">黃謙和</div>
-            <span class="vs-nfo__en">HUANG CHIEN-HO</span>
-            <div class="vs-nfo__st" id="vsl"><div class="vs-pl"><b>42</b><span>勝仗</span></div><div class="vs-pl"><b>WBC</b><span>冠軍</span></div><div class="vs-pl"><b>MAXFC</b><span>越南冠軍</span></div><div class="vs-pl"><b>C級</b><span>國家教練</span></div></div>
-          </div>
-          <div class="vs-nfo vs-nfo--r" id="vnr">
-            <span class="vs-nfo__tag">MUAY THAI VETERAN ・ THAILAND 🇹🇭</span>
-            <div class="vs-nfo__name">圖姆</div>
-            <span class="vs-nfo__en">THUM</span>
-            <div class="vs-nfo__st" id="vsr"><div class="vs-pl"><b>202</b><span>戰</span></div><div class="vs-pl"><b>152</b><span>勝</span></div><div class="vs-pl"><b>IFMA</b><span>認證</span></div><div class="vs-pl"><b>24年</b><span>資歷</span></div></div>
-          </div>
-          <div class="vs-eline" id="vel"><i></i></div>
-          <div class="vs-badge" id="vsb"><div class="vs-badge__c"><span class="vs-badge__t">VS</span></div></div>
-          <div class="vs-clash" id="vcl"><img src="vs_clash.png" alt="碰撞"></div>
-          <div class="vs-flash" id="vfl2"></div>
-          <div class="vs-stamp" id="vst"><b>WINNER</b></div>
-          <div class="vs-vic" id="vvc">
-            <div class="vs-vic__ph" id="vvp"><img src="huang_cutout.png" alt="黃謙和"></div>
-            <div class="vs-vic__txt">
-              <div class="vs-vic__badge" id="vvb">MPF07 ・ 2026.03.21 ・ KAOHSIUNG</div>
-              <div class="vs-vic__title" id="vvt">大獲<em>全勝</em></div>
-              <div class="vs-vic__sub" id="vvd">HCF 總教練<strong>黃謙和</strong>斷骨重鑄 復出首戰<br>擊敗<b>來台五年未嘗敗北</b>的泰國教練圖姆<br><b>全場九場職業賽 唯一台灣人勝出</b></div>
-              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" class="vs-vic__cta" id="vvcta"><span><i class="fa-solid fa-bolt"></i> 跟冠軍教練學・$400 體驗</span></a>
-            </div>
-          </div>
-        </div>
-        </section>
-
-        <div class="bg-sci-cyan border-y border-cyan-400 py-1.5 relative z-20 overflow-hidden flex items-center shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.5)]">
-            <div class="flex whitespace-nowrap animate-marquee text-black font-black italic text-xs sm:text-sm tracking-widest items-center">
-                <span class="mx-4"><i class="fa-solid fa-trophy text-black mr-1"></i> 總教練黃謙和 MPF07 大勝・全場唯一台灣人擊敗泰國教練</span><span class="mx-4">|</span>
-                <span class="mx-4"><i class="fa-solid fa-bolt text-black mr-1"></i> 新生限定・首次體驗只要 $400</span><span class="mx-4">|</span>
-                <span class="mx-4"><i class="fa-solid fa-shield-halved text-black mr-1" aria-hidden="true"></i> 不收入會費・不強制綁約</span><span class="mx-4">|</span>
-                <span class="mx-4"><i class="fa-solid fa-trophy text-black mr-1"></i> 總教練黃謙和 MPF07 大勝・全場唯一台灣人擊敗泰國教練</span><span class="mx-4">|</span>
-                <span class="mx-4"><i class="fa-solid fa-bolt text-black mr-1"></i> 新生限定・首次體驗只要 $400</span><span class="mx-4">|</span>
-                <span class="mx-4"><i class="fa-solid fa-shield-halved text-black mr-1" aria-hidden="true"></i> 不收入會費・不強制綁約</span>
-            </div>
-        </div>
-
-
-<div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-
-        <!-- Social Proof: Student Counter & Stats -->
-        <section id="social-proof" class="py-16 sm:py-20 bg-[#020508] relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-10 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">COMMUNITY STRENGTH</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron tracking-wider">共同成長的戰士</h2>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 reveal">
-                    <div class="text-center p-6 bg-white/5 border border-sci-cyan/20 rounded-xl hover:border-sci-cyan/50 transition-all">
-                        <div class="text-4xl sm:text-5xl font-black font-orbitron text-sci-cyan mb-2" id="counter-students">0</div>
-                        <div class="text-xs text-gray-400 tracking-widest font-bold uppercase">學員人數</div>
-                        <div class="text-[10px] text-sci-cyan/60 font-mono mt-1">Members</div>
-                    </div>
-                    <div class="text-center p-6 bg-white/5 border border-sci-gold/20 rounded-xl hover:border-sci-gold/50 transition-all">
-                        <div class="text-4xl sm:text-5xl font-black font-orbitron text-sci-gold mb-2" id="counter-coaches">0</div>
-                        <div class="text-xs text-gray-400 tracking-widest font-bold uppercase">專業教練</div>
-                        <div class="text-[10px] text-sci-gold/60 font-mono mt-1">Coaches</div>
-                    </div>
-                    <div class="text-center p-6 bg-white/5 border border-sci-cyan/20 rounded-xl hover:border-sci-cyan/50 transition-all">
-                        <div class="text-4xl sm:text-5xl font-black font-orbitron text-sci-cyan mb-2"><span id="counter-rating">0</span><span class="text-2xl">★</span></div>
-                        <div class="text-xs text-gray-400 tracking-widest font-bold uppercase">Google 評分</div>
-                        <div class="text-[10px] text-sci-cyan/60 font-mono mt-1">Rating</div>
-                    </div>
-                    <div class="text-center p-6 bg-white/5 border border-sci-gold/20 rounded-xl hover:border-sci-gold/50 transition-all">
-                        <div class="text-4xl sm:text-5xl font-black font-orbitron text-sci-gold mb-2" id="counter-years">0</div>
-                        <div class="text-xs text-gray-400 tracking-widest font-bold uppercase">年訓練經驗</div>
-                        <div class="text-[10px] text-sci-gold/60 font-mono mt-1">Years</div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-        <section id="why-fight" class="relative z-10">
-
-            <!-- ═══ ACT 1: THE PAIN — 全螢幕痛點 ═══ -->
-            <div class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-                <div class="absolute inset-0 z-0">
-                    <img src="IMG_8944.jpeg" alt="" class="w-full h-full object-cover opacity-[0.15] filter grayscale" loading="lazy">
-                </div>
-                <div class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
-                    <div class="reveal">
-                        <p class="text-gray-500 text-xs sm:text-sm font-mono tracking-[0.4em] mb-6">BEFORE HCF</p>
-                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.3] mb-8" style="font-family:'Noto Serif TC',serif;">
-                            你是不是也厭倦了<br><span class="text-sci-cyan">這樣的自己？</span>
-                        </h2>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:100ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">😤 減肥減了一百次，每次都失敗</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">跑步無聊，健身房去三天就放棄。你缺的不是意志力，是一個讓你上癮的運動。</p>
-                        </div>
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:180ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">😰 工作壓力大到快爆炸</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">加班、開會、客戶刁難。你需要一個合法把壓力全部打出去的地方。</p>
-                        </div>
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:260ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">💪 練了很久健身，但只是好看</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">肌肉再大不會用也只是擺設。你的身體值得被真正派上用場。</p>
-                        </div>
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:340ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">🔥 生活太無聊，少了一件熱血的事</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">每天下班就追劇滑手機，日子一天跟一天一樣。你多久沒有心跳加速的感覺了？</p>
-                        </div>
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:420ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">👩 想學防身，但怕被打、怕受傷</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">格鬥聽起來很危險？我們有女性助教專門指導，新手課不對打，教練全程保護。</p>
-                        </div>
-                        <div class="reveal bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 backdrop-blur-sm" style="transition-delay:500ms">
-                            <p class="text-white font-bold text-sm sm:text-base mb-2">🎯 想變強，但不知道從哪裡開始</p>
-                            <p class="text-gray-500 text-xs leading-relaxed">想上擂台？想比賽？還是單純想找回自信？所有人都是從零開始的。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ═══ ACT 2: THE TURN — 為什麼是格鬥 ═══ -->
-            <div class="relative min-h-screen flex items-center overflow-hidden">
-                <div class="absolute inset-0 z-0">
-                    <img src="IMG_8904.jpeg" alt="" class="w-full h-full object-cover opacity-[0.18]" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[var(--theme-base)] via-[var(--theme-base)]/80 to-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-transparent to-[var(--theme-base)]/60"></div>
-                </div>
-                <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full">
-                    <div class="max-w-2xl">
-                        <div class="reveal">
-                            <p class="text-sci-cyan text-xs font-mono tracking-[0.4em] mb-4">WHY COMBAT SPORTS</p>
-                            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.2] mb-6" style="font-family:'Noto Serif TC',serif;">
-                                如果有一種運動<br>能<span class="text-sci-cyan">同時解決</span>這些問題？
-                            </h2>
-                        </div>
-                        <div class="space-y-6 mt-8">
-                            <div class="reveal flex items-start gap-4" style="transition-delay:100ms">
-                                <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sci-cyan/10 border border-sci-cyan/30 flex items-center justify-center">
-                                    <span class="text-sci-cyan font-orbitron font-black text-lg sm:text-xl">800</span>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold text-sm sm:text-base">一堂課消耗 800 大卡</p>
-                                    <p class="text-gray-400 text-xs leading-relaxed mt-1">比跑步有趣 10 倍，燃脂效率是健身房的 2 倍。而且你會想一直回來，因為每次都在進步。</p>
-                                </div>
-                            </div>
-                            <div class="reveal flex items-start gap-4" style="transition-delay:200ms">
-                                <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sci-cyan/10 border border-sci-cyan/30 flex items-center justify-center">
-                                    <span class="text-sci-cyan text-xl sm:text-2xl">🧠</span>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold text-sm sm:text-base">壓力瞬間歸零</p>
-                                    <p class="text-gray-400 text-xs leading-relaxed mt-1">打完沙包的那一刻，腦袋裡的雜訊全部消失。很多學員說這是他們一天中最清醒的 70 分鐘。</p>
-                                </div>
-                            </div>
-                            <div class="reveal flex items-start gap-4" style="transition-delay:300ms">
-                                <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sci-cyan/10 border border-sci-cyan/30 flex items-center justify-center">
-                                    <span class="text-sci-cyan text-xl sm:text-2xl">⚡</span>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold text-sm sm:text-base">真正的全身訓練</p>
-                                    <p class="text-gray-400 text-xs leading-relaxed mt-1">拳、肘、膝、腿——泰拳是世界上動用最多身體武器的格鬥術。爆發力、反應速度、核心穩定、心肺耐力一次練到。</p>
-                                </div>
-                            </div>
-                            <div class="reveal flex items-start gap-4" style="transition-delay:400ms">
-                                <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sci-cyan/10 border border-sci-cyan/30 flex items-center justify-center">
-                                    <span class="text-sci-cyan text-xl sm:text-2xl">🛡️</span>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold text-sm sm:text-base">帶得走的自信和底氣</p>
-                                    <p class="text-gray-400 text-xs leading-relaxed mt-1">不是要你去打架。是當你知道自己有能力保護自己的時候，走路的姿態、說話的語氣、面對壓力的方式，都會不一樣。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ═══ ACT 3: THE BELIEF — 品牌哲學 ═══ -->
-            <div class="relative min-h-screen flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 z-0">
-                    <img src="IMG_5202.JPG" alt="" class="w-full h-full object-cover object-center opacity-[0.15]" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-base)] via-[var(--theme-base)]/60 to-[var(--theme-base)]/80"></div>
-                </div>
-                <div class="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
-                    <div class="reveal">
-                        <p class="text-sci-cyan text-xs font-mono tracking-[0.4em] mb-6">HCF PHILOSOPHY</p>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-[1.9] sm:leading-[2] mb-10 font-medium" style="font-family:'Noto Serif TC',serif;letter-spacing:.04em;">
-                            人生就像一場沒有盡頭的拳賽<br>
-                            生活會不斷用重拳將你擊倒<br><br>
-                            <span class="text-white font-bold">但真正的勇者 不是從未倒下</span><br>
-                            <span class="text-white font-bold">而是每次倒下後 都能重新站起</span><br><br>
-                            別害怕失敗<br>
-                            因為在這裡<br>
-                            <span class="text-sci-cyan font-black text-2xl sm:text-3xl lg:text-4xl">我們將喚醒你體內潛藏的強大力量</span>
-                        </h2>
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 sm:gap-8 mt-8 reveal" style="transition-delay:200ms">
-                        <div class="text-center">
-                            <div class="text-sci-cyan font-orbitron font-black text-2xl sm:text-4xl mb-2 drop-shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.4)]">H</div>
-                            <div class="text-white font-black text-base sm:text-xl mb-1" style="font-family:'Noto Serif TC',serif;">榮譽</div>
-                            <div class="text-sci-cyan font-orbitron text-[9px] sm:text-[10px] tracking-[0.2em] mb-2">HONOR</div>
-                            <p class="text-gray-400 text-[10px] sm:text-xs leading-relaxed">承認失敗<br>不找藉口</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-sci-cyan font-orbitron font-black text-2xl sm:text-4xl mb-2 drop-shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.4)]">C</div>
-                            <div class="text-white font-black text-base sm:text-xl mb-1" style="font-family:'Noto Serif TC',serif;">勇氣</div>
-                            <div class="text-sci-cyan font-orbitron text-[9px] sm:text-[10px] tracking-[0.2em] mb-2">COURAGE</div>
-                            <p class="text-gray-400 text-[10px] sm:text-xs leading-relaxed">承擔後果<br>絕不逃避</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-sci-cyan font-orbitron font-black text-2xl sm:text-4xl mb-2 drop-shadow-[0_0_20px_rgba(var(--theme-cyan-rgb),0.4)]">F</div>
-                            <div class="text-white font-black text-base sm:text-xl mb-1" style="font-family:'Noto Serif TC',serif;">信念</div>
-                            <div class="text-sci-cyan font-orbitron text-[9px] sm:text-[10px] tracking-[0.2em] mb-2">FAITH</div>
-                            <p class="text-gray-400 text-[10px] sm:text-xs leading-relaxed">親手重建<br>絕不認輸</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ═══ ACT 4: THE PROOF — 為什麼選 HCF ═══ -->
-            <div class="relative overflow-hidden py-16 sm:py-20 border-t border-white/5">
-                <div class="absolute inset-0 z-0"><img src="IMG_7366.jpeg" alt="" class="w-full h-full object-cover opacity-[0.06]" loading="lazy"><div class="absolute inset-0 bg-[#020508]/90"></div></div>
-                <div class="max-w-6xl mx-auto px-6">
-                    <div class="text-center mb-10 reveal">
-                        <p class="text-sci-cyan text-xs font-mono tracking-[0.4em] mb-4">WHY HCF</p>
-                        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wider" style="font-family:'Noto Serif TC',serif;">為什麼兩百多人選擇 HCF？</h2>
-                        <p class="text-gray-400 text-xs sm:text-sm mt-3">不是最大的館，但可能是最用心的——每一個進來的人，都被當成選手在帶</p>
-                    </div>
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="tech-border rounded-xl p-5 reveal"><div class="glow-overlay"></div><div class="relative z-10">
-                            <div class="text-sci-cyan font-orbitron font-black text-3xl mb-2">42</div>
-                            <p class="text-white font-bold text-sm mb-1">勝仗的總教練親自帶</p>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">WBC 冠軍、MAXFC 越南冠軍、MPF07 大勝。不是網紅教練，是真正打過職業賽的拳手。</p>
-                        </div></div>
-                        <div class="tech-border rounded-xl p-5 reveal" style="transition-delay:80ms"><div class="glow-overlay"></div><div class="relative z-10">
-                            <div class="text-sci-cyan font-orbitron font-black text-3xl mb-2">80%</div>
-                            <p class="text-white font-bold text-sm mb-1">學員是零基礎開始</p>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">你不需要有底子。教練會根據你的程度調整強度，從完全不會到能上場比賽，都有完整規劃。</p>
-                        </div></div>
-                        <div class="tech-border rounded-xl p-5 reveal" style="transition-delay:160ms"><div class="glow-overlay"></div><div class="relative z-10">
-                            <div class="text-sci-cyan font-orbitron font-black text-3xl mb-2">6→60</div>
-                            <p class="text-white font-bold text-sm mb-1">歲都能練</p>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">從 6 歲到 60 歲都有學員。教練根據你的狀況調整強度，想瘦身、防身、比賽都有完整規劃。</p>
-                        </div></div>
-                        <div class="tech-border rounded-xl p-5 reveal" style="transition-delay:240ms"><div class="glow-overlay"></div><div class="relative z-10">
-                            <div class="text-sci-cyan font-orbitron font-black text-3xl mb-2">5.0</div>
-                            <p class="text-white font-bold text-sm mb-1">Google 滿分評價</p>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">不是我們說自己好。是每一個來過的人，都給了五顆星。</p>
-                        </div></div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- ═══ ACT 5: THE CALL — 行動號召 ═══ -->
-            <div class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-black">
-                <div class="absolute inset-0 z-0">
-                    <img src="IMG_5213.jpeg" alt="" class="w-full h-full object-cover opacity-[0.15]" loading="lazy">
-                </div>
-                <div class="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center">
-                    <div class="reveal">
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-[1.4] mb-4" style="font-family:'Noto Serif TC',serif;">
-                            你要繼續當觀眾<br>還是<span class="text-sci-cyan">走進擂台？</span>
-                        </h2>
-                        <p class="text-gray-400 text-sm sm:text-base mb-8 leading-relaxed">
-                            不管你幾歲、什麼體型、有沒有運動習慣<br>
-                            <span class="text-white font-bold">每個強者，都是從踏進門的那一刻開始的</span>
-                        </p>
-                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-10 py-5 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-base sm:text-lg tracking-widest transition-all shadow-[0_0_30px_rgba(var(--theme-cyan-rgb),0.5)] hover:-translate-y-1 skew-x-[-10deg]">
-                            <span class="skew-x-[10deg] inline-flex items-center gap-2"><i class="fa-solid fa-bolt"></i> 給自己一次機會・$400 開始</span>
-                        </a>
-                        <p class="text-gray-600 text-[10px] mt-4 tracking-wider">運動服來就好・裝備全免費・教練全程帶你</p>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-        <section id="offers" class="py-16 sm:py-24 relative bg-[var(--theme-base)]">
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">NEW MEMBER ONLY</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">🔥 新生限定方案</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">首次來館專屬・裝備免費借用・零基礎友善</p>
-                </div>
-
-                <!-- ── 新生限定 ── -->
-                <div class="reveal">
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="group block bg-[#050810] border border-sci-cyan/30 rounded-xl p-5 hover:border-sci-cyan transition-all hover:-translate-y-1 shadow-lg hover:shadow-[0_10px_25px_rgba(var(--theme-cyan-rgb),0.15)]">
-                            <div class="text-sci-cyan font-black text-[10px] tracking-widest mb-2">最多人選擇</div>
-                            <div class="text-white font-bold text-sm mb-2">團體課體驗</div>
-                            <div class="flex items-end gap-2 mb-2">
-                                <span class="text-gray-500 text-xs line-through">$600</span>
-                                <span class="text-sci-cyan font-black text-2xl italic">$400</span>
-                            </div>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">70分鐘完整課程・裝備免費借用</p>
-                        </a>
-                        <a href="pricing.html" class="group block bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/50 transition-all hover:-translate-y-1 shadow-lg">
-                            <div class="text-gray-500 font-black text-[10px] tracking-widest mb-2">一對一精修</div>
-                            <div class="text-white font-bold text-sm mb-2">私教體驗 1堂</div>
-                            <div class="flex items-end gap-2 mb-2">
-                                <span class="text-white font-black text-2xl italic">$1,400</span>
-                            </div>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">專屬菜單・技術精修</p>
-                        </a>
-                        <a href="pricing.html" class="group block bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/50 transition-all hover:-translate-y-1 shadow-lg">
-                            <div class="text-gray-500 font-black text-[10px] tracking-widest mb-2">深度體驗</div>
-                            <div class="text-white font-bold text-sm mb-2">私教體驗 2堂</div>
-                            <div class="flex items-end gap-2 mb-2">
-                                <span class="text-white font-black text-2xl italic">$2,400</span>
-                            </div>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">深度體驗・扎實訓練</p>
-                        </a>
-                        <a href="pricing.html" class="group block bg-[#050810] border border-white/10 rounded-xl p-5 hover:border-sci-cyan/50 transition-all hover:-translate-y-1 shadow-lg">
-                            <div class="text-gray-500 font-black text-[10px] tracking-widest mb-2">揪朋友一起</div>
-                            <div class="text-white font-bold text-sm mb-2">私教 1對2 體驗</div>
-                            <div class="flex items-end gap-2 mb-2">
-                                <span class="text-white font-black text-2xl italic">$2,400</span>
-                                <span class="text-gray-500 text-xs">/2人</span>
-                            </div>
-                            <p class="text-gray-500 text-[10px] leading-relaxed">每人 $1,200・一起練更有動力</p>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="text-center mt-10 reveal">
-                    <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-10 py-4 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-base tracking-widest transition-all shadow-[0_0_25px_rgba(var(--theme-cyan-rgb),0.4)] hover:-translate-y-1 skew-x-[-10deg]">
-                        <span class="skew-x-[10deg] inline-flex items-center gap-2"><i class="fa-solid fa-bolt"></i> $400 體驗泰拳・立即預約</span>
-                    </a>
-                    <p class="text-gray-600 text-[10px] mt-4 font-mono tracking-wider">詳細規範請參閱 <a href="pricing.html" class="text-sci-cyan hover:underline">課程方案頁面</a></p>
-                </div>
-            </div>
-        </section>
-
-
-        <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-                <section id="schedule" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-10 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">SYSTEM SCHEDULE</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover mb-3 inline-block border-b-4 border-sci-cyan pb-2" data-i18n="sections.schedule" data-en="INTERACTIVE SCHEDULE">互動式課表</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">點選星期快速切換，查看課程時間、教練與適合程度</p>
-                </div>
-
-                <div class="reveal bg-brand-panel/90 bg-[#050810] border border-white/10 rounded-2xl p-4 sm:p-6 shadow-[0_0_30px_rgba(230,57,70,0.16)]">
-                    <div id="schedule-day-tabs" class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-3 mb-5"></div>
-                    <div class="grid lg:grid-cols-[1.4fr_1fr] gap-4">
-                        <div id="schedule-course-grid" class="grid sm:grid-cols-2 gap-3"></div>
-                        <aside id="schedule-course-detail" class="border border-white/10 rounded-xl bg-black/35 p-4 sm:p-5 min-h-[220px] shadow-[0_0_16px_rgba(230,57,70,0.18)]"></aside>
-                    </div>
-                    <p class="text-gray-500 mt-5 text-[11px] font-mono tracking-widest text-center">※ 以下為示意課表，實際開課請以官方 LINE 最新公告為準。</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-        <!-- Google Reviews Section -->
-        <section id="google-reviews" class="py-16 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-10 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">VERIFIED REVIEWS</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">GOOGLE 評論</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">來自 Google 的真實學員心得・全五星好評</p>
-                    <div class="flex items-center justify-center gap-2 mt-4">
-                        <div class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-400 text-lg"></i><i class="fa-solid fa-star text-yellow-400 text-lg"></i><i class="fa-solid fa-star text-yellow-400 text-lg"></i><i class="fa-solid fa-star text-yellow-400 text-lg"></i><i class="fa-solid fa-star text-yellow-400 text-lg"></i></div>
-                        <span class="text-white font-black text-2xl">5.0</span>
-                        <span class="text-gray-400 text-sm">Google 評分</span>
-                    </div>
-                </div>
-
-                <style>
-                .rv-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 0}
-                .rv-track::-webkit-scrollbar{display:none}
-                .rv-card{flex-shrink:0;scroll-snap-align:center;width:280px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);background:#0a0e18;transition:transform .3s,box-shadow .3s}
-                .rv-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,212,255,.1)}
-                .rv-card img{width:100%;height:auto;display:block}
-                @media(max-width:640px){.rv-card{width:75vw}}
-                </style>
-
-                <div class="rv-track" id="rv-track">
-                    <div class="rv-card"><img src="review_IMG_4194.jpg" alt="莊宇暘評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4190.jpg" alt="Eddie Jhou評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4187.jpg" alt="陸戰最強砲長評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4199.jpg" alt="Pandan Juice評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4198.jpg" alt="卓小卓評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4197.jpg" alt="ZY Z評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4193.jpg" alt="鄒勝傑評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4192.jpg" alt="Tien Yu Chen評論" loading="lazy"></div>
-                    <div class="rv-card"><img src="review_IMG_4189.jpg" alt="陸戰最強砲長合照" loading="lazy"></div>
-                </div>
-
-                <div class="text-center mt-8 reveal">
-                    <a href="https://maps.app.goo.gl/YJJCHMa5XHCATX227" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-black tracking-widest rounded-xl hover:bg-gray-100 transition-colors shadow-[0_0_25px_rgba(255,255,255,0.15)]">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                        在 Google 留下評論
-                    </a>
-                </div>
-            </div>
-
-            <script>
-            (function(){
-                var track = document.getElementById('rv-track');
-                if(!track) return;
-                var cards = track.querySelectorAll('.rv-card');
-                var total = cards.length;
-                // Clone all cards for infinite scroll
-                cards.forEach(function(c){ track.appendChild(c.cloneNode(true)); });
-                var cardW = 0;
-                function getW(){ cardW = cards[0].offsetWidth + 16; }
-                getW(); window.addEventListener('resize', getW);
-                var pos = 0;
-                function autoScroll(){
-                    pos += 1;
-                    if(pos >= total * cardW){ track.style.transition='none'; pos=0; track.scrollLeft=0; return; }
-                    track.scrollTo({left:pos, behavior:'smooth'});
-                }
-                // Slow continuous scroll
-                var speed = 0.5;
-                function tick(){ pos += speed; if(pos >= total*cardW){pos=0;track.scrollLeft=0;} else{track.scrollLeft=pos;} requestAnimationFrame(tick); }
-                // Pause on hover/touch
-                var paused = false;
-                track.addEventListener('mouseenter',function(){paused=true});
-                track.addEventListener('mouseleave',function(){paused=false});
-                track.addEventListener('touchstart',function(){paused=true},{passive:true});
-                track.addEventListener('touchend',function(){setTimeout(function(){paused=false},2000)},{passive:true});
-                function smoothTick(){ if(!paused){pos+=speed;if(pos>=total*cardW){pos=0;track.scrollLeft=0;}else{track.scrollLeft=pos;}} requestAnimationFrame(smoothTick); }
-                requestAnimationFrame(smoothTick);
-            })();
-            </script>
-        </section>
-
-
-<div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-        <section id="faq" class="py-20 sm:py-24 bg-[#050810] relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">BEGINNER'S GUIDE</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron lang-text glitch-hover tracking-wider mb-2" data-i18n="sections.faq" data-en="FAQ">新手常見問答</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">第一次來？這裡有你需要的所有答案</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6 mb-12">
-                    <div class="tech-border rounded-xl p-6 reveal">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">第一次來要帶什麼？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">運動服、毛巾、水壺即可，館內有公用拳套和護具，不需自己準備。首堂體驗課 $400，包含教練指導。</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 50ms;">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">費用多少？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">首次體驗 $400（團體課）・月卡 $3,000・私教 $1,400/堂・3人團課 $5,000/月</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 100ms;">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">適合完全新手嗎？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">完全適合！80% 的學員都是新手開始，無壓力環境，教練會根據你的程度與目標調整課程強度。</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 150ms;">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">上課時間是？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">週一至週五 11:00–22:00・週六週日 11:00–16:00。可彈性選擇時段，私教可預約指定時間。</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 200ms;">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">停車方便嗎？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">位於新竹市北區林森路 301 號 2 樓，附近停車位充足，近竹科園區與新竹車站，交通便利。</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-border rounded-xl p-6 reveal" style="transition-delay: 250ms;">
-                        <div class="glow-overlay"></div>
-                        <div class="relative z-10">
-                            <p class="text-sci-cyan font-bold text-sm mb-3">有女性學員嗎？</p>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">有！我們有許多女性學員，且有女性助教專門指導，安全友善的訓練環境。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="faq-schedule" class="reveal border border-white/10 bg-[#050810] rounded-2xl p-4 sm:p-6 shadow-[0_0_24px_rgba(230,57,70,0.12)] mb-10" style="transition-delay: 280ms;">
-                    <div class="flex items-center justify-between gap-3 mb-4">
-                        <h3 class="text-lg sm:text-xl font-black text-white font-orbitron tracking-wider">最新課表</h3>
-                        <a href="#schedule" class="text-xs sm:text-sm text-sci-cyan hover:text-cyan-300 transition-colors tracking-widest">查看互動版 →</a>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm mb-4">桌面版顯示完整橫式課表；行動裝置與 APP 模式顯示直式課表。</p>
-                    <style>
-                        @media (display-mode: standalone) {
-                            .faq-schedule-mobile { display: block !important; }
-                            .faq-schedule-desktop { display: none !important; }
-                        }
-                    </style>
-                    <div class="faq-schedule-mobile block md:hidden border border-white/10 rounded-xl overflow-hidden bg-black/30">
-                        <img src="schedule-mobile.png" alt="HCF 最新行動版課表" loading="lazy" class="w-full h-auto object-contain">
-                                    </div>
-                    <div class="faq-schedule-desktop hidden md:block border border-white/10 rounded-xl overflow-hidden bg-black/30">
-                        <img src="schedule-pc.png" alt="HCF 最新桌面版課表" loading="lazy" class="w-full h-auto object-contain">
-                    </div>
+<!-- 縫合 A -->
+<div class="seamA">
+  <div class="wedge"></div>
+  <div class="ribbon"><div class="ribbon-track" id="rib"></div></div>
 </div>
 
-                <div class="text-center reveal" style="transition-delay: 300ms;">
-                    <p class="text-gray-400 text-sm mb-4">還有其他問題？</p>
-                    <button onclick="toggleChat()" class="px-8 py-3 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-sm tracking-widest rounded transition-all shadow-[0_5px_20px_rgba(var(--theme-cyan-rgb),0.4)] hover:-translate-y-1">
-                        🦈 詢問 AI 智能鯊魚助手
-                    </button>
-                </div>
-            </div>
-        </section>
+<!-- 第一幕 -->
+<section class="act1">
+  <div class="wrap">
+    <div class="kicker rv">ACT 1 / TRAINING</div>
+    <h2 class="h2 rv">走進 HCF <br>每種戰鬥都有<i>入口</i></h2>
+    <p class="lead rv">站立打擊到地面纏鬥，從減脂健體到職業備戰——四大課程體系，跟著現役職業選手練。</p>
+  </div>
+  <div class="float-track-clip">
+    <div class="float-track" id="ftrack"></div>
+  </div>
+</section>
 
-        <div class="sci-divider" aria-hidden="true"><div class="sci-divider-diamond"></div></div>
-        <!-- Instagram Section -->
-        <section id="instagram" class="py-20 sm:py-24 bg-[var(--theme-base)] relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-sci-cyan font-mono text-[11px] tracking-widest inline-block mb-2 font-bold">FOLLOW US</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white font-orbitron glitch-hover tracking-wider mb-2">INSTAGRAM</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">追蹤我們，掌握最新訓練動態與活動資訊</p>
-                </div>
-                <div class="flex flex-col lg:flex-row items-center gap-10 reveal">
-                    <div class="flex-shrink-0 text-center">
-                        <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="group inline-flex flex-col items-center gap-4">
-                            <div class="relative w-40 h-40 rounded-full border-4 border-transparent bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-1 shadow-[0_0_40px_rgba(236,72,153,0.4)] group-hover:shadow-[0_0_60px_rgba(236,72,153,0.7)] transition-all duration-500">
-                                <div class="w-full h-full rounded-full bg-[#050810] flex items-center justify-center overflow-hidden">
-                                    <i class="fa-brands fa-instagram text-6xl text-white group-hover:scale-110 transition-transform duration-300"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="text-white font-black text-xl tracking-widest group-hover:text-pink-400 transition-colors">@hc.combat2022</p>
-                                <p class="text-gray-400 text-xs mt-1 tracking-widest">HCF新竹格鬥館</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex-grow w-full">
-                        <div class="w-full min-h-[260px] rounded-xl overflow-hidden border border-white/10 bg-[#050810]">
-                            <behold-widget feed-id="p32oYWUE3ddYkTBt6oZK"></behold-widget>
-                        </div>
-                        <script>
-                          (() => {
-                            const d=document,s=d.createElement("script");s.type="module";
-                            s.src="https://w.behold.so/widget.js";d.head.append(s);
-                          })();
-                        </script>
-                        <div class="text-center mt-6">
-                            <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white font-black tracking-widest rounded-xl hover:opacity-90 transition-opacity shadow-[0_0_25px_rgba(236,72,153,0.4)] hover:shadow-[0_0_40px_rgba(236,72,153,0.7)]">
-                                <i class="fa-brands fa-instagram text-xl"></i> 追蹤 Instagram
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- 第二幕 -->
 
-        
-        
-    </main>
+<!-- 五大目標 怎麼練最快 -->
+<section class="g5" id="goals5">
+  <div class="g5-in">
+    <div class="g5-head">
+      <div>
+        <div class="kicker">FIVE GOALS / 五大目標</div>
+        <h2 class="h2">你想變成怎樣<br>就怎麼<i>練最快</i></h2>
+      </div>
+      <p class="g5-lead">五種目標、五條路線——<br>選一個，直接看該上哪些課。</p>
+    </div>
+    <div class="g5-mosaic">
+      <a class="g5c big" href="plans-proposal.html?g=01#goals">
+        <span class="ghost">01</span>
+        <b>泰拳<br>技術</b><span class="d">八肢的藝術 入門到內圍纏抱</span>
+        <i>怎麼練最快 ⟶</i>
+      </a>
+      <a class="g5c tilt" href="plans-proposal.html?g=02#goals">
+        <span class="ghost">02</span>
+        <b>燃脂減重</b><span class="d">一堂泰拳約 600–800 大卡</span>
+        <i>怎麼練最快 ⟶</i>
+      </a>
+      <a class="g5c red" href="plans-proposal.html?g=03#goals">
+        <span class="ghost">03</span>
+        <b>體能提升</b><span class="d">壺鈴戰繩 一堂練全身</span>
+        <i>怎麼練最快 ⟶</i>
+      </a>
+      <a class="g5c wide" href="plans-proposal.html?g=04#goals">
+        <span class="ghost">04</span>
+        <b>實戰能力</b><span class="d">從入門綠 一路練到紅色對打課</span>
+        <i>怎麼練最快 ⟶</i>
+      </a>
+      <a class="g5c dark" href="plans-proposal.html?g=05#goals">
+        <span class="ghost">05</span>
+        <span class="tag">邀請制</span>
+        <b>選手培訓</b><span class="d">總教練親自帶 限量名額</span>
+        <i>怎麼練最快 ⟶</i>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <footer class="bg-[var(--theme-base)] pt-16 pb-32 sm:pb-12 border-t border-white/10 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-8 mb-12">
-                <div class="md:col-span-4 lg:col-span-5">
-                    <h2 class="text-3xl font-orbitron font-black text-white italic mb-1">HCF <span class="text-xs text-sci-cyan not-italic font-sans ml-2 tracking-widest">新竹格鬥運動館</span></h2>
-                    <div class="w-10 h-1 bg-sci-cyan mb-5 rounded-full"></div>
-                    <div class="space-y-4 text-gray-400 text-sm font-mono leading-relaxed">
-                        <p class="flex items-start gap-3 hover:text-white transition-colors">
-                            <i class="fa-solid fa-location-dot mt-1 text-sci-cyan w-4 text-center"></i> 
-                            <span>新竹市北區林森路301號2樓</span>
-                        </p>
-                        <p class="flex items-center gap-3 hover:text-white transition-colors">
-                            <i class="fa-solid fa-phone text-sci-cyan w-4 text-center"></i> 
-                            <a href="tel:0925571225" class="hover:text-sci-cyan transition-colors">0925-571-225</a>
-                        </p>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-clock mt-1 text-sci-cyan w-4 text-center"></i> 
-                            <span class="text-gray-300">
-                                週一～週五 <span class="text-white font-bold ml-2">11:00 - 22:00</span><br>
-                                週六＆週日 <span class="text-white font-bold ml-2">11:00 - 16:00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+<section class="act2" id="act2">
+  <div class="a2-bg"></div>
+  <div class="a2-ghost">IRON MAN</div>
+  <div class="a2-in">
+    <div>
+      <div class="kicker">ACT 2 / HEAD COACH</div>
+      <h2 class="h2">總教練<br><i>大獲全勝</i></h2>
+      <p>黃謙和「格鬥鋼鐵人」——台灣泰拳 63KG 衛冕冠軍、THAI FIGHT 國際職業賽選手。休養一年後強勢回歸 MPF07，TKO 終結泰國對手。</p>
+      <div class="a2-rec">
+        <div class="w"><div class="num"><i data-cnt="42">0</i><em>勝</em></div><div class="lbl">WINS</div></div>
+        <div><div class="num"><span data-cnt="12">0</span><em>敗</em></div><div class="lbl">LOSSES</div></div>
+        <div><div class="num"><span data-cnt="63">0</span><em>KG</em></div><div class="lbl">CHAMPION</div></div>
+      </div>
+      <a class="a2-btn" href="coach-huang.html">完整戰歷 · 教練專頁 →</a>
+    </div>
+    <div class="a2-vis">
+      <img class="cut" src="huang_cutout.webp" alt="黃謙和 總教練">
+      <div class="tag">MPF07 · TKO 勝</div>
+    </div>
+  </div>
+</section>
 
-                <div class="md:col-span-4 lg:col-span-3">
-                    <h3 class="text-lg font-bold text-white mb-5 tracking-widest border-l-2 border-sci-cyan pl-3">選單連結</h3>
-                    <div class="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-400 font-medium">
-                        <a href="news.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 最新消息</a>
-                        <a href="philosophy.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 品牌哲學</a>
-                        <a href="classes.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 課程介紹</a>
-                        <a href="team.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 教練團隊</a>
-                        <a href="pricing.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 課程方案</a>
-                        <a href="faq.html" class="hover:text-sci-cyan hover:translate-x-1 transition-all flex items-center gap-1"><i class="fa-solid fa-angle-right text-[10px] text-sci-cyan/50"></i> 新手問答</a>
-                    </div>
-                </div>
 
-                <div class="md:col-span-4 lg:col-span-4 flex flex-col items-start md:items-end text-left md:text-right w-full">
-                    <h3 class="text-lg font-bold text-white mb-5 tracking-widest border-l-2 md:border-l-0 md:border-r-2 border-sci-cyan pl-3 md:pl-0 md:pr-3 w-full md:w-auto">基地互聯</h3>
-                    <div class="flex flex-wrap justify-start md:justify-end gap-3 mb-6">
-                        <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-black hover:bg-sci-cyan hover:border-sci-cyan transition-all shadow-lg" title="線上預約"><i class="fa-solid fa-bolt text-lg"></i></a>
-                        <a href="https://lin.ee/7lidUv0" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#06C755] hover:border-[#06C755] transition-all shadow-lg" title="LINE 官方諮詢"><i class="fa-brands fa-line text-lg"></i></a>
-                        <a href="https://www.instagram.com/hc.combat2022/" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition-all shadow-lg" title="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
-                        <a href="https://m.facebook.com/hsinchucombat/" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all shadow-lg" title="Facebook"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-                        <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all shadow-lg" title="YouTube 實戰影片"><i class="fa-brands fa-youtube text-lg"></i></a>
-                        <a href="#google-reviews" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-white hover:border-white transition-all shadow-lg" title="Google 評論"><i class="fa-brands fa-google text-lg"></i></a>
-                    </div>
-                    <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener noreferrer" class="block w-full sm:w-auto px-10 py-4 bg-sci-cyan hover:bg-cyan-400 text-black font-black text-base text-center skew-x-[-10deg] transition-all shadow-[0_10px_20px_rgba(var(--theme-cyan-rgb),0.3)] hover:-translate-y-1">
-                        <span class="skew-x-[10deg] block">立即領取 $400 體驗</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="text-center border-t border-white/10 pt-6 text-[11px] text-gray-600 font-mono tracking-widest flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 items-center">
-                <p>© 2026 HCF. All Rights Reserved.<span class="hidden sm:inline text-sci-cyan/30 mx-2">|</span><span class="hidden sm:inline font-orbitron text-[10px]" style="color: rgba(123,47,255,0.5);">POWERED BY HCF COMBAT SYSTEM</span></p>
-                <span class="hidden sm:inline">|</span>
-                <p class="text-sci-cyan/50">SYSTEM READY FOR COMBAT.</p>
-            </div>
+
+<!-- 會員逆襲（與總教練同級特效）-->
+<section class="act2 actk" id="actK">
+  <div class="a2-bg"></div>
+  <div class="a2-ghost">UNDERDOG</div>
+  <div class="a2-in">
+    <div class="a2-vis vk">
+      <img class="cut cutk" src="kao_punch.jpg" alt="高大可破框出拳主視覺" loading="lazy" decoding="async">
+      <div class="tag">立青泰拳精英挑戰賽 · 優勝</div>
+    </div>
+    <div>
+      <div class="kicker">REAL MEMBER / 逆襲狂人</div>
+      <h2 class="h2">高大可<br><i>30 公斤的逆襲</i></h2>
+      <p>教練很強，但你更想知道的是——普通人練得起來嗎？他用一年回答：從 104 公斤的上班族，練到 74 公斤站上擂台，拿下優勝。</p>
+      <div class="a2-rec">
+        <div><div class="num"><span data-cnt="104">0</span><em>KG</em></div><div class="lbl">起點</div></div>
+        <div><div class="num"><span data-cnt="74">0</span><em>KG</em></div><div class="lbl">現在</div></div>
+        <div class="w"><div class="num"><i data-cnt="30">0</i><em>KG</em></div><div class="lbl">減去的重量</div></div>
+      </div>
+      <a class="a2-btn" href="story-kao.html">看他的互動蛻變故事 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 第三幕：釘住向右畫廊 -->
+<section class="gsec" id="gsec">
+  <div class="gpin">
+    <div class="ghead">
+      <div class="kicker">ACT 3 / GYM LIFE</div>
+      <h2 class="h2">500+ 的<i style="color:var(--red)">選擇</i></h2>
+    </div>
+    <div class="gclip">
+      <div class="gstrip" id="gstrip">
+        <div class="gph"><img src="IMG_7366.jpeg" alt="館內訓練"></div>
+        <div class="gquote"><div class="st">★★★★★</div><b>「教練超有耐心，零基礎也能跟上。」</b><span>GOOGLE REVIEW</span></div>
+        <div class="gph"><img src="IMG_8904.jpeg" alt="團課實況"></div>
+        <div class="gph"><video src="video_class_2.mp4" poster="video_class_2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課實況影片"></video></div>
+        <div class="gph sm"><img src="review_IMG_4187.jpg" alt="會員評論"></div>
+        <div class="gph"><img src="IMG_8944.jpeg" alt="對打訓練"></div>
+        <div class="gquote"><div class="st">★★★★★</div><b>「下班最期待的一小時，壓力全消。」</b><span>GOOGLE REVIEW</span></div>
+        <div class="gph"><img src="IMG_5213.jpeg" alt="比賽合照"></div>
+        <div class="gph sm"><img src="review_IMG_4194.jpg" alt="會員評論"></div>
+        <a class="gstory" href="story-kao.html"><img src="story_kao_07.jpg" alt="高大可的蛻變故事" loading="lazy"><span class="gs-in"><em>MEMBER STORY</em><b>他把以前的自己<br>留在體重計上</b><i>看大可的蛻變故事 ⟶</i></span></a>
+        <div class="gph"><img src="vs_clash.png" alt="MPF07 對戰"></div>
+      </div>
+    </div>
+    <div class="ghint">KEEP SCROLLING · 照片向右移動</div>
+  </div>
+</section>
+
+<!-- 影音：賽事實錄 -->
+<section class="film">
+  <div class="wrap">
+    <div class="kicker rv">FIGHT FILM</div>
+    <h2 class="h2 rv">賽事<i style="color:var(--red)">實錄</i></h2>
+    <div class="film-frame rv">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" title="HCF 格鬥賽事影片播放清單" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div class="film-cap rv"><span class="hl">頂尖對決！台韓大戰 −64kg</span>黃謙和（Huang Chien-Ho）戰術解析與精采高光｜MAX FC 27</div>
+    <div class="film-frame rv">
+      <iframe src="https://www.youtube.com/embed/YUj0ev7tH3A?si=IT4Ni5CcbG2pp0CJ" title="頂尖對決！台韓大戰 -64kg：黃謙和 戰術解析與精采高光｜MAX FC 27" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <a class="film-more rv" href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" rel="noopener">YOUTUBE 完整播放清單 ↗</a>
+  </div>
+</section>
+
+<!-- 縫合 B -->
+<div class="seamB"><div class="wedge"></div></div>
+
+<!-- 第四幕 -->
+<section class="act4">
+  <div class="wrap">
+    <div class="a4-grid">
+      <div>
+        <div class="kicker rv">ACT 4 / WHY HCF</div>
+        <h2 class="h2 rv">為什麼 500+ 會員<br>選擇 <i>HCF</i>？</h2>
+        <p class="rv">因為這裡不只是健身房。<b>每一位教練都是現役選手</b>，教的是真正上過擂台的技術；每一堂課都按程度分組，零基礎不會被晾在旁邊。</p>
+        <p class="rv">你可以為了減脂來、為了防身來、為了壓力來——但留下來的理由都一樣：<b>在這裡，你看得見自己一週比一週強。</b></p>
+        <div class="cnt-row rv">
+          <div class="cnt"><div class="num"><i data-cnt="500">0</i>+</div><div class="lbl">會員夥伴</div></div>
+          <div class="cnt"><div class="num"><span data-cnt="42">0</span><i>勝</i></div><div class="lbl">總教練戰績</div></div>
+          <div class="cnt"><div class="num"><span data-cnt="4">0</span></div><div class="lbl">課程體系</div></div>
         </div>
-    </footer>
+      </div>
+      <div class="offer rv">
+        <div class="flag">新生限定</div>
+        <h3>第一堂課 <br>只要 <i>$400</i></h3>
+        <p>完整 60 分鐘體驗課，含基礎打擊教學與一對一程度評估。手套館內提供，穿運動服來就好。</p>
+        <div class="cd" id="cd">
+          <div><b id="cdd">--</b><span>DAYS</span></div>
+          <div><b id="cdh">--</b><span>HRS</span></div>
+          <div><b id="cdm">--</b><span>MIN</span></div>
+          <div><b id="cds">--</b><span>SEC</span></div>
+        </div>
+        <a class="obtn" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">搶下本月體驗名額</a>
+        <div class="onote">本月優惠倒數 · FitBook 線上即時預約</div>
+      </div>
+    </div>
 
-    <script src="main.js"></script>
-        <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('[SW] Registered:', reg.scope))
-          .catch(err => console.warn('[SW] Failed:', err));
-      });
-    }
+    <div class="rev">
+      <div class="kicker rv">GOOGLE REVIEWS</div>
+      <h2 class="h2 rv" style="font-size:clamp(1.5rem,4vw,2.1rem)">會員怎麼說</h2>
+      <div class="rev-clip rv"><div class="rev-track" id="rtrack"></div></div>
+    </div>
 
-    // Student counter animation
-    (function() {
-        const counters = [
-            { id: 'counter-students', target: 200, suffix: '+', duration: 2000 },
-            { id: 'counter-coaches', target: 6, suffix: '', duration: 1200 },
-            { id: 'counter-rating', target: 5.0, suffix: '', duration: 1500, decimal: 1 },
-            { id: 'counter-years', target: 3, suffix: '+', duration: 1000 }
-        ];
-        let started = false;
-        function animateCounter(el, target, duration, decimal, suffix) {
-            const start = Date.now();
-            function tick() {
-                const elapsed = Date.now() - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const value = target * eased;
-                el.textContent = decimal ? value.toFixed(decimal) : Math.floor(value);
-                if (el.nextSibling && el.id === 'counter-rating') {
-                    // already has ★ as sibling span, nothing needed
-                } else {
-                    el.textContent += (progress >= 1 ? suffix : '');
-                }
-                if (progress < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-        }
-        const section = document.getElementById('social-proof');
-        if (section && window.IntersectionObserver) {
-            const obs = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !started) {
-                    started = true;
-                    counters.forEach(c => {
-                        const el = document.getElementById(c.id);
-                        if (el) animateCounter(el, c.target, c.duration, c.decimal, c.suffix || '');
-                    });
-                }
-            }, { threshold: 0.3 });
-            obs.observe(section);
-        }
-    })();
-    </script>
+    <div class="faq">
+      <div class="kicker rv">FAQ</div>
+      <h2 class="h2 rv" style="font-size:clamp(1.5rem,4vw,2.1rem)">新手常見問答</h2>
+      <details class="qa rv"><summary>完全零基礎、體能很差，可以參加嗎？</summary><div class="ans">可以。每堂課都會依程度分組，教練會從站姿與基本拳開始帶，超過一半的會員入門時都是零基礎。</div></details>
+      <details class="qa rv"><summary>需要自備裝備嗎？</summary><div class="ans">體驗課完全不用，拳套與護具館內提供，穿一般運動服、帶水壺即可。決定長期訓練後，教練會再建議適合你的個人裝備。</div></details>
+      <details class="qa rv"><summary>怎麼預約體驗課？</summary><div class="ans">點任一「立即預約」按鈕進 FitBook 選時段即可，也可以加 LINE 由我們協助安排。</div></details>
+      <details class="qa rv"><summary>會不會很容易受傷？</summary><div class="ans">入門課程以技術與體能為主，不會安排實戰對打；進階對打採護具加分級配對，由教練全程在場控管強度。</div></details>
+    </div>
 
-    <script>
-    (function(){
-        const scheduleData = [
-            { key:'mon', label:'週一', en:'MON', courses:[
-                { time:'11:00-12:10', name:'肌力體能 S&C', coach:'Coach Allen', level:'新手友善', type:'S&C', desc:'核心啟動與全身循環訓練。' },
-                { time:'19:20-20:30', name:'踢拳 Kickboxing', coach:'Coach 鄭豫', level:'Lv.1', type:'Kickboxing', desc:'拳腿節奏連擊，建立基本攻防節奏。' },
-                { time:'20:40-21:50', name:'泰拳 Muay Thai', coach:'Coach 黃謙和', level:'Lv.2', type:'Muay Thai', desc:'進階距離控制與實戰對練。' }
-            ]},
-            { key:'tue', label:'週二', en:'TUE', courses:[
-                { time:'19:20-20:30', name:'泰拳 Muay Thai', coach:'Coach 黃謙和', level:'Lv.1', type:'Muay Thai', desc:'基礎拳腿與步法串接。' },
-                { time:'20:40-21:50', name:'散打 Sanda', coach:'Coach 胡脩誠', level:'Lv.2', type:'Sanda', desc:'踢打摔轉換，提升身體對抗能力。' }
-            ]},
-            { key:'wed', label:'週三', en:'WED', courses:[
-                { time:'11:00-12:10', name:'肌力體能 S&C', coach:'Coach 高大可', level:'Lv.1', type:'S&C', desc:'增肌減脂導向，提升爆發與耐力。' },
-                { time:'15:00-16:00', name:'團體課 Group', coach:'Coach Allen', level:'新手友善', type:'Group', desc:'動作修正與體能打底。' },
-                { time:'19:20-20:30', name:'泰拳 Muay Thai', coach:'Coach 黃謙和', level:'Lv.1', type:'Muay Thai', desc:'肘膝連擊與近身防守。' }
-            ]},
-            { key:'thu', label:'週四', en:'THU', courses:[
-                { time:'11:00-12:10', name:'散打 Sanda', coach:'Coach 胡脩誠', level:'Lv.1', type:'Sanda', desc:'摔法與反制，建立安全對抗能力。' },
-                { time:'19:20-20:30', name:'泰拳 Muay Thai', coach:'Coach 鄭豫', level:'Lv.1', type:'Muay Thai', desc:'燃脂訓練與打擊節奏。' },
-                { time:'20:40-21:50', name:'私人課 Private', coach:'Coach 黃謙和', level:'客製化', type:'Private', desc:'依目標客製菜單，需事先預約。' }
-            ]},
-            { key:'fri', label:'週五', en:'FRI', courses:[
-                { time:'11:00-12:10', name:'肌力體能 S&C', coach:'Coach 高大可', level:'Lv.1', type:'S&C', desc:'下肢穩定與拳腿動力鏈整合。' },
-                { time:'19:20-20:30', name:'泰拳 Muay Thai', coach:'Coach 黃謙和', level:'Lv.1', type:'Muay Thai', desc:'近身打擊與防守反擊。' },
-                { time:'20:40-21:50', name:'踢拳 Kickboxing', coach:'Coach Allen', level:'Lv.2', type:'Kickboxing', desc:'高強度連段與移位實戰。' }
-            ]},
-            { key:'sat', label:'週六', en:'SAT', courses:[
-                { time:'11:00-12:10', name:'泰拳 Muay Thai', coach:'Coach 黃謙和', level:'Lv.1', type:'Muay Thai', desc:'週末基礎班，歡迎新手參與。' },
-                { time:'12:20-13:30', name:'踢拳 Kickboxing', coach:'Coach Allen', level:'Lv.1', type:'Kickboxing', desc:'手靶節奏與爆發力訓練。' },
-                { time:'14:00-16:00', name:'團體課 Group', coach:'Coach Team', level:'進階', type:'Group', desc:'選手培訓與對抗週期課程。' }
-            ]},
-            { key:'sun', label:'週日', en:'SUN', courses:[
-                { time:'11:00-12:10', name:'散打 Sanda', coach:'Coach 胡脩誠', level:'Lv.1', type:'Sanda', desc:'拳腿摔基礎整合。' },
-                { time:'12:20-13:30', name:'泰拳 Muay Thai', coach:'Coach 鄭豫', level:'Lv.1', type:'Muay Thai', desc:'新手體能與打擊節奏。' }
-            ]}
-        ];
+    <div class="loc">
+      <div class="kicker rv">LOCATION</div>
+      <h2 class="h2 rv" style="font-size:clamp(1.5rem,4vw,2.1rem)">找到<i>我們</i></h2>
+      <div class="loc-grid rv">
+        <div class="loc-map">
+          <iframe src="https://www.google.com/maps?q=%E6%96%B0%E7%AB%B9%E5%B8%82%E5%8C%97%E5%8D%80%E6%9E%97%E6%A3%AE%E8%B7%AF301%E8%99%9F&output=embed" title="HCF 新竹格鬥 位置地圖" loading="lazy"></iframe>
+        </div>
+        <div class="loc-info">
+          <h4>HCF 新竹格鬥</h4>
+          <div class="addr">新竹市北區林森路 301 號 2 樓</div>
+          <a class="row" href="tel:0925571225"><b>PHONE</b>0925-571-225</a>
+          <a class="row" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><b>LINE</b>線上即時諮詢</a>
+          <a class="row" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><b>BOOKING</b>FitBook 線上預約</a>
+          <a class="loc-nav" href="https://maps.app.goo.gl/53mNdJHvhnZq9WfK8" target="_blank" rel="noopener">開啟 Google 地圖導航</a>
+        </div>
+      </div>
+    </div>
 
-        const dayTabs = document.getElementById('schedule-day-tabs');
-        const courseGrid = document.getElementById('schedule-course-grid');
-        const detailPanel = document.getElementById('schedule-course-detail');
-        if (!dayTabs || !courseGrid || !detailPanel) return;
+    <div class="social-row">
+      <div class="kicker rv">FOLLOW US</div>
+      <div class="links rv">
+        <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener">FACEBOOK</a>
+        <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" rel="noopener">YOUTUBE</a>
+        <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const dayMap = [6,0,1,2,3,4,5];
-        const today = dayMap[new Date().getDay()];
-        let currentDay = today;
+<!-- 終幕 -->
+<div class="seamC"><div class="wedge"></div></div>
+<section class="finale" id="fin">
+  <div class="fin-in">
+    <div class="fin-k">HCF COMBAT HSINCHU</div>
+    <div class="fin-q"><span id="type"></span><span class="caret"></span></div>
+    <div class="fin-mv rv">
+      <div class="lbl">BRAND FILM · 品牌形象 MV</div>
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/RHZafliW6Zs" title="為自己贏一次 - HCF 新竹格鬥館品牌形象 MV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+    <div class="fin-btns">
+      <a class="hb1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+      <a class="hb2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
+    </div>
+  </div>
+  <div class="fin-foot">
+    <div>
+      <h5>HCF 新竹格鬥</h5>
+      <p>Honor 榮譽 · Courage 勇氣 · Faith 信念</p>
+      <p>泰拳 / 散打 / 踢拳 / 肌力體能</p>
+    </div>
+    <div>
+      <h5>聯絡我們</h5>
+      <p>新竹市北區林森路 301 號 2 樓</p>
+      <a href="tel:0925571225">0925-571-225</a>
+      <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 線上諮詢</a>
+    </div>
+    <div>
+      <h5>快速連結</h5>
+      <a href="coach-huang.html">總教練 黃謙和</a>
+      <a href="team.html">教練團隊</a>
+      <a href="group-classes.html">團體課程</a>
+      <a href="private-training.html">私人課程</a>
+      <a href="schedule.html">最新課表</a>
+      <a href="pricing.html">課程方案</a>
+      <a href="https://www.hsinchucombat.com" target="_blank" rel="noopener">官方網站</a>
+      <a href="careers.html">人才招募</a>
+      <a href="partnership.html">企業合作</a>
+    </div>
+    <div>
+      <h5>社群媒體</h5>
+      <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" rel="noopener">YouTube 賽事影片</a>
+      <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">官方 LINE</a>
+    </div>
+  </div>
+  <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥　|　<a href="legal.html#privacy" style="color:#9a9a9a">隱私權政策</a> · <a href="legal.html#disclaimer" style="color:#9a9a9a">免責聲明</a> · <a href="careers.html" style="color:#9a9a9a">人才招募</a> · <a href="partnership.html" style="color:#9a9a9a">企業合作</a></div>
+</section>
 
-        function cardClass(type){
-            if (type === 'Muay Thai') return 'border-red-500/40 hover:border-red-500/70 hover:shadow-[0_0_18px_rgba(230,57,70,0.26)]';
-            if (type === 'Sanda') return 'border-orange-500/40 hover:border-orange-500/70 hover:shadow-[0_0_18px_rgba(249,115,22,0.22)]';
-            if (type === 'Kickboxing') return 'border-purple-500/40 hover:border-purple-500/70 hover:shadow-[0_0_18px_rgba(168,85,247,0.22)]';
-            if (type === 'S&C') return 'border-emerald-500/40 hover:border-emerald-500/70 hover:shadow-[0_0_18px_rgba(16,185,129,0.2)]';
-            return 'border-sci-cyan/30 hover:border-sci-cyan/60 hover:shadow-[0_0_18px_rgba(34,211,238,0.2)]';
-        }
+<!-- 浮動層 -->
+<button class="totop" id="totop" aria-label="回頂部">TOP</button>
+<button class="shark" id="sharkBtn" aria-label="AI 客服"><img src="shark_logo.png" alt="AI 鯊魚客服"></button>
+<div class="chatbox" id="chatbox">
+  <div class="cb-h"><span>HCF AI 鯊魚客服</span><button id="cbClose" aria-label="關閉">✕</button></div>
+  <div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 AI 鯊魚 🦈 想問課程、價格或預約都可以問我！</div></div>
+  <div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div><div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div>
+</div>
+<div class="mcta">
+  <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+  <a class="m2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
+</div>
 
-        function showDetail(course){
-            detailPanel.innerHTML = `
-                <div class="text-[11px] text-sci-cyan font-mono tracking-widest mb-2">CLASS DETAIL</div>
-                <h3 class="text-xl font-black text-white font-orbitron mb-2">${course.name}</h3>
-                <div class="space-y-2 text-sm">
-                    <p class="text-gray-300"><span class="text-gray-500">時間：</span>${course.time}</p>
-                    <p class="text-gray-300"><span class="text-gray-500">教練：</span>${course.coach}</p>
-                    <p class="text-gray-300"><span class="text-gray-500">程度：</span>${course.level}</p>
-                </div>
-                <p class="text-gray-400 text-xs mt-4 leading-relaxed">${course.desc}</p>
-            `;
-        }
+<script>
+// ===== Nav 捲動換色 / 回頂部 =====
+var nav=document.getElementById('nav'),totop=document.getElementById('totop');
+addEventListener('scroll',function(){
+  var y=scrollY;
+  nav.classList.toggle('sc',y>innerHeight*0.6);
+  totop.classList.toggle('on',y>innerHeight*1.2);
+},{passive:true});
+totop.onclick=function(){scrollTo({top:0,behavior:'smooth'})};
+var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+burger.onclick=function(){mnav.classList.toggle('open')};
+mnav.addEventListener('click',function(e){if(e.target.tagName==='A')mnav.classList.remove('open')});
 
-        function renderTabs(){
-            dayTabs.innerHTML = scheduleData.map((day, idx) => {
-                const active = idx === currentDay;
-                const todayBadge = idx === today ? '<span class="text-[10px] px-1.5 py-0.5 rounded border border-red-500/40 text-red-400">今日</span>' : '';
-                return `<button type="button" data-day="${idx}" class="schedule-day-tab text-left rounded-xl border px-3 py-2.5 transition-all ${active ? 'border-red-500/60 bg-red-500/10 shadow-[0_0_14px_rgba(230,57,70,0.25)]' : 'border-white/10 bg-black/20 hover:border-white/30'}"><div class="flex items-center justify-between"><span class="text-sm font-black ${active ? 'text-white' : 'text-gray-300'}">${day.label}</span>${todayBadge}</div><p class="text-[11px] font-mono tracking-wider ${active ? 'text-red-300' : 'text-gray-500'}">${day.en}</p></button>`;
-            }).join('');
-        }
+// ===== Hero 輪播（圖片淡接；正式版接回 carousel-config.json 與影片） =====
+var slides=document.querySelectorAll('.hero-slide'),dots=document.getElementById('dots'),cur=0,timer;
+slides.forEach(function(_,i){var b=document.createElement('button');if(i===0)b.className='on';
+  b.onclick=function(){go(i)};dots.appendChild(b)});
+function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');
+  cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');reset()}
+function next(){go((cur+1)%slides.length)}
+function reset(){clearInterval(timer);timer=setInterval(next,6000)}
+reset();
+var tx=0,hero=document.querySelector('.hero');
+hero.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
+hero.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;
+  if(Math.abs(d)>50){d<0?next():go((cur-1+slides.length)%slides.length)}},{passive:true});
 
-        function renderCourses(){
-            const day = scheduleData[currentDay];
-            courseGrid.innerHTML = day.courses.map((course, idx) => `
-                <button type="button" data-course="${idx}" class="schedule-course text-left border rounded-xl bg-black/30 p-4 transition-all ${cardClass(course.type)}">
-                    <div class="flex items-center justify-between gap-2 mb-2">
-                        <span class="text-sci-cyan text-xs font-mono tracking-widest">${course.time}</span>
-                        <span class="text-[10px] text-gray-400 border border-white/10 rounded px-2 py-0.5">${course.level}</span>
-                    </div>
-                    <h4 class="text-white font-bold text-base mb-1">${course.name}</h4>
-                    <p class="text-gray-400 text-xs">${course.coach}</p>
-                </button>
-            `).join('');
-            showDetail(day.courses[0]);
-        }
+// ===== 紅色滾動帶 =====
+var rib=document.getElementById('rib'),words='HONOR · COURAGE · FAITH · ';
+rib.innerHTML=('<span>'+words+'</span>').repeat(12);
 
-        dayTabs.addEventListener('click', function(e){
-            const btn = e.target.closest('[data-day]');
-            if (!btn) return;
-            currentDay = Number(btn.dataset.day);
-            renderTabs();
-            renderCourses();
-        });
+// ===== 第一幕 漂浮卡跑馬燈（向左） =====
+var cards=[
+ ['course_muaythai.jpg','泰拳','MUAY THAI','muaythai.html'],
+ ['course_sanda.jpg','散打','SANDA','sanda.html'],
+ ['course_kickboxing.jpg','踢拳','KICKBOXING','kickboxing.html'],
+ ['course_sc.jpg','肌力體能','STRENGTH','strength.html'],
+ ['IMG_8904.jpeg','團體課程','GROUP CLASSES','group-classes.html'],
+ ['coach_kao.jpg','私人課程','PRIVATE 1:1','private-training.html'],
+ ['coach_huang.jpg','教練團隊','COACHES','team.html']
+];
+var ft=document.getElementById('ftrack'),html='';
+cards.concat(cards).forEach(function(c){
+  html+='<a class="fcard" href="'+c[3]+'"><div class="ph"><img src="'+c[0]+'" alt="'+c[1]+'" loading="lazy"></div><div class="bd"><b>'+c[1]+'</b><span>'+c[2]+'</span></div></a>';
+});
+ft.innerHTML=html;
 
-        courseGrid.addEventListener('click', function(e){
-            const card = e.target.closest('[data-course]');
-            if (!card) return;
-            showDetail(scheduleData[currentDay].courses[Number(card.dataset.course)]);
-        });
+// ===== 第二幕 捲動入黑場 =====
+var act2=document.getElementById('act2');
+function a2(){
+  var r=act2.getBoundingClientRect(),vh=innerHeight;
+  var p=Math.min(1,Math.max(0,(vh*0.85-r.top)/(vh*0.55)));
+  act2.style.setProperty('--p',p.toFixed(3));
+}
+addEventListener('scroll',a2,{passive:true});a2();
+var actK=document.getElementById('actK');
+function aK(){
+  var r=actK.getBoundingClientRect(),vh=innerHeight;
+  var p=Math.min(1,Math.max(0,(vh*0.85-r.top)/(vh*0.55)));
+  actK.style.setProperty('--p',p.toFixed(3));
+}
+addEventListener('scroll',aK,{passive:true});aK();
 
-        courseGrid.addEventListener('mouseover', function(e){
-            const card = e.target.closest('[data-course]');
-            if (!card) return;
-            showDetail(scheduleData[currentDay].courses[Number(card.dataset.course)]);
-        });
+// ===== 第三幕 釘住向右畫廊（桌機）=====
+var gsec=document.getElementById('gsec'),gstrip=document.getElementById('gstrip');
+function gal(){
+  if(innerWidth<=880)return;
+  var r=gsec.getBoundingClientRect(),total=gsec.offsetHeight-innerHeight;
+  var p=Math.min(1,Math.max(0,-r.top/total));
+  var max=gstrip.scrollWidth-innerWidth+48;
+  gstrip.style.transform='translateX('+(-max*(1-p))+'px)';
+}
+addEventListener('scroll',gal,{passive:true});
+addEventListener('resize',gal);gal();
 
-        renderTabs();
-        renderCourses();
-    })();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script>
-    // VS Battle scroll animation
-    (function(){
-      if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined') return;
-      gsap.registerPlugin(ScrollTrigger);
+// ===== 數字滾動 =====
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  var el=e.target,end=+el.dataset.cnt,t0=null;
+  function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1300);
+    el.textContent=Math.round(end*(1-Math.pow(1-k,3)));
+    if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.5});
+document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
 
-      // BGM: auto-play「自己贏一次」when VS battle enters viewport
-      var bgmTriggered = false;
-      ScrollTrigger.create({
-        trigger: '#vs-battle',
-        start: 'top 80%',
-        once: true,
-        onEnter: function() {
-          if (bgmTriggered) return;
-          bgmTriggered = true;
-          var bgm = document.getElementById('bgm-audio');
-          if (bgm && !isMusicPlaying) {
-            bgm.currentTime = 0;
-            bgm.volume = 0;
-            bgm.play().then(function() {
-              isMusicPlaying = true;
-              // Fade in over 2 seconds
-              var fadeIn = setInterval(function() {
-                if (bgm.volume < 0.95) { bgm.volume = Math.min(bgm.volume + 0.05, 1); }
-                else { bgm.volume = 1; clearInterval(fadeIn); }
-              }, 100);
-              var bi = document.getElementById('bgm-icon');
-              if (bi) { bi.classList.remove('fa-volume-xmark'); bi.classList.add('fa-volume-high'); }
-              var sbi = document.getElementById('shark-bgm-icon');
-              if (sbi) { sbi.classList.remove('fa-volume-xmark'); sbi.classList.add('fa-volume-high'); }
-            }).catch(function() {
-              // Browser blocked autoplay — user needs to interact first, that's ok
-              bgmTriggered = false;
-            });
-          }
-        }
-      });
+// ===== 倒數（本月底） =====
+function cd(){
+  var n=new Date(),end=new Date(n.getFullYear(),n.getMonth()+1,1)-n;
+  if(end<0)end=0;var s=Math.floor(end/1000);
+  document.getElementById('cdd').textContent=Math.floor(s/86400);
+  document.getElementById('cdh').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');
+  document.getElementById('cdm').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');
+  document.getElementById('cds').textContent=String(s%60).padStart(2,'0');
+}
+cd();setInterval(cd,1000);
 
-      var t=gsap.timeline({scrollTrigger:{trigger:'#vs-battle',start:'top top',end:'+=400%',pin:'#vs-pin',scrub:1.5,anticipatePin:1}});
-      t.to('#vfl',{x:0,opacity:1,duration:.16,ease:'power4.out'},0);
-      t.to('#vfr',{x:0,opacity:1,duration:.16,ease:'power4.out'},0.02);
-      t.to('#vbl',{x:0,opacity:1,duration:.15},0.01);
-      t.to('#vbr',{x:0,opacity:1,duration:.15},0.03);
-      t.to('#vev',{opacity:1,duration:.08},0.06);
-      t.to('#vel',{opacity:1,duration:.05},0.10);
-      t.to('#vsb',{opacity:1,scale:1,duration:.07,ease:'back.out(1.7)'},0.14);
-      t.to('#vnl',{opacity:1,x:0,duration:.07},0.20);
-      t.to('#vnr',{opacity:1,x:0,duration:.07},0.22);
-      gsap.utils.toArray('#vsl .vs-pl').forEach(function(p,i){t.to(p,{opacity:1,y:0,duration:.04},0.26+i*.018)});
-      gsap.utils.toArray('#vsr .vs-pl').forEach(function(p,i){t.to(p,{opacity:1,y:0,duration:.04},0.28+i*.018)});
-      t.to('#vfl',{x:'15%',scale:1.03,duration:.14,ease:'power3.in'},0.50);
-      t.to('#vfr',{x:'-15%',scale:1.03,duration:.14,ease:'power3.in'},0.50);
-      t.to('#vnl',{opacity:0,duration:.05},0.52);
-      t.to('#vnr',{opacity:0,duration:.05},0.52);
-      t.to('#vbl',{opacity:0,duration:.05},0.52);
-      t.to('#vbr',{opacity:0,duration:.05},0.52);
-      t.to('#vsb',{scale:3.5,opacity:0,duration:.05},0.62);
-      t.to('#vel',{opacity:0,scaleY:1.8,duration:.04},0.62);
-      t.to('#vfl2',{opacity:1,duration:.025},0.65);
-      t.to('#vfl',{opacity:0,duration:.025},0.65);
-      t.to('#vfr',{opacity:0,duration:.025},0.65);
-      t.to('#vcl',{opacity:1,duration:.04},0.66);
-      t.to('#vfl2',{opacity:0,duration:.08},0.675);
-      t.to('#vst',{opacity:1,scale:1,rotation:-15,duration:.05,ease:'back.out(2.5)'},0.73);
-      t.to('#vst',{opacity:0,scale:1.3,duration:.04},0.80);
-      t.to('#vev',{opacity:0,duration:.03},0.81);
-      t.to('#vcl',{opacity:0,scale:1.03,duration:.05},0.81);
-      t.to('#vvc',{opacity:1,duration:.06},0.84);
-      t.to('#vvp',{opacity:1,scale:1,duration:.1,ease:'power3.out'},0.85);
-      t.to('#vvb',{opacity:1,y:0,duration:.04},0.90);
-      t.to('#vvt',{opacity:1,y:0,duration:.06,ease:'power3.out'},0.91);
-      t.to('#vvd',{opacity:1,y:0,duration:.04},0.94);
-      t.to('#vvcta',{opacity:1,duration:.03},0.97);
-    })();
-    </script>
+// ===== 評論漂流 =====
+var revs=['review_IMG_4187.jpg','review_IMG_4189.jpg','review_IMG_4194.jpg','review_IMG_4198.jpg'];
+var rt=document.getElementById('rtrack'),rh='';
+revs.concat(revs).concat(revs).forEach(function(f){rh+='<img src="'+f+'" alt="Google 會員評論" loading="lazy">'});
+rt.innerHTML=rh;
 
-    <script>
-    // HCF AI Shark — Full Knowledge Base
-    var HCF_KB={"營業時間|幾點|開門|打烊|休息":"📍 營業時間：\n週一～週五 11:00-22:00\n週六＆週日 11:00-16:00","地址|在哪|位置|怎麼去|交通":"📍 新竹市北區林森路301號2樓\n搜尋「HCF新竹格鬥館」Google Maps 就能找到！","電話|聯絡|打電話":"📞 0925-571-225\n或直接加我們 LINE：https://lin.ee/7lidUv0","停車|車位":"🅿️ 附近有林森路沿線路邊停車格，也可停在巨城附近停車場步行過來（約5分鐘）","費用|價錢|多少錢|收費|價格|怎麼算":"💰 新生限定方案：\n• 團體課體驗：$400\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n📋 完整課程價格請參考官網「課程方案」頁面！","體驗|試上|第一次|體驗課":"🥊 首次體驗只要 $400！70分鐘完整課程，裝備免費借用。\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","月費|月卡|包月|無限":"📅 團體課無限月卡：$5,500/月","私教|私人|一對一|1對1":"👊 私教課程（60分鐘）：\n• 體驗1堂 $1,400 / 2堂 $2,400\n• 10堂 $18,000（90天）\n• 20堂 $34,000（120天）\n• 30堂 $48,000（180天）","團體|團課|group":"👥 團體課程（70分鐘）：\n• 體驗價 $400\n• 單堂 $600\n• 10堂 $4,500（60天）\n• 30堂 $10,500（150天）\n• 月卡無限 $5,500","打靶|靶課":"🥊 打靶課（40分鐘）：單堂 $1,000 / 10堂 $9,000","1對2|一對二|雙人":"👫 1對2（60分鐘）：體驗 $2,400（2人）/ 10堂 $23,000 / 20堂 $44,000","優惠|活動|折扣|促銷|送":"🔥 新生限定方案（首次來館專屬）：\n• 團體課體驗：$400（原價$600）\n• 私教體驗1堂：$1,400\n• 私教體驗2堂：$2,400\n• 私教1對2體驗：$2,400（2人）\n\n👉 立即預約：https://www.fit-book.com.tw/hsinchucombat/plan/588","入會費|年費|綁約":"✅ 不收入會費、年費、不強制綁約。課程方案自由選擇。","泰拳|muay thai":"🥊 泰拳 — 八肢的藝術。雙拳雙腿雙膝雙肘全方位打擊，單堂消耗600-800大卡！WBC冠軍級教練親自指導。","踢拳|kickboxing":"🦵 踢拳 — 快節奏攻防，精準刺激臀腿肌群，修長線條首選！","散打|sanda":"🤼 散打 — 踢打摔全方位格鬥，打造鋼鐵核心！","重訓|肌力|體能|s&c":"💪 肌力體能 S&C — 功能性訓練，打造易瘦體質！","課表|時間表|上課時間":"📅 尖峰19:20-21:50每天有課 / 離峰11:00-16:00（週三四五六日）/ 私教可彈性約時間","教練|老師|誰教":"👊 教練團隊：黃謙和（總教練42勝）、Allen（竹科戰神）、鄭豫（功夫熊貓）、高大可（一年減30kg）、胡脩誠（鐵血戰神）","黃謙和|館長|總教練":"🏆 黃謙和：42勝12敗・WBC冠軍・MAXFC越南冠軍・MPF07大勝泰國教練・格鬥鋼鐵人","新手|沒基礎|零基礎|不會|初學":"🔰 80%學員零基礎開始！教練根據你的程度調整強度，第一堂只要$400，穿運動服來就好。","胖|瘦|體型":"💪 不分體型！高大可教練就是104kg→74kg的最佳證明！","女生|女性|女孩":"👩 非常歡迎！有女性助教專門指導，新手課不對打，環境安全友善。練拳讓線條更修長緊實！","年紀|歲|老|年長":"👴 6歲到60歲都有學員！建議從私教開始，教練監控安全。","受傷|危險|安全|怕痛|對打":"🛡️ 比籃球受傷率還低！初學者打沙袋和手靶，不需要跟人對打。","減肥|瘦|減重|燃脂":"🔥 一小時600-800大卡！公認最高效燃脂運動。高大可教練一年104→74kg！","壓力|紓壓|上班":"💆 打完沙包腦袋雜訊全消！「拖著身體來，跳著舞步回家」","裝備|拳套|準備|穿什麼":"🥊 穿運動服就好！赤腳訓練，館內拳套免費借用。帶毛巾和水壺即可。","淋浴|洗澡":"🚿 有淋浴間和更衣室！","預約|報名|怎麼約":"📱 預約方式：\n1. 線上：https://www.fit-book.com.tw/hsinchucombat/plan/588\n2. LINE：https://lin.ee/7lidUv0\n3. 電話：0925-571-225","比賽|選手|擂台":"🏆 有完整選手培訓系統！週六14:00有選手班。多位學員已在各大賽事奪牌！","hcf|品牌|名字|意思":"🔥 HCF = Honor(榮譽)・Courage(勇氣)・Faith(信念)\n「這輩子，總要為自己贏一次。」","歌|bgm|音樂|自己贏一次":"🎵「為自己贏一次」是HCF主題曲，也是MPF07開場樂！","mpf|圖姆|thum|大勝":"🏆 2026/3/21 MPF07 黃謙和復出首戰大勝泰國教練圖姆（202戰152勝）！全場唯一台灣人勝出！","生理期|月經":"🩺 可以上課！適度運動舒緩經痛，請告知教練調整強度。","舊傷|膝蓋|腰痛":"🏥 請告知教練！可設計避開患部的復健式訓練。","手腳不協調":"😆 90%的人剛開始都這樣！幾堂課後你會驚訝自己的進步！","哈囉|你好|嗨|hi|hello":"👋 你好！我是 HCF 智能鯊魚教練🦈\n有什麼想問的？費用、課程、教練、預約，什麼都可以問！"};
-    function localSharkReply(q){q=q.toLowerCase();for(var p in HCF_KB){var ks=p.split('|');for(var i=0;i<ks.length;i++){if(q.indexOf(ks[i].toLowerCase())!==-1)return HCF_KB[p]}}return null}
-    // Override askShark after main.js loads
-    window.addEventListener('DOMContentLoaded', function(){
-        var origAsk = window.askShark;
-        window.askShark = async function(question){
-            var hBox=document.getElementById('ai-chat-history');
-            hBox.innerHTML+='<div class="bg-sci-cyan/20 text-sci-cyan p-2.5 rounded-lg rounded-tr-none ml-auto w-fit border border-sci-cyan/30 mt-3 max-w-[80%] text-[11px] sm:text-xs">'+question+'</div>';
-            hBox.scrollTop=hBox.scrollHeight;
-            var lid='ld-'+Date.now();
-            hBox.innerHTML+='<div id="'+lid+'" class="bg-white/10 p-2.5 rounded-lg rounded-tl-none border border-white/5 mt-3 max-w-[85%] text-gray-400 text-[11px] sm:text-xs flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-sci-cyan"></i> 運算中...</div>';
-            hBox.scrollTop=hBox.scrollHeight;
-            var local=localSharkReply(question);
-            if(local){setTimeout(function(){var el=document.getElementById(lid);if(el)el.outerHTML='<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed whitespace-pre-line shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">'+local.replace(/\n/g,'<br>')+'</div>';hBox.scrollTop=hBox.scrollHeight},400+Math.random()*600);return}
-            try{var res=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:question})});var data=await res.json();var reply=data.reply||'請點LINE找真人客服！';document.getElementById(lid).outerHTML='<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed shadow-[0_0_15px_rgba(var(--theme-cyan-rgb),0.1)]">'+reply+'</div>'}catch(e){document.getElementById(lid).outerHTML='<div class="bg-[#0f131a] p-3 rounded-lg rounded-tl-none border border-sci-cyan/30 mt-3 max-w-[90%] text-gray-100 text-[11px] sm:text-xs leading-relaxed whitespace-pre-line">🦈 我不太確定耶～建議直接問真人客服！<br><br>👉 LINE：https://lin.ee/7lidUv0<br>📞 0925-571-225</div>'}
-            hBox.scrollTop=hBox.scrollHeight;
-        };
-    });
-    </script>
+// ===== 終幕打字機 =====
+var quote='這輩子總要為自己贏一次',typeEl=document.getElementById('type'),typed=false;
+new IntersectionObserver(function(es,o){es.forEach(function(e){
+  if(e.isIntersecting&&!typed){typed=true;o.disconnect();
+    var i=0;(function tick(){if(i<=quote.length){
+      typeEl.innerHTML=quote.slice(0,i).replace('贏一次','<i>贏一次</i>');i++;setTimeout(tick,110)}})();
+  }})},{threshold:.4}).observe(document.getElementById('fin'));
+
+// ===== Reveal =====
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+// ===== AI 鯊魚客服（接原站 Netlify function；離線時友善回覆） =====
+var cb=document.getElementById('chatbox'),log=document.getElementById('cbLog'),cin=document.getElementById('cbIn');
+document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open');var nd=document.getElementById('hcfNudge');if(nd)nd.remove();if(cb.classList.contains('open')){cin.focus();if(window.hcfTrack)hcfTrack('ai_open');}};
+/* 主動出擊小氣泡（每次造訪一次、依頁面客製話術） */
+(function(){
+  if(sessionStorage.getItem('hcfNudged'))return;
+  var MSG={'pricing':'方案怎麼選最划算？問我，1 秒回 🦈','schedule':'不知道上哪堂？跟我說你的目標','plans-proposal':'選好目標了嗎？我幫你配課','group-classes':'新手第一堂該上什麼？問我','private-training':'想知道私人課怎麼開始？問我','survey':'做完問卷有疑問？直接問我','story':'想跟大可一樣開始改變？問我'};
+  var key=Object.keys(MSG).find(function(k){return location.pathname.indexOf(k)>-1});
+  var txt=key?MSG[key]:'嗨！課程・價格・預約，問我秒回 🦈';
+  setTimeout(function(){
+    if(cb.classList.contains('open'))return;
+    sessionStorage.setItem('hcfNudged','1');
+    var n=document.createElement('button');
+    n.id='hcfNudge';n.type='button';n.textContent=txt;
+    n.style.cssText='position:fixed;right:84px;bottom:96px;z-index:380;background:#fff;color:#111;border:1.5px solid #C81015;box-shadow:0 14px 36px rgba(17,17,17,.25);padding:12px 16px;font-weight:700;font-size:.86rem;cursor:pointer;border-radius:14px 14px 2px 14px;max-width:230px;text-align:left;line-height:1.5;font-family:inherit';
+    document.body.appendChild(n);
+    n.onclick=function(){n.remove();cb.classList.add('open');cin.focus();if(window.hcfTrack)hcfTrack('ai_nudge_click');};
+    setTimeout(function(){if(n.parentNode)n.remove()},14000);
+  },16000);
+})();
+
+document.getElementById('cbClose').onclick=function(){cb.classList.remove('open')};
+function add(t,cls){var d=document.createElement('div');d.className='m '+cls;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
+var FAQ=[
+ {lead:1,k:['價','錢','費','方案','多少'],a:'費用速覽：團體課首堂體驗 $400、MAX 月票 $5,500 當月團課無限；私人課體驗 $1,400 起。完整價格在「課程方案」頁，想看一對一細節輸入「私人課」🦈'},
+ {k:['課表','時間','幾點','星期','禮拜'],a:'最新課表線上即時查詢：平日 11:00、19:30、20:40 開課，週末特訓 11:00 起。全預約制、滿 3 人開課，導覽列點「最新課表」就能看！'},
+ {lead:1,k:['預約','報名','體驗','怎麼上'],a:'預約超簡單：FitBook 線上選時段（首堂 $400），或加官方 LINE 由真人幫你排。第一次來穿運動服、帶水壺毛巾，拳套裝備館內免費借！'},
+ {lead:1,k:['私人','一對一','1對1','私教','打靶'],a:'私人課三種型態：一對一 60 分（體驗 $1,400）、一對二 60 分（體驗 $2,400）、私人打靶 40 分（$1,000）。加 LINE 預約一對一評估，教練幫你客製菜單！'},
+ {lead:1,k:['團體','團課'],a:'團體課四大體系：泰拳、散打、踢拳、肌力體能，LV.1 零基礎友善、不對打。首堂 $400，到「課程介紹 → 團體課程」挑一條路線！'},
+ {lead:1,k:['新手','零基礎','沒學過','第一次','初學','害怕'],a:'零基礎完全 OK！最多人從「新手泰拳」開始：第一堂從站架教起、不對打、教練全程帶。$400 體驗課就是設計給沒底子的你 💪'},
+ {k:['地址','位置','在哪','怎麼去','停車','交通'],a:'基地在新竹市北區林森路 301 號 2 樓。找不到路直接打 0925-571-225，我們帶你上來！'},
+ {k:['營業','幾點開','開到','公休'],a:'營業時間：平日 11:00–22:00、週末 11:00–16:00，全預約制喔！'},
+ {k:['教練','黃謙和','鋼鐵人'],a:'總教練黃謙和「格鬥鋼鐵人」：42 勝、台灣泰拳 63KG 衛冕冠軍，MPF07 傷後復出 TKO 首勝。導覽「教練團隊」看完整互動年鑑與賽事影片！'},
+ {k:['小孩','兒童','親子','樂齡','長輩'],a:'兒童格鬥營與樂齡體能小班正在籌備開班！到「30秒測你的命定格鬥課」問卷投下一票、留 LINE，開班第一時間通知你 🎁'}
+];
+function faqHit(v){for(var i=0;i<FAQ.length;i++){for(var j=0;j<FAQ[i].k.length;j++){if(v.indexOf(FAQ[i].k[j])>-1)return FAQ[i];}}return null;}
+function addHTML(h){var d=document.createElement('div');d.className='m ai';d.innerHTML=h;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+function addActs(lead){
+  var h='<div class="cb-acts"><a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">🥊 立即預約 $400</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">💬 加 LINE 真人聊</a>';
+  if(lead&&window.HCF_BACKEND)h+='<button type="button" class="cb-leadbtn">📞 留電話，教練回覆你</button>';
+  h+='</div>';
+  addHTML(h);
+}
+log.addEventListener('click',function(e){
+  if(e.target.classList.contains('cb-leadbtn')){
+    e.target.disabled=true;
+    addHTML('<div class="cb-leadform"><input class="lf-n" placeholder="怎麼稱呼你"><input class="lf-p" placeholder="電話或 LINE ID" maxlength="40"><button type="button" class="cb-leadsend">送出，等教練聯絡</button></div>');
+  }
+  if(e.target.classList.contains('cb-leadsend')){
+    var f=e.target.closest('.cb-leadform');
+    var n=f.querySelector('.lf-n').value.trim(),p=f.querySelector('.lf-p').value.trim();
+    if(!p){f.querySelector('.lf-p').focus();return;}
+    fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:n,contact:p,source:'ai-chat'})});
+    if(window.hcfTrack)hcfTrack('ai_lead_submit');
+    f.outerHTML='<div class="m ai">收到！教練會盡快聯絡你 🦈 想更快也可以直接加 LINE！</div>';
+  }
+});
+function send(qTxt){var v=(qTxt||cin.value).trim();if(!v)return;add(v,'me');cin.value='';
+  if(window.hcfTrack)hcfTrack('ai_question',{q:v.slice(0,60)});
+  var hit=faqHit(v);
+  if(hit){setTimeout(function(){add(hit.a,'ai');addActs(!!hit.lead);},380);return;}
+  fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:v})})
+   .then(function(r){return r.json()}).then(function(d){add(d.reply||d.message||'收到！','ai')})
+   .catch(function(){add('我先記下你的問題了！可以先加 LINE（lin.ee/7lidUv0）由真人為你服務，或試試輸入「價格」「課表」「預約」我馬上回答 🦈','ai');addActs(true)});}
+document.getElementById('cbSend').onclick=function(){send()};
+document.getElementById('cbChips').addEventListener('click',function(e){var b=e.target.closest('button');if(b)send(b.textContent);});
+cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
+</script>
+<script>
+/* ===== 左側問卷入口 ===== */
+(function(){
+  if(document.body.dataset.page==='survey'||document.querySelector('.svtab'))return;
+  var st=document.createElement('style');
+  st.textContent=".svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.9rem;line-height:1.55;text-align:center;padding:12px 9px;width:max-content;border-radius:0 12px 12px 0;box-shadow:6px 0 18px rgba(200,16,21,.35);transition:.25s}.svtab:hover{background:#9B0B0F;padding-left:13px}.svtab em{font-style:normal;display:block;margin-bottom:2px}.svtab b{display:block;font-family:inherit}@media(max-width:680px){.svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.9rem;line-height:1.55;text-align:center;padding:12px 9px;width:max-content;border-radius:0 12px 12px 0;box-shadow:6px 0 18px rgba(200,16,21,.35);transition:.25s}.svtab:hover{background:#9B0B0F;padding-left:13px}.svtab em{font-style:normal;display:block;margin-bottom:2px}.svtab b{display:block;font-family:inherit}@media(max-width:680px){.svtab{font-size:.78rem;padding:10px 7px;line-height:1.45}}";
+  document.head.appendChild(st);
+  var a=document.createElement('a');
+  a.className='svtab';a.href='survey.html';
+  a.innerHTML='<b>30</b><b>秒</b><b>測</b><b>你</b><b>的</b><b>命</b><b>定</b><b>格</b><b>鬥</b><b>課</b>';
+  document.body.appendChild(a);
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+<script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
 </body>
 </html>

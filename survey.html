@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>30 秒測出你的命定格鬥課｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新竹格鬥問卷調查：30 秒測出你的命定格鬥課。填完馬上看結果，留下 LINE 領取免費體驗團體課見面禮，限量 50 名。">
+<link rel="canonical" href="https://www.hsinchucombat.com/survey.html">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="30 秒測出你的命定格鬥課｜HCF 新竹格鬥">
+<meta property="og:description" content="填完馬上看結果，留下 LINE 領免費體驗團體課見面禮，限量 50 名。">
+<meta property="og:url" content="https://www.hsinchucombat.com/survey.html">
+<meta property="og:image" content="https://www.hsinchucombat.com/hero1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="30 秒測出你的命定格鬥課｜HCF 新竹格鬥">
+<meta name="twitter:description" content="填完馬上看結果，留下 LINE 領免費體驗團體課見面禮，限量 50 名。">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/hero1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hcf.css">
+<style>
+.quiz{padding:42px 0 90px}
+.quiz .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.qcard{background:#fff;box-shadow:0 14px 36px rgba(17,17,17,.08);border-left:6px solid var(--red);padding:24px 26px;margin-bottom:18px}
+.qcard h3{font-family:var(--serif);font-weight:900;font-size:1.12rem;line-height:1.6;display:flex;gap:10px}
+.qcard h3 .qn{font-family:var(--en);color:var(--red);flex:0 0 auto}
+.qcard .note{font-size:.8rem;color:var(--ink3,#8A8A8A);margin-top:2px}
+.opts{margin-top:14px;display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;gap:10px;align-items:flex-start;background:var(--surface,#F7F7F7);padding:11px 14px;cursor:pointer;transition:.2s;line-height:1.6}
+.opt:hover{background:#F0E3E3}
+.opt input{accent-color:var(--red);margin-top:5px;flex:0 0 auto;width:16px;height:16px}
+.opt span b{color:var(--red)}
+.ox{margin-top:14px;display:grid;gap:10px}
+.ox .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface,#F7F7F7);padding:10px 14px}
+.ox .st{flex:1;min-width:200px;line-height:1.6}
+.ox label{display:flex;align-items:center;gap:6px;font-family:var(--en);font-weight:700;cursor:pointer}
+.ox input{accent-color:var(--red);width:16px;height:16px}
+.qfree input[type=text]{width:100%;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans)}
+.gift{background:var(--carbon,#111);color:#fff;padding:28px;margin:30px 0 18px;position:relative;overflow:hidden}
+.gift::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.gift>*{position:relative}
+.gift h3{font-family:var(--serif);font-weight:900;font-size:1.3rem}
+.gift p{margin-top:10px;line-height:1.9;color:#ddd}
+.gift .up{margin-top:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
+.gift .star{color:#fff;background:var(--red);display:inline-block;padding:6px 12px;font-weight:900;margin-top:8px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.fields label{display:block;font-weight:700;font-size:.9rem}
+.fields input[type=text]{width:100%;margin-top:6px;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans)}
+.agree{margin-top:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.agree input{accent-color:var(--red);margin-top:4px}
+.qsubmit{margin-top:22px;display:block;width:100%;background:var(--red);color:#fff;border:0;font-family:var(--sans);font-weight:900;font-size:1.1rem;letter-spacing:.08em;padding:17px;cursor:pointer;transition:.25s;box-shadow:0 10px 26px rgba(200,16,21,.3)}
+.qsubmit:hover{background:var(--redD,#9B0B0F);transform:translateY(-2px)}
+.qhint{text-align:center;color:var(--ink3,#8A8A8A);font-size:.8rem;margin-top:12px}
+/* 送出後正解視圖 */
+.done{display:none}
+.done.on{display:block}
+.form-area.off{display:none}
+.done .ok{background:#fff;border-top:6px solid var(--red);box-shadow:0 14px 36px rgba(17,17,17,.08);padding:30px;text-align:center}
+.done .ok h2{font-family:var(--serif);font-weight:900;font-size:1.6rem}
+.done .ok p{margin-top:10px;color:var(--ink2,#4A4A4A);line-height:1.9}
+.ans{margin-top:20px;display:grid;gap:10px;text-align:left}
+.ans .a{background:var(--surface,#F7F7F7);padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.ans .x{font-family:var(--en);font-weight:700;color:var(--red);font-size:1.2rem;flex:0 0 auto}
+.ans b{display:block}
+.ans small{color:var(--ink2,#4A4A4A)}
+.done .btns{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.done .btns a{text-decoration:none;font-weight:900;padding:14px 26px}
+.done .btns .b1{background:var(--red);color:#fff}
+.done .btns .b2{border:2px solid var(--carbon,#111);color:var(--carbon,#111)}
+.done .socials{margin-top:26px;border-top:1px solid var(--line,#E5E5E5);padding-top:22px;text-align:left}
+.done .socials h4{font-family:var(--serif);font-weight:900;font-size:1.05rem;text-align:center}
+.done .slist{margin-top:14px;display:grid;gap:8px}
+.done .slist a{display:flex;align-items:center;gap:12px;background:var(--surface,#F7F7F7);padding:12px 14px;text-decoration:none;color:var(--carbon,#111);font-weight:700;line-height:1.5;transition:.2s}
+.done .slist a:hover{background:#F0E3E3;transform:translateX(4px)}
+.done .slist .tag{flex:0 0 auto;font-family:var(--en);font-weight:700;font-size:.75rem;letter-spacing:.06em;background:var(--carbon,#111);color:#fff;padding:4px 8px}
+.done .slist a:hover .tag{background:var(--red)}
+@media(max-width:640px){.fields{grid-template-columns:1fr}.opts.two{grid-template-columns:1fr}}
+</style>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/survey.html", "url": "https://www.hsinchucombat.com/survey.html", "name": "30 秒測出你的命定格鬥課｜HCF 新竹格鬥", "description": "HCF 新竹格鬥問卷調查：30 秒測出你的命定格鬥課。填完馬上看結果，留下 LINE 領取免費體驗團體課見面禮，限量 50 名。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "問卷調查", "item": "https://www.hsinchucombat.com/survey.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
+</head>
+<body data-page="survey">
+<header class="nav" id="nav"></header>
+
+<section class="phero">
+  <div class="phero-ghost">QUIZ</div>
+  <div class="phero-in">
+    <div class="kicker">FIGHT QUIZ / 問卷調查</div>
+    <h1>30 秒測出你的<i>命定格鬥課</i> 🥊</h1>
+    <p>HCF 新竹格鬥｜填完馬上看結果 文末有見面禮</p>
+  </div>
+</section>
+
+<div class="seamA">
+  <div class="wedge"></div>
+  <div class="ribbon"><div class="ribbon-track"></div></div></div>
+
+<section class="quiz">
+  <div class="wrap">
+
+    <div class="done" id="doneView">
+      <div class="ok">
+        <h2>送出成功 🎁 正解公佈</h2>
+        <p>你的「命定課程結果卡」整理好就會透過 LINE／電話傳給你<br>憑結果卡預約體驗 當天加贈「教練帶打靶體驗」一輪</p>
+        <div class="ans">
+          <div class="a"><span class="x">×</span><div><b>女生練格鬥很奇怪</b><small>館內一半以上是女生，泰拳有氧、防身課女生最多</small></div></div>
+          <div class="a"><span class="x">×</span><div><b>練泰拳會變超壯的金剛芭比</b><small>高強度有氧為主，先燃脂塑形，壯不壯由訓練量決定</small></div></div>
+          <div class="a"><span class="x">×</span><div><b>小孩學格鬥會變愛打人</b><small>不會，會變更穩——紀律、體能、保護自己</small></div></div>
+          <div class="a"><span class="x">×</span><div><b>55 歲以上不適合進格鬥館</b><small>樂齡體能小班就是 55+ 專屬、教練全程盯</small></div></div>
+          <div class="a"><span class="x">×</span><div><b>沒運動底子不能學泰拳</b><small>第一堂從零教起，$400 體驗課就是設計給沒底子的你</small></div></div>
+        </div>
+        <div class="btns">
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加 LINE 收結果卡</a>
+          <a class="b2" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">直接預約 $400 體驗</a>
+        </div>
+        <div class="socials">
+          <h4>加入 HCF 社群 不錯過開班與賽事 🦈</h4>
+          <div class="slist">
+            <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><span class="tag">LINE</span>領取專屬優惠｜官方 LINE</a>
+            <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" rel="noopener"><span class="tag">YT</span>精彩每刻｜格鬥鋼鐵人賽事影片</a>
+            <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener"><span class="tag">FB</span>賽事公告 &amp; 訓練紀錄</a>
+            <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener"><span class="tag">IG</span>最新消息｜@hc.combat2022</a>
+            <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><span class="tag">GO</span>新手首選｜預約 $400 體驗課</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-area" id="surveyForm" action="https://formsubmit.co/hsinchucombat2022@gmail.com" method="POST" target="fs_sink">
+      <input type="hidden" name="_subject" value="HCF 問卷│30秒命定格鬥課 新回覆">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.hsinchucombat.com/survey.html?done=1">
+
+      <div class="qcard">
+        <h3><span class="qn">Q1</span>一週累到爆的時候，你最想——</h3>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="Q1 累到爆最想" value="A 找個東西狠狠打爆（合法的那種）" required><span><b>A.</b> 找個東西狠狠打爆（合法的那種）</span></label>
+          <label class="opt"><input type="radio" name="Q1 累到爆最想" value="B 放音樂跳到流汗，把壞心情甩掉"><span><b>B.</b> 放音樂跳到流汗，把壞心情甩掉</span></label>
+          <label class="opt"><input type="radio" name="Q1 累到爆最想" value="C 練壯一點，襯衫穿起來不一樣"><span><b>C.</b> 練壯一點，襯衫穿起來不一樣</span></label>
+          <label class="opt"><input type="radio" name="Q1 累到爆最想" value="D 把家裡的小猴子放電"><span><b>D.</b> 把家裡的小猴子放電</span></label>
+          <label class="opt"><input type="radio" name="Q1 累到爆最想" value="E 陪爸媽動一動，比補品有用"><span><b>E.</b> 陪爸媽動一動，比補品有用</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q2</span>對「格鬥館」的第一印象是？</h3>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="Q2 格鬥館第一印象" value="A 帥爆，一直想學不敢踏進來" required><span><b>A.</b> 帥爆，一直想學不敢踏進來</span></label>
+          <label class="opt"><input type="radio" name="Q2 格鬥館第一印象" value="B 我這麼弱，會不會被打"><span><b>B.</b> 我這麼弱，會不會被打 😂</span></label>
+          <label class="opt"><input type="radio" name="Q2 格鬥館第一印象" value="C 聽說很燃脂，是真的嗎"><span><b>C.</b> 聽說很燃脂，是真的嗎</span></label>
+          <label class="opt"><input type="radio" name="Q2 格鬥館第一印象" value="D 小孩去學會不會變愛打架"><span><b>D.</b> 小孩去學會不會變愛打架（不會，會變更穩）</span></label>
+          <label class="opt"><input type="radio" name="Q2 格鬥館第一印象" value="E 跟我無關吧……嗎？"><span><b>E.</b> 跟我無關吧……嗎？</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q2-1</span>聽到「泰拳」，你腦中浮現的是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="肘擊膝擊，好像很猛"><span>肘擊膝擊，好像很猛</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="聽說是減肥神器"><span>聽說是減肥神器</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="泰國旅遊看過比賽"><span>泰國旅遊看過比賽</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="怕痛怕被打"><span>怕痛怕被打</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="那是選手在練的吧"><span>那是選手在練的吧</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-1 泰拳印象[]" value="跟拳擊差在哪"><span>跟拳擊⋯⋯差在哪？</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q2-2</span>你覺得「會練格鬥的人」通常是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q2-2 練格鬥的人[]" value="看起來兇"><span>看起來兇</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-2 練格鬥的人[]" value="其實超自律"><span>其實超自律</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-2 練格鬥的人[]" value="身材都很好"><span>身材都很好</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-2 練格鬥的人[]" value="壓力大需要出口"><span>壓力大需要出口</span></label>
+          <label class="opt"><input type="checkbox" name="Q2-2 練格鬥的人[]" value="帥／颯"><span>帥／颯</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q2-3</span>快問快答，你覺得是○還是×？<span class="note">送出後馬上看正解（答案會讓你意外）</span></h3>
+        <div class="ox">
+          <div class="row"><div class="st">女生練格鬥很奇怪</div><label><input type="radio" name="OX1 女生練格鬥很奇怪" value="○" required>○</label><label><input type="radio" name="OX1 女生練格鬥很奇怪" value="×">×</label></div>
+          <div class="row"><div class="st">練泰拳會變超壯的金剛芭比</div><label><input type="radio" name="OX2 金剛芭比" value="○" required>○</label><label><input type="radio" name="OX2 金剛芭比" value="×">×</label></div>
+          <div class="row"><div class="st">小孩學格鬥會變愛打人</div><label><input type="radio" name="OX3 小孩變愛打人" value="○" required>○</label><label><input type="radio" name="OX3 小孩變愛打人" value="×">×</label></div>
+          <div class="row"><div class="st">55 歲以上不適合進格鬥館</div><label><input type="radio" name="OX4 55歲不適合" value="○" required>○</label><label><input type="radio" name="OX4 55歲不適合" value="×">×</label></div>
+          <div class="row"><div class="st">沒運動底子不能學泰拳</div><label><input type="radio" name="OX5 沒底子不能學" value="○" required>○</label><label><input type="radio" name="OX5 沒底子不能學" value="×">×</label></div>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q3</span>你的「黃金有空時段」是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="平日早上"><span>平日早上</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="平日中午"><span>平日中午</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="平日晚上"><span>平日晚上</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="週六"><span>週六</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="週日"><span>週日</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 黃金時段[]" value="時間管理大師都可以"><span>我是時間管理大師都可以</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q4</span>如果新竹有一堂課專為你開，你投給誰？<span class="note">（公投題，可複選）</span></h3>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="泰拳有氧舞蹈"><span>泰拳有氧舞蹈（跳舞流汗不挨打）</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="防身研習營"><span>防身研習營（4 堂學會保護自己）</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="樂齡體能小班"><span>樂齡體能小班（55+ 專屬、教練全程盯）</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="兒童格鬥營"><span>兒童格鬥營（紀律＋體能＋保護自己）</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="肌力體能"><span>肌力體能（壺鈴戰繩練起來）</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 公投課程[]" value="正宗泰拳"><span>正宗泰拳（我要學真的）</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q5</span>老實說，還沒踏進格鬥館的原因是？</h3>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="Q5 還沒踏進的原因" value="A 怕跟不上／怕受傷" required><span><b>A.</b> 怕跟不上／怕受傷</span></label>
+          <label class="opt"><input type="radio" name="Q5 還沒踏進的原因" value="B 怕貴"><span><b>B.</b> 怕貴</span></label>
+          <label class="opt"><input type="radio" name="Q5 還沒踏進的原因" value="C 沒人陪我去"><span><b>C.</b> 沒人陪我去</span></label>
+          <label class="opt"><input type="radio" name="Q5 還沒踏進的原因" value="D 不知道從哪堂開始"><span><b>D.</b> 不知道從哪堂開始</span></label>
+          <label class="opt"><input type="radio" name="Q5 還沒踏進的原因" value="E 沒有原因，我現在就想去"><span><b>E.</b> 沒有原因，我現在就想去</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q6</span>每個月願意投資在「變強／變瘦／小孩成長」的預算？</h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="Q6 每月預算" value="A $2,000 內" required><span><b>A.</b> $2,000 內</span></label>
+          <label class="opt"><input type="radio" name="Q6 每月預算" value="B $2,000–4,000"><span><b>B.</b> $2,000–4,000</span></label>
+          <label class="opt"><input type="radio" name="Q6 每月預算" value="C $4,000–6,000"><span><b>C.</b> $4,000–6,000</span></label>
+          <label class="opt"><input type="radio" name="Q6 每月預算" value="D 值得的話不設限"><span><b>D.</b> 值得的話不設限</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q7</span>你會想跟誰一起來？</h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="Q7 想跟誰來" value="A 自己靜靜變強" required><span><b>A.</b> 自己靜靜變強</span></label>
+          <label class="opt"><input type="radio" name="Q7 想跟誰來" value="B 閨蜜／兄弟"><span><b>B.</b> 閨蜜／兄弟</span></label>
+          <label class="opt"><input type="radio" name="Q7 想跟誰來" value="C 另一半"><span><b>C.</b> 另一半</span></label>
+          <label class="opt"><input type="radio" name="Q7 想跟誰來" value="D 小孩"><span><b>D.</b> 小孩</span></label>
+          <label class="opt"><input type="radio" name="Q7 想跟誰來" value="E 爸媽"><span><b>E.</b> 爸媽</span></label>
+        </div>
+      </div>
+
+      <div class="qcard qfree">
+        <h3><span class="qn">Q8</span>（送分題）如果你是格鬥選手，出場音樂放什麼？</h3>
+        <p class="note">自由發揮，最有梗的我們做成限動</p>
+        <div style="margin-top:12px"><input type="text" name="Q8 出場音樂" placeholder="寫下你的出場曲"></div>
+      </div>
+
+      <div class="gift">
+        <h3>領見面禮 🎁</h3>
+        <p>留下 LINE 或電話，馬上收到你的「命定課程結果卡」＋憑結果卡預約體驗課，當天加贈「教練帶打靶體驗」一輪！</p>
+        <div class="up">
+          <h3>見面禮升級 🎁</h3>
+          <p>填完留下 LINE，馬上收到「命定課程結果卡」＋</p>
+          <div class="star">✦ 免費體驗團體課 1 堂（原價 $400・問卷限定・限量 50 名）✦</div>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <div class="fields">
+          <label>姓名<input type="text" name="姓名" required placeholder="怎麼稱呼你"></label>
+          <label>LINE／電話<input type="text" name="LINE或電話" required placeholder="結果卡傳送用"></label>
+        </div>
+        <label class="agree"><input type="checkbox" name="開班與早鳥通知" value="我想收到開班與早鳥通知"><span>我想收到開班與早鳥通知（防身營／樂齡／兒童期班）</span></label>
+      </div>
+
+      <button class="qsubmit" type="submit">送出 馬上看正解 🎁</button>
+      <p class="qhint">送出即同意 HCF 以上述聯絡方式傳送結果卡與課程資訊</p>
+    </form>
+
+  </div>
+</section>
+
+<div class="seamC"><div class="wedge dot"></div></div>
+<section class="finale" id="finale"></section>
+
+<iframe name="fs_sink" style="display:none" title="form-sink"></iframe>
+<script src="hcf.js"></script>
+<script>
+(function(){
+  var form=document.getElementById('surveyForm');
+  var done=document.getElementById('doneView');
+
+  function showDone(){
+    done.classList.add('on');
+    form.classList.add('off');
+    var ph=document.querySelector('.phero p'); if(ph)ph.textContent='感謝填寫 正解與見面禮在下方';
+    var top=document.querySelector('.quiz'); if(top)top.scrollIntoView({behavior:'smooth'});
+  }
+
+  // 備援：若由 FormSubmit 轉址回來（任何網域皆可）
+  if(new URLSearchParams(location.search).get('done')==='1'){ showDone(); }
+
+  // _next 改成目前所在網域，避免寫死網址導致空白頁（本機 file:// 不覆寫）
+  var next=form.querySelector('input[name="_next"]');
+  if(next && /^https?:$/.test(location.protocol)){ next.value=location.origin+location.pathname+'?done=1'; }
+
+  // 送出後表單在隱藏 iframe 背景送出，前景立即顯示正解
+  form.addEventListener('submit',function(){
+    if(window.hcfTrack)hcfTrack('survey_submit');
+    if(window.HCF_BACKEND){
+      try{
+        var fd=new FormData(form),payload={};
+        fd.forEach(function(v,k){if(k.charAt(0)!=='_')payload[k]=payload[k]?payload[k]+'、'+v:v;});
+        fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,
+          body:JSON.stringify({name:payload['姓名']||'',contact:payload['LINE或電話']||'',source:'survey',payload:payload})});
+      }catch(e){}
+    }
+    setTimeout(showDone,150);
+  });
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>人才招募｜正職格鬥教練｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新竹格鬥誠徵格鬥教練與櫃檯夥伴：泰拳、散打、踢拳、肌力體能教練，完整培訓與賽事資源，歡迎熱血的你加入鯊魚軍團。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--surface:#F7F7F7;--ink:#111;--ink2:#4A4A4A;--ink3:#8A8A8A;--line:#E5E5E5;
+--red:#C81015;--redD:#9B0B0F;--carbon:#111;--serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;
+--en:'Oswald',sans-serif;--maxw:980px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+::selection{background:var(--red);color:#fff}
+.nav{position:sticky;top:0;z-index:120;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:10px}.nav-logo img{height:36px}
+.nav-logo b{font-family:var(--en);font-weight:700;letter-spacing:.14em}.nav-logo b i{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{font-weight:700;font-size:.92rem;letter-spacing:.04em;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff!important;padding:8px 18px}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto}
+.mnav{display:none;flex-direction:column;background:#fff;border-bottom:1px solid var(--line)}
+.mnav a{padding:13px 24px;font-weight:700;border-top:1px solid var(--line)}
+.mnav a.cta{background:var(--red);color:#fff;text-align:center}
+@media(max-width:920px){.nav-links{display:none}.nav-burger{display:block}.mnav.open{display:flex}}
+.phero{background:var(--carbon);color:#fff;padding:74px 0 60px;position:relative;overflow:hidden}
+.phero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.phero::after{content:"";position:absolute;top:0;right:-10%;width:40%;height:130%;background:var(--red);transform:skewX(-12deg)}
+.phero .wrap{position:relative;z-index:2}
+.pk{font-family:var(--en);letter-spacing:.36em;font-size:.72rem;color:#F09595;font-weight:600}
+.ph1{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,7vw,3.6rem);letter-spacing:.04em;margin-top:10px;line-height:1.25}
+.ph1 i{font-style:normal;color:var(--red);-webkit-text-stroke:1px rgba(255,255,255,.3)}
+.psub{color:#cfcfcf;margin-top:14px;max-width:600px}
+main{padding:60px 0 80px;background:#fff;background-image:radial-gradient(rgba(17,17,17,.035) 1px,transparent 1px);background-size:22px 22px}
+.sec{margin-bottom:64px}
+.bar{position:relative;padding-left:17px;font-family:var(--serif);font-weight:900;font-size:clamp(1.3rem,3.6vw,1.7rem);line-height:1.3;margin-bottom:18px}
+.bar::before{content:"";position:absolute;left:0;top:.14em;bottom:.14em;width:7px;background:var(--red)}
+.bar .en{display:block;font-family:var(--en);font-weight:600;font-size:.64rem;letter-spacing:.26em;color:var(--ink3);margin-top:4px}
+p.body,li{color:var(--ink2)}
+.sec p.body{margin-bottom:12px}
+.sec b{color:var(--ink)}
+.sec ul,.sec ol{padding-left:22px;margin:10px 0 14px}
+.sec li{margin-bottom:8px}
+.sec li::marker{color:var(--red);font-weight:900}
+h4.sub{font-weight:900;font-size:1.05rem;margin:22px 0 8px;color:var(--ink)}
+.note{background:var(--surface);border-left:5px solid var(--red);padding:16px 18px;color:var(--ink2);font-size:.94rem;margin:18px 0}
+table.tb{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;box-shadow:0 8px 24px rgba(17,17,17,.06)}
+table.tb th{background:var(--carbon);color:#fff;text-align:left;padding:11px 14px;font-size:.9rem;letter-spacing:.04em}
+table.tb td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink2);font-size:.95rem}
+table.tb tr td:first-child{color:var(--ink);font-weight:700;white-space:nowrap}
+.gridc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.cardc{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);padding:20px;box-shadow:0 10px 28px rgba(17,17,17,.06)}
+.cardc h4{font-family:var(--serif);font-weight:900;font-size:1.15rem}
+.cardc h4 span{font-family:var(--en);font-size:.62rem;letter-spacing:.22em;color:var(--red);margin-left:8px}
+.cardc p{color:var(--ink2);font-size:.94rem;margin-top:8px}
+@media(max-width:680px){.gridc{grid-template-columns:1fr}}
+.steps{counter-reset:s;margin-top:8px}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.step::before{counter-increment:s;content:"0" counter(s);flex:0 0 44px;height:44px;background:var(--red);color:#fff;font-family:var(--en);font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center}
+.step b{display:block}.step span{color:var(--ink2);font-size:.95rem}
+.cta-blk{background:var(--carbon);color:#fff;text-align:center;padding:46px 24px;position:relative;overflow:hidden}
+.cta-blk::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.cta-blk .in{position:relative;z-index:2}
+.cta-blk h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,5vw,2rem)}
+.cta-blk h3 i{font-style:normal;color:var(--red)}
+.cta-blk p{color:#cfcfcf;margin:10px 0 22px}
+.cta-blk .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.b1{background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:14px 28px;transition:.25s}
+.b1:hover{background:#fff;color:var(--red)}
+.b2{border:1.5px solid #fff;color:#fff;font-weight:700;padding:14px 26px;transition:.25s}
+.b2:hover{background:#fff;color:var(--carbon)}
+.ft{background:#fff;border-top:3px solid var(--red);padding:36px 0 26px}
+.ft .wrap{max-width:1160px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.ft .l b{font-family:var(--en);letter-spacing:.12em}.ft .l b i{color:var(--red);font-style:normal}
+.ft .l p{color:var(--ink3);font-size:.85rem}
+.ft .r{display:flex;gap:18px;flex-wrap:wrap}
+.ft .r a{color:var(--ink2);font-size:.88rem}.ft .r a:hover{color:var(--red)}
+.ft-copy{max-width:1160px;margin:18px auto 0;padding:14px 24px 0;border-top:1px solid var(--line);text-align:center;color:var(--ink3);font-size:.78rem}
+.upd{font-family:var(--en);letter-spacing:.2em;font-size:.7rem;color:var(--ink3);margin-bottom:34px}
+</style>
+<link rel="canonical" href="https://www.hsinchucombat.com/careers.html">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="人才招募｜正職格鬥教練｜HCF 新竹格鬥">
+<meta property="og:description" content="HCF 新竹格鬥誠徵格鬥教練與櫃檯夥伴：泰拳、散打、踢拳、肌力體能教練，完整培訓與賽事資源，歡迎熱血的你加入鯊魚軍團。">
+<meta property="og:url" content="https://www.hsinchucombat.com/careers.html">
+<meta property="og:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="人才招募｜正職格鬥教練｜HCF 新竹格鬥">
+<meta name="twitter:description" content="HCF 新竹格鬥誠徵格鬥教練與櫃檯夥伴：泰拳、散打、踢拳、肌力體能教練，完整培訓與賽事資源，歡迎熱血的你加入鯊魚軍團。">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/careers.html", "url": "https://www.hsinchucombat.com/careers.html", "name": "人才招募｜正職格鬥教練｜HCF 新竹格鬥", "description": "HCF 新竹格鬥誠徵格鬥教練與櫃檯夥伴：泰拳、散打、踢拳、肌力體能教練，完整培訓與賽事資源，歡迎熱血的你加入鯊魚軍團。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "人才招募", "item": "https://www.hsinchucombat.com/careers.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
+<style>.ndd{position:relative}.ndd>a i{font-style:normal;font-size:.68em;margin-left:4px;opacity:.8}.ndd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}.ndd-m{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;min-width:158px;padding:8px 0;box-shadow:0 18px 44px rgba(17,17,17,.18);border-top:3px solid var(--red,#C81015);opacity:0;visibility:hidden;transition:.22s;z-index:210}.ndd:hover .ndd-m,.ndd:focus-within .ndd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.ndd-m a{display:block;padding:11px 18px;color:var(--ink,#111)!important;font-size:.9rem;font-weight:700}.ndd-m a::after{display:none}.ndd-m a:hover{background:var(--surface,#F7F7F7);color:var(--red,#C81015)!important}.msub-t{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 24px;font-weight:700;color:var(--ink,#111);border:0;border-top:1px solid var(--line,#E5E5E5);background:#fff;font-family:var(--sans,sans-serif);font-size:1rem;cursor:pointer;text-align:left}.msub-t i{font-style:normal;color:var(--red,#C81015);font-weight:900;transition:transform .2s}.msub-t.open i{transform:rotate(45deg)}.msub{display:none;flex-direction:column;background:var(--surface,#F7F7F7)}.msub.open{display:flex}.msub a{padding-left:42px!important;font-size:.95rem}</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>
+    <nav class="nav-links">
+      <a href="index.html">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>
+      <div class="ndd"><a href="courses.html" data-p="courses">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a>
+      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>
+    </nav>
+    <button class="nav-burger" onclick="document.getElementById('mnav').classList.toggle('open')" aria-label="選單"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mnav" id="mnav">
+    <a href="index.html">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>
+    <button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a>
+    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+  </nav>
+</header>
+<section class="phero"><div class="wrap">
+  <div class="pk">JOIN THE TEAM</div>
+  <h1 class="ph1">人才招募<br>正職<i>格鬥教練</i></h1>
+  <p class="psub">教學為主、安全至上。跟 42 勝總教練同隊，把格鬥變成你的職業。</p>
+</div></section>
+<main><div class="wrap">
+
+<div class="sec">
+  <h3 class="bar">職缺：正職格鬥教練<span class="en">COMBAT COACH · FULL-TIME</span></h3>
+  <p class="body">我們在找的不是「上完課就走」的教練，而是<b>想把格鬥當職業、跟場館一起把選手與學員帶起來的人</b>。專項泰拳、拳擊或踢拳皆可，工作地點在新竹市北區林森路 301 號 2 樓。</p>
+  <div class="gridc">
+    <div class="cardc"><h4>教學為主<span>TEACHING FIRST</span></h4><p>團體課授課、私人教練課程設計與執行、線上課程支援。業務開發與銷售成交由格鬥顧問負責，教練專注教學，僅需協助試教與課程介紹。</p></div>
+    <div class="cardc"><h4>安全至上<span>SAFETY</span></h4><p>動作示範、姿勢糾正與護具確認；依學員程度安排合理強度，新生與體驗者降階指導，全程留意學員安全。</p></div>
+    <div class="cardc"><h4>學員關係<span>RELATIONSHIP</span></h4><p>記住學員姓名與進度、適時回饋鼓勵，不冷落任何學員——這是我們對教學品質的底線。</p></div>
+    <div class="cardc"><h4>共同成長<span>GROW TOGETHER</span></h4><p>配合社群素材拍攝、活動與賽事支援；場館提供內訓、讀書會與進修補助，一起變強。</p></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h3 class="bar">薪資結構<span class="en">COMPENSATION</span></h3>
+  <p class="body">採「<b>底薪 ＋ 團課鐘點加給 ＋ 私教分潤</b>」三段式結構，下列為公開之建議區間，<b>實際金額依面談與勞動契約議定為準</b>，且每月經常性工資保障不低於法定基本工資。</p>
+  <table class="tb">
+    <tr><th>項目</th><th>區間（NT$）</th></tr>
+    <tr><td>月底薪（保障）</td><td>35,000 – 45,000</td></tr>
+    <tr><td>團課鐘點加給</td><td>每堂 300 – 500（依專項、資歷與時段）</td></tr>
+    <tr><td>私教分潤（自帶學員）</td><td>50 – 60%</td></tr>
+    <tr><td>私教分潤（公司分配）</td><td>35 – 45%</td></tr>
+    <tr><td>體驗私教（新客轉換）</td><td>首批課程 30 – 40%</td></tr>
+    <tr><td>線上課／外點支援</td><td>依專案議定</td></tr>
+  </table>
+</div>
+
+<div class="sec">
+  <h3 class="bar">工作時間與保障<span class="en">SCHEDULE &amp; PROTECTION</span></h3>
+  <ul>
+    <li>場館營業：平日 11:00–22:00（團課多在 19:00–21:30）、週末 11:00–16:00。</li>
+    <li>以課表為核心排班，每日不超過 8 小時、每週不超過 40 小時；<b>週休二日</b>（排班輪休，例假與休息日依課表協調）。</li>
+    <li>延長工時依勞基法第 24 條給付加班費；出勤以簽到系統覈實記錄。</li>
+    <li>雇主依法按月提繳 <b>6% 勞工退休金</b>至個人專戶；另提供職業工會保費補貼（細節面談說明）。</li>
+    <li>三個月試用培訓期，培訓期間之保障與正式期間相同。</li>
+  </ul>
+</div>
+
+<div class="sec">
+  <h3 class="bar">員工福利<span class="en">BENEFITS</span></h3>
+  <div class="gridc">
+    <div class="cardc"><h4>獎金與調薪<span>BONUS</span></h4><p>年終獎金；依教學表現與學員續課率給予獎金；逐年依專業能力調薪。</p></div>
+    <div class="cardc"><h4>訓練資源<span>TRAINING</span></h4><p>員工健身房、場館團課自由參加、私教交流員工價。</p></div>
+    <div class="cardc"><h4>進修補助<span>EDUCATION</span></h4><p>證照考取補助、外部研習與工作坊補助、場館內訓與教練讀書會。</p></div>
+    <div class="cardc"><h4>團隊生活<span>TEAM</span></h4><p>不定期員工聚餐與旅遊、賽事觀摩與選手隨行支援、彈性輪休排班。</p></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h3 class="bar">三個月培訓藍圖<span class="en">ONBOARDING</span></h3>
+  <div class="steps">
+    <div class="step"><div><b>第 1 個月｜熟悉與觀摩</b><span>熟悉課程體系、學員結構、FitBook 與教學 SOP；觀摩既有教練上課，可獨立帶 1–2 種團課。</span></div></div>
+    <div class="step"><div><b>第 2 個月｜獨立授課</b><span>獨立授課與私教課程設計、線上素材錄製，以學員滿意度為核心指標。</span></div></div>
+    <div class="step"><div><b>第 3 個月｜完整接班</b><span>學員續課管理與體驗轉換，做到「現場零冷落」，通過考核轉入正式期。</span></div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h3 class="bar">應徵條件與方式<span class="en">HOW TO APPLY</span></h3>
+  <ul>
+    <li>具格鬥相關證照（泰拳／拳擊／踢拳教練證等）<b>或</b>正式比賽戰績佐證。</li>
+    <li>具 CPR＋AED 等急救訓練者佳（無者建議到職後一年內取得，場館有補助）。</li>
+    <li>請準備：簡歷、證照影本或戰績資料、可示範教學之影片或現場試教。</li>
+  </ul>
+  <div class="note">應徵方式：加入官方 LINE（lin.ee/7lidUv0）註明「應徵教練」，或來電 0925-571-225。我們會安排面談與試教，薪資與細節於面談時依個人資歷議定。</div>
+</div>
+
+</div></main>
+<section class="cta-blk"><div class="in">
+<h3>把熱愛的事 <i>變成職業</i></h3>
+<p>跟 42 勝的總教練同隊，在新竹把格鬥教學做成一流。</p>
+<div class="btns"><a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 應徵：註明「應徵教練」</a><a class="b2" href="tel:0925571225">電話聯繫</a></div>
+</div></section>
+<footer class="ft">
+  <div class="wrap">
+    <div class="l"><b><i>HCF</i> COMBAT HSINCHU</b><p>新竹市北區林森路 301 號 2 樓 · 0925-571-225</p></div>
+    <div class="r">
+      <a href="careers.html">人才招募</a><a href="partnership.html">企業合作</a>
+      <a href="legal.html#privacy">隱私權政策</a><a href="legal.html#disclaimer">免責聲明</a>
+      <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">官方 LINE</a>
+    </div>
+  </div>
+  <div class="ft-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥</div>
+</footer>
+<script>
+/* ===== 左側問卷入口 ===== */
+(function(){
+  if(document.body.dataset.page==='survey'||document.querySelector('.svtab'))return;
+  var st=document.createElement('style');
+  st.textContent=".svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.9rem;line-height:1.55;text-align:center;padding:12px 9px;width:max-content;border-radius:0 12px 12px 0;box-shadow:6px 0 18px rgba(200,16,21,.35);transition:.25s}.svtab:hover{background:#9B0B0F;padding-left:13px}.svtab em{font-style:normal;display:block;margin-bottom:2px}.svtab b{display:block;font-family:inherit}@media(max-width:680px){.svtab{font-size:.78rem;padding:10px 7px;line-height:1.45}}";
+  document.head.appendChild(st);
+  var a=document.createElement('a');
+  a.className='svtab';a.href='survey.html';
+  a.innerHTML='<b>30</b><b>秒</b><b>測</b><b>你</b><b>的</b><b>命</b><b>定</b><b>格</b><b>鬥</b><b>課</b>';
+  document.body.appendChild(a);
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+<script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
+</body></html>
