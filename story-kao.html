@@ -326,7 +326,7 @@
   /* 金句逐字浮現 */
   var q=document.querySelector('.qband blockquote');
   if(q){
-    q.innerHTML=q.innerHTML.replace(/([^<>\s])/g,'<span>$1</span>');
+    q.innerHTML=q.innerHTML.replace(/<[^>]+>|([^<>\s])/g,function(m,ch){return ch?'<span>'+ch+'</span>':m;});
     var sp=q.querySelectorAll('span');
     sp.forEach(function(x,i){x.style.transitionDelay=(i*28)+'ms'});
     new IntersectionObserver(function(es){
