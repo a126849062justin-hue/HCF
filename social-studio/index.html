@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCF 社群貼文模板工作室</title>
+<meta name="description" content="HCF 鯊魚格鬥俱樂部 — 社群媒體貼文模板產生器，填字即匯出 IG / FB 圖片。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="studio.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="../shark_logo.png" alt="HCF" onerror="this.style.display='none'">
+    <b>HCF<i>.</i></b>
+    <span>SOCIAL STUDIO</span>
+  </div>
+  <div class="hint">填字 → 即時預覽 → 一鍵匯出 PNG</div>
+</header>
+
+<main class="studio">
+
+  <!-- ============ 左側控制面板 ============ -->
+  <aside class="panel">
+    <div class="tabs" id="tabs"></div>
+
+    <h3 id="tplTitle">課程宣傳</h3>
+    <p class="muted" id="tplDesc"></p>
+
+    <form id="form"></form>
+
+    <div class="field">
+      <label>背景圖片（選填，從電腦上傳）</label>
+      <input type="file" id="bgUpload" accept="image/*">
+      <p class="muted" style="margin-top:6px">不上傳則使用預設碳黑底。</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-red" id="exportBtn" type="button">匯出 PNG</button>
+      <button class="btn btn-ghost" id="resetBtn" type="button">重設</button>
+    </div>
+  </aside>
+
+  <!-- ============ 右側預覽舞台 ============ -->
+  <section class="stage">
+    <div class="size-pill" id="sizePill"></div>
+    <div class="canvas-wrap">
+      <div class="scaler" id="scaler">
+        <div class="post sq" id="post"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- html2canvas：把貼文卡片擷取成 PNG -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="studio.js"></script>
+</body>
+</html>
