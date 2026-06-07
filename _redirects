@@ -1,0 +1,7 @@
+# 舊官網 -> 新官網 轉址 (2026-11 改版)
+/classes.html   /courses.html         301
+/classes        /courses.html         301
+/admin.html     /backend/admin.html   301
+/admin          /backend/admin.html   301
+/faq.html       /                     301
+/faq            /                      301
