@@ -5,7 +5,7 @@
    填入後自動上報 GA4，可在 GA4 後台看完整漏斗。
    ============================================================ */
 (function(){
-  var GA_ID='';      // ← 申請 GA4 後填入，例如 'G-AB12CD34EF'
+  var GA_ID='G-ZCPVLM3SY0';      // ← 申請 GA4 後填入，例如 'G-AB12CD34EF'
   var BACKEND='';    // ← 部署 HCF 獨立後台後填入網址，例如 'https://hcf-admin.onrender.com'（留空＝不啟用）
 
   window.HCF_BACKEND=BACKEND;
