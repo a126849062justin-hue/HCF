@@ -42,6 +42,9 @@
 
   /* 3) 抽屜開關 + 遮罩 + 點外部關閉 + 鎖捲動 */
   if(!mnav||!burger)return;
+  /* 清掉頁面 inline 既有的 burger 監聽器（避免 onclick 與 addEventListener 打架）*/
+  var _nb=burger.cloneNode(true);
+  if(burger.parentNode){burger.parentNode.replaceChild(_nb,burger);burger=_nb;}
   var ov=document.createElement('div');ov.className='mnav-ov';document.body.appendChild(ov);
   function close(){mnav.classList.remove('open');ov.classList.remove('open');document.body.classList.remove('mnav-lock');}
   function open(){mnav.classList.add('open');ov.classList.add('open');document.body.classList.add('mnav-lock');}
