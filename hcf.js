@@ -8,7 +8,7 @@ var NAV='<div class="nav-in">\
 <a href="index.html" data-p="home" data-en="HOME">首頁</a>\
 <a href="news.html" data-p="news" data-en="NEWS">最新資訊</a>\
 <a href="philosophy.html" data-p="phil" data-en="BRAND">品牌哲學</a>\
-<div class="ndd"><a href="courses.html" data-p="courses" data-en="CLASS">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>\
+<div class="ndd"><a href="courses.html" data-p="courses" data-en="CLASS">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div></div>\
 <a href="schedule.html" data-p="sched" data-en="SCHEDULE">最新課表</a>\
 <a href="team.html" data-p="team" data-en="COACHES">教練團隊</a>\
 <a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
@@ -17,8 +17,8 @@ var NAV='<div class="nav-in">\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
 </div>\
 <nav class="mnav" id="mnav">\
-<a href="index.html">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>\
-<button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a><a href="shop.html">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener">會員登入</a>\
+<a href="index.html" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>\
+<button class="msub-t" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>\
 <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
@@ -43,6 +43,22 @@ var NAVCSS=document.createElement('style');NAVCSS.id='hcf-nav-x';NAVCSS.textCont
 +'}';
 document.head.appendChild(NAVCSS);
 
+var NAVCSS2=document.createElement('style');NAVCSS2.id='hcf-nav-x2';NAVCSS2.textContent=
+'@media(min-width:921px){'
++'.ndd-m a[data-en]{position:relative}'
++'.ndd-m a[data-en]::before{content:attr(data-en);position:absolute;left:18px;top:50%;transform:translateY(-50%);opacity:0;transition:.2s;font-family:var(--en,Oswald,sans-serif);font-weight:700;letter-spacing:.1em;font-size:.74rem;color:var(--red,#C81015);pointer-events:none}'
++'.ndd-m a[data-en]:hover{color:transparent!important}'
++'.ndd-m a[data-en]:hover::before{opacity:1}'
++'}'
++'@media(max-width:920px){'
++'.mnav a[data-en],.mnav .msub-t[data-en]{position:relative}'
++'.mnav a[data-en]::after,.mnav .msub-t[data-en]::after{content:attr(data-en);position:absolute;left:24px;top:50%;transform:translateY(-50%);opacity:0;transition:.2s;font-family:var(--en,Oswald,sans-serif);font-weight:700;letter-spacing:.1em;font-size:.9rem;color:var(--red,#C81015);pointer-events:none}'
++'.mnav a[data-en]:hover,.mnav a[data-en]:active{color:transparent}'
++'.mnav a[data-en]:hover::after,.mnav a[data-en]:active::after{opacity:1}'
++'}';
+document.head.appendChild(NAVCSS2);
+
+
 
 var FLOAT='<button class="totop" id="totop" aria-label="回頂部">TOP</button>\
 <button class="shark" id="sharkBtn" aria-label="AI 客服"><img src="shark_logo.png" alt="AI 鯊魚客服"></button>\
@@ -64,7 +80,7 @@ var FOOT='<div class="fin-in">\
 <div class="fin-foot">\
 <div><h5>HCF 新竹格鬥</h5><p>Honor 榮譽 · Courage 勇氣 · Faith 信念</p><p>泰拳 / 散打 / 踢拳 / 肌力體能</p></div>\
 <div><h5>聯絡我們</h5><p>新竹市北區林森路 301 號 2 樓</p><a href="tel:0925571225">0925-571-225</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 線上諮詢</a></div>\
-<div><h5>快速連結</h5><a href="coach-huang.html">總教練 黃謙和</a><a href="team.html">教練團隊</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a><a href="schedule.html">最新課表</a><a href="pricing.html">課程方案</a><a href="shop.html">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener">會員登入</a></div>\
+<div><h5>快速連結</h5><a href="coach-huang.html">總教練 黃謙和</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a></div>\
 <div><h5>加入社群</h5>\
 <a class="fsoc" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><i>LINE</i>領取專屬優惠</a>\
 <a class="fsoc" href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener"><i>IG</i>最新消息 @hc.combat2022</a>\
