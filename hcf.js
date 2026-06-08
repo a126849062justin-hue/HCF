@@ -108,6 +108,12 @@ function navOpen(){mnav.classList.add('open');navOv.classList.add('open');docume
 if(mnav&&!mnav.querySelector('.mnav-close')){var xb=document.createElement('button');xb.className='mnav-close';xb.setAttribute('aria-label','關閉');xb.textContent='\u2715';xb.onclick=navClose;mnav.insertAdjacentHTML('afterbegin','');mnav.insertBefore(xb,mnav.firstChild);}
 if(burger)burger.onclick=function(){mnav.classList.contains('open')?navClose():navOpen()};
 navOv.onclick=navClose;
+document.addEventListener('click',function(e){
+  if(!mnav||!mnav.classList.contains('open'))return;
+  if(mnav.contains(e.target))return;
+  if(burger&&(e.target===burger||burger.contains(e.target)))return;
+  navClose();
+});
 if(mnav)mnav.addEventListener('click',function(e){
   var t=e.target.closest('.msub-t');
   if(t){t.classList.toggle('open');t.nextElementSibling.classList.toggle('open');return;}
