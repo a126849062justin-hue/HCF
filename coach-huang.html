@@ -731,7 +731,7 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
         <span class="chip">THAI FIGHT 台灣國際職業賽選手</span>
         <span class="chip dark">「格鬥鋼鐵人」IRON MAN</span>
       </div>
-      <p class="al-sub">點下面的年份 自己翻他的生涯</p>
+      <p class="al-sub">自動播放中 · 點年份或左右滑動,自己翻他的生涯</p>
       <a class="al-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">▶ 跟黃謙和訓練 — $400 首堂體驗</a>
     </div>
     <div class="al-hero-p"><img src="huang_cutout.webp" alt="黃謙和 總教練 — 格鬥鋼鐵人"></div>
@@ -1085,6 +1085,23 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
     });
   }
   render('115');
+  /* ===== 自動輪播 + 手動滑動（互動即暫停、閒置續播）===== */
+  (function(){
+    if(years.length<2)return;
+    var aIdx=Math.max(0,years.indexOf('115')),autoT=null,idleT=null,IV=6000;
+    function go(i){aIdx=((i%years.length)+years.length)%years.length;render(years[aIdx]);}
+    function start(){stop();autoT=setInterval(function(){go(aIdx+1);},IV);}
+    function stop(){if(autoT){clearInterval(autoT);autoT=null;}}
+    function pause(){stop();clearTimeout(idleT);idleT=setTimeout(start,9000);}
+    bar.querySelectorAll('.al-yr').forEach(function(b){b.addEventListener('click',function(){aIdx=years.indexOf(b.dataset.y);pause();});});
+    panel.addEventListener('pointerdown',pause);
+    panel.addEventListener('mouseenter',stop);
+    panel.addEventListener('mouseleave',pause);
+    var sx=0,sy=0,sw=false;
+    panel.addEventListener('touchstart',function(e){if(e.target.closest('.alb')){sw=false;return;}sx=e.touches[0].clientX;sy=e.touches[0].clientY;sw=true;},{passive:true});
+    panel.addEventListener('touchend',function(e){if(!sw)return;sw=false;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4){go(aIdx+(dx<0?1:-1));pause();}},{passive:true});
+    start();
+  })();
 })();
 </script>
 <script src="hcf-analytics.js" defer></script>
