@@ -11,14 +11,14 @@ var NAV='<div class="nav-in">\
 <div class="ndd"><a href="courses.html" data-p="courses">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>\
 <a href="schedule.html" data-p="sched">最新課表</a>\
 <a href="team.html" data-p="team">教練團隊</a>\
-<a href="pricing.html" data-p="pricing">課程方案</a>\
+<a href="pricing.html" data-p="pricing">課程方案</a><a href="shop.html" data-p="shop">商城</a>\
 <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>\
 </nav>\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
 </div>\
 <nav class="mnav" id="mnav">\
 <a href="index.html">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>\
-<button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a>\
+<button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a><a href="shop.html">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener">會員登入</a>\
 <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
@@ -43,7 +43,7 @@ var FOOT='<div class="fin-in">\
 <div class="fin-foot">\
 <div><h5>HCF 新竹格鬥</h5><p>Honor 榮譽 · Courage 勇氣 · Faith 信念</p><p>泰拳 / 散打 / 踢拳 / 肌力體能</p></div>\
 <div><h5>聯絡我們</h5><p>新竹市北區林森路 301 號 2 樓</p><a href="tel:0925571225">0925-571-225</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 線上諮詢</a></div>\
-<div><h5>快速連結</h5><a href="coach-huang.html">總教練 黃謙和</a><a href="team.html">教練團隊</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a><a href="schedule.html">最新課表</a><a href="pricing.html">課程方案</a></div>\
+<div><h5>快速連結</h5><a href="coach-huang.html">總教練 黃謙和</a><a href="team.html">教練團隊</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a><a href="schedule.html">最新課表</a><a href="pricing.html">課程方案</a><a href="shop.html">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener">會員登入</a></div>\
 <div><h5>加入社群</h5>\
 <a class="fsoc" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><i>LINE</i>領取專屬優惠</a>\
 <a class="fsoc" href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener"><i>IG</i>最新消息 @hc.combat2022</a>\
@@ -115,6 +115,7 @@ var FAQ=[
  {lead:1,k:['預約','報名','體驗','怎麼上'],a:'預約超簡單：FitBook 線上選時段（首堂 $400），或加官方 LINE 由真人幫你排。第一次來穿運動服、帶水壺毛巾，拳套裝備館內免費借！'},
  {lead:1,k:['私人','一對一','1對1','私教','打靶'],a:'私人課三種型態：一對一 60 分（體驗 $1,400）、一對二 60 分（體驗 $2,400）、私人打靶 40 分（$1,000）。加 LINE 預約一對一評估，教練幫你客製菜單！'},
  {lead:1,k:['團體','團課'],a:'團體課四大體系：泰拳、散打、踢拳、肌力體能，LV.1 零基礎友善、不對打。首堂 $400，到「課程介紹 → 團體課程」挑一條路線！'},
+ {k:['大可','蛻變','減肥','減重','瘦身','變瘦'],a:'你說的是大可吧！他用一年從 104 公斤練到 74 公斤，還站上擂台拿下優勝 🏆 完整故事（含前後對比互動）在官網「高大可的蛻變故事」頁——首頁往下滑就能看到入口。想跟他一樣開始，$400 體驗課就是他的起點！'},
  {lead:1,k:['新手','零基礎','沒學過','第一次','初學','害怕'],a:'零基礎完全 OK！最多人從「新手泰拳」開始：第一堂從站架教起、不對打、教練全程帶。$400 體驗課就是設計給沒底子的你 💪'},
  {k:['地址','位置','在哪','怎麼去','停車','交通'],a:'基地在新竹市北區林森路 301 號 2 樓。找不到路直接打 0925-571-225，我們帶你上來！'},
  {k:['營業','幾點開','開到','公休'],a:'營業時間：平日 11:00–22:00、週末 11:00–16:00，全預約制喔！'},
