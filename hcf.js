@@ -3,7 +3,7 @@
 // ===== 共用元件注入：nav / 浮動層 / 頁尾 =====
 var page=document.body.dataset.page||'';
 var NAV='<div class="nav-in">\
-<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b data-en="HCF COMBAT">新竹格鬥</b></a>\
+<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>\
 <nav class="nav-links">\
 <a href="index.html" data-p="home" data-en="HOME">首頁</a>\
 <a href="news.html" data-p="news" data-en="NEWS">最新資訊</a>\
@@ -42,15 +42,6 @@ var NAVCSS=document.createElement('style');NAVCSS.id='hcf-nav-x';NAVCSS.textCont
 +'body.mnav-lock{overflow:hidden}'
 +'}';
 document.head.appendChild(NAVCSS);
-
-var NAVCSS3=document.createElement('style');NAVCSS3.id='hcf-nav-x3';NAVCSS3.textContent=
-'.nav-logo b[data-en]{position:relative;display:inline-block}'
-+'.nav-logo b[data-en]::before{content:attr(data-en);position:absolute;left:0;top:50%;transform:translateY(-50%);white-space:nowrap;opacity:0;transition:opacity .22s;font-style:normal;pointer-events:none;color:#fff}'
-+'.nav.sc .nav-logo b[data-en]::before{color:var(--ink,#111)}'
-+'.nav-logo:hover b[data-en],.nav-logo:active b[data-en]{color:transparent}'
-+'.nav-logo:hover b[data-en]::before,.nav-logo:active b[data-en]::before{opacity:1}';
-document.head.appendChild(NAVCSS3);
-
 
 var NAVCSS2=document.createElement('style');NAVCSS2.id='hcf-nav-x2';NAVCSS2.textContent=
 '@media(min-width:921px){'
