@@ -950,5 +950,44 @@ cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 <script src="hcf-analytics.js" defer></script>
 <script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
 <script src="nav-enhance.js" defer></script>
+<script>
+/* 手機版:走進HCF輪播 + 500+畫廊 → 原生可滑 + 自動輪播(碰觸暫停) hcf-mobile-carousel */
+(function(){
+  if(innerWidth>880)return;
+  var css='@media(max-width:880px){'
+    +'.float-track-clip{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}'
+    +'.float-track-clip::-webkit-scrollbar{display:none}'
+    +'.float-track{animation:none!important}'
+    +'.gclip{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}'
+    +'.gclip::-webkit-scrollbar{display:none}'
+    +'.gstrip{animation:none!important;transform:none!important}'
+    +'}';
+  var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+  function auto(clip){
+    if(!clip)return;
+    var dir=1,paused=false,idle=null;
+    function tick(){
+      if(!paused){
+        var max=clip.scrollWidth-clip.clientWidth;
+        if(max>4){
+          clip.scrollLeft+=dir*0.5;
+          if(clip.scrollLeft>=max-0.5)dir=-1;else if(clip.scrollLeft<=0.5)dir=1;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    function pause(){paused=true;clearTimeout(idle);}
+    function resume(){clearTimeout(idle);idle=setTimeout(function(){paused=false},2500);}
+    clip.addEventListener('touchstart',pause,{passive:true});
+    clip.addEventListener('touchend',resume,{passive:true});
+    clip.addEventListener('pointerdown',pause);
+    clip.addEventListener('pointerup',resume);
+    clip.addEventListener('wheel',function(){pause();resume();},{passive:true});
+  }
+  function init(){auto(document.querySelector('.float-track-clip'));auto(document.querySelector('.gclip'));}
+  if(document.readyState==='complete')init();else addEventListener('load',init);
+})();
+</script>
 </body>
 </html>
