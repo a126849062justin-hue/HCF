@@ -5,13 +5,13 @@ var page=document.body.dataset.page||'';
 var NAV='<div class="nav-in">\
 <a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>\
 <nav class="nav-links">\
-<a href="index.html" data-p="home">首頁</a>\
-<a href="news.html" data-p="news">最新資訊</a>\
-<a href="philosophy.html" data-p="phil">品牌哲學</a>\
-<div class="ndd"><a href="courses.html" data-p="courses">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>\
-<a href="schedule.html" data-p="sched">最新課表</a>\
-<a href="team.html" data-p="team">教練團隊</a>\
-<a href="pricing.html" data-p="pricing">課程方案</a><a href="shop.html" data-p="shop">商城</a>\
+<a href="index.html" data-p="home" data-en="HOME">首頁</a>\
+<a href="news.html" data-p="news" data-en="NEWS">最新資訊</a>\
+<a href="philosophy.html" data-p="phil" data-en="BRAND">品牌哲學</a>\
+<div class="ndd"><a href="courses.html" data-p="courses" data-en="CLASS">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>\
+<a href="schedule.html" data-p="sched" data-en="SCHEDULE">最新課表</a>\
+<a href="team.html" data-p="team" data-en="COACHES">教練團隊</a>\
+<a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
 <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>\
 </nav>\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
@@ -22,6 +22,27 @@ var NAV='<div class="nav-in">\
 <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
+
+/* ===== 導覽強化：左側抽屜 + 桌面 hover 英文 ===== */
+var NAVCSS=document.createElement('style');NAVCSS.id='hcf-nav-x';NAVCSS.textContent=
+'@media(min-width:921px){'
++'.nav-links a[data-en]{position:relative}'
++'.nav-links a[data-en]::before{content:attr(data-en);position:absolute;left:50%;top:50%;transform:translate(-50%,calc(-50% + 6px));opacity:0;transition:opacity .22s,transform .22s;font-family:var(--en,Oswald,sans-serif);font-weight:700;letter-spacing:.12em;font-size:.78rem;white-space:nowrap;pointer-events:none;color:#fff}'
++'.nav.sc .nav-links a[data-en]::before{color:var(--ink,#111)}'
++'.nav-links a[data-en]:hover{color:transparent}'
++'.nav-links a[data-en]:hover>i{opacity:0}'
++'.nav-links a[data-en]:hover::before{opacity:1;transform:translate(-50%,-50%)}'
++'}'
++'@media(max-width:920px){'
++'#mnav.mnav{position:fixed;top:0;left:0;bottom:0;width:min(80vw,310px);height:100dvh;transform:translateX(-100%);transition:transform .3s ease;display:flex!important;z-index:1200;overflow-y:auto;box-shadow:6px 0 44px rgba(0,0,0,.42);padding:60px 0 26px;border-bottom:0}'
++'#mnav.mnav.open{transform:translateX(0)}'
++'.mnav-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border:0;background:none;font-size:1.5rem;line-height:1;color:#111;cursor:pointer}'
++'.mnav-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:1100}'
++'.mnav-ov.open{opacity:1;visibility:visible}'
++'body.mnav-lock{overflow:hidden}'
++'}';
+document.head.appendChild(NAVCSS);
+
 
 var FLOAT='<button class="totop" id="totop" aria-label="回頂部">TOP</button>\
 <button class="shark" id="sharkBtn" aria-label="AI 客服"><img src="shark_logo.png" alt="AI 鯊魚客服"></button>\
@@ -65,11 +86,16 @@ function onScroll(){var y=scrollY;
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 totop.onclick=function(){scrollTo({top:0,behavior:'smooth'})};
 var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
-if(burger)burger.onclick=function(){mnav.classList.toggle('open')};
+var navOv=document.createElement('div');navOv.className='mnav-ov';document.body.appendChild(navOv);
+function navClose(){if(!mnav)return;mnav.classList.remove('open');navOv.classList.remove('open');document.body.classList.remove('mnav-lock');}
+function navOpen(){mnav.classList.add('open');navOv.classList.add('open');document.body.classList.add('mnav-lock');}
+if(mnav&&!mnav.querySelector('.mnav-close')){var xb=document.createElement('button');xb.className='mnav-close';xb.setAttribute('aria-label','關閉');xb.textContent='\u2715';xb.onclick=navClose;mnav.insertAdjacentHTML('afterbegin','');mnav.insertBefore(xb,mnav.firstChild);}
+if(burger)burger.onclick=function(){mnav.classList.contains('open')?navClose():navOpen()};
+navOv.onclick=navClose;
 if(mnav)mnav.addEventListener('click',function(e){
   var t=e.target.closest('.msub-t');
   if(t){t.classList.toggle('open');t.nextElementSibling.classList.toggle('open');return;}
-  if(e.target.tagName==='A')mnav.classList.remove('open');});
+  if(e.target.tagName==='A')navClose();});
 
 // ===== Reveal =====
 var io=new IntersectionObserver(function(es){es.forEach(function(e){
