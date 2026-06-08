@@ -104,6 +104,12 @@ body{perspective:1500px}
 .flipback button:hover{filter:brightness(1.1)}
 @media (hover:none){.pcard{aspect-ratio:3/4.75}}
 </style>
+
+<style id="hcf-mobile-fix">/* MOBILE-FIX */
+.pc-front,.pc-back{transition:opacity 0s linear .45s}
+.pcard.flip .pc-front{opacity:0}
+.pcard:not(.flip) .pc-back{opacity:0}
+</style>
 </head>
 <body>
 <main class="stage">
