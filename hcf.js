@@ -40,6 +40,7 @@ var NAVCSS=document.createElement('style');NAVCSS.id='hcf-nav-x';NAVCSS.textCont
 +'.mnav-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:1100}'
 +'.mnav-ov.open{opacity:1;visibility:visible}'
 +'body.mnav-lock{overflow:hidden}'
++'body.mnav-lock .nav{z-index:1300}'
 +'}';
 document.head.appendChild(NAVCSS);
 

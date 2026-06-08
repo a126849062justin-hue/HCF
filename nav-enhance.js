@@ -24,6 +24,7 @@
    +'.mnav-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:1100}'
    +'.mnav-ov.open{opacity:1;visibility:visible}'
    +'body.mnav-lock{overflow:hidden}'
+   +'body.mnav-lock .nav{z-index:1300}'
    +'.mnav a[data-en],.mnav .msub-t[data-en]{position:relative}'
    +'.mnav a[data-en]::after,.mnav .msub-t[data-en]::after{content:attr(data-en);position:absolute;left:24px;top:50%;transform:translateY(-50%);opacity:0;transition:.2s;font-family:var(--en,Oswald,sans-serif);font-weight:700;letter-spacing:.1em;font-size:.9rem;color:var(--red,#C81015);pointer-events:none}'
    +'.mnav a[data-en]:hover,.mnav a[data-en]:active{color:transparent}'
