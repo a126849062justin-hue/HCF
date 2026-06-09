@@ -62,10 +62,10 @@ document.head.appendChild(NAVCSS2);
 
 
 var FLOAT='<button class="totop" id="totop" aria-label="回頂部">TOP</button>\
-<button class="shark" id="sharkBtn" aria-label="AI 客服"><img src="shark_logo.png" alt="AI 鯊魚客服"></button>\
+<button class="shark" id="sharkBtn" aria-label="智能小幫手"><img src="shark_logo.png" alt="智能小幫手"></button>\
 <div class="chatbox" id="chatbox">\
-<div class="cb-h"><span>HCF AI 鯊魚客服</span><button id="cbClose" aria-label="關閉">✕</button></div>\
-<div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 AI 鯊魚 🦈 想問課程、價格或預約都可以問我！</div></div>\
+<div class="cb-h"><span>HCF 智能小幫手</span><button id="cbClose" aria-label="關閉">✕</button></div>\
+<div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 智能小幫手 🦈 想問課程、價格或預約都可以問我！</div></div>\
 <div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div><div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div></div>\
 <div class="mcta">\
 <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>\
@@ -135,9 +135,9 @@ var cio=new IntersectionObserver(function(es){es.forEach(function(e){
   requestAnimationFrame(step);})},{threshold:.5});
 document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
 
-// ===== AI 鯊魚 =====
+// ===== 智能小幫手 =====
 var cb=document.getElementById('chatbox'),log=document.getElementById('cbLog'),cin=document.getElementById('cbIn');
-document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open');var nd=document.getElementById('hcfNudge');if(nd)nd.remove();if(cb.classList.contains('open')){cin.focus();if(window.hcfTrack)hcfTrack('ai_open');}};
+document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open');var nd=document.getElementById('hcfNudge');if(nd)nd.remove();if(cb.classList.contains('open')){if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_open');}};
 /* 主動出擊小氣泡（每次造訪一次、依頁面客製話術） */
 (function(){
   if(sessionStorage.getItem('hcfNudged'))return;
@@ -151,7 +151,7 @@ document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open
     n.id='hcfNudge';n.type='button';n.textContent=txt;
     n.style.cssText='position:fixed;right:84px;bottom:96px;z-index:380;background:#fff;color:#111;border:1.5px solid #C81015;box-shadow:0 14px 36px rgba(17,17,17,.25);padding:12px 16px;font-weight:700;font-size:.86rem;cursor:pointer;border-radius:14px 14px 2px 14px;max-width:230px;text-align:left;line-height:1.5;font-family:inherit';
     document.body.appendChild(n);
-    n.onclick=function(){n.remove();cb.classList.add('open');cin.focus();if(window.hcfTrack)hcfTrack('ai_nudge_click');};
+    n.onclick=function(){n.remove();cb.classList.add('open');if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_nudge_click');};
     setTimeout(function(){if(n.parentNode)n.remove()},14000);
   },16000);
 })();
