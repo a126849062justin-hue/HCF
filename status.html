@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>30 秒問卷・領免費體驗｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新竹格鬥 30 秒問卷：來過沒、老會員、體驗過、離開過都能填，依你的身分帶出專屬問題，填完送免費體驗。">
+<link rel="canonical" href="https://www.hsinchucombat.com/status.html">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="30 秒問卷・領免費體驗｜HCF 新竹格鬥">
+<meta property="og:description" content="依你的身分帶出專屬問題，填完送免費體驗。">
+<meta property="og:url" content="https://www.hsinchucombat.com/status.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hcf.css">
+<style>
+.quiz{padding:42px 0 90px}
+.quiz .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.qcard{background:#fff;box-shadow:0 14px 36px rgba(17,17,17,.08);border-left:6px solid var(--red);padding:24px 26px;margin-bottom:18px}
+.qcard h3{font-family:var(--serif);font-weight:900;font-size:1.12rem;line-height:1.6;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.qcard h3::before{content:"▸";color:var(--red);flex:0 0 auto}
+.qcard .note{font-size:.8rem;color:var(--ink3,#8A8A8A);margin-top:2px;font-family:var(--sans);font-weight:500;flex-basis:100%}
+.opts{margin-top:14px;display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;gap:10px;align-items:flex-start;background:var(--surface,#F7F7F7);padding:11px 14px;cursor:pointer;transition:.2s;line-height:1.6}
+.opt:hover{background:#F0E3E3}
+.opt input{accent-color:var(--red);margin-top:5px;flex:0 0 auto;width:16px;height:16px}
+.otherin{width:100%;margin-top:8px;border:1.5px solid var(--line,#E5E5E5);padding:10px 14px;font-size:.95rem;font-family:var(--sans)}
+.otherin:focus{outline:none;border-color:var(--red)}
+.subhdr{margin:16px 0 4px;font-weight:900;font-size:.9rem;color:var(--red);border-left:4px solid var(--red);padding-left:8px}
+.hrow{display:flex;align-items:center;gap:12px;background:var(--surface,#F7F7F7);padding:12px 14px;margin-top:8px;flex-wrap:wrap}
+.hname{flex:1;min-width:120px;font-weight:700}
+.hearts{display:flex;gap:4px}
+.heart{font-size:1.7rem;line-height:1;color:#d8d2d2;cursor:pointer;transition:transform .1s,color .15s;user-select:none}
+.heart:hover{transform:scale(1.15)}
+.heart.on{color:var(--red)}
+.qcard textarea{width:100%;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans);line-height:1.7;resize:vertical;margin-top:12px}
+.qcard textarea:focus{outline:none;border-color:var(--red)}
+.grpmsg{background:#eef7f0;border-left:5px solid #1FA34A;padding:12px 16px;margin:0 0 18px;font-size:.92rem;color:#2c6b3d;display:none}
+.grpmsg.on{display:block}
+[data-for]{display:none}
+.gift{background:var(--carbon,#111);color:#fff;padding:28px;margin:0 0 18px;position:relative;overflow:hidden}
+.gift::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.gift>*{position:relative}
+.gift h3{font-family:var(--serif);font-weight:900;font-size:1.3rem}
+.gift p{margin-top:10px;line-height:1.9;color:#ddd}
+.gift .star{color:#fff;background:var(--red);display:inline-block;padding:6px 12px;font-weight:900;margin-top:12px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.fields label{display:block;font-weight:700;font-size:.9rem}
+.fields input[type=text]{width:100%;margin-top:6px;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans)}
+.fields input:focus{outline:none;border-color:var(--red)}
+.agree{margin-top:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.agree input{accent-color:var(--red);margin-top:4px}
+.qsubmit{margin-top:22px;display:block;width:100%;background:var(--red);color:#fff;border:0;font-family:var(--sans);font-weight:900;font-size:1.1rem;letter-spacing:.08em;padding:17px;cursor:pointer;transition:.25s;box-shadow:0 10px 26px rgba(200,16,21,.3)}
+.qsubmit:hover{background:var(--redD,#9B0B0F);transform:translateY(-2px)}
+.ortext{text-align:center;color:var(--ink3,#8A8A8A);font-size:.85rem;margin:18px 0 10px}
+.contactrow{display:flex;gap:12px;flex-wrap:wrap}
+.contact-btn{flex:1;min-width:150px;text-align:center;text-decoration:none;font-weight:900;padding:15px;font-size:1rem;transition:.2s}
+.contact-btn.line{background:#06C755;color:#fff}
+.contact-btn.mail{background:var(--carbon,#111);color:#fff}
+.contact-btn:active{transform:translateY(1px)}
+.qhint{text-align:center;color:var(--ink3,#8A8A8A);font-size:.8rem;margin-top:14px}
+.done{display:none}.done.on{display:block}.form-area.off{display:none}
+.done .ok{background:#fff;border-top:6px solid var(--red);box-shadow:0 14px 36px rgba(17,17,17,.08);padding:30px;text-align:center}
+.done .ok h2{font-family:var(--serif);font-weight:900;font-size:1.6rem}
+.done .ok p{margin-top:10px;color:var(--ink2,#4A4A4A);line-height:1.9}
+.done .btns{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.done .btns a{text-decoration:none;font-weight:900;padding:14px 26px}
+.done .btns .b1{background:var(--red);color:#fff}
+.done .btns .b2{border:2px solid var(--carbon,#111);color:var(--carbon,#111)}
+@media(max-width:640px){.fields{grid-template-columns:1fr}.opts.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="status">
+<header class="nav" id="nav"></header>
+
+<section class="phero">
+  <div class="phero-ghost">WISH</div>
+  <div class="phero-in">
+    <div class="kicker">LEVEL UP / 30 秒問卷・領免費體驗</div>
+    <h1>30 秒，把 HCF <i>變成你想要的樣子</i> 🥊</h1>
+    <p>先選你是誰，我們只問你答得出來的 文末領獎 🎁</p>
+  </div>
+</section>
+
+<div class="seamA">
+  <div class="wedge"></div>
+  <div class="ribbon"><div class="ribbon-track"></div></div></div>
+
+<section class="quiz">
+  <div class="wrap">
+
+    <div class="done" id="doneView">
+      <div class="ok">
+        <h2>收到你的願望了 🎁</h2>
+        <p>見面禮整理好就會用 LINE／電話傳給你。<br>你點的每一下，都會變成我們的下一步——說到做到。</p>
+        <div class="btns">
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加 LINE 領見面禮</a>
+          <a class="b2" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約 $400 體驗</a>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-area" id="statusForm" action="https://formsubmit.co/hsinchucombat2022@gmail.com" method="POST" target="fs_sink">
+      <input type="hidden" name="_subject" value="HCF 30秒問卷│新回覆">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.hsinchucombat.com/status.html?done=1">
+
+      <div class="gift">
+        <h3>先講好處 🎁</h3>
+        <p>30 秒點完，立刻送你 首次體驗課 1 堂 或 入會折抵（擇一）。許願還有獎，沒這麼好康過吧。</p>
+        <div class="star">✦ 數量有限 手刀填完 ✦</div>
+      </div>
+
+      <!-- 身分（決定後面題目） -->
+      <div class="qcard">
+        <h3>先認識你一下 👋<span class="note">你和 HCF 的關係？選一個，我們只問你答得出來的</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="你是" value="new"><span>還沒來過，想了解</span></label>
+          <label class="opt"><input type="radio" name="你是" value="trial"><span>來體驗過，還沒入會</span></label>
+          <label class="opt"><input type="radio" name="你是" value="member"><span>上課中的會員 💪</span></label>
+          <label class="opt"><input type="radio" name="你是" value="former"><span>以前的會員</span></label>
+        </div>
+      </div>
+
+      <div class="grpmsg" id="grpMsg"></div>
+
+      <!-- ===== 共同題（四種人都填） ===== -->
+      <div class="qcard">
+        <h3>你為什麼想來／會來 HCF？<span class="note">你的動機是？可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="為什麼來" value="減脂變瘦"><span>想減脂、變瘦</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="紓壓"><span>壓力大想紓壓</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="變強壯"><span>想變強壯／練體能</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="學防身"><span>想學防身、保護自己</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="學正宗泰拳"><span>想學正宗泰拳</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="比賽當選手"><span>想比賽、當選手</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="帶小孩"><span>帶小孩來運動</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="陪長輩"><span>陪爸媽／長輩動一動</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="交朋友"><span>想交朋友、找同好</span></label>
+          <label class="opt"><input type="checkbox" name="為什麼來" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="為什麼來_其他" placeholder="其他：你最想達成什麼？告訴我們～">
+      </div>
+
+      <div class="qcard">
+        <h3>我有空的時段<span class="note">哪個時段最容易遇到你？可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="出沒時段" value="平日10-12"><span>平日 10:00–12:00（早起的猛獸）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="平日12-17"><span>平日 12:00–17:00（午後潛水）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="平日19新手"><span>平日 19:00–20:00（下班先打一場）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="平日20進階"><span>平日 20:00–21:00（夜場進階）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="平日21對打"><span>平日 21:00–22:00（收班前對打）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="週六上午"><span>週六 11:00–13:00（週末晨操）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="週六下午"><span>週六 13:00 後（帶小孩放電／Squad）</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="週日上午"><span>週日 11:00–13:00</span></label>
+          <label class="opt"><input type="checkbox" name="出沒時段" value="週日下午"><span>週日 13:00 後（兒童時段）</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3>偷偷許願：最想要哪堂課專為你開？<span class="note">公投，票多的我們認真考慮！可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="想開的課" value="泰拳"><span>泰拳（我要學真的）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="肌力體能"><span>肌力體能（壺鈴戰繩）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="泰拳燃脂"><span>泰拳燃脂（流汗甩肉）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="MMA"><span>MMA（綜合格鬥）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="拳擊"><span>拳擊</span></label>
+        </div>
+        <div class="subhdr">小班制</div>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="想開的課" value="防身研習營"><span>防身研習營（4 堂學會自保）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="樂齡體能小班"><span>樂齡體能小班（55+ 專屬）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="兒童格鬥營"><span>兒童格鬥營（紀律＋放電）</span></label>
+          <label class="opt"><input type="checkbox" name="想開的課" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="想開的課_其他" placeholder="其他：你還想要哪堂課？許願給我們～">
+      </div>
+
+      <div class="qcard">
+        <h3>你是怎麼「相遇」HCF 的？<span class="note">我們想知道緣分從哪來 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="從哪認識" value="Instagram"><span>IG 滑到的</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="Threads"><span>Threads 看到</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="Facebook"><span>Facebook</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="Google"><span>Google 大神帶路</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="朋友家人介紹"><span>朋友／家人推坑</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="學員揪團"><span>學員揪團</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="路過招牌"><span>路過被招牌電到</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="LINE"><span>LINE 好友／群發</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="YouTube"><span>YouTube 賽事熱血</span></label>
+          <label class="opt"><input type="checkbox" name="從哪認識" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="從哪認識_其他" placeholder="其他：你是怎麼發現我們的？打給我們看～">
+      </div>
+
+      <!-- ===== 還沒來過 ===== -->
+      <div class="qcard" data-for="new">
+        <h3>還沒踏進來，最大的原因是？<span class="note">沒人會生氣，只想幫你搬開石頭 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="怕跟不上"><span>怕跟不上／怕受傷</span></label>
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="怕貴"><span>荷包在抗議</span></label>
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="沒人陪"><span>沒戰友一起</span></label>
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="不知從哪開始"><span>不知道從哪堂下手</span></label>
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="時間喬不攏"><span>時間喬不攏</span></label>
+          <label class="opt"><input type="checkbox" name="新生_阻礙" value="現在就想衝"><span>沒在擋，我現在就想衝🔥</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="new">
+        <h3>來之前，你最想先知道什麼？<span class="note">我們先幫你解答 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="價格方案"><span>價格／方案怎麼算</span></label>
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="會不會受傷"><span>會不會被打／受傷</span></label>
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="新手跟得上"><span>新手能不能跟上</span></label>
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="適合的時段"><span>有沒有適合我的時段</span></label>
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="環境設備"><span>環境與設備</span></label>
+          <label class="opt"><input type="checkbox" name="新生_想知道" value="教練背景"><span>教練的背景</span></label>
+        </div>
+      </div>
+
+      <!-- ===== 來體驗過，還沒入會 ===== -->
+      <div class="qcard" data-for="trial">
+        <h3>那次體驗，感覺如何？<span class="note">誠實給分，我們才會更好</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="體驗感覺" value="超喜歡"><span>超喜歡，想繼續</span></label>
+          <label class="opt"><input type="radio" name="體驗感覺" value="不錯考慮中"><span>不錯，還在考慮</span></label>
+          <label class="opt"><input type="radio" name="體驗感覺" value="普通"><span>普通</span></label>
+          <label class="opt"><input type="radio" name="體驗感覺" value="不太適合"><span>沒想像中適合</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="trial">
+        <h3>體驗後還沒報名，最主要的原因是？<span class="note">最重要的一題，幫我們對症下藥 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="未報名原因" value="價格"><span>價格／預算</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="時間"><span>時間喬不攏</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="還在比較"><span>還在比較其他家</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="再考慮"><span>想再考慮一下</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="怕受傷"><span>怕受傷／怕跟不上</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="沒遇到想上的課"><span>還沒遇到想上的課</span></label>
+          <label class="opt"><input type="checkbox" name="未報名原因" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="未報名原因_其他" placeholder="其他：是什麼讓你還沒決定？老實說～">
+      </div>
+
+      <!-- ===== 體驗過＋會員＋舊會員：教練教學許願 ===== -->
+      <div class="qcard" data-for="trial member former">
+        <h3>教練的教學，想許願調整什麼？<span class="note">放心說，教練臉皮夠厚（？）可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="教學改善" value="上課方式更有趣"><span>上課方式變化多一點、有趣一點</span></label>
+          <label class="opt"><input type="checkbox" name="教學改善" value="多給鼓勵"><span>多給我一點鼓勵</span></label>
+          <label class="opt"><input type="checkbox" name="教學改善" value="多一些情緒價值"><span>上課再給多一些情緒價值</span></label>
+          <label class="opt"><input type="checkbox" name="教學改善" value="多徵帥哥美女"><span>教練再多徵點帥哥美女 😍</span></label>
+          <label class="opt"><input type="checkbox" name="教學改善" value="當沙包踢"><span>希望被教練當沙包踢 🥊</span></label>
+          <label class="opt"><input type="checkbox" name="教學改善" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="教學改善_其他" placeholder="其他：對教練的悄悄話～">
+      </div>
+
+      <!-- ===== 體驗過＋會員＋舊會員：教練愛心榜 ===== -->
+      <div class="qcard" data-for="trial member former">
+        <h3>教練愛心榜：誰擄獲了你的心？<span class="note">點愛心幫教練打氣，幾顆都行，再點可取消 ♥</span></h3>
+        <div class="hearts-group">
+          <div class="hrow"><span class="hname">黃謙和 總教練</span>
+            <div class="hearts"><span class="heart" data-v="1">♥</span><span class="heart" data-v="2">♥</span><span class="heart" data-v="3">♥</span><span class="heart" data-v="4">♥</span><span class="heart" data-v="5">♥</span></div>
+            <input type="hidden" name="教練愛心_黃謙和" value=""></div>
+          <div class="hrow"><span class="hname">高大可</span>
+            <div class="hearts"><span class="heart" data-v="1">♥</span><span class="heart" data-v="2">♥</span><span class="heart" data-v="3">♥</span><span class="heart" data-v="4">♥</span><span class="heart" data-v="5">♥</span></div>
+            <input type="hidden" name="教練愛心_高大可" value=""></div>
+          <div class="hrow"><span class="hname">Allen</span>
+            <div class="hearts"><span class="heart" data-v="1">♥</span><span class="heart" data-v="2">♥</span><span class="heart" data-v="3">♥</span><span class="heart" data-v="4">♥</span><span class="heart" data-v="5">♥</span></div>
+            <input type="hidden" name="教練愛心_Allen" value=""></div>
+          <div class="hrow"><span class="hname">鄭豫</span>
+            <div class="hearts"><span class="heart" data-v="1">♥</span><span class="heart" data-v="2">♥</span><span class="heart" data-v="3">♥</span><span class="heart" data-v="4">♥</span><span class="heart" data-v="5">♥</span></div>
+            <input type="hidden" name="教練愛心_鄭豫" value=""></div>
+          <div class="hrow"><span class="hname">小米</span>
+            <div class="hearts"><span class="heart" data-v="1">♥</span><span class="heart" data-v="2">♥</span><span class="heart" data-v="3">♥</span><span class="heart" data-v="4">♥</span><span class="heart" data-v="5">♥</span></div>
+            <input type="hidden" name="教練愛心_小米" value=""></div>
+        </div>
+      </div>
+
+      <!-- ===== 上課中會員 ===== -->
+      <div class="qcard" data-for="member">
+        <h3>課程哪裡可以「更香」？<span class="note">想吃哪一道、想加什麼料盡量說 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="課程改善" value="難度分級更清楚"><span>難度分級更清楚</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="基礎慢慢拆"><span>多點基礎慢慢拆</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="節奏"><span>節奏（太快／太慢）</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="內容來點新的"><span>內容來點新的</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="想要更小班"><span>想要更小班</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="課程長度"><span>課程長度</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="完美"><span>沒有，完美 👍</span></label>
+          <label class="opt"><input type="checkbox" name="課程改善" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="課程改善_其他" placeholder="其他：課程上你想許的願～">
+      </div>
+      <div class="qcard" data-for="member">
+        <h3>想要更多哪一味？<span class="note">流汗派還是技術派？可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="想增加課程" value="多體能類"><span>多點「體能流汗派」（肌力／HIIT／有氧）</span></label>
+          <label class="opt"><input type="checkbox" name="想增加課程" value="多技術類"><span>多點「技術硬派」（拳法／踢擊／對打）</span></label>
+          <label class="opt"><input type="checkbox" name="想增加課程" value="我全都要"><span>我全都要 😤</span></label>
+          <label class="opt"><input type="checkbox" name="想增加課程" value="多兒童樂齡"><span>更多兒童・樂齡</span></label>
+          <label class="opt"><input type="checkbox" name="想增加課程" value="多防身"><span>更多防身</span></label>
+          <label class="opt"><input type="checkbox" name="想增加課程" value="現在剛剛好"><span>現在剛剛好</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="member">
+        <h3>許願池：希望我們再升級什麼？<span class="note">場館、體驗、活動……盡量許 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="升級許願" value="環境清潔"><span>環境清潔</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="器材設備"><span>器材設備</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="預約系統"><span>預約系統更好用</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="價格方案"><span>價格方案</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="置物淋浴"><span>置物／淋浴</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="冷氣通風"><span>冷氣／通風</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="社群活動"><span>多點社群活動</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="賽事觀摩"><span>帶我們去看比賽</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="保持下去"><span>沒有，保持下去 💪</span></label>
+          <label class="opt"><input type="checkbox" name="升級許願" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="升級許願_其他" placeholder="其他：你最想許的那個願～">
+      </div>
+      <div class="qcard" data-for="member">
+        <h3>你會把 HCF 推薦給朋友嗎？<span class="note">老實說，我們承受得住</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="推薦意願" value="一定會"><span>一定會！已經在推了</span></label>
+          <label class="opt"><input type="radio" name="推薦意願" value="應該會"><span>應該會</span></label>
+          <label class="opt"><input type="radio" name="推薦意願" value="看情況"><span>看情況</span></label>
+          <label class="opt"><input type="radio" name="推薦意願" value="暫時不會"><span>暫時不會</span></label>
+        </div>
+      </div>
+
+      <!-- ===== 以前的會員 ===== -->
+      <div class="qcard" data-for="former">
+        <h3>當初為什麼離開／沒續約？<span class="note">最珍貴的一題，幫我們變更好 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="離開原因" value="搬家距離"><span>搬家／距離變遠</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="沒時間"><span>沒時間了</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="價格"><span>價格考量</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="受傷健康"><span>受傷／健康因素</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="成效不如預期"><span>成效不如預期</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="課程時段不合"><span>課程或時段不合</span></label>
+          <label class="opt"><input type="checkbox" name="離開原因" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="離開原因_其他" placeholder="其他：真正的原因是？我們想聽真話～">
+      </div>
+      <div class="qcard" data-for="former">
+        <h3>什麼會讓你想「回來」？<span class="note">許個願，說不定就成真 可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="回來誘因" value="新課程"><span>有新課程</span></label>
+          <label class="opt"><input type="checkbox" name="回來誘因" value="更好價格"><span>更好的價格／老友價</span></label>
+          <label class="opt"><input type="checkbox" name="回來誘因" value="適合時段"><span>有適合的時段</span></label>
+          <label class="opt"><input type="checkbox" name="回來誘因" value="老朋友揪"><span>老朋友揪一揪</span></label>
+          <label class="opt"><input type="checkbox" name="回來誘因" value="想念教練"><span>想念教練</span></label>
+          <label class="opt"><input type="checkbox" name="回來誘因" value="隨時想回"><span>其實我隨時都想回 🥹</span></label>
+        </div>
+      </div>
+
+      <!-- ===== 共同：悄悄話＋聯絡 ===== -->
+      <div class="qcard">
+        <h3>還想偷偷說什麼？<span class="note">選填，批評、點子、告白都收 😎</span></h3>
+        <textarea name="想偷偷說的" rows="3" placeholder="（選填）想直接告訴我們的話～"></textarea>
+      </div>
+
+      <div class="qcard">
+        <div class="fields">
+          <label>怎麼稱呼你<input type="text" name="姓名" placeholder="暱稱就好"></label>
+          <label>LINE／電話<input type="text" name="LINE或電話" placeholder="見面禮要寄給你"></label>
+        </div>
+        <label class="agree"><input type="checkbox" name="開班與優惠通知" value="我想收到開班與優惠通知"><span>順便收開班與早鳥優惠通知（不會洗你版，保證）</span></label>
+      </div>
+
+      <button class="qsubmit" type="submit">許願完成，領見面禮 🎁</button>
+
+      <p class="ortext">— 或，直接聯絡我們 —</p>
+      <div class="contactrow">
+        <a class="contact-btn line" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加官方 LINE 直接聊</a>
+        <a class="contact-btn mail" href="mailto:hsinchucombat2022@gmail.com?subject=HCF%20我想了解／許願&body=嗨%20HCF，我想說：%0A%0A（在這裡打字）%0A%0A我的稱呼：%0A我的%20LINE／電話：">傳送 Email 給我們</a>
+      </div>
+
+      <p class="qhint">送出即同意 HCF 以上述方式傳送見面禮與課程資訊。資料僅供服務優化與發放使用，不提供第三方。</p>
+    </form>
+
+  </div>
+</section>
+
+<div class="seamC"><div class="wedge dot"></div></div>
+<section class="finale" id="finale"></section>
+
+<iframe name="fs_sink" style="display:none" title="form-sink"></iframe>
+<script src="hcf.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.hearts').forEach(function(group){
+    var inp=group.parentNode.querySelector('input[type=hidden]');
+    var hearts=group.querySelectorAll('.heart');
+    function paint(v){hearts.forEach(function(h){h.classList.toggle('on',+h.dataset.v<=v);});}
+    hearts.forEach(function(h){h.addEventListener('click',function(){
+      var v=+h.dataset.v; if(+inp.value===v){v=0;} inp.value=v?v:''; paint(v);
+    });});
+  });
+  // 依身分顯示對應題目
+  var cards=document.querySelectorAll('[data-for]');
+  var msg=document.getElementById('grpMsg');
+  var TXT={new:'👋 歡迎！幫你準備了「了解 HCF」會用到的題目，往下填 👇',
+           trial:'🙌 體驗過真好！想多懂你一點，特別問了體驗感受，往下填 👇',
+           member:'💪 感謝你一直在！幫你開了完整的「許願＋愛心榜」，盡量許 👇',
+           former:'🥹 好久不見！想聽聽你的真心話，也許還能再見 👇'};
+  document.querySelectorAll('input[name="你是"]').forEach(function(r){
+    r.addEventListener('change',function(){
+      var g=r.value;
+      cards.forEach(function(c){c.style.display=(c.getAttribute('data-for').indexOf(g)>-1)?'block':'none';});
+      if(msg){msg.textContent=TXT[g]||'';msg.classList.add('on');}
+    });
+  });
+  var form=document.getElementById('statusForm');
+  var done=document.getElementById('doneView');
+  function showDone(){
+    done.classList.add('on');form.classList.add('off');
+    var ph=document.querySelector('.phero p');if(ph)ph.textContent='收到你的願望了 見面禮在 LINE 等你';
+    var top=document.querySelector('.quiz');if(top)top.scrollIntoView({behavior:'smooth'});
+  }
+  if(new URLSearchParams(location.search).get('done')==='1'){showDone();}
+  var next=form.querySelector('input[name="_next"]');
+  if(next && /^https?:$/.test(location.protocol)){next.value=location.origin+location.pathname+'?done=1';}
+  form.addEventListener('submit',function(){
+    if(window.hcfTrack)hcfTrack('status_submit');
+    if(window.HCF_BACKEND){try{var fd=new FormData(form),p={};fd.forEach(function(v,k){if(k.charAt(0)!=='_')p[k]=p[k]?p[k]+'、'+v:v;});
+      fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:p['姓名']||'',contact:p['LINE或電話']||'',source:'status',payload:p})});}catch(e){}}
+    setTimeout(showDone,150);
+  });
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+</body>
+</html>

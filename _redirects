@@ -5,3 +5,5 @@
 /admin          /backend/admin.html   301
 /faq.html       /                     301
 /faq            /                      301
+
+/survey.html   /status.html   301!
