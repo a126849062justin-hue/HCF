@@ -70,6 +70,7 @@
 .done .ok{background:#fff;border-top:6px solid var(--red);box-shadow:0 14px 36px rgba(17,17,17,.08);padding:30px;text-align:center}
 .done .ok h2{font-family:var(--serif);font-weight:900;font-size:1.6rem}
 .done .ok p{margin-top:10px;color:var(--ink2,#4A4A4A);line-height:1.9}
+.giftbox{background:var(--surface,#F7F7F7);border:1px dashed var(--line,#E5E5E5);padding:14px 16px;margin:16px 0 4px;white-space:pre-wrap;text-align:left;font-size:.9rem;line-height:1.8;color:var(--ink2,#4A4A4A)}
 .done .btns{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .done .btns a{text-decoration:none;font-weight:900;padding:14px 26px}
 .done .btns .b1{background:var(--red);color:#fff}
@@ -98,11 +99,11 @@
 
     <div class="done" id="doneView">
       <div class="ok">
-        <h2>收到你的願望了 🎁</h2>
-        <p>見面禮整理好就會用 LINE／電話傳給你。<br>你點的每一下，都會變成我們的下一步——說到做到。</p>
+        <h2>就差最後一步 🎁</h2>
+        <p>你的領獎訊息已<b>自動複製</b>！<br>到剛開啟的官方 LINE，<b>長按貼上並傳送</b>就能領取禮物。</p>
+        <div class="giftbox" id="giftBox"></div>
         <div class="btns">
-          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加 LINE 領見面禮</a>
-          <a class="b2" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約 $400 體驗</a>
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">🎁 開啟官方 LINE 領禮物</a>
         </div>
       </div>
     </div>
@@ -123,10 +124,11 @@
       <div class="qcard">
         <h3>先認識你一下 👋<span class="note">你和 HCF 的關係？選一個，我們只問你答得出來的</span></h3>
         <div class="opts two">
-          <label class="opt"><input type="radio" name="你是" value="new"><span>還沒來過，想了解</span></label>
-          <label class="opt"><input type="radio" name="你是" value="trial"><span>來體驗過，還沒入會</span></label>
-          <label class="opt"><input type="radio" name="你是" value="member"><span>上課中的會員 💪</span></label>
-          <label class="opt"><input type="radio" name="你是" value="former"><span>以前的會員</span></label>
+          <label class="opt"><input type="radio" name="你是" value="new"><span>① 還沒來過，想了解</span></label>
+          <label class="opt"><input type="radio" name="你是" value="fexp"><span>② 初次體驗（今天第一次來）</span></label>
+          <label class="opt"><input type="radio" name="你是" value="trial"><span>③ 來體驗過，還沒入會</span></label>
+          <label class="opt"><input type="radio" name="你是" value="member"><span>④ 上課中的會員 💪</span></label>
+          <label class="opt"><input type="radio" name="你是" value="former"><span>⑤ 以前的會員</span></label>
         </div>
       </div>
 
@@ -225,6 +227,51 @@
         </div>
       </div>
 
+      <!-- ===== ② 初次體驗（今天第一次來） ===== -->
+      <div class="qcard" data-for="fexp">
+        <h3>今天的體驗，整體感覺？<span class="note">第一印象最真實 🥊</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="初體驗_感受" value="超棒想再來"><span>超棒，想再來！🔥</span></label>
+          <label class="opt"><input type="radio" name="初體驗_感受" value="不錯"><span>不錯</span></label>
+          <label class="opt"><input type="radio" name="初體驗_感受" value="普通"><span>普通</span></label>
+          <label class="opt"><input type="radio" name="初體驗_感受" value="不太行"><span>沒想像中適合</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="fexp">
+        <h3>教練給你的感覺？<span class="note">可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="初體驗_教練" value="專業有料"><span>專業有料</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_教練" value="親切有耐心"><span>親切有耐心</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_教練" value="紮實認真"><span>紮實認真</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_教練" value="幽默風趣"><span>幽默風趣</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="fexp">
+        <h3>體驗最喜歡哪一點？<span class="note">可複選</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="流汗超爽"><span>流汗超爽</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="學到真東西"><span>學到真東西</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="氣氛熱血"><span>氣氛熱血</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="教練很罩"><span>教練很罩</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="環境設備好"><span>環境設備好</span></label>
+          <label class="opt"><input type="checkbox" name="初體驗_喜歡" value="其他"><span>其他（右下打字）👉</span></label>
+        </div>
+        <input type="text" class="otherin" name="初體驗_喜歡_其他" placeholder="其他：最讓你印象深刻的～">
+      </div>
+      <div class="qcard" data-for="fexp">
+        <h3>上完這堂，你想？<span class="note">老實說，沒壓力</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="初體驗_意願" value="立刻報名"><span>立刻報名 🔥</span></label>
+          <label class="opt"><input type="radio" name="初體驗_意願" value="想再體驗一次"><span>想再體驗一次</span></label>
+          <label class="opt"><input type="radio" name="初體驗_意願" value="再考慮"><span>再考慮看看</span></label>
+          <label class="opt"><input type="radio" name="初體驗_意願" value="還不確定"><span>還不確定</span></label>
+        </div>
+      </div>
+      <div class="qcard" data-for="fexp">
+        <h3>有沒有哪裡可以更好？<span class="note">選填，你的話我們都聽</span></h3>
+        <textarea name="初體驗_建議" rows="2" placeholder="（選填）今天體驗的任何想法～"></textarea>
+      </div>
+
       <!-- ===== 來體驗過，還沒入會 ===== -->
       <div class="qcard" data-for="trial">
         <h3>那次體驗，感覺如何？<span class="note">誠實給分，我們才會更好</span></h3>
@@ -250,7 +297,7 @@
       </div>
 
       <!-- ===== 體驗過＋會員＋舊會員：教練教學許願 ===== -->
-      <div class="qcard" data-for="trial member former">
+      <div class="qcard" data-for="fexp trial member former">
         <h3>教練的教學，想許願調整什麼？<span class="note">放心說，教練臉皮夠厚（？）可複選</span></h3>
         <div class="opts two">
           <label class="opt"><input type="checkbox" name="教學改善" value="上課方式更有趣"><span>上課方式變化多一點、有趣一點</span></label>
@@ -264,7 +311,7 @@
       </div>
 
       <!-- ===== 體驗過＋會員＋舊會員：教練愛心榜 ===== -->
-      <div class="qcard" data-for="trial member former">
+      <div class="qcard" data-for="fexp trial member former">
         <h3>教練愛心榜：誰擄獲了你的心？<span class="note">點愛心幫教練打氣，幾顆都行，再點可取消 ♥</span></h3>
         <div class="hearts-group">
           <div class="hrow"><span class="hname">黃謙和 總教練</span>
@@ -377,15 +424,8 @@
         <label class="agree"><input type="checkbox" name="開班與優惠通知" value="我想收到開班與優惠通知"><span>順便收開班與早鳥優惠通知（不會洗你版，保證）</span></label>
       </div>
 
-      <button class="qsubmit" type="submit">許願完成，領見面禮 🎁</button>
-
-      <p class="ortext">— 或，直接聯絡我們 —</p>
-      <div class="contactrow">
-        <a class="contact-btn line" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加官方 LINE 直接聊</a>
-        <a class="contact-btn mail" href="mailto:hsinchucombat2022@gmail.com?subject=HCF%20我想了解／許願&body=嗨%20HCF，我想說：%0A%0A（在這裡打字）%0A%0A我的稱呼：%0A我的%20LINE／電話：">傳送 Email 給我們</a>
-      </div>
-
-      <p class="qhint">送出即同意 HCF 以上述方式傳送見面禮與課程資訊。資料僅供服務優化與發放使用，不提供第三方。</p>
+      <button class="qsubmit" id="giftBtn" type="button">🎁 領取禮物（加官方 LINE）</button>
+      <p class="qhint">點「領取禮物」會自動複製你的領獎訊息並開啟官方 LINE，貼上傳送即可。資料僅供服務優化使用，不提供第三方。</p>
     </form>
 
   </div>
@@ -410,6 +450,7 @@
   var cards=document.querySelectorAll('[data-for]');
   var msg=document.getElementById('grpMsg');
   var TXT={new:'👋 歡迎！幫你準備了「了解 HCF」會用到的題目，往下填 👇',
+           fexp:'🥊 第一次來超棒！想聽聽你今天的體驗感受，填完領禮物 👇',
            trial:'🙌 體驗過真好！想多懂你一點，特別問了體驗感受，往下填 👇',
            member:'💪 感謝你一直在！幫你開了完整的「許願＋愛心榜」，盡量許 👇',
            former:'🥹 好久不見！想聽聽你的真心話，也許還能再見 👇'};
@@ -422,20 +463,28 @@
   });
   var form=document.getElementById('statusForm');
   var done=document.getElementById('doneView');
-  function showDone(){
+  var LINE='https://lin.ee/7lidUv0';
+  var NUM={new:'①',fexp:'②',trial:'③',member:'④',former:'⑤'};
+  var GL={new:'還沒來過想了解',fexp:'初次體驗',trial:'來體驗過還沒入會',member:'上課中會員',former:'以前的會員'};
+  function showDone(m){
     done.classList.add('on');form.classList.add('off');
-    var ph=document.querySelector('.phero p');if(ph)ph.textContent='收到你的願望了 見面禮在 LINE 等你';
+    var gb=document.getElementById('giftBox');if(gb&&m)gb.textContent=m;
     var top=document.querySelector('.quiz');if(top)top.scrollIntoView({behavior:'smooth'});
   }
-  if(new URLSearchParams(location.search).get('done')==='1'){showDone();}
-  var next=form.querySelector('input[name="_next"]');
-  if(next && /^https?:$/.test(location.protocol)){next.value=location.origin+location.pathname+'?done=1';}
-  form.addEventListener('submit',function(){
-    if(window.hcfTrack)hcfTrack('status_submit');
-    if(window.HCF_BACKEND){try{var fd=new FormData(form),p={};fd.forEach(function(v,k){if(k.charAt(0)!=='_')p[k]=p[k]?p[k]+'、'+v:v;});
-      fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:p['姓名']||'',contact:p['LINE或電話']||'',source:'status',payload:p})});}catch(e){}}
-    setTimeout(showDone,150);
-  });
+  document.getElementById('giftBtn').onclick=function(){
+    var sel=document.querySelector('input[name="你是"]:checked');
+    if(!sel){alert('先選你是誰（第一題）再領禮物喔 🎁');document.querySelector('.quiz').scrollIntoView({behavior:'smooth'});return;}
+    var g=sel.value,fd=new FormData(form),p={};
+    fd.forEach(function(v,k){if(k.charAt(0)!=='_'&&v)p[k]=p[k]?p[k]+'、'+v:v;});
+    var nm=p['姓名']||'',ct=p['LINE或電話']||'',label=(NUM[g]||'')+' '+(GL[g]||'');
+    var m='【HCF 領禮物 🎁】\n我的號碼：'+label+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，想領取禮物！';
+    function go(){
+      if(window.hcfTrack)hcfTrack('status_submit');
+      if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',payload:Object.assign({號碼:label},p)})});}catch(e){}}
+      window.open(LINE,'_blank');showDone(m);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).then(go,go);}else go();
+  };
 })();
 </script>
 <script src="hcf-analytics.js" defer></script>
