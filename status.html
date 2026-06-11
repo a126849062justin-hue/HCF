@@ -138,7 +138,7 @@ body.wz .grpmsg{display:none!important}
     <div class="done" id="doneView">
       <div class="ok">
         <h2>就差最後一步 🎁</h2>
-        <p>把下面的<b>領獎訊息複製</b>，到官方 LINE <b>貼上並傳送</b>就能領取獎勵。<br>沒有自動跳到 LINE？點下方「開啟官方 LINE」。</p>
+        <p>① 先按<b>「複製領獎訊息」</b>　② 再點<b>「開啟官方 LINE」</b>貼上並傳送，就能領取獎勵 🥊</p>
         <div class="giftbox" id="giftBox"></div>
         <div class="btns">
           <a class="b2" id="copyMsgBtn" href="javascript:void(0)" role="button">📋 複製領獎訊息</a>
@@ -409,7 +409,7 @@ body.wz .grpmsg{display:none!important}
         <button class="wznext" id="wzNext" type="button">下一步 ›</button>
       </div>
       <button id="giftBtn" type="button" style="display:none">領取</button>
-      <p class="qhint" id="wzHint">最後一步按「領取禮物」會開啟官方 LINE 並複製領獎訊息，貼上傳送即可。填寫資料僅用於聯繫與服務優化。</p>
+      <p class="qhint" id="wzHint">最後一步按「領取禮物」會幫你複製領獎訊息，接著自己點「開啟官方 LINE」貼上傳送即可。填寫資料僅用於聯繫與服務優化。</p>
     </form>
 
   </div>
@@ -491,9 +491,8 @@ body.wz .grpmsg{display:none!important}
     var m='【HCF 領取獎勵 🎁】\n我的身分：'+label+'\n想領的獎勵：'+gift+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，想領取獎勵 🥊';
     setHidden('身分標籤',label);setHidden('領的獎勵',gift);
     /* 防連點：成功路徑立即鎖定按鈕 */
-    if(btn){btn.disabled=true;btn.style.opacity='.6';btn.style.cursor='default';btn.textContent='✅ 已送出，請到 LINE 貼上領券';}
-    /* 先在使用者點擊的當下「同步」開 LINE，避免被手機瀏覽器當成彈窗擋掉 */
-    try{window.open(LINE,'_blank','noopener');}catch(e){}
+    if(btn){btn.disabled=true;btn.style.opacity='.6';btn.style.cursor='default';btn.textContent='✅ 已產生領獎訊息';}
+    /* 不自動跳轉 LINE：停留在完成畫面，讓使用者自己按「開啟官方 LINE」 */
     /* 自動複製（盡力而為；完成頁另有「複製」鈕）*/
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).catch(function(){});}
     /* 後台留底 */
