@@ -51,6 +51,7 @@
 .gift h3{font-family:var(--serif);font-weight:900;font-size:1.3rem}
 .gift p{margin-top:10px;line-height:1.9;color:#ddd}
 .gift .star{color:#fff;background:var(--red);display:inline-block;padding:6px 12px;font-weight:900;margin-top:12px}
+.gift .giftrule{font-size:.78rem;color:#bbb;margin-top:16px;line-height:1.7}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
 .fields label{display:block;font-weight:700;font-size:.9rem}
 .fields input[type=text]{width:100%;margin-top:6px;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans)}
@@ -75,6 +76,43 @@
 .done .btns a{text-decoration:none;font-weight:900;padding:14px 26px}
 .done .btns .b1{background:var(--red);color:#fff}
 .done .btns .b2{border:2px solid var(--carbon,#111);color:var(--carbon,#111)}
+.vdiv{margin:26px 0 12px;font-family:var(--serif);font-weight:900;font-size:1.12rem;text-align:left;display:flex;align-items:center;gap:10px}
+.vdiv::before{content:"";width:8px;height:24px;background:var(--red);display:inline-block;flex:0 0 auto}
+.vticket{background:var(--carbon,#111);color:#fff;border-radius:14px;padding:22px 24px;text-align:left;position:relative;overflow:hidden}
+.vticket::after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(200,16,21,.4),transparent 70%)}
+.vt-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px dashed rgba(255,255,255,.32);padding-bottom:14px;position:relative;z-index:1}
+.vt-brand{font-family:var(--serif);font-weight:900;font-size:1.05rem}.vt-brand i{color:var(--red);font-style:normal}
+.vt-tag{background:var(--red);color:#fff;font-weight:900;font-size:.8rem;padding:5px 12px;white-space:nowrap}
+.vt-code{font-weight:900;font-size:1.7rem;letter-spacing:.06em;margin-top:14px;position:relative;z-index:1}
+.vt-gift{margin-top:8px;font-size:1rem;font-weight:700;line-height:1.6;position:relative;z-index:1}
+.vt-meta{margin-top:12px;font-size:.84rem;color:#bbb;line-height:1.8;position:relative;z-index:1}
+.vsteps{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;text-align:left}
+.vstep{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;font-weight:700;line-height:1.6}
+.vstep b{background:var(--red);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:.82rem;margin-top:2px}
+.vfriend{background:#fff;border:2px solid var(--red);border-radius:14px;padding:22px 24px;text-align:left}
+.vfriend h4{font-family:var(--serif);font-weight:900;font-size:1.18rem;color:var(--carbon,#111)}.vfriend h4 i{color:var(--red);font-style:normal}
+.vfriend .fby{font-size:.85rem;color:#777;margin-top:4px;font-weight:700}
+.vfriend .fben{margin-top:12px;font-size:1.04rem;font-weight:900;color:var(--carbon,#111);line-height:1.6}.vfriend .fben b{color:var(--red)}
+.vfriend .fcode{margin-top:12px;background:#FBEAEA;border:1.5px dashed var(--red);padding:13px;text-align:center;font-weight:900;font-size:1.2rem;letter-spacing:.05em;color:var(--red)}
+.vfriend .fhow{margin-top:12px;font-size:.9rem;color:#444;line-height:1.85}
+.vnote{font-size:.82rem;color:#888;margin-top:8px;text-align:left}
+.wzhead{margin:4px 0 18px}
+.wzbar{height:9px;background:#ececec;border-radius:99px;overflow:hidden}
+.wzfill{height:100%;width:8%;background:var(--red,#C81015);border-radius:99px;transition:width .35s ease}
+.wzcount{margin-top:9px;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--ink3,#8A8A8A);font-weight:700}
+.wzcount #wzCountTxt{color:var(--red,#C81015);font-weight:900}
+.wzcount .wztip{font-weight:500}
+body.wz .form-area .qcard{display:none}
+body.wz .grpmsg{display:none!important}
+.qcard.wzin{animation:wzin .28s ease}
+@keyframes wzin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wznav{position:sticky;bottom:0;z-index:6;display:flex;gap:12px;margin-top:20px;padding:14px 0 16px;background:#fff;border-top:1px solid #eee}
+.wznav button{flex:1;font-family:var(--sans);font-weight:900;font-size:1.08rem;letter-spacing:.04em;padding:16px;cursor:pointer;border:0;transition:.2s}
+.wznav .wzback{flex:0 0 34%;background:#fff;border:2px solid var(--carbon,#111);color:var(--carbon,#111)}
+.wznav .wznext{background:var(--red,#C81015);color:#fff;box-shadow:0 10px 26px rgba(200,16,21,.3)}
+.wznav .wznext:hover{background:var(--redD,#9B0B0F)}
+.wznav button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+#wzHint{margin-top:2px}
 @media(max-width:640px){.fields{grid-template-columns:1fr}.opts.two{grid-template-columns:1fr}}
 </style>
 </head>
@@ -100,10 +138,23 @@
     <div class="done" id="doneView">
       <div class="ok">
         <h2>就差最後一步 🎁</h2>
-        <p>你的領獎訊息已<b>自動複製</b>！<br>到剛開啟的官方 LINE，<b>長按貼上並傳送</b>就能領取禮物。</p>
+        <p>把下面的<b>領獎訊息複製</b>，到官方 LINE <b>貼上並傳送</b>就能領券。<br>沒有自動跳到 LINE？點下方「開啟官方 LINE」。</p>
         <div class="giftbox" id="giftBox"></div>
         <div class="btns">
-          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">🎁 開啟官方 LINE 領禮物</a>
+          <a class="b2" id="copyMsgBtn" href="javascript:void(0)" role="button">📋 複製領獎訊息</a>
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">🎁 開啟官方 LINE 領券</a>
+        </div>
+        <p class="qhint" id="copyHint" style="display:none;color:#1FA34A;font-weight:900">✅ 已複製！到 LINE 長按貼上傳送即可。</p>
+
+        <div id="vWrap">
+          <div class="vdiv">你的票券 🎟️</div>
+          <div class="vticket" id="myTicket"></div>
+          <p class="vnote">截圖保存這張，到館出示券碼即可領取／折抵。</p>
+
+          <div class="vdiv">把好友券送給朋友 🤝</div>
+          <div class="vsteps" id="shareSteps"></div>
+          <div class="vfriend" id="friendCard"></div>
+          <p class="vnote">把上面這張「好友券」截圖，傳給<b>還沒來過 HCF</b> 的朋友即可（朋友報你的推薦碼就算數）。</p>
         </div>
       </div>
     </div>
@@ -112,12 +163,17 @@
       <input type="hidden" name="_subject" value="HCF 30秒問卷│新回覆">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://www.hsinchucombat.com/status.html?done=1">
 
-      <div class="gift">
-        <h3>先講好處 🎁</h3>
-        <p>30 秒點完，立刻送你 首次體驗課 1 堂 或 入會折抵（擇一）。許願還有獎，沒這麼好康過吧。</p>
-        <div class="star">✦ 數量有限 手刀填完 ✦</div>
+      <div class="gift" id="giftBox2">
+        <h3>填完就領 🎁 好友分享券</h3>
+        <p>人人填完都領得到——禮依你的身分自動帶入。揪好友一起練，你有禮、朋友也有禮 🥊</p>
+        <div class="star" id="giftLine">✦ 先選你是誰，禮物立刻帶出來 ✦</div>
+        <p class="giftrule">使用規則：完成問卷即可領「券」，本檔<b>限時供應，額滿或截止即停</b> · 一人限領一張、限用一次 · <b>禮物需本人到館出示核發／入會時折抵</b> · 不可折現或轉售 · 不與其他優惠併用 · 分享券限給未接觸過 HCF 的朋友 · 券效期自取得日起 60 天。</p>
+      </div>
+
+      <div class="wzhead" id="wzHead">
+        <div class="wzbar"><div class="wzfill" id="wzFill"></div></div>
+        <div class="wzcount"><span id="wzCountTxt">第 1 步</span><span class="wztip">每題都可略過，最後一步領券</span></div>
       </div>
 
       <!-- 身分（決定後面題目） -->
@@ -150,10 +206,8 @@
           <label class="opt"><input type="checkbox" name="為什麼來" value="其他"><span>其他（右下打字）👉</span></label>
         </div>
         <input type="text" class="otherin" name="為什麼來_其他" placeholder="其他：你最想達成什麼？告訴我們～">
-      </div>
 
-      <div class="qcard">
-        <h3>我有空的時段<span class="note">哪個時段最容易遇到你？可複選</span></h3>
+        <h3 style="margin-top:26px">你有空的時段？<span class="note">哪個時段最容易遇到你？可複選</span></h3>
         <div class="opts two">
           <label class="opt"><input type="checkbox" name="出沒時段" value="平日10-12"><span>平日 10:00–12:00（早起的猛獸）</span></label>
           <label class="opt"><input type="checkbox" name="出沒時段" value="平日12-17"><span>平日 12:00–17:00（午後潛水）</span></label>
@@ -424,8 +478,12 @@
         <label class="agree"><input type="checkbox" name="開班與優惠通知" value="我想收到開班與優惠通知"><span>順便收開班與早鳥優惠通知（不會洗你版，保證）</span></label>
       </div>
 
-      <button class="qsubmit" id="giftBtn" type="button">🎁 領取禮物（加官方 LINE）</button>
-      <p class="qhint">點「領取禮物」會自動複製你的領獎訊息並開啟官方 LINE，貼上傳送即可。資料僅供服務優化使用，不提供第三方。</p>
+      <div class="wznav" id="wzNav">
+        <button class="wzback" id="wzBack" type="button">‹ 上一步</button>
+        <button class="wznext" id="wzNext" type="button">下一步 ›</button>
+      </div>
+      <button id="giftBtn" type="button" style="display:none">領取</button>
+      <p class="qhint" id="wzHint">最後一步按「領取禮物」會開啟官方 LINE 並複製領獎訊息，貼上傳送即可。填寫資料僅用於聯繫與服務優化。</p>
     </form>
 
   </div>
@@ -438,6 +496,25 @@
 <script src="hcf.js"></script>
 <script>
 (function(){
+  /* ===== 活動保險設定（要收檔就改這裡）=====
+     soldOut:true → 立刻顯示已額滿；deadline 過了自動收；limit 搭配登記表人工把關 */
+  var CAMPAIGN={ soldOut:false, deadline:'2026-12-31', limit:100 };
+  function campaignClosed(){
+    if(CAMPAIGN.soldOut) return '本檔好友分享券已額滿';
+    if(CAMPAIGN.deadline){ var d=new Date(CAMPAIGN.deadline+'T23:59:59');
+      if(!isNaN(d.getTime())&&Date.now()>d.getTime()) return '本檔活動已結束'; }
+    return '';
+  }
+  var IDC={new:'N',fexp:'F',trial:'T',member:'M',former:'O'};
+  function genCode(g){
+    var d=new Date(),p=function(n){return(n<10?'0':'')+n;};
+    var ymd=String(d.getFullYear()).slice(2)+p(d.getMonth()+1)+p(d.getDate());
+    var r=Math.random().toString(36).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,4);
+    while(r.length<4)r+='X';
+    return 'HCF-'+ymd+'-'+(IDC[g]||'X')+r;
+  }
+  function getGift(){try{return JSON.parse(localStorage.getItem('hcf_gift')||'null');}catch(e){return null;}}
+  function setGift(o){try{localStorage.setItem('hcf_gift',JSON.stringify(o));}catch(e){}}
   document.querySelectorAll('.hearts').forEach(function(group){
     var inp=group.parentNode.querySelector('input[type=hidden]');
     var hearts=group.querySelectorAll('.heart');
@@ -454,37 +531,141 @@
            trial:'🙌 體驗過真好！想多懂你一點，特別問了體驗感受，往下填 👇',
            member:'💪 感謝你一直在！幫你開了完整的「許願＋愛心榜」，盡量許 👇',
            former:'🥹 好久不見！想聽聽你的真心話，也許還能再見 👇'};
-  document.querySelectorAll('input[name="你是"]').forEach(function(r){
-    r.addEventListener('change',function(){
-      var g=r.value;
-      cards.forEach(function(c){c.style.display=(c.getAttribute('data-for').indexOf(g)>-1)?'block':'none';});
-      if(msg){msg.textContent=TXT[g]||'';msg.classList.add('on');}
+  var GIFT={new:'免費體驗課 1 堂（原價 $400）＋入會再折 $500',
+            fexp:'入會再折 $500 ＋好友分享券（揪朋友一起練）',
+            trial:'入會再折 $500 ＋好友分享券（揪朋友一起練）',
+            member:'好友分享券：朋友免費體驗；朋友完成體驗你 +2 點、入會你折 $500',
+            former:'歸隊入會折 $500 ＋好友分享券'};
+  function clearCard(c){
+    c.querySelectorAll('input,textarea,select').forEach(function(el){
+      if(el.type==='checkbox'||el.type==='radio'){el.checked=false;}else{el.value='';}
     });
-  });
+    c.querySelectorAll('.heart.on').forEach(function(h){h.classList.remove('on');});
+  }
+  /* 身分切換的顯示與分流改由下方 Wizard 控制器處理 */
   var form=document.getElementById('statusForm');
   var done=document.getElementById('doneView');
   var LINE='https://lin.ee/7lidUv0';
   var NUM={new:'①',fexp:'②',trial:'③',member:'④',former:'⑤'};
   var GL={new:'還沒來過想了解',fexp:'初次體驗',trial:'來體驗過還沒入會',member:'上課中會員',former:'以前的會員'};
-  function showDone(m){
+  function pad2(n){return(n<10?'0':'')+n;}
+  function plusDays(d){var x=new Date();x.setDate(x.getDate()+d);return x.getFullYear()+'/'+pad2(x.getMonth()+1)+'/'+pad2(x.getDate());}
+  function esc(s){return String(s||'').replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function showDone(m,info){
     done.classList.add('on');form.classList.add('off');
     var gb=document.getElementById('giftBox');if(gb&&m)gb.textContent=m;
+    if(info){
+      var exp=plusDays(60),nm=esc(info.nm),code=esc(info.code),label=esc(info.label),gift=esc(info.gift);
+      var mt=document.getElementById('myTicket');
+      if(mt)mt.innerHTML='<div class="vt-top"><div class="vt-brand">HCF <i>好友分享券</i></div><div class="vt-tag">'+label+'</div></div>'
+        +'<div class="vt-code">'+code+'</div>'
+        +'<div class="vt-gift">🎁 '+gift+'</div>'
+        +'<div class="vt-meta">持有人：'+(nm||'（到館報名字）')+'　·　效期至 '+exp+'<br>到館出示此券碼核發／入會時折抵 · 限本人、限用一次</div>';
+      var ss=document.getElementById('shareSteps');
+      if(ss)ss.innerHTML='<div class="vstep"><b>1</b>截圖下面這張「好友券」</div>'
+        +'<div class="vstep"><b>2</b>傳給<u>還沒來過 HCF</u> 的朋友</div>'
+        +'<div class="vstep"><b>3</b>朋友加官方 LINE、報你的推薦碼 → 朋友免費體驗，你 +2 點／朋友入會你折 $500</div>';
+      var fc=document.getElementById('friendCard');
+      if(fc)fc.innerHTML='<h4>HCF <i>好友體驗券</i></h4><div class="fby">由 '+(nm||'你的 HCF 朋友')+' 推薦 🥊</div>'
+        +'<div class="fben">新朋友禮：<b>免費體驗課 1 堂</b>（原價 $400）＋入會再折 <b>$500</b></div>'
+        +'<div class="fcode">推薦碼　'+code+'</div>'
+        +'<div class="fhow">領取方式：加 HCF 官方 LINE → 報這組推薦碼 → 預約你的免費體驗。<br>限未接觸過 HCF 的新朋友・效期 60 天。</div>';
+    }
     var top=document.querySelector('.quiz');if(top)top.scrollIntoView({behavior:'smooth'});
   }
-  document.getElementById('giftBtn').onclick=function(){
+  function setHidden(name,val){
+    var el=form.querySelector('input[name="'+name+'"][data-auto="1"]');
+    if(!el){el=document.createElement('input');el.type='hidden';el.name=name;el.setAttribute('data-auto','1');form.appendChild(el);}
+    el.value=val;
+  }
+  function claim(btn){
+    var cr=campaignClosed(); if(cr){alert(cr+'，但你仍可填問卷給我們 🙏');return;}
     var sel=document.querySelector('input[name="你是"]:checked');
-    if(!sel){alert('先選你是誰（第一題）再領禮物喔 🎁');document.querySelector('.quiz').scrollIntoView({behavior:'smooth'});return;}
+    if(!sel){alert('先選你是誰（第一題）再領獎勵喔 🎁');document.querySelector('.quiz').scrollIntoView({behavior:'smooth'});return;}
     var g=sel.value,fd=new FormData(form),p={};
     fd.forEach(function(v,k){if(k.charAt(0)!=='_'&&v)p[k]=p[k]?p[k]+'、'+v:v;});
-    var nm=p['姓名']||'',ct=p['LINE或電話']||'',label=(NUM[g]||'')+' '+(GL[g]||'');
-    var m='【HCF 領禮物 🎁】\n我的號碼：'+label+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，想領取禮物！';
-    function go(){
-      if(window.hcfTrack)hcfTrack('status_submit');
-      if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',payload:Object.assign({號碼:label},p)})});}catch(e){}}
-      window.open(LINE,'_blank');showDone(m);
+    var nm=p['姓名']||'',ct=p['LINE或電話']||'',label=(NUM[g]||'')+' '+(GL[g]||''),gift=GIFT[g]||'';
+    var prev=getGift(),code=(prev&&prev.code)?prev.code:genCode(g);
+    setGift({code:code,g:g,ts:Date.now()});
+    var m='【HCF 好友分享券 🎁】\n券碼：'+code+'\n我的身分：'+label+'\n想領的禮：'+gift+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，請發券給我 🥊';
+    setHidden('券碼',code);setHidden('身分標籤',label);setHidden('領的禮',gift);
+    /* 防連點：成功路徑立即鎖定按鈕 */
+    if(btn){btn.disabled=true;btn.style.opacity='.6';btn.style.cursor='default';btn.textContent='✅ 已送出，請到 LINE 貼上領券';}
+    /* 先在使用者點擊的當下「同步」開 LINE，避免被手機瀏覽器當成彈窗擋掉 */
+    try{window.open(LINE,'_blank','noopener');}catch(e){}
+    /* 自動複製（盡力而為；完成頁另有「複製」鈕）*/
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).catch(function(){});}
+    /* 後台留底 */
+    if(window.hcfTrack)hcfTrack('status_submit');
+    try{form.submit();}catch(e){}
+    if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',code:code,payload:Object.assign({券碼:code,身分:label,禮:gift},p)})});}catch(e){}}
+    showDone(m,{code:code,label:label,gift:gift,nm:nm});
+  }
+  /* 完成頁：可靠的「複製」鈕（clipboard API 失敗時用 execCommand 後援，相容 in-app webview）*/
+  function fallbackCopy(t){try{var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.top='-9999px';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}}
+  (function(){
+    var cb=document.getElementById('copyMsgBtn');if(!cb)return;
+    cb.addEventListener('click',function(){
+      var t=(document.getElementById('giftBox')||{}).textContent||'';
+      function ok(){var h=document.getElementById('copyHint');if(h)h.style.display='block';}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallbackCopy(t);ok();});}
+      else{fallbackCopy(t);ok();}
+    });
+  })();
+  /* ===== 步驟式問卷 Wizard ===== */
+  (function(){
+    var allCards=form.querySelectorAll('.qcard');
+    var wzFill=document.getElementById('wzFill'),
+        wzCountTxt=document.getElementById('wzCountTxt'),
+        wzBack=document.getElementById('wzBack'),
+        wzNext=document.getElementById('wzNext'),
+        wzHint=document.getElementById('wzHint');
+    if(!allCards.length||!wzNext){return;}
+    document.body.classList.add('wz');
+    var steps=[allCards[0]],idx=0,chosen=false,t;
+    function activeSteps(g){
+      return Array.prototype.filter.call(allCards,function(c){
+        var df=c.getAttribute('data-for');return !df||df.split(/\s+/).indexOf(g)>-1;
+      });
     }
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).then(go,go);}else go();
-  };
+    function render(){
+      Array.prototype.forEach.call(allCards,function(c){c.style.display='none';c.classList.remove('wzin');});
+      var c=steps[idx];if(c){c.style.display='block';void c.offsetWidth;c.classList.add('wzin');}
+      var total=steps.length,last=chosen&&idx===total-1;
+      if(wzFill)wzFill.style.width=(chosen?Math.round((idx+1)/total*100):8)+'%';
+      if(wzCountTxt)wzCountTxt.textContent='第 '+(idx+1)+' 步'+(chosen?(' / '+total):'');
+      if(wzBack)wzBack.style.display=idx>0?'block':'none';
+      if(wzNext)wzNext.textContent=last?'點擊領取獎勵 🎁':'下一步 ›';
+      if(wzHint)wzHint.style.display=last?'block':'none';
+      var q=document.querySelector('.quiz');if(q)q.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function go(i){idx=Math.max(0,Math.min(i,steps.length-1));render();}
+    document.querySelectorAll('input[name="你是"]').forEach(function(r){
+      r.addEventListener('change',function(){
+        var g=r.value;
+        Array.prototype.forEach.call(allCards,function(c){
+          var df=c.getAttribute('data-for');
+          if(df&&df.split(/\s+/).indexOf(g)===-1)clearCard(c);
+        });
+        if(msg){msg.textContent=TXT[g]||'';msg.classList.add('on');}
+        var gl=document.getElementById('giftLine');if(gl)gl.textContent='✦ 你的禮：'+(GIFT[g]||'')+' ✦';
+        steps=activeSteps(g);chosen=true;idx=Math.min(1,steps.length-1);
+        clearTimeout(t);t=setTimeout(render,200);
+      });
+    });
+    wzNext.addEventListener('click',function(){
+      if(!chosen){if(!document.querySelector('input[name="你是"]:checked')){alert('先選你是誰再繼續 🙂');return;}}
+      if(chosen&&idx===steps.length-1){claim(wzNext);return;}
+      go(idx+1);
+    });
+    wzBack.addEventListener('click',function(){go(idx-1);});
+    render();
+  })();
+  /* 載入時：若已額滿／截止，鎖定領券鈕（問卷仍可填） */
+  (function(){
+    var cr=campaignClosed(),btn=document.getElementById('giftBtn');
+    if(cr&&btn){btn.textContent='😵 '+cr+'（仍可填問卷給我們）';btn.disabled=true;btn.style.opacity='.55';btn.style.cursor='not-allowed';}
+  })();
 })();
 </script>
 <script src="hcf-analytics.js" defer></script>
