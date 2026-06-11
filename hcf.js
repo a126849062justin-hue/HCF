@@ -66,7 +66,13 @@ var FLOAT='<button class="totop" id="totop" aria-label="回頂部">TOP</button>\
 <div class="chatbox" id="chatbox">\
 <div class="cb-h"><span>HCF 智能小幫手</span><button id="cbClose" aria-label="關閉">✕</button></div>\
 <div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 智能小幫手 🦈 想問課程、價格或預約都可以問我！</div></div>\
-<div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div><div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div></div>\
+<div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div>\
+<div class="cb-social">\
+<a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram">IG</a>\
+<a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook">FB</a>\
+<a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube">YT</a>\
+<a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE">LINE</a></div>\
+<div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div></div>\
 <div class="mcta">\
 <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>\
 <a class="m2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a></div>';

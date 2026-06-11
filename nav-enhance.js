@@ -62,3 +62,29 @@
     close();
   });
 })();
+
+/* ===== 全站社群連結列（FOLLOW US）：頁面若無 .social-row 則注入，與首頁一致 ===== */
+(function(){
+  if(document.querySelector('.social-row, .hcf-social-inj'))return;
+  var css=
+   '.hcf-social-inj{padding:50px 20px 58px;text-align:center;background:#fff;border-top:1px solid rgba(17,17,17,.08)}'
+   +'.hcf-social-inj .hsi-k{font-family:var(--en,Oswald,sans-serif);font-weight:700;letter-spacing:.22em;font-size:.78rem;color:var(--red,#C81015)}'
+   +'.hcf-social-inj .hsi-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px}'
+   +'.hcf-social-inj .hsi-links a{font-family:var(--en,Oswald,sans-serif);letter-spacing:.18em;font-size:.8rem;font-weight:600;color:var(--ink,#111);border:1.5px solid var(--ink,#111);padding:12px 24px;text-decoration:none;transition:.25s}'
+   +'.hcf-social-inj .hsi-links a[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);border-color:#d62976;color:#fff}'
+   +'.hcf-social-inj .hsi-links a[data-s="fb"]:hover{background:#1877F2;border-color:#1877F2;color:#fff}'
+   +'.hcf-social-inj .hsi-links a[data-s="yt"]:hover{background:#FF0000;border-color:#FF0000;color:#fff}'
+   +'.hcf-social-inj .hsi-links a[data-s="line"]:hover{background:#06C755;border-color:#06C755;color:#fff}';
+  var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+  var html='<div class="hcf-social-inj"><div class="hsi-k">FOLLOW US</div>'
+   +'<div class="hsi-links">'
+   +'<a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig">INSTAGRAM</a>'
+   +'<a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb">FACEBOOK</a>'
+   +'<a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt">YOUTUBE</a>'
+   +'<a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line">LINE</a>'
+   +'</div></div>';
+  var wrap=document.createElement('div');wrap.innerHTML=html;var node=wrap.firstChild;
+  var foot=document.querySelector('footer');
+  if(foot&&foot.parentNode)foot.parentNode.insertBefore(node,foot);
+  else document.body.appendChild(node);
+})();
