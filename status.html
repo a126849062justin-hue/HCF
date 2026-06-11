@@ -138,11 +138,11 @@ body.wz .grpmsg{display:none!important}
     <div class="done" id="doneView">
       <div class="ok">
         <h2>就差最後一步 🎁</h2>
-        <p>把下面的<b>領獎訊息複製</b>，到官方 LINE <b>貼上並傳送</b>就能領券。<br>沒有自動跳到 LINE？點下方「開啟官方 LINE」。</p>
+        <p>把下面的<b>領獎訊息複製</b>，到官方 LINE <b>貼上並傳送</b>就能領取獎勵。<br>沒有自動跳到 LINE？點下方「開啟官方 LINE」。</p>
         <div class="giftbox" id="giftBox"></div>
         <div class="btns">
           <a class="b2" id="copyMsgBtn" href="javascript:void(0)" role="button">📋 複製領獎訊息</a>
-          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">🎁 開啟官方 LINE 領券</a>
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">🎁 開啟官方 LINE 領獎勵</a>
         </div>
         <p class="qhint" id="copyHint" style="display:none;color:#1FA34A;font-weight:900">✅ 已複製！到 LINE 長按貼上傳送即可。</p>
       </div>
@@ -154,10 +154,10 @@ body.wz .grpmsg{display:none!important}
       <input type="hidden" name="_captcha" value="false">
 
       <div class="gift" id="giftBox2">
-        <h3>填完就領 🎁 好友分享券</h3>
-        <p>人人填完都領得到——禮依你的身分自動帶入。揪好友一起練，你有禮、朋友也有禮 🥊</p>
+        <h3>填完就領 🎁 你的專屬獎勵</h3>
+        <p>人人填完都領得到——獎勵依你的身分自動帶入。30 秒填完，到官方 LINE 領取 🥊</p>
         <div class="star" id="giftLine">✦ 先選你是誰，禮物立刻帶出來 ✦</div>
-        <p class="giftrule">使用規則：完成問卷即可領「券」，本檔<b>限時供應，額滿或截止即停</b> · 一人限領一張、限用一次 · <b>禮物需本人到館出示核發／入會時折抵</b> · 不可折現或轉售 · 不與其他優惠併用 · 分享券限給未接觸過 HCF 的朋友 · 券效期自取得日起 60 天。</p>
+        <p class="giftrule">使用規則：完成問卷即可領「券」，本檔<b>限時供應，額滿或截止即停</b> · 一人限領一張、限用一次 · <b>禮物需本人到館出示核發／入會時折抵</b> · 不可折現或轉售 · 不與其他優惠併用 · 效期自取得日起 60 天。</p>
       </div>
 
       <div class="wzhead" id="wzHead">
@@ -426,7 +426,7 @@ body.wz .grpmsg{display:none!important}
      soldOut:true → 立刻顯示已額滿；deadline 過了自動收；limit 搭配登記表人工把關 */
   var CAMPAIGN={ soldOut:false, deadline:'2026-12-31', limit:100 };
   function campaignClosed(){
-    if(CAMPAIGN.soldOut) return '本檔好友分享券已額滿';
+    if(CAMPAIGN.soldOut) return '本檔獎勵已額滿';
     if(CAMPAIGN.deadline){ var d=new Date(CAMPAIGN.deadline+'T23:59:59');
       if(!isNaN(d.getTime())&&Date.now()>d.getTime()) return '本檔活動已結束'; }
     return '';
@@ -458,10 +458,10 @@ body.wz .grpmsg{display:none!important}
            member:'💪 感謝你一直在！幫你開了完整的「許願＋愛心榜」，盡量許 👇',
            former:'🥹 好久不見！想聽聽你的真心話，也許還能再見 👇'};
   var GIFT={new:'免費體驗課 1 堂（原價 $400）＋入會再折 $500',
-            fexp:'入會再折 $500 ＋好友分享券（揪朋友一起練）',
-            trial:'入會再折 $500 ＋好友分享券（揪朋友一起練）',
-            member:'好友分享券：朋友免費體驗；朋友完成體驗你 +2 點、入會你折 $500',
-            former:'歸隊入會折 $500 ＋好友分享券'};
+            fexp:'入會再折 $500',
+            trial:'入會再折 $500',
+            member:'會員專屬感謝禮（到館領取）',
+            former:'歸隊入會再折 $500'};
   function clearCard(c){
     c.querySelectorAll('input,textarea,select').forEach(function(el){
       if(el.type==='checkbox'||el.type==='radio'){el.checked=false;}else{el.value='';}
@@ -491,10 +491,8 @@ body.wz .grpmsg{display:none!important}
     var g=sel.value,fd=new FormData(form),p={};
     fd.forEach(function(v,k){if(k.charAt(0)!=='_'&&v)p[k]=p[k]?p[k]+'、'+v:v;});
     var nm=p['姓名']||'',ct=p['LINE或電話']||'',label=(NUM[g]||'')+' '+(GL[g]||''),gift=GIFT[g]||'';
-    var prev=getGift(),code=(prev&&prev.code)?prev.code:genCode(g);
-    setGift({code:code,g:g,ts:Date.now()});
-    var m='【HCF 好友分享券 🎁】\n券碼：'+code+'\n我的身分：'+label+'\n想領的禮：'+gift+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，請發券給我 🥊';
-    setHidden('券碼',code);setHidden('身分標籤',label);setHidden('領的禮',gift);
+    var m='【HCF 領取獎勵 🎁】\n我的身分：'+label+'\n想領的獎勵：'+gift+'\n姓名：'+(nm||'（待補）')+'\nLINE／電話：'+(ct||'（待補）')+'\n———\n我已填完問卷，想領取獎勵 🥊';
+    setHidden('身分標籤',label);setHidden('領的獎勵',gift);
     /* 防連點：成功路徑立即鎖定按鈕 */
     if(btn){btn.disabled=true;btn.style.opacity='.6';btn.style.cursor='default';btn.textContent='✅ 已送出，請到 LINE 貼上領券';}
     /* 先在使用者點擊的當下「同步」開 LINE，避免被手機瀏覽器當成彈窗擋掉 */
@@ -504,7 +502,7 @@ body.wz .grpmsg{display:none!important}
     /* 後台留底 */
     if(window.hcfTrack)hcfTrack('status_submit');
     try{form.submit();}catch(e){}
-    if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',code:code,payload:Object.assign({券碼:code,身分:label,禮:gift},p)})});}catch(e){}}
+    if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',payload:Object.assign({身分:label,獎勵:gift},p)})});}catch(e){}}
     showDone(m);
   }
   /* 完成頁：可靠的「複製」鈕（clipboard API 失敗時用 execCommand 後援，相容 in-app webview）*/
