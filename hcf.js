@@ -208,7 +208,7 @@ cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 
 /* ===== 左側問卷入口 ===== */
 (function(){
-  if(document.body.dataset.page==='survey'||document.querySelector('.svtab'))return;
+  if(document.body.dataset.page==='survey'||document.body.dataset.page==='status'||document.querySelector('.svtab'))return;
   var st=document.createElement('style');
   st.textContent=".svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;align-items:center;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.86rem;line-height:1.5;text-align:center;padding:13px 9px;width:max-content;border-radius:0 14px 14px 0;box-shadow:5px 0 22px rgba(200,16,21,.5);transition:padding .25s,background .25s;animation:svwig 4.5s ease-in-out infinite}.svtab:hover{background:#9B0B0F;padding-left:15px;animation:none}.svtab b{display:block;font-family:inherit}@keyframes svwig{0%,82%,100%{transform:translateY(-50%) translateX(0)}88%{transform:translateY(-50%) translateX(6px)}94%{transform:translateY(-50%) translateX(-1px)}}@keyframes svwigm{0%,82%,100%{transform:translateX(0)}88%{transform:translateX(5px)}94%{transform:translateX(-1px)}}@media(max-width:880px){.svtab{top:104px;transform:none;font-size:.76rem;padding:11px 7px;border-radius:0 12px 12px 0;box-shadow:4px 0 16px rgba(200,16,21,.5);animation:svwigm 4.5s ease-in-out infinite}}";
   document.head.appendChild(st);
