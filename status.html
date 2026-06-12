@@ -508,7 +508,7 @@ body.wz .grpmsg{display:none!important}
     /* 自動複製（盡力而為；完成頁另有「複製」鈕）*/
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).catch(function(){});}
     /* 後台留底 */
-    if(window.hcfTrack)hcfTrack('status_submit');
+    if(window.hcfTrack)hcfTrack('survey_submit');
     try{form.submit();}catch(e){}
     if(window.HCF_BACKEND){try{fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:nm,contact:ct,source:'status',payload:Object.assign({身分:label,獎勵:gift},p)})});}catch(e){}}
     showDone(m);

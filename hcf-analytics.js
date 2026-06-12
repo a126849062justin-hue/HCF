@@ -6,7 +6,7 @@
    ============================================================ */
 (function(){
   var GA_ID='G-ZCPVLM3SY0';      // ← 申請 GA4 後填入，例如 'G-AB12CD34EF'
-  var BACKEND='';    // ← 部署 HCF 獨立後台後填入網址，例如 'https://hcf-admin.onrender.com'（留空＝不啟用）
+  var BACKEND='https://admin.onrender.com';    // ← 已對接 HCF 獨立後台（onrender）；留空＝不啟用
 
   window.HCF_BACKEND=BACKEND;
   /* 內容快取：公告列／課表／消息／價格（各頁自行取用） */
