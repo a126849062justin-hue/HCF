@@ -263,16 +263,23 @@ $('#saveAnn').onclick=async()=>{
 };
 
 /* ---------- 內容：課表 ---------- */
-const CATS=[['mt','泰拳(紅)'],['sanda','散打(黃)'],['kb','踢拳(灰)'],['sc','體能(綠)']];
+const CATS=[['mt','泰拳(紅)'],['cardio','泰拳燃脂(黃)'],['private','私人教練(灰)'],['squad','選手班(金)'],['sc','體能(綠)']];
+const PV={cat:'private',lv:0,zh:'私人教練課',en:'PRIVATE',note:'一對一彈性預約，依目標客製內容'};
+const NEWMT={cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'};
+const MIDMT={cat:'mt',lv:2,zh:'中階泰拳',en:'MUAY THAI',note:'技術精修×條件對練，攻防轉換與組合技'};
+const CARDIO={cat:'cardio',lv:1,zh:'泰拳燃脂',en:'CARDIO',note:'高密度打靶循環，一堂約 600–800 大卡'};
+const SPAR={cat:'mt',lv:3,zh:'自由技術對打',en:'MUAY THAI',note:'護具下自由對練×複盤，距離・時機・節奏'};
+const SQUAD={cat:'squad',lv:0,zh:'選手班',en:'FIGHTER SQUAD',note:'邀請制進階／備賽，總教練親自帶。技術深化・多回合對練・逐人複盤'};
+const cp=o=>o?Object.assign({},o):null;
 const DEFAULT_SCHED={
- wt:[{s:'11:00',e:'12:00'},{s:'15:00',e:'15:50'},{s:'19:30',e:'20:30'},{s:'20:40',e:'21:30'}],
- et:[{s:'11:00',e:'12:00'},{s:'12:10',e:'13:00'}],
- weekday:[[null,null,{cat:'sc',lv:1,zh:'肌力體能',en:'S&C',note:'壺鈴啞鈴循環，打造易瘦體質與功能性力量'},{cat:'sanda',lv:1,zh:'散打摔法',en:'TAKEDOWNS',note:'抱摔、過肩摔與防摔，貼身重心爭奪'},{cat:'sc',lv:1,zh:'肌力體能',en:'S&C',note:'深蹲硬舉推拉＋爆發，格鬥技術的地基'}],
-  [null,null,{cat:'mt',lv:1,zh:'泰拳燃脂',en:'CARDIO',note:'高密度打靶循環，一堂約 600–800 大卡'},null,null],
-  [{cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'},{cat:'kb',lv:1,zh:'踢拳腿連擊',en:'KICKBOXING',note:'拳腿連擊組合，快節奏雕塑下半身線條'},{cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'},{cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'},{cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'}],
-  [{cat:'mt',lv:2,zh:'泰拳腿肘膝實戰',en:'SPARRING',note:'護具下條件對練，距離・時機・攻防轉換'},{cat:'kb',lv:2,zh:'踢拳遠距阻擊',en:'RANGE DRILL',note:'前手控距、阻擊反擊的時機與反射'},{cat:'mt',lv:2,zh:'泰拳實戰技術',en:'TECH SPAR',note:'組合技假動作×自由對練複盤'},{cat:'mt',lv:1,zh:'泰拳燃脂',en:'CARDIO',note:'高密度打靶循環，下班來紓壓兼燃脂'},{cat:'mt',lv:2,zh:'泰拳腿肘膝實戰',en:'SPARRING',note:'護具下條件對練，距離・時機・攻防轉換'}]],
- weekend:[[{cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'},{cat:'sanda',lv:1,zh:'散打遠踢近摔',en:'SANDA',note:'遠踢控距、近身入摔的距離轉換'}],
-  [null,{cat:'sanda',lv:1,zh:'散打拳腿運用',en:'STRIKING',note:'拳腿組合與時機，散打打擊核心'}]]
+ wt:[{s:'11:00',e:'16:00',tag:'日間・私教預約'},{s:'19:00',e:'20:00',tag:'第一堂・新手 LV.1'},{s:'20:00',e:'21:00',tag:'第二堂・中階／燃脂'},{s:'21:00',e:'21:50',tag:'第三堂・進階 LV.3'}],
+ et:[{s:'11:00',e:'12:00'},{s:'13:30',e:'15:00'}],
+ weekday:[[cp(PV),cp(PV),cp(PV),cp(PV),cp(PV)],
+  [cp(NEWMT),cp(NEWMT),cp(NEWMT),cp(NEWMT),cp(NEWMT)],
+  [cp(MIDMT),cp(CARDIO),cp(MIDMT),cp(CARDIO),cp(MIDMT)],
+  [cp(SPAR),cp(SPAR),cp(SPAR),cp(SPAR),cp(SPAR)]],
+ weekend:[[cp(NEWMT),null],
+  [cp(SQUAD),null]]
 };
 let SCHED=null;
 function cellHTML(c,grid,r,i){
@@ -282,7 +289,7 @@ function cellHTML(c,grid,r,i){
    '<input class="f-zh" placeholder="課名（空＝停課）" value="'+esc(c.zh||'')+'">'+
    '<input class="f-en" placeholder="英文小標" value="'+esc(c.en||'')+'">'+
    '<select class="f-cat">'+CATS.map(([v,l])=>'<option value="'+v+'"'+(c.cat===v?' selected':'')+'>'+l+'</option>').join('')+'</select>'+
-   '<select class="f-lv"><option value="1"'+(c.lv!==2?' selected':'')+'>LV.1</option><option value="2"'+(c.lv===2?' selected':'')+'>LV.2</option></select>'+
+   '<select class="f-lv"><option value="1"'+(c.lv!==2&&c.lv!==3?' selected':'')+'>LV.1</option><option value="2"'+(c.lv===2?' selected':'')+'>LV.2</option><option value="3"'+(c.lv===3?' selected':'')+'>LV.3</option></select>'+
    '<input class="f-note" placeholder="一句課程說明" value="'+esc(c.note||'')+'">'+
   '</div>';
 }
