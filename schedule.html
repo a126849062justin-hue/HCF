@@ -52,7 +52,7 @@
 .ccard .lv.l2{background:#FFD400;color:#111}
 .ccard .lv.l3{background:var(--red);color:#fff}
 .ccard .lv.pv{background:#9AA0AA;color:#fff}
-.ccard .lv.sq{background:#E8A800;color:#111}
+.ccard .lv.sq{background:var(--red);color:#fff}
 .ccard .chip{width:10px;height:10px;background:var(--cat,#C81015)}
 .ccard b{font-size:.96rem;letter-spacing:.03em;line-height:1.3;display:block}
 .ccard .en{font-family:var(--en);font-size:.62rem;letter-spacing:.16em;color:var(--ink3);margin-top:2px}
@@ -148,14 +148,14 @@
     <div class="filters rv" id="filters">
       <button class="on" data-f="all">全部</button>
       <button data-f="mt">泰拳</button>
-      <button data-f="cardio">泰拳燃脂</button>
       <button data-f="private">私人教練</button>
     </div>
     <div class="legend rv">
       <span><i style="background:#C81015"></i>泰拳 MUAY THAI</span>
-      <span><i style="background:#E8A800"></i>泰拳燃脂 CARDIO</span>
       <span><i style="background:#9AA0AA"></i>私人教練 PRIVATE</span>
-      <span><i style="background:#0F9D63"></i>格鬥體能 S&amp;C</span>
+      <span><i style="background:#0F9D63"></i>LV.1 綠</span>
+      <span><i style="background:#FFD400"></i>LV.2 黃</span>
+      <span><i style="background:#C81015"></i>LV.3 紅</span>
     </div>
     <div id="grid" class="rv"></div>
 
@@ -214,7 +214,7 @@
 <script src="hcf.js"></script>
 <script>
 const BOOK='https://www.fit-book.com.tw/hsinchucombat/plan/588';
-const CATCOLOR={mt:'#C81015',cardio:'#E8A800',private:'#9AA0AA',sc:'#0F9D63',squad:'#E8A800'};
+const CATCOLOR={mt:'#C81015',private:'#9AA0AA',sc:'#0F9D63',squad:'#C81015'};
 const WD=['MON','TUE','WED','THU','FRI'],WDZ=['週一','週二','週三','週四','週五'];
 const WE=['SAT','SUN'],WEZ=['週六','週日'];
 const WT=[{s:'11:00',e:'16:00',tag:'日間・私教預約'},{s:'19:00',e:'20:00',tag:'第一堂・新手 LV.1'},{s:'20:00',e:'21:00',tag:'第二堂・中階／燃脂'},{s:'21:00',e:'21:50',tag:'第三堂・進階 LV.3'}];
@@ -223,7 +223,7 @@ const C=(cat,lv,zh,en,note)=>({cat,lv,zh,en,note});
 const PV=()=>C('private',0,'私人教練課','PRIVATE','一對一彈性預約，依目標客製內容');
 const NEW=()=>C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打');
 const MID=()=>C('mt',2,'中階泰拳','MUAY THAI','技術精修×條件對練，攻防轉換與組合技');
-const CARDIO=()=>C('cardio',1,'泰拳燃脂','CARDIO','高密度打靶循環，一堂約 600–800 大卡');
+const CARDIO=()=>C('mt',1,'泰拳燃脂','CARDIO','高密度打靶循環，一堂約 600–800 大卡');
 const SPAR=()=>C('mt',3,'自由技術對打','MUAY THAI','護具下自由對練×複盤，距離・時機・節奏');
 const WEEKDAY=[
  [PV(),PV(),PV(),PV(),PV()],

@@ -263,11 +263,11 @@ $('#saveAnn').onclick=async()=>{
 };
 
 /* ---------- 內容：課表 ---------- */
-const CATS=[['mt','泰拳(紅)'],['cardio','泰拳燃脂(黃)'],['private','私人教練(灰)'],['squad','選手班(金)'],['sc','體能(綠)']];
+const CATS=[['mt','泰拳(紅)'],['private','私人教練(灰)'],['squad','選手班(紅)'],['sc','體能(綠)']];
 const PV={cat:'private',lv:0,zh:'私人教練課',en:'PRIVATE',note:'一對一彈性預約，依目標客製內容'};
 const NEWMT={cat:'mt',lv:1,zh:'新手泰拳',en:'MUAY THAI',note:'站架步法×直拳掃踢，零基礎友善、不對打'};
 const MIDMT={cat:'mt',lv:2,zh:'中階泰拳',en:'MUAY THAI',note:'技術精修×條件對練，攻防轉換與組合技'};
-const CARDIO={cat:'cardio',lv:1,zh:'泰拳燃脂',en:'CARDIO',note:'高密度打靶循環，一堂約 600–800 大卡'};
+const CARDIO={cat:'mt',lv:1,zh:'泰拳燃脂',en:'CARDIO',note:'高密度打靶循環，一堂約 600–800 大卡'};
 const SPAR={cat:'mt',lv:3,zh:'自由技術對打',en:'MUAY THAI',note:'護具下自由對練×複盤，距離・時機・節奏'};
 const SQUAD={cat:'squad',lv:0,zh:'選手班',en:'FIGHTER SQUAD',note:'邀請制進階／備賽，總教練親自帶。技術深化・多回合對練・逐人複盤'};
 const cp=o=>o?Object.assign({},o):null;
