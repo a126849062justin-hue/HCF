@@ -11,14 +11,14 @@ var NAV='<div class="nav-in">\
 <div class="ndd"><a href="courses.html" data-p="courses" data-en="CLASS">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div></div>\
 <a href="schedule.html" data-p="sched" data-en="SCHEDULE">最新課表</a>\
 <a href="team.html" data-p="team" data-en="COACHES">教練團隊</a>\
-<a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
+<a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="partnership.html" data-p="partnership" data-en="CORPORATE">企業合作</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
 <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>\
 </nav>\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
 </div>\
 <nav class="mnav" id="mnav">\
 <a href="index.html" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>\
-<button class="msub-t" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>\
+<button class="msub-t" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="partnership.html" data-en="CORPORATE">企業合作</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>\
 <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
