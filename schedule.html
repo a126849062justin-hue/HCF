@@ -233,12 +233,12 @@ const WEEKDAY=[
 ];
 const WEEKEND=[
  [C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),null],
- [C('squad',0,'選手班','FIGHTER SQUAD','邀請制進階／備賽，總教練親自帶。技術深化・多回合對練・逐人複盤'),null],
+ [C('squad',3,'選手班','FIGHTER SQUAD','邀請制進階／備賽，總教練親自帶。技術深化・多回合對練・逐人複盤'),null],
 ];
 let f='all';
 function badge(c){
   if(c.cat==='private')return '<span class="lv pv">預約</span>';
-  if(c.cat==='squad')return '<span class="lv sq">SQUAD</span>';
+  if(c.cat==='squad')return '<span class="lv l3">LV.3</span>';
   return `<span class="lv${c.lv===3?' l3':c.lv===2?' l2':''}">LV.${c.lv}</span>`;
 }
 function card(c){
