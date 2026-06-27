@@ -116,6 +116,8 @@ a{color:inherit;text-decoration:none}
 .mcta .m1{background:var(--red);color:#fff}
 .mcta .m2{background:var(--carbon);color:#fff}
 @media(max-width:880px){.mcta{display:grid}body{padding-bottom:54px}.shark{bottom:72px}.chatbox{bottom:142px}}
+/* 行動/平板：隱藏左側固定問卷直標籤，避免蓋住主視覺文字（問卷入口改放手機選單） */
+@media(max-width:920px){.svtab{display:none!important}}
 .totop{position:fixed;z-index:260;left:18px;bottom:22px;width:44px;height:44px;border:1.5px solid var(--ink);background:rgba(255,255,255,.9);color:var(--ink);font-family:var(--en);cursor:pointer;opacity:0;pointer-events:none;transition:.3s}
 .totop.on{opacity:1;pointer-events:auto}
 .totop:hover{background:var(--red);border-color:var(--red);color:#fff}

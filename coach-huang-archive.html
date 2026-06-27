@@ -844,7 +844,7 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
 (function(){
   if(document.body.dataset.page==='survey'||document.querySelector('.svtab'))return;
   var st=document.createElement('style');
-  st.textContent=".svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.9rem;line-height:1.55;text-align:center;padding:12px 9px;width:max-content;border-radius:0 12px 12px 0;box-shadow:6px 0 18px rgba(200,16,21,.35);transition:.25s}.svtab:hover{background:#9B0B0F;padding-left:13px}.svtab em{font-style:normal;display:block;margin-bottom:2px}.svtab b{display:block;font-family:inherit}@media(max-width:680px){.svtab{font-size:.78rem;padding:10px 7px;line-height:1.45}}";
+  st.textContent=".svtab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;background:#C81015;color:#fff;text-decoration:none;font-weight:900;font-size:.9rem;line-height:1.55;text-align:center;padding:12px 9px;width:max-content;border-radius:0 12px 12px 0;box-shadow:6px 0 18px rgba(200,16,21,.35);transition:.25s}.svtab:hover{background:#9B0B0F;padding-left:13px}.svtab em{font-style:normal;display:block;margin-bottom:2px}.svtab b{display:block;font-family:inherit}@media(max-width:920px){.svtab{display:none!important}}@media(max-width:680px){.svtab{font-size:.78rem;padding:10px 7px;line-height:1.45}}";
   document.head.appendChild(st);
   var a=document.createElement('a');
   a.className='svtab';a.href='survey.html';

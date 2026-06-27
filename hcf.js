@@ -18,7 +18,7 @@ var NAV='<div class="nav-in">\
 </div>\
 <nav class="mnav" id="mnav">\
 <a href="index.html">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>\
-<button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a>\
+<button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a><a href="survey.html">🎯 30 秒測你的命定課</a>\
 <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
