@@ -72,7 +72,7 @@
     else if(h.indexOf('facebook.com')>-1)hcfTrack('social_click',{platform:'fb'});
     else if(h.indexOf('youtube.com')>-1)hcfTrack('social_click',{platform:'yt'});
     else if(h.indexOf('tel:')===0)hcfTrack('cta_phone');
-    else if(el.classList&&el.classList.contains('svtab'))hcfTrack('survey_tab_click');
+    else if(el.classList&&el.classList.contains('svtab'))hcfTrack(el.classList.contains('voice')?'voice_tab_click':'survey_tab_click');
     else if(h.indexOf('survey.html')>-1)hcfTrack('nav_survey');
     else if(h.indexOf('schedule.html')>-1)hcfTrack('nav_schedule');
     else if(h.indexOf('group-classes.html')>-1)hcfTrack('nav_group');
@@ -91,4 +91,27 @@
     if(!d50&&p>.5){d50=true;hcfTrack('scroll_50');}
     if(!d90&&p>.9){d90=true;hcfTrack('scroll_90');}
   },{passive:true});
+})();
+
+/* ===== 左側「說真話」館長信箱側標（與問卷側標堆疊） ===== */
+(function(){
+  if(document.body.dataset.page==='survey')return; // 問卷/投訴頁本身不顯示
+  function place(){
+    var sv=document.querySelector('.svtab');
+    if(!sv||document.querySelector('.svtab.voice'))return true;
+    var st=document.createElement('style');
+    st.textContent='.vtab-wrap{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:flex-start}'
+      +'.vtab-wrap .svtab{position:static!important;top:auto!important;transform:none!important;margin:0!important}'
+      +'.svtab.voice{background:#111;box-shadow:6px 0 18px rgba(0,0,0,.4)}.svtab.voice:hover{background:#000}'
+      +'@media(max-width:920px){.vtab-wrap{display:none!important}}';
+    document.head.appendChild(st);
+    var wrap=document.createElement('div');wrap.className='vtab-wrap';
+    sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);
+    var v=document.createElement('a');v.className='svtab voice';v.href='complaint.html';
+    v.setAttribute('aria-label','館長信箱 說真話');
+    v.innerHTML='<b>🗣</b><b>說</b><b>真</b><b>話</b>';
+    wrap.appendChild(v);
+    return true;
+  }
+  if(!place()){var n=0,t=setInterval(function(){if(place()||++n>20)clearInterval(t);},150);}
 })();

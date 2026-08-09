@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>體驗課後回饋｜30 秒告訴我們，換你的專屬回歸方案｜HCF 新竹格鬥</title>
+<meta name="description" content="上完 HCF $400 體驗課還在考慮？花 30 秒告訴我們你的顧慮，馬上收到專屬回歸方案——彈性次卡、雙人同行、首月優惠，問卷限定。">
+<link rel="canonical" href="https://www.hsinchucombat.com/survey-trial-followup.html">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#C81015">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HCF 新竹格鬥">
+<meta property="og:title" content="體驗課後回饋｜換你的專屬回歸方案｜HCF 新竹格鬥">
+<meta property="og:description" content="花 30 秒告訴我們你的顧慮，馬上收到專屬回歸方案。">
+<meta property="og:url" content="https://www.hsinchucombat.com/survey-trial-followup.html">
+<meta property="og:image" content="https://www.hsinchucombat.com/hero1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hcf.css">
+<style>
+.quiz{padding:42px 0 90px}
+.quiz .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.intro{background:var(--surface,#F7F7F7);border-left:6px solid var(--red);padding:20px 24px;margin-bottom:22px;line-height:1.9}
+.intro b{color:var(--red)}
+.qcard{background:#fff;box-shadow:0 14px 36px rgba(17,17,17,.08);border-left:6px solid var(--red);padding:24px 26px;margin-bottom:18px}
+.qcard h3{font-family:var(--serif);font-weight:900;font-size:1.12rem;line-height:1.6;display:flex;gap:10px}
+.qcard h3 .qn{font-family:var(--en);color:var(--red);flex:0 0 auto}
+.qcard .note{font-size:.8rem;color:var(--ink3,#8A8A8A);margin-top:2px;font-weight:500}
+.opts{margin-top:14px;display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;gap:10px;align-items:flex-start;background:var(--surface,#F7F7F7);padding:11px 14px;cursor:pointer;transition:.2s;line-height:1.6}
+.opt:hover{background:#F0E3E3}
+.opt input{accent-color:var(--red);margin-top:5px;flex:0 0 auto;width:16px;height:16px}
+.opt span b{color:var(--red)}
+.scale{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.scale label{flex:1;min-width:88px;text-align:center;background:var(--surface,#F7F7F7);padding:12px 8px;cursor:pointer;transition:.2s;line-height:1.4;font-size:.9rem}
+.scale label:hover{background:#F0E3E3}
+.scale input{accent-color:var(--red);display:block;margin:0 auto 6px}
+.scale b{display:block;font-family:var(--en);color:var(--red);font-size:1.2rem}
+.qfree input[type=text],.qfree textarea{width:100%;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans);line-height:1.7}
+.gift{background:var(--carbon,#111);color:#fff;padding:28px;margin:30px 0 18px;position:relative;overflow:hidden}
+.gift::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.gift>*{position:relative}
+.gift h3{font-family:var(--serif);font-weight:900;font-size:1.3rem}
+.gift p{margin-top:10px;line-height:1.9;color:#ddd}
+.gift .up{margin-top:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
+.gift .star{color:#fff;background:var(--red);display:inline-block;padding:6px 12px;font-weight:900;margin-top:8px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.fields label{display:block;font-weight:700;font-size:.9rem}
+.fields input[type=text]{width:100%;margin-top:6px;border:1.5px solid var(--line,#E5E5E5);padding:12px 14px;font-size:1rem;font-family:var(--sans)}
+.agree{margin-top:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.agree input{accent-color:var(--red);margin-top:4px}
+.qsubmit{margin-top:22px;display:block;width:100%;background:var(--red);color:#fff;border:0;font-family:var(--sans);font-weight:900;font-size:1.1rem;letter-spacing:.08em;padding:17px;cursor:pointer;transition:.25s;box-shadow:0 10px 26px rgba(200,16,21,.3)}
+.qsubmit:hover{background:var(--redD,#9B0B0F);transform:translateY(-2px)}
+.qhint{text-align:center;color:var(--ink3,#8A8A8A);font-size:.8rem;margin-top:12px}
+.done{display:none}.done.on{display:block}.form-area.off{display:none}
+.done .ok{background:#fff;border-top:6px solid var(--red);box-shadow:0 14px 36px rgba(17,17,17,.08);padding:30px;text-align:center}
+.done .ok h2{font-family:var(--serif);font-weight:900;font-size:1.6rem}
+.done .ok p{margin-top:10px;color:var(--ink2,#4A4A4A);line-height:1.9}
+.heard{margin-top:22px;display:grid;gap:10px;text-align:left}
+.heard .h{background:var(--surface,#F7F7F7);padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.heard .q{font-family:var(--en);font-weight:700;color:var(--red);flex:0 0 auto;font-size:.95rem;padding-top:2px}
+.heard b{display:block}.heard small{color:var(--ink2,#4A4A4A)}
+.done .btns{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.done .btns a{text-decoration:none;font-weight:900;padding:14px 26px}
+.done .btns .b1{background:var(--red);color:#fff}
+.done .btns .b2{border:2px solid var(--carbon,#111);color:var(--carbon,#111)}
+.done .socials{margin-top:26px;border-top:1px solid var(--line,#E5E5E5);padding-top:22px}
+.done .socials h4{font-family:var(--serif);font-weight:900;font-size:1.05rem;text-align:center}
+.done .slist{margin-top:14px;display:grid;gap:8px}
+.done .slist a{display:flex;align-items:center;gap:12px;background:var(--surface,#F7F7F7);padding:12px 14px;text-decoration:none;color:var(--carbon,#111);font-weight:700;line-height:1.5;transition:.2s}
+.done .slist a:hover{background:#F0E3E3;transform:translateX(4px)}
+.done .slist .tag{flex:0 0 auto;font-family:var(--en);font-weight:700;font-size:.75rem;letter-spacing:.06em;background:var(--carbon,#111);color:#fff;padding:4px 8px}
+.done .slist a:hover .tag{background:var(--red)}
+@media(max-width:640px){.fields{grid-template-columns:1fr}.opts.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="survey">
+<header class="nav" id="nav"></header>
+
+<section class="phero">
+  <div class="phero-ghost">COMEBACK</div>
+  <div class="phero-in">
+    <div class="kicker">AFTER TRIAL / 體驗後回饋</div>
+    <h1>體驗課後，想聽你的<i>真心話</i></h1>
+    <p>HCF 新竹格鬥｜30 秒，幫我們變更好——也給你一個回來的理由</p>
+  </div>
+</section>
+
+<div class="seamA">
+  <div class="wedge"></div>
+  <div class="ribbon"><div class="ribbon-track"></div></div></div>
+
+<section class="quiz">
+  <div class="wrap">
+
+    <!-- 送出後 -->
+    <div class="done" id="doneView">
+      <div class="ok">
+        <h2>收到了，謝謝你的真心話 🙏</h2>
+        <p>你的回饋我們會認真看。<br>依你的顧慮整理的<b>專屬回歸方案</b>，會透過 LINE／電話傳給你。</p>
+        <div class="heard">
+          <div class="h"><span class="q">太貴／怕綁約</span><div><b>我們有彈性次卡與分期</b><small>不用一次綁一年，先用次卡照自己節奏練。</small></div></div>
+          <div class="h"><span class="q">沒時間</span><div><b>早、中、晚＋週末都有班</b><small>可幫你固定一個最順的小班時段。</small></div></div>
+          <div class="h"><span class="q">怕跟不上／受傷</span><div><b>分級教學、教練全程盯</b><small>從零教起，$400 體驗課就是設計給沒底子的人。</small></div></div>
+          <div class="h"><span class="q">沒人一起</span><div><b>雙人同行價、揪團折扣</b><small>帶朋友或另一半，一起更便宜也更持久。</small></div></div>
+        </div>
+        <div class="btns">
+          <a class="b1" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加 LINE 領回歸方案</a>
+          <a class="b2" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">直接預約回歸體驗</a>
+        </div>
+        <div class="socials">
+          <h4>加入 HCF 社群 不錯過開班與優惠 🦈</h4>
+          <div class="slist">
+            <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><span class="tag">LINE</span>領取專屬優惠｜官方 LINE</a>
+            <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener"><span class="tag">IG</span>最新消息｜@hc.combat2022</a>
+            <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener"><span class="tag">FB</span>賽事公告 &amp; 訓練紀錄</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-area" id="surveyForm" action="https://formsubmit.co/hsinchucombat2022@gmail.com" method="POST" target="fs_sink">
+      <input type="hidden" name="_subject" value="HCF 問卷│體驗後未購買回饋 新回覆">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.hsinchucombat.com/survey-trial-followup.html?done=1">
+      <input type="hidden" name="來源" value="體驗後回饋問卷">
+
+      <div class="intro">先謝謝你來上過體驗課 🥊 這份問卷<b>不是推銷</b>，是想知道「為什麼還沒開始」——你的一句話，會直接決定我們怎麼幫你。填完馬上收到<b>依你顧慮量身的回歸方案</b>。</div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q1</span>上完體驗課，整體感受是？</h3>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="Q1 整體感受" value="A 超喜歡，只是還沒行動" required><span><b>A.</b> 超喜歡，只是還沒行動</span></label>
+          <label class="opt"><input type="radio" name="Q1 整體感受" value="B 不錯，但有些顧慮"><span><b>B.</b> 不錯，但有些顧慮</span></label>
+          <label class="opt"><input type="radio" name="Q1 整體感受" value="C 普通，沒特別感覺"><span><b>C.</b> 普通，沒特別感覺</span></label>
+          <label class="opt"><input type="radio" name="Q1 整體感受" value="D 覺得不太適合我"><span><b>D.</b> 覺得不太適合我</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q2</span>最主要「還沒報名」的原因是？</h3>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="A 價格/預算" required><span><b>A.</b> 價格／預算</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="B 時間喬不定"><span><b>B.</b> 時間喬不定</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="C 距離/交通"><span><b>C.</b> 距離／交通</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="D 怕跟不上·怕受傷"><span><b>D.</b> 怕跟不上・怕受傷</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="E 還在比較其他館"><span><b>E.</b> 還在比較其他館</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="F 要跟家人/另一半討論"><span><b>F.</b> 要跟家人／另一半討論</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="G 課程或教練不是我要的"><span><b>G.</b> 課程或教練不是我要的</span></label>
+          <label class="opt"><input type="radio" name="Q2 還沒報名主因" value="H 還在考慮，沒特別原因"><span><b>H.</b> 還在考慮，沒特別原因</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q3</span>更具體一點，你的顧慮是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="月費超預算"><span>月費超預算</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="不想綁約"><span>不想綁約</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="時段不合"><span>時段不合</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="通勤太遠"><span>通勤太遠</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="強度太高太累"><span>強度太高太累</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="怕受傷"><span>怕受傷</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="沒人一起練"><span>沒人一起練</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="想要一對一"><span>想要一對一</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="想先看到效果"><span>想先看到效果</span></label>
+          <label class="opt"><input type="checkbox" name="Q3 顧慮細節[]" value="其他館更便宜"><span>其他館更便宜</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q4</span>體驗當天，最<b style="color:var(--red)">打中你</b>的是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="教練教學"><span>教練教學</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="流汗超爽"><span>流汗超爽</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="環境氛圍"><span>環境氛圍</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="學員很友善"><span>學員很友善</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="打靶手感"><span>打靶手感</span></label>
+          <label class="opt"><input type="checkbox" name="Q4 最打中你[]" value="看到自己的潛力"><span>看到自己的潛力</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q5</span>怎樣的方案，會讓你<b style="color:var(--red)">想回來</b>？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="首月優惠/分期"><span>首月優惠／分期</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="彈性次卡(不綁月)"><span>彈性次卡（不綁月）</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="固定小班時段"><span>固定小班時段</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="雙人同行價"><span>雙人同行價</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="一對一體驗"><span>一對一體驗</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="先給我完整課表+價目"><span>先給我完整課表＋價目</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="揪團折扣"><span>揪團折扣</span></label>
+          <label class="opt"><input type="checkbox" name="Q5 想回來的方案[]" value="看到學員成效見證"><span>看到學員成效見證</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q6</span>如果上面的顧慮被解決，你有多可能回來？</h3>
+        <div class="scale">
+          <label><input type="radio" name="Q6 回來可能性" value="5 非常可能" required><b>5</b>非常可能</label>
+          <label><input type="radio" name="Q6 回來可能性" value="4 蠻可能"><b>4</b>蠻可能</label>
+          <label><input type="radio" name="Q6 回來可能性" value="3 說不定"><b>3</b>說不定</label>
+          <label><input type="radio" name="Q6 回來可能性" value="2 不太可能"><b>2</b>不太可能</label>
+          <label><input type="radio" name="Q6 回來可能性" value="1 應該不會"><b>1</b>應該不會</label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q7</span>你的「黃金有空時段」是？<span class="note">（可複選）</span></h3>
+        <div class="opts two">
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="平日早上"><span>平日早上</span></label>
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="平日中午"><span>平日中午</span></label>
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="平日晚上"><span>平日晚上</span></label>
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="週六"><span>週六</span></label>
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="週日"><span>週日</span></label>
+          <label class="opt"><input type="checkbox" name="Q7 黃金時段[]" value="都可以"><span>都可以</span></label>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <h3><span class="qn">Q8</span>每個月可接受的訓練預算？</h3>
+        <div class="opts two">
+          <label class="opt"><input type="radio" name="Q8 每月預算" value="A $2,000 內" required><span><b>A.</b> $2,000 內</span></label>
+          <label class="opt"><input type="radio" name="Q8 每月預算" value="B $2,000–4,000"><span><b>B.</b> $2,000–4,000</span></label>
+          <label class="opt"><input type="radio" name="Q8 每月預算" value="C $4,000–6,000"><span><b>C.</b> $4,000–6,000</span></label>
+          <label class="opt"><input type="radio" name="Q8 每月預算" value="D 值得的話不設限"><span><b>D.</b> 值得的話不設限</span></label>
+        </div>
+      </div>
+
+      <div class="qcard qfree">
+        <h3><span class="qn">Q9</span>一句話——我們可以怎麼做，讓你<b style="color:var(--red)">願意回來</b>？</h3>
+        <p class="note">最真實的一句，對我們最有幫助（也最可能換到專屬優惠）</p>
+        <div style="margin-top:12px"><textarea name="Q9 一句真心話" rows="3" placeholder="例如：如果有不綁約的次卡、晚上 8 點後的班，我就回去。"></textarea></div>
+      </div>
+
+      <div class="gift">
+        <h3>你的專屬回歸方案 🎁</h3>
+        <p>留下 LINE 或電話，我們依你上面的顧慮，整理一份<b style="color:#fff">量身回歸方案</b>給你——不是罐頭報價。</p>
+        <div class="up">
+          <h3>問卷限定 🎁</h3>
+          <p>填完並留 LINE，加碼——</p>
+          <div class="star">✦ 回歸再送 1 堂體驗（問卷限定・限量 30 名）✦</div>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <div class="fields">
+          <label>姓名<input type="text" name="姓名" required placeholder="怎麼稱呼你"></label>
+          <label>LINE／電話<input type="text" name="LINE或電話" required placeholder="回歸方案傳送用"></label>
+        </div>
+        <label class="agree"><input type="checkbox" name="願意收到回歸方案與開班通知" value="願意收到回歸方案與開班通知"><span>我願意收到專屬回歸方案與開班／優惠通知</span></label>
+      </div>
+
+      <button class="qsubmit" type="submit">送出 領專屬回歸方案 🎁</button>
+      <p class="qhint">送出即同意 HCF 以上述聯絡方式傳送回歸方案與課程資訊</p>
+    </form>
+
+  </div>
+</section>
+
+<div class="seamC"><div class="wedge dot"></div></div>
+<section class="finale" id="finale"></section>
+
+<iframe name="fs_sink" style="display:none" title="form-sink"></iframe>
+<script src="hcf.js"></script>
+<script>
+(function(){
+  var form=document.getElementById('surveyForm');
+  var done=document.getElementById('doneView');
+  function showDone(){
+    done.classList.add('on');
+    form.classList.add('off');
+    var ph=document.querySelector('.phero p'); if(ph)ph.textContent='謝謝你的真心話 回歸方案在下方';
+    var top=document.querySelector('.quiz'); if(top)top.scrollIntoView({behavior:'smooth'});
+  }
+  if(new URLSearchParams(location.search).get('done')==='1'){ showDone(); }
+  var next=form.querySelector('input[name="_next"]');
+  if(next && /^https?:$/.test(location.protocol)){ next.value=location.origin+location.pathname+'?done=1'; }
+  form.addEventListener('submit',function(){
+    if(window.hcfTrack)hcfTrack('survey_followup_submit');
+    if(window.HCF_BACKEND){
+      try{
+        var fd=new FormData(form),payload={};
+        fd.forEach(function(v,k){if(k.charAt(0)!=='_')payload[k]=payload[k]?payload[k]+'、'+v:v;});
+        fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,
+          body:JSON.stringify({name:payload['姓名']||'',contact:payload['LINE或電話']||'',source:'trial-followup',payload:payload})});
+      }catch(e){}
+    }
+    setTimeout(showDone,150);
+  });
+})();
+</script>
+<script src="hcf-analytics.js" defer></script>
+</body>
+</html>
