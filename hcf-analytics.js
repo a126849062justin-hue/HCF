@@ -115,3 +115,28 @@
   }
   if(!place()){var n=0,t=setInterval(function(){if(place()||++n>20)clearInterval(t);},150);}
 })();
+
+/* ===== 頁尾快速連結 & 手機選單 加入「館長信箱」入口 ===== */
+(function(){
+  var HREF='complaint.html';
+  function inject(){
+    var doneM=false,doneF=false;
+    var mnav=document.getElementById('mnav');
+    if(mnav){
+      if(!mnav.querySelector('a[href="'+HREF+'"]')){
+        var am=document.createElement('a');am.href=HREF;am.textContent='🗣 說真話・館長信箱';mnav.appendChild(am);
+      }
+      doneM=true;
+    }
+    var h5s=document.getElementsByTagName('h5'),box=null,i;
+    for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
+    if(box){
+      if(!box.querySelector('a[href="'+HREF+'"]')){
+        var af=document.createElement('a');af.href=HREF;af.textContent='意見反應・館長信箱';box.appendChild(af);
+      }
+      doneF=true;
+    }
+    return doneM&&doneF;
+  }
+  if(!inject()){var n=0,t=setInterval(function(){if(inject()||++n>25)clearInterval(t);},150);}
+})();
