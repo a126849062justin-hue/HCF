@@ -93,7 +93,7 @@
   },{passive:true});
 })();
 
-/* ===== 左側「說真話」館長信箱側標（與問卷側標堆疊） ===== */
+/* ===== 左側「說真話」老闆信箱側標（與問卷側標堆疊） ===== */
 (function(){
   if(document.body.dataset.page==='survey')return; // 問卷/投訴頁本身不顯示
   function place(){
@@ -108,15 +108,15 @@
     var wrap=document.createElement('div');wrap.className='vtab-wrap';
     sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);
     var v=document.createElement('a');v.className='svtab voice';v.href='complaint.html';
-    v.setAttribute('aria-label','館長信箱 說真話');
-    v.innerHTML='<b>🗣</b><b>說</b><b>真</b><b>話</b>';
+    v.setAttribute('aria-label','老闆我要投訴');
+    v.innerHTML='<b>老</b><b>闆</b><b>我</b><b>要</b><b>投</b><b>訴</b>';
     wrap.appendChild(v);
     return true;
   }
   if(!place()){var n=0,t=setInterval(function(){if(place()||++n>20)clearInterval(t);},150);}
 })();
 
-/* ===== 頁尾快速連結 & 手機選單 加入「館長信箱」入口 ===== */
+/* ===== 頁尾快速連結 & 手機選單 加入「老闆信箱」入口 ===== */
 (function(){
   var HREF='complaint.html';
   function inject(){
@@ -124,7 +124,7 @@
     var mnav=document.getElementById('mnav');
     if(mnav){
       if(!mnav.querySelector('a[href="'+HREF+'"]')){
-        var am=document.createElement('a');am.href=HREF;am.textContent='🗣 說真話・館長信箱';mnav.appendChild(am);
+        var am=document.createElement('a');am.href=HREF;am.textContent='老闆我要投訴';mnav.appendChild(am);
       }
       doneM=true;
     }
@@ -132,7 +132,7 @@
     for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
     if(box){
       if(!box.querySelector('a[href="'+HREF+'"]')){
-        var af=document.createElement('a');af.href=HREF;af.textContent='意見反應・館長信箱';box.appendChild(af);
+        var af=document.createElement('a');af.href=HREF;af.textContent='老闆我要投訴';box.appendChild(af);
       }
       doneF=true;
     }
