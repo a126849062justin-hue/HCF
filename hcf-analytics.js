@@ -72,7 +72,7 @@
     else if(h.indexOf('facebook.com')>-1)hcfTrack('social_click',{platform:'fb'});
     else if(h.indexOf('youtube.com')>-1)hcfTrack('social_click',{platform:'yt'});
     else if(h.indexOf('tel:')===0)hcfTrack('cta_phone');
-    else if(el.classList&&el.classList.contains('svtab'))hcfTrack('survey_tab_click');
+    else if(el.classList&&el.classList.contains('svtab'))hcfTrack(el.classList.contains('voice')?'voice_tab_click':'survey_tab_click');
     else if(h.indexOf('survey.html')>-1)hcfTrack('nav_survey');
     else if(h.indexOf('schedule.html')>-1)hcfTrack('nav_schedule');
     else if(h.indexOf('group-classes.html')>-1)hcfTrack('nav_group');
@@ -91,4 +91,52 @@
     if(!d50&&p>.5){d50=true;hcfTrack('scroll_50');}
     if(!d90&&p>.9){d90=true;hcfTrack('scroll_90');}
   },{passive:true});
+})();
+
+/* ===== 左側「說真話」老闆信箱側標（與問卷側標堆疊） ===== */
+(function(){
+  if(document.body.dataset.page==='survey')return; // 問卷/投訴頁本身不顯示
+  function place(){
+    var sv=document.querySelector('.svtab');
+    if(!sv||document.querySelector('.svtab.voice'))return true;
+    var st=document.createElement('style');
+    st.textContent='.vtab-wrap{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:flex-start}'
+      +'.vtab-wrap .svtab{position:static!important;top:auto!important;transform:none!important;margin:0!important}'
+      +'.svtab.voice{background:#111;box-shadow:6px 0 18px rgba(0,0,0,.4)}.svtab.voice:hover{background:#000}'
+      +'@media(max-width:920px){.vtab-wrap{display:none!important}}';
+    document.head.appendChild(st);
+    var wrap=document.createElement('div');wrap.className='vtab-wrap';
+    sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);
+    var v=document.createElement('a');v.className='svtab voice';v.href='complaint.html';
+    v.setAttribute('aria-label','老闆我要投訴');
+    v.innerHTML='<b>老</b><b>闆</b><b>我</b><b>要</b><b>投</b><b>訴</b>';
+    wrap.appendChild(v);
+    return true;
+  }
+  if(!place()){var n=0,t=setInterval(function(){if(place()||++n>20)clearInterval(t);},150);}
+})();
+
+/* ===== 頁尾快速連結 & 手機選單 加入「老闆信箱」入口 ===== */
+(function(){
+  var HREF='complaint.html';
+  function inject(){
+    var doneM=false,doneF=false;
+    var mnav=document.getElementById('mnav');
+    if(mnav){
+      if(!mnav.querySelector('a[href="'+HREF+'"]')){
+        var am=document.createElement('a');am.href=HREF;am.textContent='老闆我要投訴';mnav.appendChild(am);
+      }
+      doneM=true;
+    }
+    var h5s=document.getElementsByTagName('h5'),box=null,i;
+    for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
+    if(box){
+      if(!box.querySelector('a[href="'+HREF+'"]')){
+        var af=document.createElement('a');af.href=HREF;af.textContent='老闆我要投訴';box.appendChild(af);
+      }
+      doneF=true;
+    }
+    return doneM&&doneF;
+  }
+  if(!inject()){var n=0,t=setInterval(function(){if(inject()||++n>25)clearInterval(t);},150);}
 })();
