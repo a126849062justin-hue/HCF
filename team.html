@@ -49,6 +49,52 @@
   .cphoto{max-width:420px}
   .cghost{top:-8px;font-size:clamp(2.6rem,14vw,4rem)}
 }
+
+.cbtn.card-link{background:#fff;color:var(--carbon);border:1.5px solid var(--carbon);margin-left:8px}
+.cbtn.card-link:hover{background:var(--carbon);color:#fff}
+article.coach .cbtn{display:inline-block}
+
+.cardlink{display:inline-block;margin-top:12px;border:1.5px solid var(--carbon);color:var(--carbon);font-weight:700;font-size:.84rem;padding:9px 18px;transition:.22s}
+.cardlink:hover{background:var(--carbon);color:#fff}
+
+/* ===== 鉑金閃卡 ===== */
+.pcard{perspective:1200px;cursor:pointer;--rx:0deg;--ry:0deg;--mx:50%;--my:50%;overflow:visible!important;background:none!important;display:block;aspect-ratio:3/3.7}
+.pc-front .nick{left:14px;top:auto;bottom:48px}
+.pc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.85,.25,1);transform:rotateX(var(--rx)) rotateY(var(--ry))}
+.pcard.flip .pc-inner{transform:rotateY(180deg)}
+.pc-front,.pc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;
+  padding:9px;background:conic-gradient(from 210deg,#d9dde3,#8d949e 18%,#f4f6f8 32%,#a7adb6 52%,#e8ebef 68%,#878e98 84%,#d9dde3);
+  box-shadow:0 22px 54px rgba(17,17,17,.35)}
+.pcard.legend .pc-front,.pcard.legend .pc-back{background:conic-gradient(from 210deg,#f5d77a,#9a7a26 18%,#ffefb8 34%,#b8923a 52%,#f8e29a 68%,#8a6c1e 84%,#f5d77a)}
+.pc-front img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
+.pc-back{transform:rotateY(180deg)}
+.holo{position:absolute;inset:9px;border-radius:8px;pointer-events:none;mix-blend-mode:color-dodge;opacity:.6;
+  background:linear-gradient(115deg,transparent 22%,rgba(255,70,190,.5) 38%,rgba(70,255,225,.45) 50%,rgba(255,215,80,.45) 62%,transparent 78%);
+  background-size:260% 260%;background-position:var(--mx) var(--my)}
+.glare{position:absolute;inset:9px;border-radius:8px;pointer-events:none;mix-blend-mode:overlay;
+  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.5),transparent 46%)}
+@media(hover:none){.holo{animation:holoIdle 5.5s ease-in-out infinite alternate}}
+@keyframes holoIdle{from{background-position:18% 30%}to{background-position:82% 70%}}
+.pc-rar{position:absolute;top:18px;left:18px;font-family:var(--en,Oswald);font-size:.62rem;letter-spacing:.3em;font-weight:700;color:#111;background:rgba(255,255,255,.88);padding:4px 10px;border-radius:3px}
+.pcard.legend .pc-rar{background:#111;color:#F5D77A}
+.pc-no{position:absolute;top:20px;right:18px;font-family:var(--en,Oswald);font-size:.66rem;letter-spacing:.14em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.pc-hint{position:absolute;bottom:14px;right:16px;font-size:.68rem;color:#fff;background:rgba(17,17,17,.6);padding:4px 10px;border-radius:999px;backdrop-filter:blur(3px)}
+.pc-back .pc-hint.b{color:#bbb;background:rgba(255,255,255,.08)}
+.pc-back>b,.pc-back>i,.pc-back>img,.pc-back>span{position:relative}
+.pc-back{display:flex}
+.pc-back::before{content:"";position:absolute;inset:9px;border-radius:8px;background:#101012 radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:16px 16px}
+.pc-back{flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
+.pc-back b{font-family:var(--serif,'Noto Serif TC');font-weight:900;font-size:1.5rem;color:#fff}
+.pc-en{font-style:normal;font-family:var(--en,Oswald);font-size:.62rem;letter-spacing:.26em;color:#9a9a9a}
+.pc-qr{width:42%;max-width:150px;border-radius:8px;border:5px solid #fff}
+.pc-scan{font-size:.74rem;color:#bbb}
+.pc-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:0 14px}
+.pc-acts a,.pc-acts button{font-family:inherit;font-size:.76rem;font-weight:700;padding:8px 13px;border-radius:999px;border:0;cursor:pointer;color:#fff!important}
+.pc-acts a:nth-child(1){background:#06C755}
+.pc-acts a:nth-child(2){background:var(--red,#C81015)}
+.pc-acts .pc-share{background:#fff;color:#111!important;border:0;box-shadow:0 3px 12px rgba(0,0,0,.45);font-weight:900}
+.pcard.spot{animation:spotPulse 1.6s ease-out 2}
+@keyframes spotPulse{0%{box-shadow:0 0 0 0 rgba(245,215,122,.85)}100%{box-shadow:0 0 0 26px rgba(245,215,122,0)}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/team.html">
 <meta name="theme-color" content="#C81015">
@@ -58,19 +104,36 @@
 <meta property="og:title" content="教練團隊｜HCF 新竹格鬥">
 <meta property="og:description" content="HCF 新竹格鬥教練團隊：總教練黃謙和（42 勝）領軍，每一位教練都是現役選手——竹科戰神 Allen、重型坦克鄭豫、逆襲狂人高大可、臨火無懼胡脩誠、重生女鬥士小米。">
 <meta property="og:url" content="https://www.hsinchucombat.com/team.html">
-<meta property="og:image" content="https://www.hsinchucombat.com/coach_huang.jpg">
+<meta property="og:image" content="https://www.hsinchucombat.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="教練團隊｜HCF 新竹格鬥">
 <meta name="twitter:description" content="HCF 新竹格鬥教練團隊：總教練黃謙和（42 勝）領軍，每一位教練都是現役選手——竹科戰神 Allen、重型坦克鄭豫、逆襲狂人高大可、臨火無懼胡脩誠、重生女鬥士小米。">
-<meta name="twitter:image" content="https://www.hsinchucombat.com/coach_huang.jpg">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/og-cover.jpg">
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/team.html", "url": "https://www.hsinchucombat.com/team.html", "name": "教練團隊｜HCF 新竹格鬥", "description": "HCF 新竹格鬥教練團隊：總教練黃謙和（42 勝）領軍，每一位教練都是現役選手——竹科戰神 Allen、重型坦克鄭豫、逆襲狂人高大可、臨火無懼胡脩誠、重生女鬥士小米。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "教練團隊", "item": "https://www.hsinchucombat.com/team.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
+
+<style id="hcf-mobile-fix">/* MOBILE-FIX */
+.pc-front,.pc-back{transition:opacity 0s linear .4s}
+.pcard.flip .pc-front{opacity:0}
+.pcard:not(.flip) .pc-back{opacity:0}
+@media(max-width:560px){
+  .pc-back{gap:7px}
+  .pc-back b{font-size:1.25rem}
+  .pc-qr{width:36%;max-width:118px}
+  .pc-scan{font-size:.66rem}
+  .pc-acts{gap:6px;padding:0 8px}
+  .pc-acts a,.pc-acts button{font-size:.72rem;padding:7px 11px}
+}
+</style>
 </head>
 <body data-page="team">
 <header class="nav" id="nav"></header>
 
 <section class="phero">
-  <div class="bgimg"><img src="hero2.jpg" alt="HCF 教練團隊"></div>
+  <div class="bgimg"><picture><source srcset="hero2.webp" type="image/webp"><img src="hero2.jpg" alt="HCF 教練團隊"></picture></div>
   <div class="phero-ghost">COACHES</div>
   <div class="phero-in">
     <div class="kicker">COACHING STAFF</div>
@@ -89,9 +152,28 @@
 
     <!-- 黃謙和 -->
     <article class="coach head rv">
-      <div class="cphoto">
-        <img src="coach_huang.jpg" alt="總教練 黃謙和" loading="lazy" decoding="async">
-        <div class="nick">「格鬥鋼鐵人」</div>
+      <div class="cphoto pcard legend" id="card-huang" data-coach="huang">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_huang.webp" type="image/webp"><img src="coach_huang.jpg" alt="教練 黃謙和 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">LEGENDARY</span>
+            <span class="pc-no">HCF-001</span>
+            <div class="nick">「格鬥鋼鐵人」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>黃謙和</b><i class="pc-en">HUANG CHIEN-HO · LEGENDARY CARD</i>
+            <img class="pc-qr" src="qr_huang.png" alt="黃謙和 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="黃謙和">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
       </div>
       <div class="cbody">
         <div class="cghost">IRON MAN</div>
@@ -111,120 +193,34 @@
           <span>全國冠軍等級接腿摔技</span>
           <span>MAX FC 越南站冠軍 · WOTD 雙料優勝</span>
         </div>
-        <a class="cbtn" href="coach-huang.html">完整戰歷 · 總教練專頁 →</a>
-      </div>
-    </article>
-
-    <!-- 高大可 -->
-    <article class="coach flip rv">
-      <div class="cphoto">
-        <img src="coach_kao.jpg" alt="教練 高大可" loading="lazy" decoding="async">
-        <div class="nick">「逆襲狂人」</div>
-      </div>
-      <div class="cbody">
-        <div class="cghost">MUAY THAI</div>
-        <div class="role">MUAY THAI / 泰拳</div>
-        <h2>高大可</h2>
-        <div class="cquote">「秩序源於能敲斷霸凌者鼻樑的實力。」</div>
-        <p class="cbio">一年內從 104 公斤的上班族蛻變成 74 公斤並站上擂台奪勝的傳說。他證明了「只要開始，永遠不嫌晚」。</p>
-        <div class="skills">
-          <div class="sk"><div class="lbl"><span>體能蛻變</span><b>95</b></div><div class="bar"><i style="width:95%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>心理建設</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>泰拳技術</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>拳擊精度</span><b>80</b></div><div class="bar"><i style="width:80%"></i></div></div>
-        </div>
-        <div class="ach">
-          <span>一年內狂減 30KG（104 → 74）</span>
-          <span>立青泰拳精英挑戰賽 優勝</span>
-          <span>零基礎逆襲的最佳證明</span>
-        </div>
-        <a class="cbtn" href="story-kao.html">他的完整蛻變故事 →</a>
-      </div>
-    </article>
-
-    <!-- Allen -->
-    <article class="coach rv">
-      <div class="cphoto">
-        <img src="coach_allen.jpg" alt="教練 Allen" loading="lazy" decoding="async">
-        <div class="nick">「竹科戰神」</div>
-      </div>
-      <div class="cbody">
-        <div class="cghost">KICKBOXING</div>
-        <div class="role">KICKBOXING / 踢拳</div>
-        <h2>Allen</h2>
-        <div class="cquote">「寫程式講求邏輯，格鬥也是。讓我幫你 Debug 你的發力結構。」</div>
-        <p class="cbio">具備竹科工程師與散打社社長雙重身份。將「Debug」的精準思維帶入教學——格鬥不是蠻力，而是物理學與人體工學的極致展現。</p>
-        <div class="skills">
-          <div class="sk"><div class="lbl"><span>踢拳技術</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>發力邏輯</span><b>88</b></div><div class="bar"><i style="width:88%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>防守架構</span><b>82</b></div><div class="bar"><i style="width:82%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>體能體適</span><b>75</b></div><div class="bar"><i style="width:75%"></i></div></div>
-        </div>
-        <div class="ach">
-          <span>動作精密拆解 · Debug 教學法</span>
-          <span>戰術邏輯思維建立</span>
-          <span>零基礎高速建立肌肉記憶</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- 鄭豫 -->
-    <article class="coach flip rv">
-      <div class="cphoto">
-        <img src="coach_zhengyu.jpg" alt="教練 鄭豫" loading="lazy" decoding="async">
-        <div class="nick">「重型坦克」</div>
-      </div>
-      <div class="cbody">
-        <div class="cghost">SANDA</div>
-        <div class="role">SANDA / 散打</div>
-        <h2>鄭豫</h2>
-        <div class="cquote">「我不拘泥於門派。我教的，是能保護自己、真正學以致用的全方位攻防。」</div>
-        <p class="cbio">擁有布農族天生的爆發力與超乎常人的紀律。極少數能將「詠春拳」近身短打完美融合「散打」遠距離重擊的實戰派。</p>
-        <div class="skills">
-          <div class="sk"><div class="lbl"><span>散打技術</span><b>92</b></div><div class="bar"><i style="width:92%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>接腿摔技</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>詠春短打</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>綜合實戰</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
-        </div>
-        <div class="ach">
-          <span>世界南少林詠春大賽 85KG 冠軍</span>
-          <span>T1 踢拳之王</span>
-          <span>80KG+ 絕對霸主</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- 胡脩誠 -->
-    <article class="coach rv">
-      <div class="cphoto">
-        <img src="coach_hu.jpg" alt="教練 胡脩誠" loading="lazy" decoding="async">
-        <div class="nick">「臨火無懼」</div>
-      </div>
-      <div class="cbody">
-        <div class="cghost">SANDA</div>
-        <div class="role">ASST. COACH / 散打</div>
-        <h2>胡脩誠</h2>
-        <div class="cquote">「想學會怎麼破壞，先學會怎麼保護。」</div>
-        <p class="cbio">擂台下是守護生命的打火英雄，擂台上是對手眼中的夢魘。兼具重砲力量與輕量級速度，擁有無數次實戰打磨出的「黃金比例」戰士身材。</p>
-        <div class="skills">
-          <div class="sk"><div class="lbl"><span>體能體格</span><b>92</b></div><div class="bar"><i style="width:92%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>搏擊速度</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>散打格鬥</span><b>88</b></div><div class="bar"><i style="width:88%"></i></div></div>
-          <div class="sk"><div class="lbl"><span>鐵籠搏擊</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
-        </div>
-        <div class="ach">
-          <span>WOTD-09 鐵籠搏擊 優勝</span>
-          <span>Rise Nova 冠軍</span>
-          <span>T1 積分賽常勝軍</span>
-        </div>
+        <a class="cbtn" href="coach-huang.html">完整戰歷 · 總教練專頁 →</a><a class="cbtn card-link" href="card-huang.html">數位名片 →</a>
       </div>
     </article>
 
     <!-- 小米 -->
     <article class="coach flip rv">
-      <div class="cphoto">
-        <img src="coach_mi.jpg" alt="教練 小米" loading="lazy" decoding="async">
-        <div class="nick">「重生女鬥士」</div>
+      <div class="cphoto pcard plat" id="card-mi" data-coach="mi">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_mi.webp" type="image/webp"><img src="coach_mi.jpg" alt="教練 小米 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">PLATINUM</span>
+            <span class="pc-no">HCF-006</span>
+            <div class="nick">「重生女鬥士」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>小米</b><i class="pc-en">MI · PLATINUM CARD</i>
+            <img class="pc-qr" src="qr_mi.png" alt="小米 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="小米">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
       </div>
       <div class="cbody">
         <div class="cghost">FIGHTER</div>
@@ -244,7 +240,188 @@
           <span>第六屆泰威交流賽 勝出</span>
         </div>
       </div>
+    <a class="cbtn card-link" href="card-mi.html">數位名片 →</a></article>
+
+    <!-- 高大可 -->
+    <article class="coach rv">
+      <div class="cphoto pcard plat" id="card-kao" data-coach="kao">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_kao.webp" type="image/webp"><img src="coach_kao.jpg" alt="教練 高大可 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">PLATINUM</span>
+            <span class="pc-no">HCF-002</span>
+            <div class="nick">「逆襲狂人」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>高大可</b><i class="pc-en">KAO DA-KE · PLATINUM CARD</i>
+            <img class="pc-qr" src="qr_kao.png" alt="高大可 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="高大可">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="cghost">MUAY THAI</div>
+        <div class="role">MUAY THAI / 泰拳</div>
+        <h2>高大可</h2>
+        <div class="cquote">「秩序源於能敲斷霸凌者鼻樑的實力。」</div>
+        <p class="cbio">一年內從 104 公斤的上班族蛻變成 74 公斤並站上擂台奪勝的傳說。他證明了「只要開始，永遠不嫌晚」。</p>
+        <div class="skills">
+          <div class="sk"><div class="lbl"><span>體能蛻變</span><b>95</b></div><div class="bar"><i style="width:95%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>心理建設</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>泰拳技術</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>拳擊精度</span><b>80</b></div><div class="bar"><i style="width:80%"></i></div></div>
+        </div>
+        <div class="ach">
+          <span>一年內狂減 30KG（104 → 74）</span>
+          <span>立青泰拳精英挑戰賽 優勝</span>
+          <span>零基礎逆襲的最佳證明</span>
+        </div>
+        <a class="cbtn" href="story-kao.html">他的完整蛻變故事 →</a><a class="cbtn card-link" href="card-kao.html">數位名片 →</a>
+      </div>
     </article>
+
+    <!-- Allen -->
+    <article class="coach flip rv">
+      <div class="cphoto pcard plat" id="card-allen" data-coach="allen">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_allen.webp" type="image/webp"><img src="coach_allen.jpg" alt="教練 Allen 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">PLATINUM</span>
+            <span class="pc-no">HCF-003</span>
+            <div class="nick">「竹科戰神」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>Allen</b><i class="pc-en">ALLEN · PLATINUM CARD</i>
+            <img class="pc-qr" src="qr_allen.png" alt="Allen 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="Allen">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="cghost">KICKBOXING</div>
+        <div class="role">KICKBOXING / 踢拳</div>
+        <h2>Allen</h2>
+        <div class="cquote">「寫程式講求邏輯，格鬥也是。讓我幫你 Debug 你的發力結構。」</div>
+        <p class="cbio">具備竹科工程師與散打社社長雙重身份。將「Debug」的精準思維帶入教學——格鬥不是蠻力，而是物理學與人體工學的極致展現。</p>
+        <div class="skills">
+          <div class="sk"><div class="lbl"><span>踢拳技術</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>發力邏輯</span><b>88</b></div><div class="bar"><i style="width:88%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>防守架構</span><b>82</b></div><div class="bar"><i style="width:82%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>體能體適</span><b>75</b></div><div class="bar"><i style="width:75%"></i></div></div>
+        </div>
+        <div class="ach">
+          <span>動作精密拆解 · Debug 教學法</span>
+          <span>戰術邏輯思維建立</span>
+          <span>零基礎高速建立肌肉記憶</span>
+        </div>
+      </div>
+    <a class="cbtn card-link" href="card-allen.html">數位名片 →</a></article>
+
+    <!-- 鄭豫 -->
+    <article class="coach rv">
+      <div class="cphoto pcard plat" id="card-zhengyu" data-coach="zhengyu">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_zhengyu.webp" type="image/webp"><img src="coach_zhengyu.jpg" alt="教練 鄭豫 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">PLATINUM</span>
+            <span class="pc-no">HCF-004</span>
+            <div class="nick">「重型坦克」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>鄭豫</b><i class="pc-en">CHENG YU · PLATINUM CARD</i>
+            <img class="pc-qr" src="qr_zhengyu.png" alt="鄭豫 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="鄭豫">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="cghost">SANDA</div>
+        <div class="role">SANDA / 散打</div>
+        <h2>鄭豫</h2>
+        <div class="cquote">「我不拘泥於門派。我教的，是能保護自己、真正學以致用的全方位攻防。」</div>
+        <p class="cbio">擁有布農族天生的爆發力與超乎常人的紀律。極少數能將「詠春拳」近身短打完美融合「散打」遠距離重擊的實戰派。</p>
+        <div class="skills">
+          <div class="sk"><div class="lbl"><span>散打技術</span><b>92</b></div><div class="bar"><i style="width:92%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>接腿摔技</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>詠春短打</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>綜合實戰</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
+        </div>
+        <div class="ach">
+          <span>世界南少林詠春大賽 85KG 冠軍</span>
+          <span>T1 踢拳之王</span>
+          <span>80KG+ 絕對霸主</span>
+        </div>
+      </div>
+    <a class="cbtn card-link" href="card-zhengyu.html">數位名片 →</a></article>
+
+    <!-- 胡脩誠 -->
+    <article class="coach flip rv">
+      <div class="cphoto pcard plat" id="card-hu" data-coach="hu">
+        <div class="pc-inner">
+          <div class="pc-front">
+            <picture><source srcset="coach_hu.webp" type="image/webp"><img src="coach_hu.jpg" alt="教練 胡脩誠 鉑金閃卡" loading="lazy" decoding="async"></picture>
+            <span class="holo"></span><span class="glare"></span>
+            <span class="pc-rar">PLATINUM</span>
+            <span class="pc-no">HCF-005</span>
+            <div class="nick">「臨火無懼」</div>
+            <span class="pc-hint">點擊翻面 ⤾</span>
+          </div>
+          <div class="pc-back">
+            <b>胡脩誠</b><i class="pc-en">HU HSIU-CHENG · PLATINUM CARD</i>
+            <img class="pc-qr" src="qr_hu.png" alt="胡脩誠 教練名片 QR Code">
+            <span class="pc-scan">掃描收藏這張教練名片</span>
+            <span class="pc-acts">
+              <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 找他</a>
+              <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">預約上課</a>
+              <button type="button" class="pc-share" data-name="胡脩誠">📤 分享名片</button>
+            </span>
+            <span class="pc-hint b">點擊翻回 ⤾</span>
+          </div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="cghost">SANDA</div>
+        <div class="role">ASST. COACH / 散打</div>
+        <h2>胡脩誠</h2>
+        <div class="cquote">「想學會怎麼破壞，先學會怎麼保護。」</div>
+        <p class="cbio">擂台下是守護生命的打火英雄，擂台上是對手眼中的夢魘。兼具重砲力量與輕量級速度，擁有無數次實戰打磨出的「黃金比例」戰士身材。</p>
+        <div class="skills">
+          <div class="sk"><div class="lbl"><span>體能體格</span><b>92</b></div><div class="bar"><i style="width:92%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>搏擊速度</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>散打格鬥</span><b>88</b></div><div class="bar"><i style="width:88%"></i></div></div>
+          <div class="sk"><div class="lbl"><span>鐵籠搏擊</span><b>85</b></div><div class="bar"><i style="width:85%"></i></div></div>
+        </div>
+        <div class="ach">
+          <span>WOTD-09 鐵籠搏擊 優勝</span>
+          <span>Rise Nova 冠軍</span>
+          <span>T1 積分賽常勝軍</span>
+        </div>
+      </div>
+    <a class="cbtn card-link" href="card-hu.html">數位名片 →</a></article>
 
   </div>
 </section>
@@ -252,6 +429,44 @@
 <div class="seamC"><div class="wedge dot"></div></div>
 <section class="finale" id="finale"></section>
 
+<script>
+/* ===== 鉑金閃卡互動 ===== */
+(function(){
+  document.querySelectorAll('.pcard').forEach(function(card){
+    var inner=card.querySelector('.pc-inner');
+    card.addEventListener('pointermove',function(e){
+      if(card.classList.contains('flip'))return;
+      var r=card.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+      card.style.setProperty('--ry',((px-.5)*14)+'deg');
+      card.style.setProperty('--rx',((.5-py)*12)+'deg');
+      card.style.setProperty('--mx',(px*100)+'%');
+      card.style.setProperty('--my',(py*100)+'%');
+    });
+    card.addEventListener('pointerleave',function(){
+      card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');
+    });
+    card.addEventListener('click',function(e){
+      if(e.target.closest('a'))return;
+      if(e.target.closest('.pc-share')){
+        var name=e.target.dataset.name,url=location.origin+location.pathname+'#'+card.id;
+        if(navigator.share){navigator.share({title:'HCF 教練名片｜'+name,url:url}).catch(function(){});}
+        else{navigator.clipboard&&navigator.clipboard.writeText(url);e.target.textContent='連結已複製 ✓';setTimeout(function(){e.target.textContent='分享名片'},2200);}
+        if(window.hcfTrack)hcfTrack('coach_card_share',{coach:card.dataset.coach});
+        return;
+      }
+      card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');
+      card.classList.toggle('flip');
+      if(window.hcfTrack&&card.classList.contains('flip'))hcfTrack('coach_card_flip',{coach:card.dataset.coach});
+    });
+  });
+  /* 名片深連結：被分享的卡片自動捲到並發光 */
+  if(location.hash.indexOf('#card-')===0){
+    var t=document.querySelector(location.hash);
+    if(t){setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'center'});t.classList.add('spot');},600);}
+  }
+})();
+</script>
 <script src="hcf.js"></script>
 <script src="hcf-analytics.js" defer></script>
 </body>

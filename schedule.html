@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>最新課表｜HCF 新竹格鬥</title>
-<meta name="description" content="HCF 新竹格鬥每週團體課表：泰拳、散打、踢拳、肌力體能。LV.1 入門到 LV.2 進階與選手班，全預約制。">
+<meta name="description" content="HCF 新竹格鬥每週課表：全泰拳專館，新手泰拳・中階泰拳・自由技術對打與週六選手班，日間私人教練預約制。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -42,13 +42,17 @@
 .tcol{display:flex;flex-direction:column;justify-content:center}
 .tcol b{font-family:var(--en);font-weight:700;color:var(--red);font-size:1.05rem;line-height:1}
 .tcol span{font-family:var(--en);color:var(--ink3);font-size:.72rem;margin-top:3px}
+.tcol .ttag{font-family:var(--sans);font-weight:700;font-size:.58rem;letter-spacing:.02em;color:var(--ink2);background:var(--surface);border:1px solid var(--line);padding:2px 6px;margin-top:7px;line-height:1.35;white-space:normal}
 .empty{min-height:92px;display:flex;align-items:center;justify-content:center;color:var(--ink3);border:1px dashed var(--line);opacity:.6}
 .ccard{display:block;text-align:left;width:100%;background:#fff;border:1px solid var(--line);border-top:4px solid var(--cat,#C81015);padding:12px 13px;cursor:pointer;box-shadow:0 8px 22px rgba(17,17,17,.06);transition:transform .2s,opacity .25s;font-family:var(--sans)}
 .ccard:hover{transform:translateY(-3px)}
 .ccard.dim{opacity:.18;pointer-events:none}
 .ccard .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .ccard .lv{font-family:var(--en);font-weight:700;font-size:.66rem;letter-spacing:.14em;padding:2px 8px;background:#0F9D63;color:#fff}
-.ccard .lv.l2{background:var(--red)}
+.ccard .lv.l2{background:#FFD400;color:#111}
+.ccard .lv.l3{background:var(--red);color:#fff}
+.ccard .lv.pv{background:#9AA0AA;color:#fff}
+.ccard .lv.sq{background:#E8A800;color:#111}
 .ccard .chip{width:10px;height:10px;background:var(--cat,#C81015)}
 .ccard b{font-size:.96rem;letter-spacing:.03em;line-height:1.3;display:block}
 .ccard .en{font-family:var(--en);font-size:.62rem;letter-spacing:.16em;color:var(--ink3);margin-top:2px}
@@ -72,9 +76,9 @@
 .lvsys{margin-top:60px}
 .lv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
 .lvc{background:#fff;border:1px solid var(--line);padding:24px;box-shadow:0 10px 28px rgba(17,17,17,.06)}
-.lvc .b{font-family:var(--en);font-weight:700;letter-spacing:.12em;color:#fff;background:var(--carbon);display:inline-block;padding:4px 12px;font-size:.8rem}
-.lvc:nth-child(2) .b{background:var(--red)}
-.lvc:nth-child(3) .b{background:var(--redD)}
+.lvc .b{font-family:var(--en);font-weight:700;letter-spacing:.12em;color:#fff;background:#0F9D63;display:inline-block;padding:4px 12px;font-size:.8rem}
+.lvc:nth-child(2) .b{background:#FFD400;color:#111}
+.lvc:nth-child(3) .b{background:var(--red)}
 .lvc b.t{display:block;font-family:var(--serif);font-weight:900;font-size:1.2rem;margin-top:12px}
 .lvc b.t small{font-family:var(--en);font-size:.62em;color:var(--ink3);letter-spacing:.16em;margin-left:6px}
 .lvc p{color:var(--ink2);font-size:.92rem;margin-top:8px}
@@ -104,15 +108,18 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HCF 新竹格鬥">
 <meta property="og:title" content="最新課表｜HCF 新竹格鬥">
-<meta property="og:description" content="HCF 新竹格鬥每週團體課表：泰拳、散打、踢拳、肌力體能。LV.1 入門到 LV.2 進階與選手班，全預約制。">
+<meta property="og:description" content="HCF 新竹格鬥每週課表：全泰拳專館，新手泰拳・中階泰拳・自由技術對打與週六選手班，日間私人教練預約制。">
 <meta property="og:url" content="https://www.hsinchucombat.com/schedule.html">
-<meta property="og:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+<meta property="og:image" content="https://www.hsinchucombat.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="最新課表｜HCF 新竹格鬥">
-<meta name="twitter:description" content="HCF 新竹格鬥每週團體課表：泰拳、散打、踢拳、肌力體能。LV.1 入門到 LV.2 進階與選手班，全預約制。">
-<meta name="twitter:image" content="https://www.hsinchucombat.com/assets/final-logo.png">
+<meta name="twitter:description" content="HCF 新竹格鬥每週課表：全泰拳專館，新手泰拳・中階泰拳・自由技術對打與週六選手班，日間私人教練預約制。">
+<meta name="twitter:image" content="https://www.hsinchucombat.com/og-cover.jpg">
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/schedule.html", "url": "https://www.hsinchucombat.com/schedule.html", "name": "最新課表｜HCF 新竹格鬥", "description": "HCF 新竹格鬥每週團體課表：泰拳、散打、踢拳、肌力體能。LV.1 入門到 LV.2 進階與選手班，全預約制。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "最新課表", "item": "https://www.hsinchucombat.com/schedule.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.hsinchucombat.com/schedule.html", "url": "https://www.hsinchucombat.com/schedule.html", "name": "最新課表｜HCF 新竹格鬥", "description": "HCF 新竹格鬥每週課表：全泰拳專館，新手泰拳・中階泰拳・自由技術對打與週六選手班，日間私人教練預約制。", "inLanguage": "zh-Hant", "isPartOf": {"@type": "WebSite", "name": "HCF 新竹格鬥", "url": "https://www.hsinchucombat.com/"}, "about": {"@id": "https://www.hsinchucombat.com/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://www.hsinchucombat.com/"}, {"@type": "ListItem", "position": 2, "name": "最新課表", "item": "https://www.hsinchucombat.com/schedule.html"}]}, {"@type": "SportsActivityLocation", "@id": "https://www.hsinchucombat.com/#org", "name": "HCF 新竹格鬥 Hsinchu Combat", "url": "https://www.hsinchucombat.com/", "telephone": "+886-925-571-225", "image": "https://www.hsinchucombat.com/assets/final-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "林森路 301 號 2 樓", "addressLocality": "新竹市北區", "addressRegion": "新竹市", "addressCountry": "TW"}}]}</script>
 </head>
 <body data-page="sched">
 <header class="nav" id="nav"></header>
@@ -122,7 +129,7 @@
   <div class="phero-in">
     <div class="kicker">WEEKLY SCHEDULE / 最新課表</div>
     <h1>最新課表 <br>挑一堂<i>開打</i></h1>
-    <p>泰拳・散打・踢拳・肌力體能，全預約制。點任一堂課即可前往 FitBook 預約。</p>
+    <p>全泰拳專館・一週練滿八肢，全預約制。點任一堂課即可前往 FitBook 預約。</p>
   </div>
 </section>
 
@@ -141,34 +148,33 @@
     <div class="filters rv" id="filters">
       <button class="on" data-f="all">全部</button>
       <button data-f="mt">泰拳</button>
-      <button data-f="sanda">散打</button>
-      <button data-f="kb">踢拳</button>
-      <button data-f="sc">肌力體能</button>
+      <button data-f="cardio">泰拳燃脂</button>
+      <button data-f="private">私人教練</button>
     </div>
     <div class="legend rv">
       <span><i style="background:#C81015"></i>泰拳 MUAY THAI</span>
-      <span><i style="background:#E8A800"></i>散打 SANDA</span>
-      <span><i style="background:#7E8798"></i>踢拳 KICKBOXING</span>
-      <span><i style="background:#0F9D63"></i>肌力體能 S&amp;C / CARDIO</span>
+      <span><i style="background:#E8A800"></i>泰拳燃脂 CARDIO</span>
+      <span><i style="background:#9AA0AA"></i>私人教練 PRIVATE</span>
+      <span><i style="background:#0F9D63"></i>格鬥體能 S&amp;C</span>
     </div>
     <div id="grid" class="rv"></div>
 
     <div class="squad rv">
       <div>
-        <div class="tg">FIGHTER SQUAD · INVITATION ONLY</div>
-        <b>選手班｜週六・週日 14:00–16:00</b>
+        <div class="tg">FIGHTER SQUAD · 選手班 · 邀請制 · 週六</div>
+        <b>選手班｜週六 13:30–15:00</b>
         <p>邀請制進階／備賽學員，總教練親自帶（職業賽冠軍底子）。技術深化、多回合對練、體能巔峰、逐人複盤。</p>
       </div>
-      <div class="badge">邀請制</div>
+      <div class="badge">13:30 – 15:00</div>
     </div>
 
     <div class="lvsys rv">
       <div style="font-family:var(--en);letter-spacing:.32em;font-size:.72rem;color:var(--red);font-weight:600">LEVEL SYSTEM</div>
       <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,4.4vw,2.1rem);margin-top:8px">課程分級</h2>
       <div class="lv-grid">
-        <div class="lvc"><span class="b">LV.1</span><b class="t">入門團課<small>60 MIN</small></b><p>新手泰拳・踢拳腿連擊・泰拳燃脂・肌力體能・散打。所有人都能上，新客主力。</p><div class="br">暖身 12｜心肺 8｜技術 18｜分組打靶 22</div></div>
-        <div class="lvc"><span class="b">LV.2</span><b class="t">進階實戰<small>50 MIN</small></b><p>泰拳實戰・踢拳遠距阻擊。建議 LV.1 上滿 20 堂、教練認可後挑戰。</p><div class="br">暖身 8｜技術精修 12｜條件對練 18｜自由對練＋複盤 12</div></div>
-        <div class="lvc"><span class="b">SQUAD</span><b class="t">選手班<small>120 MIN</small></b><p>Fighter Squad，邀請制。給進階與備賽選手的完整訓練週期。</p><div class="br">技術深化・多回合對練・體能巔峰・逐人複盤</div></div>
+        <div class="lvc"><span class="b">LV.1</span><b class="t">新手課程<small>新手泰拳</small></b><p>站架、步法、基本拳腿。零基礎友善、不對打，所有人都能上，新客主力。</p><div class="br">晚間 19:00–20:00 第一堂</div></div>
+        <div class="lvc"><span class="b">LV.2</span><b class="t">中階課程<small>中階泰拳／燃脂</small></b><p>技術精修×條件對練，攻防轉換與組合技；泰拳燃脂高密度打靶循環。</p><div class="br">晚間 20:00–21:00 第二堂</div></div>
+        <div class="lvc"><span class="b">LV.3</span><b class="t">進階課程<small>自由技術對打</small></b><p>護具下自由對練與複盤，距離・時機・節奏；選手班邀請制週六加開。</p><div class="br">晚間 21:00–21:50 第三堂</div></div>
       </div>
     </div>
 
@@ -178,7 +184,8 @@
         <ul>
           <li><span><b>全預約制：</b>最晚取消時間為上課前 2 小時。</span></li>
           <li><span><b>開課標準：</b>全部課程滿 3 人（含以上）即可開課。</span></li>
-          <li><span><b>進階課程 LV.2：</b>建議上滿 20 堂基礎班（LV.1）後挑戰。</span></li>
+          <li><span><b>日間時段：</b>早上、下午（11:00–16:00）為私人教練彈性預約。</span></li>
+          <li><span><b>進階課程 LV.3：</b>建議上滿一定堂數新手（LV.1）與中階（LV.2）後挑戰。</span></li>
           <li><span><b>停課通知：</b>前一日 22:00 確認狀態，系統簡訊通知。</span></li>
         </ul>
       </div>
@@ -193,7 +200,7 @@
     </div>
 
     <div class="info3 rv">
-      <div><b>營業時間</b><span>平日 11:00–22:00<br>週末 11:00–16:00</span></div>
+      <div><b>營業時間</b><span>平日 11:00–22:00<br>週六 11:00–16:00　週日公休</span></div>
       <div><b>第一次來</b><span>穿運動服、帶水壺毛巾<br>裝備館內免費提供</span></div>
       <div><b>基地位置</b><span>新竹市北區<br>林森路 301 號 2 樓</span></div>
     </div>
@@ -207,42 +214,41 @@
 <script src="hcf.js"></script>
 <script>
 const BOOK='https://www.fit-book.com.tw/hsinchucombat/plan/588';
-const CATCOLOR={mt:'#C81015',sanda:'#E8A800',kb:'#7E8798',sc:'#0F9D63'};
+const CATCOLOR={mt:'#C81015',cardio:'#E8A800',private:'#9AA0AA',sc:'#0F9D63',squad:'#E8A800'};
 const WD=['MON','TUE','WED','THU','FRI'],WDZ=['週一','週二','週三','週四','週五'];
 const WE=['SAT','SUN'],WEZ=['週六','週日'];
-const WT=[{s:'11:00',e:'12:00'},{s:'15:00',e:'15:50'},{s:'19:30',e:'20:30'},{s:'20:40',e:'21:30'}];
-const ET=[{s:'11:00',e:'12:00'},{s:'12:10',e:'13:00'}];
+const WT=[{s:'11:00',e:'16:00',tag:'日間・私教預約'},{s:'19:00',e:'20:00',tag:'第一堂・新手 LV.1'},{s:'20:00',e:'21:00',tag:'第二堂・中階／燃脂'},{s:'21:00',e:'21:50',tag:'第三堂・進階 LV.3'}];
+const ET=[{s:'11:00',e:'12:00'},{s:'13:30',e:'15:00'}];
 const C=(cat,lv,zh,en,note)=>({cat,lv,zh,en,note});
+const PV=()=>C('private',0,'私人教練課','PRIVATE','一對一彈性預約，依目標客製內容');
+const NEW=()=>C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打');
+const MID=()=>C('mt',2,'中階泰拳','MUAY THAI','技術精修×條件對練，攻防轉換與組合技');
+const CARDIO=()=>C('cardio',1,'泰拳燃脂','CARDIO','高密度打靶循環，一堂約 600–800 大卡');
+const SPAR=()=>C('mt',3,'自由技術對打','MUAY THAI','護具下自由對練×複盤，距離・時機・節奏');
 const WEEKDAY=[
- [null,null,C('sc',1,'肌力體能','S&C','壺鈴啞鈴循環，打造易瘦體質與功能性力量'),
-  C('sanda',1,'散打摔法','TAKEDOWNS','抱摔、過肩摔與防摔，貼身重心爭奪'),
-  C('sc',1,'肌力體能','S&C','深蹲硬舉推拉＋爆發，格鬥技術的地基')],
- [null,null,C('mt',1,'泰拳燃脂','CARDIO','高密度打靶循環，一堂約 600–800 大卡'),null,null],
- [C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),
-  C('kb',1,'踢拳腿連擊','KICKBOXING','拳腿連擊組合，快節奏雕塑下半身線條'),
-  C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),
-  C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),
-  C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打')],
- [C('mt',2,'泰拳腿肘膝實戰','SPARRING','護具下條件對練，距離・時機・攻防轉換'),
-  C('kb',2,'踢拳遠距阻擊','RANGE DRILL','前手控距、阻擊反擊的時機與反射'),
-  C('mt',2,'泰拳實戰技術','TECH SPAR','組合技假動作×自由對練複盤'),
-  C('mt',1,'泰拳燃脂','CARDIO','高密度打靶循環，下班來紓壓兼燃脂'),
-  C('mt',2,'泰拳腿肘膝實戰','SPARRING','護具下條件對練，距離・時機・攻防轉換')],
+ [PV(),PV(),PV(),PV(),PV()],
+ [NEW(),NEW(),NEW(),NEW(),NEW()],
+ [MID(),CARDIO(),MID(),CARDIO(),MID()],
+ [SPAR(),SPAR(),SPAR(),SPAR(),SPAR()],
 ];
 const WEEKEND=[
- [C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),
-  C('sanda',1,'散打遠踢近摔','SANDA','遠踢控距、近身入摔的距離轉換')],
- [null,C('sanda',1,'散打拳腿運用','STRIKING','拳腿組合與時機，散打打擊核心')],
+ [C('mt',1,'新手泰拳','MUAY THAI','站架步法×直拳掃踢，零基礎友善、不對打'),null],
+ [C('squad',3,'選手班','FIGHTER SQUAD','邀請制進階／備賽，總教練親自帶。技術深化・多回合對練・逐人複盤'),null],
 ];
 let f='all';
+function badge(c){
+  if(c.cat==='private')return '<span class="lv pv">預約</span>';
+  if(c.cat==='squad')return '<span class="lv l3">LV.3</span>';
+  return `<span class="lv${c.lv===3?' l3':c.lv===2?' l2':''}">LV.${c.lv}</span>`;
+}
 function card(c){
   if(!c)return '<div class="empty">—</div>';
   const dim=(f!=='all'&&f!==c.cat)?' dim':'';
   return `<a class="ccard${dim}" style="--cat:${CATCOLOR[c.cat]}" href="${BOOK}" target="_blank" rel="noopener">
-    <span class="top"><span class="lv${c.lv===2?' l2':''}">LV.${c.lv}</span><span class="chip"></span></span>
+    <span class="top">${badge(c)}<span class="chip"></span></span>
     <b>${c.zh}</b><span class="en">${c.en}</span><span class="note">${c.note}</span></a>`;
 }
-function tcol(t){return `<div class="tcol"><b>${t.s}</b><span>${t.e}</span></div>`;}
+function tcol(t){return `<div class="tcol"><b>${t.s}</b><span>${t.e}</span>${t.tag?`<span class="ttag">${t.tag}</span>`:''}</div>`;}
 function render(){
   let h='<div class="gridhead"><div style="text-align:left;font-family:var(--en);color:var(--red);font-size:.7rem;letter-spacing:.2em;align-self:end">TIME</div>';
   WD.forEach((d,i)=>h+=`<div>${d}<small>${WDZ[i]}</small></div>`);h+='</div>';
@@ -326,7 +332,7 @@ function hcfCountdown(){
     if(!cur||cur.dt-Date.now()<=0)cur=nextClass();
     if(!cur){box.hidden=true;return;}
     box.hidden=false;
-    nm.textContent=cur.it.c.zh+'｜LV.'+cur.it.c.lv;
+    nm.textContent=cur.it.c.zh+'｜'+(cur.it.c.cat==='private'?'私人教練':cur.it.c.cat==='squad'?'選手班':'LV.'+cur.it.c.lv);
     const sameDay=new Date().toDateString()===cur.dt.toDateString();
     wh.textContent=(sameDay?'今天':ZH[cur.it.d])+' '+cur.it.t.s+'–'+cur.it.t.e;
     let s=Math.max(0,Math.floor((cur.dt-Date.now())/1000));
@@ -344,9 +350,10 @@ hcfCountdown();
 document.addEventListener('DOMContentLoaded',function(){(window.HCF_CONTENT||Promise.resolve({})).then(function(c){
   var S=c&&c.schedule;
   if(!S||!S.weekday)return;
-  function slot(x){return x&&x.zh?{cat:x.cat||'mt',lv:+x.lv===2?2:1,zh:x.zh,en:x.en||'',note:x.note||''}:null;}
-  WT.length=0;(S.wt||[]).forEach(function(t){WT.push({s:t.s,e:t.e})});
-  ET.length=0;(S.et||[]).forEach(function(t){ET.push({s:t.s,e:t.e})});
+  function slot(x){return x&&x.zh?{cat:x.cat||'mt',lv:+x.lv===3?3:+x.lv===2?2:1,zh:x.zh,en:x.en||'',note:x.note||''}:null;}
+  function tslot(t){return {s:t.s,e:t.e,tag:t.tag||''};}
+  WT.length=0;(S.wt||[]).forEach(function(t){WT.push(tslot(t))});
+  ET.length=0;(S.et||[]).forEach(function(t){ET.push(tslot(t))});
   WEEKDAY.length=0;(S.weekday||[]).forEach(function(row){WEEKDAY.push(row.map(slot))});
   WEEKEND.length=0;(S.weekend||[]).forEach(function(row){WEEKEND.push(row.map(slot))});
   render();hcfToday();hcfCountdown();
