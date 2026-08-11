@@ -116,26 +116,23 @@
   if(!place()){var n=0,t=setInterval(function(){if(place()||++n>20)clearInterval(t);},150);}
 })();
 
-/* ===== 頁尾快速連結 & 手機選單 加入「老闆信箱」入口 ===== */
+/* ===== 頁尾快速連結 & 手機選單 加入「套組方案 / 老闆信箱」入口 ===== */
 (function(){
-  var HREF='complaint.html';
+  var ENTRIES=[{href:'packages.html',label:'套組方案'},{href:'complaint.html',label:'老闆我要投訴'}];
+  function addLinks(box){
+    ENTRIES.forEach(function(e){
+      if(!box.querySelector('a[href="'+e.href+'"]')){
+        var a=document.createElement('a');a.href=e.href;a.textContent=e.label;box.appendChild(a);
+      }
+    });
+  }
   function inject(){
     var doneM=false,doneF=false;
     var mnav=document.getElementById('mnav');
-    if(mnav){
-      if(!mnav.querySelector('a[href="'+HREF+'"]')){
-        var am=document.createElement('a');am.href=HREF;am.textContent='老闆我要投訴';mnav.appendChild(am);
-      }
-      doneM=true;
-    }
+    if(mnav){addLinks(mnav);doneM=true;}
     var h5s=document.getElementsByTagName('h5'),box=null,i;
     for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
-    if(box){
-      if(!box.querySelector('a[href="'+HREF+'"]')){
-        var af=document.createElement('a');af.href=HREF;af.textContent='老闆我要投訴';box.appendChild(af);
-      }
-      doneF=true;
-    }
+    if(box){addLinks(box);doneF=true;}
     return doneM&&doneF;
   }
   if(!inject()){var n=0,t=setInterval(function(){if(inject()||++n>25)clearInterval(t);},150);}
