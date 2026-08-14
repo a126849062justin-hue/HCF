@@ -119,21 +119,29 @@
 /* ===== 頁尾快速連結 & 手機選單 加入「套組方案 / 老闆信箱」入口 ===== */
 (function(){
   if(document.body.dataset.page==='survey')return; // 問卷/測驗/投訴頁不加這些入口
-  var ENTRIES=[{href:'packages.html',label:'套組方案'},{href:'complaint.html',label:'老闆我要投訴'}];
-  function addLinks(box){
-    ENTRIES.forEach(function(e){
-      if(!box.querySelector('a[href="'+e.href+'"]')){
-        var a=document.createElement('a');a.href=e.href;a.textContent=e.label;box.appendChild(a);
-      }
-    });
+  var PKG={href:'packages.html',label:'套組方案'},VOICE={href:'complaint.html',label:'老闆我要投訴'};
+  var st=document.createElement('style');
+  st.textContent='.mnav a.mnav-sub{padding-left:46px!important;font-size:.92rem!important;opacity:.92}';
+  document.head.appendChild(st);
+  function mk(e,cls){var a=document.createElement('a');a.href=e.href;a.textContent=e.label;if(cls)a.className=cls;return a;}
+  function injectMnav(mnav){
+    if(!mnav.querySelector('a[href="'+PKG.href+'"]')){
+      var pricing=mnav.querySelector('a[href="pricing.html"]')||mnav.querySelector('a[href*="pricing"]');
+      var a=mk(PKG,'mnav-sub');
+      if(pricing&&pricing.parentNode)pricing.parentNode.insertBefore(a,pricing.nextSibling);
+      else mnav.appendChild(a);
+    }
+    if(!mnav.querySelector('a[href="'+VOICE.href+'"]'))mnav.appendChild(mk(VOICE));
+  }
+  function injectFooter(box){
+    [PKG,VOICE].forEach(function(e){if(!box.querySelector('a[href="'+e.href+'"]'))box.appendChild(mk(e));});
   }
   function inject(){
     var doneM=false,doneF=false;
-    var mnav=document.getElementById('mnav');
-    if(mnav){addLinks(mnav);doneM=true;}
+    var mnav=document.getElementById('mnav');if(mnav){injectMnav(mnav);doneM=true;}
     var h5s=document.getElementsByTagName('h5'),box=null,i;
     for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
-    if(box){addLinks(box);doneF=true;}
+    if(box){injectFooter(box);doneF=true;}
     return doneM&&doneF;
   }
   if(!inject()){var n=0,t=setInterval(function(){if(inject()||++n>25)clearInterval(t);},150);}
