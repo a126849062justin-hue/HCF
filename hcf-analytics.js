@@ -103,7 +103,7 @@
     st.textContent='.vtab-wrap{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:flex-start}'
       +'.vtab-wrap .svtab{position:static!important;top:auto!important;transform:none!important;margin:0!important}'
       +'.svtab.voice{background:#111;box-shadow:6px 0 18px rgba(0,0,0,.4)}.svtab.voice:hover{background:#000}'
-      +'@media(max-width:920px){.vtab-wrap{display:none!important}}';
+      +'@media(max-width:920px){.vtab-wrap{display:flex!important;gap:8px}.vtab-wrap .svtab{display:block!important;font-size:.72rem!important;padding:8px 6px!important;line-height:1.4!important}}';
     document.head.appendChild(st);
     var wrap=document.createElement('div');wrap.className='vtab-wrap';
     sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);
@@ -118,6 +118,7 @@
 
 /* ===== 頁尾快速連結 & 手機選單 加入「套組方案 / 老闆信箱」入口 ===== */
 (function(){
+  if(document.body.dataset.page==='survey')return; // 問卷/測驗/投訴頁不加這些入口
   var ENTRIES=[{href:'packages.html',label:'套組方案'},{href:'complaint.html',label:'老闆我要投訴'}];
   function addLinks(box){
     ENTRIES.forEach(function(e){
