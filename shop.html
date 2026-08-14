@@ -47,7 +47,19 @@
 .member span{color:var(--ink2);font-size:.88rem;display:block;margin-top:4px}
 .member a{border:1.5px solid var(--ink);color:var(--ink);font-weight:700;padding:12px 24px;white-space:nowrap}
 .member a:hover{background:var(--ink);color:#fff}
-@media(max-width:880px){.sgrid3{grid-template-columns:1fr}}
+.feat-prod{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;background:#fff;border:1px solid var(--line);box-shadow:0 16px 40px rgba(17,17,17,.1);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);margin-top:22px;transition:transform .25s,box-shadow .25s}
+.feat-prod:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(200,16,21,.14)}
+.feat-prod .fp-img{background:#000}
+.feat-prod .fp-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:260px}
+.feat-prod .fp-tx{padding:26px 28px;display:flex;flex-direction:column;justify-content:center}
+.fp-tag{font-family:var(--en);letter-spacing:.14em;font-size:.68rem;color:var(--red);font-weight:600}
+.feat-prod b{font-family:var(--serif);font-weight:900;font-size:1.5rem;margin:8px 0}
+.feat-prod .fp-tx p{color:var(--ink2);font-size:.9rem;line-height:1.8}
+.fp-price{margin:14px 0;font-family:var(--en);font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fp-price em{font-style:normal;font-weight:700;color:var(--red);font-size:1.4rem}
+.fp-price .m{background:#FFF4F4;color:var(--red);font-size:.7rem;font-weight:900;padding:3px 9px;border-radius:20px;font-family:var(--sans)}
+.fp-cta{align-self:flex-start;margin-top:6px;background:var(--red);color:#fff;font-weight:900;padding:12px 24px;border-radius:8px}
+@media(max-width:880px){.sgrid3{grid-template-columns:1fr}.feat-prod{grid-template-columns:1fr}.feat-prod .fp-img img{min-height:220px}}
 </style>
 </head>
 <body data-page="shop">
@@ -72,6 +84,23 @@
   <div class="wrap">
 
     <div class="rv">
+      <div class="kicker">NOW ON SALE · 現正販售</div>
+      <h2 class="h2">護齒牙套 <i>現貨開賣</i></h2>
+      <p class="lead">開始對打前一定要有的裝備——透明／有色，附收納盒。</p>
+    </div>
+
+    <a class="feat-prod rv" href="shop-mouthguard.html">
+      <div class="fp-img"><img src="mg_1.jpg" alt="HCF 護齒牙套（附收納盒）"></div>
+      <div class="fp-tx">
+        <span class="fp-tag">MOUTHGUARD · 護齒牙套</span>
+        <b>HCF 護齒牙套（附收納盒）</b>
+        <p>盒身印製鯊魚戰徽與「新竹格鬥」字樣。食品級材質、需熱水塑形（現場可協助）。</p>
+        <div class="fp-price">透明 <em>$450</em> · 有色 <em>$550</em> <span class="m">會員價</span></div>
+        <span class="fp-cta">立即選購 →</span>
+      </div>
+    </a>
+
+    <div class="rv" style="margin-top:54px">
       <div class="kicker">COMING SOON</div>
       <h2 class="h2">即將<i>上架</i></h2>
       <p class="lead">官方周邊正在打樣，開賣後將支援線上刷卡與超商取貨。</p>
