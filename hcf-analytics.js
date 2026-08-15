@@ -103,7 +103,7 @@
     st.textContent='.vtab-wrap{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:flex-start}'
       +'.vtab-wrap .svtab{position:static!important;top:auto!important;transform:none!important;margin:0!important}'
       +'.svtab.voice{background:#111;box-shadow:6px 0 18px rgba(0,0,0,.4)}.svtab.voice:hover{background:#000}'
-      +'@media(max-width:920px){.vtab-wrap{display:none!important}}';
+      +'@media(max-width:920px){.vtab-wrap{top:88px;transform:none;gap:8px}}';
     document.head.appendChild(st);
     var wrap=document.createElement('div');wrap.className='vtab-wrap';
     sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);
