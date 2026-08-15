@@ -111,6 +111,15 @@
   .court .quiet a{font-family:var(--sans);font-size:.86rem;color:var(--mut);text-decoration:none;border-bottom:1px solid rgba(169,163,154,.4);padding-bottom:2px}
   .court .quiet a:hover{color:var(--bronze);border-color:var(--bronze)}
   .court .scrolldn{position:absolute;left:50%;bottom:3vh;transform:translateX(-50%);color:var(--mut);font-family:var(--en);letter-spacing:.3em;font-size:.62rem;opacity:.7}
+  /* 手機版：內容上收，讓包公坐堂在下方可見 */
+  @media(max-width:768px){
+    .court{justify-content:flex-start;padding:12vh 20px 40vh}
+    .court h1{font-size:clamp(40px,13vw,62px);letter-spacing:.18em;padding-left:.18em}
+    .court .ask{margin-top:24px}
+    .court .drumcta{margin-top:28px}
+    .court .scrolldn{display:none}
+    .bench{width:min(600px,116vw);bottom:8vh;opacity:calc(.85 + var(--lit)*.15)}
+  }
 
   /* 咚 / 威武 大字 */
   .boom{position:fixed;inset:0;z-index:55;display:none;align-items:center;justify-content:center;pointer-events:none}
