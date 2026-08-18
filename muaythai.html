@@ -53,6 +53,23 @@
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa .ans{padding:0 4px 19px;color:var(--ink2);max-width:640px}
 @media(max-width:880px){.why-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
+/* 四堂分級課卡 */
+.tclz{padding:70px 0 0}
+.tclz .sub{color:var(--ink2);margin-top:10px;max-width:640px;font-size:.98rem}
+.tclz .sec-h i{font-style:normal;color:var(--red)}
+.tclz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+.tcard{background:#fff;box-shadow:0 14px 36px rgba(17,17,17,.08);border-top:4px solid var(--red);padding:24px 22px;display:flex;flex-direction:column}
+.tcard.adv{border-top-color:var(--carbon)}
+.tcard .top{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.tcard .lv{background:var(--red);color:#fff;font-family:var(--en);font-weight:700;font-size:.76rem;letter-spacing:.12em;padding:4px 11px}
+.tcard.adv .lv{background:var(--carbon)}
+.tcard .nm{font-family:var(--serif);font-weight:900;font-size:1.28rem}
+.tcard .desc{color:var(--ink2);font-size:.96rem;line-height:1.9;margin-top:13px}
+.tcard .note{margin-top:13px;font-size:.85rem;color:var(--ink2);background:var(--surface);border-left:4px solid var(--red);padding:9px 13px}
+.tcard .fit{margin-top:auto;padding-top:15px;font-size:.93rem;font-weight:600;color:var(--carbon);line-height:1.7}
+.tcard .fit b{display:inline-block;color:#fff;background:var(--red);font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;padding:3px 9px;margin-right:9px;vertical-align:middle;font-weight:700}
+.tcard.adv .fit b{background:var(--carbon)}
+@media(max-width:880px){.tclz-grid{grid-template-columns:1fr}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/muaythai.html">
 <meta name="theme-color" content="#C81015">
@@ -96,6 +113,35 @@
 <section class="why dotbg"><div class="wrap">
   <div class="rv"><div class="sec-k">WHY MUAY THAI</div><h2 class="sec-h">為什麼練泰拳</h2></div>
   <div class="why-grid"><div class="wcard rv"><b>最高效的燃脂引擎</b><p>一堂泰拳課平均消耗 600–800 大卡。大量的核心旋轉與節奏性打擊，讓你在不知不覺中雕塑出緊實的腰腹與線條。</p></div><div class="wcard rv"><b>真正帶得走的防身</b><p>泰拳的距離控制與膝肘技，是近身自衛最實用的工具。你練的每一拳，都是真正能保護自己的底氣。</p></div><div class="wcard rv"><b>把壓力一拳打散</b><p>當你全力踢中沙包的那一刻，工作、人際、煩惱全部歸零。這是最誠實、也最痛快的紓壓方式。</p></div></div>
+</div></section>
+
+<section class="tclz dotbg"><div class="wrap">
+  <div class="rv"><div class="sec-k">CLASSES / 泰拳課程</div><h2 class="sec-h">四堂課 一條<i>成長路徑</i></h2><p class="sub">從零基礎到踏上對抗，循序漸進。每一堂都能單獨上，也能一路練上去。</p></div>
+  <div class="tclz-grid">
+    <div class="tcard rv">
+      <div class="top"><span class="lv">LV.1</span><span class="nm">新手泰拳</span></div>
+      <p class="desc">專為零基礎設計的入門課。從站架、步法、刺拳與掃踢等最基本動作開始，搭配持靶練習與基礎體能，第一堂課就能安全出拳、流汗有感。</p>
+      <div class="note">免裝備，館內提供手套租借。</div>
+      <div class="fit"><b>適合</b>完全新手、想試試泰拳的人</div>
+    </div>
+    <div class="tcard rv">
+      <div class="top"><span class="lv">LV.1</span><span class="nm">泰拳燃脂</span></div>
+      <p class="desc">以泰拳動作編排的高強度燃脂課，組合拳腿、打靶與間歇體能交錯，流汗量大、壓力釋放感強；不教複雜技術，跟著打就有效。</p>
+      <div class="fit"><b>適合</b>想減脂瘦身、下班想放電的上班族</div>
+    </div>
+    <div class="tcard rv">
+      <div class="top"><span class="lv">LV.2</span><span class="nm">中階泰拳</span></div>
+      <p class="desc">基礎站架穩了之後，把單一動作串成會呼吸的組合。學習拳腿連段、基礎防守（格擋、閃避、後撤步）與內圍纏鬥（clinch）入門，並加入肘、膝這些泰拳的核心武器。打靶節奏加快、開始要求攻守轉換，技術與體能同步進階。</p>
+      <div class="note">建議先上過新手泰拳或已有基礎。</div>
+      <div class="fit"><b>適合</b>想把動作打得更順、更有殺傷力，準備往對打邁進的人</div>
+    </div>
+    <div class="tcard adv rv">
+      <div class="top"><span class="lv">LV.3</span><span class="nm">自由技術對打</span></div>
+      <p class="desc">在教練控制與護具保護下的條件式實戰演練，限定力道與技術主題，把課堂所學放進真實對抗中驗證。</p>
+      <div class="note">需教練評估後參加。</div>
+      <div class="fit"><b>適合</b>有技術基礎、想開始對打的人</div>
+    </div>
+  </div>
 </div></section>
 
 <section class="curr dotbg"><div class="wrap">
