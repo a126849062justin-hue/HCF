@@ -21,9 +21,9 @@
 .code+.code{border-top:1px dashed var(--line)}
 .code.flip .sym{order:2}
 .sym{position:relative;display:flex;align-items:center;justify-content:center;min-height:300px}
-.sym::before{content:"";position:absolute;inset:14px -14px -14px 14px;background:var(--surface)}
-.sym .box{position:relative;z-index:1;width:100%;aspect-ratio:1/1;max-width:330px;background:var(--carbon);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.sym .box::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.sym::before{content:none}
+.sym .box{position:relative;z-index:1;width:100%;aspect-ratio:1/1;max-width:330px;background:transparent;display:flex;align-items:center;justify-content:center}
+.sym .box::before{content:none}
 .tri{width:0;height:0;border-left:84px solid transparent;border-right:84px solid transparent;border-top:140px solid var(--red);filter:drop-shadow(0 14px 30px rgba(200,16,21,.5))}
 .sym img{width:62%;filter:drop-shadow(0 14px 30px rgba(200,16,21,.4))}
 .anchor{font-size:9.5rem;color:var(--red);line-height:1;filter:drop-shadow(0 14px 30px rgba(200,16,21,.5))}
