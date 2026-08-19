@@ -316,3 +316,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .mnav-social a[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent!important}
 .mnav-social a[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent!important}
 }
+
+.fin-social{display:flex;gap:11px;margin-top:6px;flex-wrap:wrap}.fin-social .fs-ic{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;margin:0!important;padding:0;transition:.2s}.fin-social .fs-ic svg{width:19px;height:19px;display:block}.fin-social .fs-ic[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="fb"]:hover{background:#1877F2;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent}
