@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 /* ============================================================
    HCF 白色沉浸主題 — 共用樣式 hcf.css
    ============================================================ */
 :root{
   --bg:#FFFFFF;--surface:#F7F7F7;--ink:#111111;--ink2:#4A4A4A;--ink3:#8A8A8A;
   --line:#E5E5E5;--red:#C81015;--redD:#9B0B0F;--carbon:#111111;
-  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;--tech:'Orbitron','Oswald',sans-serif;
   --maxw:1160px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -238,3 +239,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 
 /* F. 捲動進度條末端圓角（接 v1 #scrollbar） */
 #scrollbar{border-radius:0 3px 3px 0}
+
+/* ==========================================================================
+   比照賽博龐克版 v3 — Orbitron 科技字型 + 左上 LOGO lockup + CTA（紅色品牌調）
+   ========================================================================== */
+/* 字型：英文裝飾/標籤字改 Orbitron 科技感 */
+.kicker,.sec-k,.hero-kicker,.fin-k,.phero-ghost,.hero-scroll{font-family:var(--tech)}
+/* 左上 LOGO lockup：HCF / COMBAT SYSTEM */
+.nav-logo .nlk{display:flex;flex-direction:column;justify-content:center;line-height:1}
+.nav-logo .nlk b{font-family:var(--tech);font-weight:900;font-style:italic;font-size:1.18rem;letter-spacing:.16em;color:#fff;text-shadow:0 0 14px rgba(200,16,21,.5)}
+.nav-logo .nlk em{font-family:var(--tech);font-style:normal;font-weight:700;font-size:.5rem;letter-spacing:.4em;color:var(--red);margin-top:4px;white-space:nowrap}
+.nav.sc .nav-logo .nlk b{color:var(--ink);text-shadow:none}
+/* CTA：科技字型 + 閃電 + 紅光邊框 */
+.nav-cta{font-family:var(--tech)!important;font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:7px;box-shadow:0 0 0 1px rgba(200,16,21,.45),0 6px 20px rgba(200,16,21,.35)}
+.hb1{display:inline-flex;align-items:center;gap:8px}
+.cta-bolt{flex:0 0 auto}
+
+/* CTA 斜切平行四邊形（向前傾）+ 斜體字 */
+.nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
+.hb1{padding-left:36px;padding-right:36px}

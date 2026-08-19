@@ -9,12 +9,12 @@
 <meta name="description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FFFFFF;--surface:#F7F7F7;--ink:#111111;--ink2:#4A4A4A;--ink3:#8A8A8A;
   --line:#E5E5E5;--red:#C81015;--redD:#9B0B0F;--carbon:#111111;
-  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;--tech:'Orbitron','Oswald',sans-serif;
   --maxw:1160px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -57,14 +57,15 @@ a{color:inherit;text-decoration:none}
 .hero-slide.on{opacity:1}
 .hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-in-out infinite alternate}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:var(--carbon)}
+@media(min-width:769px){.hero-vid{object-position:50% 72%}}
 @media(max-width:768px){.hero .hero-slide:first-child img{object-position:45% 50%}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 45%,rgba(10,10,10,.75) 100%)}
 .hero-body{position:relative;z-index:3;height:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18vh}
 .hero-kicker{font-family:var(--en);letter-spacing:.4em;font-size:.78rem;color:#fff;opacity:0;animation:up .9s .3s forwards}
 .hero-kicker i{color:var(--red);font-style:normal}
-.hero-h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.6rem,8.5vw,5.6rem);line-height:1.1;letter-spacing:.04em;margin-top:14px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 4px 30px rgba(0,0,0,.6)}
-.hero-h1 i{font-style:normal;color:var(--red);-webkit-text-stroke:1px rgba(255,255,255,.25)}
+.hero-h1{font-family:var(--sans);font-weight:900;font-style:italic;font-size:clamp(2.6rem,8.5vw,5.6rem);line-height:1.12;letter-spacing:.02em;margin-top:14px;color:#fff;border-left:6px solid var(--red);padding-left:20px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.hero-h1 i{font-style:italic;color:#fff;-webkit-text-stroke:0}
 .hero-sub{margin-top:16px;font-size:clamp(.98rem,2.4vw,1.15rem);color:#e8e8e8;font-weight:500;letter-spacing:.06em;opacity:0;animation:up 1s .75s forwards}
 .hero-acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;opacity:0;animation:up 1s .95s forwards}
 @media(max-width:880px){.hero-acts{display:none}}
@@ -432,6 +433,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .wcard::after,.tcard::after,.lvb::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px transparent;transition:box-shadow .4s}
 .wcard:hover::after,.tcard:hover::after,.lvb:hover::after{box-shadow:inset 0 0 0 1px rgba(200,16,21,.32)}
 #scrollbar{border-radius:0 3px 3px 0}
+/* ===== 比照賽博龐克 v3：Orbitron + LOGO lockup + CTA ===== */
+.kicker,.hero-kicker,.fin-k{font-family:var(--tech)}
+.nav-logo .nlk{display:flex;flex-direction:column;justify-content:center;line-height:1}
+.nav-logo .nlk b{font-family:var(--tech);font-weight:900;font-style:italic;font-size:1.18rem;letter-spacing:.16em;color:#fff;text-shadow:0 0 14px rgba(200,16,21,.5)}
+.nav-logo .nlk em{font-family:var(--tech);font-style:normal;font-weight:700;font-size:.5rem;letter-spacing:.4em;color:var(--red);margin-top:4px;white-space:nowrap}
+.nav.sc .nav-logo .nlk b{color:var(--ink);text-shadow:none}
+.nav-cta{font-family:var(--tech)!important;font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:7px;box-shadow:0 0 0 1px rgba(200,16,21,.45),0 6px 20px rgba(200,16,21,.35)}
+.cta-bolt{flex:0 0 auto}
+/* CTA 斜切平行四邊形 + 斜體 */
+.nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
+.hb1{padding-left:36px;padding-right:36px}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
 <meta name="theme-color" content="#C81015">
@@ -457,7 +470,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="#top"><picture><source srcset="assets/final-logo.webp" type="image/webp"><img src="assets/final-logo.png" alt="HCF"></picture><b><i>HCF</i> COMBAT</b></a>
+    <a class="nav-logo" href="#top"><picture><source srcset="assets/final-logo.webp" type="image/webp"><img src="assets/final-logo.png" alt="HCF"></picture><span class="nlk"><b>HCF</b><em>COMBAT SYSTEM</em></span></a>
     <nav class="nav-links">
       <a href="#top">首頁</a>
       <a href="news.html">最新資訊</a>
@@ -468,7 +481,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <a href="pricing.html">課程方案</a>
       <a href="partnership.html" data-en="CORPORATE">企業合作</a>
       <a href="shop.html">商城</a>
-      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>
+      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>
     </nav>
     <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
   </div>

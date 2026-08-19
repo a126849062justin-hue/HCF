@@ -3,7 +3,7 @@
 // ===== 共用元件注入：nav / 浮動層 / 頁尾 =====
 var page=document.body.dataset.page||'';
 var NAV='<div class="nav-in">\
-<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>\
+<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><span class="nlk"><b>HCF</b><em>COMBAT SYSTEM</em></span></a>\
 <nav class="nav-links">\
 <a href="index.html" data-p="home" data-en="HOME">首頁</a>\
 <a href="news.html" data-p="news" data-en="NEWS">最新資訊</a>\
@@ -12,7 +12,7 @@ var NAV='<div class="nav-in">\
 <a href="schedule.html" data-p="sched" data-en="SCHEDULE">最新課表</a>\
 <a href="team.html" data-p="team" data-en="COACHES">教練團隊</a>\
 <a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="partnership.html" data-p="partnership" data-en="CORPORATE">企業合作</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
-<a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>\
+<a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>\
 </nav>\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
 </div>\
