@@ -1,6 +1,5 @@
 /* HCF 背景配樂 — 跨頁接續 + 點擊靜音（桌面限定） */
 (function(){
-  if(!window.matchMedia||!matchMedia('(min-width:900px)').matches)return;
   if(window.__hcfBgm)return; window.__hcfBgm=1;                 /* 同頁防重複 */
   var KT='hcfBgmT', KM='hcfBgmMuted', START=35;
   var muted = sessionStorage.getItem(KM)==='1';                /* 跨頁記住靜音狀態 */
@@ -25,7 +24,8 @@
     if(document.getElementById('bgmBtn'))return;
     var btn=document.createElement('button'); btn.id='bgmBtn'; btn.type='button';
     btn.setAttribute('aria-label','背景音樂開關');
-    btn.style.cssText='position:fixed;right:18px;bottom:20px;z-index:240;width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,16,21,.55);background:rgba(17,17,17,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:opacity .2s,transform .2s;opacity:.7';
+    var bBottom=(window.innerWidth<768?'70px':'20px');
+    btn.style.cssText='position:fixed;right:16px;bottom:'+bBottom+';z-index:240;width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,16,21,.55);background:rgba(17,17,17,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:opacity .2s,transform .2s;opacity:.7';
     btn.onmouseenter=function(){btn.style.opacity='1';btn.style.transform='scale(1.08)';};
     btn.onmouseleave=function(){btn.style.opacity='.7';btn.style.transform='none';};
     function ic(){ btn.textContent = muted ? '🔇' : '🔊'; }  /* 🔇 / 🔊 */
