@@ -119,8 +119,9 @@
 /* ===== 頁尾快速連結 & 手機選單 加入「套組方案 / 老闆信箱」入口 ===== */
 (function(){
   var ENTRIES=[{href:'packages.html',label:'套組方案'},{href:'complaint.html',label:'老闆我要投訴'}];
-  function addLinks(box){
-    ENTRIES.forEach(function(e){
+  var MNAV_ENTRIES=[{href:'complaint.html',label:'老闆我要投訴'}]; /* 手機漢堡選單不放套組方案 */
+  function addLinks(box,list){
+    (list||ENTRIES).forEach(function(e){
       if(!box.querySelector('a[href="'+e.href+'"]')){
         var a=document.createElement('a');a.href=e.href;a.textContent=e.label;box.appendChild(a);
       }
@@ -129,7 +130,7 @@
   function inject(){
     var doneM=false,doneF=false;
     var mnav=document.getElementById('mnav');
-    if(mnav){addLinks(mnav);doneM=true;}
+    if(mnav){addLinks(mnav,MNAV_ENTRIES);doneM=true;}
     var h5s=document.getElementsByTagName('h5'),box=null,i;
     for(i=0;i<h5s.length;i++){if((h5s[i].textContent||'').trim()==='快速連結'){box=h5s[i].parentNode;break;}}
     if(box){addLinks(box);doneF=true;}
