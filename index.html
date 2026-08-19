@@ -879,8 +879,7 @@ function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.r
 function next(){go((cur+1)%slides.length)}
 /* 每支影片播完才換下一段 */
 slides.forEach(function(sl){var v=sl.querySelector('video');if(v)v.addEventListener('ended',function(){if(sl.classList.contains('on'))next();});});
-function startHeroVid(){setTimeout(playCur,200);}
-if(document.readyState==='complete')startHeroVid();else addEventListener('load',startHeroVid);
+/* 影片首次互動才播(效能:LCP不被影片拖累);桌機mousemove會立即觸發 */
 ['pointerdown','touchstart','scroll','keydown','mousemove'].forEach(function(ev){
   window.addEventListener(ev,function h(){playCur();window.removeEventListener(ev,h);},{passive:true});});
 if(slides.length>1){
