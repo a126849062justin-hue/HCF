@@ -28,7 +28,7 @@
     btn.style.cssText='position:fixed;right:16px;bottom:'+bBottom+';z-index:240;width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,16,21,.55);background:rgba(17,17,17,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:opacity .2s,transform .2s;opacity:.7';
     btn.onmouseenter=function(){btn.style.opacity='1';btn.style.transform='scale(1.08)';};
     btn.onmouseleave=function(){btn.style.opacity='.7';btn.style.transform='none';};
-    function ic(){ btn.textContent = muted ? '🔇' : '🔊'; }  /* 🔇 / 🔊 */
+    function ic(){ btn.innerHTML = muted ? "<svg viewBox='0 0 24 24' width='18' height='18' fill='currentColor'><path d='M3 9v6h4l5 4V5L7 9H3z'/><path d='M15.5 9.5l4 4m0-4l-4 4' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round'/></svg>" : "<svg viewBox='0 0 24 24' width='18' height='18' fill='currentColor'><path d='M3 9v6h4l5 4V5L7 9H3z'/><path d='M16.5 12a3.5 3.5 0 00-2-3.16v6.32A3.5 3.5 0 0016.5 12z'/></svg>"; }  /* 🔇 / 🔊 */
     ic();
     btn.addEventListener('click',function(e){
       e.stopPropagation(); muted=!muted;
