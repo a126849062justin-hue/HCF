@@ -445,6 +445,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .nav.sc .nav-logo .nlk b{color:var(--ink);text-shadow:none}
 .nav-cta{font-family:var(--tech)!important;font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:7px;box-shadow:0 0 0 1px rgba(200,16,21,.45),0 6px 20px rgba(200,16,21,.35)}
 .cta-bolt{flex:0 0 auto}
+.nav-cta,.hb1,.hb2,.b1,.b2{clip-path:none!important;font-style:normal;transform:skewX(-10deg)}
+.nav-cta:hover,.hb1:hover,.hb2:hover,.b1:hover,.b2:hover,.hero-acts a:hover{transform:skewX(-10deg) translateY(-2px)}
+.hero-acts a{transform:skewX(-10deg)}
 /* CTA 斜切平行四邊形 + 斜體 */
 .nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 .nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
@@ -976,7 +979,7 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
       btn.addEventListener('pointermove',function(e){
         var r=btn.getBoundingClientRect();
         var x=(e.clientX-r.left-r.width/2)*0.16, y=(e.clientY-r.top-r.height/2)*0.28;
-        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) skewX(-10deg)';
       });
       btn.addEventListener('pointerleave',function(){btn.style.transform='';});
     });

@@ -280,3 +280,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .nav-logo .nlk b{font-size:1.46rem}
 .nav-logo .nlk em{font-size:.58rem;letter-spacing:.34em}
 }
+
+/* CTA 形狀改 skewX(-10deg) 斜切平行四邊形（比照參考藍版 skew-x-[-10deg]） */
+.nav-cta,.hb1,.hb2,.b1,.b2{clip-path:none!important;font-style:normal;transform:skewX(-10deg)}
+.nav-cta:hover,.hb1:hover,.hb2:hover,.b1:hover,.b2:hover{transform:skewX(-10deg) translateY(-2px)}

@@ -181,7 +181,7 @@ document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
       btn.addEventListener('pointermove',function(e){
         var r=btn.getBoundingClientRect();
         var x=(e.clientX-r.left-r.width/2)*0.18, y=(e.clientY-r.top-r.height/2)*0.30;
-        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) skewX(-10deg)';
       });
       btn.addEventListener('pointerleave',function(){btn.style.transform='';});
     });
