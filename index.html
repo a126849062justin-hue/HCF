@@ -508,13 +508,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <!-- 序幕 HERO -->
 <section class="hero" id="top">
-  <div class="hero-slide on"><video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero3.jpg" aria-label="HCF 訓練實況影片一"><source src="hero-vid.mp4" type="video/mp4"></video></div>
-  <div class="hero-slide"><video class="hero-vid hland" muted loop playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片二"><source src="hero-vid2.mp4" type="video/mp4"></video></div>
-  <div class="hero-slide"><video class="hero-vid hp3" muted loop playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片三"><source src="hero-vid3.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide on"><video class="hero-vid" autoplay muted playsinline preload="auto" poster="hero3.jpg" aria-label="HCF 訓練實況影片一"><source src="hero-vid.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide"><video class="hero-vid hland" muted playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片二"><source src="hero-vid2.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide"><video class="hero-vid hp3" muted playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片三"><source src="hero-vid3.mp4" type="video/mp4"></video></div>
   <div class="hero-shade"></div>
   <div class="hero-body">
     <h1 class="hero-h1"><i>HCF</i> 新竹格鬥</h1>
-    <p class="hero-sub">HSINCHU COMBAT <i>/</i> HONOR · COURAGE · FAITH</p>
+    <p class="hero-sub">HONOR · COURAGE · FAITH</p>
     <div class="hero-acts">
       <a class="hb1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">$400 首堂體驗</a>
       <a class="hb2" href="#act2">認識總教練</a>
@@ -838,16 +838,16 @@ var slides=document.querySelectorAll('.hero-slide'),dots=document.getElementById
 slides.forEach(function(_,i){var b=document.createElement('button');if(i===0)b.className='on';
   b.onclick=function(){go(i)};dots.appendChild(b)});
 function playCur(){slides.forEach(function(sl,i){var v=sl.querySelector('video');if(!v)return;
-  if(i===cur){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}else{try{v.pause();}catch(e){}}});}
+  if(i===cur){v.muted=true;try{v.currentTime=0;}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{try{v.pause();v.currentTime=0;}catch(e){}}});}
 function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');
-  cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');playCur();reset()}
+  cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');playCur();}
 function next(){go((cur+1)%slides.length)}
-function reset(){clearInterval(timer);timer=setInterval(next,7000)}
+/* 每支影片播完才換下一段 */
+slides.forEach(function(sl){var v=sl.querySelector('video');if(v)v.addEventListener('ended',function(){if(sl.classList.contains('on'))next();});});
 playCur();
 ['pointerdown','touchstart','scroll','keydown','mousemove'].forEach(function(ev){
   window.addEventListener(ev,function h(){playCur();window.removeEventListener(ev,h);},{passive:true});});
 if(slides.length>1){
-  reset();
   var tx=0,hero=document.querySelector('.hero');
   hero.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
   hero.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;
