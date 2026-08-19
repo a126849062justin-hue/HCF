@@ -57,14 +57,15 @@ a{color:inherit;text-decoration:none}
 .hero-slide.on{opacity:1}
 .hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-in-out infinite alternate}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:var(--carbon)}
-@media(min-width:769px){.hero-vid{object-position:50% 72%}}
+@media(min-width:769px){.hero-vid{object-position:50% 15%}}
+@media(min-width:769px){.hero-body{padding-bottom:26vh}}
 @media(max-width:768px){.hero .hero-slide:first-child img{object-position:45% 50%}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 45%,rgba(10,10,10,.75) 100%)}
 .hero-body{position:relative;z-index:3;height:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18vh}
 .hero-kicker{font-family:var(--en);letter-spacing:.4em;font-size:.78rem;color:#fff;opacity:0;animation:up .9s .3s forwards}
 .hero-kicker i{color:var(--red);font-style:normal}
-.hero-h1{font-family:var(--sans);font-weight:900;font-style:italic;font-size:clamp(2.6rem,8.5vw,5.6rem);line-height:1.12;letter-spacing:.02em;margin-top:14px;color:#fff;border-left:6px solid var(--red);padding-left:20px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.hero-h1{font-family:var(--sans);font-weight:900;font-style:italic;font-size:clamp(2.6rem,9vw,6.2rem);line-height:1.12;letter-spacing:.02em;margin-top:14px;color:#fff;border-left:6px solid var(--red);padding-left:20px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 2px 12px rgba(0,0,0,.9)}
 .hero-h1 i{font-style:italic;color:#fff;-webkit-text-stroke:0}
 .hero-sub{margin-top:16px;font-size:clamp(.98rem,2.4vw,1.15rem);color:#e8e8e8;font-weight:500;letter-spacing:.06em;opacity:0;animation:up 1s .75s forwards}
 .hero-acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;opacity:0;animation:up 1s .95s forwards}
