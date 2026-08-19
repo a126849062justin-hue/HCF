@@ -58,6 +58,7 @@ a{color:inherit;text-decoration:none}
 .hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-in-out infinite alternate}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:var(--carbon);filter:brightness(1.35) contrast(1.02) saturate(1.05)}
 @media(min-width:769px){.hero-vid{object-position:50% 15%}}
+.hero-vid.hland{object-position:50% 50%!important}
 @media(min-width:769px){.hero-body{padding-bottom:26vh}}
 @media(max-width:768px){.hero .hero-slide:first-child img{object-position:45% 50%}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
@@ -507,7 +508,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <!-- 序幕 HERO -->
 <section class="hero" id="top">
   <div class="hero-slide on"><video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero3.jpg" aria-label="HCF 訓練實況影片一"><source src="hero-vid.mp4" type="video/mp4"></video></div>
-  <div class="hero-slide"><video class="hero-vid" muted loop playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片二"><source src="hero-vid2.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide"><video class="hero-vid hland" muted loop playsinline preload="metadata" poster="hero3.jpg" aria-label="HCF 訓練實況影片二"><source src="hero-vid2.mp4" type="video/mp4"></video></div>
   <div class="hero-shade"></div>
   <div class="hero-body">
     <h1 class="hero-h1"><i>HCF</i> 新竹格鬥</h1>
