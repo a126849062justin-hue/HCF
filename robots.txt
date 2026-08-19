@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /status.html
+Disallow: /survey-trial-followup.html
+Disallow: /plans-proposal.html
+Disallow: /card-
 Sitemap: https://www.hsinchucombat.com/sitemap.xml
