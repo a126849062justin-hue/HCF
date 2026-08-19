@@ -847,7 +847,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">官方 LINE</a>
     </div>
   </div>
-  <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥　|　<a href="legal.html#privacy" style="color:#9a9a9a">隱私權政策</a> · <a href="legal.html#disclaimer" style="color:#9a9a9a">免責聲明</a> · <a href="careers.html" style="color:#9a9a9a">人才招募</a> · <a href="partnership.html" style="color:#9a9a9a">企業合作</a></div>
+  <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥　|　<a href="legal.html#privacy" style="color:#cfcfcf;text-decoration:underline">隱私權政策</a> · <a href="legal.html#disclaimer" style="color:#cfcfcf;text-decoration:underline">免責聲明</a> · <a href="careers.html" style="color:#cfcfcf;text-decoration:underline">人才招募</a> · <a href="partnership.html" style="color:#cfcfcf;text-decoration:underline">企業合作</a></div>
 </section>
 
 <!-- 浮動層 -->
@@ -873,7 +873,7 @@ mnav.addEventListener('click',function(e){if(e.target.tagName==='A')mnav.classLi
 // ===== Hero 輪播（圖片淡接；正式版接回 carousel-config.json 與影片） =====
 var slides=document.querySelectorAll('.hero-slide'),dots=document.getElementById('dots'),cur=0,timer;
 slides.forEach(function(_,i){var b=document.createElement('button');if(i===0)b.className='on';
-  b.onclick=function(){go(i)};dots.appendChild(b)});
+  b.setAttribute('type','button');b.setAttribute('aria-label','切換至第 '+(i+1)+' 支影片');b.onclick=function(){go(i)};dots.appendChild(b)});
 function playCur(){slides.forEach(function(sl,i){var v=sl.querySelector('video');if(!v)return;
   if(i===cur){v.muted=true;try{v.currentTime=0;}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{try{v.pause();v.currentTime=0;}catch(e){}}});}
 function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');
