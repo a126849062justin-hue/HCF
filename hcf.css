@@ -287,23 +287,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 
 /* ========== 漢堡選單 高級感深色版 + 社群 ========== */
 .mnav{background:#0b0b0d;border-bottom:0}
-#mnav.mnav{background:linear-gradient(165deg,#181820 0%,#0a0a0c 100%)!important;box-shadow:10px 0 60px rgba(0,0,0,.6)!important;padding-top:66px!important;width:min(84vw,330px)!important}
+#mnav.mnav{background:linear-gradient(165deg,#181820 0%,#0a0a0c 100%)!important;box-shadow:10px 0 60px rgba(0,0,0,.6)!important;padding-top:50px!important;width:min(84vw,320px)!important}
 #mnav.mnav::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:0}
 .mnav>a,.mnav .msub-t,.mnav .msub{position:relative;z-index:1}
 .mnav a,.mnav .msub-t{color:#ededed!important;border-top:0!important;letter-spacing:.05em}
-.mnav>a,.mnav .msub-t{font-size:1.05rem;padding:16px 26px!important;font-weight:800}
+.mnav>a,.mnav .msub-t{font-size:.9rem;padding:9px 24px!important;font-weight:800}
 .mnav .msub-t{background:transparent!important}
 .mnav .msub-t i{color:var(--red);font-weight:900}
 .mnav a:active{color:var(--red)!important}
 .msub{background:rgba(255,255,255,.025)!important}
-.msub-grid a{color:#cfcfcf!important;border-top:0!important;font-weight:600}
+.msub-grid a{color:#cfcfcf!important;border-top:0!important;font-weight:600;padding:8px 10px 8px 26px!important;font-size:.84rem}
 .msub-grid a:nth-child(odd){border-right:0!important}
 .msub-grid a::before{color:var(--red)}
 .mnav-close{color:#fff!important}
-.mnav a.cta{background:var(--red)!important;color:#fff!important;margin:20px 22px 8px;transform:skewX(-10deg);font-weight:900;letter-spacing:.1em;box-shadow:0 10px 26px rgba(200,16,21,.5);border-top:0!important}
+.mnav a.cta{background:var(--red)!important;color:#fff!important;margin:10px 20px 4px;padding:11px 24px!important;transform:skewX(-10deg);font-weight:900;letter-spacing:.08em;box-shadow:0 8px 22px rgba(200,16,21,.5);border-top:0!important}
 /* 社群圓鈕列 */
-.mnav-social{display:flex;gap:13px;justify-content:center;padding:16px 20px 12px;margin-top:6px;position:relative;z-index:1}
-.mnav-social a{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;padding:0!important;transition:.22s}
+.mnav-social{display:flex;gap:12px;justify-content:center;padding:10px 20px 8px;margin-top:4px;position:relative;z-index:1}
+.mnav-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;padding:0!important;transition:.22s}
 .mnav-social a svg{width:20px;height:20px;display:block}
 .mnav-social a:active{transform:scale(.92)}
 .mnav-social a[data-s="ig"]:active{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent!important}
