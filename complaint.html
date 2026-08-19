@@ -70,6 +70,13 @@
   .plaque::before{left:-8px}.plaque::after{right:-8px}
   @media(max-width:768px){.plaque{top:6%;padding:9px 18px}}
 
+  /* 包公實照背景（隨升堂由暗轉亮）+ 可讀性遮罩 */
+  .hall .baogong{position:absolute;inset:0;z-index:0;background:url(baogong.webp) center 14%/cover no-repeat;opacity:calc(.34 + var(--lit)*.54);transition:opacity 1s ease}
+  .hall .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,4,3,.32) 0%,rgba(5,4,3,.15) 30%,rgba(5,4,3,.7) 72%,rgba(6,5,4,.93) 100%)}
+  .hall .lantern{z-index:3}
+  /* 照片已含明鏡高懸匾額與包公，隱藏重複的 CSS 版本 */
+  .plaque,.bench{display:none!important}
+
   /* 包公坐堂（SVG 剪影，畫面深處）*/
   .bench{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:1;
     width:min(680px,96vw);opacity:calc(.7 + var(--lit)*.3);transition:opacity .8s}
@@ -291,6 +298,7 @@
 <body data-page="survey">
 <!-- 第一幕｜公堂景深 -->
 <div class="hall" aria-hidden="true">
+  <div class="baogong"></div><div class="scrim"></div>
   <div class="pillar l"></div><div class="pillar r"></div>
   <div class="lantern l" id="lanL"></div><div class="lantern r" id="lanR"></div>
   <div class="beam"></div><div class="mist"></div>
