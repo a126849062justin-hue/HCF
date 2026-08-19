@@ -167,3 +167,74 @@ a{color:inherit;text-decoration:none}
 .cb-leadform{display:flex;flex-direction:column;gap:6px}
 .cb-leadform input{border:1.5px solid var(--line,#E5E5E5);padding:9px 10px;font-size:.86rem;font-family:inherit}
 .cb-leadform .cb-leadsend{background:var(--red,#C81015);color:#fff;border:0;font-weight:900;padding:10px;cursor:pointer;font-family:inherit}
+
+/* ==========================================================================
+   質感升級層 v1 — 全站共用（打底打磨 + 沉浸互動）
+   ========================================================================== */
+/* 1. 全域渲染品質 */
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,.h2,.sec-h,.phero h1,.fin-q,.cbody h2{text-wrap:balance}
+p,.lead,.cbody p.t{text-wrap:pretty}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* 2. 細噪點紋理（極淡固定，桌機限定，不影響互動） */
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(max-width:880px){body::after{display:none}}
+
+/* 3. 滾動進度條 */
+#scrollbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),#ff4249);z-index:9999;box-shadow:0 0 12px rgba(200,16,21,.55);will-change:width}
+
+/* 4. 捲動浮現：更順的緩動 */
+.rv{transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+
+/* 5. 卡片高級微互動（懸浮浮起 + 陰影綻放） */
+.wcard,.sysc,.lvb,.pcard,.tcard,.bd-card,.who-grid>div{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s cubic-bezier(.2,.7,.2,1)}
+.wcard:hover,.lvb:hover,.pcard:hover,.tcard:hover,.who-grid>div:hover{transform:translateY(-6px)}
+.wcard:hover,.lvb:hover,.tcard:hover{box-shadow:0 26px 60px rgba(17,17,17,.16)}
+.who-grid>div:hover{box-shadow:0 20px 44px rgba(17,17,17,.12)}
+
+/* 6. 按鈕質感 + 焦點可及性 */
+.hb1,.hb2,.nav-cta,.b1,.b2{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .25s,color .25s}
+.hb1:hover,.b1:hover,.nav-cta:hover{transform:translateY(-2px)}
+.hb1:hover{box-shadow:0 16px 40px rgba(200,16,21,.5)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+
+/* 7. 深色 Hero 沉浸：底部壓暗（文字更清） + 右上紅色氛圍光 */
+.phero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 80% at 82% 6%,rgba(200,16,21,.20),transparent 55%),linear-gradient(to top,rgba(0,0,0,.52),transparent 48%)}
+.phero-in{z-index:3}
+
+/* 8. Hero 游標光暈（座標由 hcf.js 設定 --mx/--my） */
+.phero{--mx:80%;--my:14%}
+.phero .glow{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(260px 260px at var(--mx) var(--my),rgba(200,16,21,.32),transparent 70%);mix-blend-mode:screen}
+.phero:hover .glow{opacity:1}
+.phero .bgimg{will-change:transform}
+
+/* ==========================================================================
+   質感升級層 v2 — editorial 排版 + 電影感微互動（全站共用）
+   ========================================================================== */
+/* A. kicker 前導紅線（雜誌標題感） */
+.kicker{display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";flex:0 0 auto;width:24px;height:2px;background:currentColor;opacity:.85}
+
+/* B. 圖片沉浸：容器裁切 + hover 緩放 */
+.sysc,.imgw{overflow:hidden}
+.sysc img,.imgw img{transition:transform .9s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.sysc:hover img,.imgw:hover img{transform:scale(1.06)}
+
+/* C. 實心/邊框按鈕光掃過（高質感提示） */
+.hb1,.hb2,.b1,.b2{position:relative;overflow:hidden;isolation:isolate}
+.hb1::after,.hb2::after,.b1::after,.b2::after{content:"";position:absolute;inset:0;z-index:-1;left:-130%;background:linear-gradient(100deg,transparent 22%,rgba(255,255,255,.42),transparent 60%);transform:skewX(-18deg);transition:left .65s ease;pointer-events:none}
+.hb1:hover::after,.hb2:hover::after,.b1:hover::after,.b2:hover::after{left:130%}
+
+/* D. 卡片 hover：內描紅光環（疊在 v1 浮起之上） */
+.wcard,.tcard,.lvb{overflow:hidden}
+.wcard::after,.tcard::after,.lvb::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px transparent;transition:box-shadow .4s}
+.wcard:hover::after,.tcard:hover::after,.lvb:hover::after{box-shadow:inset 0 0 0 1px rgba(200,16,21,.32)}
+
+/* E. 內文連結底線掃（限內容區，不動 nav/footer） */
+.cbody a,.lead a,.ans a{background:linear-gradient(var(--red),var(--red)) left 100% / 0% 2px no-repeat;transition:background-size .3s ease;padding-bottom:1px}
+.cbody a:hover,.lead a:hover,.ans a:hover{background-size:100% 2px;color:var(--red)}
+
+/* F. 捲動進度條末端圓角（接 v1 #scrollbar） */
+#scrollbar{border-radius:0 3px 3px 0}

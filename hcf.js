@@ -144,3 +144,46 @@ document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
   a.innerHTML='<b>點</b><b>擊</b><b>領</b><b>取</b><b>獎</b><b>勵</b><b>🎁</b>';
   document.body.appendChild(a);
 })();
+
+
+/* ===== 質感升級：滾動進度條 + Hero 沉浸互動（游標光暈 + 輕視差） ===== */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var de=document.documentElement;
+  var bar=document.createElement('div');bar.id='scrollbar';document.body.appendChild(bar);
+  function sb(){var st=window.pageYOffset||de.scrollTop||0;var sc=de.scrollHeight-window.innerHeight;bar.style.width=(sc>0?(st/sc*100):0).toFixed(2)+'%';}
+  addEventListener('scroll',sb,{passive:true});addEventListener('resize',sb,{passive:true});sb();
+  var phero=document.querySelector('.phero');
+  if(phero){
+    var glow=document.createElement('div');glow.className='glow';phero.appendChild(glow);
+    if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+      phero.addEventListener('pointermove',function(e){var r=phero.getBoundingClientRect();phero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');phero.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
+      var bg=phero.querySelector('.bgimg');
+      if(bg){bg.style.transform='scale(1.12)';var tk=false;addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var top=phero.getBoundingClientRect().top;bg.style.transform='translateY('+(top*-0.05).toFixed(1)+'px) scale(1.12)';});},{passive:true});}
+    }
+  }
+})();
+
+/* ===== 質感升級 v2：進場串接錯開 + 桌機磁吸 CTA ===== */
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(rm)return;
+  /* 同一容器內的 .rv 依序錯開浮現 */
+  document.querySelectorAll('.rv').forEach(function(el){
+    var p=el.parentNode; if(!p||!p.children)return;
+    var sibs=[].filter.call(p.children,function(c){return c.classList&&c.classList.contains('rv');});
+    var idx=sibs.indexOf(el);
+    if(idx>0)el.style.transitionDelay=Math.min(idx*70,350)+'ms';
+  });
+  /* 主要 CTA 磁吸（桌機精準指標） */
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.hb1,.b1').forEach(function(btn){
+      btn.addEventListener('pointermove',function(e){
+        var r=btn.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.18, y=(e.clientY-r.top-r.height/2)*0.30;
+        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+      });
+      btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+    });
+  }
+})();
