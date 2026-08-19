@@ -1019,29 +1019,7 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   if(document.readyState==='complete')init();else addEventListener('load',init);
 })();
 </script>
-<script>
-/* 進站配樂（桌面限定，從 35 秒起，首次互動啟動，可靜音）*/
-(function(){
-  if(!window.matchMedia||!matchMedia('(min-width:900px)').matches)return;
-  var bgm=new Audio('hero-music.m4a');bgm.preload='auto';bgm.volume=0.5;
-  var started=false,muted=false;
-  bgm.addEventListener('loadedmetadata',function(){try{if(bgm.currentTime<35)bgm.currentTime=35;}catch(e){}});
-  bgm.addEventListener('ended',function(){try{bgm.currentTime=35;bgm.play();}catch(e){}});
-  function seek35(){try{if(bgm.currentTime<35)bgm.currentTime=35;}catch(e){}}
-  function ensureStart(){if(started||muted)return;seek35();var p=bgm.play();if(p&&p.then){p.then(function(){started=true;seek35();setIcon();}).catch(function(){});}else{started=true;setIcon();}}
-  ensureStart();
-  var evs=['pointerdown','keydown','wheel','touchstart','scroll'];
-  function onGesture(){if(!muted)ensureStart();if(started)evs.forEach(function(e){window.removeEventListener(e,onGesture,true);});}
-  evs.forEach(function(e){window.addEventListener(e,onGesture,{capture:true,passive:true});});
-  var btn=document.createElement('button');btn.id='bgmToggle';btn.type='button';btn.setAttribute('aria-label','背景配樂開關');
-  btn.style.cssText='position:fixed;top:84px;right:16px;z-index:250;display:inline-flex;align-items:center;gap:6px;background:rgba(17,17,17,.72);color:#f0e6d0;border:1px solid rgba(200,16,21,.55);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;backdrop-filter:blur(6px);transition:.2s';
-  function setIcon(){btn.innerHTML=(started&&!muted?'🔊 配樂':'🔈 配樂');btn.setAttribute('aria-pressed',String(started&&!muted));}
-  setIcon();
-  btn.addEventListener('click',function(e){e.stopPropagation();if(!started){muted=false;ensureStart();return;}muted=!muted;if(muted){bgm.pause();}else{seek35();bgm.play().catch(function(){});}setIcon();});
-  document.body.appendChild(btn);
-  document.addEventListener('visibilitychange',function(){if(document.hidden){bgm.pause();}else if(started&&!muted){bgm.play().catch(function(){});}});
-})();
-</script>
+<script src="hcf-bgm.js" defer></script>
 <script>
 /* ===== 質感升級：滾動進度條 + Hero 游標光暈（首頁） ===== */
 (function(){

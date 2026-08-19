@@ -187,3 +187,6 @@ document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
     });
   }
 })();
+
+/* 全站背景配樂（跨頁接續，桌面限定） */
+(function(){var s=document.createElement('script');s.src='hcf-bgm.js';s.defer=true;(document.head||document.documentElement).appendChild(s);})();
