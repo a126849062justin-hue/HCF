@@ -65,9 +65,10 @@ a{color:inherit;text-decoration:none}
 .hero-body{position:relative;z-index:3;height:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18vh}
 .hero-kicker{font-family:var(--en);letter-spacing:.4em;font-size:.78rem;color:#fff;opacity:0;animation:up .9s .3s forwards}
 .hero-kicker i{color:var(--red);font-style:normal}
+.hero-sub i{color:var(--red);font-style:normal}
 .hero-h1{font-family:var(--sans);font-weight:900;font-style:italic;font-size:clamp(2.6rem,9vw,6.2rem);line-height:1.12;letter-spacing:.02em;margin-top:14px;color:#fff;border-left:6px solid var(--red);padding-left:20px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 2px 12px rgba(0,0,0,.9)}
 .hero-h1 i{font-style:italic;color:#fff;-webkit-text-stroke:0}
-.hero-sub{margin-top:16px;font-size:clamp(.98rem,2.4vw,1.15rem);color:#e8e8e8;font-weight:500;letter-spacing:.06em;opacity:0;animation:up 1s .75s forwards}
+.hero-sub{margin-top:16px;font-family:var(--tech);font-size:clamp(.82rem,1.9vw,1.02rem);color:#e8e8e8;font-weight:500;letter-spacing:.22em;opacity:0;animation:up 1s .75s forwards}
 .hero-acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;opacity:0;animation:up 1s .95s forwards}
 @media(max-width:880px){.hero-acts{display:none}}
 .hb1{background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:15px 30px;transition:.25s;box-shadow:0 10px 30px rgba(200,16,21,.45)}
@@ -446,6 +447,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 .nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
 .hb1{padding-left:36px;padding-right:36px}
+/* 桌機:標題+logo靠最左, nav CTA更清楚, hb2/手機CTA也斜 */
+@media(min-width:769px){.nav-in{max-width:none;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+@media(min-width:769px){.hero-body{max-width:none;margin:0;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+.nav-cta{padding:11px 24px!important;font-size:.96rem;letter-spacing:.12em;filter:drop-shadow(0 3px 16px rgba(255,40,50,.7))}
+.hb2{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);padding-left:32px;padding-right:32px}
+.mcta{background:var(--red)}
+.mcta a{font-style:italic}
+.mcta .m1{clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
+.mcta .m2{clip-path:polygon(16px 0,100% 0,100% 100%,0 100%)}
+#bgmToggle{display:none!important}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
 <meta name="theme-color" content="#C81015">
@@ -495,12 +506,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <!-- 序幕 HERO -->
 <section class="hero" id="top">
-  <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero3.jpg" aria-label="HCF 新竹格鬥訓練實況影片"><source src="hero-vid.mp4" type="video/mp4"></video>
+  <div class="hero-slide on"><video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero3.jpg" aria-label="HCF 訓練實況影片一"><source src="hero-vid.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide"><video class="hero-vid" autoplay muted loop playsinline preload="metadata" aria-label="HCF 訓練實況影片二"><source src="hero-vid2.mp4" type="video/mp4"></video></div>
   <div class="hero-shade"></div>
   <div class="hero-body">
-    <div class="hero-kicker">HSINCHU COMBAT FITNESS <i>/</i> HONOR · COURAGE · FAITH</div>
     <h1 class="hero-h1"><i>HCF</i> 新竹格鬥</h1>
-    <p class="hero-sub">新竹最強泰拳格鬥選手團隊</p>
+    <p class="hero-sub">HSINCHU COMBAT <i>/</i> HONOR · COURAGE · FAITH</p>
     <div class="hero-acts">
       <a class="hb1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">$400 首堂體驗</a>
       <a class="hb2" href="#act2">認識總教練</a>
@@ -826,7 +837,7 @@ slides.forEach(function(_,i){var b=document.createElement('button');if(i===0)b.c
 function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');
   cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');reset()}
 function next(){go((cur+1)%slides.length)}
-function reset(){clearInterval(timer);timer=setInterval(next,6000)}
+function reset(){clearInterval(timer);timer=setInterval(next,7000)}
 if(slides.length>1){
   reset();
   var tx=0,hero=document.querySelector('.hero');

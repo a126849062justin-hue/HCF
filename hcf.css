@@ -259,3 +259,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 .nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
 .hb1{padding-left:36px;padding-right:36px}
+
+/* === 桌機排版靠最左 + nav CTA 更清楚 + 認識總教練/手機CTA 也斜 === */
+@media(min-width:769px){.nav-in{max-width:none;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+.nav-cta{padding:11px 24px!important;font-size:.96rem;letter-spacing:.12em;filter:drop-shadow(0 3px 16px rgba(255,40,50,.7))}
+.hb2,.b2{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);padding-left:32px;padding-right:32px}
+.mcta{background:var(--red)}
+.mcta a{font-style:italic}
+.mcta .m1{clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
+.mcta .m2{clip-path:polygon(16px 0,100% 0,100% 100%,0 100%)}
