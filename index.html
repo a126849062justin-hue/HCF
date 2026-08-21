@@ -508,6 +508,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .mnav-social a[data-s="yt"]:hover,.fin-social .fs-ic[data-s="yt"]:hover,.mnav-social a[data-s="yt"]:active{background:none!important;color:#FF0000!important;border-color:transparent!important}
 .mnav-social a[data-s="line"]:hover,.fin-social .fs-ic[data-s="line"]:hover,.mnav-social a[data-s="line"]:active{background:none!important;color:#06C755!important;border-color:transparent!important}
 .mnav-social{gap:6px}.fin-social{gap:6px}
+
+/* 選手故事：小米 */
+.act-mi{position:relative;background:linear-gradient(180deg,#0c0908,#15100e);color:#fff;padding:110px 0;overflow:hidden}
+.act-mi .in{max-width:var(--maxw,1160px);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center}
+.act-mi .kicker{color:#F09595}
+.act-mi h2{color:#fff}
+.act-mi h2 i{font-style:normal;color:var(--red,#C81015)}
+.act-mi p{color:#d3ccc4;margin-top:16px;max-width:520px;line-height:2}
+.act-mi .quote{color:#f5c451;font-family:var(--serif,serif);font-weight:700;font-size:1.15rem;border-left:4px solid var(--red,#C81015);padding-left:16px}
+.act-mi .vis{position:relative;padding:0 6% 30px 0}
+.act-mi .vis .now{width:100%;border-radius:8px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.act-mi .vis .then{position:absolute;left:-14px;bottom:0;width:40%;border:5px solid #fff;border-radius:3px;transform:rotate(-5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.act-mi .vis .then-lbl{position:absolute;left:-6px;bottom:-16px;background:var(--red,#C81015);color:#fff;font-family:var(--en,Oswald);font-weight:700;letter-spacing:.14em;font-size:.68rem;padding:5px 12px;transform:rotate(-5deg);z-index:3}
+@media(max-width:880px){.act-mi{padding:80px 0}.act-mi .in{grid-template-columns:1fr;gap:26px}.act-mi .vis{padding:0 0 26px;max-width:400px;margin:0 auto}.act-mi .vis .then{width:36%}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
 <meta name="theme-color" content="#C81015">
@@ -630,6 +644,24 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
         <b>選手培訓</b><span class="d">總教練親自帶 限量名額</span>
         <i>怎麼練最快 ⟶</i>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- 選手故事：小米 -->
+<section class="act-mi" id="actMi">
+  <div class="in">
+    <div class="body">
+      <div class="kicker">FIGHTER STORY / 選手故事</div>
+      <h2 class="h2">小米教練<br>從<i>谷底</i>到<i>擂台</i></h2>
+      <p>重度憂鬱、暴食厭食、躁鬱——她曾一年有一半時間在強制住院。直到戴上拳套、第一次揮拳打中的那一刻，內心那攤死水，開始流動。</p>
+      <p class="quote">「泰拳之於我，看似暴力的勇敢心，是最強壯的溫柔和愛。」</p>
+      <a class="a2-btn" href="story-mi.html">看小米的完整故事 →</a>
+    </div>
+    <div class="vis">
+      <img class="now" src="mi-fighter.jpg" alt="小米教練 戰鬥形象" loading="lazy" decoding="async">
+      <img class="then" src="mi-life.jpg" alt="小米 蛻變前的日常" loading="lazy" decoding="async">
+      <span class="then-lbl">曾經 · 62kg</span>
     </div>
   </div>
 </section>
