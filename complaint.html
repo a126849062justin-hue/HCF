@@ -508,6 +508,25 @@
     for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);nb.buffer=buf;var ng=c.createGain();ng.gain.value=.32;nb.connect(ng).connect(c.destination);nb.start(t);}catch(e){}}
   function gavelSound(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,nb=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.09,c.sampleRate),d=buf.getChannelData(0);
     for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,6);nb.buffer=buf;var f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=2500;var g=c.createGain();g.gain.value=.65;nb.connect(f).connect(g).connect(c.destination);nb.start(t);}catch(e){}}
+  /* === 升堂沉浸音效（原創 WebAudio 合成：銅鑼／堂鼓／威武人聲／公堂主題樂，皆為原創非既有歌曲）=== */
+  function reverbNode(){var c=ac();if(!c)return null;if(c.__rv)return c.__rv;try{var len=Math.floor(c.sampleRate*2.6),ib=c.createBuffer(2,len,c.sampleRate);for(var ch=0;ch<2;ch++){var d=ib.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.8);}var cv=c.createConvolver();cv.buffer=ib;var wet=c.createGain();wet.gain.value=.4;cv.connect(wet).connect(c.destination);c.__rv=cv;return cv;}catch(e){return null;}}
+  function gongSound(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,rv=reverbNode(),parts=[1,1.47,2.09,2.71,3.36,4.13],master=c.createGain();
+    master.gain.setValueAtTime(.0001,t);master.gain.exponentialRampToValueAtTime(.55,t+.02);master.gain.exponentialRampToValueAtTime(.0001,t+3.4);master.connect(c.destination);if(rv)master.connect(rv);
+    parts.forEach(function(m,i){var o=c.createOscillator();o.type='sine';o.frequency.setValueAtTime(116*m,t);o.frequency.exponentialRampToValueAtTime(112*m,t+3.2);var g=c.createGain();g.gain.value=1/(i+1.4);o.connect(g).connect(master);o.start(t);o.stop(t+3.4);});
+    var nb=c.createBufferSource(),buf=c.createBuffer(1,Math.floor(c.sampleRate*.14),c.sampleRate),dd=buf.getChannelData(0);for(var k=0;k<dd.length;k++)dd[k]=(Math.random()*2-1)*Math.pow(1-k/dd.length,3.5);nb.buffer=buf;var nf=c.createBiquadFilter();nf.type='bandpass';nf.frequency.value=3400;nf.Q.value=.7;var ng=c.createGain();ng.gain.value=.5;nb.connect(nf).connect(ng).connect(c.destination);nb.start(t);}catch(e){}}
+  function drumRoll(){if(!sndOn)return;for(var i=0;i<8;i++){(function(idx){setTimeout(function(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(48,t+.18);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.26+idx*.06,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.3);o.connect(g).connect(c.destination);o.start(t);o.stop(t+.32);}catch(e){}},idx*85);})(i);}}
+  function vowelVoice(c,t,dur,f0,formants,rv){var master=c.createGain();master.gain.setValueAtTime(.0001,t);master.gain.linearRampToValueAtTime(.4,t+.09);master.gain.setValueAtTime(.4,t+dur-.18);master.gain.exponentialRampToValueAtTime(.0001,t+dur);master.connect(c.destination);if(rv)master.connect(rv);
+    [-7,0,8].forEach(function(det){var o=c.createOscillator();o.type='sawtooth';var f=f0*Math.pow(2,det/1200);o.frequency.setValueAtTime(f,t);o.frequency.linearRampToValueAtTime(f*0.93,t+dur);
+      var lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=5.5;lg.gain.value=f0*.017;lfo.connect(lg).connect(o.frequency);lfo.start(t);lfo.stop(t+dur);
+      formants.forEach(function(fr){var bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=fr;bp.Q.value=7;var fg=c.createGain();fg.gain.value=.6;o.connect(bp).connect(fg).connect(master);});
+      o.start(t);o.stop(t+dur);});}
+  function weiwuChant(){if(!sndOn)return;var c=ac();if(!c)return;try{var rv=reverbNode(),t=c.currentTime+.02;vowelVoice(c,t,.85,116,[480,1600],rv);vowelVoice(c,t+1.0,1.2,102,[330,720],rv);}catch(e){}}
+  var themeOn=false,themeTimer=null;
+  function pluck(c,t,freq,dur,vol,type){var o=c.createOscillator(),g=c.createGain(),rv=reverbNode();o.type=type||'triangle';o.frequency.value=freq;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g).connect(c.destination);if(rv)g.connect(rv);o.start(t);o.stop(t+dur+.05);}
+  function themePhrase(){if(!sndOn||!themeOn)return;var c=ac();if(!c)return;try{var t=c.currentTime+.05,mel=[[330,0,.55],[392,.55,.5],[440,1.05,.6],[392,1.6,.45],[330,2.1,.7],[294,2.75,.5],[262,3.3,.55],[294,3.95,.9]];
+    mel.forEach(function(n){pluck(c,t+n[1],n[0],n[2],.11,'triangle');});pluck(c,t,110,3.4,.06,'sine');pluck(c,t+2.1,98,2.8,.06,'sine');}catch(e){}}
+  function startTheme(){if(themeOn)return;themeOn=true;themePhrase();themeTimer=setInterval(function(){if(themeOn&&sndOn)themePhrase();},7800);}
+
   var snd=document.getElementById('sndToggle');
   snd.addEventListener('click',function(){sndOn=!sndOn;snd.setAttribute('aria-pressed',String(sndOn));snd.innerHTML=(sndOn?'🔊 <span>公堂之聲：開</span>':'🔇 <span>公堂之聲：關</span>');});
 
@@ -529,7 +548,8 @@
   function setLit(v){document.body.style.setProperty('--lit',v);}
   function rally(){
     if(rallied)return; rallied=true;
-    drumSound();
+    drumSound();drumRoll();
+    try{document.dispatchEvent(new Event('hcf-shengtang'));}catch(e){}
     if(!reduce){shock.classList.remove('go');void shock.offsetWidth;shock.classList.add('go');document.body.classList.add('shaking');setTimeout(function(){document.body.classList.remove('shaking');},520);}
     // 咚
     boomTxt.textContent='咚——！';boom.classList.add('go');
@@ -537,13 +557,14 @@
     setTimeout(function(){lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');
       var lit=0,iv=setInterval(function(){lit+=.1;setLit(Math.min(1,lit));if(lit>=1)clearInterval(iv);},50);},260);
     // 威～～武～～（~0.9s）
-    setTimeout(function(){boom.classList.remove('go');void boom.offsetWidth;boomTxt.textContent='威～～武～～';boom.classList.add('go');gavelSound();},900);
+    setTimeout(function(){boom.classList.remove('go');void boom.offsetWidth;boomTxt.textContent='威～～武～～';boom.classList.add('go');gongSound();weiwuChant();},900);
+    setTimeout(startTheme,2100);
     setTimeout(function(){boom.classList.remove('go');},1800);
     // 升堂：狀紙升起 + 自動進入（~1.4s）
     setTimeout(function(){form.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});},1400);
   }
   drumBtn.addEventListener('click',rally);
-  document.getElementById('toForm').addEventListener('click',function(){setLit(1);lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');});
+  document.getElementById('toForm').addEventListener('click',function(){setLit(1);lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');gongSound();startTheme();try{document.dispatchEvent(new Event('hcf-shengtang'));}catch(e){}});
 
   /* ================= 呈堂送出（保留原後端邏輯）================= */
   var cForm=document.getElementById('cForm'),done=document.getElementById('doneView'),verdict=document.getElementById('verdict'),
@@ -577,5 +598,33 @@
 })();
 </script>
 <script src="hcf-analytics.js" defer></script>
+<style>
+/* === 3D 立體公堂：景深分層 === */
+.hall{perspective:1200px;perspective-origin:50% 40%}
+.hall-scene{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .35s ease-out;will-change:transform}
+.hall .baogong{translate:0 0 -280px;scale:1.44}
+.hall .scrim{translate:0 0 -50px}
+.hall .bench{translate:0 0 -70px}
+.hall .plaque{translate:0 0 -150px}
+.hall .lantern{translate:0 0 190px}
+.hall .pillar{translate:0 0 140px}
+@media(prefers-reduced-motion:reduce){.hall-scene{transition:none}}
+</style>
+<script>
+/* 開封府 3D 景深：把公堂各層包進 scene，隨滑鼠/裝置傾斜立體視差；升堂時推鏡 */
+(function(){var hall=document.querySelector('.hall');if(!hall||hall.querySelector('.hall-scene'))return;
+  var reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var scene=document.createElement('div');scene.className='hall-scene';
+  while(hall.firstChild)scene.appendChild(hall.firstChild);hall.appendChild(scene);
+  var tx=0,ty=0,zoom=1;
+  function apply(){scene.style.transform='rotateX('+ty.toFixed(2)+'deg) rotateY('+tx.toFixed(2)+'deg) translateZ('+((zoom-1)*180).toFixed(1)+'px)';}
+  apply();
+  if(!reduceM){var raf=0,px=0,py=0;
+    addEventListener('pointermove',function(e){px=(e.clientX/innerWidth-.5);py=(e.clientY/innerHeight-.5);if(!raf)raf=requestAnimationFrame(function(){raf=0;tx=px*7;ty=-py*5;apply();});},{passive:true});
+    if(window.DeviceOrientationEvent){addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-9,Math.min(9,e.gamma/6));ty=Math.max(-6,Math.min(6,(e.beta-45)/9));apply();},{passive:true});}
+  }
+  document.addEventListener('hcf-shengtang',function(){zoom=1.08;apply();setTimeout(function(){zoom=1.03;apply();},1600);});
+})();
+</script>
 </body>
 </html>
