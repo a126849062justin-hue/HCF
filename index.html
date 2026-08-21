@@ -517,11 +517,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .act-mi h2 i{font-style:normal;color:var(--red,#C81015)}
 .act-mi p{color:#d3ccc4;margin-top:16px;max-width:520px;line-height:2}
 .act-mi .quote{color:#f5c451;font-family:var(--serif,serif);font-weight:700;font-size:1.15rem;border-left:4px solid var(--red,#C81015);padding-left:16px}
-.act-mi .vis{position:relative;padding:0 6% 30px 0}
+.act-mi .vis{position:relative;padding:0 6% 30px 0;perspective:900px;overflow:visible}
+.act-mi .vis .now{transform-origin:70% 50%;will-change:transform,filter;transition:transform .08s linear,filter .12s linear;position:relative;z-index:2}
+.act-mi .vis.impact .now{animation:miJab .5s cubic-bezier(.2,.9,.25,1)}
+@keyframes miJab{0%{filter:brightness(1)}22%{transform:scale(1.5) translateX(-2%) rotateY(-6deg);filter:brightness(1.35) contrast(1.08)}55%{transform:scale(1.32)}100%{filter:brightness(1)}}
+.act-mi .vis .punch-glow{position:absolute;z-index:1;top:44%;left:62%;width:60%;height:60%;transform:translate(-50%,-50%) scale(.3);border-radius:50%;background:radial-gradient(circle,rgba(200,16,21,.75),rgba(200,16,21,.25) 45%,transparent 70%);filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .15s,transform .1s}
+.act-mi .vis .punch-ring{position:absolute;z-index:3;top:44%;left:62%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;border:3px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+.act-mi .vis.impact .punch-ring{animation:miShock .55s ease-out}
+@keyframes miShock{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
 .act-mi .vis .now{width:100%;border-radius:8px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.6)}
 .act-mi .vis .then{position:absolute;left:-14px;bottom:0;width:40%;border:5px solid #fff;border-radius:3px;transform:rotate(-5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)}
 .act-mi .vis .then-lbl{position:absolute;left:-6px;bottom:-16px;background:var(--red,#C81015);color:#fff;font-family:var(--en,Oswald);font-weight:700;letter-spacing:.14em;font-size:.68rem;padding:5px 12px;transform:rotate(-5deg);z-index:3}
-@media(max-width:880px){.act-mi{padding:80px 0}.act-mi .in{grid-template-columns:1fr;gap:26px}.act-mi .vis{padding:0 0 26px;max-width:400px;margin:0 auto}.act-mi .vis .then{width:36%}}
+@media(max-width:880px){.act-mi{padding:80px 0}.act-mi .in{grid-template-columns:1fr;gap:26px}
+/* 行動版：整張小米照滿版融進背景 */
+.act-mi .vis{padding:0;max-width:none;margin:0 -24px;width:calc(100% + 48px);overflow:hidden}
+.act-mi .vis .now{border-radius:0;box-shadow:none!important;-webkit-mask-image:radial-gradient(135% 78% at 66% 42%,#000 42%,rgba(0,0,0,.55) 66%,transparent 84%);mask-image:radial-gradient(135% 78% at 66% 42%,#000 42%,rgba(0,0,0,.55) 66%,transparent 84%)}
+.act-mi .vis .then{width:34%;left:8px;bottom:14px}.act-mi .vis .then-lbl{left:14px;bottom:-2px}
+.act-mi .vis .punch-glow{top:42%;left:66%}.act-mi .vis .punch-ring{top:42%;left:66%}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
 <meta name="theme-color" content="#C81015">
@@ -659,6 +671,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <a class="a2-btn" href="story-mi.html">看小米的完整故事 →</a>
     </div>
     <div class="vis">
+      <span class="punch-glow" aria-hidden="true"></span>
+      <span class="punch-ring" aria-hidden="true"></span>
       <img class="now" src="mi-fighter.jpg" alt="小米教練 戰鬥形象" loading="lazy" decoding="async">
       <img class="then" src="mi-life.jpg" alt="小米 蛻變前的日常" loading="lazy" decoding="async">
       <span class="then-lbl">曾經 · 62kg</span>
@@ -1114,6 +1128,34 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
       hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');hero.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
     }
   }
+})();
+</script>
+<script>
+/* 小米形象照：拳頭朝觀看者衝出(捲動猛烈放大+紅光+衝擊波+滑鼠3D傾斜) */
+(function(){var sec=document.getElementById('actMi');if(!sec)return;var now=sec.querySelector('.now'),vis=sec.querySelector('.vis'),glow=sec.querySelector('.punch-glow');if(!now)return;
+var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function upd(){var r=sec.getBoundingClientRect();var d=Math.abs((r.top+r.height/2)-innerHeight/2)/innerHeight;var prog=Math.max(0,Math.min(1,1-d));
+  var e=prog*prog;/* ease-in：越近爆發越快 */
+  var sc=1+e*0.42;/* 放大到 1.42 拳頭幾乎貼臉 */
+  now.style.transform='scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
+  now.style.filter='brightness('+(1+e*0.18).toFixed(2)+') contrast('+(1+e*0.06).toFixed(2)+')';
+  now.style.boxShadow='0 '+(30+e*40)+'px '+(70+e*60)+'px rgba(0,0,0,.6), 0 0 '+(e*90).toFixed(0)+'px rgba(200,16,21,'+(e*0.55).toFixed(2)+')';
+  if(glow){glow.style.opacity=(e*0.9).toFixed(2);glow.style.transform='translate(-50%,-50%) scale('+(0.3+e*1.1).toFixed(2)+')';}
+}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+/* 進入中央觸發一次「刺拳」衝擊(閃光+衝擊波)，離開後可再觸發 */
+if(!reduce&&'IntersectionObserver'in window){var armed=true;
+  new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting&&en.intersectionRatio>0.6&&armed){armed=false;vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);}
+    if(en.intersectionRatio<0.15)armed=true;
+  });},{threshold:[0,0.15,0.6]}).observe(sec);
+}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches&&vis){
+  vis.addEventListener('pointermove',function(e){var r=vis.getBoundingClientRect();ry=((e.clientX-r.left)/r.width-.5)*-12;rx=((e.clientY-r.top)/r.height-.5)*9;upd();});
+  vis.addEventListener('pointerleave',function(){rx=0;ry=0;upd();});
+  /* 點一下 = 再補一拳 */
+  vis.addEventListener('click',function(){vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);});
+}
 })();
 </script>
 </body>
