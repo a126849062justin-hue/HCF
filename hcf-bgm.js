@@ -1,6 +1,7 @@
 /* HCF 背景配樂 — 跨頁接續 + 點擊靜音（桌面限定） */
 (function(){
   if(window.__hcfBgm)return; window.__hcfBgm=1;                 /* 同頁防重複 */
+  if(/complaint/i.test(location.pathname))return;               /* 開封府「老闆我要投訴」頁不放配樂 */
   var KT='hcfBgmT', KM='hcfBgmMuted', START=35;
   var muted = sessionStorage.getItem(KM)==='1';                /* 跨頁記住靜音狀態 */
   var bgm=new Audio('hero-music.m4a'); bgm.preload='auto'; bgm.volume=0.5;
