@@ -520,7 +520,9 @@
       var lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=5.5;lg.gain.value=f0*.017;lfo.connect(lg).connect(o.frequency);lfo.start(t);lfo.stop(t+dur);
       formants.forEach(function(fr){var bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=fr;bp.Q.value=7;var fg=c.createGain();fg.gain.value=.6;o.connect(bp).connect(fg).connect(master);});
       o.start(t);o.stop(t+dur);});}
-  function weiwuChant(){if(!sndOn)return;var c=ac();if(!c)return;try{var rv=reverbNode(),t=c.currentTime+.02;vowelVoice(c,t,.85,116,[480,1600],rv);vowelVoice(c,t+1.0,1.2,102,[330,720],rv);}catch(e){}}
+  var weiwuAudio=null;try{weiwuAudio=new Audio('weiwu.m4a');weiwuAudio.preload='auto';weiwuAudio.volume=0.9;}catch(e){}
+  function synthWeiwu(){var c=ac();if(!c)return;try{var rv=reverbNode(),t=c.currentTime+.02;vowelVoice(c,t,.85,116,[480,1600],rv);vowelVoice(c,t+1.0,1.2,102,[330,720],rv);}catch(e){}}
+  function weiwuChant(){if(!sndOn)return;if(weiwuAudio){try{weiwuAudio.currentTime=0;var p=weiwuAudio.play();if(p&&p.catch)p.catch(function(){synthWeiwu();});return;}catch(e){}}synthWeiwu();}
   var themeOn=false,themeTimer=null;
   function pluck(c,t,freq,dur,vol,type){var o=c.createOscillator(),g=c.createGain(),rv=reverbNode();o.type=type||'triangle';o.frequency.value=freq;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g).connect(c.destination);if(rv)g.connect(rv);o.start(t);o.stop(t+dur+.05);}
   function themePhrase(){if(!sndOn||!themeOn)return;var c=ac();if(!c)return;try{var t=c.currentTime+.05,mel=[[330,0,.55],[392,.55,.5],[440,1.05,.6],[392,1.6,.45],[330,2.1,.7],[294,2.75,.5],[262,3.3,.55],[294,3.95,.9]];
