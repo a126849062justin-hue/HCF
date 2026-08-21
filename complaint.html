@@ -139,6 +139,14 @@
   @keyframes shock{0%{opacity:.75;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(30)}}
   @keyframes shake{10%,90%{transform:translateX(-2px)}30%,70%{transform:translateX(3px)}50%{transform:translateX(-4px)}}
   body.shaking{animation:shake .5s}
+  @keyframes shakeBig{0%,100%{transform:translate(0,0) rotate(0)}12%{transform:translate(-9px,5px) rotate(-.5deg)}26%{transform:translate(10px,-6px) rotate(.5deg)}40%{transform:translate(-8px,4px) rotate(-.4deg)}56%{transform:translate(7px,-4px) rotate(.35deg)}72%{transform:translate(-5px,3px)}88%{transform:translate(3px,-2px)}}
+  body.shaking.big{animation:shakeBig .62s cubic-bezier(.2,.7,.3,1)}
+  /* 銅鑼金光閃 */
+  .goldflash{position:fixed;inset:0;z-index:54;pointer-events:none;opacity:0;
+    background:radial-gradient(42% 42% at 50% 44%, rgba(255,224,150,.92), rgba(255,180,70,.45) 34%, rgba(200,120,20,.12) 60%, transparent 74%)}
+  .goldflash.go{animation:goldflash .7s ease-out forwards}
+  @keyframes goldflash{0%{opacity:0;transform:scale(.6)}12%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+  @media(prefers-reduced-motion:reduce){.goldflash.go{animation:none!important}}
 
   /* ---------------- 第二屏｜包大人親自審 + 承諾 ---------------- */
   .vows{position:relative;z-index:4;padding:12vh 22px;text-align:center}
@@ -355,6 +363,7 @@
 
 <div class="boom" id="boom"><b id="boomTxt">咚——！</b></div>
 <div class="shock" id="shock"></div>
+<div class="goldflash" id="goldFlash" aria-hidden="true"></div>
 
 <!-- ============ 第二屏｜包大人親自審 ============ -->
 <section class="vows">
@@ -559,7 +568,11 @@
     setTimeout(function(){lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');
       var lit=0,iv=setInterval(function(){lit+=.1;setLit(Math.min(1,lit));if(lit>=1)clearInterval(iv);},50);},260);
     // 威～～武～～（~0.9s）
-    setTimeout(function(){boom.classList.remove('go');void boom.offsetWidth;boomTxt.textContent='威～～武～～';boom.classList.add('go');gongSound();weiwuChant();},900);
+    setTimeout(function(){boom.classList.remove('go');void boom.offsetWidth;boomTxt.textContent='威～～武～～';boom.classList.add('go');gongSound();weiwuChant();
+      if(!reduce){var gf=document.getElementById('goldFlash');if(gf){gf.classList.remove('go');void gf.offsetWidth;gf.classList.add('go');}
+        shock.classList.remove('go');void shock.offsetWidth;shock.classList.add('go');
+        document.body.classList.add('shaking','big');setTimeout(function(){document.body.classList.remove('shaking','big');},640);}
+    },900);
     setTimeout(startTheme,2100);
     setTimeout(function(){boom.classList.remove('go');},1800);
     // 升堂：狀紙升起 + 自動進入（~1.4s）
