@@ -176,5 +176,18 @@
 
 <script src="hcf.js"></script>
 <script src="hcf-analytics.js" defer></script>
+<style>
+.sphero .bg img{transform-origin:58% 40%;will-change:transform;opacity:.6}
+</style>
+<script>
+/* 開場 hero 破框衝入：捲動 zoom + 進場猛拉 + 滑鼠視差 */
+(function(){var img=document.querySelector('.sphero .bg img');var hero=document.querySelector('.sphero');if(!img||!hero)return;
+var mx=0,my=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function upd(){var h=hero.offsetHeight||innerHeight;var p=Math.max(0,Math.min(1,scrollY/h));var sc=1.06+p*0.22;img.style.transform='scale('+sc.toFixed(3)+') translate('+mx+'px,'+my+'px)';}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+if(!reduce&&img.animate){img.animate([{transform:'scale(1.2)'},{transform:'scale(1.06)'}],{duration:1500,easing:'cubic-bezier(.2,.8,.2,1)'});}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();mx=((e.clientX-r.left)/r.width-.5)*-26;my=((e.clientY-r.top)/r.height-.5)*-16;upd();});}
+})();
+</script>
 </body>
 </html>

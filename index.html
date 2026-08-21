@@ -534,6 +534,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .act-mi .vis .now{width:100%;border-radius:8px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.6)}
 .act-mi .vis .then{position:absolute;left:-14px;bottom:0;width:40%;border:5px solid #fff;border-radius:3px;transform:rotate(-5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)}
 .act-mi .vis .then-lbl{position:absolute;left:-6px;bottom:-16px;background:var(--red,#C81015);color:#fff;font-family:var(--en,Oswald);font-weight:700;letter-spacing:.14em;font-size:.68rem;padding:5px 12px;transform:rotate(-5deg);z-index:3}
+@media(min-width:881px){.act-mi .vis{padding-right:0;margin-right:-10%}.act-mi .vis .now{width:120%}}
 @media(max-width:880px){.act-mi{padding:80px 0}.act-mi .in{grid-template-columns:1fr;gap:26px}
 /* 行動版：整張小米照滿版融進背景 */
 .act-mi .vis{padding:0;max-width:none;margin:0 -24px;width:calc(100% + 48px);overflow:hidden}
@@ -1144,7 +1145,7 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function upd(){var r=sec.getBoundingClientRect();var d=Math.abs((r.top+r.height/2)-innerHeight/2)/innerHeight;var prog=Math.max(0,Math.min(1,1-d));
   var e=prog*prog;/* ease-in：越近爆發越快 */
-  var sc=1+e*0.42;/* 放大到 1.42 拳頭幾乎貼臉 */
+  var sc=1+e*0.55;/* 放大到 1.55 拳頭破框貼臉 */
   now.style.transform='scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
   now.style.filter='brightness('+(1+e*0.18).toFixed(2)+') contrast('+(1+e*0.06).toFixed(2)+')';
   now.style.boxShadow='0 '+(30+e*40)+'px '+(70+e*60)+'px rgba(0,0,0,.6), 0 0 '+(e*90).toFixed(0)+'px rgba(200,16,21,'+(e*0.55).toFixed(2)+')';
