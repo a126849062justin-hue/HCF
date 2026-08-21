@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="preload" as="image" href="hero3.webp" fetchpriority="high">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -304,11 +304,11 @@ a{color:inherit;text-decoration:none}
 @media(max-width:680px){.fin-foot{grid-template-columns:1fr}}
 
 /* ================= 浮動層 ================= */
-.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2);padding-bottom:env(safe-area-inset-bottom)}
 .mcta a{display:flex;align-items:center;justify-content:center;padding:15px 8px;font-weight:900;letter-spacing:.04em;font-size:.96rem}
 .mcta .m1{background:var(--red);color:#fff}
 .mcta .m2{background:var(--carbon);color:#fff}
-@media(max-width:880px){.mcta{display:grid}body{padding-bottom:54px}}
+@media(max-width:880px){.mcta{display:grid}body{padding-bottom:calc(54px + env(safe-area-inset-bottom))}}
 .totop{position:fixed;z-index:260;left:18px;bottom:22px;width:44px;height:44px;border:1.5px solid var(--ink);background:rgba(255,255,255,.9);color:var(--ink);font-family:var(--en);cursor:pointer;opacity:0;pointer-events:none;transition:.3s}
 .totop.on{opacity:1;pointer-events:auto}
 .totop:hover{background:var(--red);border-color:var(--red);color:#fff}
@@ -544,7 +544,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .act-mi .vis .punch-glow{top:42%;left:66%}.act-mi .vis .punch-ring{top:42%;left:66%}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
-<meta name="theme-color" content="#C81015">
+<meta name="theme-color" content="#0c0a09">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HCF 新竹格鬥">
