@@ -625,14 +625,13 @@
         shock.classList.remove('go');void shock.offsetWidth;shock.classList.add('go');
         document.body.classList.add('shaking','big');setTimeout(function(){document.body.classList.remove('shaking','big');},640);}
     },900);
-    setTimeout(startTheme,2100);
     setTimeout(function(){boom.classList.remove('go');},1800);
     // 升堂：狀紙升起 + 自動進入（~1.4s）
     setTimeout(function(){form.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});},1400);
   }
   drumBtn.addEventListener('click',function(){drumBtn.classList.remove('struck');void drumBtn.offsetWidth;drumBtn.classList.add('struck');setTimeout(function(){drumBtn.classList.remove('struck');},480);});
   drumBtn.addEventListener('click',rally);
-  document.getElementById('toForm').addEventListener('click',function(){setLit(1);lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');gongSound();startTheme();try{document.dispatchEvent(new Event('hcf-shengtang'));}catch(e){}});
+  document.getElementById('toForm').addEventListener('click',function(){setLit(1);lanL.classList.add('on');lanR.classList.add('on');plaque.classList.add('on');gongSound();try{document.dispatchEvent(new Event('hcf-shengtang'));}catch(e){}});
 
   /* ================= 呈堂送出（保留原後端邏輯）================= */
   var cForm=document.getElementById('cForm'),done=document.getElementById('doneView'),verdict=document.getElementById('verdict'),
