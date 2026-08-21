@@ -1156,5 +1156,22 @@ if(!reduce&&img.animate){img.animate([{transform:'scale(1.16) rotateY(-6deg)'},{
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){wrap.addEventListener('pointermove',function(ev){var r=wrap.getBoundingClientRect();ry=((ev.clientX-r.left)/r.width-.5)*-12;rx=((ev.clientY-r.top)/r.height-.5)*9;upd();});wrap.addEventListener('pointerleave',function(){rx=0;ry=0;upd();});}
 })();
 </script>
+<style>
+/* 總教練專頁 hero 滿版暗場擂台 */
+.al-hero{position:relative;overflow:hidden;min-height:84vh;background:#0a0807!important;border-bottom:none!important}
+.al-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,6,5,.94) 22%,rgba(8,6,5,.6) 55%,rgba(8,6,5,.38) 100%),url(huang_ring.jpg) center 24%/cover;z-index:0}
+.al-hero-in{position:relative;z-index:2;min-height:84vh;align-items:end}
+.al-hero h1{color:#fff}
+.al-hero .al-sub{color:#e2dbd4!important}
+.al-hero .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.24);color:#fff}
+.al-hero .chip.red{background:var(--red);border-color:var(--red)}
+.al-hero .chip.dark{background:rgba(0,0,0,.5);border-color:rgba(255,255,255,.3)}
+.al-hero .alp-glow{opacity:.55!important}
+@media(max-width:900px){
+  .al-hero{min-height:auto}
+  .al-hero-in{min-height:auto;padding-top:30px}
+  .al-hero::before{background:linear-gradient(180deg,rgba(8,6,5,.92) 44%,rgba(8,6,5,.6) 74%,rgba(8,6,5,.42) 100%),url(huang_ring.jpg) center 24%/cover}
+}
+</style>
 </body>
 </html>
