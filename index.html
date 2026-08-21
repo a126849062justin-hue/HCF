@@ -1061,6 +1061,23 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 </script>
 <script src="hcf-analytics.js" defer></script>
 <script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
+<style>
+@media(max-width:880px){.mcta{transition:transform .35s ease;will-change:transform}.mcta.mcta-hide{transform:translateY(130%)}}
+</style>
+<script>
+/* 底部 CTA 不釘死：首屏隱藏，下滑收起、上滑顯示 */
+(function(){var m=document.querySelector('.mcta');if(!m)return;
+  var last=window.scrollY||0;
+  function atHero(y){return y<innerHeight*0.55;}
+  function upd(){var y=window.scrollY;
+    if(atHero(y))m.classList.add('mcta-hide');
+    else if(y>last+3)m.classList.add('mcta-hide');
+    else if(y<last-3)m.classList.remove('mcta-hide');
+    last=y;}
+  addEventListener('scroll',upd,{passive:true});
+  if(atHero(window.scrollY))m.classList.add('mcta-hide');
+})();
+</script>
 <script src="nav-enhance.js" defer></script>
 <script>
 /* ===== 質感升級 v2（首頁）：進場串接 + 磁吸 CTA ===== */
