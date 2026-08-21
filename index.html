@@ -129,8 +129,8 @@ a{color:inherit;text-decoration:none}
 .a2-rec .w .num i{font-style:normal;color:var(--red)}
 .a2-btn{display:inline-block;margin-top:30px;background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:14px 28px;transition:.25s}
 .a2-btn:hover{background:#fff;color:var(--red)}
-.a2-vis{position:relative;min-height:430px;perspective:1000px}
-.a2-vis .cut{position:absolute;bottom:-110px;right:-8%;width:124%;max-width:none;filter:drop-shadow(-16px 20px 32px rgba(0,0,0,.55));pointer-events:none;transform-origin:74% 34%;will-change:transform,filter;transition:transform .08s linear,filter .12s linear;z-index:2}
+.a2-vis{position:relative;min-height:500px;perspective:1000px}
+.a2-vis .cut{position:absolute;bottom:-140px;right:-22%;width:158%;max-width:none;filter:drop-shadow(-16px 20px 32px rgba(0,0,0,.55));pointer-events:none;transform-origin:72% 32%;will-change:transform,filter;transition:transform .08s linear,filter .12s linear;z-index:2}
 .a2-vis.impact .cut{animation:hgJab .5s cubic-bezier(.2,.9,.25,1)}
 @keyframes hgJab{0%{}22%{transform:scale(1.4) rotateY(-7deg)}55%{transform:scale(1.22)}100%{}}
 .a2-vis .a2-glow{position:absolute;z-index:1;top:30%;left:78%;width:55%;height:55%;transform:translate(-50%,-50%) scale(.3);border-radius:50%;background:radial-gradient(circle,rgba(200,16,21,.8),rgba(200,16,21,.28) 45%,transparent 70%);filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .15s,transform .1s}
@@ -140,8 +140,8 @@ a{color:inherit;text-decoration:none}
 .a2-vis .tag{position:absolute;z-index:3;left:0;bottom:-70px;background:#fff;color:var(--red);padding:9px 15px;font-weight:900;letter-spacing:.05em;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 @media(max-width:880px){
   .a2-in{grid-template-columns:1fr}
-  .a2-vis{min-height:300px}
-  .a2-vis .cut{bottom:-90px;right:auto;left:50%;transform:translateX(-50%);width:120%}
+  .a2-vis{min-height:360px}
+  .a2-vis .cut{bottom:-96px;right:auto;left:52%;transform:translateX(-50%);width:148%}
   .a2-vis .tag{bottom:-66px}
 }
 
@@ -1170,8 +1170,8 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches&&vis){
 (function(){var sec=document.getElementById('act2');if(!sec)return;var cut=sec.querySelector('.cut'),vis=sec.querySelector('.a2-vis'),glow=sec.querySelector('.a2-glow');if(!cut||!vis)return;
 var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function upd(){var r=sec.getBoundingClientRect();var d=Math.abs((r.top+r.height/2)-innerHeight/2)/innerHeight;var prog=Math.max(0,Math.min(1,1-d));var e=prog*prog;
-  var sc=1+e*0.30;
-  cut.style.transform='scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
+  var sc=1+e*0.38;var pre=innerWidth<=880?'translateX(-50%) ':'';
+  cut.style.transform=pre+'scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
   cut.style.filter='drop-shadow(-16px 20px 32px rgba(0,0,0,.55)) drop-shadow(0 0 '+(e*40).toFixed(0)+'px rgba(200,16,21,'+(e*0.5).toFixed(2)+'))';
   if(glow){glow.style.opacity=(e*0.9).toFixed(2);glow.style.transform='translate(-50%,-50%) scale('+(0.3+e*1.1).toFixed(2)+')';}
 }
