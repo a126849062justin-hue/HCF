@@ -114,6 +114,10 @@
   .btn-drum .ic{font-size:1.3rem}
   .btn-drum:hover{transform:translateY(-2px)}.btn-drum:active{transform:scale(.97)}
   .btn-drum:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+  .drumhint{margin-top:14px;font-family:var(--sans);font-size:.82rem;letter-spacing:.05em;color:var(--bronze);animation:hintPulse 2.2s ease-in-out infinite}
+  .drumhint b{color:#fff;font-weight:700}
+  @keyframes hintPulse{0%,100%{opacity:.5}50%{opacity:1}}
+  @media(prefers-reduced-motion:reduce){.drumhint{animation:none;opacity:.85}}
   .court .quiet{margin-top:14px}
   .court .quiet a{font-family:var(--sans);font-size:.86rem;color:var(--mut);text-decoration:none;border-bottom:1px solid rgba(169,163,154,.4);padding-bottom:2px}
   .court .quiet a:hover{color:var(--bronze);border-color:var(--bronze)}
@@ -356,6 +360,7 @@
   <div class="ask">堂下何人？</div>
   <div class="drumcta">
     <button class="btn-drum" id="drumBtn" type="button"><span class="ic">🥁</span>擊鼓鳴冤</button>
+    <div class="drumhint">👆 點擊擊鼓・升堂　→　為你開堂並進入 <b>民情狀</b> 陳情</div>
   </div>
   <div class="quiet"><a href="#stateForm" id="toForm">不擊鼓，直接呈狀 →</a></div>
   <div class="scrolldn">SCROLL</div>
@@ -509,12 +514,17 @@
   /* 音效（WebAudio 合成，僅使用者點擊後）*/
   var AC=window.AudioContext||window.webkitAudioContext,actx=null,sndOn=true;
   function ac(){if(!AC)return null;if(!actx){try{actx=new AC();}catch(e){actx=null;}}if(actx&&actx.state==='suspended')actx.resume();return actx;}
-  function drumSound(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,o=c.createOscillator(),g=c.createGain();
-    o.type='sine';o.frequency.setValueAtTime(155,t);o.frequency.exponentialRampToValueAtTime(44,t+.3);
-    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.92,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.6);
-    o.connect(g).connect(c.destination);o.start(t);o.stop(t+.65);
-    var nb=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.2,c.sampleRate),d=buf.getChannelData(0);
-    for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);nb.buffer=buf;var ng=c.createGain();ng.gain.value=.32;nb.connect(ng).connect(c.destination);nb.start(t);}catch(e){}}
+  function drumSound(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,rv=reverbNode(),out=c.createGain();out.gain.value=1;out.connect(c.destination);if(rv)out.connect(rv);
+    /* 低頻鼓身 boom */
+    var o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(192,t);o.frequency.exponentialRampToValueAtTime(46,t+.32);
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(1.0,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.72);o.connect(g).connect(out);o.start(t);o.stop(t+.78);
+    /* 鼓皮泛音 */
+    var o2=c.createOscillator(),g2=c.createGain();o2.type='triangle';o2.frequency.setValueAtTime(300,t);o2.frequency.exponentialRampToValueAtTime(118,t+.18);g2.gain.setValueAtTime(.0001,t);g2.gain.exponentialRampToValueAtTime(.34,t+.006);g2.gain.exponentialRampToValueAtTime(.0001,t+.3);o2.connect(g2).connect(out);o2.start(t);o2.stop(t+.32);
+    /* 敲擊瞬態（皮革拍擊）*/
+    var nb=c.createBufferSource(),buf=c.createBuffer(1,Math.floor(c.sampleRate*.18),c.sampleRate),d=buf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.2);nb.buffer=buf;
+    var bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.setValueAtTime(760,t);bp.frequency.exponentialRampToValueAtTime(180,t+.12);bp.Q.value=.8;var ng=c.createGain();ng.gain.value=.5;nb.connect(bp).connect(ng).connect(out);nb.start(t);
+    /* 木質鼓身共鳴 */
+    var nb2=c.createBufferSource(),buf2=c.createBuffer(1,Math.floor(c.sampleRate*.5),c.sampleRate),d2=buf2.getChannelData(0);for(var j=0;j<d2.length;j++)d2[j]=(Math.random()*2-1)*Math.pow(1-j/d2.length,4);nb2.buffer=buf2;var bp2=c.createBiquadFilter();bp2.type='bandpass';bp2.frequency.value=108;bp2.Q.value=3.2;var ng2=c.createGain();ng2.gain.value=.42;nb2.connect(bp2).connect(ng2).connect(out);nb2.start(t);}catch(e){}}
   function gavelSound(){if(!sndOn)return;var c=ac();if(!c)return;try{var t=c.currentTime,nb=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.09,c.sampleRate),d=buf.getChannelData(0);
     for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,6);nb.buffer=buf;var f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=2500;var g=c.createGain();g.gain.value=.65;nb.connect(f).connect(g).connect(c.destination);nb.start(t);}catch(e){}}
   /* === 升堂沉浸音效（原創 WebAudio 合成：銅鑼／堂鼓／威武人聲／公堂主題樂，皆為原創非既有歌曲）=== */
