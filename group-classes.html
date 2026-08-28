@@ -83,12 +83,13 @@
 .glive .head .kicker{color:var(--red);justify-content:center}
 .glive .head h2{color:#fff}
 .glive .head p{color:#b6b6b6;max-width:560px;margin:14px auto 0;line-height:1.9}
-.vwall{display:grid;grid-template-columns:1fr 1.5fr;grid-template-rows:auto auto;gap:14px}
+.vwall{display:grid;gap:14px}
 .vwall video{width:100%;height:100%;object-fit:cover;display:block;background:#000;border-radius:4px}
 .vwall figure{position:relative;margin:0;overflow:hidden;border-radius:4px;background:#000}
-.vwall figure figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(8,8,10,.9));color:#eee;font-size:.82rem;letter-spacing:.04em;font-weight:700}
-.vwall .vA{grid-row:1/3;aspect-ratio:9/15;border-left:4px solid var(--red)}
-.vwall .vB,.vwall .vC{aspect-ratio:16/8.4}
+.vwall figure figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:30px 16px 12px;background:linear-gradient(transparent,rgba(8,8,10,.92));color:#eee;font-size:.82rem;letter-spacing:.04em;font-weight:700}
+.vwall .wide{aspect-ratio:16/9;border-bottom:4px solid var(--red)}
+.vwall .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vwall .strip figure{aspect-ratio:9/16}
 
 /* — 戰力升級路徑（分級） — */
 .glv{padding:clamp(64px,9vw,100px) 0}
@@ -132,9 +133,7 @@
 
 @media(max-width:880px){
   .sys-grid{grid-template-columns:1fr}
-  .vwall{grid-template-columns:1fr}
-  .vwall .vA{grid-row:auto;aspect-ratio:9/12}
-  .vwall .vB,.vwall .vC{aspect-ratio:16/9}
+  .vwall .strip{grid-template-columns:1fr 1fr}
   .info-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){.info-grid{grid-template-columns:1fr}}
@@ -212,9 +211,13 @@
       <p>不用想像，直接看——這就是你走進來會加入的課。</p>
     </div>
     <div class="vwall">
-      <figure class="vA rv"><video src="video_class_1.mp4" poster="video_class_1.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課上課實況直式影片"></video><figcaption>入門團課・跟著節奏打</figcaption></figure>
-      <figure class="vB rv"><video src="video_class_2.mp4" poster="video_class_2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課打靶實況影片"></video><figcaption>打靶回合・一組接一組</figcaption></figure>
-      <figure class="vC rv"><video src="video_class_3.mp4" poster="video_class_3.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課全景實況影片"></video><figcaption>全場開打・一起流汗</figcaption></figure>
+      <figure class="wide rv"><video src="gc_wide.mp4" poster="gc_wide.jpg" autoplay muted loop playsinline preload="metadata" aria-label="總教練帶團體課實況影片"></video><figcaption>總教練帶課・動作一個一個帶</figcaption></figure>
+      <div class="strip">
+        <figure class="rv"><video src="gc_p2.mp4" poster="gc_p2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課掃踢打靶實況"></video><figcaption>掃踢上靶</figcaption></figure>
+        <figure class="rv"><video src="gc_p3.mp4" poster="gc_p3.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課出拳打靶實況"></video><figcaption>直拳連段</figcaption></figure>
+        <figure class="rv"><video src="gc_p4.mp4" poster="gc_p4.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課組合拳實況"></video><figcaption>組合輸出</figcaption></figure>
+        <figure class="rv"><video src="gc_p1.mp4" poster="gc_p1.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課近距離打靶實況"></video><figcaption>近距磨技</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
