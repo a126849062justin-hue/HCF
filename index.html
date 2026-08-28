@@ -320,49 +320,34 @@ a{color:inherit;text-decoration:none}
   *{animation-duration:.01s!important;transition-duration:.01s!important}
 }
 
-/* ----- 五大目標（雜誌式不對稱）----- */
-.g5{background:#fff;padding:90px 24px 96px;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px;overflow:hidden}
-.g5-in{max-width:var(--maxw);margin:0 auto}
-.g5-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.g5-lead{color:var(--ink2);line-height:1.9;text-align:right}
-.g5-mosaic{margin-top:36px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:128px;gap:16px}
-.g5c{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 32px rgba(17,17,17,.08);overflow:hidden;transition:transform .28s,box-shadow .28s}
-.g5c .ghost{position:absolute;top:-14px;right:2px;font-family:var(--en);font-weight:700;font-size:5.6rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(200,16,21,.22);pointer-events:none;transition:.3s}
-.g5c b{font-family:var(--serif);font-weight:900;font-size:1.45rem;line-height:1.25;position:relative}
-.g5c .d{color:var(--ink2);font-size:.85rem;margin-top:7px;line-height:1.6;position:relative}
-.g5c i{font-style:normal;font-weight:900;font-size:.8rem;color:var(--red);margin-top:14px;position:relative;transition:transform .25s}
-.g5c:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(200,16,21,.18)}
-.g5c:hover i{transform:translateX(6px)}
-.g5c:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.5)}
-.g5c.big{grid-column:span 2;grid-row:span 2;background:var(--carbon);border:0;color:#fff}
-.g5c.big .d{color:#cfcfcf}
-.g5c.big b{font-size:clamp(1.8rem,2.6vw,2.4rem)}
-.g5c.big .ghost{font-size:9rem;-webkit-text-stroke-color:rgba(255,255,255,.16)}
-.g5c.big:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.7)}
-.g5c.tilt{grid-column:span 2;grid-row:span 1;transform:rotate(-1.2deg)}
-.g5c.tilt:hover{transform:rotate(0) translateY(-6px)}
-.g5c.red{grid-column:span 2;grid-row:span 1;background:var(--red);border:0;color:#fff}
-.g5c.red .d{color:#ffd9da}
-.g5c.red i{color:#fff}
-.g5c.red .ghost{-webkit-text-stroke-color:rgba(255,255,255,.3)}
-.g5c.wide{grid-column:span 3;grid-row:span 1;flex-direction:row;align-items:flex-end;gap:18px}
-.g5c.wide b{font-size:1.6rem}
-.g5c.wide .d{margin:0 0 4px}
-.g5c.wide i{margin:0 0 4px auto;white-space:nowrap}
-.g5c.dark{grid-column:span 3;grid-row:span 1;background:var(--carbon);border:0;color:#fff;flex-direction:row;align-items:flex-end;gap:18px}
-.g5c.dark .d{color:#cfcfcf;margin:0 0 4px}
-.g5c.dark i{margin:0 0 4px auto;white-space:nowrap}
-.g5c.dark .tag{position:absolute;top:14px;left:20px;background:var(--red);color:#fff;font-size:.66rem;font-weight:900;letter-spacing:.18em;padding:3px 10px}
-.g5c.dark .ghost{-webkit-text-stroke-color:rgba(255,255,255,.16)}
-@media(max-width:980px){
-  .g5-mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
-  .g5c{min-height:150px}
-  .g5c.big{grid-column:span 2;grid-row:span 1;min-height:210px}
-  .g5c.wide,.g5c.dark{grid-column:span 2;flex-direction:column;align-items:flex-start}
-  .g5c.wide i,.g5c.dark i{margin:14px 0 0}
-  .g5-lead{text-align:left}
-}
-@media(max-width:560px){.g5{padding:64px 20px}.g5-mosaic{grid-template-columns:1fr}.g5c.tilt{transform:none}}
+/* ----- 你為什麼來（需求型自我分眾）----- */
+.why{position:relative;padding:clamp(64px,8vw,96px) 24px;background:#fff;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px;overflow:hidden}
+.why-in{max-width:var(--maxw);margin:0 auto}
+.why-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.why-head p{color:var(--ink2);line-height:1.9;margin-top:14px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wc{position:relative;display:block;min-height:392px;border-radius:6px;overflow:hidden;color:#fff;background:#000;box-shadow:0 14px 36px rgba(17,17,17,.14)}
+.wc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.wc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.4) 44%,rgba(8,8,10,.95) 100%)}
+.wc:hover img{transform:scale(1.06);opacity:.5}
+.wc .in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 22px}
+.wc .en{font-family:var(--tech);letter-spacing:.18em;font-size:.64rem;color:#F09595;font-weight:600}
+.wc b{font-family:var(--serif);font-weight:900;font-size:1.5rem;margin-top:5px;display:block;line-height:1.2}
+.wc .hook{color:#e0e0e0;font-size:.88rem;line-height:1.65;margin-top:9px}
+.wc .route{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);font-size:.72rem;color:#cfcfcf;font-weight:700;line-height:1.7}
+.wc .route s{text-decoration:none;color:#F09595;margin:0 3px}
+.wc .go{margin-top:14px;font-weight:900;font-size:.85rem;color:#fff;display:inline-flex;align-items:center;gap:8px;transition:gap .25s}
+.wc .go i{font-style:normal;color:var(--red)}
+.wc:hover .go{gap:13px}
+.fightbar{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:var(--carbon);color:#fff;border-radius:6px;padding:24px 28px;position:relative;overflow:hidden}
+.fightbar::before{content:"FIGHT";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:var(--en);font-weight:700;font-size:clamp(3rem,7vw,5rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);pointer-events:none}
+.fightbar .fb-tx{position:relative;z-index:1}
+.fightbar .fb-tx b{font-family:var(--serif);font-weight:900;font-size:1.2rem}
+.fightbar .fb-tx span{display:block;color:#bdbdbd;font-size:.86rem;margin-top:4px}
+.fightbar a{position:relative;z-index:1;background:var(--red);color:#fff;font-weight:900;padding:12px 22px;border-radius:6px;white-space:nowrap;transition:.25s}
+.fightbar a:hover{background:#fff;color:var(--red)}
+@media(max-width:980px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}.wc{min-height:320px}}
 
 .cb-chips{display:flex;gap:6px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line,#E5E5E5);background:#fff}.cb-chips button{border:1.5px solid var(--red,#C81015);color:var(--red,#C81015);background:#fff;font-family:inherit;font-weight:700;font-size:.76rem;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.2s}.cb-chips button:hover{background:var(--red,#C81015);color:#fff}
 .cb-social{display:flex;gap:6px;padding:8px 10px 10px;background:#fff;border-top:1px solid var(--line,#E5E5E5)}
@@ -623,42 +608,61 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <!-- 第二幕 -->
 
 <!-- 五大目標 怎麼練最快 -->
-<section class="g5" id="goals5">
-  <div class="g5-in">
-    <div class="g5-head">
-      <div>
-        <div class="kicker">FIVE GOALS / 五大目標</div>
-        <h2 class="h2">你想變成怎樣<br>就怎麼<i>練最快</i></h2>
-      </div>
-      <p class="g5-lead">五種目標、五條路線——<br>選一個，直接看該上哪些課。</p>
+<section class="why" id="goals5">
+  <div class="why-in">
+    <div class="why-head rv">
+      <div class="kicker" style="justify-content:center">WHY YOU'RE HERE / 你為什麼來</div>
+      <h2 class="h2">先別急著看課表——<br>你是<i>哪一種</i>？</h2>
+      <p>選一個最像你的，直接看你該怎麼開始。不確定也沒關係，我們幫你配。</p>
     </div>
-    <div class="g5-mosaic">
-      <a class="g5c big" href="plans-proposal.html?g=01#goals">
-        <span class="ghost">01</span>
-        <b>泰拳<br>技術</b><span class="d">八肢的藝術 入門到內圍纏抱</span>
-        <i>怎麼練最快 ⟶</i>
+    <div class="why-grid">
+      <a class="wc rv" href="private-training.html">
+        <img src="gc_p3.jpg" alt="完全新手在 HCF 上課" loading="lazy" decoding="async">
+        <span class="in">
+          <span class="en">START · 完全新手</span>
+          <b>我完全沒經驗</b>
+          <span class="hook">沒運動底子、手腳不協調也可以。先用兩堂私教把基本發力學起來，不會被丟包。</span>
+          <span class="route">體驗課<s>→</s>2 堂私教入門<s>→</s>團課</span>
+          <span class="go">看新手怎麼開始 <i>⟶</i></span>
+        </span>
       </a>
-      <a class="g5c tilt" href="plans-proposal.html?g=02#goals">
-        <span class="ghost">02</span>
-        <b>燃脂減重</b><span class="d">一堂泰拳約 600–800 大卡</span>
-        <i>怎麼練最快 ⟶</i>
+      <a class="wc rv" href="packages.html">
+        <img src="gc_p4.jpg" alt="泰拳燃脂打靶訓練" loading="lazy" decoding="async">
+        <span class="in">
+          <span class="en">SHRED · 減脂減重</span>
+          <b>我想瘦、想流汗</b>
+          <span class="hook">不想再跑跑步機。泰拳一堂約 600–800 大卡，打起來不無聊，三個月看得到改變。</span>
+          <span class="route">泰拳燃脂<s>→</s>打靶<s>→</s>體能＋進度追蹤</span>
+          <span class="go">看減脂路線 <i>⟶</i></span>
+        </span>
       </a>
-      <a class="g5c red" href="plans-proposal.html?g=03#goals">
-        <span class="ghost">03</span>
-        <b>體能提升</b><span class="d">壺鈴戰繩 一堂練全身</span>
-        <i>怎麼練最快 ⟶</i>
+      <a class="wc rv" href="courses.html">
+        <img src="gc_p1.jpg" alt="泰拳技術訓練" loading="lazy" decoding="async">
+        <span class="in">
+          <span class="en">SKILL · 學真正的泰拳</span>
+          <b>我想學真功夫</b>
+          <span class="hook">拳、腿、膝、肘，防守、步法、組合——從「會打」，到真的「懂泰拳」。</span>
+          <span class="route">基本技術<s>→</s>組合防守<s>→</s>距離 Timing</span>
+          <span class="go">看技術課程 <i>⟶</i></span>
+        </span>
       </a>
-      <a class="g5c wide" href="plans-proposal.html?g=04#goals">
-        <span class="ghost">04</span>
-        <b>實戰能力</b><span class="d">從入門綠 一路練到紅色對打課</span>
-        <i>怎麼練最快 ⟶</i>
+      <a class="wc rv" href="group-classes.html">
+        <img src="gc_p2.jpg" alt="下班紓壓打靶" loading="lazy" decoding="async">
+        <span class="in">
+          <span class="en">RELEASE · 下班紓壓</span>
+          <b>我想把壓力打掉</b>
+          <span class="hook">下班不想再上跑步機。60 分鐘，把今天的壓力，全部留在靶上。</span>
+          <span class="route">熱身<s>→</s>技術<s>→</s>打靶＋沙包爽練</span>
+          <span class="go">看上班族課程 <i>⟶</i></span>
+        </span>
       </a>
-      <a class="g5c dark" href="plans-proposal.html?g=05#goals">
-        <span class="ghost">05</span>
-        <span class="tag">邀請制</span>
-        <b>選手培訓</b><span class="d">總教練親自帶 限量名額</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
+    </div>
+    <div class="fightbar rv">
+      <div class="fb-tx">
+        <b>想認真打、站上擂台？</b>
+        <span>進階對打 → Clinch → 戰術 → 備賽，選手路線由總教練親自帶、限量名額。</span>
+      </div>
+      <a href="group-classes.html">看選手／進階路線 →</a>
     </div>
   </div>
 </section>
