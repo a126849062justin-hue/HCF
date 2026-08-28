@@ -738,7 +738,7 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
       <p class="al-sub">自動播放中 · 點年份或左右滑動,自己翻他的生涯</p>
       <a class="al-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">▶ 跟黃謙和訓練 — $400 首堂體驗</a>
     </div>
-    <div class="al-hero-p"><img src="huang_cutout.webp" alt="黃謙和 總教練 — 格鬥鋼鐵人"></div>
+    <div class="al-hero-p"><span class="alp-glow" aria-hidden="true"></span><img src="huang_punch.png" alt="黃謙和 總教練 — 格鬥鋼鐵人 出拳"></div>
   </div>
 </section>
 
@@ -783,6 +783,31 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
 </section>
 
 <!-- ============ CTA ============ -->
+<style>
+/* ===== HCF 蛻變三部曲 串接帶 ===== */
+.trio-next{background:linear-gradient(180deg,#0a0807,#14100e);color:#fff;padding:64px 24px 70px;position:relative;overflow:hidden}
+.trio-next .trio-in{max-width:920px;margin:0 auto}
+.trio-label{font-family:var(--en,'Oswald',sans-serif);letter-spacing:.28em;font-size:.72rem;color:#F09595;text-align:center;margin-bottom:22px}
+.trio-label b{color:#fff;letter-spacing:.14em}
+.trio-card{display:flex;align-items:stretch;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.03);transition:transform .3s,border-color .3s,box-shadow .3s}
+.trio-card:hover{transform:translateY(-4px);border-color:rgba(200,16,21,.7);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.trio-photo{flex:0 0 40%;background-size:cover;background-position:center 22%;min-height:190px;filter:grayscale(.25) brightness(.9)}
+.trio-card:hover .trio-photo{filter:none}
+.trio-txt{flex:1;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.trio-txt em{font-style:normal;font-family:var(--en,'Oswald',sans-serif);letter-spacing:.24em;font-size:.68rem;color:#9a908a}
+.trio-txt b{font-family:var(--serif,serif);font-weight:900;font-size:clamp(1.5rem,4vw,2.05rem);line-height:1.2}
+.trio-txt i{font-style:normal;color:#d3ccc4;font-size:.98rem}
+.trio-go{margin-top:12px;align-self:flex-start;font-weight:900;color:#fff;background:var(--red,#C81015);padding:11px 24px;border-radius:6px;transform:skewX(-8deg);letter-spacing:.06em}
+.trio-go>span{display:inline-block;transform:skewX(8deg)}
+.trio-card:hover .trio-go{background:#fff;color:var(--red,#C81015)}
+.trio-dots{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:28px}
+.trio-dots a{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--en,'Oswald',sans-serif);font-weight:700;font-size:.9rem;text-decoration:none;color:#9a908a;border:1.5px solid rgba(255,255,255,.22);transition:.25s}
+.trio-dots a:hover{color:#fff;border-color:#fff}
+.trio-dots a.on{background:var(--red,#C81015);color:#fff;border-color:var(--red,#C81015)}
+.trio-dots span{color:#5a524c}
+@media(max-width:640px){.trio-card{flex-direction:column}.trio-photo{flex:none;min-height:210px}}
+</style>
+<section class="trio-next"><div class="trio-in"><div class="trio-label">HCF 蛻變三部曲 · COACH TRILOGY　PART <b>03 / 03</b></div><a class="trio-card" href="team.html"><span class="trio-photo" style="background-image:url(fight_113_tf_team.jpg)"></span><span class="trio-txt"><em>FINALE · 三部曲完結</em><b>認識完整教練團隊</b><i>六位現役選手教練，每一位都有自己的擂台故事</i><span class="trio-go"><span>認識全部教練 →</span></span></span></a><div class="trio-dots"><a href="story-mi.html" class="" aria-label="第一章 小米">①</a><span>—</span><a href="story-kao.html" class="" aria-label="第二章 高大可">②</a><span>—</span><a href="coach-huang.html" class="on" aria-label="第三章 黃謙和總教練">③</a></div></div></section>
 <section class="cta-band">
   <div class="in">
     <div class="bc-kicker en">YOUR FIRST PAGE — 寫進你自己的年鑑</div>
@@ -1111,5 +1136,42 @@ section.alt{background:var(--surface);background-image:radial-gradient(rgba(17,1
 <script src="hcf-analytics.js" defer></script>
 <script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
 <script src="nav-enhance.js" defer></script>
+<style>
+/* 總教練專頁 hero：破框拳頭 */
+.al-hero{position:relative;overflow:hidden}
+.al-hero-p{position:relative;align-items:flex-end;perspective:1000px}
+.al-hero-p .alp-glow{position:absolute;z-index:0;right:4%;top:16%;width:74%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(200,16,21,.5),rgba(200,16,21,.16) 45%,transparent 70%);filter:blur(30px);opacity:0;transition:opacity .2s,transform .15s;transform:scale(.5)}
+.al-hero-p img{position:relative;z-index:1;width:min(122%,580px)!important;transform-origin:70% 34%;will-change:transform,filter;transition:transform .1s linear,filter .15s}
+@media(max-width:900px){.al-hero-p img{width:min(98%,400px)!important}}
+</style>
+<script>
+(function(){var sec=document.querySelector('.al-hero');if(!sec)return;var img=sec.querySelector('.al-hero-p img'),glow=sec.querySelector('.alp-glow'),wrap=sec.querySelector('.al-hero-p');if(!img)return;
+var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function upd(){var h=sec.offsetHeight||innerHeight;var e=Math.max(0,Math.min(1,1-Math.abs(sec.getBoundingClientRect().top)/h));e=e*e;var sc=1+e*0.12;
+ img.style.transform='scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
+ img.style.filter='drop-shadow(0 18px 30px rgba(0,0,0,.25)) drop-shadow(0 0 '+(e*36).toFixed(0)+'px rgba(200,16,21,'+(e*0.45).toFixed(2)+'))';
+ if(glow){glow.style.opacity=(e*0.85).toFixed(2);glow.style.transform='scale('+(0.5+e*0.7).toFixed(2)+')';}}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+if(!reduce&&img.animate){img.animate([{transform:'scale(1.16) rotateY(-6deg)'},{transform:'scale(1)'}],{duration:1400,easing:'cubic-bezier(.2,.8,.2,1)'});}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){wrap.addEventListener('pointermove',function(ev){var r=wrap.getBoundingClientRect();ry=((ev.clientX-r.left)/r.width-.5)*-12;rx=((ev.clientY-r.top)/r.height-.5)*9;upd();});wrap.addEventListener('pointerleave',function(){rx=0;ry=0;upd();});}
+})();
+</script>
+<style>
+/* 總教練專頁 hero 滿版暗場擂台 */
+.al-hero{position:relative;overflow:hidden;min-height:84vh;background:#0a0807!important;border-bottom:none!important}
+.al-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,6,5,.94) 22%,rgba(8,6,5,.6) 55%,rgba(8,6,5,.38) 100%),url(huang_ring.jpg) center 24%/cover;z-index:0}
+.al-hero-in{position:relative;z-index:2;min-height:84vh;align-items:end}
+.al-hero h1{color:#fff}
+.al-hero .al-sub{color:#e2dbd4!important}
+.al-hero .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.24);color:#fff}
+.al-hero .chip.red{background:var(--red);border-color:var(--red)}
+.al-hero .chip.dark{background:rgba(0,0,0,.5);border-color:rgba(255,255,255,.3)}
+.al-hero .alp-glow{opacity:.55!important}
+@media(max-width:900px){
+  .al-hero{min-height:auto}
+  .al-hero-in{min-height:auto;padding-top:30px}
+  .al-hero::before{background:linear-gradient(180deg,rgba(8,6,5,.92) 44%,rgba(8,6,5,.6) 74%,rgba(8,6,5,.42) 100%),url(huang_ring.jpg) center 24%/cover}
+}
+</style>
 </body>
 </html>

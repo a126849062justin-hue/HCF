@@ -102,8 +102,8 @@
     var st=document.createElement('style');
     st.textContent='.vtab-wrap{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:flex-start}'
       +'.vtab-wrap .svtab{position:static!important;top:auto!important;transform:none!important;margin:0!important}'
-      +'.svtab.voice{background:#111;box-shadow:6px 0 18px rgba(0,0,0,.4)}.svtab.voice:hover{background:#000}'
-      +'@media(max-width:920px){.vtab-wrap{display:flex!important;gap:8px}.vtab-wrap .svtab{display:block!important;font-size:.72rem!important;padding:8px 6px!important;line-height:1.4!important}}';
+      +'.svtab.voice{background:#2b1210;box-shadow:6px 0 20px rgba(0,0,0,.55),inset -3px 0 0 rgba(200,16,21,.9);border-top:1px solid rgba(184,149,85,.45);border-bottom:1px solid rgba(184,149,85,.45)}.svtab.voice:hover{background:#3a1512}'
+      +'@media(max-width:920px){.vtab-wrap{top:88px;transform:none;display:flex!important;gap:8px}.vtab-wrap .svtab{display:block!important;font-size:.72rem!important;padding:8px 6px!important;line-height:1.4!important}}';
     document.head.appendChild(st);
     var wrap=document.createElement('div');wrap.className='vtab-wrap';
     sv.parentNode.insertBefore(wrap,sv);wrap.appendChild(sv);

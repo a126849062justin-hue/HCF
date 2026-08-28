@@ -2,19 +2,20 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="preload" as="image" href="hero3.webp" fetchpriority="high">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>HCF新竹格鬥館 新竹泰拳首選・踢拳・散打・專業重訓</title>
 <meta name="description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#FFFFFF;--surface:#F7F7F7;--ink:#111111;--ink2:#4A4A4A;--ink3:#8A8A8A;
   --line:#E5E5E5;--red:#C81015;--redD:#9B0B0F;--carbon:#111111;
-  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;--tech:'Orbitron','Oswald',sans-serif;
   --maxw:1160px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -56,15 +57,23 @@ a{color:inherit;text-decoration:none}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s}
 .hero-slide.on{opacity:1}
 .hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-in-out infinite alternate}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:var(--carbon);filter:brightness(1.35) contrast(1.02) saturate(1.05)}
+@media(min-width:769px){.hero-vid{object-position:50% 15%}}
+.hero-vid.hland{object-position:50% 50%!important}
+.hero-vid.hp3{object-position:50% 42%!important}
+@media(min-width:769px){.hero-body{padding-bottom:26vh}}
+@media(max-width:768px){.hero .hero-slide:first-child img{object-position:45% 50%}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 45%,rgba(10,10,10,.75) 100%)}
 .hero-body{position:relative;z-index:3;height:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18vh}
 .hero-kicker{font-family:var(--en);letter-spacing:.4em;font-size:.78rem;color:#fff;opacity:0;animation:up .9s .3s forwards}
 .hero-kicker i{color:var(--red);font-style:normal}
-.hero-h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.6rem,8.5vw,5.6rem);line-height:1.1;letter-spacing:.04em;margin-top:14px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 4px 30px rgba(0,0,0,.6)}
-.hero-h1 i{font-style:normal;color:var(--red);-webkit-text-stroke:1px rgba(255,255,255,.25)}
-.hero-sub{margin-top:16px;font-size:clamp(.98rem,2.4vw,1.15rem);color:#e8e8e8;font-weight:500;letter-spacing:.06em;opacity:0;animation:up 1s .75s forwards}
+.hero-sub i{color:var(--red);font-style:normal}
+.hero-h1{font-family:var(--sans);font-weight:900;font-style:italic;font-size:clamp(2.6rem,9vw,6.2rem);line-height:1.12;letter-spacing:.02em;margin-top:14px;color:#fff;border-left:6px solid var(--red);padding-left:20px;opacity:0;animation:up 1s .5s forwards;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.hero-h1 i{font-style:italic;color:#fff;-webkit-text-stroke:0}
+.hero-sub{margin-top:16px;font-family:var(--tech);font-size:clamp(.82rem,1.9vw,1.02rem);color:#e8e8e8;font-weight:500;letter-spacing:.22em;opacity:0;animation:up 1s .75s forwards}
 .hero-acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;opacity:0;animation:up 1s .95s forwards}
+@media(max-width:880px){.hero-acts{display:none}}
 .hb1{background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:15px 30px;transition:.25s;box-shadow:0 10px 30px rgba(200,16,21,.45)}
 .hb1:hover{background:#fff;color:var(--red)}
 .hb2{border:1.5px solid rgba(255,255,255,.8);color:#fff;font-weight:700;padding:15px 26px;transition:.25s}
@@ -107,7 +116,7 @@ a{color:inherit;text-decoration:none}
 
 /* ================= 第二幕：捲動入黑場 ================= */
 .act2{position:relative;background:#fff;padding:120px 0 110px;overflow:hidden}
-.a2-bg{position:absolute;inset:0;background:var(--carbon);clip-path:polygon(0 7%,100% 0,100% 100%,0 100%);opacity:var(--p,0);transition:opacity .15s linear}
+.a2-bg{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,6,5,.93) 26%,rgba(8,6,5,.66) 56%,rgba(8,6,5,.42) 100%),url(huang_ring.jpg) center 26%/cover,var(--carbon);clip-path:polygon(0 7%,100% 0,100% 100%,0 100%);opacity:var(--p,0);transition:opacity .15s linear}
 .a2-ghost{position:absolute;z-index:1;right:-2%;top:10%;font-family:var(--en);font-weight:700;font-size:clamp(5rem,16vw,12rem);line-height:1;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.12);white-space:nowrap;opacity:var(--p,0)}
 .a2-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr .95fr;gap:34px;align-items:center;opacity:var(--p,0);transform:translateY(calc((1 - var(--p,0)) * 40px))}
 .a2-in .kicker{color:#F09595}
@@ -120,13 +129,20 @@ a{color:inherit;text-decoration:none}
 .a2-rec .w .num i{font-style:normal;color:var(--red)}
 .a2-btn{display:inline-block;margin-top:30px;background:var(--red);color:#fff;font-weight:900;letter-spacing:.05em;padding:14px 28px;transition:.25s}
 .a2-btn:hover{background:#fff;color:var(--red)}
-.a2-vis{position:relative;min-height:430px}
-.a2-vis .cut{position:absolute;bottom:-110px;right:-8%;width:124%;max-width:none;filter:drop-shadow(-16px 20px 32px rgba(0,0,0,.55));pointer-events:none}
+.a2-vis{position:relative;min-height:500px;perspective:1000px}
+.a2-vis .cut{position:absolute;bottom:-140px;right:-22%;width:158%;max-width:none;filter:drop-shadow(-16px 20px 32px rgba(0,0,0,.55));pointer-events:none;transform-origin:72% 32%;will-change:transform,filter;transition:transform .08s linear,filter .12s linear;z-index:2}
+.a2-vis.impact .cut{animation:hgJab .5s cubic-bezier(.2,.9,.25,1)}
+@keyframes hgJab{0%{}22%{transform:scale(1.4) rotateY(-7deg)}55%{transform:scale(1.22)}100%{}}
+.a2-vis .a2-glow{position:absolute;z-index:1;top:30%;left:78%;width:55%;height:55%;transform:translate(-50%,-50%) scale(.3);border-radius:50%;background:radial-gradient(circle,rgba(200,16,21,.8),rgba(200,16,21,.28) 45%,transparent 70%);filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .15s,transform .1s}
+.a2-vis .a2-ring{position:absolute;z-index:3;top:30%;left:78%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;border:3px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+.a2-vis.impact .a2-ring{animation:hgShock .55s ease-out}
+@keyframes hgShock{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
 .a2-vis .tag{position:absolute;z-index:3;left:0;bottom:-70px;background:#fff;color:var(--red);padding:9px 15px;font-weight:900;letter-spacing:.05em;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 @media(max-width:880px){
   .a2-in{grid-template-columns:1fr}
-  .a2-vis{min-height:300px}
-  .a2-vis .cut{bottom:-90px;right:auto;left:50%;transform:translateX(-50%);width:120%}
+  .a2-bg{background:linear-gradient(180deg,rgba(8,6,5,.9) 42%,rgba(8,6,5,.6) 72%,rgba(8,6,5,.45) 100%),url(huang_ring.jpg) center 26%/cover,var(--carbon)}
+  .a2-vis{min-height:360px}
+  .a2-vis .cut{bottom:-96px;right:auto;left:52%;transform:translateX(-50%);width:148%}
   .a2-vis .tag{bottom:-66px}
 }
 
@@ -288,25 +304,11 @@ a{color:inherit;text-decoration:none}
 @media(max-width:680px){.fin-foot{grid-template-columns:1fr}}
 
 /* ================= 浮動層 ================= */
-.shark{position:fixed;z-index:300;right:18px;bottom:22px;width:58px;height:58px;border-radius:50%;border:2px solid var(--red);background:#fff;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.25);transition:transform .25s;padding:0}
-.shark:hover{transform:scale(1.08)}
-.shark img{width:100%;height:100%;border-radius:50%;object-fit:cover}
-.chatbox{position:fixed;z-index:300;right:18px;bottom:92px;width:min(330px,calc(100vw - 36px));background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden;border-top:4px solid var(--red)}
-.chatbox.open{display:flex}
-.cb-h{background:var(--carbon);color:#fff;padding:12px 16px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
-.cb-h button{background:none;border:0;color:#fff;font-size:1.1rem;cursor:pointer}
-.cb-log{padding:14px;height:240px;overflow-y:auto;font-size:.9rem;display:flex;flex-direction:column;gap:10px}
-.cb-log .m{max-width:85%;padding:9px 13px;line-height:1.6}
-.cb-log .ai{background:var(--surface);align-self:flex-start}
-.cb-log .me{background:var(--red);color:#fff;align-self:flex-end}
-.cb-in{display:flex;border-top:1px solid var(--line)}
-.cb-in input{flex:1;border:0;padding:13px 14px;font-family:var(--sans);font-size:.92rem;outline:none}
-.cb-in button{border:0;background:var(--red);color:#fff;padding:0 18px;font-weight:900;cursor:pointer}
-.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1.4fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2);padding-bottom:env(safe-area-inset-bottom)}
 .mcta a{display:flex;align-items:center;justify-content:center;padding:15px 8px;font-weight:900;letter-spacing:.04em;font-size:.96rem}
 .mcta .m1{background:var(--red);color:#fff}
 .mcta .m2{background:var(--carbon);color:#fff}
-@media(max-width:880px){.mcta{display:grid}body{padding-bottom:54px}.shark{bottom:72px}.chatbox{bottom:142px}}
+@media(max-width:880px){.mcta{display:grid}body{padding-bottom:calc(54px + env(safe-area-inset-bottom))}}
 .totop{position:fixed;z-index:260;left:18px;bottom:22px;width:44px;height:44px;border:1.5px solid var(--ink);background:rgba(255,255,255,.9);color:var(--ink);font-family:var(--en);cursor:pointer;opacity:0;pointer-events:none;transition:.3s}
 .totop.on{opacity:1;pointer-events:auto}
 .totop:hover{background:var(--red);border-color:var(--red);color:#fff}
@@ -417,9 +419,132 @@ a{color:inherit;text-decoration:none}
   .actk .cutk{position:relative!important;bottom:auto!important;left:auto!important;transform:none!important;width:100%!important;display:block;margin:0 auto}
   .actk .a2-vis .tag{right:auto;left:50%;transform:translateX(-50%);bottom:10px;white-space:nowrap}
 }
+/* ===== 質感升級層（首頁 inline 鏡射：打底 + 電影感 Hero） ===== */
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,.h2,.hero-body h1,.fin-q{text-wrap:balance}p{text-wrap:pretty}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(max-width:880px){body::after{display:none}}
+#scrollbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red,#C81015),#ff4249);z-index:9999;box-shadow:0 0 12px rgba(200,16,21,.55);will-change:width}
+.hero{--mx:80%;--my:16%}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 78% at 82% 6%,rgba(200,16,21,.20),transparent 55%),linear-gradient(to top,rgba(0,0,0,.5),transparent 46%)}
+.hero .glow{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(300px 300px at var(--mx) var(--my),rgba(200,16,21,.32),transparent 70%);mix-blend-mode:screen}
+.hero:hover .glow{opacity:1}
+.hero-acts a{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .25s,color .25s}
+.hero-acts a:hover{transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--red,#C81015);outline-offset:3px;border-radius:2px}
+.rv{transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+/* ===== 質感升級 v2（首頁鏡射） ===== */
+.kicker{display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";flex:0 0 auto;width:24px;height:2px;background:currentColor;opacity:.85}
+.hero-acts a,.b1,.b2,.hb1,.hb2{position:relative;overflow:hidden;isolation:isolate}
+.hero-acts a::after,.b1::after,.b2::after,.hb1::after,.hb2::after{content:"";position:absolute;inset:0;z-index:-1;left:-130%;background:linear-gradient(100deg,transparent 22%,rgba(255,255,255,.42),transparent 60%);transform:skewX(-18deg);transition:left .65s ease;pointer-events:none}
+.hero-acts a:hover::after,.b1:hover::after,.b2:hover::after,.hb1:hover::after,.hb2:hover::after{left:130%}
+.wcard,.tcard,.lvb{overflow:hidden}
+.wcard::after,.tcard::after,.lvb::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px transparent;transition:box-shadow .4s}
+.wcard:hover::after,.tcard:hover::after,.lvb:hover::after{box-shadow:inset 0 0 0 1px rgba(200,16,21,.32)}
+#scrollbar{border-radius:0 3px 3px 0}
+/* ===== 比照賽博龐克 v3：Orbitron + LOGO lockup + CTA ===== */
+.kicker,.hero-kicker,.fin-k{font-family:var(--tech)}
+.nav-logo .nlk{display:flex;flex-direction:column;justify-content:center;line-height:1}
+.nav-logo .nlk b{font-family:var(--tech);font-weight:900;font-style:italic;font-size:1.18rem;letter-spacing:.16em;color:#fff;text-shadow:0 0 14px rgba(200,16,21,.5)}
+.nav-logo .nlk em{font-family:var(--tech);font-style:normal;font-weight:700;font-size:.5rem;letter-spacing:.4em;color:var(--red);margin-top:4px;white-space:nowrap}
+.nav.sc .nav-logo .nlk b{color:var(--ink);text-shadow:none}
+.nav-cta{font-family:var(--tech)!important;font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:7px;box-shadow:0 0 0 1px rgba(200,16,21,.45),0 6px 20px rgba(200,16,21,.35)}
+.cta-bolt{flex:0 0 auto}
+.nav-cta,.hb1,.hb2,.b1,.b2{clip-path:none!important;font-style:normal;transform:skewX(-10deg)}
+.nav-cta:hover,.hb1:hover,.hb2:hover,.b1:hover,.b2:hover,.hero-acts a:hover{transform:skewX(-10deg) translateY(-2px)}
+.hero-acts a{transform:skewX(-10deg)}
+/* CTA 斜切平行四邊形 + 斜體 */
+.nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
+.hb1{padding-left:36px;padding-right:36px}
+/* 桌機:標題+logo靠最左, nav CTA更清楚, hb2/手機CTA也斜 */
+@media(min-width:769px){.nav-in{max-width:none;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+@media(min-width:769px){.hero-body{max-width:none;margin:0;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+.nav-cta{padding:11px 24px!important;font-size:.96rem;letter-spacing:.12em;filter:drop-shadow(0 3px 16px rgba(255,40,50,.7))}
+.hb2{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);padding-left:32px;padding-right:32px}
+.mcta{background:var(--red)}
+.mcta a{font-style:italic}
+.mcta .m1{clip-path:polygon(0 0,100% 0,calc(100% - 30px) 100%,0 100%)}
+.mcta .m2{clip-path:polygon(30px 0,100% 0,100% 100%,0 100%)}
+#bgmToggle{display:none!important}
+@media(max-width:768px){.nav-logo img{height:46px}.nav-logo .nlk b{font-size:1.46rem}.nav-logo .nlk em{font-size:.58rem;letter-spacing:.34em}.hero-h1{font-size:2.1rem;padding-left:14px;border-left-width:5px}.hero-sub{font-size:.62rem;letter-spacing:.14em}}
+
+/* ========== 漢堡選單 高級感深色版 + 社群 ========== */
+.mnav{background:#0b0b0d;border-bottom:0}
+#mnav.mnav{background:linear-gradient(165deg,#181820 0%,#0a0a0c 100%)!important;box-shadow:10px 0 60px rgba(0,0,0,.6)!important;padding-top:40px!important;width:min(84vw,320px)!important}
+#mnav.mnav::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:0}
+.mnav>a,.mnav .msub-t,.mnav .msub{position:relative;z-index:1}
+.mnav a,.mnav .msub-t{color:#ededed!important;border-top:0!important;letter-spacing:.05em}
+.mnav>a,.mnav .msub-t{font-size:.88rem;padding:7px 24px!important;font-weight:800}
+.mnav .msub-t{background:transparent!important}
+.mnav .msub-t i{color:var(--red);font-weight:900}
+.mnav a:active{color:var(--red)!important}
+.msub{background:rgba(255,255,255,.025)!important}
+.msub-grid a{color:#cfcfcf!important;border-top:0!important;font-weight:600;padding:6px 10px 6px 26px!important;font-size:.82rem}
+.msub-grid a:nth-child(odd){border-right:0!important}
+.msub-grid a::before{color:var(--red)}
+.mnav-close{color:#fff!important}
+.mnav a.cta{background:var(--red)!important;color:#fff!important;margin:6px 20px 3px;padding:9px 24px!important;transform:skewX(-10deg);font-weight:900;letter-spacing:.08em;box-shadow:0 8px 22px rgba(200,16,21,.5);border-top:0!important}
+/* 社群圓鈕列 */
+.mnav-social{display:flex;gap:12px;justify-content:center;padding:7px 20px 6px;margin-top:2px;position:relative;z-index:1}
+.mnav-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;padding:0!important;transition:.22s}
+.mnav-social a svg{width:20px;height:20px;display:block}
+.mnav-social a:active{transform:scale(.92)}
+.mnav-social a[data-s="ig"]:active{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:active{background:#1877F2;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:active{background:#FF0000;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:active{background:#06C755;color:#fff!important;border-color:transparent!important}
+@media(hover:hover){
+.mnav-social a[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:hover{background:#1877F2;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent!important}
+}
+
+.fin-social{display:flex;gap:11px;margin-top:6px;flex-wrap:wrap}.fin-social .fs-ic{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;margin:0!important;padding:0;transition:.2s}.fin-social .fs-ic svg{width:19px;height:19px;display:block}.fin-social .fs-ic[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="fb"]:hover{background:#1877F2;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent}
+
+/* 社群圖示 簡易高級版:無框, hover 變品牌色 */
+.mnav-social a,.fin-social .fs-ic{width:auto!important;height:auto!important;border:0!important;background:none!important;border-radius:0!important;padding:9px!important;color:#d8d8d8!important;box-shadow:none!important;transition:transform .2s,color .2s}
+.mnav-social a svg,.fin-social .fs-ic svg{width:24px!important;height:24px!important}
+.mnav-social a:hover,.fin-social .fs-ic:hover,.mnav-social a:active,.fin-social .fs-ic:active{transform:translateY(-2px);border-color:transparent!important}
+.mnav-social a[data-s="ig"]:hover,.fin-social .fs-ic[data-s="ig"]:hover,.mnav-social a[data-s="ig"]:active{background:none!important;color:#e1306c!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:hover,.fin-social .fs-ic[data-s="fb"]:hover,.mnav-social a[data-s="fb"]:active{background:none!important;color:#1877F2!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:hover,.fin-social .fs-ic[data-s="yt"]:hover,.mnav-social a[data-s="yt"]:active{background:none!important;color:#FF0000!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:hover,.fin-social .fs-ic[data-s="line"]:hover,.mnav-social a[data-s="line"]:active{background:none!important;color:#06C755!important;border-color:transparent!important}
+.mnav-social{gap:6px}.fin-social{gap:6px}
+
+/* 選手故事：小米 */
+.act-mi{position:relative;background:linear-gradient(180deg,#0c0908,#15100e);color:#fff;padding:110px 0;overflow:hidden}
+.act-mi .in{max-width:var(--maxw,1160px);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center}
+.act-mi .kicker{color:#F09595}
+.act-mi h2{color:#fff}
+.act-mi h2 i{font-style:normal;color:var(--red,#C81015)}
+.act-mi p{color:#d3ccc4;margin-top:16px;max-width:520px;line-height:2}
+.act-mi .quote{color:#f5c451;font-family:var(--serif,serif);font-weight:700;font-size:1.15rem;border-left:4px solid var(--red,#C81015);padding-left:16px}
+.act-mi .vis{position:relative;padding:0 6% 30px 0;perspective:900px;overflow:visible}
+.act-mi .vis .now{transform-origin:70% 50%;will-change:transform,filter;transition:transform .08s linear,filter .12s linear;position:relative;z-index:2}
+.act-mi .vis.impact .now{animation:miJab .5s cubic-bezier(.2,.9,.25,1)}
+@keyframes miJab{0%{filter:brightness(1)}22%{transform:scale(1.5) translateX(-2%) rotateY(-6deg);filter:brightness(1.35) contrast(1.08)}55%{transform:scale(1.32)}100%{filter:brightness(1)}}
+.act-mi .vis .punch-glow{position:absolute;z-index:1;top:44%;left:62%;width:60%;height:60%;transform:translate(-50%,-50%) scale(.3);border-radius:50%;background:radial-gradient(circle,rgba(200,16,21,.75),rgba(200,16,21,.25) 45%,transparent 70%);filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .15s,transform .1s}
+.act-mi .vis .punch-ring{position:absolute;z-index:3;top:44%;left:62%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;border:3px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+.act-mi .vis.impact .punch-ring{animation:miShock .55s ease-out}
+@keyframes miShock{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
+.act-mi .vis .now{width:100%;border-radius:8px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.act-mi .vis .then{position:absolute;left:-14px;bottom:0;width:40%;border:5px solid #fff;border-radius:3px;transform:rotate(-5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.act-mi .vis .then-lbl{position:absolute;left:-6px;bottom:-16px;background:var(--red,#C81015);color:#fff;font-family:var(--en,Oswald);font-weight:700;letter-spacing:.14em;font-size:.68rem;padding:5px 12px;transform:rotate(-5deg);z-index:3}
+@media(min-width:881px){.act-mi .vis{padding-right:0;margin-right:-10%}.act-mi .vis .now{width:120%}}
+@media(max-width:880px){.act-mi{padding:80px 0}.act-mi .in{grid-template-columns:1fr;gap:26px}
+/* 行動版：整張小米照滿版融進背景 */
+.act-mi .vis{padding:0;max-width:none;margin:0 -24px;width:calc(100% + 48px);overflow:hidden}
+.act-mi .vis .now{border-radius:0;box-shadow:none!important;-webkit-mask-image:radial-gradient(135% 78% at 66% 42%,#000 42%,rgba(0,0,0,.55) 66%,transparent 84%);mask-image:radial-gradient(135% 78% at 66% 42%,#000 42%,rgba(0,0,0,.55) 66%,transparent 84%)}
+.act-mi .vis .then{width:34%;left:8px;bottom:14px}.act-mi .vis .then-lbl{left:14px;bottom:-2px}
+.act-mi .vis .punch-glow{top:42%;left:66%}.act-mi .vis .punch-ring{top:42%;left:66%}}
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/">
-<meta name="theme-color" content="#C81015">
+<meta name="theme-color" content="#0c0a09">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HCF 新竹格鬥">
@@ -434,15 +559,15 @@ a{color:inherit;text-decoration:none}
 <meta name="twitter:title" content="HCF新竹格鬥館 新竹泰拳首選・踢拳・散打・專業重訓">
 <meta name="twitter:description" content="新竹泰拳首選！專業踢拳、散打、重訓課程。給自己一次變強的機會！HCF新竹格鬥館，提供泰拳、踢拳、散打與重訓（肌力體能）私人教練與團體課程。">
 <meta name="twitter:image" content="https://www.hsinchucombat.com/og-cover.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsActivityLocation", "name": "HCF 新竹格鬥", "alternateName": "HCF Combat Hsinchu", "description": "新竹泰拳、散打、踢拳、肌力體能格鬥訓練館，職業選手教練授課，$400 首堂體驗。", "url": "https://www.hsinchucombat.com", "telephone": "+886-925-571-225", "address": {"@type": "PostalAddress", "streetAddress": "北區林森路301號2樓", "addressLocality": "新竹市", "addressCountry": "TW"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "11:00", "closes": "22:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "11:00", "closes": "16:00"}], "sameAs": ["https://www.instagram.com/hc.combat2022/", "https://m.facebook.com/hsinchucombat/", "https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN", "https://lin.ee/7lidUv0"]}</script>
-<style>.ndd{position:relative}.ndd>a i{font-style:normal;font-size:.68em;margin-left:4px;opacity:.8}.ndd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}.ndd-m{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;min-width:158px;padding:8px 0;box-shadow:0 18px 44px rgba(17,17,17,.18);border-top:3px solid var(--red,#C81015);opacity:0;visibility:hidden;transition:.22s;z-index:210}.ndd:hover .ndd-m,.ndd:focus-within .ndd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.ndd-m a{display:block;padding:11px 18px;color:var(--ink,#111)!important;font-size:.9rem;font-weight:700}.ndd-m a::after{display:none}.ndd-m a:hover{background:var(--surface,#F7F7F7);color:var(--red,#C81015)!important}.msub-t{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 24px;font-weight:700;color:var(--ink,#111);border:0;border-top:1px solid var(--line,#E5E5E5);background:#fff;font-family:var(--sans,sans-serif);font-size:1rem;cursor:pointer;text-align:left}.msub-t i{font-style:normal;color:var(--red,#C81015);font-weight:900;transition:transform .2s}.msub-t.open i{transform:rotate(45deg)}.msub{display:none;flex-direction:column;background:var(--surface,#F7F7F7)}.msub.open{display:flex}.msub a{padding-left:42px!important;font-size:.95rem}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsActivityLocation", "name": "HCF 新竹格鬥", "alternateName": "HCF Combat Hsinchu", "description": "新竹泰拳、散打、踢拳、肌力體能格鬥訓練館，職業選手教練授課，$400 首堂體驗。", "url": "https://www.hsinchucombat.com", "telephone": "+886-925-571-225", "priceRange": "NT$400 - NT$5,500", "image": "https://www.hsinchucombat.com/og-cover.jpg", "address": {"@type": "PostalAddress", "streetAddress": "北區林森路301號2樓", "addressLocality": "新竹市", "addressCountry": "TW"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "11:00", "closes": "22:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "11:00", "closes": "16:00"}], "sameAs": ["https://www.instagram.com/hc.combat2022/", "https://m.facebook.com/hsinchucombat/", "https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN", "https://lin.ee/7lidUv0"]}</script>
+<style>.ndd{position:relative}.ndd>a i{font-style:normal;font-size:.68em;margin-left:4px;opacity:.8}.ndd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}.ndd-m{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;min-width:158px;padding:8px 0;box-shadow:0 18px 44px rgba(17,17,17,.18);border-top:3px solid var(--red,#C81015);opacity:0;visibility:hidden;transition:.22s;z-index:210}.ndd:hover .ndd-m,.ndd:focus-within .ndd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.ndd-m a{display:block;padding:11px 18px;color:var(--ink,#111)!important;font-size:.9rem;font-weight:700}.ndd-m a::after{display:none}.ndd-m a:hover{background:var(--surface,#F7F7F7);color:var(--red,#C81015)!important}.msub-t{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 24px;font-weight:700;color:var(--ink,#111);border:0;border-top:1px solid var(--line,#E5E5E5);background:#fff;font-family:var(--sans,sans-serif);font-size:1rem;cursor:pointer;text-align:left}.msub-t i{font-style:normal;color:var(--red,#C81015);font-weight:900;transition:transform .2s}.msub-t.open i{transform:rotate(45deg)}.msub{display:none;flex-direction:column;background:var(--surface,#F7F7F7)}.msub.open{display:flex}.msub a{padding-left:42px!important;font-size:.95rem}.msub-grid.open{display:grid;grid-template-columns:1fr 1fr}.msub-grid a{padding:13px 10px 13px 26px!important;font-size:.9rem;position:relative}.msub-grid a::before{content:"·";position:absolute;left:14px;color:var(--red,#C81015);font-weight:900}.msub-grid a:nth-child(odd){border-right:1px solid var(--line,#E5E5E5)}</style>
 </head>
 <body>
 
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="#top"><picture><source srcset="assets/final-logo.webp" type="image/webp"><img src="assets/final-logo.png" alt="HCF"></picture><b><i>HCF</i> COMBAT</b></a>
+    <a class="nav-logo" href="#top"><picture><source srcset="assets/final-logo.webp" type="image/webp"><img src="assets/final-logo.png" alt="HCF"></picture><span class="nlk"><b>HCF</b><em>COMBAT SYSTEM</em></span></a>
     <nav class="nav-links">
       <a href="#top">首頁</a>
       <a href="news.html">最新資訊</a>
@@ -453,26 +578,25 @@ a{color:inherit;text-decoration:none}
       <a href="pricing.html">課程方案</a>
       <a href="partnership.html" data-en="CORPORATE">企業合作</a>
       <a href="shop.html">商城</a>
-      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>
+      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>
     </nav>
     <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
   </div>
   <nav class="mnav" id="mnav">
-    <a href="#top">首頁</a><a href="news.html">最新資訊</a><a href="philosophy.html">品牌哲學</a>
-    <button class="msub-t" type="button">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div><a href="schedule.html">最新課表</a><a href="team.html">教練團隊</a><a href="pricing.html">課程方案</a><a href="partnership.html" data-en="CORPORATE">企業合作</a><a href="shop.html">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener">會員登入</a>
-    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+    <a href="#top" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>
+    <button class="msub-t open" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub msub-grid open"><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="muaythai.html" data-en="MUAY THAI">泰拳訓練</a><a href="kickboxing.html" data-en="KICKBOXING">踢拳訓練</a><a href="sanda.html" data-en="SANDA">散打訓練</a><a href="strength.html" data-en="S&amp;C">肌力體能</a></div><a href="team.html" data-en="COACHES">教練團隊</a><button class="msub-t open" type="button" data-en="PRICING">課程方案<i>＋</i></button><div class="msub msub-grid open"><a href="pricing.html" data-en="GROUP">團體課程</a><a href="pricing.html" data-en="PRIVATE">私人課程</a><a href="schedule.html" data-en="SCHEDULE">課表</a><a href="partnership.html" data-en="CORPORATE">企業合作</a></div><a href="survey.html" data-en="FAQ">新手問答</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>
+    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a><div class="mnav-social"><a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div>
   </nav>
 </header>
 
 <!-- 序幕 HERO -->
 <section class="hero" id="top">
-  <div class="hero-slide on"><picture><source srcset="hero1.webp" type="image/webp"><img src="hero1.jpg" alt="HCF 訓練實況"></picture></div>
-  <div class="hero-slide"><picture><source srcset="hero2.webp" type="image/webp"><img src="hero2.jpg" alt="HCF 擂台"></picture></div>
+  <div class="hero-slide on"><video class="hero-vid" muted playsinline preload="none" poster="hero3.webp" aria-label="HCF 訓練實況影片一"><source src="hero-vid.mp4" type="video/mp4"></video></div>
+  <div class="hero-slide"><video class="hero-vid hp3" muted playsinline preload="metadata" poster="hero3.webp" aria-label="HCF 訓練實況影片二"><source src="hero-vid3.mp4" type="video/mp4"></video></div>
   <div class="hero-shade"></div>
   <div class="hero-body">
-    <div class="hero-kicker">HSINCHU COMBAT FITNESS <i>/</i> HONOR · COURAGE · FAITH</div>
-    <h1 class="hero-h1">踏上擂台<br>成為更強的<i>自己</i></h1>
-    <p class="hero-sub">泰拳 × 散打 × 踢拳 × 肌力體能　—　新竹格鬥訓練基地</p>
+    <h1 class="hero-h1"><i>HCF</i> 新竹格鬥</h1>
+    <p class="hero-sub">HONOR · COURAGE · FAITH</p>
   </div>
   <div class="hero-dots" id="dots"></div>
   <div class="hero-scroll">SCROLL</div>
@@ -539,6 +663,26 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- 選手故事：小米 -->
+<section class="act-mi" id="actMi">
+  <div class="in">
+    <div class="body">
+      <div class="kicker">FIGHTER STORY / 選手故事</div>
+      <h2 class="h2">小米教練<br>從<i>谷底</i>到<i>擂台</i></h2>
+      <p>重度憂鬱、暴食厭食、躁鬱——她曾一年有一半時間在強制住院。直到戴上拳套、第一次揮拳打中的那一刻，內心那攤死水，開始流動。</p>
+      <p class="quote">「泰拳之於我，看似暴力的勇敢心，是最強壯的溫柔和愛。」</p>
+      <a class="a2-btn" href="story-mi.html">看小米的完整故事 →</a>
+    </div>
+    <div class="vis">
+      <span class="punch-glow" aria-hidden="true"></span>
+      <span class="punch-ring" aria-hidden="true"></span>
+      <img class="now" src="mi-fighter.jpg" alt="小米教練 戰鬥形象" loading="lazy" decoding="async">
+      <img class="then" src="mi-life.jpg" alt="小米 蛻變前的日常" loading="lazy" decoding="async">
+      <span class="then-lbl">曾經 · 62kg</span>
+    </div>
+  </div>
+</section>
+
 <section class="act2" id="act2">
   <div class="a2-bg"></div>
   <div class="a2-ghost">IRON MAN</div>
@@ -555,7 +699,9 @@ a{color:inherit;text-decoration:none}
       <a class="a2-btn" href="coach-huang.html">完整戰歷 · 教練專頁 →</a>
     </div>
     <div class="a2-vis">
-      <img class="cut" src="huang_cutout.webp" alt="黃謙和 總教練">
+      <span class="a2-glow" aria-hidden="true"></span>
+      <span class="a2-ring" aria-hidden="true"></span>
+      <img class="cut" src="huang_punch.png" alt="黃謙和 總教練 出拳" loading="lazy" decoding="async">
       <div class="tag">MPF07 · TKO 勝</div>
     </div>
   </div>
@@ -595,17 +741,17 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="gclip">
       <div class="gstrip" id="gstrip">
-        <div class="gph"><img src="IMG_7366.jpeg" alt="館內訓練"></div>
+        <div class="gph"><img src="IMG_7366.jpeg" alt="館內訓練" loading="lazy" decoding="async"></div>
         <div class="gquote"><div class="st">★★★★★</div><b>「教練超有耐心，零基礎也能跟上。」</b><span>GOOGLE REVIEW</span></div>
-        <div class="gph"><picture><source srcset="IMG_8904.webp" type="image/webp"><img src="IMG_8904.jpeg" alt="團課實況"></picture></div>
-        <div class="gph"><video src="video_class_2.mp4" poster="video_class_2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="團體課實況影片"></video></div>
-        <div class="gph sm"><picture><source srcset="review_IMG_4187.webp" type="image/webp"><img src="review_IMG_4187.jpg" alt="會員評論"></picture></div>
-        <div class="gph"><picture><source srcset="IMG_8944.webp" type="image/webp"><img src="IMG_8944.jpeg" alt="對打訓練"></picture></div>
+        <div class="gph"><picture><source srcset="IMG_8904.webp" type="image/webp"><img src="IMG_8904.jpeg" alt="團課實況" loading="lazy" decoding="async"></picture></div>
+        <div class="gph"><video src="video_class_2.mp4" poster="video_class_2.jpg" muted loop playsinline preload="none" aria-label="團體課實況影片"></video></div>
+        <div class="gph sm"><picture><source srcset="review_IMG_4187.webp" type="image/webp"><img src="review_IMG_4187.jpg" alt="會員評論" loading="lazy" decoding="async"></picture></div>
+        <div class="gph"><picture><source srcset="IMG_8944.webp" type="image/webp"><img src="IMG_8944.jpeg" alt="對打訓練" loading="lazy" decoding="async"></picture></div>
         <div class="gquote"><div class="st">★★★★★</div><b>「下班最期待的一小時，壓力全消。」</b><span>GOOGLE REVIEW</span></div>
-        <div class="gph"><picture><source srcset="IMG_5213.webp" type="image/webp"><img src="IMG_5213.jpeg" alt="比賽合照"></picture></div>
-        <div class="gph sm"><picture><source srcset="review_IMG_4194.webp" type="image/webp"><img src="review_IMG_4194.jpg" alt="會員評論"></picture></div>
+        <div class="gph"><picture><source srcset="IMG_5213.webp" type="image/webp"><img src="IMG_5213.jpeg" alt="比賽合照" loading="lazy" decoding="async"></picture></div>
+        <div class="gph sm"><picture><source srcset="review_IMG_4194.webp" type="image/webp"><img src="review_IMG_4194.jpg" alt="會員評論" loading="lazy" decoding="async"></picture></div>
         <a class="gstory" href="story-kao.html"><picture><source srcset="story_kao_07.webp" type="image/webp"><img src="story_kao_07.jpg" alt="高大可的蛻變故事" loading="lazy"></picture><span class="gs-in"><em>MEMBER STORY</em><b>他把以前的自己<br>留在體重計上</b><i>看大可的蛻變故事 ⟶</i></span></a>
-        <div class="gph"><picture><source srcset="vs_clash.webp" type="image/webp"><img src="vs_clash.png" alt="MPF07 對戰"></picture></div>
+        <div class="gph"><picture><source srcset="vs_clash.webp" type="image/webp"><img src="vs_clash.png" alt="MPF07 對戰" loading="lazy" decoding="async"></picture></div>
       </div>
     </div>
     <div class="ghint">KEEP SCROLLING · 照片向右移動</div>
@@ -758,30 +904,14 @@ a{color:inherit;text-decoration:none}
     </div>
     <div>
       <h5>社群媒體</h5>
-      <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN&si=y6yMvAKxk_vUSrN7" target="_blank" rel="noopener">YouTube 賽事影片</a>
-      <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">官方 LINE</a>
+      <div class="fin-social"><a class="fs-ic" href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a class="fs-ic" href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a class="fs-ic" href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a class="fs-ic" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div>
     </div>
   </div>
-  <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥　|　<a href="legal.html#privacy" style="color:#9a9a9a">隱私權政策</a> · <a href="legal.html#disclaimer" style="color:#9a9a9a">免責聲明</a> · <a href="careers.html" style="color:#9a9a9a">人才招募</a> · <a href="partnership.html" style="color:#9a9a9a">企業合作</a></div>
+  <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥　|　<a href="legal.html#privacy" style="color:#cfcfcf;text-decoration:underline">隱私權政策</a> · <a href="legal.html#disclaimer" style="color:#cfcfcf;text-decoration:underline">免責聲明</a> · <a href="careers.html" style="color:#cfcfcf;text-decoration:underline">人才招募</a> · <a href="partnership.html" style="color:#cfcfcf;text-decoration:underline">企業合作</a></div>
 </section>
 
 <!-- 浮動層 -->
 <button class="totop" id="totop" aria-label="回頂部">TOP</button>
-<button class="shark" id="sharkBtn" aria-label="智能小幫手"><picture><source srcset="shark_logo.webp" type="image/webp"><img src="shark_logo.png" alt="智能小幫手"></picture></button>
-<div class="chatbox" id="chatbox">
-  <div class="cb-h"><span>HCF 智能小幫手</span><button id="cbClose" aria-label="關閉">✕</button></div>
-  <div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 智能小幫手 🦈 想問課程、價格或預約都可以問我！</div></div>
-  <div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div>
-  <div class="cb-social">
-    <a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram">IG</a>
-    <a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook">FB</a>
-    <a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube">YT</a>
-    <a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE">LINE</a>
-  </div>
-  <div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div>
-</div>
 <div class="mcta">
   <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
   <a class="m2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
@@ -803,16 +933,23 @@ mnav.addEventListener('click',function(e){if(e.target.tagName==='A')mnav.classLi
 // ===== Hero 輪播（圖片淡接；正式版接回 carousel-config.json 與影片） =====
 var slides=document.querySelectorAll('.hero-slide'),dots=document.getElementById('dots'),cur=0,timer;
 slides.forEach(function(_,i){var b=document.createElement('button');if(i===0)b.className='on';
-  b.onclick=function(){go(i)};dots.appendChild(b)});
+  b.setAttribute('type','button');b.setAttribute('aria-label','切換至第 '+(i+1)+' 支影片');b.onclick=function(){go(i)};dots.appendChild(b)});
+function playCur(){slides.forEach(function(sl,i){var v=sl.querySelector('video');if(!v)return;
+  if(i===cur){v.muted=true;try{v.currentTime=0;}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{try{v.pause();v.currentTime=0;}catch(e){}}});}
 function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');
-  cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');reset()}
+  cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on');playCur();}
 function next(){go((cur+1)%slides.length)}
-function reset(){clearInterval(timer);timer=setInterval(next,6000)}
-reset();
-var tx=0,hero=document.querySelector('.hero');
-hero.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
-hero.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;
-  if(Math.abs(d)>50){d<0?next():go((cur-1+slides.length)%slides.length)}},{passive:true});
+/* 每支影片播完才換下一段 */
+slides.forEach(function(sl){var v=sl.querySelector('video');if(v)v.addEventListener('ended',function(){if(sl.classList.contains('on'))next();});});
+/* 影片首次互動才播(效能:LCP不被影片拖累);桌機mousemove會立即觸發 */
+['pointerdown','touchstart','scroll','keydown','mousemove'].forEach(function(ev){
+  window.addEventListener(ev,function h(){playCur();window.removeEventListener(ev,h);},{passive:true});});
+if(slides.length>1){
+  var tx=0,hero=document.querySelector('.hero');
+  hero.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
+  hero.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;
+    if(Math.abs(d)>50){d<0?next():go((cur-1+slides.length)%slides.length)}},{passive:true});
+}
 
 // ===== 紅色滾動帶 =====
 var rib=document.getElementById('rib'),words='HONOR · COURAGE · FAITH · ';
@@ -903,74 +1040,6 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 
-// ===== 智能小幫手（接原站 Netlify function；離線時友善回覆） =====
-var cb=document.getElementById('chatbox'),log=document.getElementById('cbLog'),cin=document.getElementById('cbIn');
-document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open');var nd=document.getElementById('hcfNudge');if(nd)nd.remove();if(cb.classList.contains('open')){if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_open');}};
-/* 主動出擊小氣泡（每次造訪一次、依頁面客製話術） */
-(function(){
-  if(sessionStorage.getItem('hcfNudged'))return;
-  var MSG={'pricing':'方案怎麼選最划算？問我，1 秒回 🦈','schedule':'不知道上哪堂？跟我說你的目標','plans-proposal':'選好目標了嗎？我幫你配課','group-classes':'新手第一堂該上什麼？問我','private-training':'想知道私人課怎麼開始？問我','survey':'做完問卷有疑問？直接問我','story':'想跟大可一樣開始改變？問我'};
-  var key=Object.keys(MSG).find(function(k){return location.pathname.indexOf(k)>-1});
-  var txt=key?MSG[key]:'嗨！課程・價格・預約，問我秒回 🦈';
-  setTimeout(function(){
-    if(cb.classList.contains('open'))return;
-    sessionStorage.setItem('hcfNudged','1');
-    var n=document.createElement('button');
-    n.id='hcfNudge';n.type='button';n.textContent=txt;
-    n.style.cssText='position:fixed;right:84px;bottom:96px;z-index:380;background:#fff;color:#111;border:1.5px solid #C81015;box-shadow:0 14px 36px rgba(17,17,17,.25);padding:12px 16px;font-weight:700;font-size:.86rem;cursor:pointer;border-radius:14px 14px 2px 14px;max-width:230px;text-align:left;line-height:1.5;font-family:inherit';
-    document.body.appendChild(n);
-    n.onclick=function(){n.remove();cb.classList.add('open');if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_nudge_click');};
-    setTimeout(function(){if(n.parentNode)n.remove()},14000);
-  },16000);
-})();
-
-document.getElementById('cbClose').onclick=function(){cb.classList.remove('open')};
-function add(t,cls){var d=document.createElement('div');d.className='m '+cls;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
-var FAQ=[
- {lead:1,k:['價','錢','費','方案','多少'],a:'費用速覽：團體課首堂體驗 $400、MAX 月票 $5,500 當月團課無限；私人課體驗 $1,400 起。完整價格在「課程方案」頁，想看一對一細節輸入「私人課」🦈'},
- {k:['課表','時間','幾點','星期','禮拜'],a:'最新課表線上即時查詢：平日 11:00、19:30、20:40 開課，週末特訓 11:00 起。全預約制、滿 3 人開課，導覽列點「最新課表」就能看！'},
- {lead:1,k:['預約','報名','體驗','怎麼上'],a:'預約超簡單：FitBook 線上選時段（首堂 $400），或加官方 LINE 由真人幫你排。第一次來穿運動服、帶水壺毛巾，拳套裝備館內免費借！'},
- {lead:1,k:['私人','一對一','1對1','私教','打靶'],a:'私人課三種型態：一對一 60 分（體驗 $1,400）、一對二 60 分（體驗 $2,400）、私人打靶 40 分（$1,000）。加 LINE 預約一對一評估，教練幫你客製菜單！'},
- {lead:1,k:['團體','團課'],a:'團體課四大體系：泰拳、散打、踢拳、肌力體能，LV.1 零基礎友善、不對打。首堂 $400，到「課程介紹 → 團體課程」挑一條路線！'},
- {k:['大可','蛻變','減肥','減重','瘦身','變瘦'],a:'你說的是大可吧！他用一年從 104 公斤練到 74 公斤，還站上擂台拿下優勝 🏆 完整故事（含前後對比互動）在官網「高大可的蛻變故事」頁——首頁往下滑就能看到入口。想跟他一樣開始，$400 體驗課就是他的起點！'},
- {lead:1,k:['新手','零基礎','沒學過','第一次','初學','害怕'],a:'零基礎完全 OK！最多人從「新手泰拳」開始：第一堂從站架教起、不對打、教練全程帶。$400 體驗課就是設計給沒底子的你 💪'},
- {k:['地址','位置','在哪','怎麼去','停車','交通'],a:'基地在新竹市北區林森路 301 號 2 樓。🅿️ 開車可停「聚吉停車場」（中華路三段，步行約 2 分鐘）或「四維停車場」（四維路，步行約 5 分鐘）。找不到路直接打 0925-571-225，我們帶你上來！'},
- {k:['營業','幾點開','開到','公休'],a:'營業時間：平日 11:00–22:00、週末 11:00–16:00，全預約制喔！'},
- {k:['教練','黃謙和','鋼鐵人'],a:'總教練黃謙和「格鬥鋼鐵人」：42 勝、台灣泰拳 63KG 衛冕冠軍，MPF07 傷後復出 TKO 首勝。導覽「教練團隊」看完整互動年鑑與賽事影片！'},
- {k:['小孩','兒童','親子','樂齡','長輩'],a:'兒童格鬥營與樂齡體能小班正在籌備開班！到「30秒測你的命定格鬥課」問卷投下一票、留 LINE，開班第一時間通知你 🎁'}
-];
-function faqHit(v){for(var i=0;i<FAQ.length;i++){for(var j=0;j<FAQ[i].k.length;j++){if(v.indexOf(FAQ[i].k[j])>-1)return FAQ[i];}}return null;}
-function addHTML(h){var d=document.createElement('div');d.className='m ai';d.innerHTML=h;log.appendChild(d);log.scrollTop=log.scrollHeight;}
-function addActs(lead){
-  var h='<div class="cb-acts"><a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">🥊 立即預約 $400</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">💬 加 LINE 真人聊</a>';
-  if(lead&&window.HCF_BACKEND)h+='<button type="button" class="cb-leadbtn">📞 留電話，教練回覆你</button>';
-  h+='</div>';
-  addHTML(h);
-}
-log.addEventListener('click',function(e){
-  if(e.target.classList.contains('cb-leadbtn')){
-    e.target.disabled=true;
-    addHTML('<div class="cb-leadform"><input class="lf-n" placeholder="怎麼稱呼你"><input class="lf-p" placeholder="電話或 LINE ID" maxlength="40"><button type="button" class="cb-leadsend">送出，等教練聯絡</button></div>');
-  }
-  if(e.target.classList.contains('cb-leadsend')){
-    var f=e.target.closest('.cb-leadform');
-    var n=f.querySelector('.lf-n').value.trim(),p=f.querySelector('.lf-p').value.trim();
-    if(!p){f.querySelector('.lf-p').focus();return;}
-    fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:n,contact:p,source:'ai-chat'})});
-    if(window.hcfTrack)hcfTrack('ai_lead_submit');
-    f.outerHTML='<div class="m ai">收到！教練會盡快聯絡你 🦈 想更快也可以直接加 LINE！</div>';
-  }
-});
-function send(qTxt){var v=(qTxt||cin.value).trim();if(!v)return;add(v,'me');cin.value='';
-  if(window.hcfTrack)hcfTrack('ai_question',{q:v.slice(0,60)});
-  var hit=faqHit(v);
-  if(hit){setTimeout(function(){add(hit.a,'ai');addActs(!!hit.lead);},380);return;}
-  fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:v})})
-   .then(function(r){return r.json()}).then(function(d){add(d.reply||d.message||'收到！','ai')})
-   .catch(function(){add('我先記下你的問題了！可以先加 LINE（lin.ee/7lidUv0）由真人為你服務，或試試輸入「價格」「課表」「預約」我馬上回答 🦈','ai');addActs(true)});}
-document.getElementById('cbSend').onclick=function(){send()};
-document.getElementById('cbChips').addEventListener('click',function(e){var b=e.target.closest('button');if(b)send(b.textContent);});
-cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 </script>
 <script>
 /* ===== 左側問卷入口 ===== */
@@ -987,7 +1056,46 @@ cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 </script>
 <script src="hcf-analytics.js" defer></script>
 <script>(function(){var m=document.getElementById("mnav");if(!m)return;m.addEventListener("click",function(e){var t=e.target.closest(".msub-t");if(t){t.classList.toggle("open");t.nextElementSibling.classList.toggle("open");}});})();</script>
+<style>
+@media(max-width:880px){.mcta{transition:transform .35s ease;will-change:transform}.mcta.mcta-hide{transform:translateY(130%)}}
+</style>
+<script>
+/* 底部 CTA 不釘死：首屏隱藏，下滑收起、上滑顯示 */
+(function(){var m=document.querySelector('.mcta');if(!m)return;
+  var last=window.scrollY||0;
+  function atHero(y){return y<innerHeight*0.55;}
+  function upd(){var y=window.scrollY;
+    if(atHero(y))m.classList.add('mcta-hide');
+    else if(y>last+3)m.classList.add('mcta-hide');
+    else if(y<last-3)m.classList.remove('mcta-hide');
+    last=y;}
+  addEventListener('scroll',upd,{passive:true});
+  if(atHero(window.scrollY))m.classList.add('mcta-hide');
+})();
+</script>
 <script src="nav-enhance.js" defer></script>
+<script>
+/* ===== 質感升級 v2（首頁）：進場串接 + 磁吸 CTA ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  document.querySelectorAll('.rv').forEach(function(el){
+    var p=el.parentNode; if(!p||!p.children)return;
+    var sibs=[].filter.call(p.children,function(c){return c.classList&&c.classList.contains('rv');});
+    var idx=sibs.indexOf(el);
+    if(idx>0)el.style.transitionDelay=Math.min(idx*70,350)+'ms';
+  });
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.hero-acts a.primary,.hb1,.b1').forEach(function(btn){
+      btn.addEventListener('pointermove',function(e){
+        var r=btn.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.16, y=(e.clientY-r.top-r.height/2)*0.28;
+        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) skewX(-10deg)';
+      });
+      btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+    });
+  }
+})();
+</script>
 <script>
 /* 手機版:走進HCF輪播 + 500+畫廊 → 原生可滑 + 自動輪播(碰觸暫停) hcf-mobile-carousel */
 (function(){
@@ -1025,6 +1133,74 @@ cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
   }
   function init(){auto(document.querySelector('.float-track-clip'));auto(document.querySelector('.gclip'));}
   if(document.readyState==='complete')init();else addEventListener('load',init);
+})();
+</script>
+<script src="hcf-bgm.js" defer></script>
+<script>
+/* ===== 質感升級：滾動進度條 + Hero 游標光暈（首頁） ===== */
+(function(){
+  var de=document.documentElement;
+  var bar=document.createElement('div');bar.id='scrollbar';document.body.appendChild(bar);
+  function sb(){var st=window.pageYOffset||de.scrollTop||0;var sc=de.scrollHeight-innerHeight;bar.style.width=(sc>0?st/sc*100:0).toFixed(2)+'%';}
+  addEventListener('scroll',sb,{passive:true});addEventListener('resize',sb,{passive:true});sb();
+  var hero=document.querySelector('.hero');
+  if(hero){
+    var glow=document.createElement('div');glow.className='glow';hero.appendChild(glow);
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+      hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');hero.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
+    }
+  }
+})();
+</script>
+<script>
+/* 小米形象照：拳頭朝觀看者衝出(捲動猛烈放大+紅光+衝擊波+滑鼠3D傾斜) */
+(function(){var sec=document.getElementById('actMi');if(!sec)return;var now=sec.querySelector('.now'),vis=sec.querySelector('.vis'),glow=sec.querySelector('.punch-glow');if(!now)return;
+var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function upd(){var r=sec.getBoundingClientRect();var d=Math.abs((r.top+r.height/2)-innerHeight/2)/innerHeight;var prog=Math.max(0,Math.min(1,1-d));
+  var e=prog*prog;/* ease-in：越近爆發越快 */
+  var sc=1+e*0.55;/* 放大到 1.55 拳頭破框貼臉 */
+  now.style.transform='scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
+  now.style.filter='brightness('+(1+e*0.18).toFixed(2)+') contrast('+(1+e*0.06).toFixed(2)+')';
+  now.style.boxShadow='0 '+(30+e*40)+'px '+(70+e*60)+'px rgba(0,0,0,.6), 0 0 '+(e*90).toFixed(0)+'px rgba(200,16,21,'+(e*0.55).toFixed(2)+')';
+  if(glow){glow.style.opacity=(e*0.9).toFixed(2);glow.style.transform='translate(-50%,-50%) scale('+(0.3+e*1.1).toFixed(2)+')';}
+}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+/* 進入中央觸發一次「刺拳」衝擊(閃光+衝擊波)，離開後可再觸發 */
+if(!reduce&&'IntersectionObserver'in window){var armed=true;
+  new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting&&en.intersectionRatio>0.6&&armed){armed=false;vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);}
+    if(en.intersectionRatio<0.15)armed=true;
+  });},{threshold:[0,0.15,0.6]}).observe(sec);
+}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches&&vis){
+  vis.addEventListener('pointermove',function(e){var r=vis.getBoundingClientRect();ry=((e.clientX-r.left)/r.width-.5)*-12;rx=((e.clientY-r.top)/r.height-.5)*9;upd();});
+  vis.addEventListener('pointerleave',function(){rx=0;ry=0;upd();});
+  /* 點一下 = 再補一拳 */
+  vis.addEventListener('click',function(){vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);});
+}
+})();
+
+/* 總教練形象照：出拳破框衝出(捲動放大+紅光+衝擊波+滑鼠3D傾斜) */
+(function(){var sec=document.getElementById('act2');if(!sec)return;var cut=sec.querySelector('.cut'),vis=sec.querySelector('.a2-vis'),glow=sec.querySelector('.a2-glow');if(!cut||!vis)return;
+var rx=0,ry=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function upd(){var r=sec.getBoundingClientRect();var d=Math.abs((r.top+r.height/2)-innerHeight/2)/innerHeight;var prog=Math.max(0,Math.min(1,1-d));var e=prog*prog;
+  var sc=1+e*0.38;var pre=innerWidth<=880?'translateX(-50%) ':'';
+  cut.style.transform=pre+'scale('+sc.toFixed(3)+') rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg)';
+  cut.style.filter='drop-shadow(-16px 20px 32px rgba(0,0,0,.55)) drop-shadow(0 0 '+(e*40).toFixed(0)+'px rgba(200,16,21,'+(e*0.5).toFixed(2)+'))';
+  if(glow){glow.style.opacity=(e*0.9).toFixed(2);glow.style.transform='translate(-50%,-50%) scale('+(0.3+e*1.1).toFixed(2)+')';}
+}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+if(!reduce&&'IntersectionObserver'in window){var armed=true;
+  new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting&&en.intersectionRatio>0.55&&armed){armed=false;vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);}
+    if(en.intersectionRatio<0.12)armed=true;
+  });},{threshold:[0,0.12,0.55]}).observe(sec);
+}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  vis.addEventListener('pointermove',function(e){var r=vis.getBoundingClientRect();ry=((e.clientX-r.left)/r.width-.5)*-11;rx=((e.clientY-r.top)/r.height-.5)*8;upd();});
+  vis.addEventListener('pointerleave',function(){rx=0;ry=0;upd();});
+  vis.addEventListener('click',function(){vis.classList.remove('impact');void vis.offsetWidth;vis.classList.add('impact');setTimeout(function(){vis.classList.remove('impact');},600);});
+}
 })();
 </script>
 </body>

@@ -3,7 +3,7 @@
 // ===== 共用元件注入：nav / 浮動層 / 頁尾 =====
 var page=document.body.dataset.page||'';
 var NAV='<div class="nav-in">\
-<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><b><i>HCF</i> COMBAT</b></a>\
+<a class="nav-logo" href="index.html"><img src="assets/final-logo.png" alt="HCF"><span class="nlk"><b>HCF</b><em>COMBAT SYSTEM</em></span></a>\
 <nav class="nav-links">\
 <a href="index.html" data-p="home" data-en="HOME">首頁</a>\
 <a href="news.html" data-p="news" data-en="NEWS">最新資訊</a>\
@@ -12,14 +12,14 @@ var NAV='<div class="nav-in">\
 <a href="schedule.html" data-p="sched" data-en="SCHEDULE">最新課表</a>\
 <a href="team.html" data-p="team" data-en="COACHES">教練團隊</a>\
 <a href="pricing.html" data-p="pricing" data-en="PRICING">課程方案</a><a href="partnership.html" data-p="partnership" data-en="CORPORATE">企業合作</a><a href="shop.html" data-p="shop" data-en="SHOP">商城</a>\
-<a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約</a>\
+<a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>\
 </nav>\
 <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>\
 </div>\
 <nav class="mnav" id="mnav">\
 <a href="index.html" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>\
-<button class="msub-t" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub"><a href="courses.html" data-en="OVERVIEW">課程總覽</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a></div><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="partnership.html" data-en="CORPORATE">企業合作</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>\
-<a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a></nav>';
+<button class="msub-t open" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub msub-grid open"><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="muaythai.html" data-en="MUAY THAI">泰拳訓練</a><a href="kickboxing.html" data-en="KICKBOXING">踢拳訓練</a><a href="sanda.html" data-en="SANDA">散打訓練</a><a href="strength.html" data-en="S&amp;C">肌力體能</a></div><a href="team.html" data-en="COACHES">教練團隊</a><button class="msub-t open" type="button" data-en="PRICING">課程方案<i>＋</i></button><div class="msub msub-grid open"><a href="pricing.html" data-en="GROUP">團體課程</a><a href="pricing.html" data-en="PRIVATE">私人課程</a><a href="schedule.html" data-en="SCHEDULE">課表</a><a href="partnership.html" data-en="CORPORATE">企業合作</a></div><a href="survey.html" data-en="FAQ">新手問答</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>\
+<a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a><div class="mnav-social"><a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div></nav>';
 var nav=document.getElementById('nav'); if(nav){nav.innerHTML=NAV;
   var on=nav.querySelector('[data-p="'+page+'"]'); if(on)on.classList.add('on');}
 
@@ -62,17 +62,6 @@ document.head.appendChild(NAVCSS2);
 
 
 var FLOAT='<button class="totop" id="totop" aria-label="回頂部">TOP</button>\
-<button class="shark" id="sharkBtn" aria-label="智能小幫手"><img src="shark_logo.png" alt="智能小幫手"></button>\
-<div class="chatbox" id="chatbox">\
-<div class="cb-h"><span>HCF 智能小幫手</span><button id="cbClose" aria-label="關閉">✕</button></div>\
-<div class="cb-log" id="cbLog"><div class="m ai">嗨！我是 HCF 的 智能小幫手 🦈 想問課程、價格或預約都可以問我！</div></div>\
-<div class="cb-chips" id="cbChips"><button>價格方案</button><button>最新課表</button><button>怎麼預約</button><button>新手入門</button></div>\
-<div class="cb-social">\
-<a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram">IG</a>\
-<a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook">FB</a>\
-<a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube">YT</a>\
-<a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE">LINE</a></div>\
-<div class="cb-in"><input id="cbIn" placeholder="輸入問題…" maxlength="200"><button id="cbSend">送出</button></div></div>\
 <div class="mcta">\
 <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>\
 <a class="m2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a></div>';
@@ -89,11 +78,7 @@ var FOOT='<div class="fin-in">\
 <div><h5>聯絡我們</h5><p>新竹市北區林森路 301 號 2 樓</p><a href="tel:0925571225">0925-571-225</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 線上諮詢</a></div>\
 <div><h5>快速連結</h5><a href="coach-huang.html">總教練 黃謙和</a><a href="team.html" data-en="COACHES">教練團隊</a><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="schedule.html" data-en="SCHEDULE">最新課表</a><a href="pricing.html" data-en="PRICING">課程方案</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a></div>\
 <div><h5>加入社群</h5>\
-<a class="fsoc" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener"><i>LINE</i>領取專屬優惠</a>\
-<a class="fsoc" href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener"><i>IG</i>最新消息 @hc.combat2022</a>\
-<a class="fsoc" href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener"><i>FB</i>賽事公告與訓練紀錄</a>\
-<a class="fsoc" href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener"><i>YT</i>格鬥鋼鐵人賽事影片</a>\
-<a class="fsoc" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><i>GO</i>預約 $400 體驗課</a></div></div>\
+<div class="fin-social"><a class="fs-ic" href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a class="fs-ic" href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a class="fs-ic" href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a class="fs-ic" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div></div></div>\
 <div class="fin-copy">© 2026 HCF COMBAT HSINCHU · 新竹 HCF 格鬥</div>';
 var fin=document.getElementById('finale'); if(fin)fin.innerHTML=FOOT;
 
@@ -141,74 +126,6 @@ var cio=new IntersectionObserver(function(es){es.forEach(function(e){
   requestAnimationFrame(step);})},{threshold:.5});
 document.querySelectorAll('[data-cnt]').forEach(function(el){cio.observe(el)});
 
-// ===== 智能小幫手 =====
-var cb=document.getElementById('chatbox'),log=document.getElementById('cbLog'),cin=document.getElementById('cbIn');
-document.getElementById('sharkBtn').onclick=function(){cb.classList.toggle('open');var nd=document.getElementById('hcfNudge');if(nd)nd.remove();if(cb.classList.contains('open')){if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_open');}};
-/* 主動出擊小氣泡（每次造訪一次、依頁面客製話術） */
-(function(){
-  if(sessionStorage.getItem('hcfNudged'))return;
-  var MSG={'pricing':'方案怎麼選最划算？問我，1 秒回 🦈','schedule':'不知道上哪堂？跟我說你的目標','plans-proposal':'選好目標了嗎？我幫你配課','group-classes':'新手第一堂該上什麼？問我','private-training':'想知道私人課怎麼開始？問我','survey':'做完問卷有疑問？直接問我','story':'想跟大可一樣開始改變？問我'};
-  var key=Object.keys(MSG).find(function(k){return location.pathname.indexOf(k)>-1});
-  var txt=key?MSG[key]:'嗨！課程・價格・預約，問我秒回 🦈';
-  setTimeout(function(){
-    if(cb.classList.contains('open'))return;
-    sessionStorage.setItem('hcfNudged','1');
-    var n=document.createElement('button');
-    n.id='hcfNudge';n.type='button';n.textContent=txt;
-    n.style.cssText='position:fixed;right:84px;bottom:96px;z-index:380;background:#fff;color:#111;border:1.5px solid #C81015;box-shadow:0 14px 36px rgba(17,17,17,.25);padding:12px 16px;font-weight:700;font-size:.86rem;cursor:pointer;border-radius:14px 14px 2px 14px;max-width:230px;text-align:left;line-height:1.5;font-family:inherit';
-    document.body.appendChild(n);
-    n.onclick=function(){n.remove();cb.classList.add('open');if(innerWidth>768)cin.focus();if(window.hcfTrack)hcfTrack('ai_nudge_click');};
-    setTimeout(function(){if(n.parentNode)n.remove()},14000);
-  },16000);
-})();
-
-document.getElementById('cbClose').onclick=function(){cb.classList.remove('open')};
-function add(t,cls){var d=document.createElement('div');d.className='m '+cls;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
-var FAQ=[
- {lead:1,k:['價','錢','費','方案','多少'],a:'費用速覽：團體課首堂體驗 $400、MAX 月票 $5,500 當月團課無限；私人課體驗 $1,400 起。完整價格在「課程方案」頁，想看一對一細節輸入「私人課」🦈'},
- {k:['課表','時間','幾點','星期','禮拜'],a:'最新課表線上即時查詢：平日 11:00、19:30、20:40 開課，週末特訓 11:00 起。全預約制、滿 3 人開課，導覽列點「最新課表」就能看！'},
- {lead:1,k:['預約','報名','體驗','怎麼上'],a:'預約超簡單：FitBook 線上選時段（首堂 $400），或加官方 LINE 由真人幫你排。第一次來穿運動服、帶水壺毛巾，拳套裝備館內免費借！'},
- {lead:1,k:['私人','一對一','1對1','私教','打靶'],a:'私人課三種型態：一對一 60 分（體驗 $1,400）、一對二 60 分（體驗 $2,400）、私人打靶 40 分（$1,000）。加 LINE 預約一對一評估，教練幫你客製菜單！'},
- {lead:1,k:['團體','團課'],a:'團體課四大體系：泰拳、散打、踢拳、肌力體能，LV.1 零基礎友善、不對打。首堂 $400，到「課程介紹 → 團體課程」挑一條路線！'},
- {k:['大可','蛻變','減肥','減重','瘦身','變瘦'],a:'你說的是大可吧！他用一年從 104 公斤練到 74 公斤，還站上擂台拿下優勝 🏆 完整故事（含前後對比互動）在官網「高大可的蛻變故事」頁——首頁往下滑就能看到入口。想跟他一樣開始，$400 體驗課就是他的起點！'},
- {lead:1,k:['新手','零基礎','沒學過','第一次','初學','害怕'],a:'零基礎完全 OK！最多人從「新手泰拳」開始：第一堂從站架教起、不對打、教練全程帶。$400 體驗課就是設計給沒底子的你 💪'},
- {k:['地址','位置','在哪','怎麼去','停車','交通'],a:'基地在新竹市北區林森路 301 號 2 樓。🅿️ 開車可停「聚吉停車場」（中華路三段，步行約 2 分鐘）或「四維停車場」（四維路，步行約 5 分鐘）。找不到路直接打 0925-571-225，我們帶你上來！'},
- {k:['營業','幾點開','開到','公休'],a:'營業時間：平日 11:00–22:00、週末 11:00–16:00，全預約制喔！'},
- {k:['教練','黃謙和','鋼鐵人'],a:'總教練黃謙和「格鬥鋼鐵人」：42 勝、台灣泰拳 63KG 衛冕冠軍，MPF07 傷後復出 TKO 首勝。導覽「教練團隊」看完整互動年鑑與賽事影片！'},
- {k:['小孩','兒童','親子','樂齡','長輩'],a:'兒童格鬥營與樂齡體能小班正在籌備開班！到「30秒測你的命定格鬥課」問卷投下一票、留 LINE，開班第一時間通知你 🎁'}
-];
-function faqHit(v){for(var i=0;i<FAQ.length;i++){for(var j=0;j<FAQ[i].k.length;j++){if(v.indexOf(FAQ[i].k[j])>-1)return FAQ[i];}}return null;}
-function addHTML(h){var d=document.createElement('div');d.className='m ai';d.innerHTML=h;log.appendChild(d);log.scrollTop=log.scrollHeight;}
-function addActs(lead){
-  var h='<div class="cb-acts"><a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">🥊 立即預約 $400</a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">💬 加 LINE 真人聊</a>';
-  if(lead&&window.HCF_BACKEND)h+='<button type="button" class="cb-leadbtn">📞 留電話，教練回覆你</button>';
-  h+='</div>';
-  addHTML(h);
-}
-log.addEventListener('click',function(e){
-  if(e.target.classList.contains('cb-leadbtn')){
-    e.target.disabled=true;
-    addHTML('<div class="cb-leadform"><input class="lf-n" placeholder="怎麼稱呼你"><input class="lf-p" placeholder="電話或 LINE ID" maxlength="40"><button type="button" class="cb-leadsend">送出，等教練聯絡</button></div>');
-  }
-  if(e.target.classList.contains('cb-leadsend')){
-    var f=e.target.closest('.cb-leadform');
-    var n=f.querySelector('.lf-n').value.trim(),p=f.querySelector('.lf-p').value.trim();
-    if(!p){f.querySelector('.lf-p').focus();return;}
-    fetch(window.HCF_BACKEND+'/api/lead',{method:'POST',keepalive:true,body:JSON.stringify({name:n,contact:p,source:'ai-chat'})});
-    if(window.hcfTrack)hcfTrack('ai_lead_submit');
-    f.outerHTML='<div class="m ai">收到！教練會盡快聯絡你 🦈 想更快也可以直接加 LINE！</div>';
-  }
-});
-function send(qTxt){var v=(qTxt||cin.value).trim();if(!v)return;add(v,'me');cin.value='';
-  if(window.hcfTrack)hcfTrack('ai_question',{q:v.slice(0,60)});
-  var hit=faqHit(v);
-  if(hit){setTimeout(function(){add(hit.a,'ai');addActs(!!hit.lead);},380);return;}
-  fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:v})})
-   .then(function(r){return r.json()}).then(function(d){add(d.reply||d.message||'收到！','ai')})
-   .catch(function(){add('我先記下你的問題了！可以先加 LINE（lin.ee/7lidUv0）由真人為你服務，或試試輸入「價格」「課表」「預約」我馬上回答 🦈','ai');addActs(true)});}
-document.getElementById('cbSend').onclick=function(){send()};
-document.getElementById('cbChips').addEventListener('click',function(e){var b=e.target.closest('button');if(b)send(b.textContent);});
-cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 })();
 
 
@@ -223,3 +140,49 @@ cin.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
   a.innerHTML='<b>點</b><b>擊</b><b>領</b><b>取</b><b>獎</b><b>勵</b><b>🎁</b>';
   document.body.appendChild(a);
 })();
+
+
+/* ===== 質感升級：滾動進度條 + Hero 沉浸互動（游標光暈 + 輕視差） ===== */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var de=document.documentElement;
+  var bar=document.createElement('div');bar.id='scrollbar';document.body.appendChild(bar);
+  function sb(){var st=window.pageYOffset||de.scrollTop||0;var sc=de.scrollHeight-window.innerHeight;bar.style.width=(sc>0?(st/sc*100):0).toFixed(2)+'%';}
+  addEventListener('scroll',sb,{passive:true});addEventListener('resize',sb,{passive:true});sb();
+  var phero=document.querySelector('.phero');
+  if(phero){
+    var glow=document.createElement('div');glow.className='glow';phero.appendChild(glow);
+    if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+      phero.addEventListener('pointermove',function(e){var r=phero.getBoundingClientRect();phero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');phero.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
+      var bg=phero.querySelector('.bgimg');
+      if(bg){bg.style.transform='scale(1.12)';var tk=false;addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var top=phero.getBoundingClientRect().top;bg.style.transform='translateY('+(top*-0.05).toFixed(1)+'px) scale(1.12)';});},{passive:true});}
+    }
+  }
+})();
+
+/* ===== 質感升級 v2：進場串接錯開 + 桌機磁吸 CTA ===== */
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(rm)return;
+  /* 同一容器內的 .rv 依序錯開浮現 */
+  document.querySelectorAll('.rv').forEach(function(el){
+    var p=el.parentNode; if(!p||!p.children)return;
+    var sibs=[].filter.call(p.children,function(c){return c.classList&&c.classList.contains('rv');});
+    var idx=sibs.indexOf(el);
+    if(idx>0)el.style.transitionDelay=Math.min(idx*70,350)+'ms';
+  });
+  /* 主要 CTA 磁吸（桌機精準指標） */
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.hb1,.b1').forEach(function(btn){
+      btn.addEventListener('pointermove',function(e){
+        var r=btn.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.18, y=(e.clientY-r.top-r.height/2)*0.30;
+        btn.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) skewX(-10deg)';
+      });
+      btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+    });
+  }
+})();
+
+/* 全站背景配樂（跨頁接續，桌面限定） */
+(function(){var s=document.createElement('script');s.src='hcf-bgm.js';s.defer=true;(document.head||document.documentElement).appendChild(s);})();

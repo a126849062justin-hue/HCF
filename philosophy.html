@@ -21,9 +21,9 @@
 .code+.code{border-top:1px dashed var(--line)}
 .code.flip .sym{order:2}
 .sym{position:relative;display:flex;align-items:center;justify-content:center;min-height:300px}
-.sym::before{content:"";position:absolute;inset:14px -14px -14px 14px;background:var(--surface)}
-.sym .box{position:relative;z-index:1;width:100%;aspect-ratio:1/1;max-width:330px;background:var(--carbon);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.sym .box::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.sym::before{content:none}
+.sym .box{position:relative;z-index:1;width:100%;aspect-ratio:1/1;max-width:330px;background:transparent;display:flex;align-items:center;justify-content:center}
+.sym .box::before{content:none}
 .tri{width:0;height:0;border-left:84px solid transparent;border-right:84px solid transparent;border-top:140px solid var(--red);filter:drop-shadow(0 14px 30px rgba(200,16,21,.5))}
 .sym img{width:62%;filter:drop-shadow(0 14px 30px rgba(200,16,21,.4))}
 .anchor{font-size:9.5rem;color:var(--red);line-height:1;filter:drop-shadow(0 14px 30px rgba(200,16,21,.5))}
@@ -41,6 +41,29 @@
 .creed .x i{font-style:normal;color:var(--red)}
 .creed p{color:#cfcfcf;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto}
 @media(max-width:880px){.code{grid-template-columns:1fr;gap:34px;padding:54px 0}.code.flip .sym{order:0}.sym{min-height:0}}
+
+/* ===== 互動升級：捲動敘事分段浮現 + 3D 傾斜符號 ===== */
+.sym{perspective:1000px}
+.sym .box{transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);opacity:0;transform:scale(.84) translateY(20px)}
+.sym .box::after{content:"";position:absolute;inset:-14%;z-index:0;pointer-events:none;border-radius:50%;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(200,16,21,.30),transparent 62%);opacity:0;transition:opacity .35s}
+.sym:hover .box::after{opacity:1}
+.sym img{position:relative;z-index:1;transition:transform .25s ease-out;transform-style:preserve-3d;will-change:transform}
+.codes .cbody .en,.codes .cbody h2,.codes .cbody .motto,.codes .cbody p.t{opacity:0;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.codes .cbody .en{transform:translateX(-34px)}
+.codes .cbody h2{transform:translateX(-22px)}
+.codes .cbody .motto{transform:translateX(20px)}
+.codes .cbody p.t{transform:translateY(18px)}
+.code.in .box{opacity:1;transform:none;transition-delay:.10s}
+.code.in .en{opacity:1;transform:none;transition-delay:.04s}
+.code.in h2{opacity:1;transform:none;transition-delay:.14s}
+.code.in .motto{opacity:1;transform:none;transition-delay:.24s}
+.code.in p.t{opacity:1;transform:none;transition-delay:.34s}
+@media(hover:none){.sym img{animation:symFloat 6.5s ease-in-out infinite}}
+@keyframes symFloat{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-12px) rotate(1.2deg)}}
+@media(prefers-reduced-motion:reduce){
+.sym .box,.codes .cbody .en,.codes .cbody h2,.codes .cbody .motto,.codes .cbody p.t{transition:opacity .01s!important;transform:none!important;opacity:1!important}
+.sym img{animation:none!important}
+}
 
 </style>
 <link rel="canonical" href="https://www.hsinchucombat.com/philosophy.html">
@@ -90,7 +113,7 @@
   <div class="wrap">
 
     <article class="code rv">
-      <div class="sym"><span class="cno">CODE 01</span><div class="box"><div class="tri"></div></div></div>
+      <div class="sym"><span class="cno">CODE 01</span><div class="box"><picture><source srcset="philo-honor.webp" type="image/webp"><img src="philo-honor.png" alt="倒三角形 · 穩固根基" loading="lazy"></picture></div></div>
       <div class="cbody">
         <div class="en">HONOR</div>
         <h2>榮<i>譽</i></h2>
@@ -100,7 +123,7 @@
     </article>
 
     <article class="code flip rv">
-      <div class="sym"><span class="cno">CODE 02</span><div class="box"><picture><source srcset="shark_logo.webp" type="image/webp"><img src="shark_logo.png" alt="蒙空鯊魚"></picture></div></div>
+      <div class="sym"><span class="cno">CODE 02</span><div class="box"><picture><source srcset="philo-courage.webp" type="image/webp"><img src="philo-courage.png" alt="蒙空鯊魚 · 主動出擊" loading="lazy"></picture></div></div>
       <div class="cbody">
         <div class="en">COURAGE</div>
         <h2>勇<i>氣</i></h2>
@@ -110,7 +133,7 @@
     </article>
 
     <article class="code rv">
-      <div class="sym"><span class="cno">CODE 03</span><div class="box"><div class="anchor">⚓</div></div></div>
+      <div class="sym"><span class="cno">CODE 03</span><div class="box"><picture><source srcset="philo-faith.webp" type="image/webp"><img src="philo-faith.png" alt="海錨 · 堅定信念" loading="lazy"></picture></div></div>
       <div class="cbody">
         <div class="en">FAITH</div>
         <h2>信<i>念</i></h2>
@@ -135,5 +158,24 @@
 
 <script src="hcf.js"></script>
 <script src="hcf-analytics.js" defer></script>
+<script>
+/* ===== 品牌哲學：3D 傾斜符號（桌機游標，手機保留浮動） ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.codes .sym').forEach(function(sym){
+    var box=sym.querySelector('.box'),img=sym.querySelector('img');
+    if(!box||!img)return;
+    sym.addEventListener('pointermove',function(e){
+      var r=box.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+      img.style.transform='rotateY('+(px*24).toFixed(2)+'deg) rotateX('+(-py*24).toFixed(2)+'deg) scale(1.07)';
+      box.style.setProperty('--gx',(px*70+50).toFixed(1)+'%');
+      box.style.setProperty('--gy',(py*70+50).toFixed(1)+'%');
+    });
+    sym.addEventListener('pointerleave',function(){img.style.transform='';});
+  });
+})();
+</script>
 </body>
 </html>

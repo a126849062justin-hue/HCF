@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 /* ============================================================
    HCF 白色沉浸主題 — 共用樣式 hcf.css
    ============================================================ */
 :root{
   --bg:#FFFFFF;--surface:#F7F7F7;--ink:#111111;--ink2:#4A4A4A;--ink3:#8A8A8A;
   --line:#E5E5E5;--red:#C81015;--redD:#9B0B0F;--carbon:#111111;
-  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--en:'Oswald',sans-serif;--tech:'Orbitron','Oswald',sans-serif;
   --maxw:1160px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -116,7 +117,7 @@ a{color:inherit;text-decoration:none}
 .cb-in{display:flex;border-top:1px solid var(--line)}
 .cb-in input{flex:1;border:0;padding:13px 14px;font-family:var(--sans);font-size:.92rem;outline:none}
 .cb-in button{border:0;background:var(--red);color:#fff;padding:0 18px;font-weight:900;cursor:pointer}
-.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1.4fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
 .mcta a{display:flex;align-items:center;justify-content:center;padding:15px 8px;font-weight:900;letter-spacing:.04em;font-size:.96rem}
 .mcta .m1{background:var(--red);color:#fff}
 .mcta .m2{background:var(--carbon);color:#fff}
@@ -147,6 +148,11 @@ a{color:inherit;text-decoration:none}
 .msub{display:none;flex-direction:column;background:var(--surface)}
 .msub.open{display:flex}
 .msub a{padding-left:42px!important;font-size:.95rem}
+/* 課程子選單 2 欄格狀（比照參考版） */
+.msub-grid.open{display:grid;grid-template-columns:1fr 1fr}
+.msub-grid a{padding:13px 10px 13px 26px!important;font-size:.9rem;position:relative}
+.msub-grid a::before{content:"·";position:absolute;left:14px;color:var(--red);font-weight:900}
+.msub-grid a:nth-child(odd){border-right:1px solid var(--line)}
 
 /* ---------- AI 快速問題 ---------- */
 .cb-chips{display:flex;gap:6px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line,#E5E5E5);background:#fff}.cb-chips button{border:1.5px solid var(--red,#C81015);color:var(--red,#C81015);background:#fff;font-family:inherit;font-weight:700;font-size:.76rem;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.2s}.cb-chips button:hover{background:var(--red,#C81015);color:#fff}
@@ -167,3 +173,158 @@ a{color:inherit;text-decoration:none}
 .cb-leadform{display:flex;flex-direction:column;gap:6px}
 .cb-leadform input{border:1.5px solid var(--line,#E5E5E5);padding:9px 10px;font-size:.86rem;font-family:inherit}
 .cb-leadform .cb-leadsend{background:var(--red,#C81015);color:#fff;border:0;font-weight:900;padding:10px;cursor:pointer;font-family:inherit}
+
+/* ==========================================================================
+   質感升級層 v1 — 全站共用（打底打磨 + 沉浸互動）
+   ========================================================================== */
+/* 1. 全域渲染品質 */
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,.h2,.sec-h,.phero h1,.fin-q,.cbody h2{text-wrap:balance}
+p,.lead,.cbody p.t{text-wrap:pretty}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* 2. 細噪點紋理（極淡固定，桌機限定，不影響互動） */
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(max-width:880px){body::after{display:none}}
+
+/* 3. 滾動進度條 */
+#scrollbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),#ff4249);z-index:9999;box-shadow:0 0 12px rgba(200,16,21,.55);will-change:width}
+
+/* 4. 捲動浮現：更順的緩動 */
+.rv{transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+
+/* 5. 卡片高級微互動（懸浮浮起 + 陰影綻放） */
+.wcard,.sysc,.lvb,.pcard,.tcard,.bd-card,.who-grid>div{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s cubic-bezier(.2,.7,.2,1)}
+.wcard:hover,.lvb:hover,.pcard:hover,.tcard:hover,.who-grid>div:hover{transform:translateY(-6px)}
+.wcard:hover,.lvb:hover,.tcard:hover{box-shadow:0 26px 60px rgba(17,17,17,.16)}
+.who-grid>div:hover{box-shadow:0 20px 44px rgba(17,17,17,.12)}
+
+/* 6. 按鈕質感 + 焦點可及性 */
+.hb1,.hb2,.nav-cta,.b1,.b2{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .25s,color .25s}
+.hb1:hover,.b1:hover,.nav-cta:hover{transform:translateY(-2px)}
+.hb1:hover{box-shadow:0 16px 40px rgba(200,16,21,.5)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+
+/* 7. 深色 Hero 沉浸：底部壓暗（文字更清） + 右上紅色氛圍光 */
+.phero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 80% at 82% 6%,rgba(200,16,21,.20),transparent 55%),linear-gradient(to top,rgba(0,0,0,.52),transparent 48%)}
+.phero-in{z-index:3}
+
+/* 8. Hero 游標光暈（座標由 hcf.js 設定 --mx/--my） */
+.phero{--mx:80%;--my:14%}
+.phero .glow{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(260px 260px at var(--mx) var(--my),rgba(200,16,21,.32),transparent 70%);mix-blend-mode:screen}
+.phero:hover .glow{opacity:1}
+.phero .bgimg{will-change:transform}
+
+/* ==========================================================================
+   質感升級層 v2 — editorial 排版 + 電影感微互動（全站共用）
+   ========================================================================== */
+/* A. kicker 前導紅線（雜誌標題感） */
+.kicker{display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";flex:0 0 auto;width:24px;height:2px;background:currentColor;opacity:.85}
+
+/* B. 圖片沉浸：容器裁切 + hover 緩放 */
+.sysc,.imgw{overflow:hidden}
+.sysc img,.imgw img{transition:transform .9s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.sysc:hover img,.imgw:hover img{transform:scale(1.06)}
+
+/* C. 實心/邊框按鈕光掃過（高質感提示） */
+.hb1,.hb2,.b1,.b2{position:relative;overflow:hidden;isolation:isolate}
+.hb1::after,.hb2::after,.b1::after,.b2::after{content:"";position:absolute;inset:0;z-index:-1;left:-130%;background:linear-gradient(100deg,transparent 22%,rgba(255,255,255,.42),transparent 60%);transform:skewX(-18deg);transition:left .65s ease;pointer-events:none}
+.hb1:hover::after,.hb2:hover::after,.b1:hover::after,.b2:hover::after{left:130%}
+
+/* D. 卡片 hover：內描紅光環（疊在 v1 浮起之上） */
+.wcard,.tcard,.lvb{overflow:hidden}
+.wcard::after,.tcard::after,.lvb::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px transparent;transition:box-shadow .4s}
+.wcard:hover::after,.tcard:hover::after,.lvb:hover::after{box-shadow:inset 0 0 0 1px rgba(200,16,21,.32)}
+
+/* E. 內文連結底線掃（限內容區，不動 nav/footer） */
+.cbody a,.lead a,.ans a{background:linear-gradient(var(--red),var(--red)) left 100% / 0% 2px no-repeat;transition:background-size .3s ease;padding-bottom:1px}
+.cbody a:hover,.lead a:hover,.ans a:hover{background-size:100% 2px;color:var(--red)}
+
+/* F. 捲動進度條末端圓角（接 v1 #scrollbar） */
+#scrollbar{border-radius:0 3px 3px 0}
+
+/* ==========================================================================
+   比照賽博龐克版 v3 — Orbitron 科技字型 + 左上 LOGO lockup + CTA（紅色品牌調）
+   ========================================================================== */
+/* 字型：英文裝飾/標籤字改 Orbitron 科技感 */
+.kicker,.sec-k,.hero-kicker,.fin-k,.phero-ghost,.hero-scroll{font-family:var(--tech)}
+/* 左上 LOGO lockup：HCF / COMBAT SYSTEM */
+.nav-logo .nlk{display:flex;flex-direction:column;justify-content:center;line-height:1}
+.nav-logo .nlk b{font-family:var(--tech);font-weight:900;font-style:italic;font-size:1.18rem;letter-spacing:.16em;color:#fff;text-shadow:0 0 14px rgba(200,16,21,.5)}
+.nav-logo .nlk em{font-family:var(--tech);font-style:normal;font-weight:700;font-size:.5rem;letter-spacing:.4em;color:var(--red);margin-top:4px;white-space:nowrap}
+.nav.sc .nav-logo .nlk b{color:var(--ink);text-shadow:none}
+/* CTA：科技字型 + 閃電 + 紅光邊框 */
+.nav-cta{font-family:var(--tech)!important;font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:7px;box-shadow:0 0 0 1px rgba(200,16,21,.45),0 6px 20px rgba(200,16,21,.35)}
+.hb1{display:inline-flex;align-items:center;gap:8px}
+.cta-bolt{flex:0 0 auto}
+
+/* CTA 斜切平行四邊形（向前傾）+ 斜體字 */
+.nav-cta,.hb1{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.nav-cta{padding-left:22px;padding-right:22px;box-shadow:none;filter:drop-shadow(0 4px 14px rgba(200,16,21,.5))}
+.hb1{padding-left:36px;padding-right:36px}
+
+/* === 桌機排版靠最左 + nav CTA 更清楚 + 認識總教練/手機CTA 也斜 === */
+@media(min-width:769px){.nav-in{max-width:none;padding-left:clamp(28px,5vw,72px);padding-right:clamp(20px,3vw,48px)}}
+.nav-cta{padding:11px 24px!important;font-size:.96rem;letter-spacing:.12em;filter:drop-shadow(0 3px 16px rgba(255,40,50,.7))}
+.hb2,.b2{font-style:italic;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);padding-left:32px;padding-right:32px}
+.mcta{background:var(--red)}
+.mcta a{font-style:italic}
+.mcta .m1{clip-path:polygon(0 0,100% 0,calc(100% - 30px) 100%,0 100%)}
+.mcta .m2{clip-path:polygon(30px 0,100% 0,100% 100%,0 100%)}
+
+/* 行動版:左上 LOGO 放大 */
+@media(max-width:768px){
+.nav-logo img{height:46px}
+.nav-logo .nlk b{font-size:1.46rem}
+.nav-logo .nlk em{font-size:.58rem;letter-spacing:.34em}
+}
+
+/* CTA 形狀改 skewX(-10deg) 斜切平行四邊形（比照參考藍版 skew-x-[-10deg]） */
+.nav-cta,.hb1,.hb2,.b1,.b2{clip-path:none!important;font-style:normal;transform:skewX(-10deg)}
+.nav-cta:hover,.hb1:hover,.hb2:hover,.b1:hover,.b2:hover{transform:skewX(-10deg) translateY(-2px)}
+
+/* ========== 漢堡選單 高級感深色版 + 社群 ========== */
+.mnav{background:#0b0b0d;border-bottom:0}
+#mnav.mnav{background:linear-gradient(165deg,#181820 0%,#0a0a0c 100%)!important;box-shadow:10px 0 60px rgba(0,0,0,.6)!important;padding-top:40px!important;width:min(84vw,320px)!important}
+#mnav.mnav::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:0}
+.mnav>a,.mnav .msub-t,.mnav .msub{position:relative;z-index:1}
+.mnav a,.mnav .msub-t{color:#ededed!important;border-top:0!important;letter-spacing:.05em}
+.mnav>a,.mnav .msub-t{font-size:.88rem;padding:7px 24px!important;font-weight:800}
+.mnav .msub-t{background:transparent!important}
+.mnav .msub-t i{color:var(--red);font-weight:900}
+.mnav a:active{color:var(--red)!important}
+.msub{background:rgba(255,255,255,.025)!important}
+.msub-grid a{color:#cfcfcf!important;border-top:0!important;font-weight:600;padding:6px 10px 6px 26px!important;font-size:.82rem}
+.msub-grid a:nth-child(odd){border-right:0!important}
+.msub-grid a::before{color:var(--red)}
+.mnav-close{color:#fff!important}
+.mnav a.cta{background:var(--red)!important;color:#fff!important;margin:6px 20px 3px;padding:9px 24px!important;transform:skewX(-10deg);font-weight:900;letter-spacing:.08em;box-shadow:0 8px 22px rgba(200,16,21,.5);border-top:0!important}
+/* 社群圓鈕列 */
+.mnav-social{display:flex;gap:12px;justify-content:center;padding:7px 20px 6px;margin-top:2px;position:relative;z-index:1}
+.mnav-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;padding:0!important;transition:.22s}
+.mnav-social a svg{width:20px;height:20px;display:block}
+.mnav-social a:active{transform:scale(.92)}
+.mnav-social a[data-s="ig"]:active{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:active{background:#1877F2;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:active{background:#FF0000;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:active{background:#06C755;color:#fff!important;border-color:transparent!important}
+@media(hover:hover){
+.mnav-social a[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:hover{background:#1877F2;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent!important}
+}
+
+.fin-social{display:flex;gap:11px;margin-top:6px;flex-wrap:wrap}.fin-social .fs-ic{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);display:flex!important;align-items:center;justify-content:center;color:#dcdcdc!important;margin:0!important;padding:0;transition:.2s}.fin-social .fs-ic svg{width:19px;height:19px;display:block}.fin-social .fs-ic[data-s="ig"]:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="fb"]:hover{background:#1877F2;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="yt"]:hover{background:#FF0000;color:#fff!important;border-color:transparent}.fin-social .fs-ic[data-s="line"]:hover{background:#06C755;color:#fff!important;border-color:transparent}
+
+/* 社群圖示 簡易高級版:無框, hover 變品牌色 */
+.mnav-social a,.fin-social .fs-ic{width:auto!important;height:auto!important;border:0!important;background:none!important;border-radius:0!important;padding:9px!important;color:#d8d8d8!important;box-shadow:none!important;transition:transform .2s,color .2s}
+.mnav-social a svg,.fin-social .fs-ic svg{width:24px!important;height:24px!important}
+.mnav-social a:hover,.fin-social .fs-ic:hover,.mnav-social a:active,.fin-social .fs-ic:active{transform:translateY(-2px);border-color:transparent!important}
+.mnav-social a[data-s="ig"]:hover,.fin-social .fs-ic[data-s="ig"]:hover,.mnav-social a[data-s="ig"]:active{background:none!important;color:#e1306c!important;border-color:transparent!important}
+.mnav-social a[data-s="fb"]:hover,.fin-social .fs-ic[data-s="fb"]:hover,.mnav-social a[data-s="fb"]:active{background:none!important;color:#1877F2!important;border-color:transparent!important}
+.mnav-social a[data-s="yt"]:hover,.fin-social .fs-ic[data-s="yt"]:hover,.mnav-social a[data-s="yt"]:active{background:none!important;color:#FF0000!important;border-color:transparent!important}
+.mnav-social a[data-s="line"]:hover,.fin-social .fs-ic[data-s="line"]:hover,.mnav-social a[data-s="line"]:active{background:none!important;color:#06C755!important;border-color:transparent!important}
+.mnav-social{gap:6px}.fin-social{gap:6px}
