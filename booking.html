@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>預約體驗課｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新竹格鬥體驗課線上預約。填寫約 90 秒，我們會依你的目標安排適合的教練並確認時段。團課體驗 $400 起。">
+<link rel="canonical" href="https://www.hsinchucombat.com/booking.html">
+<meta property="og:title" content="預約體驗課｜HCF 新竹格鬥">
+<meta property="og:description" content="填寫約 90 秒，教練會依你的目標安排課程並確認時段。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.hsinchucombat.com/booking.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- Google tag (GA4) — 與官網同一組 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCPVLM3SY0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZCPVLM3SY0');
+</script>
+
+<style>
+:root{
+  --red:#C81015; --red-hi:#E11B22; --black:#0A0A0A; --panel:#141414;
+  --line:#2A2A2A; --text:#F5F5F5; --muted:#9A9A9A; --gold:#D4AF37;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);color:var(--text);
+  font-family:"Noto Sans TC","Noto Sans CJK TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  min-height:100dvh;display:flex;flex-direction:column;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(circle at 80% -10%,rgba(200,16,21,.22),transparent 55%),
+             radial-gradient(circle at 0% 110%,rgba(255,255,255,.05),transparent 50%);
+}
+a{color:inherit}
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.hd-in{max-width:720px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1px;font-size:17px;text-decoration:none}
+.brand i{display:block;width:5px;height:22px;background:var(--red);border-radius:1px}
+.back{font-size:14px;color:var(--muted);text-decoration:none}
+.back:hover{color:#fff}
+/* progress */
+.pg{max-width:720px;margin:0 auto;padding:0 20px;width:100%}
+.pg-bar{height:4px;background:#1E1E1E;border-radius:99px;overflow:hidden;margin-top:18px}
+.pg-fill{height:100%;width:25%;background:var(--red);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.pg-txt{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.5px}
+/* main */
+main{position:relative;z-index:1;flex:1;max-width:720px;margin:0 auto;width:100%;padding:22px 20px 120px}
+.lede h1{font-size:clamp(28px,7vw,40px);font-weight:900;letter-spacing:.5px;line-height:1.25}
+.lede h1 em{color:var(--red);font-style:normal}
+.lede p{color:var(--muted);font-size:15px;margin-top:10px}
+.step{display:none;animation:in .3s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.q{margin-top:30px}
+.q>label.t,.q .t{display:block;font-size:19px;font-weight:700;margin-bottom:12px;letter-spacing:.3px}
+.q .t .req{color:var(--red);margin-left:4px}
+.q .hint{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:5px}
+input[type=text],input[type=tel],input[type=date],textarea{
+  width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  color:var(--text);font:inherit;font-size:16px;padding:14px 16px;transition:border-color .18s
+}
+textarea{min-height:104px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus{outline:none;border-color:var(--red)}
+input::placeholder,textarea::placeholder{color:#5E5E5E}
+/* option cards */
+.opts{display:grid;gap:10px}
+.opts.two{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opt{position:relative;display:flex;align-items:center;gap:12px;background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer;transition:.18s}
+.opt:hover{border-color:#4A4A4A}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{flex:none;width:22px;height:22px;border:2px solid #4A4A4A;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;transition:.18s}
+.opt.multi .box{border-radius:6px}
+.opt .box::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red);
+  transform:scale(0);transition:transform .18s}
+.opt.multi .box::after{border-radius:2px}
+.opt .lb{font-size:16px;font-weight:500}
+.opt .sub{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:2px}
+.opt input:checked ~ .box{border-color:var(--red)}
+.opt input:checked ~ .box::after{transform:scale(1)}
+.opt:has(input:checked){border-color:var(--red);background:rgba(200,16,21,.10)}
+/* error */
+.err{display:none;color:#FF6B6F;font-size:14px;margin-top:8px}
+.err.on{display:block}
+/* nav buttons */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(10,10,10,.95);
+  backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:14px 20px calc(14px + env(safe-area-inset-bottom))}
+.nav-in{max-width:720px;margin:0 auto;display:flex;gap:12px}
+.btn{flex:1;border:none;border-radius:10px;font:inherit;font-size:17px;font-weight:900;
+  letter-spacing:1px;padding:15px 20px;cursor:pointer;transition:.18s}
+.btn-p{background:var(--red);color:#fff}
+.btn-p:hover{background:var(--red-hi)}
+.btn-s{flex:0 0 108px;background:transparent;color:var(--muted);border:1px solid var(--line)}
+.btn-s:hover{color:#fff;border-color:#4A4A4A}
+/* success */
+.done{display:none;text-align:center;padding:40px 0 20px}
+.done.on{display:block;animation:in .35s ease}
+.done .tick{width:76px;height:76px;border-radius:50%;background:var(--red);margin:0 auto 26px;
+  display:flex;align-items:center;justify-content:center}
+.done h2{font-size:30px;font-weight:900;letter-spacing:.5px}
+.done p{color:var(--muted);margin-top:12px;font-size:15px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:22px 24px;margin-top:26px;text-align:left}
+.card h3{font-size:16px;font-weight:900;color:var(--red);letter-spacing:1px;margin-bottom:12px}
+.card ul{list-style:none;font-size:15px;line-height:2.1;color:#DADADA}
+.card ul li::before{content:"・";color:var(--red);margin-right:4px}
+.line-btn{display:block;background:#06C755;color:#fff;text-align:center;font-weight:900;font-size:17px;
+  padding:15px;border-radius:10px;margin-top:20px;text-decoration:none;letter-spacing:1px}
+.map-btn{display:block;border:1px solid var(--line);color:var(--text);text-align:center;font-weight:700;
+  font-size:16px;padding:14px;border-radius:10px;margin-top:12px;text-decoration:none}
+/* member note */
+.member{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--muted);text-align:center}
+.member a{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(212,175,55,.4)}
+footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
+  padding:0 20px 120px;font-size:12px;color:#5E5E5E;letter-spacing:.5px;text-align:center}
+@media(max-width:420px){
+  .btn{font-size:16px;padding:14px}
+  .btn-s{flex:0 0 92px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="brand" href="/"><i></i>HCF 新竹格鬥</a>
+    <a class="back" href="/">返回官網</a>
+  </div>
+</header>
+
+<div class="pg" id="pgWrap">
+  <div class="pg-bar"><div class="pg-fill" id="pgFill"></div></div>
+  <div class="pg-txt"><span id="pgStep">第 1 步 / 共 4 步</span><span>約 90 秒</span></div>
+</div>
+
+<main>
+  <!-- ============ FORM ============ -->
+  <div id="formWrap">
+    <div class="lede" id="lede">
+      <h1>預約你的<em>第一堂</em>格鬥課</h1>
+      <p>填完我們會依你的目標安排適合的教練，並用 LINE 跟你確認時段。</p>
+    </div>
+
+    <iframe name="gfTarget" id="gfTarget" style="display:none" title="submit target"></iframe>
+
+    <form id="bookForm" target="gfTarget" method="POST"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdTNQEpe1V5EArWRlnglwugCZNUhZyDXjQJXRukLz-Stj-E5g/formResponse">
+
+      <!-- STEP 1 -->
+      <section class="step on" data-step="1">
+        <div class="q">
+          <label class="t" for="f_name">怎麼稱呼你？<span class="req">*</span></label>
+          <input type="text" id="f_name" name="entry.1602401244" placeholder="王小明" autocomplete="name" required>
+          <div class="err">請填寫姓名或稱呼</div>
+        </div>
+        <div class="q">
+          <label class="t" for="f_tel">手機號碼<span class="req">*</span>
+            <span class="hint">教練會用 LINE 或電話跟你確認時段</span></label>
+          <input type="tel" id="f_tel" name="entry.816271736" placeholder="09xxxxxxxx"
+                 inputmode="numeric" autocomplete="tel" pattern="[0-9+\-\s]{8,15}" required>
+          <div class="err">請填寫正確的手機號碼</div>
+        </div>
+        <div class="q">
+          <label class="t" for="f_line">LINE 顯示名稱<span class="hint">方便我們對到你的訊息，可不填</span></label>
+          <input type="text" id="f_line" name="entry.1928564000" placeholder="選填">
+        </div>
+        <div class="q" data-group="gender">
+          <span class="t">性別<span class="req">*</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="entry.1987837339" value="男" required><span class="box"></span><span class="lb">男</span></label>
+            <label class="opt"><input type="radio" name="entry.1987837339" value="女"><span class="box"></span><span class="lb">女</span></label>
+            <label class="opt"><input type="radio" name="entry.1987837339" value="不方便透露"><span class="box"></span><span class="lb">不方便透露</span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+        <div class="q" data-group="age">
+          <span class="t">年齡區間<span class="req">*</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="entry.1829902663" value="未滿 18 歲" required><span class="box"></span><span class="lb">未滿 18 歲</span></label>
+            <label class="opt"><input type="radio" name="entry.1829902663" value="18-24"><span class="box"></span><span class="lb">18–24</span></label>
+            <label class="opt"><input type="radio" name="entry.1829902663" value="25-34"><span class="box"></span><span class="lb">25–34</span></label>
+            <label class="opt"><input type="radio" name="entry.1829902663" value="35-44"><span class="box"></span><span class="lb">35–44</span></label>
+            <label class="opt"><input type="radio" name="entry.1829902663" value="45 以上"><span class="box"></span><span class="lb">45 以上</span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step" data-step="2">
+        <div class="q" data-group="plan">
+          <span class="t">想先體驗哪一種？<span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="entry.1106204071" value="團體課程體驗 $400" required><span class="box"></span>
+              <span class="lb">團體課程體驗 $400<span class="sub">和大家一起練，最多人選的入門方式</span></span></label>
+            <label class="opt"><input type="radio" name="entry.1106204071" value="私人教練體驗 1 堂 $1,400"><span class="box"></span>
+              <span class="lb">私人教練體驗 1 堂 $1,400<span class="sub">一對一動作診斷與技術精修</span></span></label>
+            <label class="opt"><input type="radio" name="entry.1106204071" value="私教深度體驗 2 堂 $2,400"><span class="box"></span>
+              <span class="lb">私教深度體驗 2 堂 $2,400<span class="sub">平均每堂 $1,200，體驗價值最高</span></span></label>
+            <label class="opt"><input type="radio" name="entry.1106204071" value="還不確定，想請教練建議"><span class="box"></span>
+              <span class="lb">還不確定，想請教練建議</span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+        <div class="q" data-group="time" data-multi="1">
+          <span class="t">方便的時段<span class="req">*</span><span class="hint">可複選，我們會盡量安排</span></span>
+          <div class="opts two">
+            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="平日白天"><span class="box"></span><span class="lb">平日白天</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="平日晚上"><span class="box"></span><span class="lb">平日晚上</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="週末白天"><span class="box"></span><span class="lb">週末白天</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="週末晚上"><span class="box"></span><span class="lb">週末晚上</span></label>
+          </div>
+          <div class="err">請至少選一個時段</div>
+        </div>
+        <div class="q">
+          <label class="t" for="f_date">希望開始的日期<span class="hint">沒有特定日期可以跳過</span></label>
+          <input type="date" id="f_date">
+          <input type="hidden" name="entry.117411804_year"  id="d_y">
+          <input type="hidden" name="entry.117411804_month" id="d_m">
+          <input type="hidden" name="entry.117411804_day"   id="d_d">
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step" data-step="3">
+        <div class="q" data-group="goal" data-multi="1">
+          <span class="t">最想達成的目標<span class="req">*</span><span class="hint">可複選</span></span>
+          <div class="opts two">
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="減脂塑身"><span class="box"></span><span class="lb">減脂塑身</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="體能與心肺提升"><span class="box"></span><span class="lb">體能與心肺提升</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="學會防身"><span class="box"></span><span class="lb">學會防身</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="紓壓、下班發洩"><span class="box"></span><span class="lb">紓壓、下班發洩</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="想挑戰自己／未來想比賽"><span class="box"></span><span class="lb">挑戰自己／想比賽</span></label>
+            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="其他"><span class="box"></span><span class="lb">其他</span></label>
+          </div>
+          <div class="err">請至少選一個目標</div>
+        </div>
+        <div class="q" data-group="exp">
+          <span class="t">運動經驗<span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="entry.96682318" value="完全零基礎" required><span class="box"></span><span class="lb">完全零基礎<span class="sub">最多學員都是從這裡開始</span></span></label>
+            <label class="opt"><input type="radio" name="entry.96682318" value="有健身房重訓經驗"><span class="box"></span><span class="lb">有健身房重訓經驗</span></label>
+            <label class="opt"><input type="radio" name="entry.96682318" value="練過其他運動"><span class="box"></span><span class="lb">練過其他運動</span></label>
+            <label class="opt"><input type="radio" name="entry.96682318" value="練過格鬥（拳擊／泰拳／柔術等）"><span class="box"></span><span class="lb">練過格鬥<span class="sub">拳擊／泰拳／柔術等</span></span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+        <div class="q" data-group="freq">
+          <span class="t">一週大概能來幾次？<span class="req">*</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="entry.1896819146" value="1 次" required><span class="box"></span><span class="lb">1 次</span></label>
+            <label class="opt"><input type="radio" name="entry.1896819146" value="2 次"><span class="box"></span><span class="lb">2 次</span></label>
+            <label class="opt"><input type="radio" name="entry.1896819146" value="3 次以上"><span class="box"></span><span class="lb">3 次以上</span></label>
+            <label class="opt"><input type="radio" name="entry.1896819146" value="還不確定"><span class="box"></span><span class="lb">還不確定</span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+        <div class="q">
+          <label class="t" for="f_why">為什麼是現在想開始練格鬥？<span class="req">*</span>
+            <span class="hint">一句話就好，這會決定教練幫你排的第一堂課內容</span></label>
+          <textarea id="f_why" name="entry.1108858711" placeholder="例如：體檢紅字想認真減脂／想學真的能用的防身／工作壓力太大想找出口" required></textarea>
+          <div class="err">這題很重要，請簡單寫一句</div>
+        </div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="step" data-step="4">
+        <div class="q" data-group="src">
+          <span class="t">最後一題：從哪裡認識新竹格鬥？<span class="req">*</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="entry.785473532" value="Instagram" required><span class="box"></span><span class="lb">Instagram</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="Google 搜尋"><span class="box"></span><span class="lb">Google 搜尋</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="朋友介紹"><span class="box"></span><span class="lb">朋友介紹</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="路過看到"><span class="box"></span><span class="lb">路過看到</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="Facebook"><span class="box"></span><span class="lb">Facebook</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="YouTube"><span class="box"></span><span class="lb">YouTube</span></label>
+            <label class="opt"><input type="radio" name="entry.785473532" value="其他"><span class="box"></span><span class="lb">其他</span></label>
+          </div>
+          <div class="err">請選擇一項</div>
+        </div>
+        <div class="q" id="friendQ" style="display:none">
+          <label class="t" for="f_friend">介紹你的朋友叫什麼名字？
+            <span class="hint">好友成功入會，你們雙方都享館內折抵 $500</span></label>
+          <input type="text" id="f_friend" name="entry.481869369" placeholder="選填">
+        </div>
+        <div class="card" style="margin-top:30px">
+          <h3>送出後會發生什麼</h3>
+          <ul>
+            <li>教練在營業時間內用 LINE 跟你確認時段</li>
+            <li>體驗當天提前 15 分鐘到館，先做一對一動作評估</li>
+            <li>穿運動服＋短褲／緊身褲，赤腳上課，自備毛巾與水</li>
+            <li>護具與拳套館內可租借，不用另外買</li>
+          </ul>
+        </div>
+        <p style="font-size:13px;color:#5E5E5E;margin-top:18px;line-height:1.8">
+          送出即表示同意以上資料僅供 HCF 新竹格鬥安排課程與訓練安全評估使用，不會提供給第三方。
+          你可隨時要求查詢、更正或刪除。
+        </p>
+      </section>
+    </form>
+
+    <div class="member">
+      已經是 HCF 會員？ <a href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">直接到 FitBook 約課 →</a>
+    </div>
+  </div>
+
+  <!-- ============ SUCCESS ============ -->
+  <div class="done" id="done">
+    <div class="tick">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>預約已送出</h2>
+    <p>教練會在營業時間內用 LINE 跟你確認時段。<br>加官方 LINE 可以更快收到回覆。</p>
+
+    <a class="line-btn" href="https://line.me/R/ti/p/@hc.combat2022" target="_blank" rel="noopener">加官方 LINE ＠hc.combat2022</a>
+    <a class="map-btn" href="https://maps.google.com/?q=新竹市北區台溪里林森路301號2樓" target="_blank" rel="noopener">新竹市北區台溪里林森路 301 號 2 樓</a>
+
+    <div class="card">
+      <h3>體驗當天提醒</h3>
+      <ul>
+        <li>提前 15 分鐘到館，教練會先做一對一動作評估</li>
+        <li>運動服＋短褲／緊身褲，赤腳上課</li>
+        <li>自備毛巾與水</li>
+        <li>有朋友想一起來也可以，雙人體驗兩人平均 $1,200</li>
+      </ul>
+    </div>
+
+    <a class="map-btn" href="pricing.html" style="margin-top:20px">先看看完整課程方案 →</a>
+  </div>
+</main>
+
+<div class="nav" id="navBar">
+  <div class="nav-in">
+    <button type="button" class="btn btn-s" id="btnPrev" style="display:none">上一步</button>
+    <button type="button" class="btn btn-p" id="btnNext">下一步</button>
+  </div>
+</div>
+
+<footer>HCF ・ HSINCHU COMBAT &amp; FITNESS SINCE 2022</footer>
+
+<script>
+(function(){
+  var TOTAL = 4, cur = 1, submitted = false;
+  var steps  = document.querySelectorAll('.step');
+  var fill   = document.getElementById('pgFill');
+  var pgStep = document.getElementById('pgStep');
+  var btnN   = document.getElementById('btnNext');
+  var btnP   = document.getElementById('btnPrev');
+  var form   = document.getElementById('bookForm');
+
+  function paint(){
+    steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.step === cur); });
+    fill.style.width = (cur / TOTAL * 100) + '%';
+    document.getElementById('lede').style.display = cur === 1 ? 'block' : 'none';
+    pgStep.textContent = '第 ' + cur + ' 步 / 共 ' + TOTAL + ' 步';
+    btnP.style.display = cur === 1 ? 'none' : 'block';
+    btnN.textContent   = cur === TOTAL ? '送出預約' : '下一步';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function clearErr(sec){
+    sec.querySelectorAll('.err').forEach(function(e){ e.classList.remove('on'); });
+  }
+
+  function validate(sec){
+    clearErr(sec);
+    var ok = true, first = null;
+
+    sec.querySelectorAll('input[type=text],input[type=tel],textarea').forEach(function(el){
+      if (el.required && !el.value.trim()) {
+        ok = false; first = first || el;
+        var e = el.parentElement.querySelector('.err'); if (e) e.classList.add('on');
+      } else if (el.type === 'tel' && el.value.trim() && !/^[0-9+\-\s]{8,15}$/.test(el.value.trim())) {
+        ok = false; first = first || el;
+        var e2 = el.parentElement.querySelector('.err'); if (e2) e2.classList.add('on');
+      }
+    });
+
+    sec.querySelectorAll('.q[data-group]').forEach(function(q){
+      var multi = q.dataset.multi === '1';
+      var sel = q.querySelectorAll('input:checked').length;
+      if (sel === 0) {
+        ok = false; first = first || q;
+        var e = q.querySelector('.err'); if (e) e.classList.add('on');
+      }
+      if (multi) {} // 多選只要求至少一個
+    });
+
+    if (!ok && first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    return ok;
+  }
+
+  btnN.addEventListener('click', function(){
+    var sec = document.querySelector('.step[data-step="' + cur + '"]');
+    if (!validate(sec)) return;
+
+    if (cur < TOTAL) {
+      gtag('event', 'booking_step', { step: cur, step_name: 'step_' + cur });
+      cur++; paint();
+      return;
+    }
+
+    // 送出
+    var d = document.getElementById('f_date').value;
+    if (d) {
+      var p = d.split('-');
+      document.getElementById('d_y').value = p[0];
+      document.getElementById('d_m').value = String(parseInt(p[1], 10));
+      document.getElementById('d_d').value = String(parseInt(p[2], 10));
+    }
+    var planEl = document.querySelector('input[name="entry.1106204071"]:checked');
+    gtag('event', 'generate_lead', {
+      currency: 'TWD', value: 400,
+      plan: planEl ? planEl.value : '',
+      source: (document.querySelector('input[name="entry.785473532"]:checked') || {}).value || ''
+    });
+
+    submitted = true;
+    btnN.disabled = true;
+    btnN.textContent = '送出中…';
+    form.submit();
+    // 保險：iframe 沒回應也在 2.5 秒後顯示完成畫面
+    setTimeout(showDone, 2500);
+  });
+
+  btnP.addEventListener('click', function(){ if (cur > 1) { cur--; paint(); } });
+
+  var doneShown = false;
+  function showDone(){
+    if (doneShown) return; doneShown = true;
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('pgWrap').style.display   = 'none';
+    document.getElementById('navBar').style.display   = 'none';
+    document.getElementById('done').classList.add('on');
+    window.scrollTo({top:0});
+  }
+  document.getElementById('gfTarget').addEventListener('load', function(){
+    if (submitted) showDone();
+  });
+
+  // 「朋友介紹」才顯示朋友姓名欄
+  document.querySelectorAll('input[name="entry.785473532"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      document.getElementById('friendQ').style.display = (r.value === '朋友介紹' && r.checked) ? 'block' : 'none';
+    });
+  });
+
+  // Enter 不要直接送出
+  form.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); btnN.click(); }
+  });
+
+  gtag('event', 'booking_start');
+  paint();
+})();
+</script>
+</body>
+</html>
