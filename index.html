@@ -379,9 +379,9 @@ a{color:inherit;text-decoration:none}
 @media(max-width:760px){
   /* 行動版：四張完整影片卡直向排列，每張都清楚可讀、CTA 常駐；結果用底部彈出面板 */
   .gv-stage{flex-direction:column;height:auto;gap:12px;background:transparent;box-shadow:none;border-radius:0;overflow:visible}
-  .gvp{flex:none;min-height:188px;border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(17,17,17,.14)}
-  .gvp::after{background:linear-gradient(180deg,rgba(6,6,8,.1),transparent 26%,rgba(6,6,8,.5) 56%,rgba(6,6,8,.94))}
-  .gvp video{filter:none!important;transform:none!important}
+  .gvp{flex:none;aspect-ratio:1/1;min-height:0;border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(17,17,17,.14)}
+  .gvp::after{background:linear-gradient(180deg,rgba(6,6,8,.1),transparent 30%,rgba(6,6,8,.45) 60%,rgba(6,6,8,.94))}
+  .gvp video{filter:none!important;transform:none!important;object-position:center 30%!important}
   .gvp .lab{align-items:flex-start;text-align:left;padding:16px 18px 18px}
   .gvp .en{opacity:1!important}
   .gvp .nm{writing-mode:horizontal-tb!important;text-orientation:mixed;position:static!important;transform:none!important;font-size:1.5rem!important;margin-top:2px}
