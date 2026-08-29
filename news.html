@@ -87,55 +87,56 @@
 .pack .go{display:block;text-align:center;background:var(--ink);color:#fff;font-weight:800;font-size:.9rem;padding:12px;margin-top:13px;transition:background .2s}
 .pack:hover .go{background:var(--red)}
 
-/* ===== 活動與優惠：沈浸式購課指南 ===== */
-.guide{background:var(--carbon);color:#fff;padding:clamp(56px,8vw,84px) 0;position:relative;overflow:hidden}
-.guide::before{content:"OFFERS";position:absolute;right:-1%;top:6%;font-family:var(--en);font-weight:700;font-size:clamp(4rem,13vw,10rem);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.06);pointer-events:none;white-space:nowrap}
-.guide .wrap{position:relative}
-.guide .kicker{color:#F09595}
-.guide h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.7rem,4.6vw,2.6rem);line-height:1.25;margin-top:10px;color:#fff}
-.guide h2 i{font-style:normal;color:var(--red)}
-.guide .g-lead{color:#c4c4c4;margin-top:14px;line-height:1.9;max-width:580px}
-.guide .g-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:22px}
-.guide .g-open{background:var(--red);color:#fff;font-weight:900;padding:14px 26px;border-radius:8px;box-shadow:0 14px 34px rgba(200,16,21,.4);transition:.2s;cursor:pointer;border:0;font-family:inherit;font-size:1rem;display:inline-flex;align-items:center;gap:8px}
-.guide .g-open:hover{transform:translateY(-2px);background:#fff;color:var(--red)}
-.guide .g-line{border:1.5px solid rgba(255,255,255,.5);color:#fff;font-weight:700;padding:14px 22px;border-radius:8px;transition:.2s}
-.guide .g-line:hover{background:#fff;color:var(--carbon)}
-.g-strip{display:flex;gap:12px;margin-top:34px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;scrollbar-width:none}
-.g-strip::-webkit-scrollbar{display:none}
-.g-thumb{flex:0 0 auto;width:130px;aspect-ratio:1240/1754;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:start;border:1px solid rgba(255,255,255,.12);background:#000;transition:transform .25s,box-shadow .25s}
-.g-thumb:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(0,0,0,.5);border-color:rgba(200,16,21,.6)}
-.g-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.g-thumb .gn{position:absolute;top:7px;left:7px;font-family:var(--en);font-size:.58rem;font-weight:700;color:#fff;background:rgba(200,16,21,.92);padding:2px 7px;border-radius:3px}
-.g-thumb .gt{position:absolute;left:0;right:0;bottom:0;font-size:.64rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:18px 8px 7px;font-weight:700;line-height:1.3}
-/* 全螢幕檢視器 */
-.gid-lb{position:fixed;inset:0;z-index:3000;background:rgba(8,8,10,.97);display:none;flex-direction:column;opacity:0;transition:opacity .3s}
-.gid-lb.on{display:flex;opacity:1}
-.gid-top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;color:#fff;flex:0 0 auto}
-.gid-top .gc{font-family:var(--en);letter-spacing:.12em;font-size:.92rem;color:#cfcfcf}
-.gid-top .gc b{color:#fff;font-size:1.05rem}
-.gid-x{width:42px;height:42px;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.3rem;border-radius:50%;cursor:pointer;line-height:1}
-.gid-x:hover{background:var(--red)}
-.gid-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:auto;min-height:0;padding:0 8px}
-.gid-img{max-width:min(94vw,780px);max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 22px 60px rgba(0,0,0,.6);cursor:zoom-in;transition:transform .3s;transform-origin:center top}
-.gid-img.zoom{cursor:zoom-out;transform:scale(1.9)}
-.gid-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:1.5rem;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}
-.gid-nav:hover{background:var(--red)}
-.gid-nav:disabled{opacity:.25;cursor:default}
-.gid-prev{left:12px}.gid-next{right:12px}
-.gid-bot{flex:0 0 auto;padding:12px 16px calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:center;gap:18px;position:relative}
-.gid-dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:70%}
-.gid-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.2s}
-.gid-dots i.on{background:var(--red);width:20px;border-radius:5px}
-.gid-book{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:var(--red);color:#fff;font-weight:900;padding:11px 20px;border-radius:8px;font-size:.86rem}
-.gid-book:hover{background:#fff;color:var(--red)}
-body.gid-lock{overflow:hidden}
-@media(max-width:760px){
-  .gid-img{max-width:96vw}
-  .gid-bot{flex-direction:column;gap:12px}
-  .gid-book{position:static;transform:none}
-  .gid-dots{max-width:100%}
-  .gid-nav{width:42px;height:42px}
-}
+/* ===== 活動與優惠：互動試算 ===== */
+.promo{background:var(--carbon);color:#fff;padding:clamp(56px,8vw,84px) 0;position:relative;overflow:hidden}
+.promo::before{content:"OFFERS";position:absolute;right:-1%;top:5%;font-family:var(--en);font-weight:700;font-size:clamp(4rem,13vw,10rem);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.06);pointer-events:none;white-space:nowrap}
+.promo .wrap{position:relative}
+.pm-head{max-width:640px}
+.promo .kicker{color:#F09595}
+.promo h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.7rem,4.6vw,2.6rem);line-height:1.25;margin-top:10px;color:#fff}
+.promo h2 i{font-style:normal;color:var(--red)}
+.pm-lead{color:#c4c4c4;margin-top:14px;line-height:1.9}
+.pm-lead a{color:#F09595;text-decoration:underline;text-underline-offset:3px}
+.pm-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.pm-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;font-weight:900;font-size:.96rem;padding:12px 22px;border-radius:999px;cursor:pointer;transition:.2s;font-family:inherit}
+.pm-tab:hover{border-color:rgba(255,255,255,.4)}
+.pm-tab.on{background:var(--red);border-color:var(--red)}
+.pm-panel{display:none;margin-top:24px;animation:pmf .35s ease}
+.pm-panel.on{display:block}
+@keyframes pmf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.calc-ctrl,.calc-out{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:24px}
+.calc-out{background:linear-gradient(150deg,#1c1b20,#141317);border-color:rgba(200,16,21,.4)}
+.cl-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.cl-top span{color:#c4c4c4;font-size:.92rem}
+.cl-top b{font-family:var(--serif);font-weight:900;font-size:1.5rem}
+.cl-top b em{font-style:normal;color:var(--red)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:5px;background:rgba(255,255,255,.16);margin:22px 0 6px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--red);border:3px solid #fff;box-shadow:0 4px 14px rgba(200,16,21,.6);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--red);border:3px solid #fff;cursor:pointer}
+.cl-scale{display:flex;justify-content:space-between;font-family:var(--en);font-size:.68rem;color:#8a8a8a}
+.cl-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.cl-presets button{flex:1;min-width:88px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;font-weight:700;font-size:.86rem;padding:9px 8px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.18s}
+.cl-presets button:hover{border-color:var(--red);background:rgba(200,16,21,.2)}
+.co-lv{font-family:var(--en);letter-spacing:.14em;font-size:.78rem;color:#D9B25A;font-weight:700}
+.co-big{margin-top:8px;font-family:var(--serif);font-weight:900;font-size:1.15rem;line-height:1.6;color:#fff}
+.co-big em{font-style:normal;color:#fff;background:var(--red);padding:3px 14px;border-radius:6px;display:inline-block;margin-top:6px;font-size:1.7rem}
+.co-gift{margin-top:10px;font-family:var(--serif);font-weight:900;font-size:1.3rem;line-height:1.5}
+.co-bar{height:8px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden;margin:18px 0 10px}
+.co-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),#ff5a5f);border-radius:5px;transition:width .3s}
+.co-note{color:#c4c4c4;font-size:.88rem;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.tier{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px;border-top:3px solid rgba(255,255,255,.3)}
+.tier:nth-child(1){border-top-color:#0F9D63}.tier:nth-child(2){border-top-color:var(--red)}.tier.gold{border-top-color:#D9B25A}
+.tier b{font-family:var(--serif);font-weight:900;font-size:1.05rem;display:block}
+.tier span{color:#bdbdbd;font-size:.86rem;display:block;margin-top:4px;line-height:1.5}
+.pm-fine{color:#8f8f8f;font-size:.78rem;line-height:1.7;margin-top:16px;max-width:760px}
+.pm-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}
+.pm-cta .b1{background:var(--red);color:#fff;font-weight:900;padding:14px 28px;border-radius:8px;box-shadow:0 14px 34px rgba(200,16,21,.4);transition:.2s}
+.pm-cta .b1:hover{transform:translateY(-2px);background:#fff;color:var(--red)}
+.pm-cta .b2{border:1.5px solid rgba(255,255,255,.5);color:#fff;font-weight:700;padding:14px 22px;border-radius:8px;transition:.2s}
+.pm-cta .b2:hover{background:#fff;color:var(--carbon)}
+@media(max-width:760px){.calc{grid-template-columns:1fr}.tiers{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-page="news">
@@ -155,86 +156,107 @@ body.gid-lock{overflow:hidden}
   <div class="ribbon"><div class="ribbon-track"></div></div>
 </div>
 
-<!-- ===== 活動與優惠：沈浸式購課指南 ===== -->
-<section class="guide">
+<!-- ===== 活動與優惠：互動試算 ===== -->
+<section class="promo" id="offers">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">ACTIVITIES &amp; OFFERS / 活動與優惠</div>
-      <h2>全方案<i>購課指南</i></h2>
-      <p class="g-lead">新生體驗、團課、私教、三大組合、戰鬥通行證、滿額好禮、會員福利——一次看懂怎麼買最划算。點開一頁一頁翻，看到喜歡的直接預約。</p>
-      <div class="g-cta">
-        <button class="g-open" type="button" data-open="0">📖 翻開購課指南（10 頁）</button>
-        <a class="g-line" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
-      </div>
+    <div class="pm-head rv">
+      <div class="kicker">ACTIVITIES &amp; OFFERS / 本月活動與優惠</div>
+      <h2>算算看，<i>這個月你能省多少</i></h2>
+      <p class="pm-lead">HCF 的優惠不用背——拉一下就知道你能拿到什麼。完整方案與價目見 <a href="pricing.html">課程方案</a>、<a href="packages.html">套組方案</a>。</p>
     </div>
-    <div class="g-strip rv" id="gStrip">
-      <div class="g-thumb" data-open="0"><img src="guide_01.jpg" alt="購課指南 第1頁：封面總覽" loading="lazy"><span class="gn">01</span><span class="gt">封面總覽</span></div>
-      <div class="g-thumb" data-open="1"><img src="guide_02.jpg" alt="購課指南 第2頁：新生體驗方案" loading="lazy"><span class="gn">02</span><span class="gt">新生方案</span></div>
-      <div class="g-thumb" data-open="2"><img src="guide_03.jpg" alt="購課指南 第3頁：團體課程方案" loading="lazy"><span class="gn">03</span><span class="gt">團體課程</span></div>
-      <div class="g-thumb" data-open="3"><img src="guide_04.jpg" alt="購課指南 第4頁：私人教練・雙人・打靶" loading="lazy"><span class="gn">04</span><span class="gt">私人教練</span></div>
-      <div class="g-thumb" data-open="4"><img src="guide_05.jpg" alt="購課指南 第5頁：三大組合方案" loading="lazy"><span class="gn">05</span><span class="gt">三大組合</span></div>
-      <div class="g-thumb" data-open="5"><img src="guide_06.jpg" alt="購課指南 第6頁：戰鬥通行證" loading="lazy"><span class="gn">06</span><span class="gt">戰鬥通行證</span></div>
-      <div class="g-thumb" data-open="6"><img src="guide_07.jpg" alt="購課指南 第7頁：當日購課滿額好禮" loading="lazy"><span class="gn">07</span><span class="gt">滿額好禮</span></div>
-      <div class="g-thumb" data-open="7"><img src="guide_08.jpg" alt="購課指南 第8頁：會員福利" loading="lazy"><span class="gn">08</span><span class="gt">會員福利</span></div>
-      <div class="g-thumb" data-open="8"><img src="guide_09.jpg" alt="購課指南 第9頁：預約・開班・簽到規範" loading="lazy"><span class="gn">09</span><span class="gt">預約規範</span></div>
-      <div class="g-thumb" data-open="9"><img src="guide_10.jpg" alt="購課指南 第10頁：共通規則與聯絡資訊" loading="lazy"><span class="gn">10</span><span class="gt">規則・聯絡</span></div>
+
+    <div class="pm-tabs rv" role="tablist" aria-label="活動優惠">
+      <button class="pm-tab on" type="button" data-tab="pass" role="tab">🎟️ 戰鬥通行證</button>
+      <button class="pm-tab" type="button" data-tab="gear" role="tab">🎁 滿額裝備贈</button>
+    </div>
+
+    <!-- 戰鬥通行證 -->
+    <div class="pm-panel on" data-panel="pass">
+      <div class="calc">
+        <div class="calc-ctrl">
+          <div class="cl-top"><span>本月預計出席</span><b><em id="passN">16</em> 堂</b></div>
+          <input type="range" id="passRange" min="0" max="30" value="16" step="1" aria-label="本月出席堂數">
+          <div class="cl-scale"><span>0</span><span>8</span><span>16</span><span>24</span><span>30</span></div>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div class="co-lv" id="passLv">LV.2 菁英</div>
+          <div class="co-big">次月續費直接折抵<br><em id="passAmt">$1,000</em></div>
+          <div class="co-bar"><i id="passBar" style="width:66%"></i></div>
+          <div class="co-note" id="passNote">再出席 8 堂達 LV.3，折抵升到 $1,500</div>
+        </div>
+      </div>
+      <div class="tiers">
+        <div class="tier"><b>LV.1 戰士</b><span>出席 8 堂 → 折抵 $500</span></div>
+        <div class="tier"><b>LV.2 菁英</b><span>出席 16 堂 → 折抵 $1,000</span></div>
+        <div class="tier gold"><b>LV.3 傳奇</b><span>出席 24 堂 → 折抵 $1,500</span></div>
+      </div>
+      <p class="pm-fine">本月實際出席 → 次月續費折抵，依最高達成等級核發一次；以 FitBook／館方簽到為準。預約未到或私教方案贈送之團課不列入累積；折抵不得遞延、折現或轉讓。</p>
+    </div>
+
+    <!-- 滿額裝備贈 -->
+    <div class="pm-panel" data-panel="gear">
+      <div class="calc">
+        <div class="calc-ctrl">
+          <div class="cl-top"><span>這次購課金額</span><b>$<em id="gearN">10,000</em></b></div>
+          <input type="range" id="gearRange" min="0" max="35000" value="10000" step="500" aria-label="購課金額">
+          <div class="cl-presets"><button type="button" data-amt="5500">$5,500</button><button type="button" data-amt="10000">$10,000</button><button type="button" data-amt="30000">$30,000</button></div>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div class="co-lv" id="gearTier">達標・第 2 級</div>
+          <div class="co-gift" id="gearGift">🦷 透明牙套 ＋ 🥊 HCF 手綁帶</div>
+          <div class="co-bar"><i id="gearBar" style="width:33%"></i></div>
+          <div class="co-note" id="gearNote">再加 $20,000 解鎖 拳套 12oz</div>
+        </div>
+      </div>
+      <div class="tiers">
+        <div class="tier"><b>滿 $5,500</b><span>🦷 透明牙套 ×1</span></div>
+        <div class="tier"><b>滿 $10,000</b><span>＋ 🥊 HCF 手綁帶</span></div>
+        <div class="tier gold"><b>滿 $30,000</b><span>＋ 🥊 拳套 12oz</span></div>
+      </div>
+      <p class="pm-fine">當日完成購課、依單筆最高級距贈送（不重複累贈）；入會費與商品加購不列入滿額；不同訂單不得合併；贈品不得折現、找零或抵課程；牙套藍／紅可加價 $100 更換。</p>
+    </div>
+
+    <div class="pm-cta rv">
+      <a class="b1" href="booking.html">預約體驗・開始累積 →</a>
+      <a class="b2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 問優惠</a>
     </div>
   </div>
 </section>
-
-<!-- 全螢幕檢視器 -->
-<div class="gid-lb" id="gidLb" role="dialog" aria-modal="true" aria-label="HCF 購課指南">
-  <div class="gid-top"><span class="gc"><b id="gidCur">1</b> / 10 · 購課指南</span><button class="gid-x" id="gidX" type="button" aria-label="關閉">✕</button></div>
-  <div class="gid-stage">
-    <button class="gid-nav gid-prev" id="gidPrev" type="button" aria-label="上一頁">‹</button>
-    <img class="gid-img" id="gidImg" alt="購課指南" src="">
-    <button class="gid-nav gid-next" id="gidNext" type="button" aria-label="下一頁">›</button>
-  </div>
-  <div class="gid-bot">
-    <div class="gid-dots" id="gidDots"></div>
-    <a class="gid-book" href="booking.html">預約體驗 →</a>
-  </div>
-</div>
 <script>
 (function(){
-  var PAGES=10, cur=0, base='guide_';
-  var lb=document.getElementById('gidLb'); if(!lb)return;
-  var img=document.getElementById('gidImg'),curEl=document.getElementById('gidCur');
-  var prev=document.getElementById('gidPrev'),next=document.getElementById('gidNext'),dotsWrap=document.getElementById('gidDots');
-  function pad(n){return (n<9?'0':'')+(n+1);}
-  var dots=[];
-  for(var i=0;i<PAGES;i++){var d=document.createElement('i');(function(k){d.addEventListener('click',function(){go(k)})})(i);dotsWrap.appendChild(d);dots.push(d);}
-  function preload(n){if(n>=0&&n<PAGES){var im=new Image();im.src=base+pad(n)+'.jpg';}}
-  function render(){
-    img.classList.remove('zoom');
-    img.src=base+pad(cur)+'.jpg';
-    img.alt='購課指南 第'+(cur+1)+'頁';
-    curEl.textContent=cur+1;
-    dots.forEach(function(d,k){d.classList.toggle('on',k===cur)});
-    prev.disabled=cur===0; next.disabled=cur===PAGES-1;
-    preload(cur+1); preload(cur-1);
+  var pr=document.getElementById('passRange');
+  if(pr){
+    var pN=document.getElementById('passN'),pLv=document.getElementById('passLv'),pAmt=document.getElementById('passAmt'),pBar=document.getElementById('passBar'),pNote=document.getElementById('passNote');
+    function pass(){
+      var n=+pr.value;pN.textContent=n;var lv,amt,note;
+      if(n>=24){lv='LV.3 傳奇';amt=1500;note='已達最高等級——次月折抵 $1,500 🎉';}
+      else if(n>=16){lv='LV.2 菁英';amt=1000;note='再出席 '+(24-n)+' 堂達 LV.3，折抵升到 $1,500';}
+      else if(n>=8){lv='LV.1 戰士';amt=500;note='再出席 '+(16-n)+' 堂達 LV.2，折抵升到 $1,000';}
+      else{lv='尚未達標';amt=0;note='再出席 '+(8-n)+' 堂達 LV.1，開始折抵 $500';}
+      pLv.textContent=lv;pAmt.textContent='$'+amt.toLocaleString();
+      pBar.style.width=Math.min(100,n/24*100).toFixed(0)+'%';pNote.textContent=note;
+    }
+    pr.addEventListener('input',pass);pass();
   }
-  function go(n){cur=Math.max(0,Math.min(PAGES-1,n));render();}
-  function open(n){cur=n||0;render();lb.classList.add('on');document.body.classList.add('gid-lock');
-    if(window.hcfTrack)hcfTrack('guide_open',{page:cur+1});}
-  function close(){lb.classList.remove('on');document.body.classList.remove('gid-lock');}
-  document.querySelectorAll('[data-open]').forEach(function(el){el.addEventListener('click',function(){open(+el.dataset.open||0);});});
-  prev.addEventListener('click',function(){go(cur-1)});
-  next.addEventListener('click',function(){go(cur+1)});
-  document.getElementById('gidX').addEventListener('click',close);
-  lb.addEventListener('click',function(e){if(e.target===lb)close();});
-  img.addEventListener('click',function(){img.classList.toggle('zoom');});
-  document.addEventListener('keydown',function(e){
-    if(!lb.classList.contains('on'))return;
-    if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')go(cur-1); else if(e.key==='ArrowRight')go(cur+1);
-  });
-  var sx=0,sy=0;
-  img.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
-  img.addEventListener('touchend',function(e){
-    if(img.classList.contains('zoom'))return;
-    var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){dx<0?go(cur+1):go(cur-1);}
-  },{passive:true});
+  var gr=document.getElementById('gearRange');
+  if(gr){
+    var gN=document.getElementById('gearN'),gT=document.getElementById('gearTier'),gG=document.getElementById('gearGift'),gB=document.getElementById('gearBar'),gNo=document.getElementById('gearNote');
+    function gear(){
+      var a=+gr.value;gN.textContent=a.toLocaleString();var t,g,note;
+      if(a>=30000){t='最高級距 🏆';g='🦷 透明牙套 ＋ 🥊 手綁帶 ＋ 🥊 拳套 12oz';note='已達最高級距，整組裝備帶回家！';}
+      else if(a>=10000){t='達標・第 2 級';g='🦷 透明牙套 ＋ 🥊 HCF 手綁帶';note='再加 $'+(30000-a).toLocaleString()+' 解鎖 拳套 12oz';}
+      else if(a>=5500){t='達標・第 1 級';g='🦷 透明牙套 ×1';note='再加 $'+(10000-a).toLocaleString()+' 解鎖 HCF 手綁帶';}
+      else{t='尚未達標';g='—';note='再加 $'+(5500-a).toLocaleString()+' 解鎖 透明牙套';}
+      gT.textContent=t;gG.textContent=g;gNo.textContent=note;gB.style.width=Math.min(100,a/30000*100).toFixed(0)+'%';
+    }
+    gr.addEventListener('input',gear);
+    document.querySelectorAll('.cl-presets button').forEach(function(b){b.addEventListener('click',function(){gr.value=b.dataset.amt;gear();});});
+    gear();
+  }
+  document.querySelectorAll('.pm-tab').forEach(function(t){t.addEventListener('click',function(){
+    document.querySelectorAll('.pm-tab').forEach(function(x){x.classList.toggle('on',x===t);x.setAttribute('aria-selected',x===t);});
+    document.querySelectorAll('.pm-panel').forEach(function(p){p.classList.toggle('on',p.dataset.panel===t.dataset.tab);});
+  });});
 })();
 </script>
 
