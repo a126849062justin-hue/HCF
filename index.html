@@ -320,49 +320,75 @@ a{color:inherit;text-decoration:none}
   *{animation-duration:.01s!important;transition-duration:.01s!important}
 }
 
-/* ----- 五大目標（雜誌式不對稱）----- */
-.g5{background:#fff;padding:90px 24px 96px;background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1px);background-size:22px 22px;overflow:hidden}
-.g5-in{max-width:var(--maxw);margin:0 auto}
-.g5-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.g5-lead{color:var(--ink2);line-height:1.9;text-align:right}
-.g5-mosaic{margin-top:36px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:128px;gap:16px}
-.g5c{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 32px rgba(17,17,17,.08);overflow:hidden;transition:transform .28s,box-shadow .28s}
-.g5c .ghost{position:absolute;top:-14px;right:2px;font-family:var(--en);font-weight:700;font-size:5.6rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(200,16,21,.22);pointer-events:none;transition:.3s}
-.g5c b{font-family:var(--serif);font-weight:900;font-size:1.45rem;line-height:1.25;position:relative}
-.g5c .d{color:var(--ink2);font-size:.85rem;margin-top:7px;line-height:1.6;position:relative}
-.g5c i{font-style:normal;font-weight:900;font-size:.8rem;color:var(--red);margin-top:14px;position:relative;transition:transform .25s}
-.g5c:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(200,16,21,.18)}
-.g5c:hover i{transform:translateX(6px)}
-.g5c:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.5)}
-.g5c.big{grid-column:span 2;grid-row:span 2;background:var(--carbon);border:0;color:#fff}
-.g5c.big .d{color:#cfcfcf}
-.g5c.big b{font-size:clamp(1.8rem,2.6vw,2.4rem)}
-.g5c.big .ghost{font-size:9rem;-webkit-text-stroke-color:rgba(255,255,255,.16)}
-.g5c.big:hover .ghost{-webkit-text-stroke-color:rgba(200,16,21,.7)}
-.g5c.tilt{grid-column:span 2;grid-row:span 1;transform:rotate(-1.2deg)}
-.g5c.tilt:hover{transform:rotate(0) translateY(-6px)}
-.g5c.red{grid-column:span 2;grid-row:span 1;background:var(--red);border:0;color:#fff}
-.g5c.red .d{color:#ffd9da}
-.g5c.red i{color:#fff}
-.g5c.red .ghost{-webkit-text-stroke-color:rgba(255,255,255,.3)}
-.g5c.wide{grid-column:span 3;grid-row:span 1;flex-direction:row;align-items:flex-end;gap:18px}
-.g5c.wide b{font-size:1.6rem}
-.g5c.wide .d{margin:0 0 4px}
-.g5c.wide i{margin:0 0 4px auto;white-space:nowrap}
-.g5c.dark{grid-column:span 3;grid-row:span 1;background:var(--carbon);border:0;color:#fff;flex-direction:row;align-items:flex-end;gap:18px}
-.g5c.dark .d{color:#cfcfcf;margin:0 0 4px}
-.g5c.dark i{margin:0 0 4px auto;white-space:nowrap}
-.g5c.dark .tag{position:absolute;top:14px;left:20px;background:var(--red);color:#fff;font-size:.66rem;font-weight:900;letter-spacing:.18em;padding:3px 10px}
-.g5c.dark .ghost{-webkit-text-stroke-color:rgba(255,255,255,.16)}
-@media(max-width:980px){
-  .g5-mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
-  .g5c{min-height:150px}
-  .g5c.big{grid-column:span 2;grid-row:span 1;min-height:210px}
-  .g5c.wide,.g5c.dark{grid-column:span 2;flex-direction:column;align-items:flex-start}
-  .g5c.wide i,.g5c.dark i{margin:14px 0 0}
-  .g5-lead{text-align:left}
+/* ----- 你為什麼來（沈浸影片選擇・淺色）----- */
+.gv{position:relative;scroll-margin-top:84px;padding:clamp(60px,8vw,92px) 22px;background:#FFFFFF;background-image:radial-gradient(rgba(17,17,17,.05) 1px,transparent 1px);background-size:22px 22px;overflow:hidden}
+.gv-in{max-width:1180px;margin:0 auto}
+.gv-head{text-align:center;max-width:700px;margin:0 auto 34px}
+.gv-head p{color:var(--ink2);line-height:1.9;margin-top:14px}
+.gv-stage{position:relative;display:flex;gap:6px;height:clamp(460px,72svh,660px);border-radius:16px;overflow:hidden;box-shadow:0 26px 60px rgba(17,17,17,.2);background:#000}
+.gvp{position:relative;flex:1;overflow:hidden;cursor:pointer;transition:flex .6s cubic-bezier(.35,0,.15,1);min-width:0}
+.gvp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .5s ease}
+.gvp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,6,8,.12) 0%,transparent 32%,rgba(6,6,8,.4) 62%,rgba(6,6,8,.94));transition:.5s}
+.gv-stage.ready .gvp:not(.active) video{filter:grayscale(.5) brightness(.45)}
+.gvp.active{flex:3.1}
+.gvp.active video{transform:scale(1.04)}
+.gvp .lab{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:22px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff}
+.gvp .en{font-family:var(--tech);letter-spacing:.2em;font-size:.62rem;color:#F09595;font-weight:600;white-space:nowrap}
+.gvp .nm{font-family:var(--serif);font-weight:900;font-size:clamp(1.2rem,1.9vw,1.7rem);margin-top:5px;text-shadow:0 3px 16px rgba(0,0,0,.7);white-space:nowrap}
+.gvp .det{max-height:0;overflow:hidden;opacity:0;transition:.45s;width:100%;max-width:360px}
+.gvp .det .dl{font-size:.86rem;color:#efece4;margin-top:9px;line-height:1.6}
+.gvp .det .rt{font-size:.72rem;color:#dcdcd4;font-weight:700;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.22)}
+.gvp .det .rt s{text-decoration:none;color:#F09595;margin:0 3px}
+.gvp .det .pk{margin-top:14px;background:var(--red);color:#fff;font-weight:900;font-size:.86rem;padding:11px 24px;border-radius:8px;box-shadow:0 12px 28px rgba(200,16,21,.5)}
+.gvp .det .pk:hover{background:#fff;color:var(--red)}
+.gvp.active .det{max-height:220px;opacity:1;margin-top:4px}
+.gvp.active .nm{font-size:clamp(1.5rem,2.4vw,2rem)}
+.gvp:not(.active) .nm{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.08em;position:absolute;left:50%;bottom:18px;transform:translateX(-50%)}
+.gvp:not(.active) .en{opacity:0}
+.gv-stage.revealed .gvp:not(.chosen){flex:0;opacity:0}
+.gvp.chosen{flex:1!important}
+.gvp.chosen video{filter:none!important}
+.gvp.chosen .lab{opacity:0}
+.gv-result{position:absolute;left:0;right:0;bottom:0;z-index:20;background:#F5F6F7;border-top:3px solid var(--red);border-radius:18px 18px 0 0;box-shadow:0 -20px 50px rgba(0,0,0,.4);padding:24px clamp(20px,4vw,40px) 28px;transform:translateY(101%);transition:transform .55s cubic-bezier(.3,0,.15,1);max-height:66%;overflow:auto}
+.gv-stage.revealed .gv-result{transform:none}
+.gv-result .rk{font-family:var(--en);letter-spacing:.2em;font-size:.64rem;color:var(--red);font-weight:600}
+.gv-result h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);margin:5px 0 2px;color:var(--ink)}
+.gv-result h3 i{font-style:normal;color:var(--red)}
+.gv-result .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.gv-result .meta .m{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 13px;font-size:.84rem;color:var(--ink2)}
+.gv-result .meta .m b{color:var(--ink)}
+.gv-result .path{display:flex;gap:0;margin:16px 0 0;flex-wrap:wrap}
+.gv-result .pn{flex:1;min-width:132px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:9px;padding:12px 14px;position:relative}
+.gv-result .pn+.pn{margin-left:24px}
+.gv-result .pn+.pn::before{content:"→";position:absolute;left:-19px;top:50%;transform:translateY(-50%);color:var(--red);font-weight:900}
+.gv-result .pn .s{font-family:var(--en);font-size:.58rem;letter-spacing:.12em;color:var(--red);font-weight:700}
+.gv-result .pn .t{font-weight:700;font-size:.92rem;margin-top:2px;color:var(--ink)}
+.gv-result .acts{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.gv-result .b1{background:var(--red);color:#fff;font-weight:900;font-size:.96rem;padding:14px 28px;border-radius:9px;box-shadow:0 14px 30px rgba(200,16,21,.28);transition:.2s}
+.gv-result .b1:hover{background:var(--redD)}
+.gv-result .again{font-size:.84rem;color:var(--ink3);text-decoration:underline;background:none;cursor:pointer;border:0;font-family:inherit}
+.gv-hint{text-align:center;margin-top:13px;font-family:var(--tech);letter-spacing:.16em;font-size:.68rem;color:var(--ink3);transition:opacity .4s}
+.gv-stage.ready ~ .gv-hint,.gv-stage.revealed ~ .gv-hint{opacity:0}
+.gv-fight{margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:var(--carbon);color:#fff;border-radius:12px;padding:22px 28px;position:relative;overflow:hidden}
+.gv-fight::before{content:"FIGHT";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:var(--en);font-weight:700;font-size:clamp(3rem,7vw,5rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);pointer-events:none}
+.gv-fight .fb-tx{position:relative;z-index:1}
+.gv-fight .fb-tx b{font-family:var(--serif);font-weight:900;font-size:1.2rem}
+.gv-fight .fb-tx span{display:block;color:#bdbdbd;font-size:.86rem;margin-top:4px}
+.gv-fight a{position:relative;z-index:1;background:var(--red);color:#fff;font-weight:900;padding:12px 22px;border-radius:6px;white-space:nowrap;transition:.25s}
+.gv-fight a:hover{background:#fff;color:var(--red)}
+@media(max-width:760px){
+  .gv-stage{flex-direction:column;height:clamp(520px,82svh,700px)}
+  .gvp{flex:1}
+  .gvp.active{flex:2.4}
+  .gvp:not(.active) .nm{writing-mode:horizontal-tb;left:20px;bottom:14px;transform:none}
+  .gvp:not(.active) .en{opacity:.85}
+  .gvp .lab{align-items:flex-start;text-align:left}
+  .gv-result{max-height:82%}
+  .gv-result .path{flex-direction:column}
+  .gv-result .pn+.pn{margin-left:0;margin-top:20px}
+  .gv-result .pn+.pn::before{left:50%;top:-18px;transform:translateX(-50%) rotate(90deg)}
 }
-@media(max-width:560px){.g5{padding:64px 20px}.g5-mosaic{grid-template-columns:1fr}.g5c.tilt{transform:none}}
+@media(prefers-reduced-motion:reduce){.gvp,.gvp video,.gv-result{transition:none!important}}
 
 .cb-chips{display:flex;gap:6px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line,#E5E5E5);background:#fff}.cb-chips button{border:1.5px solid var(--red,#C81015);color:var(--red,#C81015);background:#fff;font-family:inherit;font-weight:700;font-size:.76rem;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.2s}.cb-chips button:hover{background:var(--red,#C81015);color:#fff}
 .cb-social{display:flex;gap:6px;padding:8px 10px 10px;background:#fff;border-top:1px solid var(--line,#E5E5E5)}
@@ -578,14 +604,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <a href="pricing.html">課程方案</a>
       <a href="partnership.html" data-en="CORPORATE">企業合作</a>
       <a href="shop.html">商城</a>
-      <a class="nav-cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>
+      <a class="nav-cta" href="booking.html"><svg class="cta-bolt" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>立即預約</a>
     </nav>
     <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
   </div>
   <nav class="mnav" id="mnav">
     <a href="#top" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>
     <button class="msub-t open" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub msub-grid open"><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="muaythai.html" data-en="MUAY THAI">泰拳訓練</a><a href="kickboxing.html" data-en="KICKBOXING">踢拳訓練</a><a href="sanda.html" data-en="SANDA">散打訓練</a><a href="strength.html" data-en="S&amp;C">肌力體能</a></div><a href="team.html" data-en="COACHES">教練團隊</a><button class="msub-t open" type="button" data-en="PRICING">課程方案<i>＋</i></button><div class="msub msub-grid open"><a href="pricing.html" data-en="PRICING">價目表</a><a href="packages.html" data-en="BUNDLE">套組方案</a><a href="schedule.html" data-en="SCHEDULE">課表</a><a href="partnership.html" data-en="CORPORATE">企業合作</a></div><a href="survey.html" data-en="FAQ">新手問答</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>
-    <a class="cta" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a><div class="mnav-social"><a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div>
+    <a class="cta" href="booking.html">立即預約 $400 體驗</a><div class="mnav-social"><a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div>
   </nav>
 </header>
 
@@ -623,45 +649,106 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <!-- 第二幕 -->
 
 <!-- 五大目標 怎麼練最快 -->
-<section class="g5" id="goals5">
-  <div class="g5-in">
-    <div class="g5-head">
-      <div>
-        <div class="kicker">FIVE GOALS / 五大目標</div>
-        <h2 class="h2">你想變成怎樣<br>就怎麼<i>練最快</i></h2>
-      </div>
-      <p class="g5-lead">五種目標、五條路線——<br>選一個，直接看該上哪些課。</p>
+<section class="gv" id="goals5">
+  <div class="gv-in">
+    <div class="gv-head rv">
+      <div class="kicker" style="justify-content:center">WHY YOU'RE HERE / 你為什麼來</div>
+      <h2 class="h2">先別急著看課表——<br>哪一個，<i>是現在的你</i>？</h2>
+      <p>把影片滑過看看，點一個最像你的場景，我直接幫你把路排好。</p>
     </div>
-    <div class="g5-mosaic">
-      <a class="g5c big" href="plans-proposal.html?g=01#goals">
-        <span class="ghost">01</span>
-        <b>泰拳<br>技術</b><span class="d">八肢的藝術 入門到內圍纏抱</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
-      <a class="g5c tilt" href="plans-proposal.html?g=02#goals">
-        <span class="ghost">02</span>
-        <b>燃脂減重</b><span class="d">一堂泰拳約 600–800 大卡</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
-      <a class="g5c red" href="plans-proposal.html?g=03#goals">
-        <span class="ghost">03</span>
-        <b>體能提升</b><span class="d">壺鈴戰繩 一堂練全身</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
-      <a class="g5c wide" href="plans-proposal.html?g=04#goals">
-        <span class="ghost">04</span>
-        <b>實戰能力</b><span class="d">從入門綠 一路練到紅色對打課</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
-      <a class="g5c dark" href="plans-proposal.html?g=05#goals">
-        <span class="ghost">05</span>
-        <span class="tag">邀請制</span>
-        <b>選手培訓</b><span class="d">總教練親自帶 限量名額</span>
-        <i>怎麼練最快 ⟶</i>
-      </a>
+
+    <div class="gv-stage" id="gvStage">
+      <div class="gvp" data-i="0">
+        <video src="goal_start.mp4" poster="gc_p3.jpg" muted loop playsinline preload="none" aria-label="完全新手上課實況"></video>
+        <div class="lab">
+          <span class="en">START · 完全新手</span><span class="nm">完全沒經驗</span>
+          <div class="det"><div class="dl">沒底子、手腳不協調也可以，先兩堂私教把發力學起來。</div>
+            <div class="rt">體驗課<s>→</s>私教入門<s>→</s>團課</div>
+            <button class="pk" type="button" data-pick="0">這就是我 →</button></div>
+        </div>
+      </div>
+      <div class="gvp" data-i="1">
+        <video src="goal_shred.mp4" poster="gc_p4.jpg" muted loop playsinline preload="none" aria-label="泰拳燃脂打靶實況"></video>
+        <div class="lab">
+          <span class="en">SHRED · 減脂減重</span><span class="nm">想瘦、想流汗</span>
+          <div class="det"><div class="dl">不想再跑跑步機。一堂約 600–800 大卡，看得到改變。</div>
+            <div class="rt">泰拳燃脂<s>→</s>打靶<s>→</s>體能</div>
+            <button class="pk" type="button" data-pick="1">這就是我 →</button></div>
+        </div>
+      </div>
+      <div class="gvp" data-i="2">
+        <video src="goal_skill.mp4" poster="gc_p1.jpg" muted loop playsinline preload="none" aria-label="泰拳技術訓練實況"></video>
+        <div class="lab">
+          <span class="en">SKILL · 學技術</span><span class="nm">想學真功夫</span>
+          <div class="det"><div class="dl">拳腿膝肘、防守步法——從會打，到真的懂泰拳。</div>
+            <div class="rt">基本技術<s>→</s>組合防守<s>→</s>距離</div>
+            <button class="pk" type="button" data-pick="2">這就是我 →</button></div>
+        </div>
+      </div>
+      <div class="gvp" data-i="3">
+        <video src="goal_release.mp4" poster="gc_p2.jpg" muted loop playsinline preload="none" aria-label="下班紓壓打靶實況"></video>
+        <div class="lab">
+          <span class="en">RELEASE · 下班紓壓</span><span class="nm">想把壓力打掉</span>
+          <div class="det"><div class="dl">下班 60 分鐘，把今天的壓力，全部留在靶上。</div>
+            <div class="rt">熱身<s>→</s>技術<s>→</s>打靶爽練</div>
+            <button class="pk" type="button" data-pick="3">這就是我 →</button></div>
+        </div>
+      </div>
+      <div class="gv-result" id="gvResult" aria-live="polite"></div>
+    </div>
+    <div class="gv-hint" id="gvHint">滑過看看 · 點一個最像你的</div>
+
+    <div class="gv-fight rv">
+      <div class="fb-tx">
+        <b>想認真打、站上擂台？</b>
+        <span>進階對打 → Clinch → 戰術 → 備賽，選手路線由總教練親自帶、限量名額。</span>
+      </div>
+      <a href="group-classes.html">看選手／進階路線 →</a>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var stage=document.getElementById('gvStage');if(!stage)return;
+  var panels=[].slice.call(stage.querySelectorAll('.gvp'));
+  var result=document.getElementById('gvResult'),hint=document.getElementById('gvHint');
+  var vids=[].slice.call(stage.querySelectorAll('video'));
+  var hover=matchMedia('(hover:hover)').matches;
+  var DATA=[
+    {rh:'從<i>零</i>，穩穩開始',coach:'小米教練',steps:['$400 體驗課','2 堂私教入門','加入團課'],cta:'預約新手體驗'},
+    {rh:'把身體，<i>練回來</i>',coach:'高大可教練',steps:['泰拳燃脂團課','私人打靶','體能＋進度追蹤'],cta:'預約減脂體驗'},
+    {rh:'從會打，到<i>懂泰拳</i>',coach:'黃謙和 總教練',steps:['基本技術','組合＋防守','距離 Timing'],cta:'預約技術體驗'},
+    {rh:'把壓力，<i>留在靶上</i>',coach:'任一教練皆可',steps:['熱身','基本技術','打靶＋沙包'],cta:'預約紓壓體驗'}
+  ];
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function setActive(i){stage.classList.add('ready');panels.forEach(function(p,k){p.classList.toggle('active',k===i)});}
+  function clearActive(){stage.classList.remove('ready');panels.forEach(function(p){p.classList.remove('active')});}
+  panels.forEach(function(p,k){
+    if(hover)p.addEventListener('mouseenter',function(){if(!stage.classList.contains('revealed'))setActive(k)});
+    p.addEventListener('click',function(e){
+      if(e.target.closest('.pk'))return;if(stage.classList.contains('revealed'))return;
+      p.classList.contains('active')?clearActive():setActive(k);
+    });
+  });
+  if(hover)stage.addEventListener('mouseleave',function(){if(!stage.classList.contains('revealed'))clearActive();});
+  stage.addEventListener('click',function(e){var b=e.target.closest('.pk');if(!b)return;confirm(+b.dataset.pick);});
+  function confirm(i){
+    var d=DATA[i];panels.forEach(function(p,k){p.classList.toggle('chosen',k===i)});
+    var steps=d.steps.map(function(t,n){return '<div class="pn"><div class="s">STEP '+(n+1)+'</div><div class="t">'+esc(t)+'</div></div>'}).join('');
+    result.innerHTML='<div class="rk">你的路線</div><h3>'+d.rh+'</h3>'
+      +'<div class="meta"><span class="m">建議教練 <b>'+esc(d.coach)+'</b></span></div>'
+      +'<div class="path">'+steps+'</div>'
+      +'<div class="acts"><a class="b1" href="booking.html">'+esc(d.cta)+' →</a><button class="again" type="button" id="gvAgain">← 換一個看看</button></div>';
+    stage.classList.add('revealed');
+    document.getElementById('gvAgain').addEventListener('click',function(){stage.classList.remove('revealed');clearActive();result.innerHTML='';});
+  }
+  /* 只在進入視窗時才播放，離開暫停（省效能/流量） */
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){
+    vids.forEach(function(v){if(en.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}else v.pause();});
+  })},{threshold:.25});
+  io.observe(stage);
+})();
+</script>
 
 <!-- 選手故事：小米 -->
 <section class="act-mi" id="actMi">
@@ -802,7 +889,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
           <div><b id="cdm">--</b><span>MIN</span></div>
           <div><b id="cds">--</b><span>SEC</span></div>
         </div>
-        <a class="obtn" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">搶下本月體驗名額</a>
+        <a class="obtn" href="booking.html">搶下本月體驗名額</a>
         <div class="onote">本月優惠倒數 · FitBook 線上即時預約</div>
       </div>
     </div>
@@ -872,7 +959,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       </div>
     </div>
     <div class="fin-btns">
-      <a class="hb1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+      <a class="hb1" href="booking.html">立即預約 $400 體驗</a>
       <a class="hb2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
     </div>
   </div>
@@ -913,7 +1000,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <!-- 浮動層 -->
 <button class="totop" id="totop" aria-label="回頂部">TOP</button>
 <div class="mcta">
-  <a class="m1" href="https://www.fit-book.com.tw/hsinchucombat/plan/588" target="_blank" rel="noopener">立即預約 $400 體驗</a>
+  <a class="m1" href="booking.html">立即預約 $400 體驗</a>
   <a class="m2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">LINE 諮詢</a>
 </div>
 
