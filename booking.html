@@ -433,6 +433,34 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
     btnN.disabled = true;
     btnN.textContent = '送出中…';
     form.submit();
+
+    // ===== 備援：同步把這筆預約寄一份到信箱（FormSubmit），Google 表單萬一失敗也不漏單 =====
+    try {
+      var LEAD_EMAIL = 'hsinchucombat2022@gmail.com'; // ← 收預約通知的信箱，可改
+      var LABELS = {
+        'entry.1602401244':'姓名','entry.816271736':'手機','entry.1928564000':'LINE 名稱',
+        'entry.1987837339':'性別','entry.1829902663':'年齡','entry.1106204071':'想體驗',
+        'entry.1584652475':'方便時段','entry.1306397008':'目標','entry.96682318':'運動經驗',
+        'entry.1896819146':'一週次數','entry.1108858711':'為什麼是現在','entry.785473532':'從哪認識',
+        'entry.481869369':'介紹人'
+      };
+      var payload = {};
+      new FormData(form).forEach(function(v, k){
+        if (!v || k.indexOf('entry.117411804') === 0) return; // 日期另外處理
+        var lab = LABELS[k] || k;
+        payload[lab] = payload[lab] ? (payload[lab] + '、' + v) : v;
+      });
+      if (d) payload['希望開始日期'] = d;
+      payload._subject = '🥊 新體驗預約｜' + (payload['姓名']||'') + ' ' + (payload['手機']||'');
+      payload._template = 'table';
+      payload._captcha = 'false';
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      }).catch(function(){});
+    } catch (e) {}
+
     // 保險：iframe 沒回應也在 2.5 秒後顯示完成畫面
     setTimeout(showDone, 2500);
   });
