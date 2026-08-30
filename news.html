@@ -128,6 +128,26 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .pm-cta .b2:hover{background:#fff;color:var(--carbon)}
 @media(max-width:760px){.calc{grid-template-columns:1fr}.tiers{grid-template-columns:1fr}}
 
+/* 消費心理層：稀缺 / 倒數 / 社會證明 / 比較錨定 */
+.urgency{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:center;justify-content:space-between;margin-top:22px;background:linear-gradient(135deg,rgba(200,16,21,.18),rgba(255,255,255,.03));border:1px solid rgba(200,16,21,.45);border-radius:14px;padding:16px 22px}
+.u-count{font-family:var(--en);font-weight:600;letter-spacing:.05em;color:#e8d9b0;font-size:.95rem;white-space:nowrap}
+.u-count b{color:#fff;font-size:1.18rem;font-variant-numeric:tabular-nums}
+.u-scarce{flex:1;min-width:280px}
+.u-scarce .lab{font-family:var(--serif);font-weight:900;font-size:clamp(1.05rem,3vw,1.3rem);color:#fff;line-height:1.4}
+.u-scarce .lab .big{color:var(--gold);font-family:var(--en);font-size:clamp(1.9rem,6vw,2.6rem);font-weight:700;vertical-align:-.08em;margin:0 2px;text-shadow:0 2px 18px rgba(212,175,55,.4)}
+.u-scarce .lab .left{color:#fff;background:var(--red);border-radius:6px;padding:1px 11px;font-family:var(--en);font-weight:700;box-shadow:0 4px 16px rgba(200,16,21,.5)}
+.u-bar{height:9px;border-radius:6px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:11px;max-width:440px}
+.u-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--red));border-radius:6px;transition:width .5s}
+@media(max-width:620px){.urgency{flex-direction:column;align-items:flex-start;gap:14px}}
+.act-stat{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.act-stat span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 13px;font-size:.85rem;color:#e0e0e0;font-weight:700}
+.act-stat span b{color:var(--gold);font-family:var(--en);margin:0 1px}
+.act-stat .hot{border-color:rgba(200,16,21,.5);background:rgba(200,16,21,.15);color:#ffd9d9}
+.act-stat .hot b{color:#fff}
+.ao-off{display:inline-block;background:linear-gradient(135deg,#D4AF37,#b8892b);color:#1a1a1a;font-family:var(--sans);font-weight:900;font-size:.74rem;padding:4px 10px;border-radius:4px;letter-spacing:.03em}
+.ao-anchor{margin-top:13px;color:#f0c98a;font-weight:700;font-size:.96rem;line-height:1.6}
+.ao-anchor .thru{color:#9a9a9a;font-weight:400;text-decoration:line-through;margin-right:8px}
+
 /* 沈浸升級（高端／創意） */
 :root{--gold:#C9A24B}
 .film-grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.055;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>")}
@@ -183,6 +203,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <p class="pm-lead">四個進行中的活動——點一下、拉一下，立刻知道你能拿到什麼。完整方案與價目見 <a href="pricing.html">課程方案</a>、<a href="packages.html">套組方案</a>。</p>
     </div>
 
+    <div class="urgency rv">
+      <div class="u-count">⏳ 本月活動倒數 <b id="uD">–</b> 天 <b id="uT">--:--:--</b></div>
+      <div class="u-scarce">
+        <div class="lab">🥊 新生體驗・本月限量 <span class="big">10</span> 名・僅剩 <span class="left" id="uLeft">3</span> 名</div>
+        <div class="u-bar"><i id="uBar" style="width:70%"></i></div>
+      </div>
+    </div>
+
     <div class="pm-tabs rv" role="tablist" aria-label="本月活動">
       <button class="pm-tab on" type="button" data-tab="rookie" role="tab">🥊 新生體驗</button>
       <button class="pm-tab" type="button" data-tab="pass" role="tab">🎟️ 戰鬥通行證</button>
@@ -192,6 +220,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
     <!-- 1｜新生體驗 -->
     <div class="pm-panel on" data-panel="rookie">
+      <div class="act-stat" id="statRookie"></div>
       <div class="picker" id="rookiePick" role="tablist" aria-label="選擇你的第一堂"></div>
       <div class="act-out" id="rookieOut" aria-live="polite"></div>
       <p class="pm-fine">首次體驗限本人、每項限用一次；需年滿 12 歲（未成年須家長同意）。團課體驗價 $400（原價 $600）；私教體驗依教練排班，請先預約時段。器材（拳套、手綁帶）館內免費提供。</p>
@@ -199,6 +228,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
     <!-- 2｜戰鬥通行證 -->
     <div class="pm-panel" data-panel="pass">
+      <div class="act-stat" id="statPass"></div>
       <div class="calc">
         <div class="calc-ctrl">
           <div class="cl-top"><span>本月預計出席</span><b><em id="passN">16</em> 堂</b></div>
@@ -222,6 +252,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
     <!-- 3｜滿額裝備贈 -->
     <div class="pm-panel" data-panel="gear">
+      <div class="act-stat" id="statGear"></div>
       <div class="calc">
         <div class="calc-ctrl">
           <div class="cl-top"><span>這次購課金額</span><b>$<em id="gearN">10,000</em></b></div>
@@ -245,6 +276,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
     <!-- 4｜三大禮包 -->
     <div class="pm-panel" data-panel="packs">
+      <div class="act-stat" id="statPacks"></div>
       <div class="picker" id="packPick" role="tablist" aria-label="依目標選禮包"></div>
       <div class="act-out" id="packOut" aria-live="polite"></div>
       <p class="pm-fine">私教＋團課＋打靶一次配齊，比單買更省。※ 需具備 HCF 會員資格；打靶／團課／包月由櫃檯購買後開卡。依單筆結算，恕不與其他優惠合併。</p>
@@ -265,12 +297,39 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   });});
 
   var esc=function(x){return String(x).replace(/[<>&]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;'}[c];});};
+  var num=function(s){return +String(s).replace(/[^0-9.]/g,'');};
+  var pctOff=function(o,p){o=num(o);p=num(p);return o>p?Math.round((o-p)/o*100):0;};
+
+  /* ---- 消費心理層：請填真實數字（名額／參加人數）---- */
+  var STATS={cap:10,left:3,rookieJoined:37,passActive:128,gearRedeem:52,packsSold:21};
+
+  // 稀缺名額 + 進度條
+  var uLeft=document.getElementById('uLeft'),uBar=document.getElementById('uBar');
+  if(uLeft){uLeft.textContent=STATS.left;uBar.style.width=Math.max(4,Math.round((STATS.cap-STATS.left)/STATS.cap*100))+'%';}
+
+  // 本月倒數（到月底）
+  var uD=document.getElementById('uD'),uT=document.getElementById('uT');
+  if(uD&&uT){
+    var pad=function(n){return(n<10?'0':'')+n;};
+    (function tick(){
+      var now=new Date(),end=new Date(now.getFullYear(),now.getMonth()+1,1),ms=Math.max(0,end-now);
+      var d=Math.floor(ms/864e5);ms-=d*864e5;var h=Math.floor(ms/36e5);ms-=h*36e5;var m=Math.floor(ms/6e4);ms-=m*6e4;var s=Math.floor(ms/1e3);
+      uD.textContent=d;uT.textContent=pad(h)+':'+pad(m)+':'+pad(s);setTimeout(tick,1000);
+    })();
+  }
+
+  // 各活動熱度（社會證明）
+  function setStat(id,items){var el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(function(it){return '<span'+(it[1]?' class="hot"':'')+'>'+it[0]+'</span>';}).join('');}
+  setStat('statRookie',[['🔥 本月已 <b>'+STATS.rookieJoined+'</b> 人預約首堂',0],['⚡ 僅剩 <b>'+STATS.left+'</b> 名，額滿為止',1]]);
+  setStat('statPass',[['🎟️ <b>'+STATS.passActive+'</b> 位會員啟用通行證',0],['本月最多人參加',1]]);
+  setStat('statGear',[['🎁 本月已 <b>'+STATS.gearRedeem+'</b> 筆滿額兌換',0],['裝備數量有限，換完為止',1]]);
+  setStat('statPacks',[['📦 本月已售出 <b>'+STATS.packsSold+'</b> 組',0],['🏆 新手啟動包最搶手',1]]);
 
   /* ---- 1｜新生體驗 ---- */
   var ROOKIE=[
-    {short:'團課首堂 · $400',nm:'團體課程・首堂體驗',tag:'最熱門',price:'$400',old:'$600',save:'體驗價',who:'完全新手、想先感受場館氣氛與強度',inc:['60 分鐘團體課，專業教練全程帶練','拳套、手綁帶等器材館內免費使用','當天報到即可開始，零基礎沒問題'],cta:'立即預約首堂 →',href:'booking.html'},
-    {short:'私教 1 堂 · $1,400',nm:'私人教練・1 堂',price:'$1,400',who:'想要一對一被盯動作、目標很明確',inc:['專屬訓練菜單，依你的目標設計','技術與體態即時診斷、一對一修正','時段彈性，配合你的行程'],cta:'預約私教體驗 →',href:'booking.html'},
-    {short:'私教 2 堂 · $2,400',nm:'私人教練・2 堂',price:'$2,400',sub:'平均 $1,200 / 堂',who:'想扎實入門、連續兩堂打好基礎',inc:['連續兩堂深度矯正，動作一次到位','完整動作建檔，看得見進步','個人化進度規劃，銜接後續課程'],cta:'預約私教體驗 →',href:'booking.html'}
+    {short:'團課首堂 · $400',nm:'團體課程・首堂體驗',tag:'最熱門',price:'$400',old:'$600',save:'體驗價',who:'完全新手、想先感受場館氣氛與強度',anchor:'比原價現省 $200，本月限量 10 名、額滿不補',inc:['60 分鐘團體課，專業教練全程帶練','拳套、手綁帶等器材館內免費使用','當天報到即可開始，零基礎沒問題'],cta:'立即預約首堂 →',href:'booking.html'},
+    {short:'私教 1 堂 · $1,400',nm:'私人教練・1 堂',price:'$1,400',who:'想要一對一被盯動作、目標很明確',anchor:'先用一堂試水溫，滿意再升套組最高省 $4,700',inc:['專屬訓練菜單，依你的目標設計','技術與體態即時診斷、一對一修正','時段彈性，配合你的行程'],cta:'預約私教體驗 →',href:'booking.html'},
+    {short:'私教 2 堂 · $2,400',nm:'私人教練・2 堂',price:'$2,400',sub:'平均 $1,200 / 堂',who:'想扎實入門、連續兩堂打好基礎',anchor:'兩堂 $2,400、平均一堂 $1,200，比單買兩堂省 $400',inc:['連續兩堂深度矯正，動作一次到位','完整動作建檔，看得見進步','個人化進度規劃，銜接後續課程'],cta:'預約私教體驗 →',href:'booking.html'}
   ];
   var rp=document.getElementById('rookiePick'),ro=document.getElementById('rookieOut');
   if(rp&&ro){
@@ -280,8 +339,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     }).join('');
     function rookie(i){
       var d=ROOKIE[i];
-      var pz='<div class="ao-pz"><em>'+esc(d.price)+'</em>'+(d.old?'<s>原價 '+esc(d.old)+'</s>':'')+(d.save?'<span class="save">'+esc(d.save)+'</span>':'')+'</div>'+(d.sub?'<div class="ao-sub">'+esc(d.sub)+'</div>':'');
+      var off=d.old?pctOff(d.old,d.price):0;
+      var pz='<div class="ao-pz"><em>'+esc(d.price)+'</em>'+(d.old?'<s>原價 '+esc(d.old)+'</s>':'')+(d.save?'<span class="save">'+esc(d.save)+'</span>':'')+(off?'<span class="ao-off">'+off+'% OFF</span>':'')+'</div>'+(d.sub?'<div class="ao-sub">'+esc(d.sub)+'</div>':'');
       ro.innerHTML='<div class="ao-nm">'+esc(d.nm)+(d.tag?'<span class="ao-tag">'+esc(d.tag)+'</span>':'')+'</div>'+pz
+        +(d.anchor?'<div class="ao-anchor">'+esc(d.anchor)+'</div>':'')
         +'<div class="ao-meta"><b>適合</b>：'+esc(d.who)+'</div>'
         +'<ul class="ao-inc">'+d.inc.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'
         +'<a class="ao-cta" href="'+d.href+'">'+esc(d.cta)+'</a>';
@@ -337,8 +398,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     }).join('');
     function pack(i){
       var d=PACKS[i];
+      var off=pctOff(d.old,d.price);
       ko.innerHTML='<div class="ao-nm">'+esc(d.nm)+'</div>'
-        +'<div class="ao-pz"><s>原價 '+esc(d.old)+'</s><em>'+esc(d.price)+'</em><span class="save">'+esc(d.save)+'</span></div>'
+        +'<div class="ao-pz"><s>原價 '+esc(d.old)+'</s><em>'+esc(d.price)+'</em><span class="save">'+esc(d.save)+'</span>'+(off?'<span class="ao-off">'+off+'% OFF</span>':'')+'</div>'
+        +'<div class="ao-anchor"><span class="thru">單項原價合計 '+esc(d.old)+'</span>打包立省 $'+(num(d.old)-num(d.price)).toLocaleString()+'</div>'
         +'<ul class="ao-inc">'+d.inc.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'
         +'<span class="ao-lim">'+esc(d.lim)+'</span><br>'
         +'<a class="ao-cta" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加 LINE 洽詢開卡 →</a>';
