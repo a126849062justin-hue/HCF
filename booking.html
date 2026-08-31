@@ -324,9 +324,9 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
       <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
     <h2>預約已送出</h2>
-    <p>教練會在營業時間內用 LINE 跟你確認時段。<br>加官方 LINE 可以更快收到回覆。</p>
+    <p>正在帶你到官方 LINE，跟教練確認時段更快 👊<br>沒有自動跳轉的話，點下面按鈕。</p>
 
-    <a class="line-btn" href="https://line.me/R/ti/p/@hc.combat2022" target="_blank" rel="noopener">加官方 LINE ＠hc.combat2022</a>
+    <a class="line-btn" href="https://line.me/R/ti/p/@hc.combat2022" rel="noopener">加官方 LINE ＠hc.combat2022</a>
     <a class="map-btn" href="https://maps.google.com/?q=新竹市北區台溪里林森路301號2樓" target="_blank" rel="noopener">新竹市北區台溪里林森路 301 號 2 樓</a>
 
     <div class="card">
@@ -456,6 +456,7 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
       payload._captcha = 'false';
       fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
         method:'POST',
+        keepalive:true,
         headers:{'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify(payload)
       }).catch(function(){});
@@ -468,6 +469,7 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
   btnP.addEventListener('click', function(){ if (cur > 1) { cur--; paint(); } });
 
   var doneShown = false;
+  var LINE_URL = 'https://line.me/R/ti/p/@hc.combat2022'; // 官方 LINE，可改
   function showDone(){
     if (doneShown) return; doneShown = true;
     document.getElementById('formWrap').style.display = 'none';
@@ -475,6 +477,8 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
     document.getElementById('navBar').style.display   = 'none';
     document.getElementById('done').classList.add('on');
     window.scrollTo({top:0});
+    // 送出後自動跳轉官方 LINE（留一點時間讓表單與備援信送出）
+    setTimeout(function(){ window.location.href = LINE_URL; }, 1400);
   }
   document.getElementById('gfTarget').addEventListener('load', function(){
     if (submitted) showDone();
