@@ -143,14 +143,14 @@ legend{font-weight:900;padding:0 8px}
     </div>
 
     <div class="panel">
-      <h3>每月公告（最新資訊頁）</h3>
+      <h3>場館公告（最新活動頁）</h3>
       <p class="hint">每一則＝一個區塊；內容一行一個項目符號。</p>
       <div id="newsEditor" style="margin-top:12px"></div>
       <div class="toolbar"><button class="btn line" id="addNews">＋ 新增一則</button><button class="btn" id="saveNews">儲存公告</button><span id="newsMsg" class="ok"></span></div>
     </div>
 
     <div class="panel">
-      <h3>價格（課程方案頁＋最新資訊補給箱）</h3>
+      <h3>價格（課程方案頁＋最新活動新生體驗）</h3>
       <p class="hint">只改數字，版面不動。留空＝維持網頁原價。</p>
       <div id="priceEditor" style="margin-top:12px"></div>
       <div class="toolbar"><button class="btn" id="savePrice">儲存價格</button><span id="priceMsg" class="ok"></span></div>
@@ -354,7 +354,7 @@ const PRICE_KEYS=[
  ['一對一私人課',[['p11_t1','體驗 1 堂'],['p11_t2','體驗 2 堂'],['p11_1','單堂'],['p11_10','10 堂'],['p11_20','20 堂'],['p11_30','30 堂']]],
  ['一對二私人課',[['p12_t1','體驗 1 堂'],['p12_10','10 堂'],['p12_20','20 堂']]],
  ['私人打靶課',[['pad_1','單堂'],['pad_10','10 堂']]],
- ['最新資訊・新生補給箱',[['kit_group','團體課體驗'],['kit_p1','私人教練 1 堂'],['kit_p2','私人教練 2 堂']]]
+ ['最新活動・新生體驗',[['kit_group','團體課體驗'],['kit_p1','私人教練 1 堂'],['kit_p2','私人教練 2 堂']]]
 ];
 let PRICE={};
 function renderPrice(){

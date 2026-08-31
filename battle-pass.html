@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCF 戰鬥通行證 S1 賽季 ｜ 團體課出席挑戰賽</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="hcf.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#C81015',
+                        brandRedDark: '#991B1B',
+                        brandRedLight: '#FFF1F2',
+                        brandGold: '#D4AF37',
+                        brandGoldLight: '#FEF3C7',
+                        brandBlack: '#0B0F19',
+                        brandDark: '#020617',
+                        brandGray: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                        display: ['Syncopate', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- LINE Front-end Framework (LIFF) SDK -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <!-- Canvas Confetti for Celebration Effects -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Syncopate:wght@700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #0B0F19;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+
+        /* Carbon Dark Mesh Background */
+        .carbon-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Apple Vision Pro Luxe Glassmorphism */
+        .avp-glass {
+            background: rgba(18, 24, 38, 0.65);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .avp-glass-red {
+            background: linear-gradient(135deg, rgba(200, 16, 21, 0.15), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(200, 16, 21, 0.4);
+            box-shadow: 0 15px 35px rgba(200, 16, 21, 0.2);
+        }
+
+        .avp-glass-gold {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Animated Striped Progress Bar */
+        .progress-striped {
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+            background-size: 1.25rem 1.25rem;
+            animation: moveStripes 1.2s linear infinite;
+        }
+
+        @keyframes moveStripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 1.25rem 0; }
+        }
+
+        /* Shimmering CTA Glow Sweep */
+        @keyframes glowSweep {
+            0% { transform: translateX(-100%) skewX(-25deg); }
+            50% { transform: translateX(200%) skewX(-25deg); }
+            100% { transform: translateX(200%) skewX(-25deg); }
+        }
+        .glow-sweep {
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-sweep::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%) skewX(-25deg);
+            animation: glowSweep 3.5s infinite ease-in-out;
+        }
+
+        /* 3D Perspective Card Tilt Container */
+        .card-perspective {
+            perspective: 1000px;
+        }
+        .tilt-card {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease;
+            transform-style: preserve-3d;
+        }
+        .tilt-card:hover {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        /* Stamp Card Animations */
+        .stamp-slot {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .stamp-slot.stamped {
+            background: linear-gradient(135deg, #C81015, #830B0E);
+            border-color: #FDA4AF;
+            box-shadow: 0 0 15px rgba(200, 16, 21, 0.6);
+            transform: scale(0.96);
+        }
+
+        /* 3D Coach Flip Card */
+        .coach-card-inner {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .coach-card.flipped .coach-card-inner {
+            transform: rotateY(180deg);
+        }
+        .coach-front, .coach-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .coach-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Rotating Official Seal Animation */
+        @keyframes rotateSeal {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .seal-rotate {
+            animation: rotateSeal 20s linear infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C81015;
+        }
+    </style>
+</head>
+<body data-page="battle-pass" class="carbon-grid select-none antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- TOP ANNOUNCEMENT BANNER -->
+    <aside aria-label="S1 賽季重要通知" class="bg-gradient-to-r from-brandRed via-red-600 to-brandRed text-white text-xs font-bold py-2.5 px-4 text-center tracking-wide flex items-center justify-center space-x-2 shadow-lg relative z-50">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+        <span>【S1 賽季正式開打】當月出席累積達標，次月續約最高現折 <strong class="text-brandGoldLight font-black tracking-wider text-sm">$1,500 回饋</strong> 🔥</span>
+        <a href="#simulator" class="underline hover:text-brandGoldLight font-extrabold ml-2">立即試算 ➔</a>
+    </aside>
+
+    <!-- 官網統一導覽 -->
+    <header class="nav" id="nav"></header>
+
+    <!-- MAIN HERO SECTION WITH 3D INTERACTIVE PASS MEDALLION -->
+    <main class="flex-grow">
+        <section class="relative pt-10 pb-20 overflow-hidden">
+            <!-- Ambient Lighting Glows -->
+            <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-brandRed/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+            <div class="absolute top-1/2 right-10 w-[24rem] h-[24rem] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Badge Tag -->
+                        <div class="inline-flex items-center space-x-2.5 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full shadow-inner">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brandRed animate-pulse"></span>
+                            <span class="text-xs font-black tracking-widest text-slate-200 uppercase font-mono">━━ HCF 戰鬥通行證・S1 賽季 ━━</span>
+                        </div>
+
+                        <!-- Main Headings -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
+                            團體課出席挑戰賽<br>
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-brandRed via-rose-500 to-brandGold">
+                                當月自律出席，次月直接折現
+                            </span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+                            每一滴汗水都在為下個月的自己賺取續費分紅！當月累積上課出席達標，次月購買續費方案最高直接現折 <strong class="text-brandGold font-black text-xl">$1,500 元</strong>。
+                        </p>
+
+                        <!-- Key Pillars Grid (Metric Pills) -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
+                            <div class="p-3.5 avp-glass rounded-2xl text-center border-brandRed/30">
+                                <span class="block text-brandRed font-black text-xl sm:text-2xl font-mono">$1,500</span>
+                                <span class="text-[11px] text-slate-400 font-bold">最高次月折現</span>
+                            </div>
+                            <div class="p-3.5 avp-glass rounded-2xl text-center border-white/10">
+                                <span class="block text-white font-black text-xl sm:text-2xl font-mono">10 人滿班</span>
+                                <span class="text-[11px] text-slate-400 font-bold">3人開班・精緻教學</span>
+                            </div>
+                            <div class="p-3.5 avp-glass rounded-2xl text-center border-amber-500/30">
+                                <span class="block text-brandGold font-black text-xl sm:text-2xl font-mono">LINE 實名</span>
+                                <span class="text-[11px] text-slate-400 font-bold">櫃檯簽到蓋章核發</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Action Row -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#simulator" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brandRed to-red-700 hover:from-red-600 hover:to-red-800 text-white font-black rounded-2xl text-sm shadow-xl shadow-brandRed/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2 glow-sweep">
+                                <i class="fas fa-calculator text-base"></i>
+                                <span>立即試算我的折現金</span>
+                            </a>
+                            <a href="#stamp-card" class="w-full sm:w-auto px-7 py-4 avp-glass hover:bg-white/10 text-slate-200 font-bold rounded-2xl text-sm border border-white/15 transition-all flex items-center justify-center space-x-2">
+                                <i class="fas fa-stamp text-brandGold"></i>
+                                <span>24 格集點模擬器</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right 3D Interactive Medallion Canvas -->
+                    <div class="lg:col-span-5 relative flex justify-center items-center">
+                        <div class="relative w-full max-w-md aspect-square avp-glass rounded-3xl p-6 flex flex-col justify-between overflow-hidden border border-white/15">
+                            <!-- Pass Season Tag Header -->
+                            <div class="flex justify-between items-center z-10">
+                                <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400">HCF BATTLE PASS // S1</span>
+                                <span class="bg-brandGold/20 text-brandGold text-[10px] font-black px-3 py-1 rounded-full border border-brandGold/40 flex items-center gap-1.5">
+                                    <i class="fas fa-crown text-xs"></i> ACTIVE SEASON
+                                </span>
+                            </div>
+
+                            <!-- 3D Interactive Canvas -->
+                            <div class="relative flex-grow flex items-center justify-center my-2">
+                                <canvas id="passCanvas" class="w-full h-full cursor-grab active:cursor-grabbing rounded-2xl"></canvas>
+                                <div class="absolute bottom-1 text-[10px] font-mono text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-white/10 pointer-events-none flex items-center gap-1.5">
+                                    <i class="fas fa-arrows-rotate text-brandRed"></i>拖曳 360° 檢視 S1 戰鬥通行證勳章
+                                </div>
+                            </div>
+
+                            <!-- Pass Bottom Meta Info -->
+                            <div class="bg-slate-900/80 p-3.5 rounded-2xl border border-white/10 flex items-center justify-between z-10">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brandRed to-red-900 text-brandGold flex items-center justify-center font-black text-sm border border-red-500/30">
+                                        S1
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-black text-white">團體課出席挑戰賽</h4>
+                                        <p class="text-[10px] text-slate-400 font-mono">最高可折抵 $1,500 TWD</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-black text-brandGold bg-brandGold/10 px-2.5 py-1 rounded-lg border border-brandGold/30">Lv.1 - Lv.3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ATTENDANCE & CASHBACK SIMULATOR -->
+        <section id="simulator" class="py-20 bg-slate-950/60 border-y border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandRed font-mono bg-brandRed/10 border border-brandRed/30 px-3.5 py-1 rounded-full">
+                        INTERACTIVE CASHBACK CALCULATOR
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        出席試算器：拉動查看你的次月折現金
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        依據你預計的當月出席次數，系統實時試算次月購買續費方案可直接折抵的回饋金與解鎖階級！
+                    </p>
+                </div>
+
+                <!-- Simulator Interactive Bento Box -->
+                <div class="max-w-4xl mx-auto avp-glass rounded-3xl p-6 sm:p-10 border border-white/15 space-y-8">
+                    
+                    <!-- Slider Controller -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <label for="attendanceSlider" class="text-xs font-bold text-slate-400 uppercase tracking-wider block">當月預計出席堂數</label>
+                                <span class="text-4xl sm:text-6xl font-black text-white font-mono tracking-tight" id="sliderDisplayCount">16</span>
+                                <span class="text-sm font-bold text-slate-400 ml-1 font-mono">堂 / 月</span>
+                            </div>
+                            <!-- Current Tier Badge -->
+                            <div id="activeTierBadge" class="px-4 py-2 bg-brandRed/20 text-rose-300 rounded-2xl border border-brandRed/40 font-black text-xs sm:text-sm flex items-center space-x-2">
+                                <i class="fas fa-shield-halved"></i>
+                                <span id="activeTierName">Lv.2 菁英加碼 (折 $1,000)</span>
+                            </div>
+                        </div>
+
+                        <!-- Range Input -->
+                        <div class="relative pt-2">
+                            <input type="range" id="attendanceSlider" min="0" max="28" value="16" step="1" 
+                                   class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brandRed focus:outline-none transition-all">
+                            
+                            <!-- Milestone Markers along slider -->
+                            <div class="flex justify-between text-[11px] font-bold text-slate-400 font-mono pt-3 px-1">
+                                <span class="cursor-pointer hover:text-white transition-colors" onclick="setSliderValue(0)">0 堂</span>
+                                <span class="cursor-pointer hover:text-rose-400 transition-colors" onclick="setSliderValue(8)">8 堂 (Lv.1 $500)</span>
+                                <span class="cursor-pointer hover:text-rose-400 transition-colors" onclick="setSliderValue(16)">16 堂 (Lv.2 $1,000)</span>
+                                <span class="cursor-pointer hover:text-brandGold transition-colors" onclick="setSliderValue(24)">24 堂 (Lv.3 $1,500)</span>
+                                <span class="cursor-pointer hover:text-white transition-colors" onclick="setSliderValue(28)">28+ 堂</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Battle Pass XP Bar -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-bold text-slate-300">
+                            <span>S1 戰鬥通行證累積進度</span>
+                            <span id="nextTierHint" class="text-brandGold font-bold font-mono">距離 Lv.3 傳奇分紅 (折 $1,500) 還差 8 堂</span>
+                        </div>
+                        <div class="w-full h-5 bg-slate-900 rounded-full p-1 border border-white/10 relative overflow-hidden">
+                            <div id="battlePassBar" class="h-full bg-gradient-to-r from-brandRed via-rose-600 to-brandGold rounded-full progress-striped transition-all duration-300" style="width: 57%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Output Metrics 3-Card Bento -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <!-- Total Cashback -->
+                        <div class="p-5 bg-gradient-to-br from-brandRed/25 to-slate-900/90 rounded-2xl border border-brandRed/40 text-center">
+                            <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">次月續費直接折抵</span>
+                            <div class="text-3xl sm:text-5xl font-black text-brandGold font-mono my-1.5" id="cashbackAmount">
+                                $1,000
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-medium">次月購買方案櫃檯直接折抵</span>
+                        </div>
+
+                        <!-- Weekly Frequency -->
+                        <div class="p-5 bg-slate-900/70 rounded-2xl border border-white/10 text-center">
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">平均每週運動頻率</span>
+                            <div class="text-3xl sm:text-4xl font-black text-white font-mono my-2" id="weeklyFrequency">
+                                4 堂 / 週
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-medium" id="frequencyDesc">高強度體態蛻變節奏</span>
+                        </div>
+
+                        <!-- Reward Status -->
+                        <div class="p-5 bg-slate-900/70 rounded-2xl border border-white/10 text-center flex flex-col justify-between">
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">當前解鎖階段</span>
+                            <div class="text-lg font-black text-white my-1" id="tierUnlockedTitle">
+                                Lv.2 菁英加碼
+                            </div>
+                            <button onclick="copyGoalToClipboard()" class="text-[11px] bg-white/10 hover:bg-white/20 text-slate-200 font-bold py-2 px-3 rounded-xl border border-white/15 transition-all flex items-center justify-center gap-1.5">
+                                <i class="fas fa-copy text-brandGold"></i>複製我的本月目標
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTIVE 24-SLOT LINE STAMP CARD SIMULATOR -->
+        <section id="stamp-card" class="py-20 bg-slate-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandGold font-mono bg-brandGold/10 border border-brandGold/30 px-3.5 py-1 rounded-full">
+                        DIGITAL STAMP CARD SIMULATOR
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        24 格 LINE 數位集點卡模擬器
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        點擊下方格子模擬下課後於櫃檯出示 LINE 集點蓋章核發過程，即刻親身體驗達標里程碑！
+                    </p>
+                </div>
+
+                <!-- Digital Stamp Card Board -->
+                <div class="max-w-4xl mx-auto avp-glass rounded-3xl p-6 sm:p-10 border border-white/15 space-y-8">
+                    
+                    <!-- Card Top Header -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-white/10">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-2xl bg-[#06C755] flex items-center justify-center text-white text-2xl shadow-lg shadow-green-500/20">
+                                <i class="fab fa-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-white">HCF 官方 LINE 數位集點卡</h3>
+                                <p class="text-xs text-slate-400">實到簽到核發・每堂出席蓋章 1 點</p>
+                            </div>
+                        </div>
+
+                        <!-- Fast Fill / Reset Controls -->
+                        <div class="flex items-center space-x-2">
+                            <button onclick="fillStamps(8)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 rounded-lg border border-white/10 transition-colors">
+                                +8 堂 (Lv.1)
+                            </button>
+                            <button onclick="fillStamps(16)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 rounded-lg border border-white/10 transition-colors">
+                                +16 堂 (Lv.2)
+                            </button>
+                            <button onclick="fillStamps(24)" class="px-3 py-1.5 bg-brandGold/20 hover:bg-brandGold/30 text-xs font-bold text-brandGold rounded-lg border border-brandGold/40 transition-colors">
+                                +24 堂 (Lv.3)
+                            </button>
+                            <button onclick="fillStamps(0)" class="px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 text-xs font-bold text-rose-300 rounded-lg border border-red-500/30 transition-colors">
+                                重設
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 24-Stamp Grid (4 rows x 6 cols on desktop) -->
+                    <div class="grid grid-cols-4 sm:grid-cols-6 gap-3 sm:gap-4" id="stampGrid">
+                        <!-- 24 slots generated via JavaScript -->
+                    </div>
+
+                    <!-- Milestone Badges Below Stamp Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-xl bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs font-mono">
+                                08
+                            </div>
+                            <div class="text-xs">
+                                <span class="font-bold text-white block">第 8 堂解鎖</span>
+                                <span class="text-rose-400 font-mono font-bold">$500 (Lv.1 戰士)</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-brandRed/30 flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-xl bg-brandRed text-white flex items-center justify-center font-bold text-xs font-mono">
+                                16
+                            </div>
+                            <div class="text-xs">
+                                <span class="font-bold text-white block">第 16 堂解鎖</span>
+                                <span class="text-rose-400 font-mono font-bold">$1,000 (Lv.2 菁英)</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-brandGold/30 flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-xs font-mono">
+                                24
+                            </div>
+                            <div class="text-xs">
+                                <span class="font-bold text-white block">第 24 堂解鎖</span>
+                                <span class="text-brandGold font-mono font-bold">$1,500 (Lv.3 傳奇)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3.5: LIVE WEEKLY SCHEDULE & 22:00 CUTOFF COUNTDOWN -->
+        <section id="schedule" class="py-20 bg-slate-950/80 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                
+                <!-- Schedule Header & Live 22:00 Cutoff Clock -->
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 pb-6 border-b border-white/10">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center space-x-2 bg-brandRed/10 border border-brandRed/30 text-rose-300 px-3.5 py-1 rounded-full text-xs font-mono font-bold">
+                            <span class="w-2 h-2 rounded-full bg-brandRed animate-ping"></span>
+                            <span>LIVE ARENA SCHEDULE</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white">本週團體課即時開班課表</h2>
+                        <p class="text-sm text-slate-400">10 人精緻滿班制・3 人即刻成班・實名線上預約即時佔位</p>
+                    </div>
+
+                    <!-- Cutoff Countdown Bento Box -->
+                    <div class="avp-glass p-4 sm:p-5 rounded-2xl border border-brandGold/30 flex items-center space-x-4 bg-slate-900/90 shadow-lg shadow-amber-500/10">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 text-slate-950 flex items-center justify-center text-xl font-black shadow-md">
+                            <i class="fas fa-hourglass-half animate-spin" style="animation-duration: 8s;"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs font-bold text-slate-300">
+                                <span>今日預約截單倒數</span>
+                                <span class="text-brandGold font-mono text-[10px] bg-brandGold/10 px-2 py-0.5 rounded border border-brandGold/30">前一天 22:00 截單</span>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-black font-mono text-brandGold tracking-tight" id="cutoffCountdown">
+                                00 : 00 : 00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day Selector Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="scheduleDayTabs">
+                    <button onclick="switchScheduleDay('MON')" class="sched-tab active px-5 py-2.5 rounded-xl text-xs font-black transition-all bg-brandRed text-white shadow-lg shadow-brandRed/30 flex-shrink-0">週一 (MON)</button>
+                    <button onclick="switchScheduleDay('TUE')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週二 (TUE)</button>
+                    <button onclick="switchScheduleDay('WED')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週三 (WED)</button>
+                    <button onclick="switchScheduleDay('THU')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週四 (THU)</button>
+                    <button onclick="switchScheduleDay('FRI')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週五 (FRI)</button>
+                    <button onclick="switchScheduleDay('SAT')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週六 (SAT)</button>
+                    <button onclick="switchScheduleDay('SUN')" class="sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10">週日 (SUN)</button>
+                </div>
+
+                <!-- Live Dynamic Course Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="scheduleCardGrid">
+                    <!-- Cards populated via JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3.6: S1 HALL OF FAME & ATTENDANCE LEADERBOARD -->
+        <section id="leaderboard" class="py-20 bg-slate-900/50 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandGold font-mono bg-brandGold/10 border border-brandGold/30 px-3.5 py-1 rounded-full">
+                        SEASON 1 HALL OF FAME
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        S1 賽季出勤英雄榜
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        致敬每位堅持自律的戰士！累計堂數即時連線，角逐當月 S1 傳奇霸主榮譽。
+                    </p>
+                </div>
+
+                <!-- Top 3 Podium Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end pt-6">
+                    
+                    <!-- Rank 2: Silver -->
+                    <div class="avp-glass rounded-3xl p-6 border border-slate-300/30 text-center relative overflow-hidden order-2 md:order-1">
+                        <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-200 text-slate-900 font-black text-xl flex items-center justify-center shadow-lg font-mono mb-3">
+                            2
+                        </div>
+                        <img src="https://placehold.co/100x100/334155/ffffff?text=Ken.T" alt="Ken" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 p-1 mb-2">
+                        <h4 class="font-extrabold text-white text-base">Ken Tseng</h4>
+                        <span class="text-xs font-mono text-slate-400">踢拳・連續達標 5 週 🔥</span>
+                        <div class="mt-4 py-2.5 bg-white/5 rounded-xl border border-white/10 flex justify-around font-mono">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-sans">當月累計</span>
+                                <span class="text-lg font-black text-white">22 堂</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-sans">次月折抵</span>
+                                <span class="text-lg font-black text-brandGold">$1,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rank 1: Gold Champion -->
+                    <div class="avp-glass-gold rounded-3xl p-8 border-2 border-brandGold text-center relative overflow-hidden order-1 md:order-2 md:-translate-y-4 shadow-2xl">
+                        <div class="absolute top-0 right-0 bg-brandGold text-slate-950 font-black text-[10px] px-4 py-1 rounded-bl-2xl font-mono">
+                            👑 CURRENT LEADER
+                        </div>
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 text-slate-950 font-black text-2xl flex items-center justify-center shadow-xl shadow-amber-500/30 font-mono mb-3">
+                            1
+                        </div>
+                        <img src="https://placehold.co/120x120/D4AF37/0B0F19?text=Marcus" alt="Marcus" class="w-20 h-20 rounded-full mx-auto border-4 border-brandGold p-1 mb-2">
+                        <h4 class="font-black text-white text-lg flex items-center justify-center gap-1.5">
+                            <span>Marcus Lin</span>
+                            <i class="fas fa-crown text-brandGold text-sm"></i>
+                        </h4>
+                        <span class="text-xs font-mono text-brandGoldLight font-bold">泰拳・連續全勤 8 週 🔥🔥🔥</span>
+                        <div class="mt-4 py-3 bg-slate-950/80 rounded-xl border border-brandGold/30 flex justify-around font-mono">
+                            <div>
+                                <span class="text-[10px] text-slate-300 block font-sans">當月累計</span>
+                                <span class="text-2xl font-black text-brandGold">26 堂</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-300 block font-sans">次月折抵</span>
+                                <span class="text-2xl font-black text-brandGold">$1,500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rank 3: Bronze -->
+                    <div class="avp-glass rounded-3xl p-6 border border-amber-700/30 text-center relative overflow-hidden order-3">
+                        <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-800 text-amber-100 font-black text-xl flex items-center justify-center shadow-lg font-mono mb-3">
+                            3
+                        </div>
+                        <img src="https://placehold.co/100x100/78350f/ffffff?text=Sarah" alt="Sarah" class="w-16 h-16 rounded-full mx-auto border-2 border-amber-700 p-1 mb-2">
+                        <h4 class="font-extrabold text-white text-base">Sarah Chen</h4>
+                        <span class="text-xs font-mono text-slate-400">格鬥體能・連續達標 4 週 🔥</span>
+                        <div class="mt-4 py-2.5 bg-white/5 rounded-xl border border-white/10 flex justify-around font-mono">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-sans">當月累計</span>
+                                <span class="text-lg font-black text-white">20 堂</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-sans">次月折抵</span>
+                                <span class="text-lg font-black text-brandGold">$1,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Leaderboard Table (Ranks 4-8 + My Rank Bar) -->
+                <div class="avp-glass rounded-3xl p-6 border border-white/15 space-y-3">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-400 px-4 pb-2 border-b border-white/10">
+                        <span>排名 / 戰士學員</span>
+                        <div class="flex gap-8 font-mono">
+                            <span>出勤堂數</span>
+                            <span>目前折抵</span>
+                            <span class="hidden sm:inline">通行證段位</span>
+                        </div>
+                    </div>
+
+                    <!-- Rank 4 -->
+                    <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/60 hover:bg-white/5 transition-colors text-xs">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono font-black text-slate-400 w-5">04</span>
+                            <img src="https://placehold.co/60x60/1e293b/ffffff?text=E" class="w-8 h-8 rounded-full border border-white/10">
+                            <div>
+                                <span class="font-bold text-white block">Eric Wang</span>
+                                <span class="text-[10px] text-slate-400">踢拳進階班</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-8 font-mono">
+                            <span class="font-bold text-white">18 堂</span>
+                            <span class="font-bold text-rose-400">$1,000</span>
+                            <span class="hidden sm:inline px-2 py-0.5 rounded bg-brandRed/20 text-rose-300 text-[10px] font-bold">Lv.2 菁英</span>
+                        </div>
+                    </div>
+
+                    <!-- Rank 5 -->
+                    <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/60 hover:bg-white/5 transition-colors text-xs">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono font-black text-slate-400 w-5">05</span>
+                            <img src="https://placehold.co/60x60/1e293b/ffffff?text=A" class="w-8 h-8 rounded-full border border-white/10">
+                            <div>
+                                <span class="font-bold text-white block">Amber Liu</span>
+                                <span class="text-[10px] text-slate-400">泰拳打擊專班</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-8 font-mono">
+                            <span class="font-bold text-white">16 堂</span>
+                            <span class="font-bold text-rose-400">$1,000</span>
+                            <span class="hidden sm:inline px-2 py-0.5 rounded bg-brandRed/20 text-rose-300 text-[10px] font-bold">Lv.2 菁英</span>
+                        </div>
+                    </div>
+
+                    <!-- Rank 6 -->
+                    <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/60 hover:bg-white/5 transition-colors text-xs">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono font-black text-slate-400 w-5">06</span>
+                            <img src="https://placehold.co/60x60/1e293b/ffffff?text=D" class="w-8 h-8 rounded-full border border-white/10">
+                            <div>
+                                <span class="font-bold text-white block">David Chang</span>
+                                <span class="text-[10px] text-slate-400">格鬥爆汗燃脂</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-8 font-mono">
+                            <span class="font-bold text-white">12 堂</span>
+                            <span class="font-bold text-slate-300">$500</span>
+                            <span class="hidden sm:inline px-2 py-0.5 rounded bg-white/10 text-slate-300 text-[10px] font-bold">Lv.1 戰士</span>
+                        </div>
+                    </div>
+
+                    <!-- My Rank Real-time Highlight Bar -->
+                    <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-brandRed/30 via-slate-900 to-slate-900 border border-brandRed/50 flex justify-between items-center text-xs">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono font-black text-brandGold text-sm">#14</span>
+                            <div class="w-9 h-9 rounded-full bg-brandRed flex items-center justify-center font-bold text-white text-xs">
+                                我
+                            </div>
+                            <div>
+                                <span class="font-black text-white block flex items-center gap-1.5">
+                                    <span id="lbMyName">您目前的模擬進度</span>
+                                    <span class="bg-brandRed text-white text-[9px] px-1.5 py-0.2 rounded font-mono font-bold">LIVE</span>
+                                </span>
+                                <span class="text-[10px] text-slate-400">再累積 2 堂即可超越上位戰士！</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 sm:gap-8 font-mono">
+                            <span class="font-black text-white text-sm" id="lbMyStamps">16 堂</span>
+                            <span class="font-black text-brandGold text-sm" id="lbMyCashback">$1,000</span>
+                            <button onclick="setSliderAndScroll(24)" class="px-3 py-1.5 bg-brandGold text-slate-950 font-black rounded-lg text-[10px] hover:scale-105 transition-all">
+                                衝擊 Lv.3
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3.7: HEAD COACH 3D SIGNATURE CERTIFICATION WALL -->
+        <section id="coaches" class="py-20 bg-slate-950/80 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandRed font-mono bg-brandRed/10 border border-brandRed/30 px-3.5 py-1 rounded-full">
+                        HEAD COACH VERIFICATION
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        主教練簽名審查與官方認證印章
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        點擊教練卡片可 360° 翻轉檢視國家級賽事認證、打擊專精與 S1 賽季核發防偽鋼印。
+                    </p>
+                </div>
+
+                <!-- 3 Coach Flip Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Coach 1: Alex -->
+                    <div class="coach-card card-perspective h-[420px] cursor-pointer" onclick="toggleCoachCard(this)">
+                        <div class="coach-card-inner relative w-full h-full">
+                            <!-- Front -->
+                            <div class="coach-front absolute inset-0 avp-glass rounded-3xl p-6 border border-white/15 flex flex-col justify-between overflow-hidden">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-mono font-bold text-rose-400 bg-brandRed/20 px-2.5 py-1 rounded-full border border-brandRed/30">HEAD COACH</span>
+                                        <span class="text-[11px] text-slate-400 font-mono"><i class="fas fa-rotate mr-1"></i>點擊翻轉</span>
+                                    </div>
+                                    <img src="https://placehold.co/300x300/1e293b/ffffff?text=Coach+Alex" alt="Coach Alex" class="w-28 h-28 rounded-2xl mx-auto border-2 border-brandRed/40 object-cover shadow-lg">
+                                    <div class="text-center">
+                                        <h3 class="text-xl font-black text-white">Alex Chen 總教練</h3>
+                                        <p class="text-xs text-brandGold font-bold mt-0.5">WBC Muay Thai 認證裁判 / 職業踢拳 14 勝</p>
+                                    </div>
+                                    <p class="text-xs text-slate-300 text-center leading-relaxed">專精重擊爆發力輸出、精準打擊步法與防禦反擊節奏調教。</p>
+                                </div>
+                                <div class="text-center text-[11px] font-mono text-brandGold bg-brandGold/10 py-2 rounded-xl border border-brandGold/30 font-bold">
+                                    ★ S1 賽季出勤認證專員
+                                </div>
+                            </div>
+
+                            <!-- Back (Official Seal & Credentials) -->
+                            <div class="coach-back absolute inset-0 avp-glass-red rounded-3xl p-6 border border-brandRed flex flex-col justify-between">
+                                <div class="space-y-3 text-center">
+                                    <h4 class="text-base font-black text-white">HCF 官方裁判簽核驗證</h4>
+                                    <div class="relative w-28 h-28 mx-auto my-2 flex items-center justify-center">
+                                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-brandGold seal-rotate"></div>
+                                        <div class="text-center">
+                                            <i class="fas fa-certificate text-brandGold text-3xl mb-1"></i>
+                                            <span class="block text-[8px] font-mono font-black text-brandGold tracking-widest uppercase">HCF VERIFIED</span>
+                                        </div>
+                                    </div>
+                                    <ul class="text-xs text-slate-200 text-left space-y-2">
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> 全國泰拳錦標賽 71KG 冠軍</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> 累積執教時數逾 6,500+ 小時</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> S1 通行證出席審核主教官</li>
+                                    </ul>
+                                </div>
+                                <div class="text-center text-[10px] text-slate-400 font-mono">
+                                    VERIFICATION ID: HCF-S1-AC01
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coach 2: Ken -->
+                    <div class="coach-card card-perspective h-[420px] cursor-pointer" onclick="toggleCoachCard(this)">
+                        <div class="coach-card-inner relative w-full h-full">
+                            <!-- Front -->
+                            <div class="coach-front absolute inset-0 avp-glass rounded-3xl p-6 border border-white/15 flex flex-col justify-between overflow-hidden">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-mono font-bold text-amber-400 bg-amber-500/20 px-2.5 py-1 rounded-full border border-amber-500/30">SENIOR COACH</span>
+                                        <span class="text-[11px] text-slate-400 font-mono"><i class="fas fa-rotate mr-1"></i>點擊翻轉</span>
+                                    </div>
+                                    <img src="https://placehold.co/300x300/1e293b/ffffff?text=Coach+Ken" alt="Coach Ken" class="w-28 h-28 rounded-2xl mx-auto border-2 border-amber-500/40 object-cover shadow-lg">
+                                    <div class="text-center">
+                                        <h3 class="text-xl font-black text-white">Ken Tsao 踢拳主教練</h3>
+                                        <p class="text-xs text-brandGold font-bold mt-0.5">K-1 荷式踢拳專精 / 體能訓練官</p>
+                                    </div>
+                                    <p class="text-xs text-slate-300 text-center leading-relaxed">荷蘭踢拳連續組手打擊、高心率體能燃脂與新手安全打擊引導。</p>
+                                </div>
+                                <div class="text-center text-[11px] font-mono text-brandGold bg-brandGold/10 py-2 rounded-xl border border-brandGold/30 font-bold">
+                                    ★ S1 賽季出勤認證專員
+                                </div>
+                            </div>
+
+                            <!-- Back -->
+                            <div class="coach-back absolute inset-0 avp-glass-gold rounded-3xl p-6 border border-brandGold flex flex-col justify-between">
+                                <div class="space-y-3 text-center">
+                                    <h4 class="text-base font-black text-white">HCF 官方裁判簽核驗證</h4>
+                                    <div class="relative w-28 h-28 mx-auto my-2 flex items-center justify-center">
+                                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-amber-400 seal-rotate"></div>
+                                        <div class="text-center">
+                                            <i class="fas fa-award text-brandGold text-3xl mb-1"></i>
+                                            <span class="block text-[8px] font-mono font-black text-brandGold tracking-widest uppercase">K-1 CERTIFIED</span>
+                                        </div>
+                                    </div>
+                                    <ul class="text-xs text-slate-200 text-left space-y-2">
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> 國際 NSCA-CPT 肌力體能專家</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> 荷式踢拳高階教練研習認證</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-brandGold"></i> 精準動作矯正與受傷預防防護</li>
+                                    </ul>
+                                </div>
+                                <div class="text-center text-[10px] text-slate-400 font-mono">
+                                    VERIFICATION ID: HCF-S1-KT02
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coach 3: Maya -->
+                    <div class="coach-card card-perspective h-[420px] cursor-pointer" onclick="toggleCoachCard(this)">
+                        <div class="coach-card-inner relative w-full h-full">
+                            <!-- Front -->
+                            <div class="coach-front absolute inset-0 avp-glass rounded-3xl p-6 border border-white/15 flex flex-col justify-between overflow-hidden">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-mono font-bold text-rose-300 bg-rose-500/20 px-2.5 py-1 rounded-full border border-rose-500/30">ELITE COACH</span>
+                                        <span class="text-[11px] text-slate-400 font-mono"><i class="fas fa-rotate mr-1"></i>點擊翻轉</span>
+                                    </div>
+                                    <img src="https://placehold.co/300x300/1e293b/ffffff?text=Coach+Maya" alt="Coach Maya" class="w-28 h-28 rounded-2xl mx-auto border-2 border-rose-400/40 object-cover shadow-lg">
+                                    <div class="text-center">
+                                        <h3 class="text-xl font-black text-white">Maya Lin 女子體能專精</h3>
+                                        <p class="text-xs text-rose-300 font-bold mt-0.5">女子防身專攻 / 核心肌群暴燃</p>
+                                    </div>
+                                    <p class="text-xs text-slate-300 text-center leading-relaxed">擅長零基礎學員心肺提升、體態雕塑、敏捷協調性與實戰防身技巧。</p>
+                                </div>
+                                <div class="text-center text-[11px] font-mono text-brandGold bg-brandGold/10 py-2 rounded-xl border border-brandGold/30 font-bold">
+                                    ★ S1 賽季出勤認證專員
+                                </div>
+                            </div>
+
+                            <!-- Back -->
+                            <div class="coach-back absolute inset-0 avp-glass-red rounded-3xl p-6 border border-rose-500 flex flex-col justify-between">
+                                <div class="space-y-3 text-center">
+                                    <h4 class="text-base font-black text-white">HCF 官方裁判簽核驗證</h4>
+                                    <div class="relative w-28 h-28 mx-auto my-2 flex items-center justify-center">
+                                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-rose-300 seal-rotate"></div>
+                                        <div class="text-center">
+                                            <i class="fas fa-shield-heart text-rose-400 text-3xl mb-1"></i>
+                                            <span class="block text-[8px] font-mono font-black text-rose-300 tracking-widest uppercase">DEFENSE ELITE</span>
+                                        </div>
+                                    </div>
+                                    <ul class="text-xs text-slate-200 text-left space-y-2">
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-rose-400"></i> 全國大專盃拳擊金牌</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-rose-400"></i> 女子格鬥爆燃專案首席教練</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-rose-400"></i> 親切耐心指導・新手五星好評</li>
+                                    </ul>
+                                </div>
+                                <div class="text-center text-[10px] text-slate-400 font-mono">
+                                    VERIFICATION ID: HCF-S1-ML03
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: REWARD TIERS LADDER CARDS -->
+        <section id="tiers" class="py-20 bg-slate-950/60 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-slate-400 font-mono bg-white/5 border border-white/10 px-3.5 py-1 rounded-full shadow-sm">
+                        SEASON 1 REWARD TIERS
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        三階段位獎金分紅機制
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        累積階梯式加碼，門檻明確、不玩文字遊戲。達標次數以櫃檯出示 LINE 集點卡蓋章為準。
+                    </p>
+                </div>
+
+                <!-- 3 Ladder Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Level 1: Warrior -->
+                    <div class="card-perspective">
+                        <div class="tilt-card avp-glass rounded-3xl p-8 border border-white/10 hover:border-white/30 transition-all flex flex-col justify-between h-full group">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center font-black text-lg group-hover:bg-slate-700 transition-colors font-mono">
+                                        01
+                                    </div>
+                                    <span class="text-xs font-mono font-bold bg-white/10 text-slate-300 px-3 py-1 rounded-full">
+                                        入門門檻
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-black text-white">Lv.1 戰士獎金</h3>
+                                    <p class="text-xs text-slate-400 mt-1">建立每週穩定的泰拳/踢拳鍛鍊習慣</p>
+                                </div>
+
+                                <div class="py-4 border-y border-white/10 space-y-2 font-mono">
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-400 font-sans">當月累積出席</span>
+                                        <span class="text-2xl font-black text-white">08 堂</span>
+                                    </div>
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-400 font-sans">次月續費折現</span>
+                                        <span class="text-2xl font-black text-rose-400">$500</span>
+                                    </div>
+                                </div>
+
+                                <ul class="text-xs text-slate-300 space-y-2.5">
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-emerald-400"></i>
+                                        <span>平均每週僅需出席 2 堂</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-emerald-400"></i>
+                                        <span>新手戰士起步最佳首選</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-emerald-400"></i>
+                                        <span>次月續費櫃檯直接折抵</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="setSliderAndScroll(8)" class="w-full mt-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-xs transition-colors">
+                                設定為此目標 (8堂)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Elite (Featured) -->
+                    <div class="card-perspective">
+                        <div class="tilt-card avp-glass-red rounded-3xl p-8 border-2 border-brandRed shadow-2xl transition-all flex flex-col justify-between h-full transform md:-translate-y-2 relative overflow-hidden">
+                            <!-- Popular Tag -->
+                            <div class="absolute top-0 right-0 bg-brandRed text-white text-[10px] font-black px-4 py-1 rounded-bl-2xl tracking-wider font-mono">
+                                MOST POPULAR
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="w-12 h-12 rounded-2xl bg-brandRed text-white flex items-center justify-center font-black text-lg shadow-lg shadow-brandRed/40 font-mono">
+                                        02
+                                    </div>
+                                    <span class="text-xs font-mono font-bold bg-brandRed/30 text-rose-300 px-3 py-1 rounded-full border border-brandRed/40">
+                                        熱門中階
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-black text-white">Lv.2 菁英加碼</h3>
+                                    <p class="text-xs text-slate-300 mt-1">突破自我瓶頸，打磨精準格鬥技巧與體態</p>
+                                </div>
+
+                                <div class="py-4 border-y border-red-500/30 space-y-2 font-mono">
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-300 font-sans">當月累積出席</span>
+                                        <span class="text-2xl font-black text-white">16 堂</span>
+                                    </div>
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-300 font-sans">次月累計折現</span>
+                                        <span class="text-3xl font-black text-brandGold">$1,000</span>
+                                    </div>
+                                </div>
+
+                                <ul class="text-xs text-slate-200 space-y-2.5">
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>平均每週出席 4 堂</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>體脂有感燃燒，爆發力全面激增</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>千元折抵，月費直接超值有感</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="setSliderAndScroll(16)" class="w-full mt-6 py-3.5 bg-brandRed hover:bg-red-700 text-white font-black rounded-xl text-xs shadow-lg shadow-brandRed/30 transition-all glow-sweep">
+                                設定為此目標 (16堂)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Level 3: Legend -->
+                    <div class="card-perspective">
+                        <div class="tilt-card avp-glass-gold rounded-3xl p-8 border border-amber-500/40 hover:border-amber-400 transition-all flex flex-col justify-between h-full group">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 text-slate-950 flex items-center justify-center font-black text-lg shadow-lg shadow-amber-500/30 font-mono">
+                                        03
+                                    </div>
+                                    <span class="text-xs font-mono font-bold bg-brandGold/20 text-brandGold px-3 py-1 rounded-full border border-brandGold/40">
+                                        傳奇頂峰
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-black text-white flex items-center gap-1.5">
+                                        <span>Lv.3 傳奇分紅</span>
+                                        <i class="fas fa-crown text-brandGold text-sm"></i>
+                                    </h3>
+                                    <p class="text-xs text-slate-400 mt-1">館內頂尖戰力，無可阻擋的自律霸主</p>
+                                </div>
+
+                                <div class="py-4 border-y border-amber-500/30 space-y-2 font-mono">
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-400 font-sans">當月累積出席</span>
+                                        <span class="text-2xl font-black text-white">24 堂</span>
+                                    </div>
+                                    <div class="flex justify-between items-baseline">
+                                        <span class="text-xs text-slate-400 font-sans">頂格封頂折現</span>
+                                        <span class="text-3xl font-black text-brandGold">$1,500</span>
+                                    </div>
+                                </div>
+
+                                <ul class="text-xs text-slate-300 space-y-2.5">
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>平均每週出席 5~6 堂</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>最高上限 $1,500 全額折抵次月方案</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-brandGold"></i>
+                                        <span>獲得 S1 傳奇自律者館內認證</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="setSliderAndScroll(24)" class="w-full mt-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black rounded-xl text-xs transition-colors">
+                                設定為此目標 (24堂)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: ACTIVITY RULES & COMMON NOTICE (BENTO GRID) -->
+        <section id="rules" class="py-20 bg-slate-900/60 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandRed font-mono bg-brandRed/10 border border-brandRed/30 px-3.5 py-1 rounded-full">
+                        REGULATIONS & GUIDELINES
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        【活動規範】細則解析
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        為維護教學品質與每位學員之公平權益，請詳細閱讀以下開班、集點與折抵規範。
+                    </p>
+                </div>
+
+                <!-- 4 Major Activity Rules Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    
+                    <!-- Rule 1: 開班門檻 -->
+                    <div class="avp-glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-brandRed/40 transition-all space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-brandRed/20 text-rose-300 flex items-center justify-center font-black font-mono border border-brandRed/40">
+                                01
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono font-bold text-rose-400 uppercase">CAPACITY & DEADLINE</span>
+                                <h3 class="text-lg font-black text-white">開班門檻與預約時間</h3>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            團體課請於<strong>上課前一天 22:00 前預約完畢</strong>。為維護高品質教學，每班<strong>滿班上限為 10 人</strong>；若該時段預約<strong>未滿 3 人則不開班</strong>，系統將自動發送取消通知，敬請學員提早排定課表。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="text-[11px] bg-white/5 text-slate-300 px-3 py-1 rounded-lg font-bold border border-white/10">⏰ 前一天 22:00 截單</span>
+                            <span class="text-[11px] bg-brandRed/20 text-rose-300 px-3 py-1 rounded-lg font-bold border border-brandRed/30">👥 滿班 10 人 / 3 人開班</span>
+                        </div>
+                    </div>
+
+                    <!-- Rule 2: 集點與次數計算 -->
+                    <div class="avp-glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-brandRed/40 transition-all space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-brandRed/20 text-rose-300 flex items-center justify-center font-black font-mono border border-brandRed/40">
+                                02
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono font-bold text-rose-400 uppercase">STAMP VERIFICATION</span>
+                                <h3 class="text-lg font-black text-white">集點與次數計算基準</h3>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            挑戰賽累積次數以「<strong>實際簽到出席</strong>」為唯一計算基準。上課請至櫃檯<strong>出示 LINE 集點卡由專員協助核發點數</strong>。預約未到（No-show）或事前請假皆不計入當月累積。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="text-[11px] bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-lg font-bold border border-emerald-500/30">📱 櫃檯出示 LINE 蓋章</span>
+                            <span class="text-[11px] bg-rose-500/20 text-rose-300 px-3 py-1 rounded-lg font-bold border border-rose-500/30">⚠️ No-show / 請假不列入</span>
+                        </div>
+                    </div>
+
+                    <!-- Rule 3: 活動排除條款 -->
+                    <div class="avp-glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-brandRed/40 transition-all space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 text-slate-300 flex items-center justify-center font-black font-mono border border-white/15">
+                                03
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">EXCLUSION CLAUSE</span>
+                                <h3 class="text-lg font-black text-white">活動排除條款</h3>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <strong>購買私人教練課程（一對一 / 一對二）所額外贈送之團體課程，恕不列入此 LINE 集點卡挑戰賽活動計算</strong>。本活動專屬提供給常態團體課方案之活躍學員回饋。
+                        </p>
+                        <div class="pt-1">
+                            <span class="text-[11px] bg-amber-500/20 text-amber-300 px-3 py-1 rounded-lg font-bold border border-amber-500/30">🚫 私人課程贈送之團體課不計入</span>
+                        </div>
+                    </div>
+
+                    <!-- Rule 4: 折抵限制 -->
+                    <div class="avp-glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-brandRed/40 transition-all space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 text-slate-300 flex items-center justify-center font-black font-mono border border-white/15">
+                                04
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">DISCOUNT POLICY</span>
+                                <h3 class="text-lg font-black text-white">次月折抵限制與規則</h3>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            達標所獲得之折現優惠，<strong>僅限於「次月購買續費方案」時於櫃檯直接折抵</strong>，不得要求遞延至其他月份、不可轉讓他人、不可兌換現金或要求找零。
+                        </p>
+                        <div class="pt-1">
+                            <span class="text-[11px] bg-white/5 text-slate-300 px-3 py-1 rounded-lg font-bold border border-white/10">💳 僅限次月續費單筆折抵・不找零</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Common Notice (共通注意事項) -->
+                <div id="notices" class="avp-glass p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+                    <h3 class="text-base font-black text-white flex items-center space-x-2">
+                        <i class="fas fa-clipboard-check text-brandRed"></i>
+                        <span>📋 共通注意事項</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
+                        <div class="space-y-1.5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <h4 class="font-bold text-white flex items-center gap-1.5">
+                                <i class="fas fa-calendar-check text-rose-400"></i>
+                                <span>1. 預約系統操作</span>
+                            </h4>
+                            <p class="leading-relaxed text-slate-400">所有課程之預約、候補與簽到退手續，請統一按照 HCF 線上預約系統顯示之規定與時限操作。</p>
+                        </div>
+                        <div class="space-y-1.5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <h4 class="font-bold text-white flex items-center gap-1.5">
+                                <i class="fas fa-file-medical text-amber-400"></i>
+                                <span>2. 請假與展延申請</span>
+                            </h4>
+                            <p class="leading-relaxed text-slate-400">如遇不可抗力因素（如重大傷病、重大出差、兵役等），可憑醫院診斷證明或相關證明文件向櫃檯申請課程效期展延。</p>
+                        </div>
+                        <div class="space-y-1.5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <h4 class="font-bold text-white flex items-center gap-1.5">
+                                <i class="fas fa-scale-balanced text-brandGold"></i>
+                                <span>3. 館方權利保留</span>
+                            </h4>
+                            <p class="leading-relaxed text-slate-400">HCF 館方保有最終修改、變更、活動解釋及取消本活動之權利，相關異動將以官方公告為準。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: LINE STAMP CARD 4-STEP GUIDE -->
+        <section class="py-20 bg-slate-950/80 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-black uppercase tracking-widest text-brandGold font-mono bg-brandGold/10 border border-brandGold/30 px-3.5 py-1 rounded-full">
+                        HOW TO COLLECT STAMPS
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                        簡單 4 步驟，輕鬆累積折現金
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400">
+                        出席就蓋章，次次都算數。手機拿出 LINE 即可由現場專員快速核發點數！
+                    </p>
+                </div>
+
+                <!-- 4 Step Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Step 1 -->
+                    <div class="avp-glass p-6 rounded-3xl border border-white/10 relative space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-brandRed text-white flex items-center justify-center font-black font-mono shadow-md shadow-brandRed/30">
+                            1
+                        </div>
+                        <h4 class="text-base font-black text-white">線上預約團課</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            於上課<strong>前一天 22:00 前</strong>，進入線上系統預訂想上的泰拳 / 踢拳時段。
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="avp-glass p-6 rounded-3xl border border-white/10 relative space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-slate-800 text-white flex items-center justify-center font-black font-mono border border-white/20">
+                            2
+                        </div>
+                        <h4 class="text-base font-black text-white">準時到館出席</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            依預約時段提早到館完成熱身，穿戴拳套全心投入高強度格鬥體能訓練。
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="avp-glass p-6 rounded-3xl border border-white/10 relative space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-[#06C755] text-white flex items-center justify-center font-black font-mono shadow-md shadow-green-500/20">
+                            3
+                        </div>
+                        <h4 class="text-base font-black text-white">櫃檯出示 LINE 集點</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            下課後至櫃檯出示 HCF 官方 LINE 數位集點卡，由現場專員核發點數蓋章。
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="avp-glass p-6 rounded-3xl border border-white/10 relative space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-brandGold text-slate-950 flex items-center justify-center font-black font-mono shadow-md shadow-amber-500/30">
+                            4
+                        </div>
+                        <h4 class="text-base font-black text-white">次月續約現折</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            次月續費時向櫃檯出示達標等級，當場直接折抵 <strong>$500 ~ $1,500 元</strong>！
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Quick LINE Add Banner -->
+                <div class="mt-12 avp-glass-red p-8 rounded-3xl border border-brandRed/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="space-y-1 text-center sm:text-left">
+                        <h4 class="text-xl font-black text-white">尚未綁定 HCF 官方 LINE 集點卡？</h4>
+                        <p class="text-xs text-slate-300">加入官方帳號，一鍵領取專屬戰鬥通行證數位集點卡與最新課表。</p>
+                    </div>
+                    <button onclick="openLineModal()" class="px-8 py-4 bg-[#06C755] hover:bg-[#05b34c] text-white font-black rounded-2xl text-xs shadow-lg shadow-green-500/30 transition-all flex items-center space-x-2">
+                        <i class="fab fa-line text-lg"></i>
+                        <span>立即加入 LINE 綁定集點卡</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <!-- 官網統一頁尾 -->
+    <section class="finale" id="finale"></section>
+
+    <!-- STICKY BOTTOM QUICK ACTION BAR (MOBILE OPTIMIZED) -->
+    <div class="fixed bottom-0 inset-x-0 z-40 bg-slate-950/90 backdrop-blur-md border-t border-white/10 p-3 sm:hidden shadow-2xl">
+        <div class="grid grid-cols-2 gap-3">
+            <a href="#simulator" class="py-3 bg-white/10 hover:bg-white/15 text-white font-bold rounded-xl text-xs text-center flex items-center justify-center space-x-1.5">
+                <i class="fas fa-calculator text-brandGold"></i>
+                <span>出席試算</span>
+            </a>
+            <button onclick="openLineModal()" class="py-3 bg-gradient-to-r from-brandRed to-red-700 text-white font-black rounded-xl text-xs text-center flex items-center justify-center space-x-1.5 shadow-lg shadow-brandRed/30 glow-sweep">
+                <i class="fab fa-line"></i>
+                <span>預約團課 / 集點</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- LINE MODAL / RESERVATION PROMPT -->
+    <div id="lineModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="avp-glass w-full max-w-md rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl relative space-y-5">
+            <button onclick="closeLineModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors p-2">
+                <i class="fas fa-times text-base"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-green-500/20 text-[#06C755] flex items-center justify-center text-2xl border border-green-500/30">
+                <i class="fab fa-line text-2xl"></i>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-black text-white">啟動 S1 戰鬥通行證</h3>
+                <p class="text-xs text-slate-400 mt-1">進入 HCF 官方 LINE 即可預約團課、查詢最新課表或領取數位集點卡。</p>
+            </div>
+
+            <div class="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-300 space-y-2">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check text-emerald-400"></i>
+                    <span>已選擇目標：<strong class="text-white" id="modalGoalSummary">當月 16 堂挑戰 (折抵 $1,000)</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check text-emerald-400"></i>
+                    <span>上課前一天 22:00 前預約即可生效</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check text-emerald-400"></i>
+                    <span>滿班 10 人・3 人即開班</span>
+                </div>
+            </div>
+
+            <div class="pt-2 space-y-2">
+                <a href="https://line.me" target="_blank" class="w-full py-4 bg-[#06C755] hover:bg-[#05b34c] text-white font-black rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-green-500/30 transition-all">
+                    <i class="fab fa-line text-base"></i>
+                    <span>開啟 LINE 對話預約</span>
+                </a>
+                <button onclick="closeLineModal()" class="w-full py-2.5 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-slate-200 font-bold rounded-xl text-xs transition-colors">
+                    返回頁面
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed top-24 right-5 z-50 bg-slate-900/95 border border-brandGold/40 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl transform translate-x-32 opacity-0 transition-all duration-300 pointer-events-none flex items-center space-x-2">
+        <i class="fas fa-check-circle text-brandGold"></i>
+        <span id="toastMsg">目標已成功複製至剪貼簿！</span>
+    </div>
+
+    <script>
+        // Web Audio Synthesizer (Procedural Zero-Asset Sound Engine)
+        let audioCtx;
+        let isAudioEnabled = false;
+
+        function initAudio() {
+            if (audioCtx) return;
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            } catch(e) {
+                console.warn('AudioContext not supported');
+            }
+        }
+
+        function toggleAudio() {
+            if (!audioCtx) initAudio();
+            if (!audioCtx) return;
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+                isAudioEnabled = true;
+            } else if (audioCtx.state === 'running') {
+                isAudioEnabled = !isAudioEnabled;
+            } else {
+                isAudioEnabled = true;
+            }
+
+            const icon = document.getElementById('soundIcon');
+            const text = document.getElementById('soundStatusText');
+            if (isAudioEnabled) {
+                icon.className = 'fas fa-volume-up text-brandRed';
+                text.innerText = '音效已開啟';
+                playChime(587.33, 'sine', 0.1);
+            } else {
+                icon.className = 'fas fa-volume-mute text-slate-400';
+                text.innerText = '開啟音效';
+            }
+        }
+
+        function playChime(freq, type = 'sine', duration = 0.15) {
+            if (!isAudioEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playPunchSound() {
+            if (!isAudioEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch(e) {}
+        }
+
+        function playMilestoneSound(tier) {
+            if (!isAudioEnabled || !audioCtx) return;
+            if (tier === 1) {
+                playChime(523.25, 'triangle', 0.15); // C5
+                setTimeout(() => playChime(659.25, 'triangle', 0.2), 100); // E5
+            } else if (tier === 2) {
+                playChime(659.25, 'triangle', 0.15); // E5
+                setTimeout(() => playChime(783.99, 'triangle', 0.2), 100); // G5
+            } else if (tier === 3) {
+                playChime(783.99, 'sine', 0.15); // G5
+                setTimeout(() => playChime(1046.50, 'sine', 0.25), 100); // C6
+                setTimeout(() => playChime(1318.51, 'sine', 0.35), 200); // E6
+                setTimeout(() => playChime(1567.98, 'triangle', 0.5), 300); // G6
+            }
+        }
+
+        // Toast Notification System
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast || !toastMsg) return;
+            toastMsg.innerText = msg;
+            toast.classList.remove('translate-x-32', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-x-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.add('translate-x-32', 'opacity-0', 'pointer-events-none');
+                toast.classList.remove('translate-x-0', 'opacity-100');
+            }, 3000);
+        }
+
+        // Fullscreen Canvas Confetti Particle Engine for Lv.3 Legend Milestone
+        function triggerLv3Celebration() {
+            if (typeof confetti === 'function') {
+                const count = 200;
+                const defaults = { origin: { y: 0.7 }, zIndex: 9999 };
+
+                function fire(particleRatio, opts) {
+                    confetti(Object.assign({}, defaults, opts, {
+                        particleCount: Math.floor(count * particleRatio)
+                    }));
+                }
+
+                fire(0.25, {
+                    spread: 26,
+                    startVelocity: 55,
+                    colors: ['#D4AF37', '#FEF3C7', '#C81015']
+                });
+                fire(0.2, {
+                    spread: 60,
+                    colors: ['#FFFFFF', '#D4AF37']
+                });
+                fire(0.35, {
+                    spread: 100,
+                    decay: 0.91,
+                    scalar: 0.8,
+                    colors: ['#C81015', '#FDA4AF', '#D4AF37']
+                });
+                fire(0.1, {
+                    spread: 120,
+                    startVelocity: 25,
+                    decay: 0.92,
+                    colors: ['#D4AF37', '#FFD700']
+                });
+                fire(0.1, {
+                    spread: 120,
+                    startVelocity: 45,
+                    colors: ['#FFFFFF', '#C81015']
+                });
+            }
+            showToast('🔥 恭喜達成 Lv.3 傳奇分紅！解鎖最高 $1,500 續約折抵！');
+        }
+
+        // Three.js 3D Pass Medallion Setup
+        let scene, camera, renderer, passMesh, ringMesh, particleSystem;
+        let isPointerDown = false, previousPointerPosition = { x: 0, y: 0 };
+
+        function initThreeJS() {
+            const canvas = document.getElementById('passCanvas');
+            if (!canvas) return;
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+            camera.position.z = 6;
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Central Pass Medallion (Hexagonal Prism)
+            const medalGeom = new THREE.CylinderGeometry(1.6, 1.6, 0.25, 6);
+            const medalMat = new THREE.MeshStandardMaterial({
+                color: 0xC81015,
+                metalness: 0.85,
+                roughness: 0.2,
+                wireframe: false
+            });
+            passMesh = new THREE.Mesh(medalGeom, medalMat);
+            passMesh.rotation.x = Math.PI / 2.2;
+            passMesh.rotation.z = Math.PI / 6;
+            scene.add(passMesh);
+
+            // Outer Orbit Gold Ring
+            const ringGeom = new THREE.TorusGeometry(2.3, 0.05, 16, 100);
+            const ringMat = new THREE.MeshStandardMaterial({
+                color: 0xD4AF37,
+                metalness: 0.9,
+                roughness: 0.1
+            });
+            ringMesh = new THREE.Mesh(ringGeom, ringMat);
+            ringMesh.rotation.x = Math.PI / 2.5;
+            scene.add(ringMesh);
+
+            // Ambient Light Particle Field
+            const particleCount = 70;
+            const particleGeo = new THREE.BufferGeometry();
+            const particlePos = new Float32Array(particleCount * 3);
+            for(let i=0; i<particleCount*3; i+=3) {
+                particlePos[i] = (Math.random() - 0.5) * 8;
+                particlePos[i+1] = (Math.random() - 0.5) * 8;
+                particlePos[i+2] = (Math.random() - 0.5) * 5;
+            }
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+            const particleMat = new THREE.PointsMaterial({
+                color: 0xD4AF37,
+                size: 0.06,
+                transparent: true,
+                opacity: 0.5
+            });
+            particleSystem = new THREE.Points(particleGeo, particleMat);
+            scene.add(particleSystem);
+
+            // Lighting Setup
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
+            scene.add(ambientLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.2);
+            dirLight1.position.set(5, 8, 5);
+            scene.add(dirLight1);
+
+            const dirLight2 = new THREE.DirectionalLight(0xD4AF37, 1.8);
+            dirLight2.position.set(-5, -5, 2);
+            scene.add(dirLight2);
+
+            // Mouse Drag interaction
+            canvas.addEventListener('mousedown', (e) => {
+                isPointerDown = true;
+                previousPointerPosition = { x: e.clientX, y: e.clientY };
+            });
+            window.addEventListener('mouseup', () => isPointerDown = false);
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isPointerDown) return;
+                const deltaX = e.clientX - previousPointerPosition.x;
+                const deltaY = e.clientY - previousPointerPosition.y;
+                passMesh.rotation.y += deltaX * 0.01;
+                passMesh.rotation.x += deltaY * 0.01;
+                ringMesh.rotation.y -= deltaX * 0.008;
+                previousPointerPosition = { x: e.clientX, y: e.clientY };
+            });
+
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                if(e.touches.length === 1) {
+                    isPointerDown = true;
+                    previousPointerPosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                }
+            }, { passive: true });
+            window.addEventListener('touchend', () => isPointerDown = false);
+            canvas.addEventListener('touchmove', (e) => {
+                if (!isPointerDown || e.touches.length !== 1) return;
+                const deltaX = e.touches[0].clientX - previousPointerPosition.x;
+                const deltaY = e.touches[0].clientY - previousPointerPosition.y;
+                passMesh.rotation.y += deltaX * 0.01;
+                passMesh.rotation.x += deltaY * 0.01;
+                previousPointerPosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }, { passive: true });
+
+            window.addEventListener('resize', onResize);
+            animate3D();
+        }
+
+        function onResize() {
+            const canvas = document.getElementById('passCanvas');
+            if(!canvas || !renderer || !camera) return;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        }
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            if (!isPointerDown && passMesh) {
+                passMesh.rotation.y += 0.006;
+                passMesh.rotation.z += 0.002;
+                ringMesh.rotation.z -= 0.008;
+                particleSystem.rotation.y += 0.001;
+            }
+            if(renderer && scene && camera) {
+                renderer.render(scene, camera);
+            }
+        }
+
+        // Attendance Calculator & 24 Stamp Grid Logic
+        const slider = document.getElementById('attendanceSlider');
+        let currentTierLevel = 2;
+
+        function buildStampGrid() {
+            const grid = document.getElementById('stampGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 24; i++) {
+                const slot = document.createElement('div');
+                slot.id = `stamp-slot-${i}`;
+                slot.className = 'stamp-slot aspect-square bg-slate-900/90 rounded-2xl border border-white/10 flex flex-col items-center justify-center cursor-pointer hover:border-brandRed/60 hover:scale-105 transition-all relative overflow-hidden';
+                slot.setAttribute('onclick', `toggleStampSlot(${i})`);
+
+                let milestoneIcon = '';
+                if (i === 8) milestoneIcon = '<span class="absolute top-1 right-1 text-[9px] font-mono text-rose-300 font-bold bg-brandRed/40 px-1 rounded">Lv.1</span>';
+                else if (i === 16) milestoneIcon = '<span class="absolute top-1 right-1 text-[9px] font-mono text-rose-300 font-bold bg-brandRed/40 px-1 rounded">Lv.2</span>';
+                else if (i === 24) milestoneIcon = '<span class="absolute top-1 right-1 text-[9px] font-mono text-brandGold font-bold bg-amber-500/30 px-1 rounded">Lv.3</span>';
+
+                slot.innerHTML = `
+                    ${milestoneIcon}
+                    <i class="fas fa-hand-fist text-sm sm:text-base text-slate-600 mb-1 slot-icon"></i>
+                    <span class="text-[11px] font-mono font-bold text-slate-400 slot-num">${String(i).padStart(2, '0')}</span>
+                `;
+                grid.appendChild(slot);
+            }
+        }
+
+        function updateStampGrid(count) {
+            for (let i = 1; i <= 24; i++) {
+                const slot = document.getElementById(`stamp-slot-${i}`);
+                if (!slot) continue;
+                const icon = slot.querySelector('.slot-icon');
+                const num = slot.querySelector('.slot-num');
+
+                if (i <= count) {
+                    slot.classList.add('stamped');
+                    if (icon) {
+                        icon.className = 'fas fa-check text-sm sm:text-base text-white mb-1 slot-icon animate-bounce';
+                    }
+                    if (num) {
+                        num.className = 'text-[11px] font-mono font-black text-rose-100 slot-num';
+                    }
+                } else {
+                    slot.classList.remove('stamped');
+                    if (icon) {
+                        icon.className = 'fas fa-hand-fist text-sm sm:text-base text-slate-600 mb-1 slot-icon';
+                    }
+                    if (num) {
+                        num.className = 'text-[11px] font-mono font-bold text-slate-400 slot-num';
+                    }
+                }
+            }
+        }
+
+        function toggleStampSlot(index) {
+            setSliderValue(index);
+            playPunchSound();
+        }
+
+        function fillStamps(count) {
+            setSliderValue(count);
+            playPunchSound();
+        }
+
+        function setSliderValue(val) {
+            val = parseInt(val, 10);
+            const sliderEl = document.getElementById('attendanceSlider');
+            if (sliderEl) sliderEl.value = val;
+            updateRewardCalculation(val);
+        }
+
+        function setSliderAndScroll(val) {
+            setSliderValue(val);
+            const simEl = document.getElementById('simulator');
+            if (simEl) simEl.scrollIntoView({ behavior: 'smooth' });
+            playPunchSound();
+        }
+
+        function copyGoalToClipboard() {
+            const count = document.getElementById('sliderDisplayCount').innerText;
+            const tier = document.getElementById('activeTierName').innerText;
+            const text = `🔥 我的 HCF 戰鬥通行證 S1 目標：當月累積出席 ${count} 堂課（${tier}）！`;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('目標已成功複製至剪貼簿！');
+                playChime(880, 'sine', 0.1);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function openLineModal() {
+            const modal = document.getElementById('lineModal');
+            if (!modal) return;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            playChime(659.25, 'sine', 0.08);
+        }
+
+        function closeLineModal() {
+            const modal = document.getElementById('lineModal');
+            if (!modal) return;
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+
+        function updateRewardCalculation(val) {
+            val = parseInt(val, 10);
+            document.getElementById('sliderDisplayCount').innerText = val;
+
+            let cashback = 0;
+            let tierName = '未達門檻 (差 ' + (8 - val) + ' 堂解鎖 Lv.1)';
+            let tierTitle = '新星戰士 (未達標)';
+            let nextHint = '';
+            let tierClass = 'bg-white/10 text-slate-300 border-white/15';
+            let newTier = 0;
+
+            if (val >= 24) {
+                cashback = 1500;
+                tierName = 'Lv.3 傳奇分紅 (折 $1,500)';
+                tierTitle = 'Lv.3 傳奇分紅 (最高封頂)';
+                nextHint = '🔥 已解鎖最高榮譽！次月享 $1,500 折抵';
+                tierClass = 'bg-amber-500/20 text-brandGold border-amber-500/40';
+                newTier = 3;
+            } else if (val >= 16) {
+                cashback = 1000;
+                tierName = 'Lv.2 菁英加碼 (折 $1,000)';
+                tierTitle = 'Lv.2 菁英加碼';
+                nextHint = '距離 Lv.3 傳奇分紅 (折 $1,500) 還差 ' + (24 - val) + ' 堂';
+                tierClass = 'bg-brandRed/20 text-rose-300 border-brandRed/40';
+                newTier = 2;
+            } else if (val >= 8) {
+                cashback = 500;
+                tierName = 'Lv.1 戰士獎金 (折 $500)';
+                tierTitle = 'Lv.1 戰士獎金';
+                nextHint = '距離 Lv.2 菁英加碼 (折 $1,000) 還差 ' + (16 - val) + ' 堂';
+                tierClass = 'bg-slate-800 text-slate-200 border-slate-600';
+                newTier = 1;
+            } else {
+                nextHint = '距離 Lv.1 戰士獎金 (折 $500) 還差 ' + (8 - val) + ' 堂';
+            }
+
+            if (newTier !== currentTierLevel && newTier > 0) {
+                playMilestoneSound(newTier);
+                if (newTier === 3) {
+                    triggerLv3Celebration();
+                }
+                currentTierLevel = newTier;
+            }
+
+            // Update DOM Elements
+            document.getElementById('cashbackAmount').innerText = '$' + cashback.toLocaleString();
+            document.getElementById('activeTierName').innerText = tierName;
+            document.getElementById('activeTierBadge').className = `px-4 py-2 rounded-2xl border font-black text-xs sm:text-sm flex items-center space-x-2 ${tierClass}`;
+            document.getElementById('tierUnlockedTitle').innerText = tierTitle;
+            document.getElementById('nextTierHint').innerText = nextHint;
+            document.getElementById('modalGoalSummary').innerText = `當月 ${val} 堂挑戰 (${tierName})`;
+
+            // Update Leaderboard My Real-time Data
+            const lbStamps = document.getElementById('lbMyStamps');
+            const lbCashback = document.getElementById('lbMyCashback');
+            if (lbStamps) lbStamps.innerText = val + ' 堂';
+            if (lbCashback) lbCashback.innerText = '$' + cashback.toLocaleString();
+
+            // Update Progress Bar
+            const percentage = Math.min(100, Math.round((val / 28) * 100));
+            document.getElementById('battlePassBar').style.width = percentage + '%';
+
+            // Weekly Frequency
+            const weekly = (val / 4).toFixed(1);
+            document.getElementById('weeklyFrequency').innerText = weekly + ' 堂 / 週';
+            const desc = document.getElementById('frequencyDesc');
+            if (val >= 24) desc.innerText = '冠軍賽事級狂熱自律';
+            else if (val >= 16) desc.innerText = '高強度體態蛻變節奏';
+            else if (val >= 8) desc.innerText = '健康養成規律鍛鍊';
+            else desc.innerText = '建議提早預約課表起步';
+
+            // Update Stamp Grid
+            updateStampGrid(val);
+        }
+
+        // Live Weekly Schedule Dataset & Tab Switcher
+        const scheduleData = {
+            'MON': [
+                { time: '18:30 - 19:30', name: '泰拳打擊基礎班', coach: 'Alex', current: 8, max: 10, status: 'OPEN', statusText: '已成班 (8/10)' },
+                { time: '19:45 - 20:45', name: '荷式踢拳進階組手', coach: 'Ken', current: 10, max: 10, status: 'FULL', statusText: '已滿班 (10/10)' },
+                { time: '21:00 - 22:00', name: '格鬥體能核心暴燃', coach: 'Maya', current: 5, max: 10, status: 'OPEN', statusText: '已成班 (5/10)' }
+            ],
+            'TUE': [
+                { time: '12:15 - 13:15', name: '午間極速燃脂踢拳', coach: 'Ken', current: 4, max: 10, status: 'OPEN', statusText: '已成班 (4/10)' },
+                { time: '19:00 - 20:00', name: '女子專屬泰拳防身', coach: 'Maya', current: 7, max: 10, status: 'OPEN', statusText: '已成班 (7/10)' },
+                { time: '20:15 - 21:15', name: '格鬥對打實戰應用', coach: 'Alex', current: 2, max: 10, status: 'WAITING', statusText: '差 1 人成班 (2/10)' }
+            ],
+            'WED': [
+                { time: '18:30 - 19:30', name: '泰拳肘膝近身專班', coach: 'Alex', current: 9, max: 10, status: 'OPEN', statusText: '即將額滿 (9/10)' },
+                { time: '19:45 - 20:45', name: '重擊拳法與步法流動', coach: 'Ken', current: 6, max: 10, status: 'OPEN', statusText: '已成班 (6/10)' }
+            ],
+            'THU': [
+                { time: '19:00 - 20:00', name: '高強度踢拳體能間歇', coach: 'Ken', current: 8, max: 10, status: 'OPEN', statusText: '已成班 (8/10)' },
+                { time: '20:15 - 21:15', name: '泰拳對練與防禦拆解', coach: 'Alex', current: 10, max: 10, status: 'FULL', statusText: '已滿班 (10/10)' }
+            ],
+            'FRI': [
+                { time: '19:00 - 20:00', name: '週五格鬥爆汗之夜', coach: 'Maya', current: 7, max: 10, status: 'OPEN', statusText: '已成班 (7/10)' },
+                { time: '20:15 - 21:15', name: '自由對練與技術交流', coach: 'Alex', current: 4, max: 10, status: 'OPEN', statusText: '已成班 (4/10)' }
+            ],
+            'SAT': [
+                { time: '10:30 - 11:30', name: '週末晨間泰拳喚醒', coach: 'Maya', current: 8, max: 10, status: 'OPEN', statusText: '已成班 (8/10)' },
+                { time: '14:00 - 15:00', name: '踢拳技術打磨菁英班', coach: 'Ken', current: 9, max: 10, status: 'OPEN', statusText: '即將額滿 (9/10)' },
+                { time: '15:30 - 16:30', name: '選手級戰術強化課', coach: 'Alex', current: 5, max: 10, status: 'OPEN', statusText: '已成班 (5/10)' }
+            ],
+            'SUN': [
+                { time: '14:00 - 15:00', name: '週日肌力與格鬥體能', coach: 'Ken', current: 6, max: 10, status: 'OPEN', statusText: '已成班 (6/10)' },
+                { time: '15:30 - 16:30', name: '泰拳重砲掃腿強化專修', coach: 'Alex', current: 8, max: 10, status: 'OPEN', statusText: '已成班 (8/10)' }
+            ]
+        };
+
+        function renderSchedule(day) {
+            const grid = document.getElementById('scheduleCardGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const courses = scheduleData[day] || scheduleData['MON'];
+            courses.forEach(c => {
+                let badgeClass = 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+                let btnState = 'bg-brandRed hover:bg-red-700 text-white';
+                let btnText = '立即預約此堂';
+                let isFull = false;
+
+                if (c.status === 'FULL') {
+                    badgeClass = 'bg-slate-700 text-slate-300 border-slate-600';
+                    btnState = 'bg-slate-800 text-slate-400 cursor-not-allowed';
+                    btnText = '已滿班・候補登記';
+                    isFull = true;
+                } else if (c.status === 'WAITING') {
+                    badgeClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+                }
+
+                const card = document.createElement('div');
+                card.className = 'avp-glass p-6 rounded-3xl border border-white/10 hover:border-brandRed/40 transition-all space-y-4 flex flex-col justify-between';
+                card.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono font-bold text-slate-400"><i class="far fa-clock mr-1 text-rose-400"></i>${c.time}</span>
+                            <span class="text-[10px] font-mono font-black px-2.5 py-0.5 rounded-full border ${badgeClass}">${c.statusText}</span>
+                        </div>
+                        <h4 class="text-lg font-black text-white">${c.name}</h4>
+                        <p class="text-xs text-slate-400 font-mono">主教練：<strong class="text-slate-200">Coach ${c.coach}</strong></p>
+                    </div>
+
+                    <div class="space-y-2 pt-2 border-t border-white/5">
+                        <div class="flex justify-between text-[11px] font-mono text-slate-400">
+                            <span>報名進度 (滿班 10 人)</span>
+                            <span class="text-white font-bold">${c.current} / ${c.max} 人</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-brandRed to-amber-500 rounded-full" style="width: ${(c.current / c.max) * 100}%"></div>
+                        </div>
+                        <button onclick="${isFull ? 'openLineModal()' : `bookCourse('${c.name}', '${c.time}')`}" class="w-full mt-2 py-2.5 ${btnState} font-bold rounded-xl text-xs transition-all shadow-md">
+                            ${btnText}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function switchScheduleDay(day) {
+            document.querySelectorAll('#scheduleDayTabs .sched-tab').forEach(tab => {
+                tab.className = 'sched-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900/80 hover:bg-white/10 text-slate-300 flex-shrink-0 border border-white/10';
+            });
+            event.target.className = 'sched-tab active px-5 py-2.5 rounded-xl text-xs font-black transition-all bg-brandRed text-white shadow-lg shadow-brandRed/30 flex-shrink-0';
+            renderSchedule(day);
+            playPunchSound();
+        }
+
+        function bookCourse(name, time) {
+            const modalSummary = document.getElementById('modalGoalSummary');
+            if (modalSummary) {
+                modalSummary.innerText = `預約課程：${name} (${time})`;
+            }
+            openLineModal();
+        }
+
+        // 22:00 Daily Booking Cutoff Countdown Timer
+        function updateCutoffCountdown() {
+            const now = new Date();
+            const cutoff = new Date();
+            cutoff.setHours(22, 0, 0, 0);
+
+            if (now > cutoff) {
+                cutoff.setDate(cutoff.getDate() + 1);
+            }
+
+            const diff = cutoff - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const display = `${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
+            const clockEl = document.getElementById('cutoffCountdown');
+            if (clockEl) clockEl.innerText = display;
+        }
+        setInterval(updateCutoffCountdown, 1000);
+
+        // Coach Flip Card Trigger
+        function toggleCoachCard(card) {
+            card.classList.toggle('flipped');
+            playChime(600, 'sine', 0.08);
+        }
+
+        // LINE LIFF SDK Real-name Integration & Fallback Simulation Engine
+        let liffProfile = null;
+
+        async function initLiff() {
+            try {
+                if (typeof liff !== 'undefined') {
+                    // Try real LIFF init (replace with real LIFF ID when deploying to LINE Developers Console)
+                    await liff.init({ liffId: "1234567890-AbcdEfgh" }).catch(() => {
+                        console.log("Running LIFF in Web Standalone Sandbox mode");
+                    });
+                    if (liff.isLoggedIn()) {
+                        const profile = await liff.getProfile();
+                        setLiffUser(profile.displayName, profile.pictureUrl);
+                    }
+                }
+            } catch (err) {
+                console.log("LIFF Init Sandbox fallback active");
+            }
+        }
+
+        function handleLiffAuth() {
+            if (liffProfile) {
+                showToast(`已登入：${liffProfile.name}｜本月實名累積中`);
+                return;
+            }
+
+            if (typeof liff !== 'undefined' && liff.isLoggedIn && liff.isLoggedIn()) {
+                liff.logout();
+                window.location.reload();
+            } else {
+                // Interactive Demo Auth for instantaneous review & preview
+                setLiffUser('戰士學員 (LINE 認證)', 'https://placehold.co/80x80/06C755/ffffff?text=HCF');
+                showToast('已成功透過 LINE LIFF 實名綁定 S1 通行證！');
+                playMilestoneSound(2);
+            }
+        }
+
+        function setLiffUser(name, avatar) {
+            liffProfile = { name, avatar };
+            const nameEl = document.getElementById('liffUserName');
+            const avatarEl = document.getElementById('liffAvatar');
+            const badgeEl = document.getElementById('liffUserTierBadge');
+            const lbNameEl = document.getElementById('lbMyName');
+
+            if (nameEl) nameEl.innerText = name;
+            if (avatarEl) avatarEl.src = avatar || 'https://placehold.co/80x80/06C755/ffffff?text=LINE';
+            if (badgeEl) badgeEl.classList.remove('hidden');
+            if (lbNameEl) lbNameEl.innerText = `${name} (LINE 已認證)`;
+        }
+
+        // Initialize on Window Load
+        window.addEventListener('load', () => {
+            initThreeJS();
+            buildStampGrid();
+            renderSchedule('MON');
+            updateCutoffCountdown();
+            updateRewardCalculation(16);
+            initLiff();
+
+            // Attach slider input event
+            const sliderEl = document.getElementById('attendanceSlider');
+            if (sliderEl) {
+                sliderEl.addEventListener('input', (e) => {
+                    updateRewardCalculation(e.target.value);
+                });
+            }
+        });
+    </script>
+<script src="hcf.js"></script>
+<script src="hcf-analytics.js" defer></script>
+</body>
+</html>

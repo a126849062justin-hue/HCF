@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>預約體驗課｜HCF 新竹格鬥</title>
-<meta name="description" content="HCF 新竹格鬥體驗課線上預約。填寫約 90 秒，我們會依你的目標安排適合的教練並確認時段。團課體驗 $400 起。">
+<title>60 秒需求診斷｜HCF 新竹格鬥</title>
+<meta name="description" content="HCF 新生訓練規劃・60 秒需求診斷。不需任何格鬥基礎，告訴我們你的目標、經驗與方便時間，教練依你的狀況推薦適合的體驗方式。">
 <link rel="canonical" href="https://www.hsinchucombat.com/booking.html">
-<meta property="og:title" content="預約體驗課｜HCF 新竹格鬥">
-<meta property="og:description" content="填寫約 90 秒，教練會依你的目標安排課程並確認時段。">
+<meta property="og:title" content="60 秒需求診斷｜HCF 新竹格鬥">
+<meta property="og:description" content="不需格鬥基礎。60 秒告訴教練你的目標與方便時間，教練幫你規劃適合的體驗方式。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.hsinchucombat.com/booking.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,24 +42,27 @@ body::before{
              radial-gradient(circle at 0% 110%,rgba(255,255,255,.05),transparent 50%);
 }
 a{color:inherit}
-/* header */
-.hd{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line)}
+.hd{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hd-in{max-width:720px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1px;font-size:17px;text-decoration:none}
 .brand i{display:block;width:5px;height:22px;background:var(--red);border-radius:1px}
 .back{font-size:14px;color:var(--muted);text-decoration:none}
 .back:hover{color:#fff}
-/* progress */
 .pg{max-width:720px;margin:0 auto;padding:0 20px;width:100%}
 .pg-bar{height:4px;background:#1E1E1E;border-radius:99px;overflow:hidden;margin-top:18px}
 .pg-fill{height:100%;width:25%;background:var(--red);transition:width .35s cubic-bezier(.4,0,.2,1)}
 .pg-txt{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.5px}
-/* main */
 main{position:relative;z-index:1;flex:1;max-width:720px;margin:0 auto;width:100%;padding:22px 20px 120px}
-.lede h1{font-size:clamp(28px,7vw,40px);font-weight:900;letter-spacing:.5px;line-height:1.25}
+.lede h1{font-size:clamp(28px,7vw,40px);font-weight:900;letter-spacing:.5px;line-height:1.22}
 .lede h1 em{color:var(--red);font-style:normal}
-.lede p{color:var(--muted);font-size:15px;margin-top:10px}
+.lede .sub{display:block;font-size:clamp(17px,4.4vw,22px);color:var(--gold);font-weight:700;margin-top:6px;letter-spacing:1px}
+.lede p{color:#CFCFCF;font-size:15.5px;margin-top:18px;line-height:1.9}
+.lede .fine{color:var(--muted);font-size:13.5px;margin-top:14px}
+.startbtn{display:block;width:100%;margin-top:28px;background:var(--red);color:#fff;border:none;border-radius:10px;
+  font:inherit;font-size:18px;font-weight:900;letter-spacing:1px;padding:17px 24px;cursor:pointer;transition:.18s}
+.startbtn:hover{background:var(--red-hi)}
+.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.trust span{font-size:13px;color:#CFCFCF;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
 .step{display:none;animation:in .3s ease}
 .step.on{display:block}
 @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -67,14 +70,13 @@ main{position:relative;z-index:1;flex:1;max-width:720px;margin:0 auto;width:100%
 .q>label.t,.q .t{display:block;font-size:19px;font-weight:700;margin-bottom:12px;letter-spacing:.3px}
 .q .t .req{color:var(--red);margin-left:4px}
 .q .hint{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:5px}
-input[type=text],input[type=tel],input[type=date],textarea{
+.q .qmax{font-size:13px;color:var(--gold);font-weight:500;margin:-2px 0 10px}
+input[type=text],input[type=tel],input[type=date],input[type=number],textarea{
   width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;
-  color:var(--text);font:inherit;font-size:16px;padding:14px 16px;transition:border-color .18s
-}
-textarea{min-height:104px;resize:vertical;line-height:1.6}
+  color:var(--text);font:inherit;font-size:16px;padding:14px 16px;transition:border-color .18s}
+textarea{min-height:96px;resize:vertical;line-height:1.6}
 input:focus,textarea:focus{outline:none;border-color:var(--red)}
 input::placeholder,textarea::placeholder{color:#5E5E5E}
-/* option cards */
 .opts{display:grid;gap:10px}
 .opts.two{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .opt{position:relative;display:flex;align-items:center;gap:12px;background:var(--panel);
@@ -84,53 +86,47 @@ input::placeholder,textarea::placeholder{color:#5E5E5E}
 .opt .box{flex:none;width:22px;height:22px;border:2px solid #4A4A4A;border-radius:50%;
   display:flex;align-items:center;justify-content:center;transition:.18s}
 .opt.multi .box{border-radius:6px}
-.opt .box::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red);
-  transform:scale(0);transition:transform .18s}
+.opt .box::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red);transform:scale(0);transition:transform .18s}
 .opt.multi .box::after{border-radius:2px}
 .opt .lb{font-size:16px;font-weight:500}
+.opt .lb b{color:var(--gold);font-weight:700}
 .opt .sub{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:2px}
 .opt input:checked ~ .box{border-color:var(--red)}
 .opt input:checked ~ .box::after{transform:scale(1)}
 .opt:has(input:checked){border-color:var(--red);background:rgba(200,16,21,.10)}
-/* error */
 .err{display:none;color:#FF6B6F;font-size:14px;margin-top:8px}
 .err.on{display:block}
-/* nav buttons */
+.branch{margin-top:24px;padding:20px;border:1px dashed var(--line);border-radius:12px;background:rgba(212,175,55,.04)}
+.branch .bt{font-size:14px;color:var(--gold);font-weight:900;letter-spacing:1px;margin-bottom:4px}
+.branch .bd{font-size:13px;color:var(--muted);margin-bottom:14px}
+.optag{font-size:12px;color:var(--muted);font-weight:400;margin-left:6px}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(10,10,10,.95);
-  backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:14px 20px calc(14px + env(safe-area-inset-bottom))}
+  backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:14px 20px calc(14px + env(safe-area-inset-bottom));display:none}
+.nav.on{display:block}
 .nav-in{max-width:720px;margin:0 auto;display:flex;gap:12px}
-.btn{flex:1;border:none;border-radius:10px;font:inherit;font-size:17px;font-weight:900;
-  letter-spacing:1px;padding:15px 20px;cursor:pointer;transition:.18s}
+.btn{flex:1;border:none;border-radius:10px;font:inherit;font-size:17px;font-weight:900;letter-spacing:1px;padding:15px 20px;cursor:pointer;transition:.18s}
 .btn-p{background:var(--red);color:#fff}
 .btn-p:hover{background:var(--red-hi)}
 .btn-s{flex:0 0 108px;background:transparent;color:var(--muted);border:1px solid var(--line)}
 .btn-s:hover{color:#fff;border-color:#4A4A4A}
-/* success */
-.done{display:none;text-align:center;padding:40px 0 20px}
+.done{display:none;text-align:center;padding:36px 0 20px}
 .done.on{display:block;animation:in .35s ease}
-.done .tick{width:76px;height:76px;border-radius:50%;background:var(--red);margin:0 auto 26px;
-  display:flex;align-items:center;justify-content:center}
-.done h2{font-size:30px;font-weight:900;letter-spacing:.5px}
-.done p{color:var(--muted);margin-top:12px;font-size:15px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
-  padding:22px 24px;margin-top:26px;text-align:left}
+.done .tick{width:76px;height:76px;border-radius:50%;background:var(--red);margin:0 auto 24px;display:flex;align-items:center;justify-content:center}
+.done h2{font-size:28px;font-weight:900;letter-spacing:.5px}
+.done p{color:#CFCFCF;margin-top:12px;font-size:15px;line-height:1.9}
+.msgbox{background:var(--panel);border:1px solid var(--gold);border-radius:12px;padding:18px 20px;margin-top:22px;text-align:center}
+.msgbox .lb{font-size:13px;color:var(--muted);letter-spacing:.5px}
+.msgbox .m{font-size:20px;font-weight:900;color:var(--gold);margin-top:6px;letter-spacing:1px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:22px;text-align:left}
 .card h3{font-size:16px;font-weight:900;color:var(--red);letter-spacing:1px;margin-bottom:12px}
 .card ul{list-style:none;font-size:15px;line-height:2.1;color:#DADADA}
 .card ul li::before{content:"・";color:var(--red);margin-right:4px}
-.line-btn{display:block;background:#06C755;color:#fff;text-align:center;font-weight:900;font-size:17px;
-  padding:15px;border-radius:10px;margin-top:20px;text-decoration:none;letter-spacing:1px}
-.map-btn{display:block;border:1px solid var(--line);color:var(--text);text-align:center;font-weight:700;
-  font-size:16px;padding:14px;border-radius:10px;margin-top:12px;text-decoration:none}
-/* member note */
-.member{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
-  font-size:14px;color:var(--muted);text-align:center}
+.line-btn{display:block;background:#06C755;color:#fff;text-align:center;font-weight:900;font-size:17px;padding:16px;border-radius:10px;margin-top:22px;text-decoration:none;letter-spacing:1px}
+.map-btn{display:block;border:1px solid var(--line);color:var(--text);text-align:center;font-weight:700;font-size:15px;padding:14px;border-radius:10px;margin-top:12px;text-decoration:none}
+.member{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);text-align:center}
 .member a{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(212,175,55,.4)}
-footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
-  padding:0 20px 120px;font-size:12px;color:#5E5E5E;letter-spacing:.5px;text-align:center}
-@media(max-width:420px){
-  .btn{font-size:16px;padding:14px}
-  .btn-s{flex:0 0 92px}
-}
+footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;padding:0 20px 120px;font-size:12px;color:#5E5E5E;letter-spacing:.5px;text-align:center}
+@media(max-width:420px){.btn{font-size:16px;padding:14px}.btn-s{flex:0 0 92px}}
 </style>
 </head>
 <body>
@@ -142,173 +138,212 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
   </div>
 </header>
 
-<div class="pg" id="pgWrap">
+<div class="pg" id="pgWrap" style="display:none">
   <div class="pg-bar"><div class="pg-fill" id="pgFill"></div></div>
-  <div class="pg-txt"><span id="pgStep">第 1 步 / 共 4 步</span><span>約 90 秒</span></div>
+  <div class="pg-txt"><span id="pgStep">第 1 步 / 共 4 步</span><span>約 60 秒</span></div>
 </div>
 
 <main>
-  <!-- ============ FORM ============ -->
-  <div id="formWrap">
-    <div class="lede" id="lede">
-      <h1>預約你的<em>第一堂</em>格鬥課</h1>
-      <p>填完我們會依你的目標安排適合的教練，並用 LINE 跟你確認時段。</p>
-    </div>
+  <!-- ============ 首頁 ============ -->
+  <div class="lede" id="intro">
+    <h1>HCF <em>新生訓練</em>規劃<span class="sub">60 秒需求診斷</span></h1>
+    <p>不需要有任何格鬥基礎。<br>
+       告訴我們你目前的目標、運動經驗與方便時間，教練會依照你的實際狀況，推薦適合的體驗方式。</p>
+    <p class="fine">我們不會亂推課，也不會強迫購買。填寫時間約 60 秒。</p>
+    <div class="trust"><span>🥊 零基礎友善</span><span>🧭 教練親自規劃</span><span>🚫 不強迫購買</span></div>
+    <button class="startbtn" id="startBtn" type="button">開始我的訓練規劃</button>
+  </div>
 
-    <iframe name="gfTarget" id="gfTarget" style="display:none" title="submit target"></iframe>
-
-    <form id="bookForm" target="gfTarget" method="POST"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSdTNQEpe1V5EArWRlnglwugCZNUhZyDXjQJXRukLz-Stj-E5g/formResponse">
+  <!-- ============ 表單 ============ -->
+  <div id="formWrap" style="display:none">
+    <form id="diagForm">
 
       <!-- STEP 1 -->
       <section class="step on" data-step="1">
         <div class="q">
-          <label class="t" for="f_name">怎麼稱呼你？<span class="req">*</span></label>
-          <input type="text" id="f_name" name="entry.1602401244" placeholder="王小明" autocomplete="name" required>
+          <label class="t" for="f_name">怎麼稱呼你？<span class="req">*</span>
+            <span class="hint">填寫姓名或平常使用的稱呼即可</span></label>
+          <input type="text" id="f_name" name="稱呼" placeholder="王小明" autocomplete="name" required>
           <div class="err">請填寫姓名或稱呼</div>
         </div>
-        <div class="q">
-          <label class="t" for="f_tel">手機號碼<span class="req">*</span>
-            <span class="hint">教練會用 LINE 或電話跟你確認時段</span></label>
-          <input type="tel" id="f_tel" name="entry.816271736" placeholder="09xxxxxxxx"
-                 inputmode="numeric" autocomplete="tel" pattern="[0-9+\-\s]{8,15}" required>
-          <div class="err">請填寫正確的手機號碼</div>
-        </div>
-        <div class="q">
-          <label class="t" for="f_line">LINE 顯示名稱<span class="hint">方便我們對到你的訊息，可不填</span></label>
-          <input type="text" id="f_line" name="entry.1928564000" placeholder="選填">
-        </div>
-        <div class="q" data-group="gender">
-          <span class="t">性別<span class="req">*</span></span>
-          <div class="opts two">
-            <label class="opt"><input type="radio" name="entry.1987837339" value="男" required><span class="box"></span><span class="lb">男</span></label>
-            <label class="opt"><input type="radio" name="entry.1987837339" value="女"><span class="box"></span><span class="lb">女</span></label>
-            <label class="opt"><input type="radio" name="entry.1987837339" value="不方便透露"><span class="box"></span><span class="lb">不方便透露</span></label>
+        <div class="q" data-group="goal" data-multi="1" data-max="2">
+          <span class="t">你目前最想透過訓練改善什麼？<span class="req">*</span></span>
+          <div class="qmax">最多選 2 項</div>
+          <div class="opts">
+            <label class="opt multi"><input type="checkbox" name="想改善" value="減脂、瘦身、改善體態"><span class="box"></span><span class="lb">減脂、瘦身、改善體態</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="提升體能、肌力與爆發力"><span class="box"></span><span class="lb">提升體能、肌力與爆發力</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="學習真正的泰拳或踢拳技術"><span class="box"></span><span class="lb">學習真正的泰拳或踢拳技術</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="防身、增加自信"><span class="box"></span><span class="lb">防身、增加自信</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="舒壓、改善生活狀態"><span class="box"></span><span class="lb">舒壓、改善生活狀態</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="想參加比賽或進入選手班"><span class="box"></span><span class="lb">想參加比賽或進入選手班</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="想讓孩子學習運動與紀律"><span class="box"></span><span class="lb">想讓孩子學習運動與紀律</span></label>
+            <label class="opt multi"><input type="checkbox" name="想改善" value="還不確定，想先體驗看看"><span class="box"></span><span class="lb">還不確定，想先體驗看看</span></label>
           </div>
-          <div class="err">請選擇一項</div>
-        </div>
-        <div class="q" data-group="age">
-          <span class="t">年齡區間<span class="req">*</span></span>
-          <div class="opts two">
-            <label class="opt"><input type="radio" name="entry.1829902663" value="未滿 18 歲" required><span class="box"></span><span class="lb">未滿 18 歲</span></label>
-            <label class="opt"><input type="radio" name="entry.1829902663" value="18-24"><span class="box"></span><span class="lb">18–24</span></label>
-            <label class="opt"><input type="radio" name="entry.1829902663" value="25-34"><span class="box"></span><span class="lb">25–34</span></label>
-            <label class="opt"><input type="radio" name="entry.1829902663" value="35-44"><span class="box"></span><span class="lb">35–44</span></label>
-            <label class="opt"><input type="radio" name="entry.1829902663" value="45 以上"><span class="box"></span><span class="lb">45 以上</span></label>
-          </div>
-          <div class="err">請選擇一項</div>
+          <div class="err">請至少選一項（最多 2 項）</div>
         </div>
       </section>
 
       <!-- STEP 2 -->
       <section class="step" data-step="2">
-        <div class="q" data-group="plan">
-          <span class="t">想先體驗哪一種？<span class="req">*</span></span>
+        <div class="q" data-group="exp">
+          <span class="t">你目前有泰拳、拳擊或格鬥經驗嗎？<span class="req">*</span></span>
           <div class="opts">
-            <label class="opt"><input type="radio" name="entry.1106204071" value="團體課程體驗 $400" required><span class="box"></span>
-              <span class="lb">團體課程體驗 $400<span class="sub">和大家一起練，最多人選的入門方式</span></span></label>
-            <label class="opt"><input type="radio" name="entry.1106204071" value="私人教練體驗 1 堂 $1,400"><span class="box"></span>
-              <span class="lb">私人教練體驗 1 堂 $1,400<span class="sub">一對一動作診斷與技術精修</span></span></label>
-            <label class="opt"><input type="radio" name="entry.1106204071" value="私教深度體驗 2 堂 $2,400"><span class="box"></span>
-              <span class="lb">私教深度體驗 2 堂 $2,400<span class="sub">平均每堂 $1,200，體驗價值最高</span></span></label>
-            <label class="opt"><input type="radio" name="entry.1106204071" value="還不確定，想請教練建議"><span class="box"></span>
-              <span class="lb">還不確定，想請教練建議</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="完全沒有，第一次接觸"><span class="box"></span><span class="lb">完全沒有，第一次接觸</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="曾經體驗過幾堂課"><span class="box"></span><span class="lb">曾經體驗過幾堂課</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="有規律上過團體課"><span class="box"></span><span class="lb">有規律上過團體課</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="有私人教練訓練經驗"><span class="box"></span><span class="lb">有私人教練訓練經驗</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="有對打或比賽經驗"><span class="box"></span><span class="lb">有對打或比賽經驗</span></label>
+            <label class="opt"><input type="radio" name="格鬥經驗" value="有其他運動或健身經驗，但沒有學過格鬥"><span class="box"></span><span class="lb">有其他運動或健身經驗，但沒學過格鬥</span></label>
           </div>
           <div class="err">請選擇一項</div>
         </div>
-        <div class="q" data-group="time" data-multi="1">
-          <span class="t">方便的時段<span class="req">*</span><span class="hint">可複選，我們會盡量安排</span></span>
-          <div class="opts two">
-            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="平日白天"><span class="box"></span><span class="lb">平日白天</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="平日晚上"><span class="box"></span><span class="lb">平日晚上</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="週末白天"><span class="box"></span><span class="lb">週末白天</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1584652475" value="週末晚上"><span class="box"></span><span class="lb">週末晚上</span></label>
+        <div class="q" data-group="start">
+          <span class="t">你比較想用哪一種方式開始？<span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="開始方式" value="團體課體驗 $400"><span class="box"></span><span class="lb"><b>團體課體驗｜$400</b><span class="sub">適合想先感受課程氣氛、流汗運動與認識基本動作</span></span></label>
+            <label class="opt"><input type="radio" name="開始方式" value="私人教練體驗 1 堂 $1,400"><span class="box"></span><span class="lb"><b>私人教練體驗 1 堂｜$1,400</b><span class="sub">一對一動作評估、基礎教學與專屬建議</span></span></label>
+            <label class="opt"><input type="radio" name="開始方式" value="私人教練深度體驗 2 堂 $2,400"><span class="box"></span><span class="lb"><b>私人教練深度體驗 2 堂｜$2,400</b><span class="sub">更完整了解動作、體能與適合的訓練方向</span></span></label>
+            <label class="opt"><input type="radio" name="開始方式" value="還不確定，希望教練依狀況推薦"><span class="box"></span><span class="lb">還不確定，希望教練依照我的狀況推薦</span></label>
           </div>
-          <div class="err">請至少選一個時段</div>
-        </div>
-        <div class="q">
-          <label class="t" for="f_date">希望開始的日期<span class="hint">沒有特定日期可以跳過</span></label>
-          <input type="date" id="f_date">
-          <input type="hidden" name="entry.117411804_year"  id="d_y">
-          <input type="hidden" name="entry.117411804_month" id="d_m">
-          <input type="hidden" name="entry.117411804_day"   id="d_d">
+          <div class="err">請選擇一項</div>
         </div>
       </section>
 
       <!-- STEP 3 -->
       <section class="step" data-step="3">
-        <div class="q" data-group="goal" data-multi="1">
-          <span class="t">最想達成的目標<span class="req">*</span><span class="hint">可複選</span></span>
+        <div class="q" data-group="time" data-multi="1">
+          <span class="t">你通常哪些時段比較方便？<span class="req">*</span><span class="hint">可複選，我們會盡量安排</span></span>
           <div class="opts two">
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="減脂塑身"><span class="box"></span><span class="lb">減脂塑身</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="體能與心肺提升"><span class="box"></span><span class="lb">體能與心肺提升</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="學會防身"><span class="box"></span><span class="lb">學會防身</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="紓壓、下班發洩"><span class="box"></span><span class="lb">紓壓、下班發洩</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="想挑戰自己／未來想比賽"><span class="box"></span><span class="lb">挑戰自己／想比賽</span></label>
-            <label class="opt multi"><input type="checkbox" name="entry.1306397008" value="其他"><span class="box"></span><span class="lb">其他</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="平日 19:00 左右"><span class="box"></span><span class="lb">平日 19:00 左右</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="平日 20:00 左右"><span class="box"></span><span class="lb">平日 20:00 左右</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="平日 21:00 左右"><span class="box"></span><span class="lb">平日 21:00 左右</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="週六上午或中午"><span class="box"></span><span class="lb">週六上午或中午</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="白天時段"><span class="box"></span><span class="lb">白天時段</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="私人教練時間可另外安排"><span class="box"></span><span class="lb">私教時間可另外安排</span></label>
+            <label class="opt multi"><input type="checkbox" name="方便時段" value="時間不固定，需與教練討論"><span class="box"></span><span class="lb">時間不固定，需討論</span></label>
           </div>
-          <div class="err">請至少選一個目標</div>
+          <div class="err">請至少選一個時段</div>
         </div>
-        <div class="q" data-group="exp">
-          <span class="t">運動經驗<span class="req">*</span></span>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="entry.96682318" value="完全零基礎" required><span class="box"></span><span class="lb">完全零基礎<span class="sub">最多學員都是從這裡開始</span></span></label>
-            <label class="opt"><input type="radio" name="entry.96682318" value="有健身房重訓經驗"><span class="box"></span><span class="lb">有健身房重訓經驗</span></label>
-            <label class="opt"><input type="radio" name="entry.96682318" value="練過其他運動"><span class="box"></span><span class="lb">練過其他運動</span></label>
-            <label class="opt"><input type="radio" name="entry.96682318" value="練過格鬥（拳擊／泰拳／柔術等）"><span class="box"></span><span class="lb">練過格鬥<span class="sub">拳擊／泰拳／柔術等</span></span></label>
+        <div class="q" data-group="when">
+          <span class="t">你預計什麼時候開始訓練？<span class="req">*</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="預計開始" value="最近 3 天內"><span class="box"></span><span class="lb">最近 3 天內</span></label>
+            <label class="opt"><input type="radio" name="預計開始" value="這個星期"><span class="box"></span><span class="lb">這個星期</span></label>
+            <label class="opt"><input type="radio" name="預計開始" value="兩個星期內"><span class="box"></span><span class="lb">兩個星期內</span></label>
+            <label class="opt"><input type="radio" name="預計開始" value="下個月"><span class="box"></span><span class="lb">下個月</span></label>
+            <label class="opt"><input type="radio" name="預計開始" value="目前先了解看看"><span class="box"></span><span class="lb">目前先了解看看</span></label>
           </div>
           <div class="err">請選擇一項</div>
-        </div>
-        <div class="q" data-group="freq">
-          <span class="t">一週大概能來幾次？<span class="req">*</span></span>
-          <div class="opts two">
-            <label class="opt"><input type="radio" name="entry.1896819146" value="1 次" required><span class="box"></span><span class="lb">1 次</span></label>
-            <label class="opt"><input type="radio" name="entry.1896819146" value="2 次"><span class="box"></span><span class="lb">2 次</span></label>
-            <label class="opt"><input type="radio" name="entry.1896819146" value="3 次以上"><span class="box"></span><span class="lb">3 次以上</span></label>
-            <label class="opt"><input type="radio" name="entry.1896819146" value="還不確定"><span class="box"></span><span class="lb">還不確定</span></label>
-          </div>
-          <div class="err">請選擇一項</div>
-        </div>
-        <div class="q">
-          <label class="t" for="f_why">為什麼是現在想開始練格鬥？<span class="req">*</span>
-            <span class="hint">一句話就好，這會決定教練幫你排的第一堂課內容</span></label>
-          <textarea id="f_why" name="entry.1108858711" placeholder="例如：體檢紅字想認真減脂／想學真的能用的防身／工作壓力太大想找出口" required></textarea>
-          <div class="err">這題很重要，請簡單寫一句</div>
         </div>
       </section>
 
       <!-- STEP 4 -->
       <section class="step" data-step="4">
-        <div class="q" data-group="src">
-          <span class="t">最後一題：從哪裡認識新竹格鬥？<span class="req">*</span></span>
-          <div class="opts two">
-            <label class="opt"><input type="radio" name="entry.785473532" value="Instagram" required><span class="box"></span><span class="lb">Instagram</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="Google 搜尋"><span class="box"></span><span class="lb">Google 搜尋</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="朋友介紹"><span class="box"></span><span class="lb">朋友介紹</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="路過看到"><span class="box"></span><span class="lb">路過看到</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="Facebook"><span class="box"></span><span class="lb">Facebook</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="YouTube"><span class="box"></span><span class="lb">YouTube</span></label>
-            <label class="opt"><input type="radio" name="entry.785473532" value="其他"><span class="box"></span><span class="lb">其他</span></label>
+        <div class="q" data-group="body">
+          <span class="t">目前是否有舊傷、疾病或需要教練特別注意的狀況？<span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="身體狀況" value="沒有"><span class="box"></span><span class="lb">沒有</span></label>
+            <label class="opt"><input type="radio" name="身體狀況" value="膝蓋或腳踝舊傷"><span class="box"></span><span class="lb">膝蓋或腳踝舊傷</span></label>
+            <label class="opt"><input type="radio" name="身體狀況" value="腰部或背部不適"><span class="box"></span><span class="lb">腰部或背部不適</span></label>
+            <label class="opt"><input type="radio" name="身體狀況" value="肩膀、手肘或手腕不適"><span class="box"></span><span class="lb">肩膀、手肘或手腕不適</span></label>
+            <label class="opt"><input type="radio" name="身體狀況" value="心血管、氣喘或其他慢性疾病"><span class="box"></span><span class="lb">心血管、氣喘或其他慢性疾病</span></label>
+            <label class="opt"><input type="radio" name="身體狀況" value="其他狀況"><span class="box"></span><span class="lb">其他狀況</span></label>
           </div>
           <div class="err">請選擇一項</div>
+          <div id="injuryNote" style="display:none;margin-top:12px">
+            <textarea name="需注意說明" placeholder="請簡單說明需要教練注意的地方"></textarea>
+          </div>
         </div>
-        <div class="q" id="friendQ" style="display:none">
-          <label class="t" for="f_friend">介紹你的朋友叫什麼名字？
-            <span class="hint">好友成功入會，你們雙方都享館內折抵 $500</span></label>
-          <input type="text" id="f_friend" name="entry.481869369" placeholder="選填">
+
+        <!-- 條件式分流：減脂 -->
+        <div class="branch" id="branchFat" style="display:none">
+          <div class="bt">關於「減脂・改善體態」</div>
+          <div class="bd">以下兩題為選填，幫助教練抓訓練密度，不需要填體重。</div>
+          <div class="q" data-group="" style="margin-top:0">
+            <span class="t" style="font-size:16px">每週大約可以安排幾天運動？<span class="optag">選填</span></span>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="減脂_每週天數" value="每週 1 天"><span class="box"></span><span class="lb">每週 1 天</span></label>
+              <label class="opt"><input type="radio" name="減脂_每週天數" value="每週 2 天"><span class="box"></span><span class="lb">每週 2 天</span></label>
+              <label class="opt"><input type="radio" name="減脂_每週天數" value="每週 3 天"><span class="box"></span><span class="lb">每週 3 天</span></label>
+              <label class="opt"><input type="radio" name="減脂_每週天數" value="每週 4 天以上"><span class="box"></span><span class="lb">每週 4 天以上</span></label>
+              <label class="opt"><input type="radio" name="減脂_每週天數" value="還不確定"><span class="box"></span><span class="lb">還不確定</span></label>
+            </div>
+          </div>
+          <div class="q" style="margin-top:18px">
+            <label class="t" style="font-size:16px" for="f_fat">最想改善的部位或體態問題？<span class="optag">選填</span></label>
+            <input type="text" id="f_fat" name="減脂_想改善部位" placeholder="例如：肚子、蝴蝶袖、想更緊實">
+          </div>
         </div>
-        <div class="card" style="margin-top:30px">
-          <h3>送出後會發生什麼</h3>
-          <ul>
-            <li>教練在營業時間內用 LINE 跟你確認時段</li>
-            <li>體驗當天提前 15 分鐘到館，先做一對一動作評估</li>
-            <li>穿運動服＋短褲／緊身褲，赤腳上課，自備毛巾與水</li>
-            <li>護具與拳套館內可租借，不用另外買</li>
-          </ul>
+
+        <!-- 條件式分流：比賽／選手 -->
+        <div class="branch" id="branchComp" style="display:none">
+          <div class="bt">關於「比賽・選手班」</div>
+          <div class="bd">以下為選填，這類名單會由總教練先評估，不直接排一般團課。</div>
+          <div class="q" style="margin-top:0">
+            <label class="t" style="font-size:16px" for="f_wt">目前大約體重（kg）<span class="optag">選填</span></label>
+            <input type="number" id="f_wt" name="比賽_體重kg" inputmode="numeric" placeholder="例如：68">
+          </div>
+          <div class="q" data-group="" style="margin-top:18px">
+            <span class="t" style="font-size:16px">是否有比賽經驗？<span class="optag">選填</span></span>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="比賽_經驗" value="沒有"><span class="box"></span><span class="lb">沒有</span></label>
+              <label class="opt"><input type="radio" name="比賽_經驗" value="業餘比賽"><span class="box"></span><span class="lb">業餘比賽</span></label>
+              <label class="opt"><input type="radio" name="比賽_經驗" value="泰拳比賽"><span class="box"></span><span class="lb">泰拳比賽</span></label>
+              <label class="opt"><input type="radio" name="比賽_經驗" value="踢拳比賽"><span class="box"></span><span class="lb">踢拳比賽</span></label>
+              <label class="opt"><input type="radio" name="比賽_經驗" value="拳擊比賽"><span class="box"></span><span class="lb">拳擊比賽</span></label>
+              <label class="opt"><input type="radio" name="比賽_經驗" value="散打或其他格鬥比賽"><span class="box"></span><span class="lb">散打或其他格鬥比賽</span></label>
+            </div>
+          </div>
+          <div class="q" style="margin-top:18px">
+            <label class="t" style="font-size:16px" for="f_yr">過去訓練年資<span class="optag">選填</span></label>
+            <input type="text" id="f_yr" name="比賽_訓練年資" placeholder="例如：泰拳 2 年、拳擊半年">
+          </div>
         </div>
-        <p style="font-size:13px;color:#5E5E5E;margin-top:18px;line-height:1.8">
-          送出即表示同意以上資料僅供 HCF 新竹格鬥安排課程與訓練安全評估使用，不會提供給第三方。
-          你可隨時要求查詢、更正或刪除。
+
+        <!-- 條件式分流：兒童 -->
+        <div class="branch" id="branchKid" style="display:none">
+          <div class="bt">關於「兒童課程」</div>
+          <div class="bd">本表單由家長或法定代理人填寫。以下為選填。</div>
+          <div class="q" style="margin-top:0">
+            <label class="t" style="font-size:16px" for="f_kidage">孩子目前年齡<span class="optag">選填</span></label>
+            <input type="text" id="f_kidage" name="兒童_年齡" placeholder="例如：8 歲">
+          </div>
+          <div class="q" data-group="" data-multi="1" style="margin-top:18px">
+            <span class="t" style="font-size:16px">家長最希望孩子改善什麼？<span class="optag">選填・可複選</span></span>
+            <div class="opts two">
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="體能與健康"><span class="box"></span><span class="lb">體能與健康</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="專注力"><span class="box"></span><span class="lb">專注力</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="紀律"><span class="box"></span><span class="lb">紀律</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="自信心"><span class="box"></span><span class="lb">自信心</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="防身能力"><span class="box"></span><span class="lb">防身能力</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="情緒與壓力"><span class="box"></span><span class="lb">情緒與壓力</span></label>
+              <label class="opt multi"><input type="checkbox" name="兒童_希望改善" value="想參加比賽"><span class="box"></span><span class="lb">想參加比賽</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 選填 -->
+        <div class="q" style="margin-top:28px">
+          <label class="t" for="f_change">三個月後最希望看到什麼改變？<span class="optag">選填</span>
+            <span class="hint">例如：瘦 5 公斤、體力變好、學會基本攻防、可以完成對打、不再害怕運動</span></label>
+          <textarea id="f_change" name="三個月期望" placeholder="一句話描述就好，教練體驗當天會依這個幫你規劃"></textarea>
+        </div>
+        <div class="q">
+          <span class="t">你是從哪裡知道 HCF 新竹格鬥的？<span class="optag">選填</span></span>
+          <div class="opts two">
+            <label class="opt"><input type="radio" name="從哪認識" value="Instagram"><span class="box"></span><span class="lb">Instagram</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="Facebook"><span class="box"></span><span class="lb">Facebook</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="Google 搜尋或地圖"><span class="box"></span><span class="lb">Google 搜尋／地圖</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="Threads"><span class="box"></span><span class="lb">Threads</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="YouTube"><span class="box"></span><span class="lb">YouTube</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="朋友介紹"><span class="box"></span><span class="lb">朋友介紹</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="經過場館看到"><span class="box"></span><span class="lb">經過場館看到</span></label>
+            <label class="opt"><input type="radio" name="從哪認識" value="其他"><span class="box"></span><span class="lb">其他</span></label>
+          </div>
+        </div>
+
+        <p style="font-size:13px;color:#5E5E5E;margin-top:22px;line-height:1.8">
+          送出即表示同意以上資料僅供 HCF 新竹格鬥安排課程與訓練安全評估使用，不會提供給第三方。你可隨時要求查詢、更正或刪除。
         </p>
       </section>
     </form>
@@ -318,28 +353,23 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
     </div>
   </div>
 
-  <!-- ============ SUCCESS ============ -->
+  <!-- ============ 完成頁 ============ -->
   <div class="done" id="done">
-    <div class="tick">
-      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2>預約已送出</h2>
-    <p>教練會在營業時間內用 LINE 跟你確認時段。<br>加官方 LINE 可以更快收到回覆。</p>
-
-    <a class="line-btn" href="https://line.me/R/ti/p/@hc.combat2022" target="_blank" rel="noopener">加官方 LINE ＠hc.combat2022</a>
-    <a class="map-btn" href="https://maps.google.com/?q=新竹市北區台溪里林森路301號2樓" target="_blank" rel="noopener">新竹市北區台溪里林森路 301 號 2 樓</a>
-
+    <div class="tick"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2>已收到你的需求診斷 🥊</h2>
+    <p>接下來請回到 HCF 官方 LINE，傳送下面這句話，教練就會依你的目標、經驗與方便時間，幫你選適合的體驗課程。</p>
+    <div class="msgbox"><span class="lb">回到 LINE 傳送這句</span><div class="m" id="doneMsg">已填寫｜你的稱呼</div></div>
+    <a class="line-btn" href="https://line.me/R/ti/p/@hc.combat2022" rel="noopener">回到官方 LINE 預約</a>
     <div class="card">
       <h3>體驗當天提醒</h3>
       <ul>
         <li>提前 15 分鐘到館，教練會先做一對一動作評估</li>
         <li>運動服＋短褲／緊身褲，赤腳上課</li>
-        <li>自備毛巾與水</li>
-        <li>有朋友想一起來也可以，雙人體驗兩人平均 $1,200</li>
+        <li>自備毛巾與水；護具與拳套館內可租借</li>
       </ul>
     </div>
-
-    <a class="map-btn" href="pricing.html" style="margin-top:20px">先看看完整課程方案 →</a>
+    <a class="map-btn" href="https://maps.google.com/?q=新竹市北區台溪里林森路301號2樓" target="_blank" rel="noopener">新竹市北區林森路 301 號 2 樓</a>
+    <a class="map-btn" href="pricing.html" style="margin-top:12px">先看看完整課程方案 →</a>
   </div>
 </main>
 
@@ -355,51 +385,73 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
 <script>
 (function(){
   var TOTAL = 4, cur = 1, submitted = false;
+  var LEAD_EMAIL = 'hsinchucombat2022@gmail.com';        // 收診斷通知的信箱，可改
+  var LINE_URL   = 'https://line.me/R/ti/p/@hc.combat2022'; // 官方 LINE，可改
   var steps  = document.querySelectorAll('.step');
   var fill   = document.getElementById('pgFill');
   var pgStep = document.getElementById('pgStep');
   var btnN   = document.getElementById('btnNext');
   var btnP   = document.getElementById('btnPrev');
-  var form   = document.getElementById('bookForm');
+  var form   = document.getElementById('diagForm');
+
+  // 首頁 → 開始
+  document.getElementById('startBtn').addEventListener('click', function(){
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('formWrap').style.display = 'block';
+    document.getElementById('pgWrap').style.display = 'block';
+    document.getElementById('navBar').classList.add('on');
+    gtag('event','diagnosis_start');
+    paint();
+  });
 
   function paint(){
     steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.step === cur); });
+    if (cur === 4) revealBranches();
     fill.style.width = (cur / TOTAL * 100) + '%';
-    document.getElementById('lede').style.display = cur === 1 ? 'block' : 'none';
     pgStep.textContent = '第 ' + cur + ' 步 / 共 ' + TOTAL + ' 步';
     btnP.style.display = cur === 1 ? 'none' : 'block';
-    btnN.textContent   = cur === TOTAL ? '送出預約' : '下一步';
+    btnN.textContent   = cur === TOTAL ? '取得我的體驗建議' : '下一步';
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  function clearErr(sec){
-    sec.querySelectorAll('.err').forEach(function(e){ e.classList.remove('on'); });
+  // Q2 最多選 2
+  var goalQ = document.querySelector('.q[data-group="goal"]');
+  goalQ.addEventListener('change', function(e){
+    var checked = goalQ.querySelectorAll('input:checked');
+    if (checked.length > 2 && e.target.checked) { e.target.checked = false;
+      var m = goalQ.querySelector('.qmax'); if (m){ m.textContent='最多選 2 項喔'; m.style.color='#FF6B6F'; setTimeout(function(){m.textContent='最多選 2 項';m.style.color='';},1500);} }
+  });
+
+  // Q7 身體狀況 → 舊傷／其他 顯示補充說明
+  document.querySelectorAll('input[name="身體狀況"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      document.getElementById('injuryNote').style.display = (r.checked && r.value !== '沒有') ? 'block' : 'none';
+    });
+  });
+
+  // 依 Q2 顯示條件分流
+  function goalHas(v){ return !!document.querySelector('.q[data-group="goal"] input[value="'+v+'"]:checked'); }
+  function revealBranches(){
+    document.getElementById('branchFat').style.display  = goalHas('減脂、瘦身、改善體態') ? 'block' : 'none';
+    document.getElementById('branchComp').style.display = goalHas('想參加比賽或進入選手班') ? 'block' : 'none';
+    document.getElementById('branchKid').style.display  = goalHas('想讓孩子學習運動與紀律') ? 'block' : 'none';
   }
 
+  function clearErr(sec){ sec.querySelectorAll('.err').forEach(function(e){ e.classList.remove('on'); }); }
   function validate(sec){
-    clearErr(sec);
-    var ok = true, first = null;
-
-    sec.querySelectorAll('input[type=text],input[type=tel],textarea').forEach(function(el){
-      if (el.required && !el.value.trim()) {
-        ok = false; first = first || el;
-        var e = el.parentElement.querySelector('.err'); if (e) e.classList.add('on');
-      } else if (el.type === 'tel' && el.value.trim() && !/^[0-9+\-\s]{8,15}$/.test(el.value.trim())) {
-        ok = false; first = first || el;
-        var e2 = el.parentElement.querySelector('.err'); if (e2) e2.classList.add('on');
-      }
+    clearErr(sec); var ok = true, first = null;
+    sec.querySelectorAll('input[type=text],textarea').forEach(function(el){
+      if (el.required && !el.value.trim()) { ok=false; first=first||el;
+        var e=el.closest('.q').querySelector('.err'); if(e) e.classList.add('on'); }
     });
-
     sec.querySelectorAll('.q[data-group]').forEach(function(q){
-      var multi = q.dataset.multi === '1';
+      if (!q.dataset.group) return;                 // 只驗證必填題組（分流題 data-group="" 略過）
+      if (q.closest('.branch')) return;             // 分流題皆選填
       var sel = q.querySelectorAll('input:checked').length;
-      if (sel === 0) {
-        ok = false; first = first || q;
-        var e = q.querySelector('.err'); if (e) e.classList.add('on');
-      }
-      if (multi) {} // 多選只要求至少一個
+      var max = +q.dataset.max || 0;
+      if (sel === 0) { ok=false; first=first||q; var e=q.querySelector('.err'); if(e) e.classList.add('on'); }
+      else if (max && sel > max) { ok=false; first=first||q; var e2=q.querySelector('.err'); if(e2) e2.classList.add('on'); }
     });
-
     if (!ok && first) first.scrollIntoView({behavior:'smooth', block:'center'});
     return ok;
   }
@@ -407,65 +459,51 @@ footer{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;
   btnN.addEventListener('click', function(){
     var sec = document.querySelector('.step[data-step="' + cur + '"]');
     if (!validate(sec)) return;
-
-    if (cur < TOTAL) {
-      gtag('event', 'booking_step', { step: cur, step_name: 'step_' + cur });
-      cur++; paint();
-      return;
-    }
-
-    // 送出
-    var d = document.getElementById('f_date').value;
-    if (d) {
-      var p = d.split('-');
-      document.getElementById('d_y').value = p[0];
-      document.getElementById('d_m').value = String(parseInt(p[1], 10));
-      document.getElementById('d_d').value = String(parseInt(p[2], 10));
-    }
-    var planEl = document.querySelector('input[name="entry.1106204071"]:checked');
-    gtag('event', 'generate_lead', {
-      currency: 'TWD', value: 400,
-      plan: planEl ? planEl.value : '',
-      source: (document.querySelector('input[name="entry.785473532"]:checked') || {}).value || ''
-    });
-
-    submitted = true;
-    btnN.disabled = true;
-    btnN.textContent = '送出中…';
-    form.submit();
-    // 保險：iframe 沒回應也在 2.5 秒後顯示完成畫面
-    setTimeout(showDone, 2500);
+    if (cur < TOTAL) { gtag('event','diagnosis_step',{step:cur}); cur++; paint(); return; }
+    submit();
   });
+  btnP.addEventListener('click', function(){ if (cur > 1){ cur--; paint(); } });
 
-  btnP.addEventListener('click', function(){ if (cur > 1) { cur--; paint(); } });
+  function submit(){
+    if (submitted) return; submitted = true;
+    btnN.disabled = true; btnN.textContent = '產生建議中…';
+    var name = (document.getElementById('f_name').value || '').trim();
 
-  var doneShown = false;
-  function showDone(){
-    if (doneShown) return; doneShown = true;
+    var startEl = document.querySelector('input[name="開始方式"]:checked');
+    gtag('event','generate_lead',{ currency:'TWD', value:400,
+      plan:startEl?startEl.value:'', when:(document.querySelector('input[name="預計開始"]:checked')||{}).value||'' });
+
+    // 收集所有答案 → 寄到教練信箱（FormSubmit）
+    try {
+      var payload = {};
+      new FormData(form).forEach(function(v,k){
+        if (!v) return;
+        payload[k] = payload[k] ? (payload[k] + '、' + v) : v;
+      });
+      payload._subject  = '🥊 新生需求診斷｜' + name;
+      payload._template = 'table';
+      payload._captcha  = 'false';
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method:'POST', keepalive:true,
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      }).catch(function(){});
+    } catch(e){}
+
+    document.getElementById('doneMsg').textContent = '已填寫｜' + (name || '你的稱呼');
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('pgWrap').style.display   = 'none';
-    document.getElementById('navBar').style.display   = 'none';
+    document.getElementById('navBar').classList.remove('on');
     document.getElementById('done').classList.add('on');
     window.scrollTo({top:0});
+    // 停留讓對方看到要傳的訊息，再帶去官方 LINE
+    setTimeout(function(){ window.location.href = LINE_URL; }, 3200);
   }
-  document.getElementById('gfTarget').addEventListener('load', function(){
-    if (submitted) showDone();
-  });
 
-  // 「朋友介紹」才顯示朋友姓名欄
-  document.querySelectorAll('input[name="entry.785473532"]').forEach(function(r){
-    r.addEventListener('change', function(){
-      document.getElementById('friendQ').style.display = (r.value === '朋友介紹' && r.checked) ? 'block' : 'none';
-    });
-  });
-
-  // Enter 不要直接送出
+  // Enter 不直接送出
   form.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); btnN.click(); }
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA'){ e.preventDefault(); btnN.click(); }
   });
-
-  gtag('event', 'booking_start');
-  paint();
 })();
 </script>
 </body>

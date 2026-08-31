@@ -376,17 +376,36 @@ a{color:inherit;text-decoration:none}
 .gv-fight .fb-tx span{display:block;color:#bdbdbd;font-size:.86rem;margin-top:4px}
 .gv-fight a{position:relative;z-index:1;background:var(--red);color:#fff;font-weight:900;padding:12px 22px;border-radius:6px;white-space:nowrap;transition:.25s}
 .gv-fight a:hover{background:#fff;color:var(--red)}
+.gv-dots{display:none}
 @media(max-width:760px){
-  .gv-stage{flex-direction:column;height:clamp(520px,82svh,700px)}
-  .gvp{flex:1}
-  .gvp.active{flex:2.4}
-  .gvp:not(.active) .nm{writing-mode:horizontal-tb;left:20px;bottom:14px;transform:none}
-  .gvp:not(.active) .en{opacity:.85}
-  .gvp .lab{align-items:flex-start;text-align:left}
-  .gv-result{max-height:82%}
+  /* 行動版：直式影片・左右滑動一次看一個（peek 下一張＋圓點指示）；結果用底部彈出面板 */
+  .gv-stage{flex-direction:row;height:auto;gap:0;background:transparent;box-shadow:none;border-radius:0;
+    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding:2px 0}
+  .gv-stage::-webkit-scrollbar{display:none}
+  .gvp{flex:0 0 84%;scroll-snap-align:center;aspect-ratio:3/4;min-height:0;margin-right:12px;
+    border-radius:18px;overflow:hidden;box-shadow:0 16px 36px rgba(17,17,17,.2)}
+  .gvp:last-of-type{margin-right:0}
+  .gvp.active{flex:0 0 84%!important}   /* 手機輪播不放大，避免卡片一直開合 */
+  .gvp::after{background:linear-gradient(180deg,rgba(6,6,8,.14),transparent 34%,rgba(6,6,8,.4) 62%,rgba(6,6,8,.94))}
+  .gvp video{filter:none!important;transform:none!important;object-position:center 26%!important}
+  .gvp .lab{align-items:flex-start;text-align:left;padding:18px 20px 20px}
+  .gvp .en{opacity:1!important;font-size:.66rem}
+  .gvp .nm{writing-mode:horizontal-tb!important;text-orientation:mixed;position:static!important;transform:none!important;font-size:1.7rem!important;margin-top:3px}
+  .gvp .det{max-height:none!important;opacity:1!important;margin-top:14px}
+  .gvp .det .dl{display:block;color:#eae7df;font-size:.82rem}
+  .gvp .det .rt{display:none}
+  .gvp .det .pk{margin-top:12px;box-shadow:0 8px 20px rgba(200,16,21,.5)}
+  .gv-stage.revealed{overflow:hidden}
+  .gv-stage.revealed .gvp{flex:0 0 84%!important;opacity:1}
+  .gv-stage.revealed::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:990}
+  .gv-result{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:82svh;border-radius:20px 20px 0 0;z-index:1000;box-shadow:0 -18px 50px rgba(0,0,0,.5)}
   .gv-result .path{flex-direction:column}
   .gv-result .pn+.pn{margin-left:0;margin-top:20px}
   .gv-result .pn+.pn::before{left:50%;top:-18px;transform:translateX(-50%) rotate(90deg)}
+  .gv-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .gv-dots i{width:8px;height:8px;border-radius:50%;background:rgba(17,17,17,.22);transition:.25s;cursor:pointer}
+  .gv-dots i.on{background:var(--red);width:22px;border-radius:5px}
 }
 @media(prefers-reduced-motion:reduce){.gvp,.gvp video,.gv-result{transition:none!important}}
 
@@ -596,7 +615,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <a class="nav-logo" href="#top"><picture><source srcset="assets/final-logo.webp" type="image/webp"><img src="assets/final-logo.png" alt="HCF"></picture><span class="nlk"><b>HCF</b><em>COMBAT SYSTEM</em></span></a>
     <nav class="nav-links">
       <a href="#top">首頁</a>
-      <a href="news.html">最新資訊</a>
+      <a href="news.html">最新活動</a>
       <a href="philosophy.html">品牌哲學</a>
       <div class="ndd"><a href="courses.html" data-p="courses">課程介紹<i>▾</i></a><div class="ndd-m"><a href="courses.html">課程總覽</a><a href="group-classes.html">團體課程</a><a href="private-training.html">私人課程</a></div></div>
       <a href="schedule.html">最新課表</a>
@@ -609,7 +628,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <button class="nav-burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
   </div>
   <nav class="mnav" id="mnav">
-    <a href="#top" data-en="HOME">首頁</a><a href="news.html" data-en="NEWS">最新資訊</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>
+    <a href="#top" data-en="HOME">首頁</a><a href="news.html" data-en="EVENTS">最新活動</a><a href="philosophy.html" data-en="BRAND">品牌哲學</a>
     <button class="msub-t open" type="button" data-en="CLASS">課程介紹<i>＋</i></button><div class="msub msub-grid open"><a href="group-classes.html" data-en="GROUP">團體課程</a><a href="private-training.html" data-en="PRIVATE">私人課程</a><a href="muaythai.html" data-en="MUAY THAI">泰拳訓練</a><a href="kickboxing.html" data-en="KICKBOXING">踢拳訓練</a><a href="sanda.html" data-en="SANDA">散打訓練</a><a href="strength.html" data-en="S&amp;C">肌力體能</a></div><a href="team.html" data-en="COACHES">教練團隊</a><button class="msub-t open" type="button" data-en="PRICING">課程方案<i>＋</i></button><div class="msub msub-grid open"><a href="pricing.html" data-en="PRICING">價目表</a><a href="packages.html" data-en="BUNDLE">套組方案</a><a href="schedule.html" data-en="SCHEDULE">課表</a><a href="partnership.html" data-en="CORPORATE">企業合作</a></div><a href="survey.html" data-en="FAQ">新手問答</a><a href="shop.html" data-en="SHOP">商城</a><a href="https://www.fit-book.com.tw/hsinchucombat" target="_blank" rel="noopener" data-en="LOGIN">會員登入</a>
     <a class="cta" href="booking.html">立即預約 $400 體驗</a><div class="mnav-social"><a href="https://www.instagram.com/hc.combat2022/" target="_blank" rel="noopener" data-s="ig" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 6a1 1 0 110 2 1 1 0 010-2z"/></svg></a><a href="https://m.facebook.com/hsinchucombat/" target="_blank" rel="noopener" data-s="fb" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.4v8h3.4z"/></svg></a><a href="https://youtube.com/playlist?list=PLFtibVDr-YTBsPUoEfClpei2ttq1mGtKN" target="_blank" rel="noopener" data-s="yt" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7c.4-1.5.4-4.7.4-4.7zM9.8 15.1V8.9l5.3 3.1-5.3 3.1z"/></svg></a><a href="https://lin.ee/7lidUv0" target="_blank" rel="noopener" data-s="line" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3 6.5 7.2 7.1.3.05.6.15.7.35.06.2.04.5.02.7l-.12.75c-.03.2-.17.86.77.47s5.1-3 6.9-5.2c1.2-1.4 1.8-2.8 1.8-4.4 0-4-4-7.2-9.06-7.2z"/></svg></a></div>
   </nav>
@@ -696,7 +715,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       </div>
       <div class="gv-result" id="gvResult" aria-live="polite"></div>
     </div>
-    <div class="gv-hint" id="gvHint">滑過看看 · 點一個最像你的</div>
+    <div class="gv-dots" id="gvDots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="gv-hint" id="gvHint">← 滑動切換 · 點你最像的場景 →</div>
 
     <div class="gv-fight rv">
       <div class="fb-tx">
@@ -747,6 +767,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     vids.forEach(function(v){if(en.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}else v.pause();});
   })},{threshold:.25});
   io.observe(stage);
+  /* 行動版輪播圓點：偵測目前置中的那張＋點圓點捲動 */
+  var dots=[].slice.call(document.querySelectorAll('#gvDots i'));
+  if(dots.length){
+    var pio=new IntersectionObserver(function(es){es.forEach(function(en){
+      if(en.isIntersecting){var idx=panels.indexOf(en.target);dots.forEach(function(d,k){d.classList.toggle('on',k===idx)});}
+    })},{root:stage,threshold:.6});
+    panels.forEach(function(p){pio.observe(p)});
+    dots.forEach(function(d,i){d.addEventListener('click',function(){panels[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});});});
+  }
 })();
 </script>
 

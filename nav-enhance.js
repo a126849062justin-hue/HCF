@@ -30,7 +30,7 @@
   var st=document.createElement('style');st.id='hcf-nav-enh';st.textContent=css;document.head.appendChild(st);
 
   /* 2) 依文字自動補英文（不需逐頁改 HTML） */
-  var MAP={'首頁':'HOME','最新資訊':'NEWS','品牌哲學':'BRAND','課程介紹':'CLASS','課程總覽':'OVERVIEW','團體課程':'GROUP','私人課程':'PRIVATE','最新課表':'SCHEDULE','教練團隊':'COACHES','課程方案':'PRICING','商城':'SHOP','會員登入':'LOGIN'};
+  var MAP={'首頁':'HOME','最新活動':'EVENTS','品牌哲學':'BRAND','課程介紹':'CLASS','課程總覽':'OVERVIEW','團體課程':'GROUP','私人課程':'PRIVATE','最新課表':'SCHEDULE','教練團隊':'COACHES','課程方案':'PRICING','商城':'SHOP','會員登入':'LOGIN'};
   document.querySelectorAll('.nav-links a, .ndd-m a, .mnav a, .mnav .msub-t').forEach(function(el){
     if(el.classList.contains('nav-cta')||el.classList.contains('cta'))return;
     var t=(el.textContent||'').replace(/[▾＋\s]/g,'').trim();
