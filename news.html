@@ -147,6 +147,17 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .ao-off{display:inline-block;background:linear-gradient(135deg,#D4AF37,#b8892b);color:#1a1a1a;font-family:var(--sans);font-weight:900;font-size:.74rem;padding:4px 10px;border-radius:4px;letter-spacing:.03em}
 .ao-anchor{margin-top:13px;color:#f0c98a;font-weight:700;font-size:.96rem;line-height:1.6}
 .ao-anchor .thru{color:#9a9a9a;font-weight:400;text-decoration:line-through;margin-right:8px}
+/* 戰鬥通行證 S1 賽季入口卡 */
+.s1card{display:block;position:relative;overflow:hidden;background:linear-gradient(135deg,#1c0e0f,#141317 60%);border:1px solid rgba(200,16,21,.45);border-radius:16px;padding:clamp(24px,4vw,34px);color:#fff;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.s1card:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(200,16,21,.3)}
+.s1-glow{position:absolute;top:-40%;right:-8%;width:56%;height:180%;background:radial-gradient(circle,rgba(212,175,55,.18),transparent 60%);pointer-events:none}
+.s1-body{position:relative;z-index:2}
+.s1-badge{display:inline-block;font-family:var(--en);font-weight:700;letter-spacing:.1em;font-size:.74rem;color:#1a1a1a;background:linear-gradient(135deg,#D4AF37,#b8892b);padding:5px 13px;border-radius:999px}
+.s1-h{font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,4.5vw,2.1rem);margin-top:14px;color:#fff}
+.s1-p{color:#c9c9c9;line-height:1.9;margin-top:12px;max-width:660px}
+.s1-p b{color:var(--gold)}
+.s1-cta{display:inline-block;margin-top:20px;background:var(--red);color:#fff;font-weight:900;letter-spacing:.03em;padding:13px 26px;border-radius:8px;box-shadow:0 12px 30px rgba(200,16,21,.36);transition:.2s}
+.s1card:hover .s1-cta{background:#fff;color:var(--red)}
 
 /* 沈浸升級（高端／創意） */
 :root{--gold:#C9A24B}
@@ -229,19 +240,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <!-- 2｜戰鬥通行證 -->
     <div class="pm-panel" data-panel="pass">
       <div class="act-stat" id="statPass"></div>
-      <div class="calc">
-        <div class="calc-ctrl">
-          <div class="cl-top"><span>本月預計出席</span><b><em id="passN">16</em> 堂</b></div>
-          <input type="range" id="passRange" min="0" max="30" value="16" step="1" aria-label="本月出席堂數">
-          <div class="cl-scale"><span>0</span><span>8</span><span>16</span><span>24</span><span>30</span></div>
+      <a class="s1card" href="battle-pass.html">
+        <div class="s1-glow"></div>
+        <div class="s1-body">
+          <div class="s1-badge">🎮 S1 賽季・進行中</div>
+          <h3 class="s1-h">團體課出席挑戰賽</h3>
+          <p class="s1-p">當月出席累積達標，次月續約最高現折 <b>$1,500</b>。24 格 LINE 數位集點卡、即時課表、英雄榜、教練認證——完整賽季體驗，一鍵進入。</p>
+          <span class="s1-cta">進入 S1 賽季挑戰賽 →</span>
         </div>
-        <div class="calc-out" aria-live="polite">
-          <div class="co-lv" id="passLv">LV.2 菁英</div>
-          <div class="co-big">次月續費直接折抵<br><em id="passAmt">$1,000</em></div>
-          <div class="co-bar"><i id="passBar" style="width:66%"></i></div>
-          <div class="co-note" id="passNote">再出席 8 堂達 LV.3，折抵升到 $1,500</div>
-        </div>
-      </div>
+      </a>
       <div class="tiers">
         <div class="tier"><b>LV.1 戰士</b><span>出席 8 堂 → 折抵 $500</span></div>
         <div class="tier"><b>LV.2 菁英</b><span>出席 16 堂 → 折抵 $1,000</span></div>
