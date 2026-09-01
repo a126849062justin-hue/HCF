@@ -154,7 +154,7 @@ body.wz .grpmsg{display:none!important}
     <div class="done" id="doneView">
       <div class="ok">
         <h2>感謝你的回饋 🙏</h2>
-        <p>你的意見我們都收到了，會用來把 HCF 變得更好。<br>如果你想開始訓練，隨時歡迎預約體驗。</p>
+        <p>你的意見我們都收到了，會用來把 HCF 變得更好。<br>正在帶你到官方 LINE——沒有自動跳轉的話，點下面按鈕。</p>
         <div class="btns">
           <a class="b1" href="booking.html">🥊 預約 $400 體驗</a>
           <a class="b2" href="https://lin.ee/7lidUv0" target="_blank" rel="noopener">加官方 LINE</a>
@@ -476,6 +476,7 @@ body.wz .grpmsg{display:none!important}
   function showDone(){
     done.classList.add('on');form.classList.add('off');
     var top=document.querySelector('.quiz');if(top)top.scrollIntoView({behavior:'smooth'});
+    setTimeout(function(){ window.location.href = LINE; }, 2600); // 送出後自動帶到官方 LINE
   }
   function setHidden(name,val){
     var el=form.querySelector('input[name="'+name+'"][data-auto="1"]');
